@@ -50,6 +50,7 @@ unset _JAVA_OPTIONS
 cd ~/.config
 sudo rm -rf SogouPY* sogou*
 ```
+* 重启
 
 ## .sh
 * touch hello.sh //创建sh文件
