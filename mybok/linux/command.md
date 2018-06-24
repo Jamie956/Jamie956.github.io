@@ -46,8 +46,10 @@ unset _JAVA_OPTIONS
 
 ## ubuntu
 ### 搜狗输入法选词框乱码
-* cd ~/.config
-* sudo rm -rf SogouPY* sogou*
+```
+cd ~/.config
+sudo rm -rf SogouPY* sogou*
+```
 
 ## .sh
 * touch hello.sh //创建sh文件
