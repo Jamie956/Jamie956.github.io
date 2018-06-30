@@ -100,3 +100,126 @@ gpasswd –a user1 users //add user1 to groups users
 gpasswd –d user1 users //remove user1 from groups users
 sudo groupdel users //delete groups users
 ```
+
+### Command
+```
+===basic===
+pwd
+ls
+ls <dir>
+ls -l
+ls -lt
+ls -a
+ls | sort
+clear
+exit
+
+===cd===
+cd
+last -> cd -
+cd <path>
+back -> cd ..
+
+===dir===
+mkdir dir1 dir2 dir3
+rm -rf <dir> (or rm -r <dir>)
+rename -> mv <dir> <dir2>
+show attr -> file [file/dir]
+move -> mv <dir> <dir2>
+
+===file===
+create -> ><file> (or touch <file>)
+rm <file> ( or rm -f <file> )
+nano <file>
+cat <file>
+copy file to pwd: cp <file> .
+move -> mv <file> <path>
+rename -> mv <old> <new>
+
+type of command -> type ls
+
+cat <file> > <file2>
+
+cat <file> >> <file2>
+
+word count: wc <file>
+
+head -n <num> <file>
+tail -n <num> <file>
+
+ls | grep <keyword>
+grep '<keyword>' <file>
+grep -c '<keyword>' <file>
+
+line start-> Ctrl - a
+line end -> Ctrl - e
+
+history
+!<history_num>
+search: locate <file> ( or which <file> )
+
+key=value
+echo $key
+
+to be root: sudo du
+edit sudo: visudo
+
+PWD set permission: chmod -R 777 PWD
+
+===user===
+sudo adduser <name>
+
+===.sh===
+foo.sh
+	ls
+bash foo.sh
+```
+
+### Install
+```
+===fast===
+cp /etc/apt/sources.list /etc/apt/sources.list.backup
+echo ""> sources.list
+apt-get update
+
+===install===
+apt-get update
+apt install <app>
+
+===app===
+docker
+docker-compose
+nginx
+curl
+maven
+openssh-server: connect
+openjdk-8-jdk
+make
+```
+
+
+### Error
+```
+Q: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
+A: sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock
+
+Q: Error writing docker: Permission denied
+A: sudo nano <file>
+
+Failed to fetch cdrom://Ubuntu-Server 16.04.3 LTS _Xenial Xerus_ - Release amd64 (20170801)/dists/xenial/main/binary-amd64/Packages
+nano /etc/apt/sources.list
+comment or remove lines that include cdrom => deb cdrom:[Ubuntu-Server 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.3)]/ xenial main restricted
+
+```
+
+### Makefile
+```
+touch hello
+hello:
+	say:
+		echo 'Hello World.'
+	say2:
+		echo 'hello world2'
+make -f hello say2
+```

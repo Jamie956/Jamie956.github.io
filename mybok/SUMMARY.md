@@ -12,6 +12,7 @@
     * [Git](tool/git.md)
 * [NodeJS](nodejs/README.md)
     * [NPM](nodejs/npm.md)
+    * [Command](nodejs/command.md)
 * [DB](db/README.md)
     * [MongoDB](db/mongodb.md)
     * [Mysql](db/mysql.md)
