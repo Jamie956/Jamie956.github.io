@@ -44,8 +44,8 @@ sudo rm -rf SogouPYsogou*
 ## 执行shell文件
 ```
 touch hello.sh //创建sh文件
-chmod u+x hello.sh //可执行权限
-./hello.sh //excute sh
+chmod u+x hello.sh //设置可执行权限
+./hello.sh //执行 .sh
 sh hello.sh //excute sh
 . hello.sh //execute sh, !important use for "export" command
 ```
@@ -97,6 +97,16 @@ cd .. //上一级目录
 ===others===
 clear //清空terminal
 exit //退出terminal
+history //查看执行过的命令
+!<num> //执行制定历史命令
+
+mynameis=tom //赋值
+echo $mynameis //取值
+
+sudo du //取得root权限
+visudo //编辑权限文件
+
+chmod -R 777 PWD //设置权限
 
 ===dir===
 mkdir dir1 dir2 dir3 //创建文件夹
@@ -113,43 +123,22 @@ cat <file> //查看文件
 cp <filepath> . //复制文件到当前目录
 mv <file> <path> //移动文件到制定路径下
 mv <old> <new> //文件重命名
-
-===command===
-type <command> //查看执行命令所在路径
-
-
+locate <filename> //搜索文件
 cat <file_a> > <file_b> //复制文件file_a的内容到file_b
 cat <file> >> <file2>
 wc <file> //获取文件行数,字数,字节数,文件名称
 head -n <x> <file> //获取文件前x行内容
 tail -n <x> <file> //获取文件最后x行内容
 grep <keyword> <file> //模糊查找制定文件
-grep -c <keyword> <file> //计算制定文件的关键字个数
-
+grep -c <keyword> <file> //计算指定文件的关键字个数
 ls | grep <keyword> //当前目录模糊查找
 
-
-
-
-history //查看执行过的命令
-!<num> //执行制定历史命令
-search: locate <file> ( or which <file> )
-
-key=value
-echo $key
-
-to be root: sudo du
-edit sudo: visudo
-
-PWD set permission: chmod -R 777 PWD
+===command===
+type <command> //查看执行命令所在路径
 
 ===user===
 sudo adduser <name>
 
-===.sh===
-foo.sh
-	ls
-bash foo.sh
 ```
 
 ### Install
@@ -174,7 +163,6 @@ openjdk-8-jdk
 make
 ```
 
-
 ### Error
 ```
 Q: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
@@ -187,7 +175,6 @@ A: sudo nano <file>
 Failed to fetch cdrom://Ubuntu-Server 16.04.3 LTS _Xenial Xerus_ - Release amd64 (20170801)/dists/xenial/main/binary-amd64/Packages
 nano /etc/apt/sources.list
 comment or remove lines that include cdrom => deb cdrom:[Ubuntu-Server 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.3)]/ xenial main restricted
-
 ```
 
 ### Makefile
