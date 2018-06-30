@@ -2,8 +2,7 @@
 
 * [Introduction](README.md)
 * [Linux](linux/README.md)
-    * [Command](linux/command.md)
-    * [Shortcut](linux/shortcut.md)
+    * [Basic](linux/basic.md)
     * [DevEnv](linux/devenv.md)
 * [Tool](tool/README.md)
     * [VSCode](tool/vscode.md)

@@ -1,9 +1,9 @@
-## 解压文件
+### 解压文件
 ```
 tar -xjvf yourdownload.tar.bz2
 ```
 
-## Set path
+### Set path
 ```
 //nodejs
 sudo nano /etc/profile
@@ -27,21 +27,21 @@ source /etc/profile
 echo $PATH
 ```
 
-## 关闭占用端口的程序
+### 关闭占用端口的程序
 ```
 netstat -an //查看全部端口
 netstat -tunlp |grep 8082 //查找8082端口的进程ID
 kill -9 3383 //终止进程ID3382
 ```
 
-## 搜狗输入法选词框乱码
+### 搜狗输入法选词框乱码
 ```
 cd ~/.config
 sudo rm -rf SogouPYsogou*
 ```
 重启系统
 
-## 执行shell文件
+### 执行shell文件
 ```
 touch hello.sh //创建sh文件
 chmod u+x hello.sh //设置可执行权限
@@ -50,7 +50,7 @@ sh hello.sh //excute sh
 . hello.sh //execute sh, !important use for "export" command
 ```
 
-## wget命令下载
+### wget命令下载
 ```
 wget url
     -b：后台下载，Wget默认的是把文件下载到当前目录
@@ -62,14 +62,14 @@ wget url
 wget -b -P <output path> <url>
 ```
 
-## nano
+### nano
 ```
 ctrl + k //删除一行
 Ctrl + a //光标到行首
 Ctrl + e //光标到行尾
 ```
 
-## Groups
+### Groups
 ```
 groups //show all groups
 groupadd –g 888 users //create a groups users, GID 888
@@ -78,7 +78,7 @@ gpasswd –d user1 users //remove user1 from groups users
 sudo groupdel users //delete groups users
 ```
 
-### Command
+#### Command
 ```
 ===path===
 pwd //当前位置
@@ -141,7 +141,7 @@ sudo adduser <name>
 
 ```
 
-### Install
+#### Install
 ```
 ===fast===
 cp /etc/apt/sources.list /etc/apt/sources.list.backup
@@ -163,7 +163,7 @@ openjdk-8-jdk
 make
 ```
 
-### Error
+#### Error
 ```
 Q: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
 A: sudo rm /var/cache/apt/archives/lock
@@ -177,7 +177,7 @@ nano /etc/apt/sources.list
 comment or remove lines that include cdrom => deb cdrom:[Ubuntu-Server 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.3)]/ xenial main restricted
 ```
 
-### Makefile
+#### Makefile
 ```
 touch hello
 hello:
@@ -187,3 +187,10 @@ hello:
 		echo 'hello world2'
 make -f hello say2
 ```
+
+### Shortcut
+```
+ctrl+alt+t //打开terminal
+ctrl+shift+t //新建一个terminal tab
+```
+
