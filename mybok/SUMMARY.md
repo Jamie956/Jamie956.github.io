@@ -8,6 +8,7 @@
 * [Tool](tool/README.md)
     * [VSCode](tool/vscode.md)
     * [Eclipse](tool/eclipse.md)
+    * [Maven](tool/maven.md)
 * [NodeJS](nodejs/README.md)
     * [NPM](nodejs/npm.md)
 * [DevOps](devops/README.md)
