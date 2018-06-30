@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../gengfu/" />
+    <link rel="next" href="../other/" />
     
     
     <link rel="prev" href="./" />
@@ -116,12 +116,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="../linux/command.html">
+        <li class="chapter " data-level="1.2.1" data-path="../linux/basic.html">
             
-                <a href="../linux/command.html">
+                <a href="../linux/basic.html">
             
                     
-                    Command
+                    Basic
             
                 </a>
             
@@ -129,20 +129,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../linux/shortcut.html">
-            
-                <a href="../linux/shortcut.html">
-            
-                    
-                    Shortcut
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.3" data-path="../linux/devenv.html">
+        <li class="chapter " data-level="1.2.2" data-path="../linux/devenv.html">
             
                 <a href="../linux/devenv.html">
             
@@ -200,6 +187,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.3" data-path="../tool/maven.html">
+            
+                <a href="../tool/maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../tool/git.html">
+            
+                <a href="../tool/git.html">
+            
+                    
+                    Git
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -232,12 +245,83 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.2" data-path="../nodejs/command.html">
+            
+                <a href="../nodejs/command.html">
+            
+                    
+                    Command
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="./">
+        <li class="chapter " data-level="1.5" data-path="../db/">
+            
+                <a href="../db/">
+            
+                    
+                    DB
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../db/mongodb.html">
+            
+                <a href="../db/mongodb.html">
+            
+                    
+                    MongoDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../db/mysql.html">
+            
+                <a href="../db/mysql.html">
+            
+                    
+                    Mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../db/redis.html">
+            
+                <a href="../db/redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="./">
             
                 <a href="./">
             
@@ -251,7 +335,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1" data-path="docker.html">
+        <li class="chapter active" data-level="1.6.1" data-path="docker.html">
             
                 <a href="docker.html">
             
@@ -269,7 +353,52 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../gengfu/">
+        <li class="chapter " data-level="1.7" data-path="../other/">
+            
+                <a href="../other/">
+            
+                    
+                    Other
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../other/windows.html">
+            
+                <a href="../other/windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../other/hexo.html">
+            
+                <a href="../other/hexo.html">
+            
+                    
+                    Hexo
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../gengfu/">
             
                 <a href="../gengfu/">
             
@@ -283,7 +412,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../gengfu/dageng.html">
+        <li class="chapter " data-level="1.8.1" data-path="../gengfu/dageng.html">
             
                 <a href="../gengfu/dageng.html">
             
@@ -352,7 +481,126 @@
 docker <span class="hljs-keyword">run</span> --restart on-failure:5 &lt;container&gt;
 docker <span class="hljs-keyword">run</span> --restart unless-stopped &lt;container&gt;
 </code></pre>
+<h3 id="basic">Basic</h3>
+<pre><code class="lang-docker">===basic===
+docker -v
+docker info
 
+===image===
+docker search &lt;image&gt;
+docker pull &lt;image:tag&gt;
+docker images
+docker images -f dangling=true
+docker images -a
+docker rmi &lt;image&gt;
+docker rmi $(docker images -q -f dangling=true)
+docker rmi -f $(docker images -a -q)
+docker tag &lt;image&gt; &lt;new image&gt;
+docker <span class="hljs-keyword">run</span> -it &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -it -p &lt;port&gt;:&lt;port&gt; &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -itd &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -it --rm &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -it --name &lt;container_name&gt; &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -it -v &lt;/&gt;:&lt;/&gt; &lt;image&gt;
+docker commit -a &lt;username&gt; &lt;container&gt; &lt;username&gt;/&lt;repository&gt;:&lt;tag&gt;
+docker build -t &lt;image&gt; .
+docker inspect &lt;image&gt;
+docker commit -a jamie956 &lt;container&gt; &lt;image&gt;:&lt;tag&gt;
+docker save -o &lt;name&gt;.tar &lt;image&gt;
+docker load -i &lt;name&gt;.tar
+
+===cantainer===
+docker ps
+docker ps -a
+docker logs &lt;container&gt;
+docker logs -f --tail  20  &lt;container&gt;
+docker stop &lt;container&gt;
+docker start &lt;container&gt;
+docker start  $(docker ps -a)
+docker restart &lt;container&gt;
+docker rm &lt;container&gt;
+docker rm -f &lt;container&gt;
+docker rm $(docker ps -a -q)
+docker exec -it &lt;container&gt; bash
+docker cp &lt;host&gt; &lt;container&gt;:&lt;/&gt;
+
+===hub===
+docker login
+docker pull &lt;username&gt;/&lt;repository&gt;:&lt;tag&gt;
+docker push &lt;username&gt;/&lt;repository&gt;:&lt;tag&gt;
+
+===<span class="hljs-keyword">volume</span>===
+docker <span class="hljs-keyword">volume</span> create &lt;name&gt;
+-v &lt;volumename&gt;:&lt;path&gt;
+docker <span class="hljs-keyword">volume</span> prune
+docker <span class="hljs-keyword">volume</span> rm &lt;name&gt;
+</code></pre>
+<h3 id="install-images">Install Images</h3>
+<pre><code>===jenkins===
+docker run \
+--name myjenkins -u root --privileged=true \
+-p 9090:8080 \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v $(which docker):/usr/bin/docker \
+-v /var/run:/var/run:rw \
+-v $PWD/data/jenkins:/var/jenkins_home \
+-v /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7 \
+-it &lt;image&gt;
+
+===RabbitMQ===
+docker run \
+-d \
+-p 15672:15672 \
+-p  5672:5672 \
+-e RABBITMQ_DEFAULT_USER=admin \
+-e RABBITMQ_DEFAULT_PASS=admin \
+--name myrabbitmq \
+rabbitmq
+
+===no sudo===
+sudo groupadd docker
+sudo gpasswd -a jamie956 docker
+newgrp docker
+
+===mongo====
+docker run \
+--name mymongo \
+-d \
+-e MONGO_INITDB_ROOT_USERNAME=root \
+-e MONGO_INITDB_ROOT_PASSWORD=123456 \
+-e MONGO_INITDB_DATABASE=admin \
+-p 27017:27017 \
+-v ~/container/mongo:/data/db \
+mongo \
+--auth 
+
+ls -alh|grep db
+
+win10 =&gt; docker run -p 27017:27017 -d mongo
+
+===mongo express===
+docker run \
+--name mymongo-express \
+--link mymongo:mongo \
+-p 8081:8081 \
+-e ME_CONFIG_BASICAUTH_USERNAME=&quot;admin&quot; \
+-e ME_CONFIG_BASICAUTH_PASSWORD=&quot;admin&quot; \
+-e ME_CONFIG_MONGODB_ADMINUSERNAME=&quot;root&quot; \
+-e ME_CONFIG_MONGODB_ADMINPASSWORD=&quot;123456&quot; \
+--rm \
+mongo-express
+
+===mysql===
+docker pull mysql:5.7
+docker run -itd --name mysql -v /d/container/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7
+
+===adminer===
+docker run -d --name adminer --link mysql-server:db -p 8085:8080 adminer
+
+===phpmyadmin===
+docker pull phpmyadmin/phpmyadmin
+docker run -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
+</code></pre>
                                 
                                 </section>
                             
@@ -384,7 +632,7 @@ docker <span class="hljs-keyword">run</span> --restart unless-stopped &lt;contai
                 </a>
                 
                 
-                <a href="../gengfu/" class="navigation navigation-next " aria-label="Next page: 更夫">
+                <a href="../other/" class="navigation navigation-next " aria-label="Next page: Other">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -395,7 +643,7 @@ docker <span class="hljs-keyword">run</span> --restart unless-stopped &lt;contai
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.5.1","depth":2,"next":{"title":"更夫","level":"1.6","depth":1,"path":"gengfu/README.md","ref":"gengfu/README.md","articles":[{"title":"打更那些事","level":"1.6.1","depth":2,"path":"gengfu/dageng.md","ref":"gengfu/dageng.md","articles":[]}]},"previous":{"title":"DevOps","level":"1.5","depth":1,"path":"devops/README.md","ref":"devops/README.md","articles":[{"title":"Docker","level":"1.5.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"devops/docker.md","mtime":"2018-06-26T02:40:55.673Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-26T02:44:28.540Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.6.1","depth":2,"next":{"title":"Other","level":"1.7","depth":1,"path":"other/README.md","ref":"other/README.md","articles":[{"title":"Windows","level":"1.7.1","depth":2,"path":"other/windows.md","ref":"other/windows.md","articles":[]},{"title":"Hexo","level":"1.7.2","depth":2,"path":"other/hexo.md","ref":"other/hexo.md","articles":[]}]},"previous":{"title":"DevOps","level":"1.6","depth":1,"path":"devops/README.md","ref":"devops/README.md","articles":[{"title":"Docker","level":"1.6.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"devops/docker.md","mtime":"2018-06-30T10:00:19.886Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-30T16:20:48.370Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -403,6 +651,10 @@ docker <span class="hljs-keyword">run</span> --restart unless-stopped &lt;contai
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

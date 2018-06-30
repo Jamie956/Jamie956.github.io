@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Eclipse · GitBook</title>
+        <title>Hexo · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="maven.html" />
+    <link rel="next" href="../gengfu/" />
     
     
-    <link rel="prev" href="vscode.html" />
+    <link rel="prev" href="windows.html" />
     
 
     </head>
@@ -147,9 +147,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="../tool/">
             
-                <a href="./">
+                <a href="../tool/">
             
                     
                     Tool
@@ -161,9 +161,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="vscode.html">
+        <li class="chapter " data-level="1.3.1" data-path="../tool/vscode.html">
             
-                <a href="vscode.html">
+                <a href="../tool/vscode.html">
             
                     
                     VSCode
@@ -174,9 +174,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="eclipse.html">
+        <li class="chapter " data-level="1.3.2" data-path="../tool/eclipse.html">
             
-                <a href="eclipse.html">
+                <a href="../tool/eclipse.html">
             
                     
                     Eclipse
@@ -187,9 +187,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="maven.html">
+        <li class="chapter " data-level="1.3.3" data-path="../tool/maven.html">
             
-                <a href="maven.html">
+                <a href="../tool/maven.html">
             
                     
                     Maven
@@ -200,9 +200,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="git.html">
+        <li class="chapter " data-level="1.3.4" data-path="../tool/git.html">
             
-                <a href="git.html">
+                <a href="../tool/git.html">
             
                     
                     Git
@@ -353,9 +353,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="../other/">
+        <li class="chapter " data-level="1.7" data-path="./">
             
-                <a href="../other/">
+                <a href="./">
             
                     
                     Other
@@ -367,9 +367,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../other/windows.html">
+        <li class="chapter " data-level="1.7.1" data-path="windows.html">
             
-                <a href="../other/windows.html">
+                <a href="windows.html">
             
                     
                     Windows
@@ -380,9 +380,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../other/hexo.html">
+        <li class="chapter active" data-level="1.7.2" data-path="hexo.html">
             
-                <a href="../other/hexo.html">
+                <a href="hexo.html">
             
                     
                     Hexo
@@ -460,7 +460,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Eclipse</a>
+        <a href=".." >Hexo</a>
     </h1>
 </div>
 
@@ -475,11 +475,62 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="usage">Usage</h2>
-<pre><code>ctrl+alt+down //&#x590D;&#x5236;&#x5E76;&#x7C98;&#x8D34;&#x4E00;&#x884C;&#x4EE3;&#x7801;
-preferences -&gt; java -&gt; editor -&gt; content assist -&gt; auto activation triggers for java -&gt; &#x8F93;&#x5165;abcdefghijklmnopqrstuvwxyz. //&#x4EE3;&#x7801;&#x63D0;&#x793A;
-ctrl+shift + /(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x6298;&#x53E0;&#x4EE3;&#x7801;
-ctrl+shift + *(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x5C55;&#x5F00;&#x6298;&#x53E0;&#x7684;&#x4EE3;&#x7801;
+                                <h1 id="hexo">Hexo</h1>
+<h3 id="basic">Basic</h3>
+<pre><code>===hexo
+npm install -g hexo-cli
+hexo -v
+hexo init
+npm i
+hexo server
+
+hexo new a
+hexo new draft b
+hexo server --draft
+
+hexo publish b
+
+hexo new page c
+
+default_layout
+
+[tag1, tag2]
+
+categories:
+- [cat1, cat1.1]
+- [cat2]
+- [cat3]
+
+{% codeblock %}
+ alert(&apos;hello world&apos;)
+{% endcodeblock %}
+
+{% codeblock lang:javascript %}
+ alert(&apos;hello world&apos;)
+{% endcodeblock %}
+
+Youtube-ID: I07XMi7MHd4
+{% youtube I07XMi7MHd4 %}
+
+post_asset_folder: false =&gt; post_asset_folder: true
+{% asset_img cake.jpg CAKE %}
+{% asset_link hexo.jpg Hexo Logo %}
+
+
+ssh-keygen -t rsa -C &quot;752492509@qq.com&quot;
+C:\Users\bxm09\.ssh\id_rsa.pub
+https://github.com/settings/ssh =&gt; new SSH key
+ssh -T git@github.com
+git config --global user.name &quot;jamie956&quot;
+git config --global user.email &quot;752492509@qq.com&quot;
+
+npm install hexo-deployer-git --save
+
+hexo clean
+hexo g
+hexo d
+
+[Writing](https://hexo.io/docs/writing.html)
 </code></pre>
                                 
                                 </section>
@@ -507,12 +558,12 @@ ctrl+shift + *(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x5C55;&#x5F00;&#x62
 
             
                 
-                <a href="vscode.html" class="navigation navigation-prev " aria-label="Previous page: VSCode">
+                <a href="windows.html" class="navigation navigation-prev " aria-label="Previous page: Windows">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="maven.html" class="navigation navigation-next " aria-label="Next page: Maven">
+                <a href="../gengfu/" class="navigation navigation-next " aria-label="Next page: 更夫">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -523,7 +574,7 @@ ctrl+shift + *(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x5C55;&#x5F00;&#x62
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Eclipse","level":"1.3.2","depth":2,"next":{"title":"Maven","level":"1.3.3","depth":2,"path":"tool/maven.md","ref":"tool/maven.md","articles":[]},"previous":{"title":"VSCode","level":"1.3.1","depth":2,"path":"tool/vscode.md","ref":"tool/vscode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tool/eclipse.md","mtime":"2018-06-30T16:40:24.570Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-30T16:20:48.370Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Hexo","level":"1.7.2","depth":2,"next":{"title":"更夫","level":"1.8","depth":1,"path":"gengfu/README.md","ref":"gengfu/README.md","articles":[{"title":"打更那些事","level":"1.8.1","depth":2,"path":"gengfu/dageng.md","ref":"gengfu/dageng.md","articles":[]}]},"previous":{"title":"Windows","level":"1.7.1","depth":2,"path":"other/windows.md","ref":"other/windows.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"other/hexo.md","mtime":"2018-06-30T10:03:28.680Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-30T16:20:48.370Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

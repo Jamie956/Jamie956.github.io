@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Eclipse · GitBook</title>
+        <title>Redis · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="maven.html" />
+    <link rel="next" href="../devops/" />
     
     
-    <link rel="prev" href="vscode.html" />
+    <link rel="prev" href="mysql.html" />
     
 
     </head>
@@ -147,9 +147,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="../tool/">
             
-                <a href="./">
+                <a href="../tool/">
             
                     
                     Tool
@@ -161,9 +161,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="vscode.html">
+        <li class="chapter " data-level="1.3.1" data-path="../tool/vscode.html">
             
-                <a href="vscode.html">
+                <a href="../tool/vscode.html">
             
                     
                     VSCode
@@ -174,9 +174,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="eclipse.html">
+        <li class="chapter " data-level="1.3.2" data-path="../tool/eclipse.html">
             
-                <a href="eclipse.html">
+                <a href="../tool/eclipse.html">
             
                     
                     Eclipse
@@ -187,9 +187,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="maven.html">
+        <li class="chapter " data-level="1.3.3" data-path="../tool/maven.html">
             
-                <a href="maven.html">
+                <a href="../tool/maven.html">
             
                     
                     Maven
@@ -200,9 +200,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="git.html">
+        <li class="chapter " data-level="1.3.4" data-path="../tool/git.html">
             
-                <a href="git.html">
+                <a href="../tool/git.html">
             
                     
                     Git
@@ -263,9 +263,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../db/">
+        <li class="chapter " data-level="1.5" data-path="./">
             
-                <a href="../db/">
+                <a href="./">
             
                     
                     DB
@@ -277,9 +277,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../db/mongodb.html">
+        <li class="chapter " data-level="1.5.1" data-path="mongodb.html">
             
-                <a href="../db/mongodb.html">
+                <a href="mongodb.html">
             
                     
                     MongoDB
@@ -290,9 +290,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../db/mysql.html">
+        <li class="chapter " data-level="1.5.2" data-path="mysql.html">
             
-                <a href="../db/mysql.html">
+                <a href="mysql.html">
             
                     
                     Mysql
@@ -303,9 +303,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="../db/redis.html">
+        <li class="chapter active" data-level="1.5.3" data-path="redis.html">
             
-                <a href="../db/redis.html">
+                <a href="redis.html">
             
                     
                     Redis
@@ -460,7 +460,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Eclipse</a>
+        <a href=".." >Redis</a>
     </h1>
 </div>
 
@@ -475,11 +475,69 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="usage">Usage</h2>
-<pre><code>ctrl+alt+down //&#x590D;&#x5236;&#x5E76;&#x7C98;&#x8D34;&#x4E00;&#x884C;&#x4EE3;&#x7801;
-preferences -&gt; java -&gt; editor -&gt; content assist -&gt; auto activation triggers for java -&gt; &#x8F93;&#x5165;abcdefghijklmnopqrstuvwxyz. //&#x4EE3;&#x7801;&#x63D0;&#x793A;
-ctrl+shift + /(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x6298;&#x53E0;&#x4EE3;&#x7801;
-ctrl+shift + *(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x5C55;&#x5F00;&#x6298;&#x53E0;&#x7684;&#x4EE3;&#x7801;
+                                <h1 id="redis">Redis</h1>
+<h3 id="command">Command</h3>
+<pre><code>===basic===
+start server =&gt; redis-server.exe redis.windows.conf
+start client =&gt; redis-cli(or redis-cli.exe -h 127.0.0.1 -p 6379)
+
+===command===
+set &lt;key&gt; &lt;val&gt;
+get &lt;key&gt;
+keys *
+flushall
+incr &lt;key&gt; &lt;default 1&gt;
+incrby &lt;key&gt; &lt;num&gt;
+decr &lt;key&gt; &lt;default 1&gt;
+decrby &lt;key&gt; &lt;num&gt;
+
+===sort===
+LPUSH &lt;key&gt; &lt;num1 num2 &#x2026; numn&gt;
+RPUSH &lt;key&gt; &lt;num1 num2 &#x2026; numn&gt;
+SORT &lt;key&gt;
+SORT &lt;key&gt; DESC
+
+LPUSH &lt;key&gt; &lt;str&gt;
+SORT &lt;key&gt; ALPHA
+
+SORT &lt;key&gt; LIMIT &lt;offset&gt; &lt;count&gt;
+
+LPUSH uid &lt;n&gt;
+SET &lt;key1_n&gt; &lt;val1&gt;
+SET &lt;key2_n&gt; &lt;val2&gt;
+
+SORT uid BY &lt;key_*&gt;
+SORT uid GET &lt;key_*&gt;
+SORT uid GET &lt;key1_*&gt; GET &lt;key2_*&gt;
+SORT uid GET #
+
+HMSET &lt;hash_n&gt; &lt;key1&gt; &lt;val1&gt; &lt;key2&gt; &lt;val2&gt; &lt;key3&gt; &lt;val3&gt; &#x2026;
+SORT uid BY &lt;hash_*&gt;-&gt;&lt;key&gt;
+SORT uid BY &lt;hash_*&gt;-&gt;&lt;key&gt; GET &lt;hash_*&gt;-&gt;&lt;key&gt;
+
+LRANGE &lt;list&gt; 0 -1
+SORT &lt;list&gt; STORE &lt;list2&gt;
+
+===hash===
+HSET &lt;hash&gt; &lt;key&gt; &lt;val&gt;
+HDEL &lt;hash&gt; &lt;key&gt;
+HEXISTS &lt;hash&gt; &lt;key&gt;
+HGET &lt;hash&gt; &lt;key&gt;
+HGETALL &lt;hash&gt;
+HINCRBY &lt;hash&gt; &lt;key&gt; &lt;num&gt;
+HINCRBYFLOAT &lt;hash&gt; &lt;key&gt; &lt;num&gt;
+HKEYS &lt;hash&gt;
+HLEN &lt;hash&gt;
+HMGET &lt;hash&gt; &lt;key1&gt; &lt;key2&gt;
+HMSET &lt;hash&gt; [&lt;key&gt; &lt;val&gt; &#x2026;]
+HVALS &lt;hash&gt;
+</code></pre><h3 id="error">Error</h3>
+<pre><code>Q:Creating Server TCP listening socket 127.0.0.1:6379: bind: No error
+A:
+redis-cli.exe
+shutdown
+exit
+redis-server.exe
 </code></pre>
                                 
                                 </section>
@@ -507,12 +565,12 @@ ctrl+shift + *(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x5C55;&#x5F00;&#x62
 
             
                 
-                <a href="vscode.html" class="navigation navigation-prev " aria-label="Previous page: VSCode">
+                <a href="mysql.html" class="navigation navigation-prev " aria-label="Previous page: Mysql">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="maven.html" class="navigation navigation-next " aria-label="Next page: Maven">
+                <a href="../devops/" class="navigation navigation-next " aria-label="Next page: DevOps">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -523,7 +581,7 @@ ctrl+shift + *(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x5C55;&#x5F00;&#x62
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Eclipse","level":"1.3.2","depth":2,"next":{"title":"Maven","level":"1.3.3","depth":2,"path":"tool/maven.md","ref":"tool/maven.md","articles":[]},"previous":{"title":"VSCode","level":"1.3.1","depth":2,"path":"tool/vscode.md","ref":"tool/vscode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tool/eclipse.md","mtime":"2018-06-30T16:40:24.570Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-30T16:20:48.370Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Redis","level":"1.5.3","depth":2,"next":{"title":"DevOps","level":"1.6","depth":1,"path":"devops/README.md","ref":"devops/README.md","articles":[{"title":"Docker","level":"1.6.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]}]},"previous":{"title":"Mysql","level":"1.5.2","depth":2,"path":"db/mysql.md","ref":"db/mysql.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"db/redis.md","mtime":"2018-06-30T09:51:29.055Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-30T16:20:48.370Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
