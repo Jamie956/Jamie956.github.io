@@ -1,5 +1,3 @@
-# Maven
-
 ```
 maven/bin //设置环境变量目录
 

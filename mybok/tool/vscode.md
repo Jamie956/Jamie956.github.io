@@ -1,6 +1,4 @@
-## vscode 
-
-* settings
+### Settings
 ```json
 {
     "editor.fontSize": 12,
@@ -14,7 +12,7 @@
 }
 ```
 
-* shortcut
+### Shortcut
 ```
 ctrl+k+0 //折叠代码
 ctrl+k+j //打开代码
