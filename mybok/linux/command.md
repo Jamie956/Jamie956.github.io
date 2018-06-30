@@ -1,49 +1,25 @@
+## 解压文件
 ```
-tar -xjvf yourdownload.tar.bz2 //解压文件
-```
-
-## Git ssh
-```
-ssh-keygen -t rsa -C "your@eamil.com" //generate ssh key
-cat ~/.ssh/id_rsa.pub //show ssh key
-add the key to git setting
-ssh -T git@github.com //testing
-git config --global user.name "yournamee"
-git config --global user.email "your@eamil.com"
+tar -xjvf yourdownload.tar.bz2
 ```
 
-## Set node path
+## Set path
 ```
+//nodejs
 sudo nano /etc/profile
 export NODE_HOME=/home/jamie/node-v8.11.3-linux-x64
 export PATH=$NODE_HOME/bin:$PATH
 source /etc/profile
 echo $PATH
-```
 
-## set maven path
-```
+//maven
 sudo nano /etc/profile
 export MAVEN_HOME=/home/jamie/apache-maven-3.5.3
 export PATH=$MAVEN_HOME/bin:$PATH
 source /etc/profile
 echo $PATH
-```
 
-## Error
-#### Q:Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=gasp
-```
-nano ~/.profile
-unset _JAVA_OPTIONS
-source ~/.profile
-or
-sudo nano ~/.bashrc
-unset _JAVA_OPTIONS
-```
-
-## apt install jdk
-```
-sudo apt install openjdk-8-jdk -y
+//jdk
 sudo nano /etc/profile
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
@@ -51,22 +27,21 @@ source /etc/profile
 echo $PATH
 ```
 
-## port
+## 关闭占用端口的程序
 ```
-netstat -an //show all
-netstat -tunlp |grep 8082 //find port 8082
-kill -9 3383 //kill prosess 3383
+netstat -an //查看全部端口
+netstat -tunlp |grep 8082 //查找8082端口的进程ID
+kill -9 3383 //终止进程ID3382
 ```
 
-## ubuntu
-### 搜狗输入法选词框乱码
+## 搜狗输入法选词框乱码
 ```
 cd ~/.config
 sudo rm -rf SogouPYsogou*
 ```
-重启
+重启系统
 
-## .sh
+## 执行shell文件
 ```
 touch hello.sh //创建sh文件
 chmod u+x hello.sh //可执行权限
@@ -75,7 +50,7 @@ sh hello.sh //excute sh
 . hello.sh //execute sh, !important use for "export" command
 ```
 
-## download
+## wget命令下载
 ```
 wget url
     -b：后台下载，Wget默认的是把文件下载到当前目录
@@ -89,10 +64,12 @@ wget -b -P <output path> <url>
 
 ## nano
 ```
-ctrl + k //delete line
+ctrl + k //删除一行
+Ctrl + a //光标到行首
+Ctrl + e //光标到行尾
 ```
 
-## groups
+## Groups
 ```
 groups //show all groups
 groupadd –g 888 users //create a groups users, GID 888
@@ -103,59 +80,59 @@ sudo groupdel users //delete groups users
 
 ### Command
 ```
-===basic===
-pwd
-ls
+===path===
+pwd //当前位置
+ls //list
 ls <dir>
 ls -l
 ls -lt
-ls -a
-ls | sort
-clear
-exit
+ls -a //list all
+ls | sort //排序
 
-===cd===
-cd
-last -> cd -
-cd <path>
-back -> cd ..
+cd //到路径/home/user
+cd - //到上一个路径
+cd <path> //到某个路径下
+cd .. //上一级目录
+
+===others===
+clear //清空terminal
+exit //退出terminal
 
 ===dir===
-mkdir dir1 dir2 dir3
-rm -rf <dir> (or rm -r <dir>)
-rename -> mv <dir> <dir2>
-show attr -> file [file/dir]
-move -> mv <dir> <dir2>
+mkdir dir1 dir2 dir3 //创建文件夹
+rm -rf <dir> (or rm -r <dir>) //强制删除文件夹
+mv <dir> <dir2> //文件夹重命名
+file [file/dir] //查看文件或文件夹属性
+mv <dir> <dir2> //移动文件夹
 
 ===file===
-create -> ><file> (or touch <file>)
-rm <file> ( or rm -f <file> )
-nano <file>
-cat <file>
-copy file to pwd: cp <file> .
-move -> mv <file> <path>
-rename -> mv <old> <new>
+touch <filename> //创建文件 
+rm <file> ( or rm -f <file> ) //删除文件
+nano <file> //编辑文件
+cat <file> //查看文件
+cp <filepath> . //复制文件到当前目录
+mv <file> <path> //移动文件到制定路径下
+mv <old> <new> //文件重命名
 
-type of command -> type ls
+===command===
+type <command> //查看执行命令所在路径
 
-cat <file> > <file2>
 
+cat <file_a> > <file_b> //复制文件file_a的内容到file_b
 cat <file> >> <file2>
+wc <file> //获取文件行数,字数,字节数,文件名称
+head -n <x> <file> //获取文件前x行内容
+tail -n <x> <file> //获取文件最后x行内容
+grep <keyword> <file> //模糊查找制定文件
+grep -c <keyword> <file> //计算制定文件的关键字个数
 
-word count: wc <file>
+ls | grep <keyword> //当前目录模糊查找
 
-head -n <num> <file>
-tail -n <num> <file>
 
-ls | grep <keyword>
-grep '<keyword>' <file>
-grep -c '<keyword>' <file>
 
-line start-> Ctrl - a
-line end -> Ctrl - e
 
-history
-!<history_num>
+history //查看执行过的命令
+!<num> //执行制定历史命令
 search: locate <file> ( or which <file> )
 
 key=value

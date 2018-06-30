@@ -1,8 +1,4 @@
 ## gitbook记笔记，美滋滋～
-### 需要知识
-nodejs
-npm
-git
 
 ### git book安装
 ```
