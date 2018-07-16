@@ -92,3 +92,8 @@ Expression #4 of SELECT list is not in GROUP BY clause and contains nonaggregate
 solve:t2.currency => any_value(t2.currency)
 
 ```
+
+```
+SELECT COUNT(DISTINCT yyyymmdd) FROM table //获取group by 总行数
+
+```
