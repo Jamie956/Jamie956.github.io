@@ -132,3 +132,8 @@ docker run -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
 
 
 ```
+
+```
+===run===
+--restart=on-failure:3 //重试次数
+```
