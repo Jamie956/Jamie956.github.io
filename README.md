@@ -16,3 +16,11 @@ gitbook serve //编译并开启server
 npm install -g gh-pages
 gh-pages -d _book //move dir _book from master to gh-pages
 ```
+
+```
+***更新***
+cd mybok
+gitbook init
+gitbook build
+gh-pages -d _book
+```
