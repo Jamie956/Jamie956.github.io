@@ -21,6 +21,6 @@ gh-pages -d _book //move dir _book from master to gh-pages
 ***更新***
 cd mybok
 gitbook init
-gitbook build
+gitbook serve
 gh-pages -d _book
 ```
