@@ -198,5 +198,6 @@ ctrl+shift+t //新建一个terminal tab
 ```
 ssh -i ~/Documents/your.pem ubuntu@<ip> //ssh连接服务器
 scp -i your.pem src ubuntu@<ip>:target //上传单个文件
+df -h //查看磁盘
 
 ```
