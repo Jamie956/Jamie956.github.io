@@ -161,6 +161,7 @@ maven
 openssh-server: connect
 openjdk-8-jdk
 make
+gparted //磁盘管理工具
 ```
 
 #### Error
