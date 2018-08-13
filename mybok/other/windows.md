@@ -10,4 +10,6 @@ net start <service>
 netstat -ano | findstr <port>
 tasklist|findstr <PID>
 
+slmgr.vbs -xpr //win10查看系统激活情况
+
 ```
