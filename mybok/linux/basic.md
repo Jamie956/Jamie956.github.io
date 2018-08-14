@@ -202,3 +202,27 @@ scp -i your.pem src ubuntu@<ip>:target //上传单个文件
 df -h //查看磁盘
 
 ```
+
+### win10 ubuntu 双系统
+```
+win +x => 磁盘管理 => 压缩卷 => 51200M  =>未分配
+禁用快速启动 //"选择电源按钮的功能" ->"更改当前不可用的设置" ->取消选择"启用快速启动"
+UltraISO写入iso到U盘
+备份win10
+重启F12或del进入BIOS
+如果Boot Mode是UEFI，把Secure Boot 设置Disable
+如果Boot Mode是Legacy 就跳过
+如果不能将Secure Boot 设置成Disable，去Security设置一下 Supervisor password
+设置USB HDD启动为首选启动项
+插入U盘安装Ubuntu
+设置挂载点
+	如果UEFI启动要设置EFI引导：500M 逻辑分区 空间起始位置 EFI系统分区
+	如果Legacy启动要设置boot引导: /boot 200M 主/逻辑分区 空间起始位置 Ext4日志文件系统
+	/swap 8192M 主分区 空间起始位置 交换空间
+	/ 10000M 逻辑分区 空间起始位置 Ext4日志文件系统
+	/home 20000M 逻辑分区 空间起始位置 Ext4日志文件系统
+	/usr 10000M/剩余 逻辑分区 空间起始位置 Ext4日志文件系统
+安装启动引导器的设备 选择/boot或者efi对应的sda号
+如果是UEFI，BIOS => Security => Select an UEFI file as trusted for executing => EFI => Ubuntu => boot => grub
+EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~200M的Linux分区
+```
