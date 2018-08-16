@@ -8,7 +8,8 @@
     "editor.tabSize": 2,
     "files.associations": {
         "*.ejs": "html"
-    }
+    },
+    "open-in-browser.default": "chrome"
 }
 ```
 
