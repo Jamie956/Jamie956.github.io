@@ -26,5 +26,12 @@ Local History
 View In Browser
 Prettier
 vscode-icons
+```
 
+### nodejs debug
+```
+Click sidebar debug
+Add configuration
+Add break point
+Press F5 start
 ```
