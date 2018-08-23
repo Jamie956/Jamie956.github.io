@@ -577,6 +577,7 @@ maven
 openssh-server: connect
 openjdk-8-jdk
 make
+gparted //&#x78C1;&#x76D8;&#x7BA1;&#x7406;&#x5DE5;&#x5177;
 </code></pre><h4 id="error">Error</h4>
 <pre><code>Q: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
 A: sudo rm /var/cache/apt/archives/lock
@@ -602,6 +603,28 @@ ctrl+shift+t //&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;terminal tab
 </code></pre><h3 id=""> </h3>
 <pre><code>ssh -i ~/Documents/your.pem ubuntu@&lt;ip&gt; //ssh&#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x5668;
 scp -i your.pem src ubuntu@&lt;ip&gt;:target //&#x4E0A;&#x4F20;&#x5355;&#x4E2A;&#x6587;&#x4EF6;
+df -h //&#x67E5;&#x770B;&#x78C1;&#x76D8;
+</code></pre><h3 id="win10-ubuntu-&#x53CC;&#x7CFB;&#x7EDF;">win10 ubuntu &#x53CC;&#x7CFB;&#x7EDF;</h3>
+<pre><code>win +x =&gt; &#x78C1;&#x76D8;&#x7BA1;&#x7406; =&gt; &#x538B;&#x7F29;&#x5377; =&gt; 51200M  =&gt;&#x672A;&#x5206;&#x914D;
+&#x7981;&#x7528;&#x5FEB;&#x901F;&#x542F;&#x52A8; //&quot;&#x9009;&#x62E9;&#x7535;&#x6E90;&#x6309;&#x94AE;&#x7684;&#x529F;&#x80FD;&quot; -&gt;&quot;&#x66F4;&#x6539;&#x5F53;&#x524D;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x8BBE;&#x7F6E;&quot; -&gt;&#x53D6;&#x6D88;&#x9009;&#x62E9;&quot;&#x542F;&#x7528;&#x5FEB;&#x901F;&#x542F;&#x52A8;&quot;
+UltraISO&#x5199;&#x5165;iso&#x5230;U&#x76D8;
+&#x5907;&#x4EFD;win10
+&#x91CD;&#x542F;F12&#x6216;del&#x8FDB;&#x5165;BIOS
+&#x5982;&#x679C;Boot Mode&#x662F;UEFI&#xFF0C;&#x628A;Secure Boot &#x8BBE;&#x7F6E;Disable
+&#x5982;&#x679C;Boot Mode&#x662F;Legacy &#x5C31;&#x8DF3;&#x8FC7;
+&#x5982;&#x679C;&#x4E0D;&#x80FD;&#x5C06;Secure Boot &#x8BBE;&#x7F6E;&#x6210;Disable&#xFF0C;&#x53BB;Security&#x8BBE;&#x7F6E;&#x4E00;&#x4E0B; Supervisor password
+&#x8BBE;&#x7F6E;USB HDD&#x542F;&#x52A8;&#x4E3A;&#x9996;&#x9009;&#x542F;&#x52A8;&#x9879;
+&#x63D2;&#x5165;U&#x76D8;&#x5B89;&#x88C5;Ubuntu
+&#x8BBE;&#x7F6E;&#x6302;&#x8F7D;&#x70B9;
+    &#x5982;&#x679C;UEFI&#x542F;&#x52A8;&#x8981;&#x8BBE;&#x7F6E;EFI&#x5F15;&#x5BFC;&#xFF1A;500M &#x903B;&#x8F91;&#x5206;&#x533A; &#x7A7A;&#x95F4;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E; EFI&#x7CFB;&#x7EDF;&#x5206;&#x533A;
+    &#x5982;&#x679C;Legacy&#x542F;&#x52A8;&#x8981;&#x8BBE;&#x7F6E;boot&#x5F15;&#x5BFC;: /boot 200M &#x4E3B;/&#x903B;&#x8F91;&#x5206;&#x533A; &#x7A7A;&#x95F4;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E; Ext4&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;
+    /swap 8192M &#x4E3B;&#x5206;&#x533A; &#x7A7A;&#x95F4;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E; &#x4EA4;&#x6362;&#x7A7A;&#x95F4;
+    / 10000M &#x903B;&#x8F91;&#x5206;&#x533A; &#x7A7A;&#x95F4;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E; Ext4&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;
+    /home 20000M &#x903B;&#x8F91;&#x5206;&#x533A; &#x7A7A;&#x95F4;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E; Ext4&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;
+    /usr 10000M/&#x5269;&#x4F59; &#x903B;&#x8F91;&#x5206;&#x533A; &#x7A7A;&#x95F4;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E; Ext4&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;
+&#x5B89;&#x88C5;&#x542F;&#x52A8;&#x5F15;&#x5BFC;&#x5668;&#x7684;&#x8BBE;&#x5907; &#x9009;&#x62E9;/boot&#x6216;&#x8005;efi&#x5BF9;&#x5E94;&#x7684;sda&#x53F7;
+&#x5982;&#x679C;&#x662F;UEFI&#xFF0C;BIOS =&gt; Security =&gt; Select an UEFI file as trusted for executing =&gt; EFI =&gt; Ubuntu =&gt; boot =&gt; grub
+EasyBCD&#x5F15;&#x5BFC;Ubuntu&#xFF1A;&#x6DFB;&#x52A0;&#x65B0;&#x6761;&#x76EE; =&gt; Linux/BSD&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF; =&gt; &#x9A71;&#x52A8;&#x5668; =&gt; ~200M&#x7684;Linux&#x5206;&#x533A;
 </code></pre>
                                 
                                 </section>
@@ -645,7 +668,7 @@ scp -i your.pem src ubuntu@&lt;ip&gt;:target //&#x4E0A;&#x4F20;&#x5355;&#x4E2A;&
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Basic","level":"1.2.1","depth":2,"next":{"title":"DevEnv","level":"1.2.2","depth":2,"path":"linux/devenv.md","ref":"linux/devenv.md","articles":[]},"previous":{"title":"Linux","level":"1.2","depth":1,"path":"linux/README.md","ref":"linux/README.md","articles":[{"title":"Basic","level":"1.2.1","depth":2,"path":"linux/basic.md","ref":"linux/basic.md","articles":[]},{"title":"DevEnv","level":"1.2.2","depth":2,"path":"linux/devenv.md","ref":"linux/devenv.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/basic.md","mtime":"2018-07-26T03:38:21.600Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-26T03:52:48.795Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Basic","level":"1.2.1","depth":2,"next":{"title":"DevEnv","level":"1.2.2","depth":2,"path":"linux/devenv.md","ref":"linux/devenv.md","articles":[]},"previous":{"title":"Linux","level":"1.2","depth":1,"path":"linux/README.md","ref":"linux/README.md","articles":[{"title":"Basic","level":"1.2.1","depth":2,"path":"linux/basic.md","ref":"linux/basic.md","articles":[]},{"title":"DevEnv","level":"1.2.2","depth":2,"path":"linux/devenv.md","ref":"linux/devenv.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/basic.md","mtime":"2018-08-23T02:52:20.208Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-23T04:03:28.576Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -653,6 +676,10 @@ scp -i your.pem src ubuntu@&lt;ip&gt;:target //&#x4E0A;&#x4F20;&#x5355;&#x4E2A;&
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

@@ -1,0 +1,18 @@
+{
+  "name": "mybok",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "gitbook init & gitbook build",
+    "serve": "gitbook serve",
+    "sync": "gh-pages -d _book"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gh-pages": "^1.2.0",
+    "gitbook-cli": "^2.3.2"
+  }
+}
