@@ -193,6 +193,7 @@ make -f hello say2
 ```
 ctrl+alt+t //打开terminal
 ctrl+shift+t //新建一个terminal tab
+ctrl+h //显示隐藏文件
 ```
 
 ### 
