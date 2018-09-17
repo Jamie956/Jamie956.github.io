@@ -9,6 +9,7 @@
     * [Eclipse](tool/eclipse.md)
     * [Maven](tool/maven.md)
     * [Git](tool/git.md)
+    * [Typora](tool/typora.md)
 * [NodeJS](nodejs/README.md)
     * [NPM](nodejs/npm.md)
     * [Command](nodejs/command.md)
