@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>DB · GitBook</title>
+        <title>MongoDB · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="mongodb.html" />
+    <link rel="next" href="mysql.html" />
     
     
-    <link rel="prev" href="../nodejs/command.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -276,12 +276,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="./">
+        <li class="chapter " data-level="1.5" data-path="./">
             
                 <a href="./">
             
                     
-                    DB
+                    Database
             
                 </a>
             
@@ -290,7 +290,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="mongodb.html">
+        <li class="chapter active" data-level="1.5.1" data-path="mongodb.html">
             
                 <a href="mongodb.html">
             
@@ -411,6 +411,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8" data-path="../java/">
+            
+                <a href="../java/">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../java/basic.html">
+            
+                <a href="../java/basic.html">
+            
+                    
+                    Basic
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -441,7 +473,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >DB</a>
+        <a href=".." >MongoDB</a>
     </h1>
 </div>
 
@@ -456,8 +488,59 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="db">DB</h1>
+                                <h1 id="mongodb">MongoDB</h1>
+<pre><code>===basic===
+mongod --dbpath &quot;E:\MongoDB\data&quot; --logpath &quot;E:\MongoDB\logs\mongo.log&quot; --install -serviceName &quot;MongoDB&quot;
+net start MongoDB
 
+===auth===
+use admin
+db.createUser({user:&quot;admin&quot;,pwd:&quot;admin&quot;,roles:[{&quot;role&quot;:&quot;userAdmin&quot;,&quot;db&quot;:&quot;admin&quot;},{&quot;role&quot;:&quot;root&quot;,&quot;db&quot;:&quot;admin&quot;},{&quot;role&quot;:&quot;userAdminAnyDatabase&quot;,&quot;db&quot;:&quot;admin&quot;}]})
+db.auth(&quot;admin&quot;,&quot;admin&quot;)
+sc delete MongoDB
+mongod --dbpath &quot;E:\MongoDB\data&quot; --logpath &quot;E:\MongoDB\logs\mongo.log&quot; --auth --install -serviceName &quot;MongoDB&quot;
+net start MongoDB
+
+mongo -u admin -p 123456 localhost:27017/admin
+
+mongodb://&lt;user&gt;:&lt;pwd&gt;@&lt;host&gt;:27017/&lt;collection&gt;
+
+===create user===
+use &lt;db&gt;
+db.createUser({user:&quot;jamie956&quot;, pwd:&quot;123456&quot;, roles:[&quot;readWrite&quot;,&quot;dbAdmin&quot;]})
+db.auth(&quot;jamie956&quot;,&quot;123456&quot;)
+
+===db===
+show dbs
+db
+use &lt;db&gt;
+db.dropDatabase()
+
+===collection===
+show collections
+db.createCollection(&quot;&lt;collection&gt;&quot;)
+db.createCollection(&quot;&lt;collection&gt;&quot;, { capped : true, autoIndexId : true, size : 6142800, max : 10000 } )
+db.&lt;collection&gt;.drop()
+
+===document===
+db.&lt;collection&gt;.find()
+db.&lt;collection&gt;.find().pretty()
+db.&lt;collection&gt;.find({key1:&quot;val1&quot;}).pretty()
+db.&lt;collection&gt;.find( { $or:[{key1:&quot;val1&quot;},{key2:&quot;val2&quot;}] } ).pretty()
+db.&lt;collection&gt;.find().count()
+db.&lt;collection&gt;.find( {num:{$lt:&lt;num&gt;}} ).pretty()
+db.&lt;collection&gt;.find().sort({&lt;key&gt;:&lt;1 or -1&gt;}).pretty()
+db.&lt;collection&gt;.find().limit(1)
+db.&lt;collection&gt;.insert( { [&lt;key&gt;:&quot;&lt;val&gt;&quot;, &#x2026;] } )
+db.&lt;collection&gt;.remove({key1:&quot;val1&quot;})
+
+===field===
+add =&gt; db.&lt;collection&gt;.update( {key1:&quot;val1&quot;}, {$set:{key3:&quot;val3&quot;}} )
+update =&gt; db.&lt;collection&gt;.update( {key1:&quot;val1&quot;}, {$set:{key2:&quot;update val2&quot;}} )
+db.&lt;collection&gt;.update( {key1:&quot;val1&quot;}, {$inc:{num:10}} )
+db.&lt;collection&gt;.update( {key1:&quot;val1&quot;}, {$rename:{&quot;key3&quot;:&quot;rename key3&quot;}} )
+remove =&gt;  db.&lt;collection&gt;.update( {key1:&quot;val1&quot;},{$unset:{key3:1}} )
+</code></pre>
                                 
                                 </section>
                             
@@ -484,12 +567,12 @@
 
             
                 
-                <a href="../nodejs/command.html" class="navigation navigation-prev " aria-label="Previous page: Command">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Database">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="mongodb.html" class="navigation navigation-next " aria-label="Next page: MongoDB">
+                <a href="mysql.html" class="navigation navigation-next " aria-label="Next page: Mysql">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -500,7 +583,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DB","level":"1.5","depth":1,"next":{"title":"MongoDB","level":"1.5.1","depth":2,"path":"db/mongodb.md","ref":"db/mongodb.md","articles":[]},"previous":{"title":"Command","level":"1.4.2","depth":2,"path":"nodejs/command.md","ref":"nodejs/command.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"db/README.md","mtime":"2018-09-17T01:14:43.382Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-17T02:39:37.940Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MongoDB","level":"1.5.1","depth":2,"next":{"title":"Mysql","level":"1.5.2","depth":2,"path":"database/mysql.md","ref":"database/mysql.md","articles":[]},"previous":{"title":"Database","level":"1.5","depth":1,"path":"database/README.md","ref":"database/README.md","articles":[{"title":"MongoDB","level":"1.5.1","depth":2,"path":"database/mongodb.md","ref":"database/mongodb.md","articles":[]},{"title":"Mysql","level":"1.5.2","depth":2,"path":"database/mysql.md","ref":"database/mysql.md","articles":[]},{"title":"Redis","level":"1.5.3","depth":2,"path":"database/redis.md","ref":"database/redis.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"database/mongodb.md","mtime":"2018-09-18T12:30:14.932Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-18T14:33:03.825Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
