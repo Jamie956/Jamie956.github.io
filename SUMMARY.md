@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+* [Root](README.md)
 * [Linux](linux/README.md)
     * [Basic](linux/basic.md)
 * [Tool](tool/README.md)
