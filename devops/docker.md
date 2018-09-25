@@ -1,13 +1,11 @@
-# Docker
-
-### 容器重启机制
+# 容器重启机制
 ```docker
 docker run --restart always <container>
 docker run --restart on-failure:5 <container>
 docker run --restart unless-stopped <container>
 ```
 
-### Basic
+# Basic
 ```docker
 ===basic===
 docker -v
@@ -63,7 +61,7 @@ docker volume prune
 docker volume rm <name>
 ```
 
-### Install Images
+# Install Images
 ```
 ===jenkins===
 docker run \
