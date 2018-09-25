@@ -1,7 +1,4 @@
 # Typora quickly start
-
-
-
 ## 快捷键
 
 ctrl + 1 //标题1

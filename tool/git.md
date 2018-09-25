@@ -17,11 +17,21 @@ git push origin master
 ```
 
 ### SSH
+1. 生成SSH密钥
+```shell
+ssh-keygen -t rsa -C "your@eamil.com"
 ```
-ssh-keygen -t rsa -C "your@eamil.com" //generate ssh key
-cat ~/.ssh/id_rsa.pub //show ssh key
-add the key to git setting
-ssh -T git@github.com //testing
+2. 查看
+```shell
+cat ~/.ssh/id_rsa.pub
+```
+3. 把SSH添加到git
+4. 测试
+```shell
+ssh -T git@github.com
+```
+5. 全局配置用户信息
+```shell
 git config --global user.name "yournamee"
 git config --global user.email "your@eamil.com"
 ```

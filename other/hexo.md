@@ -1,5 +1,3 @@
-# Hexo
-
 ### Basic
 ```
 ===hexo

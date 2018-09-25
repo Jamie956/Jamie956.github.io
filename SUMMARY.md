@@ -12,7 +12,7 @@
     * [Typora](tool/typora.md)
 * [NodeJS](nodejs/README.md)
     * [NPM](nodejs/npm.md)
-    * [Command](nodejs/command.md)
+    * [Basic](nodejs/basic.md)
 * [Database](database/README.md)
     * [MongoDB](database/mongodb.md)
     * [Mysql](database/mysql.md)
