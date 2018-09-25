@@ -227,3 +227,23 @@ UltraISO写入iso到U盘
 如果是UEFI，BIOS => Security => Select an UEFI file as trusted for executing => EFI => Ubuntu => boot => grub
 EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~200M的Linux分区
 ```
+
+
+
+# Ubuntu /boot 空间不足
+
+```shell
+df -h /boot // 查看 /boot
+
+dpkg --get-selections |grep linux-image // 查看系统安装的内核镜像
+
+uname -r //查看本机系统的内核版本
+
+sudo apt-get remove [image] [image] ... //卸载
+
+sudo dpkg -P [image] [image] ... //删除相应的配置信息
+
+```
+
+
+
