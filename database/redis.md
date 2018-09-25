@@ -1,6 +1,4 @@
-# Redis
-
-### Command
+# Command
 ```
 ===basic===
 start server => redis-server.exe redis.windows.conf
@@ -58,7 +56,7 @@ HMSET <hash> [<key> <val> …]
 HVALS <hash>
 ```
 
-### Error
+# Error
 ```
 Q:Creating Server TCP listening socket 127.0.0.1:6379: bind: No error
 A:

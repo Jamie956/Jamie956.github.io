@@ -1,7 +1,6 @@
-# Mysql
-### command
+# command
 
-```
+```shell
 source sqlfile.sql
 show variables like '%max_connections%'
 show processlist
@@ -21,7 +20,7 @@ jdbc:mysql://192.168.145.130:3306/mydb?characterEncoding=utf8&useSSL=false
 
 ```
 
-### sql
+# sql
 ```sql
 ===setting password===
 set password for root@localhost = password('123456');
@@ -82,18 +81,20 @@ select * from orders where year(orderDate)=year(date_sub(now(),interval 1 year))
 
 ```
 
-### error
-```
-===sql_mode=only_full_group_by===
-error msg:
-
-Expression #4 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'pos2_dev.t2.currency' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
-
-solve:t2.currency => any_value(t2.currency)
-
-```
-
-```
+```sql
 SELECT COUNT(DISTINCT yyyymmdd) FROM table //获取group by 总行数
 
 ```
+
+# Error
+
+```
+error msg:
+Expression #4 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'pos2_dev.t2.currency' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+
+solve:
+t2.currency => any_value(t2.currency)
+
+```
+
+
