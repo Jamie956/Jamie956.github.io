@@ -12,11 +12,33 @@ nano maven/conf/setting.xml
   <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
   <mirrorOf>central</mirrorOf>
 </mirror>
-
-//命令
-mvn -v //查看版本
-mvn clean //清除target
-mvn package //打包
-mvn clean package // 清除并打包
-
 ```
+
+
+## 命令
+
+### 打包跳过测试
+```
+mvn package -Dmaven.test.skip=true
+```
+### 查看版本
+```
+mvn -v
+```
+### 清除target
+```
+mvn clean
+```
+### 打包
+```
+mvn package
+```
+### 清除并打包
+```
+mvn clean package
+```
+
+
+
+
+
