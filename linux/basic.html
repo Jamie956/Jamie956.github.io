@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="devenv.html" />
+    <link rel="next" href="../tool/" />
     
     
     <link rel="prev" href="./" />
@@ -94,7 +94,7 @@
                 <a href="../">
             
                     
-                    Introduction
+                    Root
             
                 </a>
             
@@ -122,19 +122,6 @@
             
                     
                     Basic
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="devenv.html">
-            
-                <a href="devenv.html">
-            
-                    
-                    DevEnv
             
                 </a>
             
@@ -226,6 +213,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.6" data-path="../tool/devenv.html">
+            
+                <a href="../tool/devenv.html">
+            
+                    
+                    DevEnv
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -258,12 +258,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../nodejs/command.html">
+        <li class="chapter " data-level="1.4.2" data-path="../nodejs/basic.html">
             
-                <a href="../nodejs/command.html">
+                <a href="../nodejs/basic.html">
             
                     
-                    Command
+                    Basic
             
                 </a>
             
@@ -684,7 +684,18 @@ UltraISO&#x5199;&#x5165;iso&#x5230;U&#x76D8;
 &#x5B89;&#x88C5;&#x542F;&#x52A8;&#x5F15;&#x5BFC;&#x5668;&#x7684;&#x8BBE;&#x5907; &#x9009;&#x62E9;/boot&#x6216;&#x8005;efi&#x5BF9;&#x5E94;&#x7684;sda&#x53F7;
 &#x5982;&#x679C;&#x662F;UEFI&#xFF0C;BIOS =&gt; Security =&gt; Select an UEFI file as trusted for executing =&gt; EFI =&gt; Ubuntu =&gt; boot =&gt; grub
 EasyBCD&#x5F15;&#x5BFC;Ubuntu&#xFF1A;&#x6DFB;&#x52A0;&#x65B0;&#x6761;&#x76EE; =&gt; Linux/BSD&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF; =&gt; &#x9A71;&#x52A8;&#x5668; =&gt; ~200M&#x7684;Linux&#x5206;&#x533A;
+</code></pre><h1 id="ubuntu-boot-&#x7A7A;&#x95F4;&#x4E0D;&#x8DB3;">Ubuntu /boot &#x7A7A;&#x95F4;&#x4E0D;&#x8DB3;</h1>
+<pre><code class="lang-shell">df -h /boot // &#x67E5;&#x770B; /boot
+
+dpkg --get-selections |grep linux-image // &#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x5B89;&#x88C5;&#x7684;&#x5185;&#x6838;&#x955C;&#x50CF;
+
+uname -r //&#x67E5;&#x770B;&#x672C;&#x673A;&#x7CFB;&#x7EDF;&#x7684;&#x5185;&#x6838;&#x7248;&#x672C;
+
+sudo apt-get remove [image] [image] ... //&#x5378;&#x8F7D;
+
+sudo dpkg -P [image] [image] ... //&#x5220;&#x9664;&#x76F8;&#x5E94;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;
 </code></pre>
+
                                 
                                 </section>
                             
@@ -716,7 +727,7 @@ EasyBCD&#x5F15;&#x5BFC;Ubuntu&#xFF1A;&#x6DFB;&#x52A0;&#x65B0;&#x6761;&#x76EE; =&
                 </a>
                 
                 
-                <a href="devenv.html" class="navigation navigation-next " aria-label="Next page: DevEnv">
+                <a href="../tool/" class="navigation navigation-next " aria-label="Next page: Tool">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -727,7 +738,7 @@ EasyBCD&#x5F15;&#x5BFC;Ubuntu&#xFF1A;&#x6DFB;&#x52A0;&#x65B0;&#x6761;&#x76EE; =&
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Basic","level":"1.2.1","depth":2,"next":{"title":"DevEnv","level":"1.2.2","depth":2,"path":"linux/devenv.md","ref":"linux/devenv.md","articles":[]},"previous":{"title":"Linux","level":"1.2","depth":1,"path":"linux/README.md","ref":"linux/README.md","articles":[{"title":"Basic","level":"1.2.1","depth":2,"path":"linux/basic.md","ref":"linux/basic.md","articles":[]},{"title":"DevEnv","level":"1.2.2","depth":2,"path":"linux/devenv.md","ref":"linux/devenv.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/basic.md","mtime":"2018-09-18T02:47:43.740Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-19T02:34:50.463Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Basic","level":"1.2.1","depth":2,"next":{"title":"Tool","level":"1.3","depth":1,"path":"tool/README.md","ref":"tool/README.md","articles":[{"title":"VSCode","level":"1.3.1","depth":2,"path":"tool/vscode.md","ref":"tool/vscode.md","articles":[]},{"title":"Eclipse","level":"1.3.2","depth":2,"path":"tool/eclipse.md","ref":"tool/eclipse.md","articles":[]},{"title":"Maven","level":"1.3.3","depth":2,"path":"tool/maven.md","ref":"tool/maven.md","articles":[]},{"title":"Git","level":"1.3.4","depth":2,"path":"tool/git.md","ref":"tool/git.md","articles":[]},{"title":"Typora","level":"1.3.5","depth":2,"path":"tool/typora.md","ref":"tool/typora.md","articles":[]},{"title":"DevEnv","level":"1.3.6","depth":2,"path":"tool/devenv.md","ref":"tool/devenv.md","articles":[]}]},"previous":{"title":"Linux","level":"1.2","depth":1,"path":"linux/README.md","ref":"linux/README.md","articles":[{"title":"Basic","level":"1.2.1","depth":2,"path":"linux/basic.md","ref":"linux/basic.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/basic.md","mtime":"2018-09-25T03:05:24.520Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-26T09:08:52.518Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

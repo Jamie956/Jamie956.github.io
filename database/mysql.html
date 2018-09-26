@@ -94,7 +94,7 @@
                 <a href="../">
             
                     
-                    Introduction
+                    Root
             
                 </a>
             
@@ -122,19 +122,6 @@
             
                     
                     Basic
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../linux/devenv.html">
-            
-                <a href="../linux/devenv.html">
-            
-                    
-                    DevEnv
             
                 </a>
             
@@ -226,6 +213,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.6" data-path="../tool/devenv.html">
+            
+                <a href="../tool/devenv.html">
+            
+                    
+                    DevEnv
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -258,12 +258,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../nodejs/command.html">
+        <li class="chapter " data-level="1.4.2" data-path="../nodejs/basic.html">
             
-                <a href="../nodejs/command.html">
+                <a href="../nodejs/basic.html">
             
                     
-                    Command
+                    Basic
             
                 </a>
             
@@ -501,9 +501,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="mysql">Mysql</h1>
-<h3 id="command">command</h3>
-<pre><code>source sqlfile.sql
+                                <h1 id="command">command</h1>
+<pre><code class="lang-shell">source sqlfile.sql
 show variables like &apos;%max_connections%&apos;
 show processlist
 show full processlist
@@ -519,7 +518,8 @@ set global wait_timeout=604800;
 set password for root@localhost = password(&apos;&lt;new password&gt;&apos;); 
 
 jdbc:mysql://192.168.145.130:3306/mydb?characterEncoding=utf8&amp;useSSL=false
-</code></pre><h3 id="sql">sql</h3>
+</code></pre>
+<h1 id="sql">sql</h1>
 <pre><code class="lang-sql">===setting password===
 <span class="hljs-keyword">set</span> <span class="hljs-keyword">password</span> <span class="hljs-keyword">for</span> root@localhost = <span class="hljs-keyword">password</span>(<span class="hljs-string">&apos;123456&apos;</span>);
 ===group by===
@@ -577,14 +577,14 @@ jdbc:mysql://192.168.145.130:3306/mydb?characterEncoding=utf8&amp;useSSL=false
 <span class="hljs-comment">-- last year</span>
 <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders <span class="hljs-keyword">where</span> <span class="hljs-keyword">year</span>(orderDate)=<span class="hljs-keyword">year</span>(<span class="hljs-keyword">date_sub</span>(<span class="hljs-keyword">now</span>(),<span class="hljs-built_in">interval</span> <span class="hljs-number">1</span> <span class="hljs-keyword">year</span>));
 </code></pre>
-<h3 id="error">error</h3>
-<pre><code>===sql_mode=only_full_group_by===
-error msg:
-
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> yyyymmdd) <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">table</span> //&#x83B7;&#x53D6;<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> &#x603B;&#x884C;&#x6570;
+</code></pre>
+<h1 id="error">Error</h1>
+<pre><code>error msg:
 Expression #4 of SELECT list is not in GROUP BY clause and contains nonaggregated column &apos;pos2_dev.t2.currency&apos; which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
 
-solve:t2.currency =&gt; any_value(t2.currency)
-</code></pre><pre><code>SELECT COUNT(DISTINCT yyyymmdd) FROM table //&#x83B7;&#x53D6;group by &#x603B;&#x884C;&#x6570;
+solve:
+t2.currency =&gt; any_value(t2.currency)
 </code></pre>
                                 
                                 </section>
@@ -628,7 +628,7 @@ solve:t2.currency =&gt; any_value(t2.currency)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Mysql","level":"1.5.2","depth":2,"next":{"title":"Redis","level":"1.5.3","depth":2,"path":"database/redis.md","ref":"database/redis.md","articles":[]},"previous":{"title":"MongoDB","level":"1.5.1","depth":2,"path":"database/mongodb.md","ref":"database/mongodb.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"database/mysql.md","mtime":"2018-08-23T02:52:20.208Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-19T02:34:50.463Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Mysql","level":"1.5.2","depth":2,"next":{"title":"Redis","level":"1.5.3","depth":2,"path":"database/redis.md","ref":"database/redis.md","articles":[]},"previous":{"title":"MongoDB","level":"1.5.1","depth":2,"path":"database/mongodb.md","ref":"database/mongodb.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"database/mysql.md","mtime":"2018-09-25T03:22:26.673Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-26T09:08:52.518Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

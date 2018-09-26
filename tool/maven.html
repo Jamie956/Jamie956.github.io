@@ -94,7 +94,7 @@
                 <a href="../">
             
                     
-                    Introduction
+                    Root
             
                 </a>
             
@@ -122,19 +122,6 @@
             
                     
                     Basic
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../linux/devenv.html">
-            
-                <a href="../linux/devenv.html">
-            
-                    
-                    DevEnv
             
                 </a>
             
@@ -226,6 +213,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.6" data-path="devenv.html">
+            
+                <a href="devenv.html">
+            
+                    
+                    DevEnv
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -258,12 +258,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../nodejs/command.html">
+        <li class="chapter " data-level="1.4.2" data-path="../nodejs/basic.html">
             
-                <a href="../nodejs/command.html">
+                <a href="../nodejs/basic.html">
             
                     
-                    Command
+                    Basic
             
                 </a>
             
@@ -514,12 +514,17 @@ nano maven/conf/setting.xml
   &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;
   &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
 &lt;/mirror&gt;
-
-//&#x547D;&#x4EE4;
-mvn -v //&#x67E5;&#x770B;&#x7248;&#x672C;
-mvn clean //&#x6E05;&#x9664;target
-mvn package //&#x6253;&#x5305;
-mvn clean package // &#x6E05;&#x9664;&#x5E76;&#x6253;&#x5305;
+</code></pre><h2 id="&#x547D;&#x4EE4;">&#x547D;&#x4EE4;</h2>
+<h3 id="&#x6253;&#x5305;&#x8DF3;&#x8FC7;&#x6D4B;&#x8BD5;">&#x6253;&#x5305;&#x8DF3;&#x8FC7;&#x6D4B;&#x8BD5;</h3>
+<pre><code>mvn package -Dmaven.test.skip=true
+</code></pre><h3 id="&#x67E5;&#x770B;&#x7248;&#x672C;">&#x67E5;&#x770B;&#x7248;&#x672C;</h3>
+<pre><code>mvn -v
+</code></pre><h3 id="&#x6E05;&#x9664;target">&#x6E05;&#x9664;target</h3>
+<pre><code>mvn clean
+</code></pre><h3 id="&#x6253;&#x5305;">&#x6253;&#x5305;</h3>
+<pre><code>mvn package
+</code></pre><h3 id="&#x6E05;&#x9664;&#x5E76;&#x6253;&#x5305;">&#x6E05;&#x9664;&#x5E76;&#x6253;&#x5305;</h3>
+<pre><code>mvn clean package
 </code></pre>
                                 
                                 </section>
@@ -563,7 +568,7 @@ mvn clean package // &#x6E05;&#x9664;&#x5E76;&#x6253;&#x5305;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Maven","level":"1.3.3","depth":2,"next":{"title":"Git","level":"1.3.4","depth":2,"path":"tool/git.md","ref":"tool/git.md","articles":[]},"previous":{"title":"Eclipse","level":"1.3.2","depth":2,"path":"tool/eclipse.md","ref":"tool/eclipse.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tool/maven.md","mtime":"2018-08-23T02:52:20.212Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-19T02:34:50.463Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Maven","level":"1.3.3","depth":2,"next":{"title":"Git","level":"1.3.4","depth":2,"path":"tool/git.md","ref":"tool/git.md","articles":[]},"previous":{"title":"Eclipse","level":"1.3.2","depth":2,"path":"tool/eclipse.md","ref":"tool/eclipse.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tool/maven.md","mtime":"2018-09-26T07:28:52.904Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-26T09:08:52.518Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
