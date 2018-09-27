@@ -361,6 +361,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.2" data-path="docker-tomcat.html">
+            
+                <a href="docker-tomcat.html">
+            
+                    
+                    Docker-Tomcat
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -501,44 +514,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="docker-tomcat&#x90E8;&#x7F72;war&#x5305;">Docker tomcat&#x90E8;&#x7F72;war&#x5305;</h2>
-<h3 id="&#x65B9;&#x6CD5;&#x4E00;&#xFF0C;&#x4E0A;&#x4F20;&#x5230;tomcat&#x5BB9;&#x5668;">&#x65B9;&#x6CD5;&#x4E00;&#xFF0C;&#x4E0A;&#x4F20;&#x5230;tomcat&#x5BB9;&#x5668;</h3>
-<ol>
-<li>&#x542F;&#x52A8;tomcat&#x5BB9;&#x5668;<pre><code class="lang-shell">docker run -d --name tomcat -p 8081:8080 tomcat
-</code></pre>
-</li>
-<li>&#x8FDB;&#x5165;&#x5BB9;&#x5668;&#x67E5;&#x770B;webapps&#x7684;&#x8DEF;&#x5F84;:/usr/local/tomcat/webapps<pre><code class="lang-shell">docker exec -it tomcat bash
-</code></pre>
-</li>
-<li>&#x4E0A;&#x4F20;war&#x5230;webapps&#x8DEF;&#x5F84;&#x4E0B;<pre><code class="lang-shell">docker cp demo.war tomcat:/usr/local/tomcat/webapps/demo.war
-</code></pre>
-</li>
-<li>&#x5230;webapps&#x8DEF;&#x52B2;&#x4E0B;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x4E0A;&#x4F20;&#x6210;&#x529F;</li>
-<li>&#x91CD;&#x542F;tomcat<pre><code class="lang-shell">docker restart tomcat
-</code></pre>
-</li>
-</ol>
-<h3 id="&#x65B9;&#x6CD5;&#x4E8C;&#xFF0C;dockerfile&#x6784;&#x5EFA;">&#x65B9;&#x6CD5;&#x4E8C;&#xFF0C;Dockerfile&#x6784;&#x5EFA;</h3>
-<ol>
-<li>&#x62C9;&#x53D6;&#x955C;&#x50CF;<pre><code class="lang-shell">docker pull tomcat
-</code></pre>
-</li>
-<li>Dockerfile&#x5C06;war&#x6784;&#x5EFA;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x955C;&#x50CF;<pre><code class="lang-dockerfile"><span class="hljs-keyword">FROM</span> tomcat
-<span class="hljs-keyword">MAINTAINER</span> <span class="hljs-string">&quot;youremail &lt;your@email.com&gt;&quot;</span>
-ADD demo.war /usr/local/tomcat/webapps/demo.war
-<span class="hljs-keyword">CMD</span> <span class="bash">[<span class="hljs-string">&quot;catalina.sh&quot;</span>, <span class="hljs-string">&quot;run&quot;</span>]
-</span></code></pre>
-</li>
-<li>&#x6784;&#x5EFA;<pre><code class="lang-shell">docker build -t demo .
-</code></pre>
-</li>
-<li>&#x8FD0;&#x884C;&#x955C;&#x50CF;<pre><code class="lang-shell">docker run -d --name demo -p 8081:8080 demo
-</code></pre>
-</li>
-</ol>
-<h4 id="&#x6CE8;&#x610F;">&#x6CE8;&#x610F;</h4>
-<p>webapps&#x91CC;&#x7684;war&#x6587;&#x4EF6;&#x4E0E;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x8981;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</p>
-
+                                
                                 
                                 </section>
                             
@@ -581,7 +557,7 @@ ADD demo.war /usr/local/tomcat/webapps/demo.war
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DevOps","level":"1.6","depth":1,"next":{"title":"Docker","level":"1.6.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]},"previous":{"title":"Redis","level":"1.5.3","depth":2,"path":"database/redis.md","ref":"database/redis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"devops/README.md","mtime":"2018-09-26T09:05:00.972Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-26T09:08:52.518Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"DevOps","level":"1.6","depth":1,"next":{"title":"Docker","level":"1.6.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]},"previous":{"title":"Redis","level":"1.5.3","depth":2,"path":"database/redis.md","ref":"database/redis.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"devops/README.md","mtime":"2018-09-27T02:55:38.442Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T02:56:22.919Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -589,10 +565,6 @@ ADD demo.war /usr/local/tomcat/webapps/demo.war
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

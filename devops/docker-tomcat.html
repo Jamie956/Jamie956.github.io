@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>NodeJS · GitBook</title>
+        <title>Docker-Tomcat · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="npm.html" />
+    <link rel="next" href="../other/" />
     
     
-    <link rel="prev" href="../tool/devenv.html" />
+    <link rel="prev" href="docker.html" />
     
 
     </head>
@@ -231,9 +231,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4" data-path="./">
+        <li class="chapter " data-level="1.4" data-path="../nodejs/">
             
-                <a href="./">
+                <a href="../nodejs/">
             
                     
                     NodeJS
@@ -245,9 +245,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="npm.html">
+        <li class="chapter " data-level="1.4.1" data-path="../nodejs/npm.html">
             
-                <a href="npm.html">
+                <a href="../nodejs/npm.html">
             
                     
                     NPM
@@ -258,9 +258,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="basic.html">
+        <li class="chapter " data-level="1.4.2" data-path="../nodejs/basic.html">
             
-                <a href="basic.html">
+                <a href="../nodejs/basic.html">
             
                     
                     Basic
@@ -334,9 +334,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../devops/">
+        <li class="chapter " data-level="1.6" data-path="./">
             
-                <a href="../devops/">
+                <a href="./">
             
                     
                     DevOps
@@ -348,9 +348,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../devops/docker.html">
+        <li class="chapter " data-level="1.6.1" data-path="docker.html">
             
-                <a href="../devops/docker.html">
+                <a href="docker.html">
             
                     
                     Docker
@@ -361,9 +361,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../devops/docker-tomcat.html">
+        <li class="chapter active" data-level="1.6.2" data-path="docker-tomcat.html">
             
-                <a href="../devops/docker-tomcat.html">
+                <a href="docker-tomcat.html">
             
                     
                     Docker-Tomcat
@@ -499,7 +499,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >NodeJS</a>
+        <a href=".." >Docker-Tomcat</a>
     </h1>
 </div>
 
@@ -514,7 +514,45 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h2 id="docker-tomcat&#x90E8;&#x7F72;war&#x5305;">Docker tomcat&#x90E8;&#x7F72;war&#x5305;</h2>
+<h3 id="&#x65B9;&#x6CD5;&#x4E00;&#xFF0C;&#x4E0A;&#x4F20;&#x5230;tomcat&#x5BB9;&#x5668;">&#x65B9;&#x6CD5;&#x4E00;&#xFF0C;&#x4E0A;&#x4F20;&#x5230;tomcat&#x5BB9;&#x5668;</h3>
+<ol>
+<li>&#x542F;&#x52A8;tomcat&#x5BB9;&#x5668;<pre><code class="lang-shell">docker run -d --name tomcat -p 8081:8080 tomcat
+</code></pre>
+</li>
+<li>&#x8FDB;&#x5165;&#x5BB9;&#x5668;&#x67E5;&#x770B;webapps&#x7684;&#x8DEF;&#x5F84;:/usr/local/tomcat/webapps<pre><code class="lang-shell">docker exec -it tomcat bash
+</code></pre>
+</li>
+<li>&#x4E0A;&#x4F20;war&#x5230;webapps&#x8DEF;&#x5F84;&#x4E0B;<pre><code class="lang-shell">docker cp demo.war tomcat:/usr/local/tomcat/webapps/demo.war
+</code></pre>
+</li>
+<li>&#x5230;webapps&#x8DEF;&#x52B2;&#x4E0B;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x4E0A;&#x4F20;&#x6210;&#x529F;</li>
+<li>&#x91CD;&#x542F;tomcat<pre><code class="lang-shell">docker restart tomcat
+</code></pre>
+</li>
+</ol>
+<h3 id="&#x65B9;&#x6CD5;&#x4E8C;&#xFF0C;dockerfile&#x6784;&#x5EFA;">&#x65B9;&#x6CD5;&#x4E8C;&#xFF0C;Dockerfile&#x6784;&#x5EFA;</h3>
+<ol>
+<li>&#x62C9;&#x53D6;&#x955C;&#x50CF;<pre><code class="lang-shell">docker pull tomcat
+</code></pre>
+</li>
+<li>Dockerfile&#x5C06;war&#x6784;&#x5EFA;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x955C;&#x50CF;<pre><code class="lang-dockerfile"><span class="hljs-keyword">FROM</span> tomcat
+<span class="hljs-keyword">MAINTAINER</span> <span class="hljs-string">&quot;youremail &lt;your@email.com&gt;&quot;</span>
+ADD demo.war /usr/local/tomcat/webapps/demo.war
+<span class="hljs-keyword">CMD</span> <span class="bash">[<span class="hljs-string">&quot;catalina.sh&quot;</span>, <span class="hljs-string">&quot;run&quot;</span>]
+</span></code></pre>
+</li>
+<li>&#x6784;&#x5EFA;<pre><code class="lang-shell">docker build -t demo .
+</code></pre>
+</li>
+<li>&#x8FD0;&#x884C;&#x955C;&#x50CF;<pre><code class="lang-shell">docker run -d --name demo -p 8081:8080 demo
+</code></pre>
+</li>
+</ol>
+<h4 id="&#x6CE8;&#x610F;">&#x6CE8;&#x610F;</h4>
+<p>webapps&#x91CC;&#x7684;war&#x6587;&#x4EF6;&#x4E0E;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x8981;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</p>
+<p>9.0-slim, </p>
+
                                 
                                 </section>
                             
@@ -541,12 +579,12 @@
 
             
                 
-                <a href="../tool/devenv.html" class="navigation navigation-prev " aria-label="Previous page: DevEnv">
+                <a href="docker.html" class="navigation navigation-prev " aria-label="Previous page: Docker">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="npm.html" class="navigation navigation-next " aria-label="Next page: NPM">
+                <a href="../other/" class="navigation navigation-next " aria-label="Next page: Other">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -557,7 +595,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"NodeJS","level":"1.4","depth":1,"next":{"title":"NPM","level":"1.4.1","depth":2,"path":"nodejs/npm.md","ref":"nodejs/npm.md","articles":[]},"previous":{"title":"DevEnv","level":"1.3.6","depth":2,"path":"tool/devenv.md","ref":"tool/devenv.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"nodejs/README.md","mtime":"2018-09-25T03:27:25.400Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T02:56:22.919Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Docker-Tomcat","level":"1.6.2","depth":2,"next":{"title":"Other","level":"1.7","depth":1,"path":"other/README.md","ref":"other/README.md","articles":[{"title":"Windows","level":"1.7.1","depth":2,"path":"other/windows.md","ref":"other/windows.md","articles":[]},{"title":"Hexo","level":"1.7.2","depth":2,"path":"other/hexo.md","ref":"other/hexo.md","articles":[]},{"title":"Browser","level":"1.7.3","depth":2,"path":"other/browser.md","ref":"other/browser.md","articles":[]}]},"previous":{"title":"Docker","level":"1.6.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"devops/docker-tomcat.md","mtime":"2018-09-27T02:55:41.850Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T02:56:22.919Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

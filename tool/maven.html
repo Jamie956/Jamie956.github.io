@@ -361,6 +361,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.2" data-path="../devops/docker-tomcat.html">
+            
+                <a href="../devops/docker-tomcat.html">
+            
+                    
+                    Docker-Tomcat
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -525,7 +538,22 @@ nano maven/conf/setting.xml
 <pre><code>mvn package
 </code></pre><h3 id="&#x6E05;&#x9664;&#x5E76;&#x6253;&#x5305;">&#x6E05;&#x9664;&#x5E76;&#x6253;&#x5305;</h3>
 <pre><code>mvn clean package
+</code></pre><h3 id="maven&#x9879;&#x76EE;&#x6307;&#x5B9A;jdk&#x7248;&#x672C;pomxml&#x914D;&#x7F6E;">Maven&#x9879;&#x76EE;&#x6307;&#x5B9A;JDK&#x7248;&#x672C;(pom.xml&#x914D;&#x7F6E;)</h3>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span> 
+  <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span> 
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span> 
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span> 
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span> 
+      <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span> 
+      <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span> 
+    <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span> 
+<span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
 </code></pre>
+
                                 
                                 </section>
                             
@@ -568,7 +596,7 @@ nano maven/conf/setting.xml
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Maven","level":"1.3.3","depth":2,"next":{"title":"Git","level":"1.3.4","depth":2,"path":"tool/git.md","ref":"tool/git.md","articles":[]},"previous":{"title":"Eclipse","level":"1.3.2","depth":2,"path":"tool/eclipse.md","ref":"tool/eclipse.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tool/maven.md","mtime":"2018-09-26T07:28:52.904Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-26T09:08:52.518Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Maven","level":"1.3.3","depth":2,"next":{"title":"Git","level":"1.3.4","depth":2,"path":"tool/git.md","ref":"tool/git.md","articles":[]},"previous":{"title":"Eclipse","level":"1.3.2","depth":2,"path":"tool/eclipse.md","ref":"tool/eclipse.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tool/maven.md","mtime":"2018-09-26T09:31:22.251Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T02:56:22.919Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -576,10 +604,6 @@ nano maven/conf/setting.xml
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

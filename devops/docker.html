@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../other/" />
+    <link rel="next" href="docker-tomcat.html" />
     
     
     <link rel="prev" href="./" />
@@ -361,6 +361,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.2" data-path="docker-tomcat.html">
+            
+                <a href="docker-tomcat.html">
+            
+                    
+                    Docker-Tomcat
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -501,18 +514,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5BB9;&#x5668;&#x91CD;&#x542F;&#x673A;&#x5236;">&#x5BB9;&#x5668;&#x91CD;&#x542F;&#x673A;&#x5236;</h1>
-<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> --restart always &lt;container&gt;
-docker <span class="hljs-keyword">run</span> --restart on-failure:5 &lt;container&gt;
-docker <span class="hljs-keyword">run</span> --restart unless-stopped &lt;container&gt;
-</code></pre>
-<h1 id="basic">Basic</h1>
-<pre><code class="lang-docker">===basic===
-docker -v
+                                <h1 id="&#x547D;&#x4EE4;">&#x547D;&#x4EE4;</h1>
+<h2 id="base">Base</h2>
+<pre><code class="lang-docker">docker -v //&#x67E5;&#x770B;&#x7248;&#x672C;
 docker info
-
-===image===
-docker search &lt;image&gt;
+</code></pre>
+<h2 id="image&#x76F8;&#x5173;&#x547D;&#x4EE4;">image&#x76F8;&#x5173;&#x547D;&#x4EE4;</h2>
+<pre><code class="lang-docker">docker search &lt;image&gt;
 docker pull &lt;image:tag&gt;
 docker images
 docker images -f dangling=true
@@ -533,9 +541,9 @@ docker inspect &lt;image&gt;
 docker commit -a jamie956 &lt;container&gt; &lt;image&gt;:&lt;tag&gt;
 docker save -o &lt;name&gt;.tar &lt;image&gt;
 docker load -i &lt;name&gt;.tar
-
-===cantainer===
-docker ps
+</code></pre>
+<h2 id="container&#x76F8;&#x5173;&#x547D;&#x4EE4;">Container&#x76F8;&#x5173;&#x547D;&#x4EE4;</h2>
+<pre><code class="lang-docker">docker ps
 docker ps -a
 docker logs &lt;container&gt;
 docker logs -f --tail  20  &lt;container&gt;
@@ -548,32 +556,37 @@ docker rm -f &lt;container&gt;
 docker rm $(docker ps -a -q)
 docker exec -it &lt;container&gt; bash
 docker cp &lt;host&gt; &lt;container&gt;:&lt;/&gt;
-
-===hub===
-docker login
+</code></pre>
+<h2 id="docker-hub-&#x62C9;&#x53D6;&#x548C;&#x63D0;&#x4EA4;">Docker hub &#x62C9;&#x53D6;&#x548C;&#x63D0;&#x4EA4;</h2>
+<pre><code class="lang-docker">docker login
 docker pull &lt;username&gt;/&lt;repository&gt;:&lt;tag&gt;
 docker push &lt;username&gt;/&lt;repository&gt;:&lt;tag&gt;
-
-===<span class="hljs-keyword">volume</span>===
-docker <span class="hljs-keyword">volume</span> create &lt;name&gt;
+</code></pre>
+<h2 id="volume&#x76F8;&#x5173;&#x547D;&#x4EE4;">volume&#x76F8;&#x5173;&#x547D;&#x4EE4;</h2>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">volume</span> create &lt;name&gt;
 -v &lt;volumename&gt;:&lt;path&gt;
 docker <span class="hljs-keyword">volume</span> prune
 docker <span class="hljs-keyword">volume</span> rm &lt;name&gt;
 </code></pre>
+<h2 id="&#x5BB9;&#x5668;&#x91CD;&#x542F;">&#x5BB9;&#x5668;&#x91CD;&#x542F;</h2>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> --restart always &lt;container&gt;
+docker <span class="hljs-keyword">run</span> --restart on-failure:5 &lt;container&gt;
+docker <span class="hljs-keyword">run</span> --restart unless-stopped &lt;container&gt;
+</code></pre>
 <h1 id="install-images">Install Images</h1>
-<pre><code>===jenkins===
-docker run \
+<h2 id="jenkins">Jenkins</h2>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> \
 --name myjenkins -u root --privileged=true \
 -p 9090:8080 \
--v /var/run/docker.sock:/var/run/docker.sock \
+-v /var/<span class="hljs-keyword">run</span>/docker.sock:/var/<span class="hljs-keyword">run</span>/docker.sock \
 -v $(which docker):/usr/bin/docker \
--v /var/run:/var/run:rw \
+-v /var/<span class="hljs-keyword">run</span>:/var/<span class="hljs-keyword">run</span>:rw \
 -v $PWD/data/jenkins:/var/jenkins_home \
 -v /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7 \
 -it &lt;image&gt;
-
-===RabbitMQ===
-docker run \
+</code></pre>
+<h2 id="rabbitmq">RabbitMQ</h2>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> \
 -d \
 -p 15672:15672 \
 -p  5672:5672 \
@@ -581,14 +594,9 @@ docker run \
 -e RABBITMQ_DEFAULT_PASS=admin \
 --name myrabbitmq \
 rabbitmq
-
-===no sudo===
-sudo groupadd docker
-sudo gpasswd -a jamie956 docker
-newgrp docker
-
-===mongo====
-docker run \
+</code></pre>
+<h2 id="mongodb">mongodb</h2>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> \
 --name mymongo \
 -d \
 -e MONGO_INITDB_ROOT_USERNAME=root \
@@ -601,10 +609,10 @@ mongo \
 
 ls -alh|grep db
 
-win10 =&gt; docker run -p 27017:27017 -d mongo
-
-===mongo express===
-docker run \
+win10 =&gt; docker <span class="hljs-keyword">run</span> -p 27017:27017 -d mongo
+</code></pre>
+<h2 id="mongo-express">mongo express</h2>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> \
 --name mymongo-express \
 --link mymongo:mongo \
 -p 8081:8081 \
@@ -614,20 +622,25 @@ docker run \
 -e ME_CONFIG_MONGODB_ADMINPASSWORD=&quot;123456&quot; \
 --rm \
 mongo-express
-
-===mysql===
-docker pull mysql:5.7
-docker run -itd --name mysql -v /d/container/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7
-
-===adminer===
-docker run -d --name adminer --link mysql-server:db -p 8085:8080 adminer
-
-===phpmyadmin===
-docker pull phpmyadmin/phpmyadmin
-docker run -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
-</code></pre><pre><code>===run===
---restart=on-failure:3 //&#x91CD;&#x8BD5;&#x6B21;&#x6570;
 </code></pre>
+<h2 id="mysql">mysql</h2>
+<pre><code class="lang-docker">docker pull mysql:5.7
+docker <span class="hljs-keyword">run</span> -itd --name mysql -v /d/container/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7
+</code></pre>
+<h2 id="adminer">adminer</h2>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> -d --name adminer --link mysql-server:db -p 8085:8080 adminer
+</code></pre>
+<h2 id="phpmyadmin">phpmyadmin</h2>
+<pre><code class="lang-docker">docker pull phpmyadmin/phpmyadmin
+docker <span class="hljs-keyword">run</span> -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
+</code></pre>
+<h1 id="othrt">Othrt</h1>
+<h2 id="docker&#x547D;&#x4EE4;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x4F7F;&#x7528;sudo&#x5566;">docker&#x547D;&#x4EE4;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x4F7F;&#x7528;sudo&#x5566;</h2>
+<pre><code class="lang-docker">sudo groupadd docker
+sudo gpasswd -a jamie956 docker
+newgrp docker
+</code></pre>
+
                                 
                                 </section>
                             
@@ -659,7 +672,7 @@ docker run -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
                 </a>
                 
                 
-                <a href="../other/" class="navigation navigation-next " aria-label="Next page: Other">
+                <a href="docker-tomcat.html" class="navigation navigation-next " aria-label="Next page: Docker-Tomcat">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -670,7 +683,7 @@ docker run -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.6.1","depth":2,"next":{"title":"Other","level":"1.7","depth":1,"path":"other/README.md","ref":"other/README.md","articles":[{"title":"Windows","level":"1.7.1","depth":2,"path":"other/windows.md","ref":"other/windows.md","articles":[]},{"title":"Hexo","level":"1.7.2","depth":2,"path":"other/hexo.md","ref":"other/hexo.md","articles":[]},{"title":"Browser","level":"1.7.3","depth":2,"path":"other/browser.md","ref":"other/browser.md","articles":[]}]},"previous":{"title":"DevOps","level":"1.6","depth":1,"path":"devops/README.md","ref":"devops/README.md","articles":[{"title":"Docker","level":"1.6.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"devops/docker.md","mtime":"2018-09-25T03:24:31.603Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-26T09:08:52.518Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.6.1","depth":2,"next":{"title":"Docker-Tomcat","level":"1.6.2","depth":2,"path":"devops/docker-tomcat.md","ref":"devops/docker-tomcat.md","articles":[]},"previous":{"title":"DevOps","level":"1.6","depth":1,"path":"devops/README.md","ref":"devops/README.md","articles":[{"title":"Docker","level":"1.6.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]},{"title":"Docker-Tomcat","level":"1.6.2","depth":2,"path":"devops/docker-tomcat.md","ref":"devops/docker-tomcat.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"devops/docker.md","mtime":"2018-09-27T02:51:09.732Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T02:56:22.919Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -678,10 +691,6 @@ docker run -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
