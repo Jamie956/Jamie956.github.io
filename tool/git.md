@@ -14,6 +14,12 @@ git add .
 
 git push
 git push origin master
+
+===example===
+从dev 分支克隆
+git clone -b dev http://github/jamie/xx-cms.git
+从dev 分支拉取
+git pull http://github/jamie/xx-cms.git dev
 ```
 
 ### SSH
