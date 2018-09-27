@@ -42,3 +42,8 @@ docker run -d --name demo -p 8081:8080 demo
 
 #### 注意
 webapps里的war文件与访问路径要保持一致
+
+
+
+
+9.0-slim, 

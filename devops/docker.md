@@ -1,17 +1,11 @@
-# 容器重启机制
+# 命令
+## Base
 ```docker
-docker run --restart always <container>
-docker run --restart on-failure:5 <container>
-docker run --restart unless-stopped <container>
-```
-
-# Basic
-```docker
-===basic===
-docker -v
+docker -v //查看版本
 docker info
-
-===image===
+```
+## image相关命令
+```docker
 docker search <image>
 docker pull <image:tag>
 docker images
@@ -33,8 +27,9 @@ docker inspect <image>
 docker commit -a jamie956 <container> <image>:<tag>
 docker save -o <name>.tar <image>
 docker load -i <name>.tar
-
-===cantainer===
+```
+## Container相关命令
+```docker
 docker ps
 docker ps -a
 docker logs <container>
@@ -48,22 +43,30 @@ docker rm -f <container>
 docker rm $(docker ps -a -q)
 docker exec -it <container> bash
 docker cp <host> <container>:</>
-
-===hub===
+```
+## Docker hub 拉取和提交
+```docker
 docker login
 docker pull <username>/<repository>:<tag>
 docker push <username>/<repository>:<tag>
-
-===volume===
+```
+## volume相关命令
+```docker
 docker volume create <name>
 -v <volumename>:<path>
 docker volume prune
 docker volume rm <name>
 ```
+## 容器重启
+```docker
+docker run --restart always <container>
+docker run --restart on-failure:5 <container>
+docker run --restart unless-stopped <container>
+```
 
 # Install Images
-```
-===jenkins===
+## Jenkins
+```docker
 docker run \
 --name myjenkins -u root --privileged=true \
 -p 9090:8080 \
@@ -73,8 +76,9 @@ docker run \
 -v $PWD/data/jenkins:/var/jenkins_home \
 -v /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7 \
 -it <image>
-
-===RabbitMQ===
+```
+## RabbitMQ
+```docker
 docker run \
 -d \
 -p 15672:15672 \
@@ -83,13 +87,9 @@ docker run \
 -e RABBITMQ_DEFAULT_PASS=admin \
 --name myrabbitmq \
 rabbitmq
-
-===no sudo===
-sudo groupadd docker
-sudo gpasswd -a jamie956 docker
-newgrp docker
-
-===mongo====
+```
+## mongodb
+```docker
 docker run \
 --name mymongo \
 -d \
@@ -104,8 +104,9 @@ mongo \
 ls -alh|grep db
 
 win10 => docker run -p 27017:27017 -d mongo
-
-===mongo express===
+```
+## mongo express
+```docker
 docker run \
 --name mymongo-express \
 --link mymongo:mongo \
@@ -116,22 +117,26 @@ docker run \
 -e ME_CONFIG_MONGODB_ADMINPASSWORD="123456" \
 --rm \
 mongo-express
-
-===mysql===
+```
+## mysql
+```docker
 docker pull mysql:5.7
 docker run -itd --name mysql -v /d/container/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7
-
-===adminer===
+```
+## adminer
+```docker
 docker run -d --name adminer --link mysql-server:db -p 8085:8080 adminer
-
-===phpmyadmin===
+```
+## phpmyadmin
+```docker
 docker pull phpmyadmin/phpmyadmin
 docker run -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
-
-
 ```
 
-```
-===run===
---restart=on-failure:3 //重试次数
+# Othrt
+## docker命令不需要再使用sudo啦
+```docker
+sudo groupadd docker
+sudo gpasswd -a jamie956 docker
+newgrp docker
 ```
