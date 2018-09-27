@@ -44,10 +44,8 @@ docker run -d --name demo -p 8081:8080 demo
 webapps里的war文件与访问路径要保持一致
 
 
-## 整个流程
+## 流程
 ```makefile
-
-
 pull-tomcat:
   docker pull tomcat:9.0-slim
 clean-project:
@@ -58,7 +56,14 @@ build-image:
   docker build -t demo .
 run-container:
   docker run -d --name demo -p 8081:8080 demo
-
-
+remove-container:
+	docker stop demo
+	docker rm -f demo
+remove-image:
+	docker rmi demo
+clone-repo:
+	git clone -b dev http://github/jamie/demo.git
+pull-repo:
+	git pull http://github/jamie/demo.git dev
 ```
 
