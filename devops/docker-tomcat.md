@@ -26,7 +26,7 @@ docker pull tomcat
 ```
 2. Dockerfile将war构建成一个新镜像
 ```dockerfile
-FROM tomcat
+FROM tomcat:9.0-slim
 MAINTAINER "youremail <your@email.com>"
 ADD demo.war /usr/local/tomcat/webapps/demo.war
 CMD ["catalina.sh", "run"]
@@ -44,6 +44,21 @@ docker run -d --name demo -p 8081:8080 demo
 webapps里的war文件与访问路径要保持一致
 
 
+## 整个流程
+```makefile
 
 
-9.0-slim, 
+pull-tomcat:
+  docker pull tomcat:9.0-slim
+clean-project:
+  mvn clean
+package-project:
+  mvn package -Dmaven.test.skip=true
+build-image:
+  docker build -t demo .
+run-container:
+  docker run -d --name demo -p 8081:8080 demo
+
+
+```
+

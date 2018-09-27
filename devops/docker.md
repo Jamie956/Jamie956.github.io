@@ -133,7 +133,7 @@ docker pull phpmyadmin/phpmyadmin
 docker run -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
 ```
 
-# Othrt
+# Other
 ## docker命令不需要再使用sudo啦
 ```docker
 sudo groupadd docker

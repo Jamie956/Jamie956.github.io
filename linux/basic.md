@@ -187,6 +187,10 @@ hello:
 	say2:
 		echo 'hello world2'
 make -f hello say2
+
+===error===
+q:Makefile:4: *** missing separator.  Stop.
+a:2 space to tab
 ```
 
 ### Shortcut
