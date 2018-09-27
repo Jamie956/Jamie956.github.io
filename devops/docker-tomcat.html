@@ -536,7 +536,7 @@
 <li>&#x62C9;&#x53D6;&#x955C;&#x50CF;<pre><code class="lang-shell">docker pull tomcat
 </code></pre>
 </li>
-<li>Dockerfile&#x5C06;war&#x6784;&#x5EFA;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x955C;&#x50CF;<pre><code class="lang-dockerfile"><span class="hljs-keyword">FROM</span> tomcat
+<li>Dockerfile&#x5C06;war&#x6784;&#x5EFA;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x955C;&#x50CF;<pre><code class="lang-dockerfile"><span class="hljs-keyword">FROM</span> tomcat:<span class="hljs-number">9.0</span>-slim
 <span class="hljs-keyword">MAINTAINER</span> <span class="hljs-string">&quot;youremail &lt;your@email.com&gt;&quot;</span>
 ADD demo.war /usr/local/tomcat/webapps/demo.war
 <span class="hljs-keyword">CMD</span> <span class="bash">[<span class="hljs-string">&quot;catalina.sh&quot;</span>, <span class="hljs-string">&quot;run&quot;</span>]
@@ -551,7 +551,27 @@ ADD demo.war /usr/local/tomcat/webapps/demo.war
 </ol>
 <h4 id="&#x6CE8;&#x610F;">&#x6CE8;&#x610F;</h4>
 <p>webapps&#x91CC;&#x7684;war&#x6587;&#x4EF6;&#x4E0E;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x8981;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</p>
-<p>9.0-slim, </p>
+<h2 id="&#x6D41;&#x7A0B;">&#x6D41;&#x7A0B;</h2>
+<pre><code class="lang-makefile">pull-tomcat:
+  docker pull tomcat:9.0-slim
+clean-project:
+  mvn clean
+package-project:
+  mvn package -Dmaven.test.skip=true
+build-image:
+  docker build -t demo .
+run-container:
+  docker run -d --name demo -p 8081:8080 demo
+remove-container:
+    docker stop demo
+    docker rm -f demo
+remove-image:
+    docker rmi demo
+clone-repo:
+    git clone -b dev http://github/jamie/demo.git
+pull-repo:
+    git pull http://github/jamie/demo.git dev
+</code></pre>
 
                                 
                                 </section>
@@ -595,7 +615,7 @@ ADD demo.war /usr/local/tomcat/webapps/demo.war
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Docker-Tomcat","level":"1.6.2","depth":2,"next":{"title":"Other","level":"1.7","depth":1,"path":"other/README.md","ref":"other/README.md","articles":[{"title":"Windows","level":"1.7.1","depth":2,"path":"other/windows.md","ref":"other/windows.md","articles":[]},{"title":"Hexo","level":"1.7.2","depth":2,"path":"other/hexo.md","ref":"other/hexo.md","articles":[]},{"title":"Browser","level":"1.7.3","depth":2,"path":"other/browser.md","ref":"other/browser.md","articles":[]}]},"previous":{"title":"Docker","level":"1.6.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"devops/docker-tomcat.md","mtime":"2018-09-27T02:55:41.850Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T02:56:22.919Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Docker-Tomcat","level":"1.6.2","depth":2,"next":{"title":"Other","level":"1.7","depth":1,"path":"other/README.md","ref":"other/README.md","articles":[{"title":"Windows","level":"1.7.1","depth":2,"path":"other/windows.md","ref":"other/windows.md","articles":[]},{"title":"Hexo","level":"1.7.2","depth":2,"path":"other/hexo.md","ref":"other/hexo.md","articles":[]},{"title":"Browser","level":"1.7.3","depth":2,"path":"other/browser.md","ref":"other/browser.md","articles":[]}]},"previous":{"title":"Docker","level":"1.6.1","depth":2,"path":"devops/docker.md","ref":"devops/docker.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"devops/docker-tomcat.md","mtime":"2018-09-27T03:47:37.860Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T03:59:16.110Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
