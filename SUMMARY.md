@@ -7,7 +7,6 @@
     * [VSCode](tool/vscode.md)
     * [Eclipse](tool/eclipse.md)
     * [Maven](tool/maven.md)
-    * [Git](tool/git.md)
     * [Typora](tool/typora.md)
     * [DevEnv](tool/devenv.md)
 * [NodeJS](nodejs/README.md)
@@ -27,4 +26,6 @@
     * [Roadmap](other/roadmap.md)
 * [Java](java/README.md)
     * [Basic](java/basic.md)
+* [Basic](basic/README.md)
+    * [Git](basic/git.md)
 
