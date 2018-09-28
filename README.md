@@ -10,6 +10,7 @@
 | gitbook serve              | 编译并开启 server |
 | npm i gh-pages | 安装 gh-pages |
 | gh-pages -d _book | 将文件夹_book 的内容同步到分支 gh-pages |
+| gitbook install      | 安装gitbook插件 |
 
 
 
@@ -17,7 +18,21 @@
 
 ```js
 npm i
+npm run bok-in
 npm run build
 npm run serve
 npm run sync
+```
+
+# 如何安装插件
+1. touch book.json
+```
+{
+  "plugins": ["page-treeview"]
+}
+```
+
+2. install
+```
+gitbook install
 ```
