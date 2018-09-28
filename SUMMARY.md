@@ -10,7 +10,6 @@
     * [Typora](tool/typora.md)
     * [DevEnv](tool/devenv.md)
 * [NodeJS](nodejs/README.md)
-    * [NPM](nodejs/npm.md)
     * [Basic](nodejs/basic.md)
 * [Database](database/README.md)
     * [MongoDB](database/mongodb.md)
@@ -28,4 +27,6 @@
     * [Basic](java/basic.md)
 * [Basic](basic/README.md)
     * [Git](basic/git.md)
+* [Frontend](frontend/README.md)
+    * [NPM](frontend/npm.md)
 
