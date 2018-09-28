@@ -15,6 +15,7 @@
   "dependencies": {
     "gh-pages": "^1.2.0",
     "gitbook-cli": "^2.3.2",
-    "gitbook-plugin-page-treeview": "^2.9.8"
+    "gitbook-plugin-page-treeview": "^2.9.8",
+    "gitbook-plugin-splitter": "0.0.8"
   }
 }

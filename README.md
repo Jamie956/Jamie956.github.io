@@ -36,3 +36,22 @@ npm run sync
 ```
 gitbook install
 ```
+
+# Gitbook 配置
+```json
+{
+  "plugins": ["page-treeview"],
+  "title" : "Jamie House",
+  "author" : "Jamie",
+  "description" : "The note for dev.",
+  "language" : "zh-hans",
+  "links" : {
+  "sidebar" : {
+    "Home" : "http://baidu.com"
+    }
+  }
+}
+```
+
+# 插件
+- musicxml //乐谱
