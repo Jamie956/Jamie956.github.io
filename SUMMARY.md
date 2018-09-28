@@ -1,8 +1,6 @@
 # Summary
 
 * [Root](README.md)
-* [Linux](linux/README.md)
-    * [Basic](linux/basic.md)
 * [Tool](tool/README.md)
     * [VSCode](tool/vscode.md)
     * [Eclipse](tool/eclipse.md)
@@ -29,4 +27,6 @@
 * [DevOps](devops/README.md)
     * [Docker](devops/docker.md)
         * [Tomcat](devops/tomcat.md)
+    * [linux](devops/linux.md)
+
 
