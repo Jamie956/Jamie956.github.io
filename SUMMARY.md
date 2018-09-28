@@ -13,9 +13,6 @@
     * [MongoDB](database/mongodb.md)
     * [Mysql](database/mysql.md)
     * [Redis](database/redis.md)
-* [DevOps](devops/README.md)
-    * [Docker](devops/docker.md)
-    * [Docker-Tomcat](devops/docker-tomcat.md)
 * [Other](other/README.md)
     * [Windows](other/windows.md)
     * [Hexo](other/hexo.md)
@@ -28,4 +25,8 @@
 * [Frontend](frontend/README.md)
     * [NPM](frontend/npm.md)
     * [NodeJS](frontend/nodejs.md)
+* [Backend](backend/README.md)
+* [DevOps](devops/README.md)
+    * [Docker](devops/docker.md)
+        * [Tomcat](devops/tomcat.md)
 
