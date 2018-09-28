@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Windows · GitBook</title>
+        <title>Git · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -56,8 +56,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
-    
-    <link rel="next" href="hexo.html" />
     
     
     <link rel="prev" href="./" />
@@ -366,9 +364,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="./">
+        <li class="chapter " data-level="1.7" data-path="../other/">
             
-                <a href="./">
+                <a href="../other/">
             
                     
                     Other
@@ -380,9 +378,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.7.1" data-path="windows.html">
+        <li class="chapter " data-level="1.7.1" data-path="../other/windows.html">
             
-                <a href="windows.html">
+                <a href="../other/windows.html">
             
                     
                     Windows
@@ -393,9 +391,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="hexo.html">
+        <li class="chapter " data-level="1.7.2" data-path="../other/hexo.html">
             
-                <a href="hexo.html">
+                <a href="../other/hexo.html">
             
                     
                     Hexo
@@ -406,9 +404,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="browser.html">
+        <li class="chapter " data-level="1.7.3" data-path="../other/browser.html">
             
-                <a href="browser.html">
+                <a href="../other/browser.html">
             
                     
                     Browser
@@ -419,9 +417,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4" data-path="roadmap.html">
+        <li class="chapter " data-level="1.7.4" data-path="../other/roadmap.html">
             
-                <a href="roadmap.html">
+                <a href="../other/roadmap.html">
             
                     
                     Roadmap
@@ -469,9 +467,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="../basic/">
+        <li class="chapter " data-level="1.9" data-path="./">
             
-                <a href="../basic/">
+                <a href="./">
             
                     
                     Basic
@@ -483,9 +481,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="../basic/git.html">
+        <li class="chapter active" data-level="1.9.1" data-path="git.html">
             
-                <a href="../basic/git.html">
+                <a href="git.html">
             
                     
                     Git
@@ -531,7 +529,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Windows</a>
+        <a href=".." >Git</a>
     </h1>
 </div>
 
@@ -546,17 +544,45 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="service-startstopdelete">Service start/stop/delete</h2>
-<pre><code>sc delete &lt;service&gt;
-net stop &lt;service&gt;
-net start &lt;service&gt;
-</code></pre><h2 id="&#x67E5;&#x770B;-port">&#x67E5;&#x770B; port</h2>
-<pre><code class="lang-shell">netstat -ano | findstr &lt;port&gt;
-tasklist|findstr &lt;PID&gt;
+                                <h3 id="command">Command</h3>
+<pre><code>git status
+
+git clone &lt;url&gt;
+git fetch &lt;url&gt;
+git pull &lt;url&gt; &lt;branch&gt;
+
+git commit -m &quot;&lt;msg&gt;&quot; -a
+git commit -m &quot;&lt;msg&gt;&quot; &lt;file&gt;
+
+git add &lt;file&gt;
+git add .
+
+git push
+git push origin master
+
+===example===
+&#x4ECE;dev &#x5206;&#x652F;&#x514B;&#x9686;
+git clone -b dev http://github/jamie/xx-cms.git
+&#x4ECE;dev &#x5206;&#x652F;&#x62C9;&#x53D6;
+git pull http://github/jamie/xx-cms.git dev
+</code></pre><h3 id="ssh">SSH</h3>
+<ol>
+<li>&#x751F;&#x6210;SSH&#x5BC6;&#x94A5;<pre><code class="lang-shell">ssh-keygen -t rsa -C &quot;your@eamil.com&quot;
 </code></pre>
-<h2 id="&#x67E5;&#x770B;win10&#x7CFB;&#x7EDF;&#x6FC0;&#x6D3B;&#x60C5;&#x51B5;">&#x67E5;&#x770B;win10&#x7CFB;&#x7EDF;&#x6FC0;&#x6D3B;&#x60C5;&#x51B5;</h2>
-<pre><code>slmgr.vbs -xpr //win10&#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x6FC0;&#x6D3B;&#x60C5;&#x51B5;
+</li>
+<li>&#x67E5;&#x770B;<pre><code class="lang-shell">cat ~/.ssh/id_rsa.pub
 </code></pre>
+</li>
+<li>&#x628A;SSH&#x6DFB;&#x52A0;&#x5230;git</li>
+<li>&#x6D4B;&#x8BD5;<pre><code class="lang-shell">ssh -T git@github.com
+</code></pre>
+</li>
+<li>&#x5168;&#x5C40;&#x914D;&#x7F6E;&#x7528;&#x6237;&#x4FE1;&#x606F;<pre><code class="lang-shell">git config --global user.name &quot;yournamee&quot;
+git config --global user.email &quot;your@eamil.com&quot;
+</code></pre>
+</li>
+</ol>
+
                                 
                                 </section>
                             
@@ -583,14 +609,10 @@ tasklist|findstr &lt;PID&gt;
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Other">
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Basic">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="hexo.html" class="navigation navigation-next " aria-label="Next page: Hexo">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -599,7 +621,7 @@ tasklist|findstr &lt;PID&gt;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Windows","level":"1.7.1","depth":2,"next":{"title":"Hexo","level":"1.7.2","depth":2,"path":"other/hexo.md","ref":"other/hexo.md","articles":[]},"previous":{"title":"Other","level":"1.7","depth":1,"path":"other/README.md","ref":"other/README.md","articles":[{"title":"Windows","level":"1.7.1","depth":2,"path":"other/windows.md","ref":"other/windows.md","articles":[]},{"title":"Hexo","level":"1.7.2","depth":2,"path":"other/hexo.md","ref":"other/hexo.md","articles":[]},{"title":"Browser","level":"1.7.3","depth":2,"path":"other/browser.md","ref":"other/browser.md","articles":[]},{"title":"Roadmap","level":"1.7.4","depth":2,"path":"other/roadmap.md","ref":"other/roadmap.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"other/windows.md","mtime":"2018-09-25T03:33:42.681Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-28T03:33:24.880Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Git","level":"1.9.1","depth":2,"previous":{"title":"Basic","level":"1.9","depth":1,"path":"basic/README.md","ref":"basic/README.md","articles":[{"title":"Git","level":"1.9.1","depth":2,"path":"basic/git.md","ref":"basic/git.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basic/git.md","mtime":"2018-09-28T03:33:10.845Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-28T03:33:24.880Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
