@@ -9,8 +9,6 @@
     * [Maven](tool/maven.md)
     * [Typora](tool/typora.md)
     * [DevEnv](tool/devenv.md)
-* [NodeJS](nodejs/README.md)
-    * [Basic](nodejs/basic.md)
 * [Database](database/README.md)
     * [MongoDB](database/mongodb.md)
     * [Mysql](database/mysql.md)
@@ -29,4 +27,5 @@
     * [Git](basic/git.md)
 * [Frontend](frontend/README.md)
     * [NPM](frontend/npm.md)
+    * [NodeJS](frontend/nodejs.md)
 
