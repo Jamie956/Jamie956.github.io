@@ -20,6 +20,8 @@
         * [Tomcat](devops/tomcat.md)
     * [linux](devops/linux.md)
     * [Windows](devops/windows.md)
+    * [OS](devops/os.md)
+    * [Design Patterns](devops/design-patterns.md)
 * [Tool](tool/README.md)
     * [VSCode](tool/vscode.md)
     * [Eclipse](tool/eclipse.md)
