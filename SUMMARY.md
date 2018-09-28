@@ -12,14 +12,13 @@
     * [Hexo](other/hexo.md)
     * [Browser](other/browser.md)
     * [Roadmap](other/roadmap.md)
-* [Java](java/README.md)
-    * [Basic](java/basic.md)
 * [Basic](basic/README.md)
     * [Git](basic/git.md)
 * [Frontend](frontend/README.md)
     * [NPM](frontend/npm.md)
     * [NodeJS](frontend/nodejs.md)
 * [Backend](backend/README.md)
+    * [Java](backend/java.md)
     * [MongoDB](backend/mongodb.md)
     * [Mysql](backend/mysql.md)
     * [Redis](backend/redis.md)
@@ -27,5 +26,4 @@
     * [Docker](devops/docker.md)
         * [Tomcat](devops/tomcat.md)
     * [linux](devops/linux.md)
-
 
