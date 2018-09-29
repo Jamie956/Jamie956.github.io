@@ -5,6 +5,7 @@
     * [Git](basic/git.md)
     * [Data Structures](basic/data-structures.md)
     * [Algorithms](basic/algorithms.md)
+    * [Http](basic/http.md)
 * [Frontend](frontend/README.md)
     * [NPM](frontend/npm.md)
     * [NodeJS](frontend/nodejs.md)

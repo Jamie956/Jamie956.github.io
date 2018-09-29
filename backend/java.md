@@ -269,3 +269,19 @@ Class Employee extends Person{}
 
 ## Socket编程
 
+- Socket：网络上运行的程序之间双向通信链路的终结点，是TCP和UDP的基础，由IP和Port组成
+- Socket套接字
+- Socket原理机制
+  -  通信的两端都有Socket
+  -  数据在两个Socket间通过IO传输
+
+
+
+
+
+
+
+
+
+
+
