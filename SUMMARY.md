@@ -18,7 +18,7 @@
 * [DevOps](devops/README.md)
     * [Docker](devops/docker.md)
         * [Tomcat](devops/tomcat.md)
-    * [linux](devops/linux.md)
+    * [Linux](devops/linux.md)
     * [Windows](devops/windows.md)
     * [OS](devops/os.md)
     * [Design Patterns](devops/design-patterns.md)
