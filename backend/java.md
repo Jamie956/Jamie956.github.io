@@ -315,7 +315,7 @@ Class Employee extends Person{}
 
 1. 服务器端创建ServerSocket，循环调用accept()等待客户端连接
 2. 客户端创建一个socket并请求和服务器端连接
-3. 服务器端接受苦读段请求，创建socket与该客户建立专线连接
+3. 服务器端接受若干段请求，创建socket与该客户建立专线连接
 4. 建立连接的两个socket在一个单独的线程上对话
 5. 服务器端继续等待新的连接
 
