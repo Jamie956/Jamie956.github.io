@@ -130,21 +130,17 @@ equals() :比较内容
 
 
 
-1.  **新建(new)**：新创建了一个线程对象。
+### 线程
 
-2. **可运行(runnable)**：线程对象创建后，其他线程(比如main线程）调用了该对象的start()方法。该状态的线程位于可运行线程池中，等待被线程调度选中，获 取cpu的使用权。
-
-3. **运行(running)**：可运行状态(runnable)的线程获得了cpu时间片（timeslice），执行程序代码。
-
-4. **阻塞(block)**：阻塞状态是指线程因为某种原因放弃了cpu使用权，也即让出了cpu  timeslice，暂时停止运行。直到线程进入可运行(runnable)状态，才有 机会再次获得cpu  timeslice转到运行(running)状态。阻塞的情况分三种： 
-
-   (一). 等待阻塞：运行(running)的线程执行o.wait()方法，JVM会把该线程放 入等待队列(waitting queue)中。 
-
-   (二). 同步阻塞：运行(running)的线程在获取对象的同步锁时，若该同步锁 被别的线程占用，则JVM会把该线程放入锁池(lock  pool)中。 
-
-   (三). 其他阻塞: 运行(running)的线程执行Thread.sleep(long  ms)或t.join()方法，或者发出了I/O请求时，JVM会把该线程置为阻塞状态。当sleep()状态超时join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入可运行(runnable)状态。
-
-5. **死亡(dead)**：线程run()、main()方法执行结束，或者因异常退出了run()方法，则该线程结束生命周期。死亡的线程不可再次复生。
+1.  **新建(new)**：当创建Thread类的一个实例（对象）时，此线程进入新建状态（未被启动），如：Thread  t1=new Thread();
+2.  **就绪(runnable)**：线程已经被启动，正在等待被分配给CPU时间片，也就是说此时线程正在就绪队列中排队等候得到CPU资源，如：t1.start();
+3.  **运行(running)**：线程获得CPU资源正在执行任务（run()），此时除非此线程自动放弃CPU资源或者有优先级更高的线程进入，线程将一直运行到结束。
+4.  **阻塞(block)**：由于某种原因导致正在运行的线程让出CPU并暂停自己的执行，即进入堵塞状态。
+   1.  sleep：使线程进入睡眠。睡眠线程在指定时间后可进入就绪状态
+   2.  wait：JVM把该线程放入等待队列(waitting queue)中
+5.  **死亡(dead)**：当线程执行完毕或被其它线程杀死，线程就进入死亡状态，这时线程不可能再进入就绪状态等待执行。
+    1.  自然终止：正常运行run()方法后终
+    2.  异常终止：调用**stop()**方法让一个线程终止运行
 
 
 
@@ -199,6 +195,58 @@ equals() :比较内容
 - workQueue：一个阻塞队列，用来存储等待执行的任务
 - threadFactory：线程工厂，主要用来创建线程
 - handler：超出线程范围和队列容量的任务的处理程序
+
+### 实现原理
+
+- 线程池状态
+- 任务的执行
+  - 如果当前线程池中的线程数目小于corePoolSize，则每来一个任务，就会创建一个线程去执行这个任务；
+  - 如果当前线程池中的线程数目>=corePoolSize，则每来一个任务，会尝试将其添加到任务缓存队列当中，若添加成功，则该任务会等待空闲线程将其取出去执行；若添加失败（一般来说是任务缓存队列已满），则会尝试创建新的线程去执行这个任务；
+  - 如果当前线程池中的线程数目达到maximumPoolSize，则会采取任务拒绝策略进行处理；
+  - 如果线程池中的线程数量大于  corePoolSize时，如果某线程空闲时间超过keepAliveTime，线程将被终止，直至线程池中的线程数目不大于corePoolSize；如果允许为核心池中的线程设置存活时间，那么核心池中的线程空闲时间超过keepAliveTime，线程也会被终止。
+
+```java
+private final BlockingQueue<Runnable> workQueue; //任务缓存队列，用来存放等待执行的任务
+private final ReentrantLock mainLock = new ReentrantLock(); //线程池的主要状态锁，对线程池状态（比如线程池大小，runState等）的改变都要使用这个锁
+private final HashSet<Worker> workers = new HashSet<Worker>(); //用来存放工作集
+private volatile long  keepAliveTime; //线程存货时间   
+private volatile boolean allowCoreThreadTimeOut; //是否允许为核心线程设置存活时间
+private volatile int corePoolSize; //核心池的大小（即线程池中的线程数目大于这个参数时，提交的任务会被放进任务缓存队列）
+private volatile int maximumPoolSize; //线程池最大能容忍的线程数
+private volatile int poolSize; //线程池中当前的线程数
+private volatile RejectedExecutionHandler handler; //任务拒绝策略
+private volatile ThreadFactory threadFactory; //线程工厂，用来创建线程
+private int largestPoolSize; //用来记录线程池中曾经出现过的最大线程数
+private long completedTaskCount; //用来记录已经执行完毕的任务个数
+```
+
+- 线程池中的线程初始化
+
+- 任务缓存队列及排队策略
+
+- 任务拒绝策略
+
+  当线程池的任务缓存队列已满并且线程池中的线程数目达到maximumPoolSize，如果还有任务到来就会采取任务拒绝策略
+
+```
+ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。
+ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。
+ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
+ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务 
+```
+
+- 线程池的关闭
+  - shutdown()：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务
+  - shutdownNow()：立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务
+
+- 线程池容量的动态调整
+
+### 配置线程池大小
+
+- 如果是CPU密集型任务，就需要尽量压榨CPU，参考值可以设为 *N*CPU+1
+- 如果是IO密集型任务，参考值可以设置为2**N*CPU
+
+
 
 ## **程序**
 
