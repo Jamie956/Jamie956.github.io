@@ -323,5 +323,17 @@ Class Employee extends Person{}
 
 ## 多线程
 
+### wait，notify，notifyAll的作用是什么？
+
+- wait 让当前线程进入等待状态，并且释放锁
+- notify 唤醒任意一个正在等待锁的线程，并且让它得到锁
+- notifyAll 唤醒所有等待对象锁的线程，如果有多个线程都被唤醒，那么锁将会被他们争夺，同一时间只会有一个线程得到锁
+
+
+
+
+
+
+
 
 
