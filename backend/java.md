@@ -1,10 +1,25 @@
 ## 装箱/拆箱
 
-- 装箱：将基本类型用它们对应的引用类型包装起来；
-  int -> integer
+|          | 装箱(Boxing)                                     | 拆箱(Unboxing)                                         |
+| -------- | ------------------------------------------------ | ------------------------------------------------------ |
+| 定义     | 将基本数据类型转换为包装器类型                   | 将包装器类型转换为基本数据类型                         |
+| 实现     | int i = 1;<br />Integer rs = Integer.valueOf(i); | Integer i = new Integer(1);<br/>int rs = i.intValue(); |
+| 自动转换 | Integer a = 1;                                   | int b = new Integer(1);                                |
 
-- 拆箱：将包装类型转换为基本数据类型；
-  integer -> int
+
+
+- Integer.valueOf()
+
+```java
+public static Integer valueOf(int i) {
+    if(i >= -128 && i <= IntegerCache.high)
+        return IntegerCache.cache[i + 128];
+    else
+        return new Integer(i);
+}
+```
+
+
 
 ## 对象创建过程
 
@@ -508,4 +523,49 @@ Class Employee extends Person{}
 
 
 
+
+## 题目
+
+1. 
+
+```java
+Integer a = 1;
+Integer b = 2;
+Integer c = 3;
+Integer d = 3;
+Integer e = 321;
+Integer f = 321;
+Long g = 3L;
+Long h = 2L;
+
+System.out.println(c==d);// true 比较对象，指向cache
+System.out.println(e==f);// false 比较对象
+System.out.println(c==(a+b));// true 存在表达式，拆箱比较数值
+System.out.println(c.equals(a+b));// true 比较数值
+System.out.println(g==(a+b));// true 存在表达式，拆箱比较数值
+System.out.println(g.equals(a+b));// false a+b调用Integer.valueOf拆箱
+System.out.println(g.equals(a+h));// true a+h调用Long.valueOf向上转型
+```
+
+解析：
+
+- "=="运算符
+  - 两个操作数都是包装器类型的引用 =》比较对象
+  - 存在表达式 =》比较数值（自动拆箱）
+
+- equals()不会类型转换
+
+
+
+2. 
+
+```java
+Double i1 = 100.0;
+Double i2 = 100.0;
+Double i3 = 200.0;
+Double i4 = 200.0;
+
+System.out.println(i1==i2);// false 浮点的值不是有限的
+System.out.println(i3==i4);// false
+```
 
