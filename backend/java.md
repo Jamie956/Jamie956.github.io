@@ -73,16 +73,6 @@ public static Integer valueOf(int i) {
 
 
 
-### Class.forname():
-
-是一个静态方法,最常用的是Class.forname(String className);根据传入的类的全限定名返回一个Class对象.该方法在将Class文件加载到内存的同时,会执行类的初始化.
-
-如: Class.forName("com.wang.HelloWorld");
-
-### java.lang.ClassLoader类
-
-基本职责就是根据一个指定的类的名称，找到或者生成其对应的字节代码，然后从这些字节代码中定义出一个Java 类，即 java.lang.Class类的一个实例。
-
 ## 封装
 
 把一个对象的属性私有化，同时提供一些可以被外界访问的属性的方法
