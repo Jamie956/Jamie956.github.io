@@ -35,11 +35,7 @@ public static Integer valueOf(int i) {
 
 
 
-## 类
-
-> 类的加载由JVM来完成，JVM把Class文件加载到内存，并对数据进行校验，解析和初始化，最终形成能被JVM直接使用的java类型，类加载器读取.class字节码文件将其转换成java.lang.Class类的一个实例.每个实例用来表示一个java类.通过该实例的newInstance()方法可以创建出一个该类的对象.
-
-### 生命周期
+## 类加载
 
 装载，链接，初始化
 
