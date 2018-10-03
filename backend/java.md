@@ -396,15 +396,72 @@ ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
 
 
 
+## 题目
+
+1. 
+
+```java
+Integer a = 1;
+Integer b = 2;
+Integer c = 3;
+Integer d = 3;
+Integer e = 321;
+Integer f = 321;
+Long g = 3L;
+Long h = 2L;
+
+System.out.println(c==d);// true 比较对象，指向cache
+System.out.println(e==f);// false 比较对象
+System.out.println(c==(a+b));// true 存在表达式，拆箱比较数值
+System.out.println(c.equals(a+b));// true 比较数值
+System.out.println(g==(a+b));// true 存在表达式，拆箱比较数值
+System.out.println(g.equals(a+b));// false a+b调用Integer.valueOf拆箱
+System.out.println(g.equals(a+h));// true a+h调用Long.valueOf向上转型
+```
+
+解析：
+
+- "=="运算符
+  - 两个操作数都是包装器类型的引用 =》比较地址
+  - 存在表达式 =》比较数值（自动拆箱）
+
+- equals()不会类型转换
+
+
+
+2. 
+
+```java
+Double i1 = 100.0;
+Double i2 = 100.0;
+Double i3 = 200.0;
+Double i4 = 200.0;
+
+System.out.println(i1==i2);// false 浮点的值不是有限的
+System.out.println(i3==i4);// false
+```
+
+
+
+## 反射
+
+### 作用
+
+1. 在运行时判断任意一个对象所属的类；
+2. 在运行时获取类的对象；
+3. 在运行时访问java对象的属性，方法，构造方法等。
+
+
+
 ## Design Pattern
 
 ### Singleton
+
 定义，保证一个类仅有一个实例，并提供一个访问它的全局访问点。
 要点
 
 - 单例类必须要有一个 private 访问级别的构造函数，只有这样，才能确保单例不会在系统中的其他代码内被实例化;
 - instance 成员变量和 uniqueInstance 方法必须是 static 的。
-
 
 饿汉方式。指全局的单例实例在类装载时构建
 懒汉方式。指全局的单例实例在第一次被使用时构建。
@@ -459,14 +516,13 @@ Class Employee extends Person{}
 - Socket：网络上运行的程序之间双向通信链路的终结点，是TCP和UDP的基础，由IP和Port组成
 - Socket套接字
 - Socket原理机制
-  -  通信的两端都有Socket
-  -  数据在两个Socket间通过IO传输
-
--  针对网络通信的不同层次，Java提供了不同的API，其提供的网络功能有四大类
-  - InetAddress:用于标识网络上的硬件资源，主要是IP地址
-  - URL：统一资源定位符，通过URL可以直接读取或写入网络上的数据
-  - Sockets：使用TCP协议实现的网络通信Socket相关的类
-  - Datagram:使用UDP协议，将数据保存在用户数据报中，通过网络进行通信
+  - 通信的两端都有Socket
+  - 数据在两个Socket间通过IO传输
+- 针对网络通信的不同层次，Java提供了不同的API，其提供的网络功能有四大类
+- InetAddress:用于标识网络上的硬件资源，主要是IP地址
+- URL：统一资源定位符，通过URL可以直接读取或写入网络上的数据
+- Sockets：使用TCP协议实现的网络通信Socket相关的类
+- Datagram:使用UDP协议，将数据保存在用户数据报中，通过网络进行通信
 
 
 
@@ -505,67 +561,3 @@ Class Employee extends Person{}
 3. 服务器端接受若干段请求，创建socket与该客户建立专线连接
 4. 建立连接的两个socket在一个单独的线程上对话
 5. 服务器端继续等待新的连接
-
-
-
-
-
-
-
-## 反射
-
-### 作用
-
-1. 在运行时判断任意一个对象所属的类；
-2. 在运行时获取类的对象；
-3.  在运行时访问java对象的属性，方法，构造方法等。
-
-
-
-
-
-## 题目
-
-1. 
-
-```java
-Integer a = 1;
-Integer b = 2;
-Integer c = 3;
-Integer d = 3;
-Integer e = 321;
-Integer f = 321;
-Long g = 3L;
-Long h = 2L;
-
-System.out.println(c==d);// true 比较对象，指向cache
-System.out.println(e==f);// false 比较对象
-System.out.println(c==(a+b));// true 存在表达式，拆箱比较数值
-System.out.println(c.equals(a+b));// true 比较数值
-System.out.println(g==(a+b));// true 存在表达式，拆箱比较数值
-System.out.println(g.equals(a+b));// false a+b调用Integer.valueOf拆箱
-System.out.println(g.equals(a+h));// true a+h调用Long.valueOf向上转型
-```
-
-解析：
-
-- "=="运算符
-  - 两个操作数都是包装器类型的引用 =》比较地址
-  - 存在表达式 =》比较数值（自动拆箱）
-
-- equals()不会类型转换
-
-
-
-2. 
-
-```java
-Double i1 = 100.0;
-Double i2 = 100.0;
-Double i3 = 200.0;
-Double i4 = 200.0;
-
-System.out.println(i1==i2);// false 浮点的值不是有限的
-System.out.println(i3==i4);// false
-```
-
