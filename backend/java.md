@@ -239,7 +239,7 @@ equals() ：比较内容
 
 
 
-### ThreadPoolExecutor类
+### ThreadPoolExecutor
 
 - corePoolSize：默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务来之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中
 - maximumPoolSize：线程池最大线程数，表示在线程池中最多能创建多少个线程
@@ -247,31 +247,22 @@ equals() ：比较内容
 - unit：参数keepAliveTime的时间单位
 - workQueue：一个阻塞队列，用来存储等待执行的任务
 - threadFactory：线程工厂，主要用来创建线程
-- handler：超出线程范围和队列容量的任务的处理程序
+- handler：超出线程范围和队列容量的任务的处理程序，任务拒绝策略
+- poolSize：当前的线程数
+- mainLock：状态锁，对线程池状态（比如线程池大小，runState等）的改变都要使用这个锁
+- workers：用来存放工作集
+- allowCoreThreadTimeOut：是否允许为核心线程设置存活时间
+- largestPoolSize： 曾经出现过的最大线程数
+- completedTaskCount：执行完毕的任务个数
 
 ### 实现原理
 
 - 线程池状态
 - 任务的执行
-  - 如果当前线程池中的线程数目小于corePoolSize，则每来一个任务，就会创建一个线程去执行这个任务；
-  - 如果当前线程池中的线程数目>=corePoolSize，则每来一个任务，会尝试将其添加到任务缓存队列当中，若添加成功，则该任务会等待空闲线程将其取出去执行；若添加失败（一般来说是任务缓存队列已满），则会尝试创建新的线程去执行这个任务；
-  - 如果当前线程池中的线程数目达到maximumPoolSize，则会采取任务拒绝策略进行处理；
-  - 如果线程池中的线程数量大于  corePoolSize时，如果某线程空闲时间超过keepAliveTime，线程将被终止，直至线程池中的线程数目不大于corePoolSize；如果允许为核心池中的线程设置存活时间，那么核心池中的线程空闲时间超过keepAliveTime，线程也会被终止。
-
-```java
-private final BlockingQueue<Runnable> workQueue; //任务缓存队列，用来存放等待执行的任务
-private final ReentrantLock mainLock = new ReentrantLock(); //线程池的主要状态锁，对线程池状态（比如线程池大小，runState等）的改变都要使用这个锁
-private final HashSet<Worker> workers = new HashSet<Worker>(); //用来存放工作集
-private volatile long  keepAliveTime; //线程存货时间   
-private volatile boolean allowCoreThreadTimeOut; //是否允许为核心线程设置存活时间
-private volatile int corePoolSize; //核心池的大小（即线程池中的线程数目大于这个参数时，提交的任务会被放进任务缓存队列）
-private volatile int maximumPoolSize; //线程池最大能容忍的线程数
-private volatile int poolSize; //线程池中当前的线程数
-private volatile RejectedExecutionHandler handler; //任务拒绝策略
-private volatile ThreadFactory threadFactory; //线程工厂，用来创建线程
-private int largestPoolSize; //用来记录线程池中曾经出现过的最大线程数
-private long completedTaskCount; //用来记录已经执行完毕的任务个数
-```
+  - 线程池线程数 < corePoolSize，来一个任务，就创建一个线程去执行这个任务
+  - 线程池线程数 >= corePoolSize，来一个任务，尝试将它添加到任务缓存队列，如果添加成功，就等待空闲线程将它取出，否则（一般是任务缓存队列满了），就会尝试创建新线程执行这个任务
+  - 线程池线程数 = maximumPoolSize，采取任务拒绝策略
+  - 线程池线程数 > corePoolSize，如果线程空闲时间超过keepAliveTime，就会被终止，直到 线程池线程数 < corePoolSize
 
 - 线程池中的线程初始化
 
@@ -289,8 +280,8 @@ ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
 ```
 
 - 线程池的关闭
-  - shutdown()：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务
-  - shutdownNow()：立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务
+  - shutdown()：不会立即终止线程池，等缓存队列中的任务执行完才终止，且不接受新任务
+  - shutdownNow()：立即终止线程池，尝试打断正在执行的任务，清空任务缓存队列，返回尚未执行的任务
 
 - 线程池容量的动态调整
 
