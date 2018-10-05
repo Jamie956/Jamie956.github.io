@@ -264,7 +264,7 @@ EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~
 
 - system program problem detected
 
-```rm -rf /var/crash/*```
+```sudo rm -rf /var/crash/*```
 
 or
 
@@ -276,15 +276,10 @@ or
 
 ```shell
 df -h /boot // 查看 /boot
-
 dpkg --get-selections |grep linux-image // 查看系统安装的内核镜像
-
 uname -r //查看本机系统的内核版本
-
 sudo apt-get remove [image] [image] ... //卸载
-
 sudo dpkg -P [image] [image] ... //删除相应的配置信息
-
 ```
 
 
