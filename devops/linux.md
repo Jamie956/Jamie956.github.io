@@ -1,25 +1,6 @@
-### 解压文件
-```
-tar -xjvf yourdownload.tar.bz2
-```
+## 设置环境变量
 
-### Set path
 ```
-//nodejs
-sudo nano /etc/profile
-export NODE_HOME=/home/jamie/node-v8.11.3-linux-x64
-export PATH=$NODE_HOME/bin:$PATH
-source /etc/profile
-echo $PATH
-
-//maven
-sudo nano /etc/profile
-export MAVEN_HOME=/home/jamie/apache-maven-3.5.3
-export PATH=$MAVEN_HOME/bin:$PATH
-source /etc/profile
-echo $PATH
-
-//jdk
 sudo nano /etc/profile
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
@@ -27,21 +8,30 @@ source /etc/profile
 echo $PATH
 ```
 
-### 关闭占用端口的程序
+
+
+## 关闭占用端口的程序
+
 ```
 netstat -an //查看全部端口
 netstat -tunlp |grep 8082 //查找8082端口的进程ID
 kill -9 3383 //终止进程ID3382
 ```
 
-### 搜狗输入法选词框乱码
+
+
+## 搜狗输入法选词框乱码
+
 ```
 cd ~/.config
 sudo rm -rf SogouPYsogou*
 ```
 重启系统
 
-### 执行shell文件
+
+
+## Shell
+
 ```
 touch hello.sh //创建sh文件
 chmod u+x hello.sh //设置可执行权限
@@ -50,7 +40,10 @@ sh hello.sh //excute sh
 . hello.sh //execute sh, !important use for "export" command
 ```
 
-### wget命令下载
+
+
+## wget
+
 ```
 wget url
     -b：后台下载，Wget默认的是把文件下载到当前目录
@@ -62,14 +55,20 @@ wget url
 wget -b -P <output path> <url>
 ```
 
-### nano
+
+
+## nano
+
 ```
 ctrl + k //删除一行
 Ctrl + a //光标到行首
 Ctrl + e //光标到行尾
 ```
 
-### Groups
+
+
+## Groups
+
 ```
 groups //show all groups
 groupadd –g 888 users //create a groups users, GID 888
@@ -78,9 +77,13 @@ gpasswd –d user1 users //remove user1 from groups users
 sudo groupdel users //delete groups users
 ```
 
-#### Command
+
+
+## Command
+
+### path
+
 ```
-===path===
 pwd //当前位置
 ls //list
 ls <dir>
@@ -93,8 +96,13 @@ cd //到路径/home/user
 cd - //到上一个路径
 cd <path> //到某个路径下
 cd .. //上一级目录
+```
 
-===others===
+
+
+### others
+
+```
 clear //清空terminal
 exit //退出terminal
 history //查看执行过的命令
@@ -108,14 +116,34 @@ visudo //编辑权限文件
 
 chmod -R 777 PWD //设置权限
 
-===dir===
+type <command> //查看执行命令所在路径
+
+sudo adduser <name>
+
+ssh -i ~/Documents/your.pem ubuntu@<ip> //ssh连接服务器
+scp -i your.pem src ubuntu@<ip>:target //上传单个文件
+df -h //查看磁盘
+
+tar -xjvf yourdownload.tar.bz2 //解压文件
+```
+
+
+
+### dir
+
+```
 mkdir dir1 dir2 dir3 //创建文件夹
 rm -rf <dir> (or rm -r <dir>) //强制删除文件夹
 mv <dir> <dir2> //文件夹重命名
 file [file/dir] //查看文件或文件夹属性
 mv <dir> <dir2> //移动文件夹
+```
 
-===file===
+
+
+### file
+
+```
 touch <filename> //创建文件 
 rm <file> ( or rm -f <file> ) //删除文件
 nano <file> //编辑文件
@@ -132,27 +160,37 @@ tail -n <x> <file> //获取文件最后x行内容
 grep <keyword> <file> //模糊查找制定文件
 grep -c <keyword> <file> //计算指定文件的关键字个数
 ls | grep <keyword> //当前目录模糊查找
-
-===command===
-type <command> //查看执行命令所在路径
-
-===user===
-sudo adduser <name>
-
 ```
 
-#### Install
-```
-===fast===
-cp /etc/apt/sources.list /etc/apt/sources.list.backup
-echo ""> sources.list
-apt-get update
 
-===install===
+
+## Install
+
+### 国内下载加速
+
+1. 备份sources.list
+
+   ```cp /etc/apt/sources.list /etc/apt/sources.list.bak```
+
+2. 写入源
+
+   ```echo ""> sources.list```
+
+3. 更新
+
+   ```apt-get update```
+
+
+
+### 安装步骤
+
+```
 apt-get update
 apt install <app>
+```
 
-===app===
+
+
 docker
 docker-compose
 nginx
@@ -162,23 +200,11 @@ openssh-server: connect
 openjdk-8-jdk
 make
 gparted //磁盘管理工具
-```
 
-#### Error
-```
-Q: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
-A: sudo rm /var/cache/apt/archives/lock
-sudo rm /var/lib/dpkg/lock
 
-Q: Error writing docker: Permission denied
-A: sudo nano <file>
 
-Failed to fetch cdrom://Ubuntu-Server 16.04.3 LTS _Xenial Xerus_ - Release amd64 (20170801)/dists/xenial/main/binary-amd64/Packages
-nano /etc/apt/sources.list
-comment or remove lines that include cdrom => deb cdrom:[Ubuntu-Server 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.3)]/ xenial main restricted
-```
+## Makefile
 
-#### Makefile
 ```
 touch hello
 hello:
@@ -190,25 +216,25 @@ make -f hello say2
 
 ===error===
 q:Makefile:4: *** missing separator.  Stop.
-a:2 space to tab
+a:space -> tab
 ```
 
-### Shortcut
+
+
+## Shortcut
+
 ```
 ctrl+alt+t //打开terminal
 ctrl+shift+t //新建一个terminal tab
 ctrl+h //显示隐藏文件
-```
 
-### 
-```
-ssh -i ~/Documents/your.pem ubuntu@<ip> //ssh连接服务器
-scp -i your.pem src ubuntu@<ip>:target //上传单个文件
-df -h //查看磁盘
 
 ```
 
-### win10 ubuntu 双系统
+
+
+## Win10 & Ubuntu 双系统
+
 ```
 win +x => 磁盘管理 => 压缩卷 => 51200M  =>未分配
 禁用快速启动 //"选择电源按钮的功能" ->"更改当前不可用的设置" ->取消选择"启用快速启动"
@@ -234,7 +260,19 @@ EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~
 
 
 
-# Ubuntu /boot 空间不足
+## Problem
+
+- system program problem detected
+
+```rm -rf /var/crash/*```
+
+or
+
+```gedit /etc/default/apport -> enabled=0```
+
+
+
+- /boot 空间不足
 
 ```shell
 df -h /boot // 查看 /boot
@@ -251,3 +289,7 @@ sudo dpkg -P [image] [image] ... //删除相应的配置信息
 
 
 
+- Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
+
+```sudo rm /var/cache/apt/archives/lock```
+```sudo rm /var/lib/dpkg/lock```
