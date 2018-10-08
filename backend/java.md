@@ -152,14 +152,15 @@ int rs = i.intValue();
 
 ### API
 
-```string.toUpperCase();``` 大写
-```string.toLowerCase();``` 大写
-```str1.contains(str2)``` 是否包含
-```str.indexOf(key)``` 根据key获取索引
-```str.split(";");``` String -> Array
-```String.join(" + ", array);``` Array -> String
-```string1.concat(string2)```
-
+```
+string.toUpperCase(); 大写
+string.toLowerCase(); 大写
+str1.contains(str2) 是否包含
+str.indexOf(key) 根据key获取索引
+str.split(";"); String -> Array
+String.join(" + ", array); Array -> String
+string1.concat(string2) 连接字符串
+```
 
 
 

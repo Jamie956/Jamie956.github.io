@@ -20,6 +20,8 @@ git push origin master
 git clone -b dev http://github/jamie/xx-cms.git
 从dev 分支拉取
 git pull http://github/jamie/xx-cms.git dev
+
+git log //查看历史commit记录
 ```
 
 ### SSH
