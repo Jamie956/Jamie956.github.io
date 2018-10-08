@@ -26,6 +26,10 @@ git log //List history of commit
 git checkout -b <branch> //New branch & Checkout branch
 git branch <branch> //New branch
 git checkout <branch> //Checkout branch
+
+git merge <branch> //合并指定branch到当前branch
+
+git branch -d <branch> //删除branch
 ```
 
 ### SSH
