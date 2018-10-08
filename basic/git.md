@@ -1,12 +1,18 @@
 ### Command
 ```
-git status
+git clone git@github.com:Jamie956/test-git.git //SSH clone repo, default brench master
+git clone -b dev git@github.com:Jamie956/test-git.git //SSH clone repo, from brench dev
 
-git clone <url>
+git status //1.Current branch 2.Is up-to-date 3.Which commit
+
+git fetch //up-to-date from remote
 git fetch <url>
+
+git pull //Pull repo
+git pull <url>
 git pull <url> <branch>
 
-git commit -m "<msg>" -a
+git commit -a -m "<balabala>" 
 git commit -m "<msg>" <file>
 
 git add <file>
@@ -15,13 +21,11 @@ git add .
 git push
 git push origin master
 
-===example===
-从dev 分支克隆
-git clone -b dev http://github/jamie/xx-cms.git
-从dev 分支拉取
-git pull http://github/jamie/xx-cms.git dev
+git log //List history of commit
 
-git log //查看历史commit记录
+git checkout -b <branch> //New branch & Checkout branch
+git branch <branch> //New branch
+git checkout <branch> //Checkout branch
 ```
 
 ### SSH
