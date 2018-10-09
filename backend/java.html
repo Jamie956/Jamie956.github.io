@@ -280,19 +280,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.3" data-path="spring.html">
-            
-                <a href="spring.html">
-            
-                    
-                    Spring
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -888,74 +875,110 @@ Integer rs = Integer.valueOf(i);
 </tbody>
 </table>
 <h3 id="api">API</h3>
-<p><code>string.toUpperCase();</code> &#x5927;&#x5199;
-<code>string.toLowerCase();</code> &#x5927;&#x5199;
-<code>str1.contains(str2)</code> &#x662F;&#x5426;&#x5305;&#x542B;
-<code>str.indexOf(key)</code> &#x6839;&#x636E;key&#x83B7;&#x53D6;&#x7D22;&#x5F15;
-<code>str.split(&quot;;&quot;);</code> String -&gt; Array
-<code>String.join(&quot; + &quot;, array);</code> Array -&gt; String</p>
-<pre><code class="lang-string1.concat(string2)```">
-
-
-
-## &#x63A5;&#x53E3;/&#x62BD;&#x8C61;&#x7C7B;
-
-|      | &#x63A5;&#x53E3;               | &#x62BD;&#x8C61;&#x7C7B;               |
-| ---- | ------------------ | -------------------- |
-| &#x65B9;&#x6CD5; | &#x62BD;&#x8C61;               | &#x62BD;&#x8C61;/&#x975E;&#x62BD;&#x8C61;          |
-| &#x53D8;&#x91CF; | final              |                      |
-|      | &#x4E00;&#x4E2A;&#x7C7B;&#x5B9E;&#x73B0;&#x591A;&#x4E2A;&#x63A5;&#x53E3; | &#x4E00;&#x4E2A;&#x7C7B;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B; |
-|      | &#x7C7B;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x6240;&#x6709;&#x65B9;&#x6CD5; | &#x4E0D;&#x4E00;&#x5B9A;               |
-|      | &#x4E0D;&#x80FD;&#x7528; new &#x5B9E;&#x4F8B;&#x5316;  |                      |
-|      | &#x884C;&#x4E3A;&#x89C4;&#x8303;           | &#x6A21;&#x677F;&#x8BBE;&#x8BA1;             |
-
-
-
-## &#x53D8;&#x91CF;
-
-|          | &#x6210;&#x5458;&#x53D8;&#x91CF;                           | &#x5C40;&#x90E8;&#x53D8;&#x91CF;                 |
-| -------- | ---------------------------------- | ------------------------ |
-|          | &#x5C5E;&#x4E8E;&#x7C7B;                             | &#x5728;&#x65B9;&#x6CD5;&#x4E2D;&#x5B9A;&#x4E49;/&#x53C2;&#x6570;        |
-| &#x4FEE;&#x9970;     | &#x88AB; public,private,static &#x4FEE;&#x9970;      | &#x53EA;&#x6709;final&#x4FEE;&#x9970;            |
-| &#x5B58;&#x50A8;     | &#x662F;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x800C;&#x5BF9;&#x8C61;&#x5B58;&#x5728;&#x4E8E;&#x5806;&#x5185;&#x5B58; | &#x5B58;&#x5728;&#x4E8E;&#x6808;&#x5185;&#x5B58;             |
-| &#x751F;&#x5B58;&#x65F6;&#x95F4; | &#x968F;&#x7740;&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#x800C;&#x5B58;&#x5728;               | &#x968F;&#x7740;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x800C;&#x81EA;&#x52A8;&#x6D88;&#x5931; |
-|          | &#x4EE5;&#x7C7B;&#x578B;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x800C;&#x8D4B;&#x503C;               | &#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x8D4B;&#x503C;             |
-
-
-
-## &#x6784;&#x9020;&#x65B9;&#x6CD5;
-
-1. &#x540D;&#x5B57;&#x4E0E;&#x7C7B;&#x540D;&#x76F8;&#x540C;
-2. &#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4E0D;&#x80FD;&#x7528;void&#x58F0;&#x660E;
-3. &#x751F;&#x6210;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#x81EA;&#x52A8;&#x6267;&#x884C;&#xFF0C;&#x65E0;&#x9700;&#x8C03;&#x7528;
-
-
-
-## == &amp; equal
-
-==&#xFF1A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6BD4;&#x8F83;&#x503C;&#xFF0C;&#x5F15;&#x7528;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6BD4;&#x8F83;&#x5185;&#x5B58;&#x5730;&#x5740;
-
-equals() &#xFF1A;&#x6BD4;&#x8F83;&#x5185;&#x5BB9;
-
-
-
-## **&#x7EBF;&#x7A0B;**
-
-### &#x5B9A;&#x4E49;
-
-&#x5728;&#x8FDB;&#x7A0B;&#x4E2D;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x7684;&#x5B50;&#x4EFB;&#x52A1;
-
-&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5728;&#x5176;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EF;&#x4EE5;&#x4EA7;&#x751F;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x5176;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x548C;&#x8D44;&#x6E90;&#xFF08;&#x5171;&#x4EAB;&#x7684;&#x5185;&#x5B58;&#x662F;&#x5806;&#x5185;&#x5B58;&#x548C;&#x65B9;&#x6CD5;&#x533A;&#x5185;&#x5B58;&#xFF0C;&#x6808;&#x5185;&#x5B58;&#x4E0D;&#x5171;&#x4EAB;&#xFF09;&#xFF0C;&#x76F8;&#x6BD4;&#x8FDB;&#x7A0B;&#xFF0C;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5207;&#x6362;&#x6548;&#x7387;&#x8F83;&#x9AD8;
-
-
-
-### &#x751F;&#x547D;&#x5468;&#x671F;
-
-1. **&#x65B0;&#x5EFA;(new)**&#xFF1A;&#x521B;&#x5EFA;Thread&#x5B9E;&#x4F8B;&#x65F6;&#xFF0C;&#x6B64;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x65B0;&#x5EFA;&#x72B6;&#x6001;&#xFF08;&#x672A;&#x88AB;&#x542F;&#x52A8;&#xFF09;
-
-   ```Thread t1 = new Thread();
-</code></pre>
+<pre><code>string.toUpperCase(); &#x5927;&#x5199;
+string.toLowerCase(); &#x5927;&#x5199;
+str1.contains(str2) &#x662F;&#x5426;&#x5305;&#x542B;
+str.indexOf(key) &#x6839;&#x636E;key&#x83B7;&#x53D6;&#x7D22;&#x5F15;
+str.split(&quot;;&quot;); String -&gt; Array
+String.join(&quot; + &quot;, array); Array -&gt; String
+string1.concat(string2) &#x8FDE;&#x63A5;&#x5B57;&#x7B26;&#x4E32;
+</code></pre><h2 id="&#x63A5;&#x53E3;&#x62BD;&#x8C61;&#x7C7B;">&#x63A5;&#x53E3;/&#x62BD;&#x8C61;&#x7C7B;</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>&#x63A5;&#x53E3;</th>
+<th>&#x62BD;&#x8C61;&#x7C7B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x65B9;&#x6CD5;</td>
+<td>&#x62BD;&#x8C61;</td>
+<td>&#x62BD;&#x8C61;/&#x975E;&#x62BD;&#x8C61;</td>
+</tr>
+<tr>
+<td>&#x53D8;&#x91CF;</td>
+<td>final</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x4E00;&#x4E2A;&#x7C7B;&#x5B9E;&#x73B0;&#x591A;&#x4E2A;&#x63A5;&#x53E3;</td>
+<td>&#x4E00;&#x4E2A;&#x7C7B;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x7C7B;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x6240;&#x6709;&#x65B9;&#x6CD5;</td>
+<td>&#x4E0D;&#x4E00;&#x5B9A;</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x4E0D;&#x80FD;&#x7528; new &#x5B9E;&#x4F8B;&#x5316;</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x884C;&#x4E3A;&#x89C4;&#x8303;</td>
+<td>&#x6A21;&#x677F;&#x8BBE;&#x8BA1;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x53D8;&#x91CF;">&#x53D8;&#x91CF;</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>&#x6210;&#x5458;&#x53D8;&#x91CF;</th>
+<th>&#x5C40;&#x90E8;&#x53D8;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>&#x5C5E;&#x4E8E;&#x7C7B;</td>
+<td>&#x5728;&#x65B9;&#x6CD5;&#x4E2D;&#x5B9A;&#x4E49;/&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td>&#x4FEE;&#x9970;</td>
+<td>&#x88AB; public,private,static &#x4FEE;&#x9970;</td>
+<td>&#x53EA;&#x6709;final&#x4FEE;&#x9970;</td>
+</tr>
+<tr>
+<td>&#x5B58;&#x50A8;</td>
+<td>&#x662F;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x800C;&#x5BF9;&#x8C61;&#x5B58;&#x5728;&#x4E8E;&#x5806;&#x5185;&#x5B58;</td>
+<td>&#x5B58;&#x5728;&#x4E8E;&#x6808;&#x5185;&#x5B58;</td>
+</tr>
+<tr>
+<td>&#x751F;&#x5B58;&#x65F6;&#x95F4;</td>
+<td>&#x968F;&#x7740;&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#x800C;&#x5B58;&#x5728;</td>
+<td>&#x968F;&#x7740;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x800C;&#x81EA;&#x52A8;&#x6D88;&#x5931;</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x4EE5;&#x7C7B;&#x578B;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x800C;&#x8D4B;&#x503C;</td>
+<td>&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x8D4B;&#x503C;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x6784;&#x9020;&#x65B9;&#x6CD5;">&#x6784;&#x9020;&#x65B9;&#x6CD5;</h2>
 <ol>
+<li>&#x540D;&#x5B57;&#x4E0E;&#x7C7B;&#x540D;&#x76F8;&#x540C;</li>
+<li>&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4E0D;&#x80FD;&#x7528;void&#x58F0;&#x660E;</li>
+<li>&#x751F;&#x6210;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#x81EA;&#x52A8;&#x6267;&#x884C;&#xFF0C;&#x65E0;&#x9700;&#x8C03;&#x7528;</li>
+</ol>
+<h2 id="-equal">== &amp; equal</h2>
+<p>==&#xFF1A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6BD4;&#x8F83;&#x503C;&#xFF0C;&#x5F15;&#x7528;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6BD4;&#x8F83;&#x5185;&#x5B58;&#x5730;&#x5740;</p>
+<p>equals() &#xFF1A;&#x6BD4;&#x8F83;&#x5185;&#x5BB9;</p>
+<h2 id="&#x7EBF;&#x7A0B;"><strong>&#x7EBF;&#x7A0B;</strong></h2>
+<h3 id="&#x5B9A;&#x4E49;">&#x5B9A;&#x4E49;</h3>
+<p>&#x5728;&#x8FDB;&#x7A0B;&#x4E2D;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x7684;&#x5B50;&#x4EFB;&#x52A1;</p>
+<p>&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5728;&#x5176;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EF;&#x4EE5;&#x4EA7;&#x751F;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x5176;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x548C;&#x8D44;&#x6E90;&#xFF08;&#x5171;&#x4EAB;&#x7684;&#x5185;&#x5B58;&#x662F;&#x5806;&#x5185;&#x5B58;&#x548C;&#x65B9;&#x6CD5;&#x533A;&#x5185;&#x5B58;&#xFF0C;&#x6808;&#x5185;&#x5B58;&#x4E0D;&#x5171;&#x4EAB;&#xFF09;&#xFF0C;&#x76F8;&#x6BD4;&#x8FDB;&#x7A0B;&#xFF0C;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5207;&#x6362;&#x6548;&#x7387;&#x8F83;&#x9AD8;</p>
+<h3 id="&#x751F;&#x547D;&#x5468;&#x671F;">&#x751F;&#x547D;&#x5468;&#x671F;</h3>
+<ol>
+<li><p><strong>&#x65B0;&#x5EFA;(new)</strong>&#xFF1A;&#x521B;&#x5EFA;Thread&#x5B9E;&#x4F8B;&#x65F6;&#xFF0C;&#x6B64;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x65B0;&#x5EFA;&#x72B6;&#x6001;&#xFF08;&#x672A;&#x88AB;&#x542F;&#x52A8;&#xFF09;</p>
+<p><code>Thread t1 = new Thread();</code></p>
+</li>
 <li><p><strong>&#x5C31;&#x7EEA;(runnable)</strong>&#xFF1A;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x88AB;&#x542F;&#x52A8;&#xFF0C;&#x6B63;&#x5728;&#x7B49;&#x5F85;&#x88AB;&#x5206;&#x914D;&#x7ED9;CPU&#x65F6;&#x95F4;&#x7247;&#xFF0C;&#x6B64;&#x65F6;&#x7EBF;&#x7A0B;&#x6B63;&#x5728;&#x5C31;&#x7EEA;&#x961F;&#x5217;&#x4E2D;&#x6392;&#x961F;&#x7B49;&#x5019;&#x5F97;&#x5230;CPU&#x8D44;&#x6E90;</p>
 <p><code>t1.start();</code></p>
 </li>
@@ -1732,7 +1755,7 @@ run(){
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.4.1","depth":2,"next":{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},"previous":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.1.2","depth":3,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]},{"title":"Spring","level":"1.4.1.3","depth":3,"path":"backend/spring.md","ref":"backend/spring.md","articles":[]}]},{"title":"MongoDB","level":"1.4.2","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.3","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.4","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"backend/java.md","mtime":"2018-10-04T12:39:34.105Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-05T07:39:22.201Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.4.1","depth":2,"next":{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},"previous":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.1.2","depth":3,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]}]},{"title":"MongoDB","level":"1.4.2","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.3","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.4","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"backend/java.md","mtime":"2018-10-08T03:45:50.972Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-08T03:38:11.133Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
