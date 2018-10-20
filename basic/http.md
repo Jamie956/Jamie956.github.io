@@ -116,7 +116,7 @@ MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图�
 
 
 
-## 返回结果的HTTP状态码
+## 状态码
 
 |      | 类别          | 原因短语                         |
 | ---- | ------------- | -------------------------------- |
@@ -140,19 +140,25 @@ MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图�
 
 303 See Other：表示对应的资源存在另一个URI，应使用GET获取请求资源
 
+400 Bad Request：表示请求报文中存在语法错误
 
+401 Unauthorized：表示发送的请求需要通过HTTP认证
 
+403 Forbidden：表示请求资源的访问被服务器拒绝
 
+404 Not Found：表示服务器上无法找到请求的资源
 
+500 Internal Server Error：表示服务器执行请求时发生错误
 
-
-
+503 Service Unavailable：服务器暂时处于超负载或进行停机维护，无法处理请求
 
 
 
 
 
 ## 与HTTP协作的Web服务器
+
+
 
 
 
