@@ -6,6 +6,7 @@
     * [Data Structures](basic/data-structures.md)
     * [Algorithms](basic/algorithms.md)
     * [Http](basic/http.md)
+    * [RESTful](basic/restful.md)
 * [Frontend](frontend/README.md)
     * [NodeJS](frontend/nodejs.md)
 * [Backend](backend/README.md)
