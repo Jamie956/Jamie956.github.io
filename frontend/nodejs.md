@@ -198,60 +198,47 @@ bind/call/apply
 
 
 
-## npm version
-```
-major: 主版本号
-premajor: 预备主版本
-minor: 次版本号
-preminor: 预备次版本
-patch: 修订号
-prepatch: 预备修订版
-prerelease: 预发布版本
-```
+## npm
+
+### version
 
 ```
-version 0.1.0
-npm version preminor //v0.1.0-0
-npm version minor //v0.1.0
-npm version prepatch //v0.1.1-0
-npm version patch //v0.1.1
-npm version prerelease //v0.1.2-0
-npm version premajor //v1.0.0-0
-npm version major //v1.0.0
+设version 0.1.0
+npm version major //v1.0.0 主版本号
+npm version premajor //v1.0.0-0 预备主版本
+npm version minor //v0.1.0 次版本号
+npm version preminor //v0.1.0-0 预备次版本
+npm version patch //v0.1.1 修订号
+npm version prepatch //v0.1.1-0 预备修订版
+npm version prerelease //v0.1.2-0 预发布版本
 ```
 
-### npm command
+### 常用命令
+
 ```
-===npm===
-npm -v
-npm config list
-npm install <lib>
-npm install <lib>@<version>
-npm install <lib> -g
-npm install --save <lib>
-npm install -S <lib>
-npm i --save-dev <lib>
-npm install -D <lib>
-npm install
-npm init
-npm init -y
-npm ls
-npm ls <lib>
-npm remove <lib>
-npm update <lib>
-npm root
-npm root -g
-npm uninstall <lib> --save
-npm view <lib> versions
+npm -v //查看node版本
+npm config list //查看node配置
+npm root //查看node_modules目录
+npm root -g //查看全局node_modules目录
 
-npm run <scripts key>
-npm i
+npm i <module> //安装最新模块
+npm i //安装package.json里的模块
+npm i -g <module> //全局安装模块
+npm i -S <module> //安装模块到dependencies
+npm i -D <lib> //安装模块到dev-dependencies
+npm remove <module> //移除模块
+npm update <module> //更新模块
+npm view <module> //查看模块信息
+npm view <module> versions //查看模块历史版本
 
-===package===
-watch node ->
-npm i nodemon -g
+npm init //生成package.json
+npm init -y //生成package.json并设置默认值
 
-===
-npm view react
-npm i react@15.6.1
+npm run <script> //运行package.json里scripts定义好的命令
 ```
+
+
+
+### 常用模块
+
+- nodemon：运行实时更新
