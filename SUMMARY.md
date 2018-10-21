@@ -7,7 +7,6 @@
     * [Algorithms](basic/algorithms.md)
     * [Http](basic/http.md)
 * [Frontend](frontend/README.md)
-    * [NPM](frontend/npm.md)
     * [NodeJS](frontend/nodejs.md)
 * [Backend](backend/README.md)
     * [Java](backend/java.md)
