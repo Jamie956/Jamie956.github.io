@@ -14,6 +14,7 @@
         * [Maven](backend/maven.md)
         * [Concurrency](backend/concurrency.md)
         * [Spring](backend/spring.md)
+    * [Architecture](backend/architecture.md)
     * [MongoDB](backend/mongodb.md)
     * [Mysql](backend/mysql.md)
     * [Redis](backend/redis.md)
