@@ -1,4 +1,5 @@
-# Command
+## Command
+
 ```
 ===basic===
 start server => redis-server.exe redis.windows.conf
@@ -56,7 +57,8 @@ HMSET <hash> [<key> <val> …]
 HVALS <hash>
 ```
 
-# Error
+## Error
+
 ```
 Q:Creating Server TCP listening socket 127.0.0.1:6379: bind: No error
 A:
@@ -65,3 +67,61 @@ shutdown
 exit
 redis-server.exe
 ```
+
+
+
+
+
+## 特点
+
+- 数据存储在内存，高速读写
+- 多种数据类型
+- 提供了 AOF 和 RDB 两种数据的持久化保存方式，保证了 Redis 重启后数据不丢失
+- 所有操作都是原子性的，还支持对几个操作合并后的原子性操作，支持事务
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
