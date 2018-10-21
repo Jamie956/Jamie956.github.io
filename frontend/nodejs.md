@@ -112,14 +112,13 @@ Common Module Definition
 
 
 
-## 应用
+## 应用场景
 
-- 大前端开发
-- Web应用
-- 封装API
-- 组装RPC服务
-- PC客户端
-- 微服务
+- 前端：react\vue\angular、应用实践、架构
+- 后端：核心特性、Web应用、微服务、封装API、组装RPC服务、测试、部署
+
+- 跨平台：前端、移动端、PC端（electron）
+- 工具：预编译、webpack、工程化
 
 
 
@@ -143,7 +142,7 @@ Common Module Definition
 
 
 
-## WHAT
+## NODEJS是什么
 
 Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
 
@@ -190,13 +189,15 @@ bind/call/apply
 
 ## 相关书籍
 
-《JavaScript设计模式》
+《JavaScript设计模式》：未看
 
-《JavaScript权威指南》
+《JavaScript权威指南》：没看完
 
+《Node.js in action》：看完
 
+《深入浅出Node.js》:未看
 
-
+《了不起的Node.js》：未看
 
 ## npm
 
@@ -242,3 +243,116 @@ npm run <script> //运行package.json里scripts定义好的命令
 ### 常用模块
 
 - nodemon：运行实时更新
+
+
+
+## 异步流程
+
+- Error-first Callback
+
+```js
+function(err, res) {
+    // process the error and result
+}
+```
+
+- EventEmitter
+
+```js
+var EventEmitter = require('events')
+var util = require('util')
+
+var MyEmitter = function () {
+
+}
+
+util.inherits(MyEmitter, EventEmitter)
+
+const myEmitter = new MyEmitter();
+
+myEmitter.on('event', (a, b) => {
+    console.log(a, b, this);
+});
+
+myEmitter.emit('event', 'a', 'b');
+```
+
+- Promise
+
+```js
+new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+  if (/* everything turned out fine */) {
+    resolve("Stuff worked!");
+  }
+  else {
+    reject(Error("It broke"));
+  }
+}).then(function(text){
+    console.log(text)// Stuff worked!
+    return Promise.reject(new Error('my error'))
+}).catch(function(err){
+    console.log(err)
+})
+```
+
+
+
+- Async/Await
+
+```js
+async (ctx, next) => {
+    try {
+        let students = await Student.getAllAsync();
+
+        await ctx.render('students/index', {
+            students : students
+        })
+    } catch (err) {
+        return ctx.api_error(err);
+    }
+};
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
