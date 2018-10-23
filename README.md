@@ -18,8 +18,8 @@
 
 ```js
 npm i
-npm run bok-in
-npm run build
+npm run ins
+npm run ini
 npm run serve
 npm run sync
 ```
