@@ -221,6 +221,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.2" data-path="../frontend/nginx.html">
+            
+                <a href="../frontend/nginx.html">
+            
+                    
+                    Nginx
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -635,19 +648,21 @@
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
 <li><div><a href="#command">Command</a><i></i></div></li>
 <li><div><a href="#ssh">SSH</a><i></i></div></li>
+<li><div><a href="#gitlab-pages-deploy-gitbook">Gitlab Pages Deploy Gitbook</a><i></i></div></li>
+<li><div><a href="#gitlab-&#x540C;&#x6B65;push&#x5230;github">Gitlab &#x540C;&#x6B65;push&#x5230;Github</a><i></i></div></li>
 </ul>
 </div>
 
 <h3 id="command">Command</h3>
-<pre><code>git clone git@github.com:Jamie956/test-git.git //SSH clone repo, default brench master
-git clone -b dev git@github.com:Jamie956/test-git.git //SSH clone repo, from brench dev
+<pre><code>git clone git@github.com:Jamie956/test-git.git //SSH&#x514B;&#x9686;&#xFF0C;&#x9ED8;&#x8BA4;master
+git clone -b dev git@github.com:Jamie956/test-git.git //SSH&#x514B;&#x9686;dev&#x5206;&#x652F;
 
 git status //1.Current branch 2.Is up-to-date 3.Which commit
 
 git fetch //up-to-date from remote
 git fetch &lt;url&gt;
 
-git pull //Pull repo
+git pull //&#x62C9;&#x53D6;&#x65B0;&#x7684;commit
 git pull &lt;url&gt;
 git pull &lt;url&gt; &lt;branch&gt;
 
@@ -660,7 +675,7 @@ git add .
 git push
 git push origin master
 
-git log //List history of commit
+git log //commit&#x8BB0;&#x5F55;
 
 git checkout -b &lt;branch&gt; //New branch &amp; Checkout branch
 git branch &lt;branch&gt; //New branch
@@ -685,6 +700,69 @@ git branch -d &lt;branch&gt; //&#x5220;&#x9664;branch
 git config --global user.email &quot;your@eamil.com&quot;
 </code></pre>
 </li>
+</ol>
+<h3 id="gitlab-pages-deploy-gitbook">Gitlab Pages Deploy Gitbook</h3>
+<ol>
+<li><p>&#x65B0;&#x5EFA;&#x9879;&#x76EE;</p>
+</li>
+<li><p>&#x521B;&#x5EFA;.gitlab-ci.yml</p>
+<pre><code class="lang-yml"><span class="hljs-attr">image:</span> node:<span class="hljs-number">8.9</span>
+
+<span class="hljs-attr">cache:</span>
+<span class="hljs-attr">  paths:</span>
+<span class="hljs-bullet">    -</span> node_modules/
+
+<span class="hljs-attr">before_script:</span>
+<span class="hljs-bullet">  -</span> npm install gitbook-cli -g
+<span class="hljs-bullet">  -</span> gitbook install
+
+<span class="hljs-attr">pages:</span>
+<span class="hljs-attr">  stage:</span> deploy
+<span class="hljs-attr">  script:</span>
+<span class="hljs-bullet">    -</span> gitbook build . public
+<span class="hljs-attr">  artifacts:</span>
+<span class="hljs-attr">    paths:</span>
+<span class="hljs-bullet">      -</span> public
+<span class="hljs-attr">    expire_in:</span> <span class="hljs-number">1</span> week
+<span class="hljs-attr">  only:</span>
+<span class="hljs-bullet">    -</span> master
+</code></pre>
+</li>
+<li><p>Gitlab&#x9879;&#x76EE;&#x4E3B;&#x9875; -&gt; CI/CD -&gt; Pipelines -&gt; Run Pipeline</p>
+</li>
+<li><p>&#x67E5;&#x770B;&#x90E8;&#x7F72;&#x5730;&#x5740;&#xFF1A;Settings -&gt; Pages</p>
+</li>
+</ol>
+<p>&#x8865;&#x5145;&#xFF1A;</p>
+<ul>
+<li>fork&#x7684;&#x9879;&#x76EE;&#x9700;&#x8981;&#x89E3;&#x9664;fork relationship&#xFF0C;&#x6B65;&#x9AA4;&#xFF1A;Settings -&gt; General -&gt; Advance -&gt; remove fork relationship</li>
+</ul>
+<h3 id="gitlab-&#x540C;&#x6B65;push&#x5230;github">Gitlab &#x540C;&#x6B65;push&#x5230;Github</h3>
+<p>&#x601D;&#x60F3;&#xFF1A;&#x901A;&#x8FC7;&#x6DFB;&#x52A0; remote url&#xFF0C;&#x5B9E;&#x73B0; push &#x4EE3;&#x7801;&#x5230;&#x6307;&#x5B9A;url</p>
+<p>&#x95EE;&#x9898;&#xFF1A;&#x6BCF;&#x6B21;push&#x90FD;&#x8981;&#x66F4;&#x6539;&#xFF08;&#x5207;&#x6362;&#xFF09;&#x5730;&#x5740;</p>
+<p>&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#xFF1A;</p>
+<pre><code class="lang-shell">git remote //origin
+git remote -v //&#x67E5;&#x770B;&#x5173;&#x8054;&#x7684; remote url
+git remote set-url --add origin git@github.com:Jamie956/test-git.git //&#x6DFB;&#x52A0;remote url
+git remote add origin git@github.com:Jamie956/test-git.git //&#x6DFB;&#x52A0;remote url
+git remote rm origin //&#x79FB;&#x9664;origin
+</code></pre>
+<p>&#x65B9;&#x6CD5;&#x4E00;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ol>
+<li>cd&#x5230;gitlab&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E0B;</li>
+<li><code>git remote -v</code> &#x67E5;&#x770B;remote url&#x4FE1;&#x606F;</li>
+<li><code>git remote set-url --add origin git@github.com:Jamie956/test-git.git</code> github&#x6DFB;&#x52A0;&#x4E3A;remote url</li>
+<li>push&#x4EE3;&#x7801;&#xFF0C;&#xFF08;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x65F6;&#x4EE3;&#x7801;&#x53EA;&#x4F1A;push&#x5230;github&#xFF09;</li>
+<li><code>git remote set-url --add origin git@gitlab.com:Jamie956/test-git.git</code> &#x5207;&#x6362;&#x5230;gitlab</li>
+<li>push&#x4EE3;&#x7801;</li>
+</ol>
+<p>&#x65B9;&#x6CD5;&#x4E8C;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ol>
+<li>cd&#x5230;gitlab&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E0B;</li>
+<li><code>git remote add origin git@github.com:Jamie956/test-git.git</code></li>
+<li>check out github branch</li>
+<li>&#x5728;gitlab branch&#x505A;&#x51FA;&#x66F4;&#x6539;&#x5E76;push&#x4EE3;&#x7801;</li>
+<li>&#x5C06;gitlab branch merge &#x5230;github branch</li>
 </ol>
 
                                 
@@ -729,7 +807,7 @@ git config --global user.email &quot;your@eamil.com&quot;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Git","level":"1.2.1","depth":2,"next":{"title":"Data Structures","level":"1.2.2","depth":2,"path":"basic/data-structures.md","ref":"basic/data-structures.md","articles":[]},"previous":{"title":"Basic","level":"1.2","depth":1,"path":"basic/README.md","ref":"basic/README.md","articles":[{"title":"Git","level":"1.2.1","depth":2,"path":"basic/git.md","ref":"basic/git.md","articles":[]},{"title":"Data Structures","level":"1.2.2","depth":2,"path":"basic/data-structures.md","ref":"basic/data-structures.md","articles":[]},{"title":"Algorithms","level":"1.2.3","depth":2,"path":"basic/algorithms.md","ref":"basic/algorithms.md","articles":[]},{"title":"Http","level":"1.2.4","depth":2,"path":"basic/http.md","ref":"basic/http.md","articles":[]},{"title":"RESTful","level":"1.2.5","depth":2,"path":"basic/restful.md","ref":"basic/restful.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"basic/git.md","mtime":"2018-10-22T10:00:57.294Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-22T10:03:13.818Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Git","level":"1.2.1","depth":2,"next":{"title":"Data Structures","level":"1.2.2","depth":2,"path":"basic/data-structures.md","ref":"basic/data-structures.md","articles":[]},"previous":{"title":"Basic","level":"1.2","depth":1,"path":"basic/README.md","ref":"basic/README.md","articles":[{"title":"Git","level":"1.2.1","depth":2,"path":"basic/git.md","ref":"basic/git.md","articles":[]},{"title":"Data Structures","level":"1.2.2","depth":2,"path":"basic/data-structures.md","ref":"basic/data-structures.md","articles":[]},{"title":"Algorithms","level":"1.2.3","depth":2,"path":"basic/algorithms.md","ref":"basic/algorithms.md","articles":[]},{"title":"Http","level":"1.2.4","depth":2,"path":"basic/http.md","ref":"basic/http.md","articles":[]},{"title":"RESTful","level":"1.2.5","depth":2,"path":"basic/restful.md","ref":"basic/restful.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"basic/git.md","mtime":"2018-10-23T04:01:34.082Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-23T10:09:37.476Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

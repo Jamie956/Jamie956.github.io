@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bok-in": "gitbook install",
-    "build": "gitbook init & gitbook build",
+    "ins": "gitbook install",
+    "ini": "gitbook init & gitbook build",
     "serve": "gitbook serve",
     "sync": "gh-pages -d _book"
   },
