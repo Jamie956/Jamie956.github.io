@@ -649,11 +649,13 @@
 <li><div><a href="#debugging">Debugging</a><i></i></div></li>
 <li><div><a href="#nvm">nvm</a><i></i></div></li>
 <li><div><a href="#error">Error</a><i></i></div></li>
-<li><div><a href="#js&#x6A21;&#x5757;&#x89C4;&#x8303;commonjs&#xFF0C;amd&#xFF0C;cmd">JS&#x6A21;&#x5757;&#x89C4;&#x8303;(CommonJS&#xFF0C;AMD&#xFF0C;CMD)</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<li><div><a href="#modularization">Modularization</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
 <li><div><a href="#commonjs">CommonJS</a><i></i></div></li>
-<li><div><a href="#amd">AMD</a><i></i></div></li>
-<li><div><a href="#cmd">CMD</a><i></i></div></li>
+<li><div><a href="#amd-asynchronous-module-definition-">AMD( Asynchronous Module Definition )</a><i></i></div></li>
+<li><div><a href="#cmd-common-module-definition-">CMD( Common Module Definition )</a><i></i></div></li>
+<li><div><a href="#es6">es6</a><i></i></div></li>
+<li><div><a href="#x">x</a><i></i></div></li>
 </ul></li>
 <li><div><a href="#&#x5E94;&#x7528;&#x573A;&#x666F;">&#x5E94;&#x7528;&#x573A;&#x666F;</a><i></i></div></li>
 <li><div><a href="#&#x4F18;&#x70B9;">&#x4F18;&#x70B9;</a><i></i></div></li>
@@ -671,6 +673,7 @@
 <li><div><a href="#&#x5E38;&#x7528;&#x6A21;&#x5757;">&#x5E38;&#x7528;&#x6A21;&#x5757;</a><i></i></div></li>
 </ul></li>
 <li><div><a href="#&#x5F02;&#x6B65;&#x6D41;&#x7A0B;">&#x5F02;&#x6B65;&#x6D41;&#x7A0B;</a><i></i></div></li>
+<li><div><a href="#concept">Concept</a><i></i></div></li>
 </ul>
 </div>
 
@@ -700,18 +703,22 @@ nvm alias default &lt;version&gt;
 </code></pre><h2 id="error">Error</h2>
 <pre><code>Interal watch failed ENOSPC:
 echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p
-</code></pre><h2 id="js&#x6A21;&#x5757;&#x89C4;&#x8303;commonjs&#xFF0C;amd&#xFF0C;cmd">JS&#x6A21;&#x5757;&#x89C4;&#x8303;(CommonJS&#xFF0C;AMD&#xFF0C;CMD)</h2>
+</code></pre><h2 id="modularization">Modularization</h2>
 <h3 id="commonjs">CommonJS</h3>
 <p>&#x7528;&#x5728;&#x670D;&#x52A1;&#x7AEF;</p>
-<p>&#x5B9A;&#x4E49;&#x7684;&#x6A21;&#x5757;&#x5206;&#x4E3A;:{&#x6A21;&#x5757;&#x5F15;&#x7528;(require)} {&#x6A21;&#x5757;&#x5B9A;&#x4E49;(exports)} {&#x6A21;&#x5757;&#x6807;&#x8BC6;(module)}</p>
-<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports <span class="hljs-comment">//&#x8F93;&#x51FA;</span>
+<pre><code class="lang-js"><span class="hljs-comment">// a.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+    a: <span class="hljs-number">1</span>
+}
+<span class="hljs-comment">// or</span>
+exports.a = <span class="hljs-number">1</span>
+
+<span class="hljs-comment">// b.js</span>
+<span class="hljs-keyword">var</span> <span class="hljs-built_in">module</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./a.js&apos;</span>); <span class="hljs-comment">//require&#x540C;&#x6B65;&#x52A0;&#x8F7D;</span>
+<span class="hljs-built_in">module</span>.a <span class="hljs-comment">// -&gt; log 1</span>
 </code></pre>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;fs&apos;</span>); <span class="hljs-comment">//</span>
-</code></pre>
-<p>require&#x662F;&#x540C;&#x6B65;&#x52A0;&#x8F7D;&#x7684;</p>
-<h3 id="amd">AMD</h3>
+<h3 id="amd-asynchronous-module-definition-">AMD( Asynchronous Module Definition )</h3>
 <p>&#x7528;&#x5728;&#x6D4F;&#x89C8;&#x5668;</p>
-<p>Asynchronous Module Definition</p>
 <pre><code class="lang-js"><span class="hljs-built_in">require</span>([<span class="hljs-built_in">module</span>], callback);
 </code></pre>
 <p>Javascript&#x5E93;(require.js, curl.js)&#x5B9E;&#x73B0;&#x4E86;AMD&#x89C4;&#x8303;</p>
@@ -732,11 +739,57 @@ requirejs([<span class="hljs-string">&apos;jquery&apos;</span>], <span class="hl
     $(<span class="hljs-string">&apos;body&apos;</span>).css(<span class="hljs-string">&apos;background-color&apos;</span>,<span class="hljs-string">&apos;red&apos;</span>); 
 });
 </code></pre>
-<h3 id="cmd">CMD</h3>
-<p>Common Module Definition</p>
+<pre><code class="lang-js"><span class="hljs-comment">// AMD</span>
+define([<span class="hljs-string">&apos;./a&apos;</span>, <span class="hljs-string">&apos;./b&apos;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) </span>{
+    a.do()
+    b.do()
+})
+define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">require, exports, module</span>) </span>{
+    <span class="hljs-keyword">var</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./a&apos;</span>)  
+    a.doSomething()   
+    <span class="hljs-keyword">var</span> b = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./b&apos;</span>)
+    b.doSomething()
+})
+</code></pre>
+<h3 id="cmd-common-module-definition-">CMD( Common Module Definition )</h3>
 <p>&#x7528;&#x5728;&#x6D4F;&#x89C8;&#x5668;</p>
-<p>&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#xFF08;&#x8FD0;&#x884C;&#x6309;&#x9700;&#x52A0;&#x8F7D;&#xFF0C;&#x6839;&#x636E;&#x987A;&#x5E8F;&#x6267;&#x884C;&#xFF09;</p>
-<p>&#x4E0E;requireJS&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;&#x6A21;&#x5757;&#x5B9A;&#x4E49;&#x65B9;&#x5F0F;&#x548C;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#xFF08;&#x53EF;&#x4EE5;&#x8BF4;&#x8FD0;&#x884C;&#x3001;&#x89E3;&#x6790;&#xFF09;&#x65F6;&#x673A;&#x4E0D;&#x540C;</p>
+<p>&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#xFF08;&#x8FD0;&#x884C;&#x6309;&#x9700;&#x52A0;&#x8F7D;&#xFF0C;&#x987A;&#x5E8F;&#x6267;&#x884C;&#xFF09;</p>
+<p>&#x4E0E;requireJS&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;&#x6A21;&#x5757;&#x5B9A;&#x4E49;&#x65B9;&#x5F0F;&#x548C;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x65F6;&#x673A;&#x4E0D;&#x540C;</p>
+<h3 id="es6">es6</h3>
+<pre><code class="lang-js"><span class="hljs-comment">// file a.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{}
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>) </span>{}
+<span class="hljs-comment">// file b.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{}
+
+<span class="hljs-keyword">import</span> {a, b} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./a.js&apos;</span>
+<span class="hljs-keyword">import</span> XXX <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./b.js&apos;</span>
+</code></pre>
+<h3 id="x">x</h3>
+<pre><code class="lang-js"><span class="hljs-comment">//&#x5BFC;&#x51FA;class</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Deer</span> </span>{}
+<span class="hljs-built_in">module</span>.exports = Deer;
+<span class="hljs-keyword">var</span> Deer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./Deer&quot;</span>);
+
+<span class="hljs-comment">//&#x5BFC;&#x51FA;&#x5E26;&#x540D;&#x51FD;&#x6570;</span>
+<span class="hljs-built_in">module</span>.exports.foo = () =&gt; {};
+<span class="hljs-keyword">var</span> xx = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./xx&quot;</span>);
+xx.foo();
+
+<span class="hljs-comment">//&#x5BFC;&#x51FA;&#x533F;&#x540D;&#x51FD;&#x6570;</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{};
+<span class="hljs-keyword">var</span> xx = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./xx&quot;</span>);
+xx();
+
+<span class="hljs-comment">// &#x5BFC;&#x51FA;&#x6570;&#x7EC4;</span>
+<span class="hljs-built_in">module</span>.exports = [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>];
+
+<span class="hljs-comment">// &#x5BFC;&#x51FA;&#x591A;&#x4E2A;&#x51FD;&#x6570;</span>
+<span class="hljs-built_in">module</span>.exports = {
+  foo: () =&gt; {},
+  bar: () =&gt; {}
+};
+</code></pre>
 <h2 id="&#x5E94;&#x7528;&#x573A;&#x666F;">&#x5E94;&#x7528;&#x573A;&#x666F;</h2>
 <ul>
 <li>&#x524D;&#x7AEF;&#xFF1A;react\vue\angular&#x3001;&#x5E94;&#x7528;&#x5B9E;&#x8DF5;&#x3001;&#x67B6;&#x6784;</li>
@@ -879,6 +932,25 @@ myEmitter.emit(<span class="hljs-string">&apos;event&apos;</span>, <span class="
     }
 };
 </code></pre>
+<h2 id="concept">Concept</h2>
+<p>It&apos;s important to note that setTimeout(..) doesn&apos;t put your callback on the event loop queue. What it does is set up a timer; when the timer expires, the environment places your callback into the event loop, such that some future tick will pick it up and execute it.</p>
+<p>It&apos;s very common to conflate the terms &quot;async&quot; and &quot;parallel,&quot; but they are actually quite different. Remember, async is about the gap between now and later. But parallel is about things being able to occur simultaneously.</p>
+<p>JavaScript&apos;s single-threading</p>
+<p>Concurrency is when two or more &quot;processes&quot; are executing simultaneously over the same period, regardless of whether their individual constituent operations happen in parallel (at the same instant on separate processors or cores) or not. You can think of concurrency then as &quot;process&quot;-level (or task-level) parallelism, as opposed to operation-level parallelism (separate-processor threads).</p>
+<p>Whenever there are events to run, the event loop runs until the queue is empty. Each iteration of the event loop is a &quot;tick.&quot; User interaction, IO, and timers enqueue events on the event queue.</p>
+<p>Promise belongs to microtask and setTimeout belongs to macrotask</p>
+<p>Microtasks include process.nextTick, promise, Object.observe and MutationObserver</p>
+<p>Macrotasks include script, setTimeout, setInterval, setImmediate, I/O and UI rendering</p>
+<p>So the correct sequence of an event loop looks like this:</p>
+<p>1.Execute synchronous codes, which belongs to macrotask</p>
+<p>2.Once call stack is empty, query if any microtasks need to be executed</p>
+<p>3.Execute all the microtasks</p>
+<p>4.If necessary, render the UI</p>
+<p>5.Then start the next round of the Event loop, and execute the asynchronous operations in the macrotask</p>
+<p>===MVVM===</p>
+<p>In the JQuery period, if you need to refresh the UI, you need to get the corresponding DOM and then update the UI, so the data and business logic are strongly-coupled with the page.</p>
+<p>In MVVM, the UI is driven by data. Once the data is changed, the corresponding UI will be refreshed. If the UI changes, the corresponding data will also be changed. In this way, we can only care about the data flow in business processing without dealing with the page directly. ViewModel only cares about the processing of data and business and does not care how View handles data. In this case, we can separate the View from the Model. If either party changes, it does not necessarily need to change the other party, and some reusable logic can be placed in a ViewModel, allowing multiple Views to reuse this ViewModel.</p>
+<p>In MVVM, the core is the two-way binding of data, such as dirty checking by Angular and data hijacking in Vue.</p>
 
                                 
                                 </section>
@@ -922,7 +994,7 @@ myEmitter.emit(<span class="hljs-string">&apos;event&apos;</span>, <span class="
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"NodeJS","level":"1.3.1","depth":2,"next":{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]},"previous":{"title":"Frontend","level":"1.3","depth":1,"path":"frontend/README.md","ref":"frontend/README.md","articles":[{"title":"NodeJS","level":"1.3.1","depth":2,"path":"frontend/nodejs.md","ref":"frontend/nodejs.md","articles":[]},{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/nodejs.md","mtime":"2018-10-22T04:07:43.023Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-23T10:09:37.476Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"NodeJS","level":"1.3.1","depth":2,"next":{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]},"previous":{"title":"Frontend","level":"1.3","depth":1,"path":"frontend/README.md","ref":"frontend/README.md","articles":[{"title":"NodeJS","level":"1.3.1","depth":2,"path":"frontend/nodejs.md","ref":"frontend/nodejs.md","articles":[]},{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/nodejs.md","mtime":"2018-10-25T02:17:02.283Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-25T03:03:59.763Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
