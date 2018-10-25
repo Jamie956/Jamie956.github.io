@@ -1,5 +1,15 @@
 
 
+> 参考资料：
+>
+> https://nginx.org/en/docs/
+>
+> http://tengine.taobao.org/book/index.html
+>
+> https://www.cnblogs.com/qdhxhz/p/8910174.html
+
+
+
 ### 概念
 
 Nginx：轻量级的Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器
@@ -34,7 +44,7 @@ Nginx 相对于 Apache 优点：
 
 
 
-### Debug
+### Log
 
 In case something does not work as expected, you may try to find out the reason in `access.log` and `error.log` files in the directory `/usr/local/nginx/logs` or `/var/log/nginx`. 
 
@@ -498,10 +508,3 @@ docker run -d --name mynginx \
 
 
 
-### 参考资料
-
-官方文档：https://nginx.org/en/docs/
-
-Nginx开发从入门到精通：http://tengine.taobao.org/book/index.html
-
-https://www.cnblogs.com/qdhxhz/p/8910174.html
