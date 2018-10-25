@@ -1,6 +1,6 @@
-## 设置环境变量
+## Set ENV
 
-```
+```shell
 sudo nano /etc/profile
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
@@ -10,29 +10,9 @@ echo $PATH
 
 
 
-## 关闭占用端口的程序
+## Shell脚本
 
-```
-netstat -an //查看全部端口
-netstat -tunlp |grep 8082 //查找8082端口的进程ID
-kill -9 3383 //终止进程ID3382
-```
-
-
-
-## 搜狗输入法选词框乱码
-
-```
-cd ~/.config
-sudo rm -rf SogouPYsogou*
-```
-重启系统
-
-
-
-## Shell
-
-```
+```shell
 touch hello.sh //创建sh文件
 chmod u+x hello.sh //设置可执行权限
 ./hello.sh //执行 .sh
@@ -55,8 +35,6 @@ wget url
 wget -b -P <output path> <url>
 ```
 
-
-
 ## nano
 
 ```
@@ -65,8 +43,6 @@ ctrl + k //删除一行
 Ctrl + a //光标到行首
 Ctrl + e //光标到行尾
 ```
-
-
 
 ## Groups
 
@@ -77,8 +53,6 @@ gpasswd –a user1 users //add user1 to groups users
 gpasswd –d user1 users //remove user1 from groups users
 sudo groupdel users //delete groups users
 ```
-
-
 
 ## ls
 
@@ -167,7 +141,7 @@ alias foo='cd /usr; ls; cd -' //创建命令别名
 unalias foo //移除别名
 ```
 
-## >
+## redirection
 
 ```shell
 ls -l /usr/bin > ls-output.txt //运行结果输送到文件 ls-output.txt
@@ -221,8 +195,6 @@ w //可写
 x //可执行
 ```
 
-
-
 ## 进程
 
 ```shell
@@ -242,6 +214,12 @@ kill 28401 //杀死指定程序
 killall – 杀死指定名字的进程
 shutdown – 关机或重启系统
 
+
+# 关闭占用端口的进程
+netstat -an //查看全部端口
+netstat -tunlp | grep 8082 //查找8082端口的进程ID
+kill -9 3383 //终止进程ID3382
+
 ```
 
 当系统启动的时候，内核先把一些它自己的活动初始化为进程，然后运行一个叫做 init 的程序。init，
@@ -257,17 +235,11 @@ shutdown – 关机或重启系统
 
 ### 加速
 
-1. 备份sources.list
-
-   ```cp /etc/apt/sources.list /etc/apt/sources.list.bak```
-
-2. 写入源
-
-   ```echo ""> sources.list```
-
-3. 更新
-
-   ```apt-get update```
+```shell
+cp /etc/apt/sources.list /etc/apt/sources.list.bak	# 备份sources.list
+echo ""> sources.list # 写入源
+apt-get update
+```
 
 
 
@@ -280,10 +252,9 @@ apt install <app>
 
 
 
-### 应用安装
+### 你可以装
 
 docker
-docker-compose
 nginx
 curl
 maven
@@ -312,19 +283,56 @@ a:space -> tab
 
 
 
-## Shortcut
+## Ubuntu
+
+- shortcut
 
 ```
 ctrl+alt+t //打开terminal
 ctrl+shift+t //新建一个terminal tab
 ctrl+h //显示隐藏文件
-
-
 ```
 
 
 
-## Win10 & Ubuntu 双系统
+- 搜狗乱码
+
+```shell
+cd ~/.config
+sudo rm -rf SogouPYsogou*
+# 重启系统
+```
+
+
+
+- system program problem detected
+
+```
+sudo rm -rf /var/crash/*
+```
+
+
+
+- /boot 空间不足
+
+```shell
+df -h /boot // 查看 /boot
+dpkg --get-selections |grep linux-image // 查看系统安装的内核镜像
+uname -r //查看本机系统的内核版本
+sudo apt-get remove [image] [image] ... //卸载
+sudo dpkg -P [image] [image] ... //删除相应的配置信息
+```
+
+
+
+- Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
+
+```sudo rm /var/cache/apt/archives/lock```
+```sudo rm /var/lib/dpkg/lock```
+
+
+
+## 双系统
 
 ```
 win +x => 磁盘管理 => 压缩卷 => 51200M  =>未分配
@@ -348,39 +356,6 @@ UltraISO写入iso到U盘
 如果是UEFI，BIOS => Security => Select an UEFI file as trusted for executing => EFI => Ubuntu => boot => grub
 EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~200M的Linux分区
 ```
-
-
-
-## Problem
-
-- system program problem detected
-
-```sudo rm -rf /var/crash/*```
-
-or
-
-```gedit /etc/default/apport -> enabled=0```
-
-
-
-- /boot 空间不足
-
-```shell
-df -h /boot // 查看 /boot
-dpkg --get-selections |grep linux-image // 查看系统安装的内核镜像
-uname -r //查看本机系统的内核版本
-sudo apt-get remove [image] [image] ... //卸载
-sudo dpkg -P [image] [image] ... //删除相应的配置信息
-```
-
-
-
-- Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
-
-```sudo rm /var/cache/apt/archives/lock```
-```sudo rm /var/lib/dpkg/lock```
-
-
 
 
 

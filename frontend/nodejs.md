@@ -40,33 +40,30 @@ echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo s
 
 
 
-## JS模块规范(CommonJS，AMD，CMD)
+## Modularization
 
 ### CommonJS
 
 用在服务端
 
-定义的模块分为:{模块引用(require)} {模块定义(exports)} {模块标识(module)}
-
 ```js
-module.exports //输出
+// a.js
+module.exports = {
+    a: 1
+}
+// or
+exports.a = 1
+
+// b.js
+var module = require('./a.js'); //require同步加载
+module.a // -> log 1
 ```
 
 
 
-```js
-var fs = require('fs'); //
-```
-
-require是同步加载的
-
-
-
-### AMD
+### AMD( Asynchronous Module Definition )
 
 用在浏览器
-
-Asynchronous Module Definition
 
 ```js
 require([module], callback);
@@ -94,21 +91,72 @@ requirejs(['jquery'], function ($) {
 });
 ```
 
+```js
+// AMD
+define(['./a', './b'], function(a, b) {
+    a.do()
+    b.do()
+})
+define(function(require, exports, module) {
+    var a = require('./a')  
+    a.doSomething()   
+    var b = require('./b')
+    b.doSomething()
+})
+```
 
 
-### CMD
 
-Common Module Definition
+### CMD( Common Module Definition )
 
 用在浏览器
 
-延迟执行（运行按需加载，根据顺序执行）
+延迟执行（运行按需加载，顺序执行）
 
-与requireJS相似，但是模块定义方式和模块加载（可以说运行、解析）时机不同
-
-
+与requireJS相似，但是模块定义方式和模块加载时机不同
 
 
+
+### es6
+
+```js
+// file a.js
+export function a() {}
+export function b() {}
+// file b.js
+export default function() {}
+
+import {a, b} from './a.js'
+import XXX from './b.js'
+```
+
+### x
+
+```js
+//导出class
+class Deer {}
+module.exports = Deer;
+var Deer = require("./Deer");
+
+//导出带名函数
+module.exports.foo = () => {};
+var xx = require("./xx");
+xx.foo();
+
+//导出匿名函数
+module.exports = function() {};
+var xx = require("./xx");
+xx();
+
+// 导出数组
+module.exports = ["a", "b", "c"];
+
+// 导出多个函数
+module.exports = {
+  foo: () => {},
+  bar: () => {}
+};
+```
 
 
 
@@ -316,11 +364,67 @@ async (ctx, next) => {
 
 
 
+## Concept
+
+It's important to note that setTimeout(..) doesn't put your callback on the event loop queue. What it does is set up a timer; when the timer expires, the environment places your callback into the event loop, such that some future tick will pick it up and execute it.
+
+ 
+
+It's very common to conflate the terms "async" and "parallel," but they are actually quite different. Remember, async is about the gap between now and later. But parallel is about things being able to occur simultaneously.
+
+ 
+
+JavaScript's single-threading
+
+ 
+
+Concurrency is when two or more "processes" are executing simultaneously over the same period, regardless of whether their individual constituent operations happen in parallel (at the same instant on separate processors or cores) or not. You can think of concurrency then as "process"-level (or task-level) parallelism, as opposed to operation-level parallelism (separate-processor threads).
+
+ 
+
+Whenever there are events to run, the event loop runs until the queue is empty. Each iteration of the event loop is a "tick." User interaction, IO, and timers enqueue events on the event queue.
 
 
 
+Promise belongs to microtask and setTimeout belongs to macrotask
 
+ 
 
+Microtasks include process.nextTick, promise, Object.observe and MutationObserver
+
+ 
+
+Macrotasks include script, setTimeout, setInterval, setImmediate, I/O and UI rendering
+
+ 
+
+So the correct sequence of an event loop looks like this:
+
+1.Execute synchronous codes, which belongs to macrotask
+
+2.Once call stack is empty, query if any microtasks need to be executed
+
+3.Execute all the microtasks
+
+4.If necessary, render the UI
+
+5.Then start the next round of the Event loop, and execute the asynchronous operations in the macrotask
+
+ 
+
+===MVVM===
+
+In the JQuery period, if you need to refresh the UI, you need to get the corresponding DOM and then update the UI, so the data and business logic are strongly-coupled with the page.
+
+ 
+
+In MVVM, the UI is driven by data. Once the data is changed, the corresponding UI will be refreshed. If the UI changes, the corresponding data will also be changed. In this way, we can only care about the data flow in business processing without dealing with the page directly. ViewModel only cares about the processing of data and business and does not care how View handles data. In this case, we can separate the View from the Model. If either party changes, it does not necessarily need to change the other party, and some reusable logic can be placed in a ViewModel, allowing multiple Views to reuse this ViewModel.
+
+ 
+
+In MVVM, the core is the two-way binding of data, such as dirty checking by Angular and data hijacking in Vue.
+
+ 
 
 
 
