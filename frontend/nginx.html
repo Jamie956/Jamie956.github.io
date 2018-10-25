@@ -647,7 +647,7 @@
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
 <li><div><a href="#&#x6982;&#x5FF5;">&#x6982;&#x5FF5;</a><i></i></div></li>
-<li><div><a href="#debug">Debug</a><i></i></div></li>
+<li><div><a href="#log">Log</a><i></i></div></li>
 <li><div><a href="#&#x76EE;&#x5F55;">&#x76EE;&#x5F55;</a><i></i></div></li>
 <li><div><a href="#&#x547D;&#x4EE4;">&#x547D;&#x4EE4;</a><i></i></div></li>
 <li><div><a href="#&#x6A21;&#x578B;">&#x6A21;&#x578B;</a><i></i></div></li>
@@ -658,12 +658,17 @@
 <li><div><a href="#&#x9759;&#x6001;&#x7AD9;&#x70B9;&#x914D;&#x7F6E;">&#x9759;&#x6001;&#x7AD9;&#x70B9;&#x914D;&#x7F6E;</a><i></i></div></li>
 <li><div><a href="#&#x8DE8;&#x57DF;&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x8DE8;&#x57DF;&#x89E3;&#x51B3;&#x65B9;&#x6848;</a><i></i></div></li>
 <li><div><a href="#docker-&#x5B89;&#x88C5;-nginx">Docker &#x5B89;&#x88C5; Nginx</a><i></i></div></li>
-<li><div><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</a><i></i></div></li>
 </ul>
 </div>
 
 
 
+<blockquote>
+<p>&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;</p>
+<p><a href="https://nginx.org/en/docs/" target="_blank">https://nginx.org/en/docs/</a></p>
+<p><a href="http://tengine.taobao.org/book/index.html" target="_blank">http://tengine.taobao.org/book/index.html</a></p>
+<p><a href="https://www.cnblogs.com/qdhxhz/p/8910174.html" target="_blank">https://www.cnblogs.com/qdhxhz/p/8910174.html</a></p>
+</blockquote>
 <h3 id="&#x6982;&#x5FF5;">&#x6982;&#x5FF5;</h3>
 <p>Nginx&#xFF1A;&#x8F7B;&#x91CF;&#x7EA7;&#x7684;Web &#x670D;&#x52A1;&#x5668; &#x3001;&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x53CA;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#xFF08;IMAP/POP3&#xFF09;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;</p>
 <ul>
@@ -682,7 +687,7 @@
 <p>4) &#x5BF9;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x6709;&#x5065;&#x5EB7;&#x68C0;&#x67E5;&#x529F;&#x80FD;&#x3002;</p>
 <p>5) &#x652F;&#x6301; PHP cgi &#x65B9;&#x5F0F;&#x548C; fastcgi &#x65B9;&#x5F0F;&#x3002; </p>
 <p>6) &#x914D;&#x7F6E;&#x4EE3;&#x7801;&#x7B80;&#x6D01;&#x4E14;&#x5BB9;&#x6613;&#x4E0A;&#x624B;&#x3002;  </p>
-<h3 id="debug">Debug</h3>
+<h3 id="log">Log</h3>
 <p>In case something does not work as expected, you may try to find out the reason in <code>access.log</code> and <code>error.log</code> files in the directory <code>/usr/local/nginx/logs</code> or <code>/var/log/nginx</code>. </p>
 <h3 id="&#x76EE;&#x5F55;">&#x76EE;&#x5F55;</h3>
 <p>conf &#x5B58;&#x653E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
@@ -1049,10 +1054,6 @@ docker run -d --name mynginx \
 -v $NGINX_HOME/conf.d:/etc/nginx/conf.d \
 -p 8081:80 nginx
 </code></pre>
-<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
-<p>&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<a href="https://nginx.org/en/docs/" target="_blank">https://nginx.org/en/docs/</a></p>
-<p>Nginx&#x5F00;&#x53D1;&#x4ECE;&#x5165;&#x95E8;&#x5230;&#x7CBE;&#x901A;&#xFF1A;<a href="http://tengine.taobao.org/book/index.html" target="_blank">http://tengine.taobao.org/book/index.html</a></p>
-<p><a href="https://www.cnblogs.com/qdhxhz/p/8910174.html" target="_blank">https://www.cnblogs.com/qdhxhz/p/8910174.html</a></p>
 
                                 
                                 </section>
@@ -1096,7 +1097,7 @@ docker run -d --name mynginx \
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nginx","level":"1.3.2","depth":2,"next":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.1.2","depth":3,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]},{"title":"Spring","level":"1.4.1.3","depth":3,"path":"backend/spring.md","ref":"backend/spring.md","articles":[]}]},{"title":"Architecture","level":"1.4.2","depth":2,"path":"backend/architecture.md","ref":"backend/architecture.md","articles":[]},{"title":"MongoDB","level":"1.4.3","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.4","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.5","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"previous":{"title":"NodeJS","level":"1.3.1","depth":2,"path":"frontend/nodejs.md","ref":"frontend/nodejs.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/nginx.md","mtime":"2018-10-24T03:31:21.154Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-25T03:03:59.763Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nginx","level":"1.3.2","depth":2,"next":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.1.2","depth":3,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]},{"title":"Spring","level":"1.4.1.3","depth":3,"path":"backend/spring.md","ref":"backend/spring.md","articles":[]}]},{"title":"Architecture","level":"1.4.2","depth":2,"path":"backend/architecture.md","ref":"backend/architecture.md","articles":[]},{"title":"MongoDB","level":"1.4.3","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.4","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.5","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"previous":{"title":"NodeJS","level":"1.3.1","depth":2,"path":"frontend/nodejs.md","ref":"frontend/nodejs.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/nginx.md","mtime":"2018-10-25T08:59:42.539Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-25T09:21:10.317Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
