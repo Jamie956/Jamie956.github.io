@@ -5,6 +5,10 @@
 > https://developer.mozilla.org/en-US/docs/Glossary/Call_stack
 >
 > https://juejin.im/post/59e85eebf265da430d571f89
+>
+> https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+>
+> https://wangdoc.com/javascript/types/number.html
 
 
 
@@ -286,17 +290,76 @@ setTimeout(function() {
 
 <img src="https://user-gold-cdn.xitu.io/2017/11/21/15fdd96beade6575?imageView2/0/w/1280/h/960/ignore-error/1" />
 
+### primitive
+
+A **primitive** (primitive value, primitive data type) is data that is not an [object](https://developer.mozilla.org/en-US/docs/Glossary/object) and has no [methods](https://developer.mozilla.org/en-US/docs/Glossary/method). In [JavaScript](https://developer.mozilla.org/en-US/docs/Glossary/JavaScript), there are 6 primitive data types: [string](https://developer.mozilla.org/en-US/docs/Glossary/string), [number](https://developer.mozilla.org/en-US/docs/Glossary/number), [boolean](https://developer.mozilla.org/en-US/docs/Glossary/boolean), [null](https://developer.mozilla.org/en-US/docs/Glossary/null), [undefined](https://developer.mozilla.org/en-US/docs/Glossary/undefined), [symbol](https://developer.mozilla.org/en-US/docs/Glossary/symbol) (new in [ECMAScript](https://developer.mozilla.org/en-US/docs/Glossary/ECMAScript) 2015).
+
+All primitives are **immutable,** i.e., they cannot be  altered. It is important not to confuse a primitive itself with a  variable assigned a primitive value. The variable may be reassigned a  new value, but the existing value can not be changed in the ways that  objects, arrays, and functions can be altered.
+
+
+
+JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此
+
+`1 === 1.0 // true`
+
+
+
+浮点数不是精确的值
+
+```js
+0.1 + 0.2 === 0.3	//false
+0.3 / 0.1	// 2.9999999999999996
+(0.3 - 0.2) === (0.2 - 0.1)	// false
+```
+
+
+
+#### 数值精度
+
+根据国际标准 IEEE 754，JavaScript 浮点数的64个二进制位
+
+- 第1位：符号位，`0`表示正数，`1`表示负数
+- 第2位到第12位（共11位）：指数部分
+- 第13位到第64位（共52位）：小数部分（即有效数字）
+
+符号位决定了一个数的正负，指数部分决定了数值的大小( 0 ~ 2047 )，小数部分决定了数值的精度( -2^53 ~ 2^53 )
+
+```js
+Math.pow(2, 53)
+// 9007199254740992
  
+Math.pow(2, 53) + 1
+// 9007199254740992
+
+Math.pow(2, 53) + 2
+// 9007199254740994
+
+// 多出的三个有效数字，将无法保存
+9007199254740992111
+// 9007199254740992000
+```
 
 
 
+#### 进制
+
+- 十进制：没有前导0的数值
+- 八进制：有前缀`0o`或`0O`的数值，或者有前导0、且只用到0-7的八个阿拉伯数字的数值
+- 十六进制：有前缀`0x`或`0X`的数值
+- 二进制：有前缀`0b`或`0B`的数值。
 
 
 
+#### parseInt
 
+```js
+parseInt('123') // 123
+parseInt('   81') // 81
 
-
-
+parseInt(1.23) // 1
+// 等同于
+parseInt('1.23') // 1
+```
 
 
 

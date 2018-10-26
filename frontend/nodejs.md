@@ -1,4 +1,4 @@
-
+## 命令
 
 ```
 node -v
@@ -14,10 +14,33 @@ node-inspect app.js
 ```
 
 - node debugger
+
 - node inspector
-- vscode
 
+  
 
+### VSCode Debug
+
+1. Sidebar debug -> Add config -> Edit launch.json
+
+   ```json
+   {
+     // Use IntelliSense to learn about possible attributes.
+     // Hover to view descriptions of existing attributes.
+     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+     "version": "0.2.0",
+     "configurations": [
+       {
+         "type": "node",
+         "request": "launch",
+         "name": "Launch Program",
+         "program": "${workspaceFolder}/micro-packages/index.js" //执行文件
+       }
+     ]
+   }
+   ```
+
+2. Start Debugging
 
 ## nvm
 
