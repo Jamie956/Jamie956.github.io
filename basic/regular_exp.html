@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Algorithms · Jamie House</title>
+        <title>Regular Exp · Jamie House</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="http.html" />
+    <link rel="next" href="../frontend/" />
     
     
-    <link rel="prev" href="data-structures.html" />
+    <link rel="prev" href="restful.html" />
     
 
     </head>
@@ -150,7 +150,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="algorithms.html">
+        <li class="chapter " data-level="1.2.3" data-path="algorithms.html">
             
                 <a href="algorithms.html">
             
@@ -189,7 +189,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="regular_exp.html">
+        <li class="chapter active" data-level="1.2.6" data-path="regular_exp.html">
             
                 <a href="regular_exp.html">
             
@@ -656,7 +656,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Algorithms</a>
+        <a href=".." >Regular Exp</a>
     </h1>
 </div>
 
@@ -671,44 +671,105 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#algorithms">Algorithms</a><i></i></div></li>
-</ul>
-</div>
-
-<h1 id="algorithms">Algorithms</h1>
-<ul>
-<li>&#x6392;&#x5E8F;&#x3001;&#x67E5;&#x627E;&#x7B97;&#x6CD5;<ul>
-<li>&#x9009;&#x62E9;&#x6392;&#x5E8F;</li>
-<li>&#x5192;&#x6CE1;&#x6392;&#x5E8F;</li>
-<li>&#x63D2;&#x5165;&#x6392;&#x5E8F;</li>
-<li>&#x5FEB;&#x901F;&#x6392;&#x5E8F;</li>
-<li>&#x5F52;&#x5E76;&#x6392;&#x5E8F;</li>
-<li>&#x5E0C;&#x5C14;&#x6392;&#x5E8F;</li>
-<li>&#x5806;&#x6392;&#x5E8F;</li>
-<li>&#x8BA1;&#x6570;&#x6392;&#x5E8F;</li>
-<li>&#x6876;&#x6392;&#x5E8F;</li>
-<li>&#x57FA;&#x6570;&#x6392;&#x5E8F;</li>
-<li>&#x4E8C;&#x5206;&#x67E5;&#x627E;</li>
-<li>Java &#x4E2D;&#x7684;&#x6392;&#x5E8F;&#x5DE5;&#x5177;</li>
-</ul>
-</li>
-<li>&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;</li>
-<li>&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;<ul>
-<li>KMP &#x7B97;&#x6CD5;</li>
-</ul>
-</li>
-<li>&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x3001;&#x5E7F;&#x5EA6;&#x4F18;&#x5148;</li>
-<li>&#x8D2A;&#x5FC3;&#x7B97;&#x6CD5;</li>
-<li>&#x56DE;&#x6EAF;&#x7B97;&#x6CD5;</li>
-<li>&#x526A;&#x679D;&#x7B97;&#x6CD5;</li>
-<li>&#x52A8;&#x6001;&#x89C4;&#x5212;</li>
-<li>&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;</li>
-<li>&#x63A8;&#x8350;&#x7B97;&#x6CD5;</li>
-<li>&#x6700;&#x5C0F;&#x751F;&#x6210;&#x6811;&#x7B97;&#x6CD5;</li>
-<li>&#x6700;&#x77ED;&#x8DEF;&#x5F84;&#x7B97;&#x6CD5;</li>
-</ul>
-
+                                <table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x7B26;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$</td>
+<td>&#x5339;&#x914D;&#x8F93;&#x5165;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7ED3;&#x5C3E;&#x4F4D;&#x7F6E;</td>
+</tr>
+<tr>
+<td style="text-align:left">()</td>
+<td>&#x6807;&#x8BB0;&#x4E00;&#x4E2A;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;</td>
+</tr>
+<tr>
+<td style="text-align:left">{}</td>
+<td>&#x6807;&#x8BB0;&#x9650;&#x5B9A;&#x7B26;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5F00;&#x59CB;</td>
+</tr>
+<tr>
+<td style="text-align:left">\w</td>
+<td>&#x5339;&#x914D;&#x5305;&#x62EC;&#x4E0B;&#x5212;&#x7EBF;&#x7684;&#x4EFB;&#x4F55;&#x5355;&#x8BCD;&#x5B57;&#x7B26;,&#x7B49;&#x4EF7;&#x4E8E;&#x201C;[A-Za-z0-9_]&#x201D;</td>
+</tr>
+<tr>
+<td style="text-align:left">\d</td>
+<td>&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x3002;&#x7B49;&#x4EF7;&#x4E8E;[0-9]</td>
+</tr>
+<tr>
+<td style="text-align:left">\s</td>
+<td>&#x5339;&#x914D;&#x4EFB;&#x4F55;&#x7A7A;&#x767D;&#x5B57;&#x7B26;&#xFF0C;&#x5305;&#x62EC;&#x7A7A;&#x683C;&#x3001;&#x5236;&#x8868;&#x7B26;&#x3001;&#x6362;&#x9875;&#x7B26;&#x7B49;&#x7B49;&#x3002;&#x7B49;&#x4EF7;&#x4E8E;[ \f\n\r\t\v]</td>
+</tr>
+<tr>
+<td style="text-align:left">\D</td>
+<td>&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x975E;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x3002;&#x7B49;&#x4EF7;&#x4E8E;<sup><a href="#fn_0-9" id="reffn_0-9">0-9</a></sup></td>
+</tr>
+<tr>
+<td style="text-align:left">\W</td>
+<td>&#x5339;&#x914D;&#x4EFB;&#x4F55;&#x975E;&#x5355;&#x8BCD;&#x5B57;&#x7B26;&#x3002;&#x7B49;&#x4EF7;&#x4E8E;[A-Za-z0-9]</td>
+</tr>
+<tr>
+<td style="text-align:left">[]</td>
+<td>&#x5B57;&#x7B26;&#x8303;&#x56F4;&#xFF0C;&#x5339;&#x914D;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">[xyz]</td>
+<td>&#x5B57;&#x7B26;&#x96C6;&#x5408;&#x3002;&#x5339;&#x914D;&#x6240;&#x5305;&#x542B;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left"><sup><a href="#fn_xyz" id="reffn_xyz">xyz</a></sup></td>
+<td>&#x8D1F;&#x503C;&#x5B57;&#x7B26;&#x96C6;&#x5408;&#x3002;&#x5339;&#x914D;&#x672A;&#x5305;&#x542B;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left">[a-z]</td>
+<td>&#x5B57;&#x7B26;&#x8303;&#x56F4;&#x3002;&#x5339;&#x914D;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">.</td>
+<td>&#x5339;&#x914D;&#x9664;&#x201C;\n&#x201D;&#x4E4B;&#x5916;&#x7684;&#x4EFB;&#x4F55;&#x5355;&#x4E2A;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td>&#x5339;&#x914D;&#x524D;&#x9762;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x96F6;&#x6B21;&#x6216;&#x591A;&#x6B21;</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td>&#x5339;&#x914D;&#x524D;&#x9762;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x4E00;&#x6B21;&#x6216;&#x591A;&#x6B21;</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td>&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;&#x5219;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x5339;&#x914D;&#x6240;&#x641C;&#x7D22;&#x7684;&#x5B57;&#x7B26;&#x4E32;</td>
+</tr>
+<tr>
+<td style="text-align:left">{n}</td>
+<td>n&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x8D1F;&#x6574;&#x6570;&#x3002;&#x5339;&#x914D;&#x786E;&#x5B9A;&#x7684;n&#x6B21;</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,}</td>
+<td>&#x81F3;&#x5C11;&#x5339;&#x914D;n&#x6B21;</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,m}</td>
+<td>m&#x548C;n&#x5747;&#x4E3A;&#x975E;&#x8D1F;&#x6574;&#x6570;&#xFF0C;&#x5176;&#x4E2D;n&lt;=m&#x3002;&#x6700;&#x5C11;&#x5339;&#x914D;n&#x6B21;&#x4E14;&#x6700;&#x591A;&#x5339;&#x914D;m&#x6B21;</td>
+</tr>
+</tbody>
+</table>
+<pre><code>/\d/ #&#x5339;&#x914D;&#x6570;&#x5B57;&#xFF0C;&#x65E0;&#x9650;&#x5B9A;&#x7B26;
+/\d+/ #&#x5339;&#x914D;&#x6570;&#x5B57;&#xFF0C;&#x4E00;&#x6B21;&#x6216;&#x591A;&#x6B21;
+/\d+/g #&#x5339;&#x914D;&#x6570;&#x5B57;&#xFF0C;&#x5168;&#x5C40;
+/[abc] #&#x5339;&#x914D;&#x5305;&#x542B;a,b,c
+/[a-z]/g #&#x5339;&#x914D;&#x5305;&#x542B;a-z&#xFF0C;&#x5168;&#x5C40;
+/[^a-z]/g #&#x4E0D;&#x5339;&#x914D;a-z&#x7684;&#x5B57;&#x7B26;
+/b/ #&#x5339;&#x914D;&#x7279;&#x5B9A;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;
+/[^a-z0-9]/g #&#x4E0D;&#x5339;&#x914D;a-z&#x548C;0-9&#x7684;&#x5B57;&#x7B26;
+/a\|2\|o/g #&#x5339;&#x914D;&#x591A;&#x4E2A;&#x6307;&#x5B9A;&#x5B57;&#x7B26;
+/&lt;.*&gt;/ #&#x5339;&#x914D;&#x4ECE; &lt; &#x5230; &gt; &#x4E4B;&#x95F4;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;
+/&lt;.*?&gt;/ #&#x5339;&#x914D;&#x4ECE; &lt; &#x5230;&#x7B2C;&#x4E00;&#x4E2A; &gt; &#x4E4B;&#x95F4;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;
+/&lt;\w+?&gt;/ #&#x5339;&#x914D;&#x5F00;&#x59CB;&#x7684; &lt; &gt;
+</code></pre>
                                 
                                 </section>
                             
@@ -735,12 +796,12 @@
 
             
                 
-                <a href="data-structures.html" class="navigation navigation-prev " aria-label="Previous page: Data Structures">
+                <a href="restful.html" class="navigation navigation-prev " aria-label="Previous page: RESTful">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="http.html" class="navigation navigation-next " aria-label="Next page: Http">
+                <a href="../frontend/" class="navigation navigation-next " aria-label="Next page: Frontend">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -751,7 +812,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Algorithms","level":"1.2.3","depth":2,"next":{"title":"Http","level":"1.2.4","depth":2,"path":"basic/http.md","ref":"basic/http.md","articles":[]},"previous":{"title":"Data Structures","level":"1.2.2","depth":2,"path":"basic/data-structures.md","ref":"basic/data-structures.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"basic/algorithms.md","mtime":"2018-10-22T04:07:43.023Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-30T02:28:01.138Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Regular Exp","level":"1.2.6","depth":2,"next":{"title":"Frontend","level":"1.3","depth":1,"path":"frontend/README.md","ref":"frontend/README.md","articles":[{"title":"NodeJS","level":"1.3.1","depth":2,"path":"frontend/nodejs.md","ref":"frontend/nodejs.md","articles":[]},{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]},{"title":"JavaScript","level":"1.3.3","depth":2,"path":"frontend/javascript.md","ref":"frontend/javascript.md","articles":[]}]},"previous":{"title":"RESTful","level":"1.2.5","depth":2,"path":"basic/restful.md","ref":"basic/restful.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"basic/regular_exp.md","mtime":"2018-10-29T03:45:08.170Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-30T02:28:01.138Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
