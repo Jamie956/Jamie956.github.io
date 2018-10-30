@@ -17,9 +17,8 @@ node-inspect app.js
 
 - node inspector
 
-  
 
-### VSCode Debug
+### VSCode
 
 1. Sidebar debug -> Add config -> Edit launch.json
 
@@ -40,7 +39,9 @@ node-inspect app.js
    }
    ```
 
-2. Start Debugging
+2. F5 Start Debugging
+
+
 
 ## nvm
 

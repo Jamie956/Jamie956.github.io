@@ -25,8 +25,3 @@
 - Prettier
 - vscode-icons
 
-### nodejs debug
-1. Click sidebar debug
-2. Add configuration
-3. Add break point
-4. Press F5 start
