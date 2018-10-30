@@ -646,7 +646,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#debugging">Debugging</a><i></i></div></li>
+<li><div><a href="#&#x547D;&#x4EE4;">&#x547D;&#x4EE4;</a><i></i></div></li>
+<li><div><a href="#debugging">Debugging</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#vscode">VSCode</a><i></i></div></li>
+</ul></li>
 <li><div><a href="#nvm">nvm</a><i></i></div></li>
 <li><div><a href="#error">Error</a><i></i></div></li>
 <li><div><a href="#modularization">Modularization</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
@@ -677,8 +681,7 @@
 </ul>
 </div>
 
-
-
+<h2 id="&#x547D;&#x4EE4;">&#x547D;&#x4EE4;</h2>
 <pre><code>node -v
 node &lt;js&gt;
 </code></pre><h2 id="debugging">Debugging</h2>
@@ -687,10 +690,33 @@ or
 npm I -g node-inspect
 node-inspect app.js
 </code></pre><ul>
-<li>node debugger</li>
-<li>node inspector</li>
-<li>vscode</li>
+<li><p>node debugger</p>
+</li>
+<li><p>node inspector</p>
+</li>
 </ul>
+<h3 id="vscode">VSCode</h3>
+<ol>
+<li><p>Sidebar debug -&gt; Add config -&gt; Edit launch.json</p>
+<pre><code class="lang-json">{
+  <span class="hljs-comment">// Use IntelliSense to learn about possible attributes.</span>
+  <span class="hljs-comment">// Hover to view descriptions of existing attributes.</span>
+  <span class="hljs-comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span>
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.2.0&quot;</span>,
+  <span class="hljs-string">&quot;configurations&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;node&quot;</span>,
+      <span class="hljs-string">&quot;request&quot;</span>: <span class="hljs-string">&quot;launch&quot;</span>,
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Launch Program&quot;</span>,
+      <span class="hljs-string">&quot;program&quot;</span>: <span class="hljs-string">&quot;${workspaceFolder}/micro-packages/index.js&quot;</span> <span class="hljs-comment">//&#x6267;&#x884C;&#x6587;&#x4EF6;</span>
+    }
+  ]
+}
+</code></pre>
+</li>
+<li><p>F5 Start Debugging</p>
+</li>
+</ol>
 <h2 id="nvm">nvm</h2>
 <pre><code>sudo apt-get update
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash
@@ -994,7 +1020,7 @@ myEmitter.emit(<span class="hljs-string">&apos;event&apos;</span>, <span class="
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"NodeJS","level":"1.3.1","depth":2,"next":{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]},"previous":{"title":"Frontend","level":"1.3","depth":1,"path":"frontend/README.md","ref":"frontend/README.md","articles":[{"title":"NodeJS","level":"1.3.1","depth":2,"path":"frontend/nodejs.md","ref":"frontend/nodejs.md","articles":[]},{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/nodejs.md","mtime":"2018-10-25T02:17:02.283Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-25T09:21:10.317Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"NodeJS","level":"1.3.1","depth":2,"next":{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]},"previous":{"title":"Frontend","level":"1.3","depth":1,"path":"frontend/README.md","ref":"frontend/README.md","articles":[{"title":"NodeJS","level":"1.3.1","depth":2,"path":"frontend/nodejs.md","ref":"frontend/nodejs.md","articles":[]},{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/nodejs.md","mtime":"2018-10-29T03:45:08.170Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-30T02:24:14.934Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
