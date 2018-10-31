@@ -20,6 +20,12 @@
 
 
 
+### javascript
+
+JavaScript's single-threading
+
+
+
 ### call stack
 
 A **call stack** is a mechanism for an interpreter (like  the JavaScript interpreter in a web browser) to keep track of its place  in a script that calls multiple functions — what function is currently being run, what functions are called from within that function and should be called next, etc.
@@ -131,6 +137,10 @@ console.log('代码执行结束');
 
 ### setTimeout
 
+It's important to note that setTimeout(..) doesn't put your callback on the event loop queue. What it does is set up a timer; when the timer expires, the environment places your callback into the event loop, such that some future tick will pick it up and execute it.
+
+
+
  ```
 setTimeout(() => {
     task();
@@ -158,15 +168,29 @@ sleep(10000000);
 
 ### task
 
-macro-task(宏任务)：包括整体代码script，setTimeout，setInterval
+Microtasks(微任务) include process.nextTick, promise, Object.observe and MutationObserver 
 
-micro-task(微任务)：Promise，process.nextTick
+Macrotasks(宏任务) include script, setTimeout, setInterval, setImmediate, I/O and UI rendering
 
 
 
 <img width="85%" src="https://user-gold-cdn.xitu.io/2017/11/21/15fdcea13361a1ec?imageView2/0/w/1280/h/960/ignore-error/1" />
 
-事件循环的顺序，决定JS代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。
+
+
+So the correct sequence of an event loop looks like this:
+
+1.Execute synchronous codes, which belongs to macrotask
+
+2.Once call stack is empty, query if any microtasks need to be executed
+
+3.Execute all the microtasks
+
+4.If necessary, render the UI
+
+5.Then start the next round of the Event loop, and execute the asynchronous operations in the macrotask
+
+ 
 
 例子一：
 
@@ -192,16 +216,16 @@ console.log('console');
 
 第一轮事件循环
 
-1. 整体script作为第一个宏任务进入主线程，进入主线程
+1. 宏任务script进入主线程
 2. `setTimeout`的回调函数注册后分发到宏任务Event Queue
 3. `new Promise`立即执行，`then`函数分发到微任务Event Queue
-4. `console.log()`，立即执行
-5. 整体代码script作为第一个宏任务执行结束
-6. 检查微任务，执行微任务Event Queue的`then`
+4. 立即执行`console.log()`
+5. 宏任务script执行结束
+6. 检查微任务Event Queue，执行`then`
 
 第二轮事件循环
 
-1. 从宏任务Event Queue开始，执行`setTimeout`的回调函数
+1. 检查宏任务Event Queue，执行`setTimeout`的回调函数
 
 
 
@@ -250,37 +274,39 @@ setTimeout(function() {
 
 第一轮事件循环
 
-1. 整体script作为第一个宏任务进入主线程，执行`console.log('1')`
+1. 宏任务script进入主线程
 
-2. `setTimeout `回调函数被分发到宏任务Event Queue中，记为`setTimeout1`
+2. 执行`console.log('1')`
+
+3. `setTimeout `回调函数被分发到宏任务Event Queue中，记为`setTimeout1`
 
    微任务：
 
    宏任务：  setTimeout1
 
-3. `process.nextTick() `回调函数被分发到微任务Event Queue中，记为`process1`
+4. `process.nextTick() `回调函数分发到微任务Event Queue中，记为`process1`
 
    微任务：process1
 
    宏任务：  setTimeout1
-   
-4. `new Promise`直接执行，`then`被分发到微任务Event Queue中，记为`then1`
+
+5. `new Promise`直接执行，`then`分发到微任务Event Queue中，记为`then1`
 
    微任务：process1，then1
 
    宏任务：  setTimeout1
-   
-5. `setTimeout `回调函数被分发到宏任务Event Queue中，记为`setTimeout2`
+
+6. `setTimeout `回调函数分发到宏任务Event Queue中，记为`setTimeout2`
 
    微任务：process1，then1
 
    宏任务：  setTimeout1，setTimeout2
-   
-6. 宏任务（整体代码）结束，检查微任务
 
-7. 执行微任务`process1`
+7. 宏任务script结束
 
-8. 执行微任务`then1`
+8. 检查微任务，执行`process1`
+
+9. 检查微任务，执行`then1`
 
 第二轮事件循环
 
@@ -292,7 +318,7 @@ setTimeout(function() {
 
 
 
-补充：用nodejs执行会有差异，`setTimeout1`和`setTimeout2`似乎是同时执行
+疑问：用nodejs执行会有差异，`setTimeout1`和`setTimeout2`似乎是同时执行
 
  
 
@@ -375,7 +401,9 @@ parseInt('1.23') // 1
 
 ### type
 
-#### 值类型（primitive types）
+#### primitive types
+
+值类型
 
 - 占用空间固定，保存在栈中（当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁了。因此，所有在方法中定义的变量都是放在栈内存中的；栈中存储的是基础变量以及一些对象的引用变量，基础变量的值是存储在栈中，而引用变量存储在栈中的是指向堆中的数组或者对象的地址
 
@@ -399,7 +427,9 @@ var a = x;
 
 
 
-#### 引用类型（reference types）
+#### reference types
+
+引用类型
 
 - 占用空间不固定，保存在堆中（当我们在程序中创建一个对象时，这个对象将被保存到运行时数据区中，以便反复利用（因为对象的创建成本通常较大），这个运行时数据区就是堆内存。堆内存中的对象不会随方法的结束而销毁，即使方法结束后，这个对象还可能被另一个引用变量所引用（方法的参数传递时很常见），则这个对象依然不会被销毁，只有当一个对象没有任何引用变量引用它时，系统的垃圾回收机制才会在核实的时候回收它
 
@@ -730,8 +760,6 @@ obj.x // 1
    
    ```
 
-   
-
 2. 显式绑定
 
    ```js
@@ -747,8 +775,6 @@ obj.x // 1
    greet.call(user);
    ```
 
-   
-
 3. new 绑定
 
    ```js
@@ -759,8 +785,6 @@ obj.x // 1
    
    const me = new User('Tyler', 27);//this指向新对象
    ```
-
-   
 
 4. window 绑定
 
@@ -867,5 +891,110 @@ Scope Chain（作用域链）：Javascript中一切皆对象，这些对象有�
 
 
 
+### Higher-order function
+
+高阶函数：一个函数接收另一个函数作为参数
 
 
+
+### variable
+
+变量的生命周期包含着变量声明（Declaration Phase）、变量初始化（Initialization Phase）以及变量赋值（Assignment Phase）三个步骤；其中声明步骤会在作用域中注册变量，初始化步骤负责为变量分配内存并且创建作用域绑定，此时变量会被初始化为 undefined，最后的分配步骤则会将开发者指定的值分配给该变量。
+
+
+
+var声明的名称提升变量
+
+赋值了不会被提升
+
+
+
+```js
+//只会提升名称，不提升函数体
+var foo = function () { 
+    alert("this won't run!");
+}
+//函数体提升
+function bar() { 
+    alert("this will run!");
+}
+```
+
+
+
+### MVVM
+
+In the JQuery period, if you need to refresh the UI, you need to get the corresponding DOM and then update the UI, so the data and business logic are strongly-coupled with the page.
+
+ 
+
+In MVVM, the UI is driven by data. Once the data is changed, the corresponding UI will be refreshed. If the UI changes, the corresponding data will also be changed. In this way, we can only care about the data flow in business processing without dealing with the page directly. ViewModel only cares about the processing of data and business and does not care how View handles data. In this case, we can separate the View from the Model. If either party changes, it does not necessarily need to change the other party, and some reusable logic can be placed in a ViewModel, allowing multiple Views to reuse this ViewModel.
+
+ 
+
+In MVVM, the core is the two-way binding of data, such as dirty checking by Angular and data hijacking in Vue.
+
+
+
+### recursion
+
+> https://juejin.im/post/5948c0d8fe88c2006a939e2a
+
+一个过程或函数在其定义或说明中有直接或间接调用自身的一种方法
+
+```js
+function factorial(n) {
+    console.trace();//查看调用栈
+    if (n === 0) {
+        return 1
+    }
+
+    return n * factorial(n - 1)
+}
+
+factorial(3);
+```
+
+调用栈
+
+factorial(0)
+factorial(1)
+factorial(2)
+factorial(3)
+
+<img width="65%" src="https://user-gold-cdn.xitu.io/2017/6/20/d28ba98f3835845671655db33dfe14bb?imageView2/0/w/1280/h/960/ignore-error/1" />
+
+
+
+尾递归：是一种递归的写法，可以避免不断的将函数压栈最终导致堆栈溢出。通过设置一个累加参数，并且每一次都将当前的值累加上去，然后递归调用。
+
+```js
+function factorial(n, total = 1) {
+    console.trace();//查看调用栈
+    if (n === 0) {
+        return total
+    }
+
+    return factorial(n - 1, n * total)
+}
+factorial(3);
+```
+
+
+
+执行步骤，函数之间没有以来关系，所以每个函数调用之后可以进行垃圾回收
+
+factorial(3, 1)
+factorial(2, 3)
+factorial(1, 6)
+factorial(0, 6)
+
+
+
+补充：
+
+Nodejs需要使用`strict mode`和`--harmony_tailcalls`开启尾递归(proper tail call)
+
+```shell
+node --harmony_tailcalls factorial.js
+```
