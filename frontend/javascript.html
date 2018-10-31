@@ -672,6 +672,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#javascript">javascript</a><i></i></div></li>
 <li><div><a href="#call-stack">call stack</a><i></i></div></li>
 <li><div><a href="#event-loop">event loop</a><i></i></div></li>
 <li><div><a href="#settimeout">setTimeout</a><i></i></div></li>
@@ -685,8 +686,8 @@
 </ul></li>
 <li><div><a href="#type">type</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
-<li><div><a href="#&#x503C;&#x7C7B;&#x578B;&#xFF08;primitive-types&#xFF09;">&#x503C;&#x7C7B;&#x578B;&#xFF08;primitive types&#xFF09;</a><i></i></div></li>
-<li><div><a href="#&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF08;reference-types&#xFF09;">&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF08;reference types&#xFF09;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<li><div><a href="#primitive-types">primitive types</a><i></i></div></li>
+<li><div><a href="#reference-types">reference types</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
 <li><div><a href="#object">Object</a><i></i></div></li>
 <li><div><a href="#&#x51FD;&#x6570;&#x53C2;&#x6570;">&#x51FD;&#x6570;&#x53C2;&#x6570;</a><i></i></div></li>
@@ -703,6 +704,10 @@
 </ul></li>
 <li><div><a href="#scope">scope</a><i></i></div></li>
 <li><div><a href="#closure">closure</a><i></i></div></li>
+<li><div><a href="#higher-order-function">Higher-order function</a><i></i></div></li>
+<li><div><a href="#variable">variable</a><i></i></div></li>
+<li><div><a href="#mvvm">MVVM</a><i></i></div></li>
+<li><div><a href="#recursion">recursion</a><i></i></div></li>
 </ul>
 </div>
 
@@ -718,6 +723,8 @@
 <p><a href="https://www.jianshu.com/p/6b4333e78bf5" target="_blank">https://www.jianshu.com/p/6b4333e78bf5</a></p>
 <p><a href="https://juejin.im/post/5b9f176b6fb9a05d3827d03f" target="_blank">https://juejin.im/post/5b9f176b6fb9a05d3827d03f</a></p>
 </blockquote>
+<h3 id="javascript">javascript</h3>
+<p>JavaScript&apos;s single-threading</p>
 <h3 id="call-stack">call stack</h3>
 <p>A <strong>call stack</strong> is a mechanism for an interpreter (like  the JavaScript interpreter in a web browser) to keep track of its place  in a script that calls multiple functions &#x2014; what function is currently being run, what functions are called from within that function and should be called next, etc.</p>
 <ul>
@@ -809,6 +816,7 @@ $.ajax({
 <li>&#x4E3B;&#x7EBF;&#x7A0B;&#x4ECE;Event Queue&#x8BFB;&#x53D6;&#x56DE;&#x8C03;&#x51FD;&#x6570;<code>success</code>&#x5E76;&#x6267;&#x884C;</li>
 </ul>
 <h3 id="settimeout">setTimeout</h3>
+<p>It&apos;s important to note that setTimeout(..) doesn&apos;t put your callback on the event loop queue. What it does is set up a timer; when the timer expires, the environment places your callback into the event loop, such that some future tick will pick it up and execute it.</p>
 <pre><code>setTimeout(() =&gt; {
     task();
 },3000);
@@ -824,10 +832,15 @@ sleep(10000000);
 <h3 id="setinterval">setInterval</h3>
 <p><code>setInterval(fn,ms)</code>&#x6BCF;&#x8FC7;<code>ms</code>&#x79D2;&#xFF0C;&#x4F1A;&#x6709;<code>fn</code>&#x8FDB;&#x5165;Event Queue&#x3002;&#x4E00;&#x65E6;<strong>setInterval&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;fn&#x6267;&#x884C;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;&#x4E86;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;ms&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5B8C;&#x5168;&#x770B;&#x4E0D;&#x51FA;&#x6765;&#x6709;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x4E86;</strong>&#x3002;</p>
 <h3 id="task">task</h3>
-<p>macro-task(&#x5B8F;&#x4EFB;&#x52A1;)&#xFF1A;&#x5305;&#x62EC;&#x6574;&#x4F53;&#x4EE3;&#x7801;script&#xFF0C;setTimeout&#xFF0C;setInterval</p>
-<p>micro-task(&#x5FAE;&#x4EFB;&#x52A1;)&#xFF1A;Promise&#xFF0C;process.nextTick</p>
+<p>Microtasks(&#x5FAE;&#x4EFB;&#x52A1;) include process.nextTick, promise, Object.observe and MutationObserver </p>
+<p>Macrotasks(&#x5B8F;&#x4EFB;&#x52A1;) include script, setTimeout, setInterval, setImmediate, I/O and UI rendering</p>
 <p><img width="85%" src="https://user-gold-cdn.xitu.io/2017/11/21/15fdcea13361a1ec?imageView2/0/w/1280/h/960/ignore-error/1"></p>
-<p>&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x51B3;&#x5B9A;JS&#x4EE3;&#x7801;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x3002;&#x8FDB;&#x5165;&#x6574;&#x4F53;&#x4EE3;&#x7801;(&#x5B8F;&#x4EFB;&#x52A1;)&#x540E;&#xFF0C;&#x5F00;&#x59CB;&#x7B2C;&#x4E00;&#x6B21;&#x5FAA;&#x73AF;&#x3002;&#x63A5;&#x7740;&#x6267;&#x884C;&#x6240;&#x6709;&#x7684;&#x5FAE;&#x4EFB;&#x52A1;&#x3002;&#x7136;&#x540E;&#x518D;&#x6B21;&#x4ECE;&#x5B8F;&#x4EFB;&#x52A1;&#x5F00;&#x59CB;&#xFF0C;&#x627E;&#x5230;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x961F;&#x5217;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x6240;&#x6709;&#x7684;&#x5FAE;&#x4EFB;&#x52A1;&#x3002;</p>
+<p>So the correct sequence of an event loop looks like this:</p>
+<p>1.Execute synchronous codes, which belongs to macrotask</p>
+<p>2.Once call stack is empty, query if any microtasks need to be executed</p>
+<p>3.Execute all the microtasks</p>
+<p>4.If necessary, render the UI</p>
+<p>5.Then start the next round of the Event loop, and execute the asynchronous operations in the macrotask</p>
 <p>&#x4F8B;&#x5B50;&#x4E00;&#xFF1A;</p>
 <pre><code class="lang-js">setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;setTimeout&apos;</span>);
@@ -849,16 +862,16 @@ sleep(10000000);
 </code></pre>
 <p>&#x7B2C;&#x4E00;&#x8F6E;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;</p>
 <ol>
-<li>&#x6574;&#x4F53;script&#x4F5C;&#x4E3A;&#x7B2C;&#x4E00;&#x4E2A;&#x5B8F;&#x4EFB;&#x52A1;&#x8FDB;&#x5165;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x8FDB;&#x5165;&#x4E3B;&#x7EBF;&#x7A0B;</li>
+<li>&#x5B8F;&#x4EFB;&#x52A1;script&#x8FDB;&#x5165;&#x4E3B;&#x7EBF;&#x7A0B;</li>
 <li><code>setTimeout</code>&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6CE8;&#x518C;&#x540E;&#x5206;&#x53D1;&#x5230;&#x5B8F;&#x4EFB;&#x52A1;Event Queue</li>
 <li><code>new Promise</code>&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;<code>then</code>&#x51FD;&#x6570;&#x5206;&#x53D1;&#x5230;&#x5FAE;&#x4EFB;&#x52A1;Event Queue</li>
-<li><code>console.log()</code>&#xFF0C;&#x7ACB;&#x5373;&#x6267;&#x884C;</li>
-<li>&#x6574;&#x4F53;&#x4EE3;&#x7801;script&#x4F5C;&#x4E3A;&#x7B2C;&#x4E00;&#x4E2A;&#x5B8F;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7ED3;&#x675F;</li>
-<li>&#x68C0;&#x67E5;&#x5FAE;&#x4EFB;&#x52A1;&#xFF0C;&#x6267;&#x884C;&#x5FAE;&#x4EFB;&#x52A1;Event Queue&#x7684;<code>then</code></li>
+<li>&#x7ACB;&#x5373;&#x6267;&#x884C;<code>console.log()</code></li>
+<li>&#x5B8F;&#x4EFB;&#x52A1;script&#x6267;&#x884C;&#x7ED3;&#x675F;</li>
+<li>&#x68C0;&#x67E5;&#x5FAE;&#x4EFB;&#x52A1;Event Queue&#xFF0C;&#x6267;&#x884C;<code>then</code></li>
 </ol>
 <p>&#x7B2C;&#x4E8C;&#x8F6E;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;</p>
 <ol>
-<li>&#x4ECE;&#x5B8F;&#x4EFB;&#x52A1;Event Queue&#x5F00;&#x59CB;&#xFF0C;&#x6267;&#x884C;<code>setTimeout</code>&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</li>
+<li>&#x68C0;&#x67E5;&#x5B8F;&#x4EFB;&#x52A1;Event Queue&#xFF0C;&#x6267;&#x884C;<code>setTimeout</code>&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</li>
 </ol>
 <p>&#x4F8B;&#x5B50;&#x4E8C;&#xFF1A;</p>
 <pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;1&apos;</span>);
@@ -902,29 +915,31 @@ setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span
 </code></pre>
 <p>&#x7B2C;&#x4E00;&#x8F6E;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;</p>
 <ol>
-<li><p>&#x6574;&#x4F53;script&#x4F5C;&#x4E3A;&#x7B2C;&#x4E00;&#x4E2A;&#x5B8F;&#x4EFB;&#x52A1;&#x8FDB;&#x5165;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x6267;&#x884C;<code>console.log(&apos;1&apos;)</code></p>
+<li><p>&#x5B8F;&#x4EFB;&#x52A1;script&#x8FDB;&#x5165;&#x4E3B;&#x7EBF;&#x7A0B;</p>
+</li>
+<li><p>&#x6267;&#x884C;<code>console.log(&apos;1&apos;)</code></p>
 </li>
 <li><p><code>setTimeout</code>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x88AB;&#x5206;&#x53D1;&#x5230;&#x5B8F;&#x4EFB;&#x52A1;Event Queue&#x4E2D;&#xFF0C;&#x8BB0;&#x4E3A;<code>setTimeout1</code></p>
 <p>&#x5FAE;&#x4EFB;&#x52A1;&#xFF1A;</p>
 <p>&#x5B8F;&#x4EFB;&#x52A1;&#xFF1A;  setTimeout1</p>
 </li>
-<li><p><code>process.nextTick()</code>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x88AB;&#x5206;&#x53D1;&#x5230;&#x5FAE;&#x4EFB;&#x52A1;Event Queue&#x4E2D;&#xFF0C;&#x8BB0;&#x4E3A;<code>process1</code></p>
+<li><p><code>process.nextTick()</code>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5206;&#x53D1;&#x5230;&#x5FAE;&#x4EFB;&#x52A1;Event Queue&#x4E2D;&#xFF0C;&#x8BB0;&#x4E3A;<code>process1</code></p>
 <p>&#x5FAE;&#x4EFB;&#x52A1;&#xFF1A;process1</p>
 <p>&#x5B8F;&#x4EFB;&#x52A1;&#xFF1A;  setTimeout1</p>
 </li>
-<li><p><code>new Promise</code>&#x76F4;&#x63A5;&#x6267;&#x884C;&#xFF0C;<code>then</code>&#x88AB;&#x5206;&#x53D1;&#x5230;&#x5FAE;&#x4EFB;&#x52A1;Event Queue&#x4E2D;&#xFF0C;&#x8BB0;&#x4E3A;<code>then1</code></p>
+<li><p><code>new Promise</code>&#x76F4;&#x63A5;&#x6267;&#x884C;&#xFF0C;<code>then</code>&#x5206;&#x53D1;&#x5230;&#x5FAE;&#x4EFB;&#x52A1;Event Queue&#x4E2D;&#xFF0C;&#x8BB0;&#x4E3A;<code>then1</code></p>
 <p>&#x5FAE;&#x4EFB;&#x52A1;&#xFF1A;process1&#xFF0C;then1</p>
 <p>&#x5B8F;&#x4EFB;&#x52A1;&#xFF1A;  setTimeout1</p>
 </li>
-<li><p><code>setTimeout</code>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x88AB;&#x5206;&#x53D1;&#x5230;&#x5B8F;&#x4EFB;&#x52A1;Event Queue&#x4E2D;&#xFF0C;&#x8BB0;&#x4E3A;<code>setTimeout2</code></p>
+<li><p><code>setTimeout</code>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5206;&#x53D1;&#x5230;&#x5B8F;&#x4EFB;&#x52A1;Event Queue&#x4E2D;&#xFF0C;&#x8BB0;&#x4E3A;<code>setTimeout2</code></p>
 <p>&#x5FAE;&#x4EFB;&#x52A1;&#xFF1A;process1&#xFF0C;then1</p>
 <p>&#x5B8F;&#x4EFB;&#x52A1;&#xFF1A;  setTimeout1&#xFF0C;setTimeout2</p>
 </li>
-<li><p>&#x5B8F;&#x4EFB;&#x52A1;&#xFF08;&#x6574;&#x4F53;&#x4EE3;&#x7801;&#xFF09;&#x7ED3;&#x675F;&#xFF0C;&#x68C0;&#x67E5;&#x5FAE;&#x4EFB;&#x52A1;</p>
+<li><p>&#x5B8F;&#x4EFB;&#x52A1;script&#x7ED3;&#x675F;</p>
 </li>
-<li><p>&#x6267;&#x884C;&#x5FAE;&#x4EFB;&#x52A1;<code>process1</code></p>
+<li><p>&#x68C0;&#x67E5;&#x5FAE;&#x4EFB;&#x52A1;&#xFF0C;&#x6267;&#x884C;<code>process1</code></p>
 </li>
-<li><p>&#x6267;&#x884C;&#x5FAE;&#x4EFB;&#x52A1;<code>then1</code></p>
+<li><p>&#x68C0;&#x67E5;&#x5FAE;&#x4EFB;&#x52A1;&#xFF0C;&#x6267;&#x884C;<code>then1</code></p>
 </li>
 </ol>
 <p>&#x7B2C;&#x4E8C;&#x8F6E;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;</p>
@@ -935,7 +950,7 @@ setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span
 <li><p>&#x6267;&#x884C;&#x5B8F;&#x4EFB;&#x52A1;<code>setTimeout2</code>&#xFF0C;&#x539F;&#x7406;&#x540C;&#x4E0A;</p>
 </li>
 </ol>
-<p>&#x8865;&#x5145;&#xFF1A;&#x7528;nodejs&#x6267;&#x884C;&#x4F1A;&#x6709;&#x5DEE;&#x5F02;&#xFF0C;<code>setTimeout1</code>&#x548C;<code>setTimeout2</code>&#x4F3C;&#x4E4E;&#x662F;&#x540C;&#x65F6;&#x6267;&#x884C;</p>
+<p>&#x7591;&#x95EE;&#xFF1A;&#x7528;nodejs&#x6267;&#x884C;&#x4F1A;&#x6709;&#x5DEE;&#x5F02;&#xFF0C;<code>setTimeout1</code>&#x548C;<code>setTimeout2</code>&#x4F3C;&#x4E4E;&#x662F;&#x540C;&#x65F6;&#x6267;&#x884C;</p>
 <p><img src="https://user-gold-cdn.xitu.io/2017/11/21/15fdd96beade6575?imageView2/0/w/1280/h/960/ignore-error/1"></p>
 <h3 id="primitive">primitive</h3>
 <p>A <strong>primitive</strong> (primitive value, primitive data type) is data that is not an <a href="https://developer.mozilla.org/en-US/docs/Glossary/object" target="_blank">object</a> and has no <a href="https://developer.mozilla.org/en-US/docs/Glossary/method" target="_blank">methods</a>. In <a href="https://developer.mozilla.org/en-US/docs/Glossary/JavaScript" target="_blank">JavaScript</a>, there are 6 primitive data types: <a href="https://developer.mozilla.org/en-US/docs/Glossary/string" target="_blank">string</a>, <a href="https://developer.mozilla.org/en-US/docs/Glossary/number" target="_blank">number</a>, <a href="https://developer.mozilla.org/en-US/docs/Glossary/boolean" target="_blank">boolean</a>, <a href="https://developer.mozilla.org/en-US/docs/Glossary/null" target="_blank">null</a>, <a href="https://developer.mozilla.org/en-US/docs/Glossary/undefined" target="_blank">undefined</a>, <a href="https://developer.mozilla.org/en-US/docs/Glossary/symbol" target="_blank">symbol</a> (new in <a href="https://developer.mozilla.org/en-US/docs/Glossary/ECMAScript" target="_blank">ECMAScript</a> 2015).</p>
@@ -984,7 +999,8 @@ setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span
 <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&apos;1.23&apos;</span>) <span class="hljs-comment">// 1</span>
 </code></pre>
 <h3 id="type">type</h3>
-<h4 id="&#x503C;&#x7C7B;&#x578B;&#xFF08;primitive-types&#xFF09;">&#x503C;&#x7C7B;&#x578B;&#xFF08;primitive types&#xFF09;</h4>
+<h4 id="primitive-types">primitive types</h4>
+<p>&#x503C;&#x7C7B;&#x578B;</p>
 <ul>
 <li><p>&#x5360;&#x7528;&#x7A7A;&#x95F4;&#x56FA;&#x5B9A;&#xFF0C;&#x4FDD;&#x5B58;&#x5728;&#x6808;&#x4E2D;&#xFF08;&#x5F53;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x5EFA;&#x7ACB;&#x81EA;&#x5DF1;&#x7684;&#x5185;&#x5B58;&#x6808;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5185;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#x5C06;&#x4F1A;&#x9010;&#x4E2A;&#x653E;&#x5165;&#x8FD9;&#x5757;&#x6808;&#x5185;&#x5B58;&#x91CC;&#xFF0C;&#x968F;&#x7740;&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x675F;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5185;&#x5B58;&#x6808;&#x4E5F;&#x5C06;&#x81EA;&#x7136;&#x9500;&#x6BC1;&#x4E86;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6240;&#x6709;&#x5728;&#x65B9;&#x6CD5;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#x90FD;&#x662F;&#x653E;&#x5728;&#x6808;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#xFF1B;&#x6808;&#x4E2D;&#x5B58;&#x50A8;&#x7684;&#x662F;&#x57FA;&#x7840;&#x53D8;&#x91CF;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x53D8;&#x91CF;&#xFF0C;&#x57FA;&#x7840;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x662F;&#x5B58;&#x50A8;&#x5728;&#x6808;&#x4E2D;&#xFF0C;&#x800C;&#x5F15;&#x7528;&#x53D8;&#x91CF;&#x5B58;&#x50A8;&#x5728;&#x6808;&#x4E2D;&#x7684;&#x662F;&#x6307;&#x5411;&#x5806;&#x4E2D;&#x7684;&#x6570;&#x7EC4;&#x6216;&#x8005;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;</p>
 </li>
@@ -1005,7 +1021,8 @@ memory, the variable can directly hold any primitive value.</p>
 <span class="hljs-keyword">var</span> x = <span class="hljs-number">10</span>;
 <span class="hljs-keyword">var</span> a = x;
 </code></pre>
-<h4 id="&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF08;reference-types&#xFF09;">&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF08;reference types&#xFF09;</h4>
+<h4 id="reference-types">reference types</h4>
+<p>&#x5F15;&#x7528;&#x7C7B;&#x578B;</p>
 <ul>
 <li><p>&#x5360;&#x7528;&#x7A7A;&#x95F4;&#x4E0D;&#x56FA;&#x5B9A;&#xFF0C;&#x4FDD;&#x5B58;&#x5728;&#x5806;&#x4E2D;&#xFF08;&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x5C06;&#x88AB;&#x4FDD;&#x5B58;&#x5230;&#x8FD0;&#x884C;&#x65F6;&#x6570;&#x636E;&#x533A;&#x4E2D;&#xFF0C;&#x4EE5;&#x4FBF;&#x53CD;&#x590D;&#x5229;&#x7528;&#xFF08;&#x56E0;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#x6210;&#x672C;&#x901A;&#x5E38;&#x8F83;&#x5927;&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FD0;&#x884C;&#x65F6;&#x6570;&#x636E;&#x533A;&#x5C31;&#x662F;&#x5806;&#x5185;&#x5B58;&#x3002;&#x5806;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x4E0D;&#x4F1A;&#x968F;&#x65B9;&#x6CD5;&#x7684;&#x7ED3;&#x675F;&#x800C;&#x9500;&#x6BC1;&#xFF0C;&#x5373;&#x4F7F;&#x65B9;&#x6CD5;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x8FD8;&#x53EF;&#x80FD;&#x88AB;&#x53E6;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x53D8;&#x91CF;&#x6240;&#x5F15;&#x7528;&#xFF08;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x65F6;&#x5F88;&#x5E38;&#x89C1;&#xFF09;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4F9D;&#x7136;&#x4E0D;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5F15;&#x7528;&#x53D8;&#x91CF;&#x5F15;&#x7528;&#x5B83;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#x624D;&#x4F1A;&#x5728;&#x6838;&#x5B9E;&#x7684;&#x65F6;&#x5019;&#x56DE;&#x6536;&#x5B83;</p>
 </li>
@@ -1236,8 +1253,6 @@ user.greet();</p>
 </li>
 </ol>
 <pre><code>
-
-
 2. &#x663E;&#x5F0F;&#x7ED1;&#x5B9A;
 
    ```js
@@ -1261,8 +1276,6 @@ user.greet();</p>
 <span class="hljs-keyword">const</span> me = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&apos;Tyler&apos;</span>, <span class="hljs-number">27</span>);<span class="hljs-comment">//this&#x6307;&#x5411;&#x65B0;&#x5BF9;&#x8C61;</span>
 </code></pre>
 </li>
-</ol>
-<ol>
 <li><p>window &#x7ED1;&#x5B9A;</p>
 <pre><code class="lang-js"><span class="hljs-built_in">window</span>.age = <span class="hljs-number">27</span>
 
@@ -1331,6 +1344,67 @@ newFn();
 <p>&#x901A;&#x5E38;&#xFF0C;&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x53CA;&#x5176;&#x6240;&#x6709;&#x53D8;&#x91CF;&#x90FD;&#x4F1A;&#x5728;&#x51FD;&#x6570;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x540E;&#x88AB;&#x9500;&#x6BC1;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5728;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x95ED;&#x5305;&#x4EE5;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x5C31;&#x4F1A;&#x4E00;&#x76F4;&#x4FDD;&#x5B58;&#x5230;&#x95ED;&#x5305;&#x4E0D;&#x5B58;&#x5728;&#x4E3A;&#x6B62;&#x3002;</p>
 <p>&#x5E94;&#x7528;&#xFF1A;&#x8BBE;&#x8BA1;&#x79C1;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#x548C;&#x53D8;&#x91CF;&#x3002;</p>
 <p>&#x7F3A;&#x70B9;&#xFF1A;&#x51CF;&#x6162;&#x5904;&#x7406;&#x901F;&#x5EA6;&#xFF0C;&#x5185;&#x5B58;&#x6D88;&#x8017;</p>
+<h3 id="higher-order-function">Higher-order function</h3>
+<p>&#x9AD8;&#x9636;&#x51FD;&#x6570;&#xFF1A;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x63A5;&#x6536;&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;</p>
+<h3 id="variable">variable</h3>
+<p>&#x53D8;&#x91CF;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5305;&#x542B;&#x7740;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#xFF08;Declaration Phase&#xFF09;&#x3001;&#x53D8;&#x91CF;&#x521D;&#x59CB;&#x5316;&#xFF08;Initialization Phase&#xFF09;&#x4EE5;&#x53CA;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#xFF08;Assignment Phase&#xFF09;&#x4E09;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1B;&#x5176;&#x4E2D;&#x58F0;&#x660E;&#x6B65;&#x9AA4;&#x4F1A;&#x5728;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x6CE8;&#x518C;&#x53D8;&#x91CF;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x6B65;&#x9AA4;&#x8D1F;&#x8D23;&#x4E3A;&#x53D8;&#x91CF;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5E76;&#x4E14;&#x521B;&#x5EFA;&#x4F5C;&#x7528;&#x57DF;&#x7ED1;&#x5B9A;&#xFF0C;&#x6B64;&#x65F6;&#x53D8;&#x91CF;&#x4F1A;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A; undefined&#xFF0C;&#x6700;&#x540E;&#x7684;&#x5206;&#x914D;&#x6B65;&#x9AA4;&#x5219;&#x4F1A;&#x5C06;&#x5F00;&#x53D1;&#x8005;&#x6307;&#x5B9A;&#x7684;&#x503C;&#x5206;&#x914D;&#x7ED9;&#x8BE5;&#x53D8;&#x91CF;&#x3002;</p>
+<p>var&#x58F0;&#x660E;&#x7684;&#x540D;&#x79F0;&#x63D0;&#x5347;&#x53D8;&#x91CF;</p>
+<p>&#x8D4B;&#x503C;&#x4E86;&#x4E0D;&#x4F1A;&#x88AB;&#x63D0;&#x5347;</p>
+<pre><code class="lang-js"><span class="hljs-comment">//&#x53EA;&#x4F1A;&#x63D0;&#x5347;&#x540D;&#x79F0;&#xFF0C;&#x4E0D;&#x63D0;&#x5347;&#x51FD;&#x6570;&#x4F53;</span>
+<span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
+    alert(<span class="hljs-string">&quot;this won&apos;t run!&quot;</span>);
+}
+<span class="hljs-comment">//&#x51FD;&#x6570;&#x4F53;&#x63D0;&#x5347;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) </span>{ 
+    alert(<span class="hljs-string">&quot;this will run!&quot;</span>);
+}
+</code></pre>
+<h3 id="mvvm">MVVM</h3>
+<p>In the JQuery period, if you need to refresh the UI, you need to get the corresponding DOM and then update the UI, so the data and business logic are strongly-coupled with the page.</p>
+<p>In MVVM, the UI is driven by data. Once the data is changed, the corresponding UI will be refreshed. If the UI changes, the corresponding data will also be changed. In this way, we can only care about the data flow in business processing without dealing with the page directly. ViewModel only cares about the processing of data and business and does not care how View handles data. In this case, we can separate the View from the Model. If either party changes, it does not necessarily need to change the other party, and some reusable logic can be placed in a ViewModel, allowing multiple Views to reuse this ViewModel.</p>
+<p>In MVVM, the core is the two-way binding of data, such as dirty checking by Angular and data hijacking in Vue.</p>
+<h3 id="recursion">recursion</h3>
+<blockquote>
+<p><a href="https://juejin.im/post/5948c0d8fe88c2006a939e2a" target="_blank">https://juejin.im/post/5948c0d8fe88c2006a939e2a</a></p>
+</blockquote>
+<p>&#x4E00;&#x4E2A;&#x8FC7;&#x7A0B;&#x6216;&#x51FD;&#x6570;&#x5728;&#x5176;&#x5B9A;&#x4E49;&#x6216;&#x8BF4;&#x660E;&#x4E2D;&#x6709;&#x76F4;&#x63A5;&#x6216;&#x95F4;&#x63A5;&#x8C03;&#x7528;&#x81EA;&#x8EAB;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factorial</span>(<span class="hljs-params">n</span>) </span>{
+    <span class="hljs-built_in">console</span>.trace();<span class="hljs-comment">//&#x67E5;&#x770B;&#x8C03;&#x7528;&#x6808;</span>
+    <span class="hljs-keyword">if</span> (n === <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    }
+
+    <span class="hljs-keyword">return</span> n * factorial(n - <span class="hljs-number">1</span>)
+}
+
+factorial(<span class="hljs-number">3</span>);
+</code></pre>
+<p>&#x8C03;&#x7528;&#x6808;</p>
+<p>factorial(0)
+factorial(1)
+factorial(2)
+factorial(3)</p>
+<p><img width="65%" src="https://user-gold-cdn.xitu.io/2017/6/20/d28ba98f3835845671655db33dfe14bb?imageView2/0/w/1280/h/960/ignore-error/1"></p>
+<p>&#x5C3E;&#x9012;&#x5F52;&#xFF1A;&#x662F;&#x4E00;&#x79CD;&#x9012;&#x5F52;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x4E0D;&#x65AD;&#x7684;&#x5C06;&#x51FD;&#x6570;&#x538B;&#x6808;&#x6700;&#x7EC8;&#x5BFC;&#x81F4;&#x5806;&#x6808;&#x6EA2;&#x51FA;&#x3002;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x7D2F;&#x52A0;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x6BCF;&#x4E00;&#x6B21;&#x90FD;&#x5C06;&#x5F53;&#x524D;&#x7684;&#x503C;&#x7D2F;&#x52A0;&#x4E0A;&#x53BB;&#xFF0C;&#x7136;&#x540E;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factorial</span>(<span class="hljs-params">n, total = 1</span>) </span>{
+    <span class="hljs-built_in">console</span>.trace();<span class="hljs-comment">//&#x67E5;&#x770B;&#x8C03;&#x7528;&#x6808;</span>
+    <span class="hljs-keyword">if</span> (n === <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> total
+    }
+
+    <span class="hljs-keyword">return</span> factorial(n - <span class="hljs-number">1</span>, n * total)
+}
+factorial(<span class="hljs-number">3</span>);
+</code></pre>
+<p>&#x6267;&#x884C;&#x6B65;&#x9AA4;&#xFF0C;&#x51FD;&#x6570;&#x4E4B;&#x95F4;&#x6CA1;&#x6709;&#x4EE5;&#x6765;&#x5173;&#x7CFB;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4E4B;&#x540E;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;</p>
+<p>factorial(3, 1)
+factorial(2, 3)
+factorial(1, 6)
+factorial(0, 6)</p>
+<p>&#x8865;&#x5145;&#xFF1A;</p>
+<p>Nodejs&#x9700;&#x8981;&#x4F7F;&#x7528;<code>strict mode</code>&#x548C;<code>--harmony_tailcalls</code>&#x5F00;&#x542F;&#x5C3E;&#x9012;&#x5F52;(proper tail call)</p>
+<pre><code class="lang-shell">node --harmony_tailcalls factorial.js
+</code></pre>
 
                                 
                                 </section>
@@ -1374,7 +1448,7 @@ newFn();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.3.3","depth":2,"next":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.1.2","depth":3,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]},{"title":"Spring","level":"1.4.1.3","depth":3,"path":"backend/spring.md","ref":"backend/spring.md","articles":[]}]},{"title":"Architecture","level":"1.4.2","depth":2,"path":"backend/architecture.md","ref":"backend/architecture.md","articles":[]},{"title":"MongoDB","level":"1.4.3","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.4","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.5","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/javascript.md","mtime":"2018-10-30T09:23:50.571Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-30T09:52:30.305Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.3.3","depth":2,"next":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.1.2","depth":3,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]},{"title":"Spring","level":"1.4.1.3","depth":3,"path":"backend/spring.md","ref":"backend/spring.md","articles":[]}]},{"title":"Architecture","level":"1.4.2","depth":2,"path":"backend/architecture.md","ref":"backend/architecture.md","articles":[]},{"title":"MongoDB","level":"1.4.3","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.4","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.5","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/javascript.md","mtime":"2018-10-31T09:08:27.489Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-31T10:03:51.780Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
