@@ -998,3 +998,93 @@ Nodejs需要使用`strict mode`和`--harmony_tailcalls`开启尾递归(proper ta
 ```shell
 node --harmony_tailcalls factorial.js
 ```
+
+
+### algo
+
+> 参考
+>
+> https://juejin.im/post/57dcd394a22b9d00610c5ec8
+
+#### sort
+
+
+
+**稳定**：如果a原本在b前面，而a=b，排序之后a仍然在b的前面； **不稳定**：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；
+
+**内排序**：所有排序操作都在内存中完成； **外排序**：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；
+
+**时间复杂度**: 一个算法执行所耗费的时间。 **空间复杂度**: 运行完一个程序所需内存的大小。
+
+  
+
+<img width="88%" src="https://user-gold-cdn.xitu.io/2016/11/29/4abde1748817d7f35f2bf8b6a058aa40?imageView2/0/w/1280/h/960/ignore-error/1" /> 
+
+ n: 数据规模 k:“桶”的个数
+
+In-place: 占用常数内存，不占用额外内存
+
+Out-place: 占用额外内存
+
+
+
+冒泡排序
+
+<img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/30/f427727489dff5fcb0debdd69b478ecf?imageView2/0/w/1280/h/960/ignore-error/1" />
+
+
+
+选择排序
+
+<img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/29/138a44298f3693e3fdd1722235e72f0f?imageView2/0/w/1280/h/960/ignore-error/1" />
+
+
+
+插入排序
+
+<img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/29/f0e1e3b7f95c3888ab2791b6abbfae41?imageView2/0/w/1280/h/960/ignore-error/1" />
+
+
+
+归并排序
+
+<img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/29/33d105e7e7e9c60221c445f5684ccfb6?imageView2/0/w/1280/h/960/ignore-error/1" />
+
+
+
+#### search
+
+
+
+### data structure
+
+**栈**：LIFO，栈顶（栈的末尾，新元素靠近栈顶），栈底（旧元素靠近栈底）
+
+**队列**：FIFO，尾部添加元素，头部移除元素
+
+**链表**：有序元素集合，元素在内存中不连续放置，每个元素由一个自身节点和指向下一个元素的引用（指针/链接）组成
+
+**集合**：无序且唯一
+
+**字典**：key-value
+
+**散列**：hash map
+
+**树**：由 n（n>=1）个有限节点组成一个具有层次关系的集合
+
+**图**：网络结构的抽象模型
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
