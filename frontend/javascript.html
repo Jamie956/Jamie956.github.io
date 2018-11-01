@@ -708,6 +708,12 @@
 <li><div><a href="#variable">variable</a><i></i></div></li>
 <li><div><a href="#mvvm">MVVM</a><i></i></div></li>
 <li><div><a href="#recursion">recursion</a><i></i></div></li>
+<li><div><a href="#algo">algo</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#sort">sort</a><i></i></div></li>
+<li><div><a href="#search">search</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#data-structure">data structure</a><i></i></div></li>
 </ul>
 </div>
 
@@ -1405,6 +1411,37 @@ factorial(0, 6)</p>
 <p>Nodejs&#x9700;&#x8981;&#x4F7F;&#x7528;<code>strict mode</code>&#x548C;<code>--harmony_tailcalls</code>&#x5F00;&#x542F;&#x5C3E;&#x9012;&#x5F52;(proper tail call)</p>
 <pre><code class="lang-shell">node --harmony_tailcalls factorial.js
 </code></pre>
+<h3 id="algo">algo</h3>
+<blockquote>
+<p>&#x53C2;&#x8003;</p>
+<p><a href="https://juejin.im/post/57dcd394a22b9d00610c5ec8" target="_blank">https://juejin.im/post/57dcd394a22b9d00610c5ec8</a></p>
+</blockquote>
+<h4 id="sort">sort</h4>
+<p><strong>&#x7A33;&#x5B9A;</strong>&#xFF1A;&#x5982;&#x679C;a&#x539F;&#x672C;&#x5728;b&#x524D;&#x9762;&#xFF0C;&#x800C;a=b&#xFF0C;&#x6392;&#x5E8F;&#x4E4B;&#x540E;a&#x4ECD;&#x7136;&#x5728;b&#x7684;&#x524D;&#x9762;&#xFF1B; <strong>&#x4E0D;&#x7A33;&#x5B9A;</strong>&#xFF1A;&#x5982;&#x679C;a&#x539F;&#x672C;&#x5728;b&#x7684;&#x524D;&#x9762;&#xFF0C;&#x800C;a=b&#xFF0C;&#x6392;&#x5E8F;&#x4E4B;&#x540E;a&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x5728;b&#x7684;&#x540E;&#x9762;&#xFF1B;</p>
+<p><strong>&#x5185;&#x6392;&#x5E8F;</strong>&#xFF1A;&#x6240;&#x6709;&#x6392;&#x5E8F;&#x64CD;&#x4F5C;&#x90FD;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x5B8C;&#x6210;&#xFF1B; <strong>&#x5916;&#x6392;&#x5E8F;</strong>&#xFF1A;&#x7531;&#x4E8E;&#x6570;&#x636E;&#x592A;&#x5927;&#xFF0C;&#x56E0;&#x6B64;&#x628A;&#x6570;&#x636E;&#x653E;&#x5728;&#x78C1;&#x76D8;&#x4E2D;&#xFF0C;&#x800C;&#x6392;&#x5E8F;&#x901A;&#x8FC7;&#x78C1;&#x76D8;&#x548C;&#x5185;&#x5B58;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x624D;&#x80FD;&#x8FDB;&#x884C;&#xFF1B;</p>
+<p><strong>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;</strong>: &#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x6267;&#x884C;&#x6240;&#x8017;&#x8D39;&#x7684;&#x65F6;&#x95F4;&#x3002; <strong>&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;</strong>: &#x8FD0;&#x884C;&#x5B8C;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x6240;&#x9700;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<p><img width="88%" src="https://user-gold-cdn.xitu.io/2016/11/29/4abde1748817d7f35f2bf8b6a058aa40?imageView2/0/w/1280/h/960/ignore-error/1"> </p>
+<p> n: &#x6570;&#x636E;&#x89C4;&#x6A21; k:&#x201C;&#x6876;&#x201D;&#x7684;&#x4E2A;&#x6570;</p>
+<p>In-place: &#x5360;&#x7528;&#x5E38;&#x6570;&#x5185;&#x5B58;&#xFF0C;&#x4E0D;&#x5360;&#x7528;&#x989D;&#x5916;&#x5185;&#x5B58;</p>
+<p>Out-place: &#x5360;&#x7528;&#x989D;&#x5916;&#x5185;&#x5B58;</p>
+<p>&#x5192;&#x6CE1;&#x6392;&#x5E8F;</p>
+<p><img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/30/f427727489dff5fcb0debdd69b478ecf?imageView2/0/w/1280/h/960/ignore-error/1"></p>
+<p>&#x9009;&#x62E9;&#x6392;&#x5E8F;</p>
+<p><img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/29/138a44298f3693e3fdd1722235e72f0f?imageView2/0/w/1280/h/960/ignore-error/1"></p>
+<p>&#x63D2;&#x5165;&#x6392;&#x5E8F;</p>
+<p><img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/29/f0e1e3b7f95c3888ab2791b6abbfae41?imageView2/0/w/1280/h/960/ignore-error/1"></p>
+<p>&#x5F52;&#x5E76;&#x6392;&#x5E8F;</p>
+<p><img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/29/33d105e7e7e9c60221c445f5684ccfb6?imageView2/0/w/1280/h/960/ignore-error/1"></p>
+<h4 id="search">search</h4>
+<h3 id="data-structure">data structure</h3>
+<p><strong>&#x6808;</strong>&#xFF1A;LIFO&#xFF0C;&#x6808;&#x9876;&#xFF08;&#x6808;&#x7684;&#x672B;&#x5C3E;&#xFF0C;&#x65B0;&#x5143;&#x7D20;&#x9760;&#x8FD1;&#x6808;&#x9876;&#xFF09;&#xFF0C;&#x6808;&#x5E95;&#xFF08;&#x65E7;&#x5143;&#x7D20;&#x9760;&#x8FD1;&#x6808;&#x5E95;&#xFF09;</p>
+<p><strong>&#x961F;&#x5217;</strong>&#xFF1A;FIFO&#xFF0C;&#x5C3E;&#x90E8;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF0C;&#x5934;&#x90E8;&#x79FB;&#x9664;&#x5143;&#x7D20;</p>
+<p><strong>&#x94FE;&#x8868;</strong>&#xFF1A;&#x6709;&#x5E8F;&#x5143;&#x7D20;&#x96C6;&#x5408;&#xFF0C;&#x5143;&#x7D20;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x4E0D;&#x8FDE;&#x7EED;&#x653E;&#x7F6E;&#xFF0C;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x7531;&#x4E00;&#x4E2A;&#x81EA;&#x8EAB;&#x8282;&#x70B9;&#x548C;&#x6307;&#x5411;&#x4E0B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5F15;&#x7528;&#xFF08;&#x6307;&#x9488;/&#x94FE;&#x63A5;&#xFF09;&#x7EC4;&#x6210;</p>
+<p><strong>&#x96C6;&#x5408;</strong>&#xFF1A;&#x65E0;&#x5E8F;&#x4E14;&#x552F;&#x4E00;</p>
+<p><strong>&#x5B57;&#x5178;</strong>&#xFF1A;key-value</p>
+<p><strong>&#x6563;&#x5217;</strong>&#xFF1A;hash map</p>
+<p><strong>&#x6811;</strong>&#xFF1A;&#x7531; n&#xFF08;n&gt;=1&#xFF09;&#x4E2A;&#x6709;&#x9650;&#x8282;&#x70B9;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#x7684;&#x96C6;&#x5408;</p>
+<p><strong>&#x56FE;</strong>&#xFF1A;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;&#x7684;&#x62BD;&#x8C61;&#x6A21;&#x578B;</p>
 
                                 
                                 </section>
@@ -1448,7 +1485,7 @@ factorial(0, 6)</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.3.3","depth":2,"next":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.1.2","depth":3,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]},{"title":"Spring","level":"1.4.1.3","depth":3,"path":"backend/spring.md","ref":"backend/spring.md","articles":[]}]},{"title":"Architecture","level":"1.4.2","depth":2,"path":"backend/architecture.md","ref":"backend/architecture.md","articles":[]},{"title":"MongoDB","level":"1.4.3","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.4","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.5","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/javascript.md","mtime":"2018-10-31T09:08:27.489Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-31T10:03:51.780Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.3.3","depth":2,"next":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[{"title":"Maven","level":"1.4.1.1","depth":3,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.1.2","depth":3,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]},{"title":"Spring","level":"1.4.1.3","depth":3,"path":"backend/spring.md","ref":"backend/spring.md","articles":[]}]},{"title":"Architecture","level":"1.4.2","depth":2,"path":"backend/architecture.md","ref":"backend/architecture.md","articles":[]},{"title":"MongoDB","level":"1.4.3","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.4","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.5","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.3.2","depth":2,"path":"frontend/nginx.md","ref":"frontend/nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"frontend/javascript.md","mtime":"2018-11-01T09:54:15.066Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-01T09:58:48.779Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
