@@ -1,32 +1,8 @@
-> 参考资料：
->
-> https://github.com/stephentian/33-js-concepts
+### call stack
+
+> Reference
 >
 > https://developer.mozilla.org/en-US/docs/Glossary/Call_stack
->
-> https://juejin.im/post/59e85eebf265da430d571f89
->
-> https://developer.mozilla.org/en-US/docs/Glossary/Primitive
->
-> https://wangdoc.com/javascript/types/number.html
->
-> https://www.cnblogs.com/leiting/p/8081413.html
->
-> https://blog.fundebug.com/2017/08/09/explain_value_reference_in_js/
->
-> https://www.jianshu.com/p/6b4333e78bf5
->
-> https://juejin.im/post/5b9f176b6fb9a05d3827d03f
-
-
-
-### javascript
-
-JavaScript's single-threading
-
-
-
-### call stack
 
 A **call stack** is a mechanism for an interpreter (like  the JavaScript interpreter in a web browser) to keep track of its place  in a script that calls multiple functions — what function is currently being run, what functions are called from within that function and should be called next, etc.
 
@@ -39,21 +15,13 @@ A **call stack** is a mechanism for an interpreter (like  the JavaScript interpr
 
 ```js
 function greeting() {
-   // [1] Some codes here
    sayHi();
-   // [2] Some codes here
 }
 function sayHi() {
    return "Hi!";
 }
-
-// Invoke the `greeting` function
 greeting();
-
-// [3] Some codes here
 ```
-
-
 
 The code above would be executed like this:
 
@@ -63,9 +31,9 @@ The code above would be executed like this:
 
 3. Add the `greeting` function to the call stack list.
 
-   > Call stack list:
-   >
-   > greeting
+   | Call stack list |
+   | --------------- |
+   | greeting        |
 
 4. Execute all lines of code inside the `greeting` function.
 
@@ -73,11 +41,10 @@ The code above would be executed like this:
 
 6. Add the `sayHi()` function to the call stack list.
 
-   > Call stack list:
-   >
-   > greeting
-   >
-   > sayHi
+   | Call stack list |
+   | --------------- |
+   | greeting        |
+   | sayHi           |
 
 7. Execute all lines of code inside the `sayHi()` function, until reaches its end.
 
@@ -85,17 +52,17 @@ The code above would be executed like this:
 
 9. Delete the `sayHi()` function from our call stack list.
 
-   > Call stack list:
-   >
-   > greeting
+   | Call stack list |
+   | --------------- |
+   | greeting        |
 
 10. When everything inside the `greeting()` function has been executed, return to its invoking line to continue executing the rest of the JS code.
 
 11. Delete the `greeting()` function from the call stack list.
 
-    > Call stack list:
-    >
-    > EMPTY
+    | Call stack list |
+    | --------------- |
+    | EMPTY           |
 
 We started with an empty Call Stack, and whenever we invoke a function,  it is automatically added to the Call Stack, after executing all of its  codes, it is automatically removed from the Call Stack. At the end, we  ended up with an empty stack too.
 
@@ -107,12 +74,7 @@ We started with an empty Call Stack, and whenever we invoke a function,  it is a
 
 
 
-- 同步的进入主线程，异步的进入Event Table并注册函数
-- 当指定的事情完成时，Event Table会将这个函数移入Event Queue
-- 主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行
-- 上述过程不断重复，也就是Event Loop(事件循环)
-
-JS引擎存在monitoring process进程，不断检查主线程执行栈是否为空，一旦为空，就会去Event Queue检查是否有等待被调用的函数
+主线程内的任务为空时，会去检查Event Queue的函数
 
 
 
@@ -128,10 +90,10 @@ $.ajax({
 console.log('代码执行结束');
  ```
 
-- ajax进入Event Table，注册回调函数`success`
-- 执行`console.log('代码执行结束')`
-- ajax事件完成，回调函数`success`进入Event Queue
-- 主线程从Event Queue读取回调函数`success`并执行
+1. ajax进入Event Table，注册回调函数`success`
+2. 执行`console.log('代码执行结束')`
+3. ajax事件完成，回调函数`success`进入Event Queue
+4. 主线程从Event Queue读取回调函数，执行`success`
 
  
 
@@ -141,32 +103,34 @@ It's important to note that setTimeout(..) doesn't put your callback on the even
 
 
 
- ```
+ ```js
 setTimeout(() => {
     task();
 },3000);
-
 sleep(10000000);
  ```
 
-1. `task()`进入Event Table并注册,计时开始
-2. 执行`sleep`函数，很慢，非常慢，计时仍在继续
-3. 3秒到了，计时事件`timeout`完成，`task()`进入Event Queue，但是`sleep`也太慢了吧，还没执行完，只好等着
-4. `sleep`终于执行完了，`task()`终于从Event Queue进入了主线程执行
-
-
-
-结果`task()` 执行时间的远大于3秒
+1. `task()`进入Event Table，计时开始
+2. 执行`sleep`
+3. 3秒到了，计时事件`timeout`完成，`task()`进入Event Queue，等待主线程
+4. `sleep`执行完
+5. 扫描Event Queue，`task()`进入主线程执行
 
  
 
 ###  setInterval
 
-`setInterval(fn,ms)`每过`ms`秒，会有`fn`进入Event Queue。一旦**setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了**。
+`setInterval(fn,ms)`每过`ms`秒，`fn`进入Event Queue
 
-  
+fn执行时间大于ms时，看起来fn连续执行，没有间隔
+
+
 
 ### task
+
+> Reference
+>
+> https://juejin.im/post/59e85eebf265da430d571f89
 
 Microtasks(微任务) include process.nextTick, promise, Object.observe and MutationObserver 
 
@@ -192,7 +156,7 @@ So the correct sequence of an event loop looks like this:
 
  
 
-例子一：
+example a：
 
 ```js
 setTimeout(function() {
@@ -229,7 +193,7 @@ console.log('console');
 
 
 
-例子二：
+example b：
 
 ```js
 console.log('1');
@@ -318,7 +282,7 @@ setTimeout(function() {
 
 
 
-疑问：用nodejs执行会有差异，`setTimeout1`和`setTimeout2`似乎是同时执行
+疑问：用nodejs执行会有差异，`setTimeout1`和`setTimeout2`同时执行
 
  
 
@@ -326,293 +290,42 @@ setTimeout(function() {
 
 ### primitive
 
+> Reference
+>
+> https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+>
+> https://justjavac.com/javascript/2012/12/22/javascript-values-not-everything-is-an-object.html
+
 A **primitive** (primitive value, primitive data type) is data that is not an [object](https://developer.mozilla.org/en-US/docs/Glossary/object) and has no [methods](https://developer.mozilla.org/en-US/docs/Glossary/method). In [JavaScript](https://developer.mozilla.org/en-US/docs/Glossary/JavaScript), there are 6 primitive data types: [string](https://developer.mozilla.org/en-US/docs/Glossary/string), [number](https://developer.mozilla.org/en-US/docs/Glossary/number), [boolean](https://developer.mozilla.org/en-US/docs/Glossary/boolean), [null](https://developer.mozilla.org/en-US/docs/Glossary/null), [undefined](https://developer.mozilla.org/en-US/docs/Glossary/undefined), [symbol](https://developer.mozilla.org/en-US/docs/Glossary/symbol) (new in [ECMAScript](https://developer.mozilla.org/en-US/docs/Glossary/ECMAScript) 2015).
+
+
 
 All primitives are **immutable,** i.e., they cannot be  altered. It is important not to confuse a primitive itself with a  variable assigned a primitive value. The variable may be reassigned a  new value, but the existing value can not be changed in the ways that  objects, arrays, and functions can be altered.
 
 
 
-JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此
+占用空间固定，保存在栈中（当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁了。因此，所有在方法中定义的变量都是放在栈内存中的；栈中存储的是基础变量以及一些对象的引用变量，基础变量的值是存储在栈中，而引用变量存储在栈中的是指向堆中的数组或者对象的地址
 
-`1 === 1.0 // true`
 
 
-
-浮点数不是精确的值
-
-```js
-0.1 + 0.2 === 0.3	//false
-0.3 / 0.1	// 2.9999999999999996
-(0.3 - 0.2) === (0.2 - 0.1)	// false
-```
-
-
-
-#### 数值精度
-
-根据国际标准 IEEE 754，JavaScript 浮点数的64个二进制位
-
-- 第1位：符号位，`0`表示正数，`1`表示负数
-- 第2位到第12位（共11位）：指数部分
-- 第13位到第64位（共52位）：小数部分（即有效数字）
-
-符号位决定了一个数的正负，指数部分决定了数值的大小( 0 ~ 2047 )，小数部分决定了数值的精度( -2^53 ~ 2^53 )
-
-```js
-Math.pow(2, 53)
-// 9007199254740992
- 
-Math.pow(2, 53) + 1
-// 9007199254740992
-
-Math.pow(2, 53) + 2
-// 9007199254740994
-
-// 多出的三个有效数字，将无法保存
-9007199254740992111
-// 9007199254740992000
-```
-
-
-
-#### 进制
-
-- 十进制：没有前导0的数值
-- 八进制：有前缀`0o`或`0O`的数值，或者有前导0、且只用到0-7的八个阿拉伯数字的数值
-- 十六进制：有前缀`0x`或`0X`的数值
-- 二进制：有前缀`0b`或`0B`的数值。
-
-
-
-#### parseInt
-
-```js
-parseInt('123') // 123
-parseInt('   81') // 81
-
-parseInt(1.23) // 1
-// 等同于
-parseInt('1.23') // 1
-```
-
-
-
-
-
-### type
-
-#### primitive types
-
-值类型
-
-- 占用空间固定，保存在栈中（当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁了。因此，所有在方法中定义的变量都是放在栈内存中的；栈中存储的是基础变量以及一些对象的引用变量，基础变量的值是存储在栈中，而引用变量存储在栈中的是指向堆中的数组或者对象的地址
-
-- 保存与复制的是值本身
-
-- 使用typeof检测数据的类型
-
-- 基本类型数据是值类型（Numbers, boolean values, null undefined）
-
-- A primitive type has a fixed size in memory. For example, a number
-  occupies eight bytes of memory, and a boolean value can be
-  represented with only one bit. The number type is the largest of the
-  primitive types. If each JavaScript variable reserves eight bytes of
-  memory, the variable can directly hold any primitive value.
-
-```js
-//值传递
-var x = 10;
-var a = x;
-```
-
-
-
-#### reference types
-
-引用类型
-
-- 占用空间不固定，保存在堆中（当我们在程序中创建一个对象时，这个对象将被保存到运行时数据区中，以便反复利用（因为对象的创建成本通常较大），这个运行时数据区就是堆内存。堆内存中的对象不会随方法的结束而销毁，即使方法结束后，这个对象还可能被另一个引用变量所引用（方法的参数传递时很常见），则这个对象依然不会被销毁，只有当一个对象没有任何引用变量引用它时，系统的垃圾回收机制才会在核实的时候回收它
-
-- 保存与复制的是指向对象的一个指针
-
-- 使用instanceof检测数据类型
-
-- 使用new()方法构造出的对象是引用型（Object、Array、Function）
-
-  ```js
-  //引用传递
-  var reference = [1];
-  var refCopy = reference; //refCopy保存的是reference的地址
-  ```
-
-
-
-
-##### Object
-
-```
-var o = new Object(); //创建对象
-```
-
-属性
-
-- constructor
-
-  对创建对象的函数的引用（指针）。对于 Object 对象，该指针指向原始的 Object() 函数。
-
-- Prototype
-
-  对该对象的对象原型的引用。对于所有的对象，它默认返回 Object 对象的一个实例。
-
-
-
-方法
-
-- hasOwnProperty(property)
-
-  判断对象是否有某个特定的属性。必须用字符串指定该属性。（例如，o.hasOwnProperty("name")）
-
-- IsPrototypeOf(object)
-
-  判断该对象是否为另一个对象的原型。
-
-- PropertyIsEnumerable
-
-  判断给定的属性是否可以用 for...in 语句进行枚举。
-
-- ToString()
-
-  返回对象的原始字符串表示。对于 Object 对象，ECMA-262 没有定义这个值，所以不同的 ECMAScript 实现具有不同的值。
-
-- ValueOf()
-
-  返回最适合该对象的原始值。对于许多对象，该方法返回的值都与 ToString() 的返回值相同。
-
-
-
-`==`和`===`只会判断引用的地址是否相同
-
-```js
-//两个变量指向相同的对象
-var arrRef = ['Hi!'];
-var arrRef2 = arrRef;
-console.log(arrRef === arrRef2); // true
-
-//两个变量指向不同的对象
-var arr1 = ["Hi!"];
-var arr2 = ["Hi!"];
-console.log(arr1 === arr2); // false
-
-//比较对象的值
-var arr1str = JSON.stringify(arr1);
-var arr2str = JSON.stringify(arr2);
-console.log(arr1str === arr2str); // true
-```
-
-
-
-##### 函数参数
-
-基本类型数据传入函数时，函数会将这些数据拷贝赋值给函数的参数变量
-
-```js
-var hundred = 100;
-var two = 2;
-function multiply(x, y) {
-    return x * y;
-}
-var twoHundred = multiply(hundred, two);
-//hundred的值拷贝给变量x，two的值拷贝给变量y
-```
-
-
-
-##### 纯函数
-
-对于一个函数，给定一个输入，返回一个唯一的输出。除此之外，不会对外部环境产生任何附带影响。我们机会称该函数为纯函数。所有函数内部定义的变量在函数返回之后都被垃圾回收掉。
-
-如果函数的输入是对象(Array, Function, Object)，那么传入的是一个引用。对该变量的操作将会影响到原本的对象。
-
-```js
-//函数中的改动会影响对象
-function changeAgeImpure(person) {
-    person.age = 25;
-    return person;
-}
-var alex = {
-    name: 'Alex',
-    age: 30
-};
-var changedAlex = changeAgeImpure(alex);
-console.log(alex); // { name: 'Alex', age: 25 }
-console.log(changedAlex); // { name: 'Alex', age: 25 }
-
-
-//创建一个新对象
-function changeAgePure(person) {
-    //创建
-    var newPersonObj = JSON.parse(JSON.stringify(person));
-    newPersonObj.age = 25;
-    return newPersonObj;
-}
-var alex = {
-    name: 'Alex',
-    age: 30
-};
-var alexChanged = changeAgePure(alex);
-console.log(alex); // { name: 'Alex', age: 30 }
-console.log(alexChanged); // { name: 'Alex', age: 25 }
-```
+A primitive type has a fixed size in memory. For example, a number occupies eight bytes of memory, and a boolean value can be represented with only one bit. The number type is the largest of the primitive types. If each JavaScript variable reserves eight bytes of memory, the variable can directly hold any primitive value.
 
 
 
 ```js
-function changeAgeAndReference(person) {
-    person.age = 25;
-    person = {
-        name: 'John',
-        age: 50
-    };
-    
-    return person;
-}
-var personObj1 = {
-    name: 'Alex',
-    age: 30
-};
-var personObj2 = changeAgeAndReference(personObj1);
-console.log(personObj1); //{name: "Alex", age: 25}
-console.log(personObj2); //{name: "John", age: 50}
+//1.原始值不可变
+var str = "abc";
+str.foo = 123;
+str.foo //undefined
 
-
-
+//2.原始值没有内部标识，按值比较
+"abc" === "abc"
+true
 ```
 
 
 
-### 类型转换
-
-number
-
-```js
-var iNum = 10;
-alert(iNum.toString(2));	//转2进制 "1010"
-alert(iNum.toString(8));	//转8进制 "12"
-alert(iNum.toString(16));	//转16进制 "A"
-```
-
-
-
-```
-parseInt(String)
-parseFloat(String)
-
-var iNum1 = parseInt("AF", 16);	//解析16进制 175
-```
-
-
-
-字符串隐式转换
+隐式转换：
 
 ```js
 Boolean(undefined)//false
@@ -625,9 +338,7 @@ Boolean('undefined')//true
 
 
 
-JavaScript 中會被轉為 false 的值
-
-```
+转换成false：
 
 "" 空字串
 0, -0, NaN
@@ -635,13 +346,97 @@ null
 undefined
 false
 
+
+
+#### number
+
+JavaScript 内部，所有数字都是以64位浮点数形式储存
+
+根据国际标准 IEEE 754，JavaScript 浮点数的64个二进制位
+
+- 第1位：符号位，`0`表示正数，`1`表示负数
+- 第2位到第12位（共11位）：指数部分，表示数值的大小( 0 ~ 2047 )
+- 第13位到第64位（共52位）：小数部分（即有效数字），表示数值的精度( -2^53 ~ 2^53 )
+
+
+
+```js
+//浮点数不是精确的值
+0.1 + 0.2 === 0.3	//false
+0.3 / 0.1	// 2.9999999999999996
+(0.3 - 0.2) === (0.2 - 0.1)	// false
 ```
 
 
 
-### 比较
+十进制：没有前导0的数值
 
-准确比较
+八进制：有前缀`0o`或`0O`的数值，或者有前导0、且只用到0-7的八个阿拉伯数字的数值
+
+十六进制：有前缀`0x`或`0X`的数值
+
+二进制：有前缀`0b`或`0B`的数值
+
+```js
+var iNum = 10;
+iNum.toString(2) //1010，10 -> 2进制
+iNum.toString(8) //12，10 -> 8进制
+iNum.toString(16) //A，10 -> 16进制
+
+parseInt(String) //str -> int
+parseFloat(String) //str -> float
+
+parseInt("AF", 16) //175, 16 -> 10进制
+```
+
+
+
+### object
+
+占用空间不固定，保存在堆中（当我们在程序中创建一个对象时，这个对象将被保存到运行时数据区中，以便反复利用（因为对象的创建成本通常较大），这个运行时数据区就是堆内存。堆内存中的对象不会随方法的结束而销毁，即使方法结束后，这个对象还可能被另一个引用变量所引用（方法的参数传递时很常见），则这个对象依然不会被销毁，只有当一个对象没有任何引用变量引用它时，系统的垃圾回收机制才会在核实的时候回收它
+
+
+
+分为：
+
+原始值的包装器：`Boolean`, `Number`, `String`
+
+`[]` 就是 `new Array()`
+
+`{}` 就是 `new Object()`
+
+`function() {}` 就是 `new Function()`
+
+`/\s*/` 就是  `new RegExp("\\s*")`
+
+`new Date("2011-12-24")`
+
+
+
+特点：
+
+```js
+//1.可变
+var obj = {};
+obj.foo = 123;
+obj.foo//123
+
+//2.每个对象都有自己唯一的标识符，通过字面量或构造函数创建的对象和任何其他对象都不相等
+{} === {}
+false
+
+//对象是通过引用来比较的，只有两个对象有相同的标识，才认为这个对象是相等的
+var obj = {};
+obj === obj
+
+//3.变量保存了对象的引用，因此，如果两个变量应用了相同的对象——我们改变其中一个变量时，两一个也会随之改变
+var var1 = {};
+var var2 = var1;
+var1.foo = 123;
+var2.foo //123
+```
+
+
 
 ```js
 Object.prototype.toString.call(1) // "[object Number]"
@@ -657,54 +452,117 @@ Object.prototype.toString.call(Symbol(1)) // "[object Symbol]"
 
 
 
-比较对象
-
-`instanceof` 检测左侧的 `__proto__` 原型链上，是否存在右侧的 `prototype` 原型
-
-
-
-1. 所有的构造器的 `constructor` 都指向 `Function`
-2. `Function` 的 `prototype` 指向一个特殊匿名函数，而这个特殊匿名函数的 `__proto__` 指向 `Object.prototype`
-
-
+#### wrap
 
 ```js
-//判断是否是指定对象
-let person = function () {
+typeof "abc" //'string'
+typeof new String("abc") //'object'
+
+"abc" instanceof String //false
+new String("abc") instanceof String //true
+
+"abc" === new String("abc") //false
+
+var a = new String("abc");
+var b = new String("abc");
+a == b //false
+a == a //true
+```
+
+
+
+### == & ===
+
+```js
+//两个变量指向同一个对象
+var a1 = ['Hi!'];
+var a2 = a1;
+console.log(a1 === a2); // true
+
+//两个变量指向不同对象
+var b1 = ["Hi!"];
+var b2 = ["Hi!"];
+console.log(b1 === b2); // false
+
+//比较对象的值
+var arr1str = JSON.stringify(arr1);
+var arr2str = JSON.stringify(arr2);
+console.log(arr1str === arr2str); // true
+
+//隐式转换
+```
+
+
+
+### reference types
+
+> Reference
+>
+> https://www.cnblogs.com/leiting/p/8081413.html
+>
+> https://blog.fundebug.com/2017/08/09/explain_value_reference_in_js/
+
+```js
+//1.值传递
+function multiply(x, y) {
+    return x * y;
 }
+multiply(2, 3);
+
+//2.引用传递
+function change(person) {
+    person.age = 25;
+    return person;
+}
+var alex = {
+    name: 'Alex',
+    age: 30
+};
+var changedAlex = change(alex);
+console.log(alex); // { name: 'Alex', age: 25 }
+console.log(changedAlex); // { name: 'Alex', age: 25 }
+```
+
+
+
+### typeof
+
+区分原始值和对象
+
+```js
+typeof "abc" //'string'
+typeof 123 //'number'
+typeof {} //'object'
+typeof [] //'object'
+```
+
+
+
+### instanceof
+
+区分对象
+
+```js
+//检测一个值是否是某个构造函数的实例
+value instanceof Constructor //true, value是Constructor 的一个实例
+//相当于
+Constructor.prototype.isPrototypeOf(value)
+
+//例子
+let person = function () {}
 let nicole = new person()
 nicole instanceof person // true
 ```
 
 
 
-```js
-//判断是否是指定对象的子类
-let person = function () {
-}
-let programmer = function () {
-}
-programmer.prototype = new person()
-let nicole = new programmer()
-nicole instanceof person // true
-nicole instanceof programmer // true
-```
-
-
-
-==和===的异同点：
-
-1. 比较双方都是对象时，只有指向同一个对象才会相等(包含==/===)。
-2. ===要求比较双方类型相同并且值相等。
-3. ==在比较双方类型不同的时候通常会进行隐式类型转换。
-
-
-
-双等号将执行类型转换; 三等号将进行相同的比较，而不进行类型转换 (如果类型不同, 只是总会返回 false )
-
-
-
 ### this
+
+> Reference
+>
+> https://www.jianshu.com/p/6b4333e78bf5
+>
+> https://juejin.im/post/5b9f176b6fb9a05d3827d03f
 
 this是函数运行时所在的环境对象
 
@@ -755,9 +613,6 @@ obj.x // 1
        }
    };
    user.greet();
-   
-   
-   
    ```
 
 2. 显式绑定
@@ -811,9 +666,7 @@ obj.x // 1
 
 #### apply
 
-`apply()`是函数的一个方法，作用是改变函数的调用对象
-
-`apply()`的参数为空时，默认调用全局对象
+改变函数的指向，参数是一个数组，参数为空时，指向全局对象
 
 ```js
 var x = 0;
@@ -824,9 +677,9 @@ var obj = {
     }
 };
 
-//apply使this默认指向全局对象
+//this -> window
 obj.y.apply(); // 0
-//apply使this指向obj对象
+//this -> obj
 obj.y.apply(obj); //1
 ```
 
@@ -834,44 +687,37 @@ obj.y.apply(obj); //1
 
 #### call
 
-call是每个函数都有的一个方法，在调用函数时为函数指定上下文
+跟apply相似，传的参数是一个个的
 
 
 
 #### bind
 
-`.bind` 和 `.call` 完全相同，除了不会立刻调用函数，而是返回一个能以后调用的新函数
+跟call相似，但返回一个函数
 
 ```js
 function greet() {
-    console.log(`Hello, my name is ${this.name}`);
+    console.log(this.name);
 }
 
 const user = {
-    name: "Tyler",
-    age: 27
+    name: "Tyler"
 };
 
 const newFn = greet.bind(user);
-newFn();
+newFn(); //Tyler
 ```
 
 
 
 ### scope
 
-定义：作用域是变量与函数的可访问范围
-
-作用：作用域控制变量与函数的可见性和生命周期
+作用域是变量与函数的可访问范围，控制变量与函数的可见性和生命周期
 
 ECMAScript6之前只有全局作用域和函数作用域
 
-Scope Chain（作用域链）：Javascript中一切皆对象，这些对象有一个`[[Scope]]`属性，该属性包含了函数被创建的作用域中对象的集合，它决定了哪些数据能被函数访问
-
-
-
-- Lexical Scope（词法作用域，静态作用域），函数的作用域在函数定义的时确定
-- Dynamic Scope（动态作用域），函数的作用域在函数调用的时候才确定
+- Lexical Scope（词法作用域，静态作用域），函数作用域在函数定义时确定
+- Dynamic Scope（动态作用域），函数作用域在函数调用时确定
 
 
 
@@ -883,29 +729,27 @@ Scope Chain（作用域链）：Javascript中一切皆对象，这些对象有�
 
 闭包：有权访问另一个函数作用域中的变量的函数
 
-通常，函数的作用域及其所有变量都会在函数执行结束后被销毁。但是，在创建了一个闭包以后，这个函数的作用域就会一直保存到闭包不存在为止。
+通常，函数的作用域及其所有变量都会在函数执行结束后被销毁。但是，在创建了一个闭包以后，这个函数的作用域就会一直保存到闭包不存在为止
 
-应用：设计私有的方法和变量。
+应用：设计私有的方法和变量
 
 缺点：减慢处理速度，内存消耗
 
 
 
-### Higher-order function
-
-高阶函数：一个函数接收另一个函数作为参数
-
-
-
 ### variable
 
-变量的生命周期包含着变量声明（Declaration Phase）、变量初始化（Initialization Phase）以及变量赋值（Assignment Phase）三个步骤；其中声明步骤会在作用域中注册变量，初始化步骤负责为变量分配内存并且创建作用域绑定，此时变量会被初始化为 undefined，最后的分配步骤则会将开发者指定的值分配给该变量。
+变量生命周期：
+
+1. 变量声明（Declaration Phase）：在作用域中注册变量
+2. 变量初始化（Initialization Phase）：为变量分配内存并且创建作用域绑定，此时变量会被初始化为 undefined
+3. 变量赋值（Assignment Phase）：将开发者指定的值分配给该变量
 
 
 
 var声明的名称提升变量
 
-赋值了不会被提升
+被赋值的不会被提升
 
 
 
@@ -948,25 +792,17 @@ function factorial(n) {
     if (n === 0) {
         return 1
     }
-
     return n * factorial(n - 1)
 }
-
-factorial(3);
 ```
 
-调用栈
 
-factorial(0)
-factorial(1)
-factorial(2)
-factorial(3)
 
 <img width="65%" src="https://user-gold-cdn.xitu.io/2017/6/20/d28ba98f3835845671655db33dfe14bb?imageView2/0/w/1280/h/960/ignore-error/1" />
 
 
 
-尾递归：是一种递归的写法，可以避免不断的将函数压栈最终导致堆栈溢出。通过设置一个累加参数，并且每一次都将当前的值累加上去，然后递归调用。
+尾递归：是一种递归的写法，避免不断将函数压栈最终导致堆栈溢出。通过设置一个累加参数，并且每一次都将当前的值累加上去，然后递归调用
 
 ```js
 function factorial(n, total = 1) {
@@ -974,7 +810,6 @@ function factorial(n, total = 1) {
     if (n === 0) {
         return total
     }
-
     return factorial(n - 1, n * total)
 }
 factorial(3);
@@ -982,7 +817,7 @@ factorial(3);
 
 
 
-执行步骤，函数之间没有以来关系，所以每个函数调用之后可以进行垃圾回收
+函数之间没有依赖关系，调用后可进行垃圾回收
 
 factorial(3, 1)
 factorial(2, 3)
@@ -1000,21 +835,28 @@ node --harmony_tailcalls factorial.js
 ```
 
 
-### algo
+
+
+### sort
 
 > 参考
 >
 > https://juejin.im/post/57dcd394a22b9d00610c5ec8
 
-#### sort
 
 
 
-**稳定**：如果a原本在b前面，而a=b，排序之后a仍然在b的前面； **不稳定**：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；
+**稳定**：如果a原本在b前面，而a=b，排序之后a仍然在b的前面； 
 
-**内排序**：所有排序操作都在内存中完成； **外排序**：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；
+**不稳定**：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；
 
-**时间复杂度**: 一个算法执行所耗费的时间。 **空间复杂度**: 运行完一个程序所需内存的大小。
+**内排序**：所有排序操作都在内存中完成； 
+
+**外排序**：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；
+
+**时间复杂度**: 一个算法执行所耗费的时间。 
+
+**空间复杂度**: 运行完一个程序所需内存的大小。
 
   
 
@@ -1052,39 +894,301 @@ Out-place: 占用额外内存
 
 
 
-#### search
+### Bitwise operators
 
-
-
-### data structure
-
-**栈**：LIFO，栈顶（栈的末尾，新元素靠近栈顶），栈底（旧元素靠近栈底）
-
-**队列**：FIFO，尾部添加元素，头部移除元素
-
-**链表**：有序元素集合，元素在内存中不连续放置，每个元素由一个自身节点和指向下一个元素的引用（指针/链接）组成
-
-**集合**：无序且唯一
-
-**字典**：key-value
-
-**散列**：hash map
-
-**树**：由 n（n>=1）个有限节点组成一个具有层次关系的集合
-
-**图**：网络结构的抽象模型
+> reference
+>
+> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators
 
  
 
- 
+The operands of all bitwise operators are converted to signed 32-bit  integers in two's complement format. Two's complement format means that a number's negative counterpart (e.g. 5 vs. -5) is all the number's bits  inverted (bitwise NOT of the number, a.k.a. ones' complement of the  number) plus one. For example, the following encodes the integer 314:
+
+
+
+```
+00000000000000000000000100111010
+```
+
+The following encodes `~314`, i.e. the ones' complement of `314`:
+
+```
+11111111111111111111111011000101
+```
+
+Finally, the following encodes `-314,` i.e. the two's complement of `314`:
+
+```
+11111111111111111111111011000110
+```
+
+
+
+-7>>1 = -4
+
+```
+00000000 00000000 00000000 00000111 //7
+11111111 11111111 11111111 11111001 //-7
+11111111 11111111 11111111 11111100	//-7>>1
+00000000 00000000 00000000 00000100 //4
+10000000 00000000 00000000 00000100 //-4
+```
+
+
+
+ -1>>>4 = ox0FFFFFFF
+
+```
+00000000 00000000 00000000 00000001 //1
+11111111 11111111 11111111 11111111 //-1
+00001111 11111111 11111111 11111111 //-1>>>4
+```
+
+
+
+### DOM
+
+> Reference
+>
+> http://www.w3school.com.cn/htmldom/dom_nodes.asp
+>
+> https://javascript.ruanyifeng.com/dom/node.html
+
+<img src="http://www.w3school.com.cn/i/ct_htmltree.gif" />
+
+
+
+通过 HTML DOM，树中的所有节点均可通过 JavaScript 进行访问。所有 HTML 元素（节点）均可被修改，也可以创建或删除节点
+
+
+
+DOM（Document Object Model）：JavaScript 操作网页的接口，它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）
+
+浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口
+
+DOM 只是一个接口规范，可以用各种语言实现。所以严格地说，DOM 不是 JavaScript 语法的一部分，但是 DOM 操作是 JavaScript 最常见的任务，离开了 DOM，JavaScript 就无法控制网页。
+
+
+
+node：DOM 的最小组成单位
+
+- 7种节点
+
+1. 文档节点（document）：9，对应常量`Node.DOCUMENT_NODE`
+2. 元素节点（element）：1，对应常量`Node.ELEMENT_NODE`
+3. 属性节点（attr）：2，对应常量`Node.ATTRIBUTE_NODE`
+4. 文本节点（text）：3，对应常量`Node.TEXT_NODE`
+5. 文档片断节点（DocumentFragment）：11，对应常量`Node.DOCUMENT_FRAGMENT_NODE`
+6. 文档类型节点（DocumentType）：10，对应常量`Node.DOCUMENT_TYPE_NODE`
+7. 注释节点（Comment）：8，对应常量`Node.COMMENT_NODE`
+
+
+
+- Node属性
+
+`nodeType`：显示节点的类型
+
+`nodeName`：显示节点的名称
+
+`nodeValue`：显示节点的值
+
+`attributes`：获取一个属性节点
+
+`firstChild`：表示某一节点的第一个节点
+
+`lastChild`：表示某一节点的最后一个子节点
+
+`childNodes`：表示所在节点的所有子节点
+
+`parentNode`：表示所在节点的父节点
+
+`nextSibling`：紧挨着当前节点的下一个节点
+
+`previousSibling`：紧挨着当前节点的上一个节点 
+
+
+
+DOM 树：一个文档的所有节点，按照所在的层级，抽象成一种树状结构
+
+
+
+css和js加载
+
+`CSS` 不会阻塞 `DOM` 的解析，但会阻塞 `DOM` 渲染。
+
+`JS` 阻塞 `DOM` 解析，但浏览器会"偷看"`DOM`，预先下载相关资源。
+
+浏览器遇到 `<script>`且没有`defer`或`async`属性的 标签时，会触发页面渲染，因而如果前面`CSS`资源尚未加载完毕时，浏览器会等待它加载完毕在执行脚本。
 
  
 
+###  new
+
+> Reference
+>
+> http://javascript.ruanyifeng.com/oop/basic.html
+
+构造函数名首字母大写
+
+函数内的`this`是对象实例
+
+`new`执行构造函数，返回一个实例对象
+
+```js
+var Vehicle = function () {
+    'use strict';//防止this指向全局对象
+    this.price = 1000;
+};
+var v = new Vehicle();
+v.price // 1000
+```
+
  
 
+ new执行步骤
+
+1. 创建一个空对象，作为将要返回的对象实例
+2. 将这个空对象的原型，指向构造函数的`prototype`属性
+3. 将这个空对象赋值给函数内部的`this`关键字
+4. 开始执行构造函数内部的代码
 
 
 
+```js
+function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
+    // 将 arguments 对象转为数组
+    var args = [].slice.call(arguments);
+    // 取出构造函数
+    var constructor = args.shift();
+    // 创建一个空对象，继承构造函数的 prototype 属性
+    var context = Object.create(constructor.prototype);
+    // 执行构造函数
+    var result = constructor.apply(context, args);
+    // 如果返回结果是对象，就直接返回，否则返回 context 对象
+    return (typeof result === 'object' && result != null) ? result : context;
+}
+
+// 实例
+var actor = _new(Person, '张三', 28);
+```
 
 
+
+`new`命令调用时，`new.target`指向当前函数
+
+```js
+function f() {
+    console.log(new.target === f);
+}
+
+f() // false
+new f() // true
+```
+
+
+
+Object.create()
+
+```js
+var person1 = {
+    name: 'Tom',
+    age: 38,
+    greeting: function() {
+        console.log('Hi! I\'m ' + this.name + '.');
+    }
+};
+
+var person2 = Object.create(person1);
+
+person2.name
+person2.greeting()
+```
+
+
+
+### prototype
+
+> Reference
+>
+> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+>
+> https://github.com/bigdots/blog/issues/1
+
+JavaScript is a bit confusing for developers experienced in  class-based languages (like Java or C++), as it is dynamic and does not  provide a `class` implementation per se (the `class` keyword is introduced in ES2015, but is syntactical sugar, JavaScript remains prototype-based).
+
+When it comes to inheritance, JavaScript only has one construct:  objects. Each object has a private property which holds a link to  another object called its **prototype**. That prototype object has a prototype of its own, and so on until an object is reached with `null` as its prototype. By definition, `null` has no prototype, and acts as the final link in this **prototype chain**.
+
+
+
+<img src="https://www.ibm.com/developerworks/cn/web/1306_jiangjj_jsinstanceof/figure1.jpg" />
+
+
+
+<img src="https://user-images.githubusercontent.com/7291672/44759590-a0102e00-ab6d-11e8-9094-f6e35ed158b2.png" />
+
+
+
+<img src="https://raw.githubusercontent.com/bigdots/blog/master/images/201801/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" />
+
+prototype：每一个函数都有一个 `prototype` 属性
+
+```js
+function Foo() {}
+Foo.prototype; // {constructor,__proto__}
+```
+
+constructor：每一个原型对象都有一个 `constructor` 属性
+
+```js
+Foo.prototype.constructor === Foo; // true
+```
+
+每一个实例都有一个 `__proto__` 指针，指向构造函数的原型对象
+
+```js
+var foo = new Foo();
+foo.__proto__ === Foo.prototype; //true
+```
+
+
+
+chain
+
+```js
+let f = function () {
+   this.a = 1;
+   this.b = 2;
+}
+let o = new f(); // {a: 1, b: 2}
+
+f.prototype.b = 3;
+f.prototype.c = 4;
+
+// {a: 1, b: 2} ---> {b: 3, c: 4} ---> Object.prototype ---> null
+console.log(o.a); // 1
+console.log(o.b); // 2
+console.log(o.c); // 4
+console.log(o.d); // undefined
+```
+
+
+
+Object.create
+
+```js
+var a = {a: 1}; 
+// a ---> Object.prototype ---> null
+
+var b = Object.create(a);
+// b ---> a ---> Object.prototype ---> null
+console.log(b.a); // 1 (inherited)
+
+var c = Object.create(b);
+// c ---> b ---> a ---> Object.prototype ---> null
+
+var d = Object.create(null);
+// d ---> null
+console.log(d.hasOwnProperty); 
+// undefined, because d doesn't inherit from Object.prototype
+```
 
