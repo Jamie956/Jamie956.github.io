@@ -1113,6 +1113,12 @@ person2.greeting()
 > https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
 >
 > https://github.com/bigdots/blog/issues/1
+>
+> https://blog.csdn.net/SpicyBoiledFish/article/details/71123162
+>
+> https://blog.csdn.net/cecilia620/article/details/71158048
+>
+> https://www.jianshu.com/p/15ac7393bc1f
 
 JavaScript is a bit confusing for developers experienced in  class-based languages (like Java or C++), as it is dynamic and does not  provide a `class` implementation per se (the `class` keyword is introduced in ES2015, but is syntactical sugar, JavaScript remains prototype-based).
 
@@ -1192,3 +1198,121 @@ console.log(d.hasOwnProperty);
 // undefined, because d doesn't inherit from Object.prototype
 ```
 
+
+
+构造函数、原型对象、实例化对象三者的关系 
+
+<img src="https://img-blog.csdn.net/20170503151554392?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /> 
+
+ 
+
+原型链 
+
+<img src="https://img-blog.csdn.net/20170503152146141?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /> 
+
+ 
+
+原型链：访问一个对象的属性时，先在基本属性中查找，如果没有，再沿着proto这条链向上找 
+
+```js 
+function Foo(){} 
+var f1=new Foo(); 
+f1.a=10; 
+ 
+Foo.prototype.a=100; 
+Foo.prototype.b=200; 
+ 
+console.log(f1.a);//10 
+console.log(f1.b);//200 
+```
+
+ 
+
+<img src="https://images.cnitblog.com/blog/138012/201409/182013450814552.png"/> 
+
+ 
+
+ 
+
+hasOwnProperty 
+
+<img src="https://images.cnitblog.com/blog/138012/201409/182014277067963.png" /> 
+
+ 
+
+ 
+
+<img width="70%" src="https://upload-images.jianshu.io/upload_images/599584-2fc7dad23d112791.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" /> 
+
+
+
+- defineProperty 
+
+configurable 
+```js 
+var person = { name: 'TOM' } 
+delete person.name; // true 
+// configurable:false，表示不能delete 
+Object.defineProperty(person, 'name', { 
+    configurable: false, 
+    value: 'Jake' 
+}) 
+delete person.name // false 
+console.log(person.name) // Jake 
+person.name = "alex";  
+console.log(person.name) // Jake 
+```
+
+ 
+
+
+ writable 
+
+```js 
+var person = { name: 'TOM' } 
+person.name = 'Jake'; 
+console.log(person.name); 
+// 设置name的值不能被修改 
+Object.defineProperty(person, 'name', { writable: false }) 
+person.name = 'alex'; 
+console.log(person.name); // Jake 
+```
+
+ 
+
+- defineProperties 
+
+```js 
+var person = {}  
+Object.defineProperties(person, {  
+    name: { value: 'Jake', configurable: true },  
+    age: {  
+        get: function() { return this.value || 22 },  
+        set: function(value) { this.value = value }  
+    }  
+})  
+ 
+person.name // Jake  
+person.age // 22 
+```
+
+ 
+
+- getOwnPropertyDescriptor 
+
+```js 
+var person = {} 
+Object.defineProperty(person, 'name', {  
+    value: 'alex',  
+    writable: false,  
+    configurable: false  
+})  
+var descripter = Object.getOwnPropertyDescriptor(person, 'name'); console.log(descripter);  
+ 
+/*descripter = {  
+    configurable: false,  
+    enumerable: false,  
+    value: 'alex',  
+    writable: false  
+}*/ 
+```
