@@ -1119,6 +1119,8 @@ person2.greeting()
 > https://blog.csdn.net/cecilia620/article/details/71158048
 >
 > https://www.jianshu.com/p/15ac7393bc1f
+>
+> https://github.com/stone0090/javascript-lessons/tree/master/2.5-Prototype
 
 JavaScript is a bit confusing for developers experienced in  class-based languages (like Java or C++), as it is dynamic and does not  provide a `class` implementation per se (the `class` keyword is introduced in ES2015, but is syntactical sugar, JavaScript remains prototype-based).
 
@@ -1301,18 +1303,188 @@ person.age // 22
 - getOwnPropertyDescriptor 
 
 ```js 
-var person = {} 
-Object.defineProperty(person, 'name', {  
-    value: 'alex',  
-    writable: false,  
-    configurable: false  
-})  
-var descripter = Object.getOwnPropertyDescriptor(person, 'name'); console.log(descripter);  
- 
-/*descripter = {  
-    configurable: false,  
-    enumerable: false,  
-    value: 'alex',  
-    writable: false  
-}*/ 
+var person = {}
+Object.defineProperty(person, 'name', {
+    value: 'alex',
+    writable: false,
+    configurable: false
+})
+var descripter = Object.getOwnPropertyDescriptor(person, 'name');
+console.log(descripter);
+
+/*descripter = {
+    configurable: false,
+    enumerable: false,
+    value: 'alex',
+    writable: false
+}*/
 ```
+
+
+
+why construct using prototype
+
+```js
+function Person(){}
+
+Person.prototype.name = "Stone";
+Person.prototype.age = 28;
+Person.prototype.job = "Software Engineer";
+Person.prototype.sayName = function(){
+    console.log(this.name);
+};
+
+var person1 = new Person();
+person1.sayName();   // "Stone"
+
+var person2 = new Person();
+person2.sayName();   // "Stone"
+
+console.log(person1.sayName == person2.sayName);  // true 共用同一个函数
+```
+
+vs.
+
+```js
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = new Function("console.log(this.name)");// 与声明函数在逻辑上是等价的
+}
+
+console.log(person1.sayName == person2.sayName);// false 创建2个相同的函数，浪费内存
+```
+
+
+
+delete移除对象变量，如果不移除，访问该变量时就不会到原型寻找
+
+```js
+function Person(){}
+
+Person.prototype.name = "Stone";
+Person.prototype.age = 28;
+Person.prototype.job = "Software Engineer";
+Person.prototype.sayName = function(){
+    console.log(this.name);
+};
+
+var person1 = new Person();
+var person2 = new Person();
+
+person1.name = "Sophie";
+console.log(person1.name);// "Sophie"，来自实例
+console.log(person2.name);// "Stone"，来自原型
+
+delete person1.name;
+console.log(person1.name);// "Stone"，来自原型
+```
+
+
+
+重写原型
+
+```js
+function Person(){}
+
+Person.prototype = {
+    constructor : Person,
+    name : "Stone",
+    age : 28,
+    job: "Software Engineer",
+    sayName : function () {
+        console.log(this.name);
+    }
+};
+```
+
+
+
+使用，共享的用原型定义，私有的在构造函数内定义
+
+```js
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.friends = ["ZhangSan", "LiSi"];
+}
+
+Person.prototype = {
+    constructor : Person,
+    sayName : function(){
+        console.log(this.name);
+    }
+}
+
+var person1 = new Person("Stone", 28, "Software Engineer");
+var person2 = new Person("Sophie", 29, "English Teacher");
+
+person1.friends.push("WangWu");
+console.log(person1.friends);    // "ZhangSan,LiSi,WangWu"
+console.log(person2.friends);    // "ZhangSan,LiSi"
+console.log(person1.friends === person2.friends);    // false
+console.log(person1.sayName === person2.sayName);    // true
+```
+
+
+
+chain
+
+```js
+function Father(){
+    this.value = true;
+}
+Father.prototype.getValue = function(){
+    return this.value;
+};
+
+function Son(){
+    this.value2 = false;
+}
+
+// 继承了 Father
+Son.prototype = new Father();
+
+Son.prototype.getValue2 = function (){
+    return this.value2;
+};
+
+var son = new Son();
+console.log(son.getValue());  // true
+```
+
+​	使用prop
+
+```js
+function Father(){
+    this.value = true;
+}
+Father.prototype.getValue = function(){
+    return this.value;
+};
+
+function Son(){
+    this.value2 = false;
+}
+
+// 继承了 Father
+// Son.prototype = new Father(); ==>
+Son.prototype = {};
+Son.prototype.__proto__ = Father.prototype;
+Father.call(Son.prototype);
+
+Son.prototype.getValue2 = function (){
+    return this.value2;
+};
+
+// var son = new Son(); ==>
+var son = {};
+son.__proto__ = Son.prototype;
+Son.call(son);
+
+console.log(son.getValue()); // true
+console.log(son.getValue === son.__proto__.__proto__.getValue); // true
+```
+
