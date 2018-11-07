@@ -1488,3 +1488,15 @@ console.log(son.getValue()); // true
 console.log(son.getValue === son.__proto__.__proto__.getValue); // true
 ```
 
+
+
+实例对象f1本身并没有constructor属性，但它可以继承原型对象Foo.prototype的constructor属性
+
+```js
+function Foo(){};
+var f1 = new Foo;
+console.log(Foo.prototype.constructor === Foo);//true
+console.log(f1.constructor === Foo);//true
+console.log(f1.hasOwnProperty('constructor'));//false 
+```
+
