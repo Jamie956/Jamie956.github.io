@@ -1132,32 +1132,6 @@ When it comes to inheritance, JavaScript only has one construct:  objects. Each 
 
 
 
-<img src="https://user-images.githubusercontent.com/7291672/44759590-a0102e00-ab6d-11e8-9094-f6e35ed158b2.png" />
-
-
-
-<img src="https://raw.githubusercontent.com/bigdots/blog/master/images/201801/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" />
-
-prototype：每一个函数都有一个 `prototype` 属性
-
-```js
-function Foo() {}
-Foo.prototype; // {constructor,__proto__}
-```
-
-constructor：每一个原型对象都有一个 `constructor` 属性
-
-```js
-Foo.prototype.constructor === Foo; // true
-```
-
-每一个实例都有一个 `__proto__` 指针，指向构造函数的原型对象
-
-```js
-var foo = new Foo();
-foo.__proto__ === Foo.prototype; //true
-```
-
 
 
 chain
@@ -1181,10 +1155,8 @@ console.log(o.d); // undefined
 
 
 
-Object.create
-
 ```js
-var a = {a: 1}; 
+var a = {a: 1};
 // a ---> Object.prototype ---> null
 
 var b = Object.create(a);
@@ -1196,7 +1168,7 @@ var c = Object.create(b);
 
 var d = Object.create(null);
 // d ---> null
-console.log(d.hasOwnProperty); 
+console.log(d.hasOwnProperty);
 // undefined, because d doesn't inherit from Object.prototype
 ```
 
@@ -1208,37 +1180,9 @@ console.log(d.hasOwnProperty);
 
  
 
-原型链 
+
 
 <img src="https://img-blog.csdn.net/20170503152146141?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /> 
-
- 
-
-原型链：访问一个对象的属性时，先在基本属性中查找，如果没有，再沿着proto这条链向上找 
-
-```js 
-function Foo(){} 
-var f1=new Foo(); 
-f1.a=10; 
- 
-Foo.prototype.a=100; 
-Foo.prototype.b=200; 
- 
-console.log(f1.a);//10 
-console.log(f1.b);//200 
-```
-
- 
-
-<img src="https://images.cnitblog.com/blog/138012/201409/182013450814552.png"/> 
-
- 
-
- 
-
-hasOwnProperty 
-
-<img src="https://images.cnitblog.com/blog/138012/201409/182014277067963.png" /> 
 
  
 
@@ -1248,13 +1192,12 @@ hasOwnProperty
 
 
 
-- defineProperty 
+configurable
 
-configurable 
 ```js 
 var person = { name: 'TOM' } 
 delete person.name; // true 
-// configurable:false，表示不能delete 
+
 Object.defineProperty(person, 'name', { 
     configurable: false, 
     value: 'Jake' 
@@ -1265,42 +1208,44 @@ person.name = "alex";
 console.log(person.name) // Jake 
 ```
 
- 
 
 
- writable 
+
+ writable
 
 ```js 
-var person = { name: 'TOM' } 
-person.name = 'Jake'; 
-console.log(person.name); 
-// 设置name的值不能被修改 
-Object.defineProperty(person, 'name', { writable: false }) 
-person.name = 'alex'; 
-console.log(person.name); // Jake 
+var person = { name: 'TOM' }
+person.name = 'Jake';
+console.log(person.name);
+
+Object.defineProperty(person, 'name', {
+    writable: false 
+})
+person.name = 'alex';
+console.log(person.name); // Jake
 ```
 
  
 
-- defineProperties 
+get/set
 
 ```js 
-var person = {}  
-Object.defineProperties(person, {  
-    name: { value: 'Jake', configurable: true },  
-    age: {  
-        get: function() { return this.value || 22 },  
-        set: function(value) { this.value = value }  
-    }  
-})  
+var person = {}
+Object.defineProperties(person, {
+    name: { value: 'Jake', configurable: true }, 
+    age: {
+        get: function() { return this.value || 22 },
+        set: function(value) { this.value = value }
+    }
+})
  
-person.name // Jake  
-person.age // 22 
+person.name // Jake
+person.age // 22
 ```
 
  
 
-- getOwnPropertyDescriptor 
+getOwnPropertyDescriptor 
 
 ```js 
 var person = {}
