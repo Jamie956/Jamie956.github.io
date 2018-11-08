@@ -1132,10 +1132,6 @@ When it comes to inheritance, JavaScript only has one construct:  objects. Each 
 
 
 
-
-
-chain
-
 ```js
 let f = function () {
    this.a = 1;
@@ -1178,17 +1174,9 @@ console.log(d.hasOwnProperty);
 
 <img src="https://img-blog.csdn.net/20170503151554392?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /> 
 
- 
-
 
 
 <img src="https://img-blog.csdn.net/20170503152146141?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /> 
-
- 
-
- 
-
-<img width="70%" src="https://upload-images.jianshu.io/upload_images/599584-2fc7dad23d112791.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" /> 
 
 
 
@@ -1243,9 +1231,7 @@ person.name // Jake
 person.age // 22
 ```
 
- 
-
-getOwnPropertyDescriptor 
+  
 
 ```js 
 var person = {}
@@ -1263,67 +1249,6 @@ console.log(descripter);
     value: 'alex',
     writable: false
 }*/
-```
-
-
-
-why construct using prototype
-
-```js
-function Person(){}
-
-Person.prototype.name = "Stone";
-Person.prototype.age = 28;
-Person.prototype.job = "Software Engineer";
-Person.prototype.sayName = function(){
-    console.log(this.name);
-};
-
-var person1 = new Person();
-person1.sayName();   // "Stone"
-
-var person2 = new Person();
-person2.sayName();   // "Stone"
-
-console.log(person1.sayName == person2.sayName);  // true 共用同一个函数
-```
-
-vs.
-
-```js
-function Person(name, age, job){
-    this.name = name;
-    this.age = age;
-    this.job = job;
-    this.sayName = new Function("console.log(this.name)");// 与声明函数在逻辑上是等价的
-}
-
-console.log(person1.sayName == person2.sayName);// false 创建2个相同的函数，浪费内存
-```
-
-
-
-delete移除对象变量，如果不移除，访问该变量时就不会到原型寻找
-
-```js
-function Person(){}
-
-Person.prototype.name = "Stone";
-Person.prototype.age = 28;
-Person.prototype.job = "Software Engineer";
-Person.prototype.sayName = function(){
-    console.log(this.name);
-};
-
-var person1 = new Person();
-var person2 = new Person();
-
-person1.name = "Sophie";
-console.log(person1.name);// "Sophie"，来自实例
-console.log(person2.name);// "Stone"，来自原型
-
-delete person1.name;
-console.log(person1.name);// "Stone"，来自原型
 ```
 
 
@@ -1346,18 +1271,18 @@ Person.prototype = {
 
 
 
-使用，共享的用原型定义，私有的在构造函数内定义
-
 ```js
 function Person(name, age, job){
     this.name = name;
     this.age = age;
     this.job = job;
+    //私有在构造函数内定义
     this.friends = ["ZhangSan", "LiSi"];
 }
 
 Person.prototype = {
     constructor : Person,
+    //共享函数用原型定义
     sayName : function(){
         console.log(this.name);
     }
@@ -1373,75 +1298,4 @@ console.log(person1.friends === person2.friends);    // false
 console.log(person1.sayName === person2.sayName);    // true
 ```
 
-
-
-chain
-
-```js
-function Father(){
-    this.value = true;
-}
-Father.prototype.getValue = function(){
-    return this.value;
-};
-
-function Son(){
-    this.value2 = false;
-}
-
-// 继承了 Father
-Son.prototype = new Father();
-
-Son.prototype.getValue2 = function (){
-    return this.value2;
-};
-
-var son = new Son();
-console.log(son.getValue());  // true
-```
-
-​	使用prop
-
-```js
-function Father(){
-    this.value = true;
-}
-Father.prototype.getValue = function(){
-    return this.value;
-};
-
-function Son(){
-    this.value2 = false;
-}
-
-// 继承了 Father
-// Son.prototype = new Father(); ==>
-Son.prototype = {};
-Son.prototype.__proto__ = Father.prototype;
-Father.call(Son.prototype);
-
-Son.prototype.getValue2 = function (){
-    return this.value2;
-};
-
-// var son = new Son(); ==>
-var son = {};
-son.__proto__ = Son.prototype;
-Son.call(son);
-
-console.log(son.getValue()); // true
-console.log(son.getValue === son.__proto__.__proto__.getValue); // true
-```
-
-
-
-实例对象f1本身并没有constructor属性，但它可以继承原型对象Foo.prototype的constructor属性
-
-```js
-function Foo(){};
-var f1 = new Foo;
-console.log(Foo.prototype.constructor === Foo);//true
-console.log(f1.constructor === Foo);//true
-console.log(f1.hasOwnProperty('constructor'));//false 
-```
 
