@@ -1,48 +1,12 @@
-## NodeJS
+## What
 
 Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
 
-- 基于 Google V8 引擎的 JavaScript 运行时环境
-- Chrome V8 引擎以 C/C++ 为主
-- 事件驱动（event-driven），非阻塞 I/O 模型（non-blocking I/O model），由C/C++ 编写的事件循环处理库Libuv，处理 I/O 操作
-- npm包管理器
 
 
-
-<img src="https://static.cnodejs.org/Fh2MIT1r4YStGl9ZEEzt7N4lEbqX">
-
+<img width="60%" src="https://static.cnodejs.org/FkTMjCoX4xyL0rJtmm7oBc6V0i8W" />
 
 
-<img src="https://static.cnodejs.org/FkTMjCoX4xyL0rJtmm7oBc6V0i8W" />
-
-
-
-### 应用
-
-- 前端：react\vue\angular、应用实践、架构
-- 后端：核心特性、Web应用、微服务、封装API、组装RPC服务、测试、部署
-- 跨平台：前端、移动端、PC端（electron）
-- 工具：预编译、webpack、工程化
-
-
-
-### 优点
-
-简单易学
-
-性能好
-
-部署容易
-
-处理高并发场景下的大量服务器请求
-
-生态强大（大量NPM模块）
-
-开源的
-
-跨平台
-
-高效（I/O处理）
 
 
 
@@ -97,6 +61,8 @@ nvm use <version>
 nvm alias default <version>
 ```
 
+
+
 ## Error
 
 ```
@@ -108,21 +74,13 @@ echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo s
 
 ## Modularization
 
-> 参考
+> Reference
 >
 > https://segmentfault.com/a/1190000015991869#articleHeader8
 
 ### CommonJS
 
 同步，用在服务端
-
-
-
-1. 对于基本数据类型，属于复制。即会被模块缓存；同时，在另一个模块可以对该模块输出的变量重新赋值。
-2. 对于复杂数据类型，属于浅拷贝。由于两个模块引用的对象指向同一个内存空间，因此对该模块的值做修改时会影响另一个模块。
-3. 当使用require命令加载某个模块时，就会运行整个模块的代码。
-4. 当使用require命令加载同一个模块时，不会再执行该模块，而是取到缓存之中的值。也就是说，CommonJS模块无论加载多少次，都只会在第一次加载时运行一次，以后再加载，就返回第一次运行的结果，除非手动清除系统缓存。
-5. 循环加载时，属于加载时执行。即脚本代码在require的时候，就会全部执行。一旦出现某个模块被"循环加载"，就只输出已经执行的部分，还未执行的部分不会输出。
 
 
 
@@ -167,14 +125,14 @@ module.exports = {
 
 异步加载，用在浏览器
 
-所有依赖模块的语句，都定义在一个回调函数中，等到加载完成之后，回调函数才执行。
+所有依赖模块的语句，都定义在一个回调函数中，等到加载完成之后，回调函数才执行
 
 
 
-- RequireJS执行流程：
+RequireJS执行流程
 
 1. require函数检查依赖的模块，根据配置文件，获取js文件的实际路径
-2. 根据js文件实际路径，在dom中插入script节点，并绑定onload事件来获取该模块加载完成的通知。
+2. 根据js文件实际路径，在dom中插入script节点，并绑定onload事件来获取该模块加载完成的通知
 3. 依赖script全部加载完成后，调用回调函数
 
 
@@ -211,10 +169,7 @@ define(function(require, exports, module) {
 
 ### ES6
 
-1. ES6模块中的值属于【动态只读引用】。
-2. 对于只读来说，即不允许修改引入变量的值，import的变量是只读的，不论是基本数据类型还是复杂数据类型。当模块遇到import命令时，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。
-3. 对于动态来说，原始值发生变化，import加载的值也会发生变化。不论是基本数据类型还是复杂数据类型。
-4. 循环加载时，ES6模块是动态引用。只要两个模块之间存在某个引用，代码就能够执行。
+
 
 ```js
 // file a.js
@@ -229,23 +184,23 @@ import x from './b.js'
 
 
 
-## 相关书籍
+## Book
 
-还没看：
+**To Do**
 
 《JavaScript设计模式》
 
 《了不起的Node.js》
 
-正在看：
+**In Progress**
 
 《JavaScript权威指南》
 
-《深入浅出Node.js》
-
-看完了：
+**Done**
 
 《Node.js in action》
+
+《深入浅出Node.js》
 
 
 
@@ -284,9 +239,9 @@ npm init -y //生成package.json并设置默认值
 npm run <script> //运行package.json里scripts定义好的命令
 ```
 
-### 
 
-## 流程控制
+
+## flow
 
 - EventEmitter
 
@@ -364,6 +319,77 @@ Concurrency is when two or more "processes" are executing simultaneously over th
 - tick
 
 Whenever there are events to run, the event loop runs until the queue is empty. Each iteration of the event loop is a "tick." User interaction, IO, and timers enqueue events on the event queue.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
