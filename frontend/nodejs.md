@@ -1,10 +1,4 @@
-## What
 
-Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
-
-
-
-<img width="60%" src="https://static.cnodejs.org/FkTMjCoX4xyL0rJtmm7oBc6V0i8W" />
 
 
 
@@ -302,29 +296,98 @@ async (ctx, next) => {
 
 
 
-## Concept
 
-- async vs. parallel
+
+
+
+
+
+
+
+
+
+## ch1 简介
+
+Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+
+
+
+<img width="60%" src="https://static.cnodejs.org/FkTMjCoX4xyL0rJtmm7oBc6V0i8W" />
+
+
+
+### 特点
+
+**异步I/O**
+
+```
+fs.readFile('/path', function(){})
+```
 
 It's very common to conflate the terms "async" and "parallel," but they are actually quite different. Remember, async is about the gap between now and later. But parallel is about things being able to occur simultaneously.
 
- 
-
-- Concurrency
-
-Concurrency is when two or more "processes" are executing simultaneously over the same period, regardless of whether their individual constituent operations happen in parallel (at the same instant on separate processors or cores) or not. You can think of concurrency then as "process"-level (or task-level) parallelism, as opposed to operation-level parallelism (separate-processor threads).
 
 
-
-- tick
+**事件与回调函数**
 
 Whenever there are events to run, the event loop runs until the queue is empty. Each iteration of the event loop is a "tick." User interaction, IO, and timers enqueue events on the event queue.
 
 
 
+**单线程**
+
+优点
+
+- 没有死锁
+- 没有线程上下文切换带来的开销
+
+缺点
+
+- 单线程无法利用多核CPU
+- 错误会使应用退出
+- 大量计算占用CPU，导致无法继续调用异步I/O
 
 
 
+**跨平台**
+
+OS - libuv - Node
+
+
+
+### 应用场景
+
+I/O密集型
+
+CUP密集型
+
+x
+
+分布式应用
+
+
+
+## ch2 模块机制
+
+## ch3 异步I/O
+
+## ch4 异步编程
+
+## ch5 内存控制
+
+## ch6 Buffer
+
+## ch7 网络编程
+
+## ch8 构建Web应用
+
+## ch9 进程
+
+## ch10 测试
+
+## ch11 产品化
+
+## 
 
 
 
