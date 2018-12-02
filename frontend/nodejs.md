@@ -60,70 +60,6 @@ nvm alias default <version>
 
 
 
-## flow
-
-- EventEmitter
-
-```js
-var EventEmitter = require('events')
-var util = require('util')
-
-//定义一个函数对象
-var MyEmitter = function () {}
-
-//继承EventEmitter
-util.inherits(MyEmitter, EventEmitter)
-
-//实例化函数对象
-const myEmitter = new MyEmitter();
-
-//创建event事件
-myEmitter.on('event', (a, b) => {
-    console.log(a, b, this);
-});
-
-//订阅event
-myEmitter.emit('event', 'a', 'b');
-```
-
-- Promise
-
-```js
-new Promise(function(resolve, reject) {
-    if (ok) {
-        resolve("Stuff worked!");
-    }
-    else {
-        reject(Error("It broke"));
-    }
-}).then(function(text){
-    console.log(text)
-    return Promise.reject(new Error('my error'))
-}).catch(function(err){
-    console.log(err)
-})
-```
-
-- Async/Await
-
-```js
-async (ctx, next) => {
-    try {
-        let students = await Student.getAllAsync();
-        await ctx.render('students/index', {
-            students : students
-        })
-    } catch (err) {
-        return ctx.api_error(err);
-    }
-};
-```
-
-
-
-
-
-
 
 ## ch1 简介
 
@@ -165,12 +101,6 @@ Whenever there are events to run, the event loop runs until the queue is empty. 
 - 单线程无法利用多核CPU
 - 错误会使应用退出
 - 大量计算占用CPU，导致无法继续调用异步I/O
-
-
-
-**跨平台**
-
-OS - libuv - Node
 
 
 
@@ -219,12 +149,6 @@ Node引入模块步骤：
 
 
 
-### 核心模块
-
-### C/C++扩展模块
-
-### 模块调用栈
-
 ### 包与NPM
 
 ```
@@ -272,8 +196,6 @@ id和dependencies是可选的，factory的内存就是实际代码的内容
 
 **CMD规范**
 
-玉伯提出
-
 `define(['dep1','dep2'],function(dep1,dep2){})`
 
 
@@ -303,7 +225,7 @@ id和dependencies是可选的，factory的内存就是实际代码的内容
 
 ### Node的异步I/O
 
-事件循环
+事件循环：进程启动时，Node创建一个类似while(true)的循环，每执行一次循环体（tick），查看是否有事件待处理，如果有就取出事件及其相关回调函数
 
 观察者
 
@@ -311,13 +233,75 @@ id和dependencies是可选的，factory的内存就是实际代码的内容
 
 
 
-### 非I/O的异步API
-
-### 时间驱动与高性能服务器
-
-
-
 ## ch4 异步编程
+
+### 异步变成解决方案
+
+**事件发布/订阅模式**
+
+
+- EventEmitter
+
+```js
+var EventEmitter = require('events')
+var util = require('util')
+
+//定义一个函数对象
+var MyEmitter = function () {}
+
+//继承EventEmitter
+util.inherits(MyEmitter, EventEmitter)
+
+//实例化函数对象
+const myEmitter = new MyEmitter();
+
+//创建event事件
+myEmitter.on('event', (a, b) => {
+    console.log(a, b, this);
+});
+
+//订阅event
+myEmitter.emit('event', 'a', 'b');
+```
+
+
+
+**Promise/Deferred模式**
+
+- Promise
+
+```js
+new Promise(function(resolve, reject) {
+    if (ok) {
+        resolve("Stuff worked!");
+    }
+    else {
+        reject(Error("It broke"));
+    }
+}).then(function(text){
+    console.log(text)
+    return Promise.reject(new Error('my error'))
+}).catch(function(err){
+    console.log(err)
+})
+```
+
+- Async/Await
+
+```js
+async (ctx, next) => {
+    try {
+        let students = await Student.getAllAsync();
+        await ctx.render('students/index', {
+            students : students
+        })
+    } catch (err) {
+        return ctx.api_error(err);
+    }
+};
+```
+
+
 
 ## ch5 内存控制
 
@@ -333,7 +317,7 @@ id和dependencies是可选的，factory的内存就是实际代码的内容
 
 ## ch11 产品化
 
-## 
+
 
 
 
