@@ -1,21 +1,4 @@
-
-
-
-
-
-
 ## Debug
-
-```
-node inspect app.js
-or
-npm I -g node-inspect
-node-inspect app.js
-```
-
-- node debugger
-
-- node inspector
 
 VSCode
 
@@ -42,7 +25,7 @@ VSCode
 
 
 
-## nvm
+## 安装
 
 ```
 sudo apt-get update
@@ -53,127 +36,6 @@ nvm install <version>
 nvm ls
 nvm use <version>
 nvm alias default <version>
-```
-
-
-
-## Error
-
-```
-Interal watch failed ENOSPC:
-echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-```
-
-
-
-## Modularization
-
-> Reference
->
-> https://segmentfault.com/a/1190000015991869#articleHeader8
-
-### CommonJS
-
-同步，用在服务端
-
-
-
-```js
-//导出对象
-module.exports = {
-    a: 1
-}
-var module = require('./a.js'); 
-module.a // 1
-
-//导出class
-class Deer {}
-module.exports = Deer;
-var Deer = require("./Deer");
-
-//导出带名函数
-module.exports.foo = () => {};
-var x = require("./x");
-x.foo();
-
-//导出匿名函数
-module.exports = function() {};
-var x = require("./x");
-x();
-
-// 导出数组
-module.exports = ["a", "b", "c"];
-
-// 导出多个函数
-module.exports = {
-  foo: () => {},
-  bar: () => {}
-};
-```
-
-
-
-### AMD
-
-( Asynchronous Module Definition )
-
-异步加载，用在浏览器
-
-所有依赖模块的语句，都定义在一个回调函数中，等到加载完成之后，回调函数才执行
-
-
-
-RequireJS执行流程
-
-1. require函数检查依赖的模块，根据配置文件，获取js文件的实际路径
-2. 根据js文件实际路径，在dom中插入script节点，并绑定onload事件来获取该模块加载完成的通知
-3. 依赖script全部加载完成后，调用回调函数
-
-
-
-```js
-define(['./a', './b'], function(a, b) {
-    a.do()
-    b.do()
-})
-```
-
-
-
-### CMD
-
-( Common Module Definition )
-
-异步加载，用在浏览器
-
-延迟执行（运行按需加载，顺序执行）
-
-与requireJS相似，但是模块定义方式和模块加载时机不同
-
-```js
-define(function(require, exports, module) {
-    var a = require('./a')  
-    a.doSomething()   
-    var b = require('./b')
-    b.doSomething()
-})
-```
-
-
-
-### ES6
-
-
-
-```js
-// file a.js
-export function a() {}
-export function b() {}
-// file b.js
-export default function() {}
-
-import {a, b} from './a.js'
-import x from './b.js'
 ```
 
 
@@ -195,43 +57,6 @@ import x from './b.js'
 《Node.js in action》
 
 《深入浅出Node.js》
-
-
-
-## npm
-
-### version
-
-```
-设version 0.1.0
-npm version major //v1.0.0 主版本号
-npm version premajor //v1.0.0-0 预备主版本
-npm version minor //v0.1.0 次版本号
-npm version preminor //v0.1.0-0 预备次版本
-npm version patch //v0.1.1 修订号
-npm version prepatch //v0.1.1-0 预备修订版
-npm version prerelease //v0.1.2-0 预发布版本
-
-npm -v //查看node版本
-npm config list //查看node配置
-npm root //查看node_modules目录
-npm root -g //查看全局node_modules目录
-
-npm i <module> //安装最新模块
-npm i //安装package.json里的模块
-npm i -g <module> //全局安装模块
-npm i -S <module> //安装模块到dependencies
-npm i -D <lib> //安装模块到dev-dependencies
-npm remove <module> //移除模块
-npm update <module> //更新模块
-npm view <module> //查看模块信息
-npm view <module> versions //查看模块历史版本
-
-npm init //生成package.json
-npm init -y //生成package.json并设置默认值
-
-npm run <script> //运行package.json里scripts定义好的命令
-```
 
 
 
@@ -300,12 +125,6 @@ async (ctx, next) => {
 
 
 
-
-
-
-
-
-
 ## ch1 简介
 
 Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
@@ -357,17 +176,107 @@ OS - libuv - Node
 
 ### 应用场景
 
-I/O密集型
+I/O密集型：Node利用事件循环的处理能力，而不是启动每一个线程为每一个请求服务，资源占用极少
 
-CUP密集型
-
-x
-
-分布式应用
+CUP密集型：单线程下，如果有长时间运行计算，将会导致CPU时间片不能释放，使后续I/O无法发起，但是适当调整和分解大型运算任务为多个小任务，使得运算能够适时释放，不阻塞I/O调用的发起
 
 
 
 ## ch2 模块机制
+
+### CommonJS模块规范
+
+- 模块引用
+
+  `var math = require('math');`
+
+- 模块定义
+
+  `export.add = function(){};`
+
+- 模块标识
+
+
+
+同步，用在服务端
+
+
+
+### Node的模块实现
+
+Node引入模块步骤：
+
+1. 路径分析
+2. 文件定位
+3. 编译执行
+
+模块类型：
+
+- 核心模块：由Node提供的模块，直接加载进内存中，加载速度最快
+- 文件模块：用户编写的模块，运行时动态加载
+
+无论核心模块还是文件模块，require()对相同模块的二次加载采用缓存优先的方式
+
+
+
+### 核心模块
+
+### C/C++扩展模块
+
+### 模块调用栈
+
+### 包与NPM
+
+```
+设version 0.1.0
+npm version major //v1.0.0 主版本号
+npm version premajor //v1.0.0-0 预备主版本
+npm version minor //v0.1.0 次版本号
+npm version preminor //v0.1.0-0 预备次版本
+npm version patch //v0.1.1 修订号
+npm version prepatch //v0.1.1-0 预备修订版
+npm version prerelease //v0.1.2-0 预发布版本
+
+npm -v //查看node版本
+npm config list //查看node配置
+npm root //查看node_modules目录
+npm root -g //查看全局node_modules目录
+
+npm i <module> //安装最新模块
+npm i //安装package.json里的模块
+npm i -g <module> //全局安装模块
+npm i -S <module> //安装模块到dependencies
+npm i -D <lib> //安装模块到dev-dependencies
+npm remove <module> //移除模块
+npm update <module> //更新模块
+npm view <module> //查看模块信息
+npm view <module> versions //查看模块历史版本
+
+npm init //生成package.json
+npm init -y //生成package.json并设置默认值
+
+npm run <script> //运行package.json里scripts定义好的命令
+```
+
+
+
+### 前后端共用模块
+
+**AMD规范**
+
+`defined(id?, dependencies?, factory);`
+
+id和dependencies是可选的，factory的内存就是实际代码的内容
+
+
+
+**CMD规范**
+
+玉伯提出
+
+`define(['dep1','dep2'],function(dep1,dep2){})`
+
+
 
 ## ch3 异步I/O
 
