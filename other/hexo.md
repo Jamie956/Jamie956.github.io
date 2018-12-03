@@ -1,5 +1,5 @@
 ### Basic
-```
+```shell
 ===hexo
 npm install -g hexo-cli
 hexo -v
