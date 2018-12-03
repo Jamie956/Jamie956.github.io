@@ -454,19 +454,129 @@ $ node
 
 **堆外内存**
 
-2018年12月3日12:27:18
+堆外内存：不通过V8分配的内存
+
+```js
+var useMem = function(){
+    var size = 200*1024*1024;
+    var buffer = new Buffer(size);
+    for (var i = 0; i < size; i++) {
+        buffer[i] = 0;    
+    }
+    return buffer;
+}
+
+//Process: heapTotal 10.73MB heapUsed 3.65MB rss 3027.09MB
+//rss的值远远超过V8的限制，因为Buffer对象不经过V8的内存分配机制
+```
+
+
+
+Node的内存构成主要由通过V8进行分配的部分和Node自行分配的部分，受V8的垃圾回收限制的主要是V8的堆内存
 
 
 
 ### 内存泄漏
 
+实质：应当回收的对象出现意外而没有被回收，变成常驻在老年代中的对象
+
+内存泄漏的情况：
+
+- 缓存
+- 队列消费不及时
+- 作用未释放
+
+
+
+**慎将内存当做缓存**
+
+一个对象一旦被当做缓存来使用，就常驻在老年代，缓存中存储的键越多，长期存活的对象也越多，导致垃圾回收进行扫描和整理时，做了无用功
+
+
+
+**关注队列状态**
+
+消费速度低于生产速度时，会形成堆积
+
+
+
 ### 内存泄漏排查
 
-### 大内存应用
+工具
+
+- v8-profiler
+- node-heapdump
+- node-mtrace
+- dtrace
+- node-memwatch
 
 
 
 ## ch6 Buffer
+
+### Buffer结构
+
+Buffer对象类似于数组，它的元素为16进制的两位数，即0-255的数值
+
+Buffer所占用的内存不是通过V8分配，而是在Node的C++层面实现内存的申请，属于堆外内存
+
+
+
+slab的状态：
+
+- full 完全分配
+- partial 部分分配
+- empty 没有被分配
+
+
+
+Node以8KB为界限区分Buffer是大对象还是小对象
+
+
+
+真正的内存实在Node的C++层面提供，JavaScript层面只是使用它，当进行小而频繁的Buffer操作时，采用slab机制进行预先申请和事后分配，使JavaScript到操作系统之间不必有过多的内存申请方面的系统调用，对于大块的Buffer，则直接使用C++层面提供的内存
+
+
+
+### Buffer的转换
+
+str -> Buffer
+
+`new Buffer(str, [encoding]);`
+
+`buf.write(str, [offset], [length], [encoding])`
+
+
+
+Buffer -> str
+
+`buf.toString([encoding], [start], [end])`
+
+
+
+### Buffer的拼接
+
+```js
+var chunks = [];
+var size = 0;
+res.on('data', function(chunk){
+   chunks.push(chunk);
+   size += chunk.length;
+});
+res.on('end',function(){
+   var buf = Buffer.concat(chunks, size);
+    var str = iconv.decode(buf, 'utf8');
+    console.log(str);
+});
+```
+
+
+
+### Buffer与性能
+
+Buffer在文件I/O和网络I/O中运用广泛，在网络中传输，都需要转换为Buffer，以二进制数据传输，提高字符串到Buffer的转换效率，可以很大程度地提高网络吞吐率
+
+
 
 ## ch7 网络编程
 
@@ -477,73 +587,6 @@ $ node
 ## ch10 测试
 
 ## ch11 产品化
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
