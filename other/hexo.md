@@ -26,7 +26,7 @@ categories:
 
 {% codeblock %}
  alert('hello world')
-{% endcodeblock %}
+//{% endcodeblock %}
 
 {% codeblock lang:javascript %}
  alert('hello world')
