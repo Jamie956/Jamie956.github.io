@@ -389,18 +389,74 @@ for(var i=0; i<000000; i++) {
     var a = {};
 }
 
+//运行并生成v8.log
 $ node --prof test01.js
+
+//统计日志信息
+linux-tick-processor v8.log
 ```
-
-
-
-
 
 
 
 ### 高效使用内存
 
+**作用域**
+
+- 标识符查找
+- 作用域链
+- 变量的主动释放
+
+
+
+**闭包**
+
+外部作用域访问内部作用域中的变量
+
+
+
 ### 内存指标
+
+**查看内存使用情况**
+
+
+
+- 查看进程的内存占用
+
+```shell
+$ node
+> process.memoryUsage();
+{ rss: 22925312,
+  heapTotal: 9682944,
+  heapUsed: 5281200,
+  external: 16904 }
+```
+
+rss( resident set size )：即进程的常驻内存部分，单位字节
+
+heapTotal：堆中总共申请的内存量，单位字节
+
+heapUsed：堆中使用中的内存量，单位字节
+
+
+
+- 查看系统的内存占用
+
+totalmem(), freemem()查看内存使用情况
+
+```shell
+#查看内存使用情况
+$ node
+> os.totalmem() #总内存，单位字节
+> os.freemem() #闲置内存，单位字节
+```
+
+
+
+**堆外内存**
+
+2018年12月3日12:27:18
+
+
 
 ### 内存泄漏
 
