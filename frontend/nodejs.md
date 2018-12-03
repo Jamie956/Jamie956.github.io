@@ -580,6 +580,105 @@ Buffer在文件I/O和网络I/O中运用广泛，在网络中传输，都需要�
 
 ## ch7 网络编程
 
+### 构建TCP服务
+
+TCP是面向连接的协议，传输之前需要3次握手形成回话
+
+只有会话形成后，server和client之间才能互相发送数据。在创建会话过程中，sever和client分别提供一个套接字，这两个套接字共同形成一个连接，server和client通过套接字实现两者之间连接的操作。
+
+```js
+//tcp-server.js
+var net = require('net');
+
+var server = net.createServer(function(socket){
+    socket.on('data', function(data){
+        console.log(data.toString());
+        socket.write('from server to client');
+    });
+
+    socket.on('end', function(){
+        console.log('server died');
+    });
+});
+
+server.listen(8124, function(){
+    console.log('server listen on port 8124');
+});
+
+//tcp-client.js
+var net = require('net');
+
+var client = net.connect({port:8124}, function(){
+    console.log('client connected');
+    client.write('from client to server');
+});
+
+client.on('data', function(data){
+    console.log(data.toString());
+    client.end();
+});
+
+client.on('end', function(){
+    console.log('client disconnected');
+});
+
+```
+
+
+
+Nagle算法：TCP针对网络中的小数据包的优化策略，要求缓冲区的数据达到一定数量或一定时间后才发出，所以小数据包会被Nagle算法合并，以此来优化网络
+
+
+
+### 构建UDP服务
+
+与TCP不同，UDP不是面向连接
+
+UDP中，一个套接字可以与多个UDP通信，它虽然提供面向事务的简单不可靠信息传输服务，在网络差的情况下存在丢包严重问题，但由于它无须连接，资源消耗低，处理快速且灵活，应用于音频、视频、DNS
+
+
+
+```js
+//udp-server.js
+var dgram = require("dgram");
+
+var server = dgram.createSocket("udp4");
+
+server.on("message", function(msg, rinfo) {
+  console.log(
+    "server got: " + msg + " from " + rinfo.address + ": " + rinfo.port
+  );
+});
+
+server.on("listening", function() {
+  var address = server.address();
+  console.log("server listening " + address.address + ": " + address.port);
+});
+
+server.bind(41234);
+
+//udp-client.js
+var dgram = require('dgram');
+
+var message = new Buffer('hi');
+
+var client = dgram.createSocket('udp4');
+
+client.send(message, 0, message.length, 41234, 'localhost', function(err, bytes){
+  client.close();
+});
+```
+
+
+
+### 构建HTTP服务
+
+### 构建WebSocket服务
+
+### 网络服务与安全
+
+
+
 ## ch8 构建Web应用
 
 ## ch9 进程

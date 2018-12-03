@@ -21,7 +21,7 @@
 
 ### plugin
 - Local History
-- View In Browser
+- open in browser
 - Prettier
 - vscode-icons
 
