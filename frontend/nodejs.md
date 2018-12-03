@@ -673,6 +673,18 @@ client.send(message, 0, message.length, 41234, 'localhost', function(err, bytes)
 
 ### 构建HTTP服务
 
+HyperText Transfer Protocol
+
+HTTP构建在TCP之上，属于应用层协议，HTTP的两端是服务器和浏览器，即B/S模式
+
+浏览器其实就是一个HTTP代理，用户的行为将会通过它转化为HTTP请求报文发送给服务端，服务端在处理请求后，发送响应报文给代理，代理在解析报文后，将用户需要的内容呈现在界面上。以浏览器打开一张图片为例：首先，浏览器构造HTTP报文发向图片服务端；然后，服务端判断报文中的要请求的地址，将磁盘中的图片文件以报文的形式发送给浏览器；浏览器接收完图片后，调用渲染引擎将其显示给用户。
+
+
+
+Node的http模块包含对HTTP处理的封装，在Node中，HTTP服务继承自TCP服务器（net模块），它能够与多个客户端保持连接，由于其采用实事件驱动的形式，并不为每一个连接创建额外的线程或进程，保持很低的内存占用，所以能实现高并发。HTTP服务与TCP服务模型的区别在于，开启keepalive后，一个TCP会话可以用于多次请求和响应。TCP服务以connection为单位进行服务，HTTP服务以request为单位进行服务。http模块即是将connection到request的过程进行封装
+
+
+
 ### 构建WebSocket服务
 
 ### 网络服务与安全
