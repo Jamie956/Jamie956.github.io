@@ -1,0 +1,13 @@
+## 开发环境需要安装
+- vscode
+- git
+- git gitkraken
+- spring tool suite
+- sublime text 3
+- firefox
+- chrome
+- sougou pinyin
+- nvm & nodejs
+- java
+- maven
+- docker
