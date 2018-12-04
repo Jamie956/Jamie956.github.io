@@ -61,7 +61,7 @@ nvm alias default <version>
 
 
 
-## ch1 简介
+## 简介
 
 Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
 
@@ -112,7 +112,7 @@ CUP密集型：单线程下，如果有长时间运行计算，将会导致CPU�
 
 
 
-## ch2 模块机制
+## 模块机制
 
 ### CommonJS模块规范
 
@@ -200,7 +200,7 @@ id和dependencies是可选的，factory的内存就是实际代码的内容
 
 
 
-## ch3 异步I/O
+## 异步I/O
 
 |        | 执行任务的方式 | 性能                     | 问题         |
 | ------ | -------------- | ------------------------ | ------------ |
@@ -233,7 +233,7 @@ id和dependencies是可选的，factory的内存就是实际代码的内容
 
 
 
-## ch4 异步编程
+## 异步编程
 
 ### 异步变成解决方案
 
@@ -303,7 +303,7 @@ async (ctx, next) => {
 
 
 
-## ch5 内存控制
+## 内存控制
 
 ### V8的垃圾回收机制与内存限制
 
@@ -512,7 +512,7 @@ Node的内存构成主要由通过V8进行分配的部分和Node自行分配的�
 
 
 
-## ch6 Buffer
+## Buffer
 
 ### Buffer结构
 
@@ -578,7 +578,7 @@ Buffer在文件I/O和网络I/O中运用广泛，在网络中传输，都需要�
 
 
 
-## ch7 网络编程
+## 网络编程
 
 ### 构建TCP服务
 
@@ -685,13 +685,90 @@ Node的http模块包含对HTTP处理的封装，在Node中，HTTP服务继承自
 
 
 
+```js
+//http-server.js
+var http = require("http");
+http
+    .createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello World");
+})
+    .listen(3000, console.log("Listening on port 3000."));
+
+
+//http-client.js
+var http = require("http");
+
+var options = {
+    hostname: "127.0.0.1",
+    port: 3000,
+    path: "/",
+    method: "GET"
+};
+
+var req = http.request(options, function(res) {
+    console.log(res.statusCode);
+    console.log(JSON.stringify(res.headers));
+    res.setEncoding("utf8");
+    res.on("data", function(chunk) {
+        console.log(chunk);
+    });
+});
+
+req.end();
+```
+
+
+
 ### 构建WebSocket服务
 
-### 网络服务与安全
+WebScoket实现了客户端与服务端之间的长连接，而Node事件驱动的方式十分擅长与大量的客户端保持高并发连接
+
+与HTTP相比，WebSocket的好处：
+
+- 客户端与服务端只建立一个TCP连接，可以使用更少的连接
+- WebSocket服务端可以推送数据到客户端，更加灵活和高效
+- 轻量级协议头，减少数据传送量
+
+
+
+**WebSocket握手**
+
+客户端建立连接时，通过HTTP发起请求报文，与普通HTTP协议不同的是协议头包含`Upgrede: websocket` 和 `Connection: Upgrade`
+
+
+
+一旦WebSocket握手成功，服务端与客户端将会呈现对等的效果，都能接收和发送消息
+
+
+
+**WebSocket数据传输**
+
+在握手顺利完成后，当前连接将不再进行HTTP交互，而是开始WebSocket的数据协议，实现客户端与服务端的数据交换
 
 
 
 ## ch8 构建Web应用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## ch9 进程
 
