@@ -754,17 +754,74 @@ WebScoket实现了客户端与服务端之间的长连接，而Node事件驱动�
 
 **请求方法**
 
+取出headers -> 设置`req.method`
+
 **路径解析**
+
+场景：
+
+- 静态文件服务器，根据路径查找磁盘中的文件，响应给客户端
+- 根据路径来选择控制器
+
+
 
 **查询字符串**
 
+查询字符串位于路径之后`?foo=bar&baz=val` 
+
+
+
 **Cookie**
 
+Cookie处理步骤：
+
+1. 服务器向客户端发送Cookie
+2. 浏览器将Cookie保存
+3. 之后每次浏览器都会将Cookie发到服务端
+
+
+
+path：表示这个Cookie影响到的路径，当前访问的路径不满足该匹配时，浏览器则不发送这个Cookie
+
+Expires & Max-Age：告知浏览器Cookie何时过期，如果不设置，关闭浏览器就会流失这个Cookie
+
+HttpOnly：告知浏览器不允许通过脚本`document.cookie` 更改这个Cookie值
+
+Secure：它的值为true时，表示创建的Cookie只能在HTTPS连接中被浏览器传递到服务器进行会话验证，如果是HTTP连接则不会传递
+
+
+
 **Session**
+
+Session的数据只保留在服务器端，客户端无法修改，数据的安全性得到一定的保障，数据也无须在协议中每次都被传递
+
+
+
+为了解决性能问题和Session数据无法跨进程共享的问题，常用的方案是将Session集中化，将原本可能分散在多个进程里的数据，统一转移到集中的数据存储中。常用工具有Redis、Memcached，通过这些高效缓存，Node进程无须在内部维护数据对象，解决垃圾回收问题和内存限制
+
+
+
+速度问题：
+
+- Node与缓存服务保持长连接，而非频繁的短连接，握手导致的延迟只影响初始化
+- 高速缓存直接在内存中进行数据存储和访问
+- 缓存服务通常与Node进程运行在相同的机器上或者相同的机房里，网络速度受到的影响较小
+
+
 
 **缓存**
 
 **Basic认证**
+
+Basic认证是当客户端与服务端进行请求时，允许通过用户名和密码实现的一种身份认证方式
+
+如果一个页面需要Basic认证，它会检查请求报文头部中的Authorization字段的内容，该字段的值由认证方式和加密值构成 `Authorization: Basic dXNlcjpwsNK`
+
+```js
+var encode = function(username, password){
+    return new Buffer(username + ':' + password).toString('base64);
+};
+```
 
 
 
@@ -772,7 +829,24 @@ WebScoket实现了客户端与服务端之间的长连接，而Node事件驱动�
 
 **表单数据**
 
+`Content-Type: application/x-www-form-urlencoded`
+
+```js
+var handle = function(req, res){
+    if(req.headers['content-type'] === 'application/x-www-form-urlencoded'){
+        req.body = querystring.parse(req.rawBody);
+    };
+    todo(req, res);
+};
+```
+
+
+
 **其他格式**
+
+除了表单数据，常见的提交还有JSON和XML
+
+
 
 **附件上传**
 
