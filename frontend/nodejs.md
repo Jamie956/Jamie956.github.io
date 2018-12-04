@@ -989,17 +989,69 @@ process.send({foo: 'bar'});
 
 多个应用监听相同端口时，文件描述符同一时间只能被某个进程所用。网络请求向服务器端发送时，只有一个进程能够抢到连接，这些进程服务是抢占式的。
 
+```js
+//parent.js
+var cp = require('child_process');
+var child1 = cp.fork('child1.js');
+var child2 = cp.fork('child1.js');
+
+var server = require('net').createServer();
+server.listen(1337, function(){
+  child1.send('server', server);
+  child2.send('server', server);
+
+  server.close();
+});
+
+//child.js
+var http = require("http");
+var server = http.createServer(function(req, res) {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("handled by child, pid is " + process.pid + "\n");
+});
+
+process.on("message", function(m, tcp) {
+  if (m === "server") {
+    tcp.on("connection", function(socket) {
+      server.emit("connection", socket);
+    });
+  }
+});
+```
+
 
 
 ### 集群
 
 **进程事件**
 
+error
+
+exit
+
+close
+
+disconnection
+
+
+
 **自动重启**
+
+自杀信号
+
+限量重启
+
+
 
 **负载均衡**
 
+保证多个处理单元工作量公平的策略
+
+
+
 **状态共享**
+
+通知进程：发送通知和查询状态是否更改的进程
 
 
 
