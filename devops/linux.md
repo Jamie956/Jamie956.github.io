@@ -428,6 +428,12 @@ EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~
 
 
 
+## Ubuntu开发环境
+
+
+
+
+
 
 
 
