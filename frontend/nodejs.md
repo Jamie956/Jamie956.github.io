@@ -235,7 +235,7 @@ id和dependencies是可选的，factory的内存就是实际代码的内容
 
 ## 异步编程
 
-### 异步变成解决方案
+### 异步编程解决方案
 
 **事件发布/订阅模式**
 
@@ -484,7 +484,7 @@ Node的内存构成主要由通过V8进行分配的部分和Node自行分配的�
 
 - 缓存
 - 队列消费不及时
-- 作用未释放
+- 作用域未释放
 
 
 
@@ -681,7 +681,7 @@ HTTP构建在TCP之上，属于应用层协议，HTTP的两端是服务器和浏
 
 
 
-Node的http模块包含对HTTP处理的封装，在Node中，HTTP服务继承自TCP服务器（net模块），它能够与多个客户端保持连接，由于其采用实事件驱动的形式，并不为每一个连接创建额外的线程或进程，保持很低的内存占用，所以能实现高并发。HTTP服务与TCP服务模型的区别在于，开启keepalive后，一个TCP会话可以用于多次请求和响应。TCP服务以connection为单位进行服务，HTTP服务以request为单位进行服务。http模块即是将connection到request的过程进行封装
+Node的http模块包含对HTTP处理的封装，在Node中，HTTP服务继承自TCP服务器（net模块），它能够与多个客户端保持连接，由于其采用事件驱动的形式，并不为每一个连接创建额外的线程或进程，保持很低的内存占用，所以能实现高并发。HTTP服务与TCP服务模型的区别在于，开启keepalive后，一个TCP会话可以用于多次请求和响应。TCP服务以connection为单位进行服务，HTTP服务以request为单位进行服务。http模块即是将connection到request的过程进行封装
 
 
 
