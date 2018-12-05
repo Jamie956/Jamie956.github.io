@@ -17,7 +17,7 @@ touch hello.sh //创建sh文件
 chmod u+x hello.sh //设置可执行权限
 ./hello.sh //执行 .sh
 sh hello.sh //excute sh
-. hello.sh //execute sh, !important use for "export" command
+. hello.sh //execute sh
 ```
 
 
@@ -430,13 +430,16 @@ EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~
 
 ## Ubuntu ENV
 
-1. `sudo apt install git -y`
-2. `git clone https://github.com/Jamie956/awe-shell.git `
-3. `sudo apt-get update`
-4. `sudo apt install make -y` 
+1. `touch hi.sh`
 
+2. ```shell
+   sudo apt-get update
+   sudo apt install git -y
+   sudo apt install make -y
+   git clone https://github.com/Jamie956/awe-shell.git
+   ```
 
-
+3. `. hi.sh`
 
 
 
