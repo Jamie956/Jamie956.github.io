@@ -428,9 +428,12 @@ EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~
 
 
 
-## Ubuntu开发环境
+## Ubuntu ENV
 
-
+1. `sudo apt install git -y`
+2. `git clone https://github.com/Jamie956/awe-shell.git `
+3. `sudo apt-get update`
+4. `sudo apt install make -y` 
 
 
 
