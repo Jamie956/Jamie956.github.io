@@ -12,6 +12,7 @@
     * [NodeJS](frontend/nodejs.md)
     * [Nginx](frontend/nginx.md)
     * [JavaScript](frontend/javascript.md)
+    * [React](frontend/react.md)
 * [Backend](backend/README.md)
     * [Java](backend/java.md)
         * [Maven](backend/maven.md)
