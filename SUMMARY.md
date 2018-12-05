@@ -33,7 +33,6 @@
     * [VSCode](tool/vscode.md)
     * [Eclipse](tool/eclipse.md)
     * [Typora](tool/typora.md)
-    * [DevEnv](tool/devenv.md)
 * [Other](other/README.md)
     * [Hexo](other/hexo.md)
     * [Browser](other/browser.md)
