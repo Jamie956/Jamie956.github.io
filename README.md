@@ -13,7 +13,6 @@
 | gitbook install      | 安装gitbook插件 |
 
 
-
 # 快速开始
 
 ```js
@@ -40,19 +39,9 @@ gitbook install
 # Gitbook 配置
 ```json
 {
-  "plugins": ["page-treeview"],
+  "plugins": ["page-treeview","splitter"],
   "title" : "Jamie House",
   "author" : "Jamie",
-  "description" : "The note for dev.",
-  "language" : "zh-hans",
-  "links" : {
-  "sidebar" : {
-    "Home" : "http://baidu.com"
-    }
-  }
+  "description" : "V5"
 }
 ```
-
-# 插件
-- musicxml //乐谱
-
