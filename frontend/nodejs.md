@@ -1091,7 +1091,7 @@ setup
 
 
 
-## ch10 测试
+## 测试
 
 ### 单元测试
 
@@ -1136,19 +1136,21 @@ setup
 
 
 
-  BDD（行为驱动开发）：关注整体行为是否符合预期，适合自顶向下的设计方式，表述方式更接近于自然语言的习惯
+  	BDD（行为驱动开发）：关注整体行为是否符合预期，适合自顶向下的设计方式，表述方式更接近于自然语言的习惯
 
-  ```js
-  describe('Array', function(){
-      before(function(){});
-      
-      describe('#indexOf()', function(){
-          it('should return -1 when not present', function(){
-              [1,2,3].indexOf(4).should.equal(-1);
-          });
-      });
-  });
-  ```
+```
+describe('Array', function(){
+    before(function(){});
+
+    describe('#indexOf()', function(){
+        it('should return -1 when not present', function(){
+            [1,2,3].indexOf(4).should.equal(-1);
+        });
+    });
+});
+```
+
+
 
 - 测试用例：最少需要通过正向测试和反向测试来保证测试对功能的覆盖
 
@@ -1166,25 +1168,51 @@ setup
 
 
 
-  超时设置
+  	超时设置
 
-- 测试覆盖率
+- 测试覆盖率：用来定位没有测试到的代码行
 
-- mock
+  jscover
 
-- 持续集成
+  blanket
+
+- mock：模拟异常
+
+- 私有方法测试
+
+  rewrite
+
+web 测试， supertest
 
 
 
 **工程化与自动化**
 
+makefile
+
+持续集成，travis-ci
+
 
 
 ### 性能测试
 
+**负载测试**
+
 **基准测试**
 
+统计在多少时间内执行了多少次某个方法
+
+库：benchmark
+
+
+
 **压力测试**
+
+测试网络接口性能，指标包含有吞吐率、响应时间、并发数
+
+库：ab
+
+
 
 **基准测试驱动开发**
 
