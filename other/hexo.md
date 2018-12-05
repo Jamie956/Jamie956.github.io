@@ -24,22 +24,6 @@ categories:
 - [cat2]
 - [cat3]
 
-{% codeblock %}
- alert('hello world')
-//{% endcodeblock %}
-
-{% codeblock lang:javascript %}
- alert('hello world')
-{% endcodeblock %}
-
-Youtube-ID: I07XMi7MHd4
-{% youtube I07XMi7MHd4 %}
-
-post_asset_folder: false => post_asset_folder: true
-{% asset_img cake.jpg CAKE %}
-{% asset_link hexo.jpg Hexo Logo %}
-
-
 ssh-keygen -t rsa -C "752492509@qq.com"
 C:\Users\bxm09\.ssh\id_rsa.pub
 https://github.com/settings/ssh => new SSH key
