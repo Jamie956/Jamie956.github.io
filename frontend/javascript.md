@@ -950,65 +950,78 @@ Finally, the following encodes `-314,` i.e. the two's complement of `314`:
 
 > Reference
 >
-> http://www.w3school.com.cn/htmldom/dom_nodes.asp
->
 > https://javascript.ruanyifeng.com/dom/node.html
 
-<img src="http://www.w3school.com.cn/i/ct_htmltree.gif" />
 
 
-
-通过 HTML DOM，树中的所有节点均可通过 JavaScript 进行访问。所有 HTML 元素（节点）均可被修改，也可以创建或删除节点
-
-
-
-DOM（Document Object Model）：JavaScript 操作网页的接口，它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）
+DOM（Document Object Model）：JavaScript 操作网页的接口，它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作
 
 浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口
 
-DOM 只是一个接口规范，可以用各种语言实现。所以严格地说，DOM 不是 JavaScript 语法的一部分，但是 DOM 操作是 JavaScript 最常见的任务，离开了 DOM，JavaScript 就无法控制网页。
+
+
+Node：DOM 的最小组成单位
+
+DOM 树：由各种不同类型的节点组成
+
+**7种节点**
+
+Document
+
+Element
+
+Attribute
+
+Text
+
+DocumentFragment
+
+DocumentType
+
+Comment
 
 
 
-node：DOM 的最小组成单位
+**节点的三种关系（除根节点）**
 
-- 7种节点
+parentNode：直接的上级节点
 
-1. 文档节点（document）：9，对应常量`Node.DOCUMENT_NODE`
-2. 元素节点（element）：1，对应常量`Node.ELEMENT_NODE`
-3. 属性节点（attr）：2，对应常量`Node.ATTRIBUTE_NODE`
-4. 文本节点（text）：3，对应常量`Node.TEXT_NODE`
-5. 文档片断节点（DocumentFragment）：11，对应常量`Node.DOCUMENT_FRAGMENT_NODE`
-6. 文档类型节点（DocumentType）：10，对应常量`Node.DOCUMENT_TYPE_NODE`
-7. 注释节点（Comment）：8，对应常量`Node.COMMENT_NODE`
+childNodes：直接的下级节点
+
+sibling：拥有同一个父节点的节点
 
 
 
-- Node属性
+**Node 接口的属性**
 
-`nodeType`：显示节点的类型
-
-`nodeName`：显示节点的名称
-
-`nodeValue`：显示节点的值
-
-`attributes`：获取一个属性节点
-
-`firstChild`：表示某一节点的第一个节点
-
-`lastChild`：表示某一节点的最后一个子节点
-
-`childNodes`：表示所在节点的所有子节点
-
-`parentNode`：表示所在节点的父节点
-
-`nextSibling`：紧挨着当前节点的下一个节点
-
-`previousSibling`：紧挨着当前节点的上一个节点 
+```js
+Node.nodeType
+Node.nodeName
+Node.nodeValue
+Node.textContent //后代节点的文本内容
+Node.baseURI
+Node.ownerDocument //返回当前节点所在的顶层文档对象
+Node.nextSibling //当前节点的下一个节点
+Node.previousSibling //当前节点的上一个节点
+Node.parentNode
+Node.parentElement //当前节点的父元素节点
+Node.firstChild
+Node.lastChild
+Node.childNodes //当前节点的所有子节点
+Node.isConnected //当前节点是否在文档之中
+```
 
 
 
-DOM 树：一个文档的所有节点，按照所在的层级，抽象成一种树状结构
+**Node接口方法**
+
+```js
+Node.appendChild()
+```
+
+
+
+
 
 
 
