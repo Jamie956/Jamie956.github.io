@@ -10,7 +10,7 @@ echo $PATH
 
 
 
-## Shell脚本
+## Shell
 
 ```shell
 touch hello.sh //创建sh文件
@@ -229,56 +229,42 @@ kill -9 3383 //终止进程ID3382
 
 
 
-
-
-## Apt Install
-
-### 加速
+## Apt
 
 ```shell
-cp /etc/apt/sources.list /etc/apt/sources.list.bak	# 备份sources.list
-echo ""> sources.list # 写入源
+# Update source.list 
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+echo ""> sources.list
 apt-get update
-```
 
-
-
-### 安装步骤
-
-```
+# install packages
 apt-get update
-apt install <app>
+apt install <package>
+
+sudo apt-get remove package #删除包
+sudo apt-get remove package --purge #删除包，包括删除配置文件等
+
+apt list <package> # 是否安装某个安装包
 ```
-
-
-
-### 你可以装
-
-docker
-nginx
-curl
-maven
-openssh-server: connect
-openjdk-8-jdk
-make
-gparted //磁盘管理工具
 
 
 
 ## Makefile
 
-```
-touch hello
-hello:
-	say:
-		echo 'Hello World.'
-	say2:
-		echo 'hello world2'
-make -f hello say2
+```shell
+make <key>
+make -f <filename> <key>
 
-===error===
-q:Makefile:4: *** missing separator.  Stop.
-a:space -> tab
+# example
+touch Makefile
+# Makefile
+print:
+	echo 'hi'
+make print
+
+# error
+Makefile:4: *** missing separator.  Stop.
+space -> tab
 ```
 
 
@@ -332,7 +318,7 @@ sudo dpkg -P [image] [image] ... //删除相应的配置信息
 
 
 
-## 双系统
+## Ubuntu & win10
 
 ```
 win +x => 磁盘管理 => 压缩卷 => 51200M  =>未分配
@@ -390,8 +376,6 @@ EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~
 
 
 
-
-
 ## 匹配
 
 | 通配符        | 意义                               |
@@ -440,6 +424,8 @@ EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~
    ```
 
 3. `. hi.sh`
+
+4. Install packages as you need.
 
 
 
