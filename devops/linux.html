@@ -260,6 +260,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.4" data-path="../frontend/react.html">
+            
+                <a href="../frontend/react.html">
+            
+                    
+                    React
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -550,19 +563,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="../tool/devenv.html">
-            
-                <a href="../tool/devenv.html">
-            
-                    
-                    DevEnv
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -672,7 +672,8 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#shell&#x811A;&#x672C;">Shell&#x811A;&#x672C;</a><i></i></div></li>
+<li><div><a href="#set-env">Set ENV</a><i></i></div></li>
+<li><div><a href="#shell">Shell</a><i></i></div></li>
 <li><div><a href="#wget">wget</a><i></i></div></li>
 <li><div><a href="#nano">nano</a><i></i></div></li>
 <li><div><a href="#groups">Groups</a><i></i></div></li>
@@ -689,17 +690,13 @@
 <li><div><a href="#filter">filter</a><i></i></div></li>
 <li><div><a href="#&#x6743;&#x9650;">&#x6743;&#x9650;</a><i></i></div></li>
 <li><div><a href="#&#x8FDB;&#x7A0B;">&#x8FDB;&#x7A0B;</a><i></i></div></li>
-<li><div><a href="#apt-install">Apt Install</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
-<ul>
-<li><div><a href="#&#x52A0;&#x901F;">&#x52A0;&#x901F;</a><i></i></div></li>
-<li><div><a href="#&#x5B89;&#x88C5;&#x6B65;&#x9AA4;">&#x5B89;&#x88C5;&#x6B65;&#x9AA4;</a><i></i></div></li>
-<li><div><a href="#&#x4F60;&#x53EF;&#x4EE5;&#x88C5;">&#x4F60;&#x53EF;&#x4EE5;&#x88C5;</a><i></i></div></li>
-</ul></li>
+<li><div><a href="#apt">Apt</a><i></i></div></li>
 <li><div><a href="#makefile">Makefile</a><i></i></div></li>
 <li><div><a href="#ubuntu">Ubuntu</a><i></i></div></li>
-<li><div><a href="#&#x53CC;&#x7CFB;&#x7EDF;">&#x53CC;&#x7CFB;&#x7EDF;</a><i></i></div></li>
+<li><div><a href="#ubuntu--win10">Ubuntu &amp; win10</a><i></i></div></li>
 <li><div><a href="#&#x7CFB;&#x7EDF;&#x76EE;&#x5F55;">&#x7CFB;&#x7EDF;&#x76EE;&#x5F55;</a><i></i></div></li>
 <li><div><a href="#&#x5339;&#x914D;">&#x5339;&#x914D;</a><i></i></div></li>
+<li><div><a href="#ubuntu-env">Ubuntu ENV</a><i></i></div></li>
 </ul>
 </div>
 
@@ -710,12 +707,12 @@ export PATH=$JAVA_HOME/bin:$PATH
 source /etc/profile
 echo $PATH
 </code></pre>
-<h2 id="shell&#x811A;&#x672C;">Shell&#x811A;&#x672C;</h2>
+<h2 id="shell">Shell</h2>
 <pre><code class="lang-shell">touch hello.sh //&#x521B;&#x5EFA;sh&#x6587;&#x4EF6;
 chmod u+x hello.sh //&#x8BBE;&#x7F6E;&#x53EF;&#x6267;&#x884C;&#x6743;&#x9650;
 ./hello.sh //&#x6267;&#x884C; .sh
 sh hello.sh //excute sh
-. hello.sh //execute sh, !important use for &quot;export&quot; command
+. hello.sh //execute sh
 </code></pre>
 <h2 id="wget">wget</h2>
 <pre><code>wget url
@@ -867,37 +864,37 @@ kill -9 3383 //&#x7EC8;&#x6B62;&#x8FDB;&#x7A0B;ID3382
 &#x4F9D;&#x6B21;&#x5730;&#xFF0C;&#x518D;&#x8FD0;&#x884C;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x79F0;&#x4E3A; init &#x811A;&#x672C;&#x7684; shell &#x811A;&#x672C;&#xFF08;&#x4F4D;&#x4E8E;/etc&#xFF09;&#xFF0C;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x6240;&#x6709;&#x7684;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x3002;
 &#x5176;&#x4E2D;&#x8BB8;&#x591A;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x4EE5;&#x5B88;&#x62A4;&#xFF08;daemon&#xFF09;&#x7A0B;&#x5E8F;&#x7684;&#x5F62;&#x5F0F;&#x5B9E;&#x73B0;&#xFF0C;&#x5B88;&#x62A4;&#x7A0B;&#x5E8F;&#x4EC5;&#x5728;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#xFF0C;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7528;&#x6237;&#x63A5;&#x53E3;(User Interface)&#x3002;
 &#x8FD9;&#x6837;&#xFF0C;&#x5373;&#x4F7F;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;&#xFF0C;&#x81F3;&#x5C11;&#x7CFB;&#x7EDF;&#x4E5F;&#x5728;&#x5FD9;&#x4E8E;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x4F8B;&#x884C;&#x4E8B;&#x52A1;&#x3002;</p>
-<h2 id="apt-install">Apt Install</h2>
-<h3 id="&#x52A0;&#x901F;">&#x52A0;&#x901F;</h3>
-<pre><code class="lang-shell">cp /etc/apt/sources.list /etc/apt/sources.list.bak    # &#x5907;&#x4EFD;sources.list
-echo &quot;&quot;&gt; sources.list # &#x5199;&#x5165;&#x6E90;
+<h2 id="apt">Apt</h2>
+<pre><code class="lang-shell"># Update source.list 
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+echo &quot;&quot;&gt; sources.list
 apt-get update
-</code></pre>
-<h3 id="&#x5B89;&#x88C5;&#x6B65;&#x9AA4;">&#x5B89;&#x88C5;&#x6B65;&#x9AA4;</h3>
-<pre><code>apt-get update
-apt install &lt;app&gt;
-</code></pre><h3 id="&#x4F60;&#x53EF;&#x4EE5;&#x88C5;">&#x4F60;&#x53EF;&#x4EE5;&#x88C5;</h3>
-<p>docker
-nginx
-curl
-maven
-openssh-server: connect
-openjdk-8-jdk
-make
-gparted //&#x78C1;&#x76D8;&#x7BA1;&#x7406;&#x5DE5;&#x5177;</p>
-<h2 id="makefile">Makefile</h2>
-<pre><code>touch hello
-hello:
-    say:
-        echo &apos;Hello World.&apos;
-    say2:
-        echo &apos;hello world2&apos;
-make -f hello say2
 
-===error===
-q:Makefile:4: *** missing separator.  Stop.
-a:space -&gt; tab
-</code></pre><h2 id="ubuntu">Ubuntu</h2>
+# install packages
+apt-get update
+apt install &lt;package&gt;
+
+sudo apt-get remove package #&#x5220;&#x9664;&#x5305;
+sudo apt-get remove package --purge #&#x5220;&#x9664;&#x5305;&#xFF0C;&#x5305;&#x62EC;&#x5220;&#x9664;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7B49;
+
+apt list &lt;package&gt; # &#x662F;&#x5426;&#x5B89;&#x88C5;&#x67D0;&#x4E2A;&#x5B89;&#x88C5;&#x5305;
+</code></pre>
+<h2 id="makefile">Makefile</h2>
+<pre><code class="lang-shell">make &lt;key&gt;
+make -f &lt;filename&gt; &lt;key&gt;
+
+# example
+touch Makefile
+# Makefile
+print:
+    echo &apos;hi&apos;
+make print
+
+# error
+Makefile:4: *** missing separator.  Stop.
+space -&gt; tab
+</code></pre>
+<h2 id="ubuntu">Ubuntu</h2>
 <ul>
 <li>shortcut</li>
 </ul>
@@ -929,7 +926,7 @@ sudo dpkg -P [image] [image] ... //&#x5220;&#x9664;&#x76F8;&#x5E94;&#x7684;&#x91
 </ul>
 <p><code>sudo rm /var/cache/apt/archives/lock</code>
 <code>sudo rm /var/lib/dpkg/lock</code></p>
-<h2 id="&#x53CC;&#x7CFB;&#x7EDF;">&#x53CC;&#x7CFB;&#x7EDF;</h2>
+<h2 id="ubuntu--win10">Ubuntu &amp; win10</h2>
 <pre><code>win +x =&gt; &#x78C1;&#x76D8;&#x7BA1;&#x7406; =&gt; &#x538B;&#x7F29;&#x5377; =&gt; 51200M  =&gt;&#x672A;&#x5206;&#x914D;
 &#x7981;&#x7528;&#x5FEB;&#x901F;&#x542F;&#x52A8; //&quot;&#x9009;&#x62E9;&#x7535;&#x6E90;&#x6309;&#x94AE;&#x7684;&#x529F;&#x80FD;&quot; -&gt;&quot;&#x66F4;&#x6539;&#x5F53;&#x524D;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x8BBE;&#x7F6E;&quot; -&gt;&#x53D6;&#x6D88;&#x9009;&#x62E9;&quot;&#x542F;&#x7528;&#x5FEB;&#x901F;&#x542F;&#x52A8;&quot;
 UltraISO&#x5199;&#x5165;iso&#x5230;U&#x76D8;
@@ -1163,6 +1160,21 @@ EasyBCD&#x5F15;&#x5BFC;Ubuntu&#xFF1A;&#x6DFB;&#x52A0;&#x65B0;&#x6761;&#x76EE; =&
 </tr>
 </tbody>
 </table>
+<h2 id="ubuntu-env">Ubuntu ENV</h2>
+<ol>
+<li><p><code>touch hi.sh</code></p>
+</li>
+<li><pre><code class="lang-shell">sudo apt-get update
+sudo apt install git -y
+sudo apt install make -y
+git clone https://github.com/Jamie956/awe-shell.git
+</code></pre>
+</li>
+<li><p><code>. hi.sh</code></p>
+</li>
+<li><p>Install packages as you need.</p>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -1206,7 +1218,7 @@ EasyBCD&#x5F15;&#x5BFC;Ubuntu&#xFF1A;&#x6DFB;&#x52A0;&#x65B0;&#x6761;&#x76EE; =&
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.5.2","depth":2,"next":{"title":"Windows","level":"1.5.3","depth":2,"path":"devops/windows.md","ref":"devops/windows.md","articles":[]},"previous":{"title":"Tomcat","level":"1.5.1.1","depth":3,"path":"devops/tomcat.md","ref":"devops/tomcat.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"The note for dev."},"file":{"path":"devops/linux.md","mtime":"2018-12-03T14:20:05.990Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-04T23:39:20.897Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.5.2","depth":2,"next":{"title":"Windows","level":"1.5.3","depth":2,"path":"devops/windows.md","ref":"devops/windows.md","articles":[]},"previous":{"title":"Tomcat","level":"1.5.1.1","depth":3,"path":"devops/tomcat.md","ref":"devops/tomcat.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"devops/linux.md","mtime":"2018-12-06T13:57:28.671Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-06T14:10:40.915Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1217,6 +1229,10 @@ EasyBCD&#x5F15;&#x5BFC;Ubuntu&#xFF1A;&#x6DFB;&#x52A0;&#x65B0;&#x6761;&#x76EE; =&
     
         
         <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
