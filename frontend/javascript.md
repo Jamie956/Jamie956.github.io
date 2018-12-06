@@ -952,8 +952,6 @@ Finally, the following encodes `-314,` i.e. the two's complement of `314`:
 >
 > https://javascript.ruanyifeng.com/dom/node.html
 
-
-
 DOM（Document Object Model）：JavaScript 操作网页的接口，它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作
 
 浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口
@@ -963,6 +961,8 @@ DOM（Document Object Model）：JavaScript 操作网页的接口，它的作用
 Node：DOM 的最小组成单位
 
 DOM 树：由各种不同类型的节点组成
+
+
 
 **7种节点**
 
@@ -1017,23 +1017,57 @@ Node.isConnected //当前节点是否在文档之中
 
 ```js
 Node.appendChild()
+Node.hasChildNodes()
+Node.cloneNode()
+Node.insertBefore()
+Node.removeChild()
+Node.replaceChild()
+Node.contains()
+Node.compareDocumentPosition()
+Node.isEqualNode()
+Node.isSameNode()
+Node.normalize()
+Node.getRootNode()
 ```
 
 
 
+**NodeList 接口**
+
+```js
+NodeList.prototype.length
+NodeList.prototype.forEach()
+NodeList.prototype.item() //成员的位置
+NodeList.prototype.keys()
+NodeList.prototype.values()
+NodeList.prototype.entries()
+```
 
 
 
+**ParentNode 接口**
 
-css和js加载
+```js
+ParentNode.children
+ParentNode.firstElementChild
+ParentNode.lastElementChild
+ParentNode.childElementCount
+ParentNode.append()
+ParentNode.prepend()
+```
 
-`CSS` 不会阻塞 `DOM` 的解析，但会阻塞 `DOM` 渲染。
 
-`JS` 阻塞 `DOM` 解析，但浏览器会"偷看"`DOM`，预先下载相关资源。
 
-浏览器遇到 `<script>`且没有`defer`或`async`属性的 标签时，会触发页面渲染，因而如果前面`CSS`资源尚未加载完毕时，浏览器会等待它加载完毕在执行脚本。
+**ChildNode 接口**
 
- 
+```js
+ChildNode.remove()
+ChildNode.before()
+ChildNode.after()
+ChildNode.replaceWith()
+```
+
+
 
 ###  new
 
