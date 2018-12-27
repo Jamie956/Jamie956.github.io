@@ -1,6 +1,6 @@
 ## Debug
 
-VSCode
+**VSCode**
 
 1. Sidebar debug -> Add config -> Edit launch.json
 
@@ -22,6 +22,20 @@ VSCode
    ```
 
 2. F5 Start Debugging
+
+
+
+**Node 内置Debbuger**
+
+运行：
+
+```shell
+node --inspect app.js
+```
+
+打开浏览器：
+
+chrome://inspect
 
 
 
