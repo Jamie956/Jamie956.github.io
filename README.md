@@ -1,4 +1,4 @@
-# 命令
+### 命令
 
 
 | 命令                       | 说明              |
@@ -12,8 +12,7 @@
 | gh-pages -d _book | 将文件夹_book 的内容同步到分支 gh-pages |
 | gitbook install      | 安装gitbook插件 |
 
-
-# 快速开始
+### 快速开始
 
 ```js
 npm i
@@ -23,7 +22,7 @@ npm run serve
 npm run sync
 ```
 
-# 如何安装插件
+### 如何安装插件
 1. touch book.json
 ```
 {
@@ -36,7 +35,7 @@ npm run sync
 gitbook install
 ```
 
-# Gitbook 配置
+### Gitbook 配置
 ```json
 {
   "plugins": ["page-treeview","splitter"],
