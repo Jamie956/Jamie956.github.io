@@ -53,6 +53,45 @@ Shadow DOM is really your best friend when it comes to trying to isolate styling
 
 
 
+**Why TypeScript**
+- Adds clarity to your code—Variables that have types are easier to understand, because other developers (or yourself in six months) don’t have to think very hard about what the variable should be.
+- Enables a smarter editor—When you use TypeScript with a supported editor, you’ll get automatic IntelliSense support for your code. As you write, the editor can suggest known variables or functions and tell you what type of value it expects.
+- Catches errors before you run code—TypeScript will catch syntax errors before you run the code in the browser, helping to reduce the feedback loop when you write invalid code.
+- Entirely optional—You can use types when you want, and optionally leave them out where it doesn’t matter. 
+
+
+
+**Features and capabilities with Angular** 
+
+- Angular is a platform, with many key elements such as tooling, UI libraries, and
+testing built in or easily incorporated into your application projects.
+- Applications are essentially combinations of components. These components
+build upon the core principles of encapsulation, isolation, and reusability, which
+should have events, be customizable, and be declarative.
+- ES6 and TypeScript provide a lot of the underpinnings for Angular’s architecture
+and syntax, making it a powerful framework without having to build a lot of custom language capabilities. 
+
+
+
+**Bootstrapping the app**—To start the app, we’ll use the bootstrap feature to kick things off once they’re loaded. This happens once during the app lifecycle, and
+we’ll bootstrap the App component.
+
+**Creating components**—Angular is all about components, and we’ll create several components for different purposes. We’ll learn about how they’re built and how they nest to create complex applications.
+
+**Creating services and using HttpClient**—For code reuse, we’ll encapsulate some logic that helps manage the list of stocks into a service and also uses the HttpClient service from Angular to load stock quote data.
+
+**Using pipes and directives in templates**—Using pipes, we can transform data from one format into another during display, such as formatting a timestamp into a local date format. Directives are useful tools to modify the behavior of DOM elements inside a template, such as the ability to repeat pieces or conditionally show elements.
+
+**Setting up routing**—Most applications need the ability to allow users to navigate around the application, and by using the router we can see how to route between different components. 
+
+
+
+Angular requires at least one **component** and one **module**. A component is the basic building block of Angular applications and acts much like any other HTML element. A module is a way for Angular to organize different parts of the application into a single unit that Angular can understand. You might think of components as LEGO® bricks, which can be many different shapes, sizes, and colors, and modules would be the packaging the LEGOs come in. Components are for functionality and structure, whereas modules are for packaging and distribution. 
+
+
+
+
+
 
 
 
