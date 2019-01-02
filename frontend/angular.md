@@ -11,7 +11,6 @@ Angular applications are based around components that communicate with one anoth
 - Dedicated CLI for application development, testing, and deployment
 - Ofﬂine rendering capabilities on many back-end server platforms
 - Desktop-, mobile-, and browser-based application execution environments
-6 chapter 1 Angular: a modern web platform
 - Comprehensive UI component libraries, such as Material Design
 
 
@@ -73,8 +72,7 @@ and syntax, making it a powerful framework without having to build a lot of cust
 
 
 
-**Bootstrapping the app**—To start the app, we’ll use the bootstrap feature to kick things off once they’re loaded. This happens once during the app lifecycle, and
-we’ll bootstrap the App component.
+**Bootstrapping the app**—To start the app, we’ll use the bootstrap feature to kick things off once they’re loaded. This happens once during the app lifecycle, and we’ll bootstrap the App component.
 
 **Creating components**—Angular is all about components, and we’ll create several components for different purposes. We’ll learn about how they’re built and how they nest to create complex applications.
 
@@ -87,6 +85,47 @@ we’ll bootstrap the App component.
 
 
 Angular requires at least one **component** and one **module**. A component is the basic building block of Angular applications and acts much like any other HTML element. A module is a way for Angular to organize different parts of the application into a single unit that Angular can understand. You might think of components as LEGO® bricks, which can be many different shapes, sizes, and colors, and modules would be the packaging the LEGOs come in. Components are for functionality and structure, whereas modules are for packaging and distribution. 
+
+
+
+- **Angular apps** are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.
+- A **component** is an ES6 class with an @Component annotation that adds metadata to the class for Angular to properly render it. 
+- **Services** are also ES6 modules and should be designed for portability. Any ES6 class could be used, even if it isn’t specifcally meant for Angular.
+- **Directives** are attributes that modify the template in some way, such as NgIf, which conditionally shows or hides the DOM element based on the value of an expression.
+- Angular has built-in **form** support that includes the ability to automatically validate, group, and bind data with any form control, as well as use events.
+- **Routing** in Angular is based around paths mapping to a component. Routes will render a single component, and that component will also be able to render any additional components it needs. 
+
+
+
+**The primary default directives** 
+
+- NgClass—Conditionally apply a class to an element
+- NgStyle—Conditionally apply a set of styles to an element
+- NgIf—Conditionally insert or remove an element from the DOM
+- NgFor—Iterate over a collection of items
+- NgSwitch—Conditionally display an item from a set of options
+
+
+
+**Change detection** is the mechanism that allows components to be updated when data changes in a parent component, and ensure views and data are in sync.
+
+
+
+**Templates concepts** 
+
+- Interpolation—Displaying content in the page
+- Attribute and property bindings—Linking data from the component controller into attributes or properties of other elements
+- Event bindings—Adding event listeners to elements
+- Directives—Modifying the behavior or adding additional structure to elements
+- Pipes—Formatting data before it’s displayed on the page 
+
+
+
+
+
+
+
+
 
 
 
