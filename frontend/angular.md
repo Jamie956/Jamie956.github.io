@@ -121,6 +121,35 @@ Angular requires at least one **component** and one **module**. A component is t
 
 
 
+**Lifecycle hook**
+
+**OnChanges**: Fires any time the input bindings have changed. It will give you an object (SimpleChange) that includes the current and previous values so you can inspect what’s changed. This is most useful to read changes in binding values.
+
+**OnInit**: This runs once after the component has fully initialized (though not necessarily when all child components are ready), which is after the frst OnChanges hook. This is the best place to do any initialization code, such as loading data from APIs.
+
+**OnDestroy**: Before a component is completely removed, the OnDestroy hook allows you to run some logic. This is most useful if you need to stop listening for incoming data or clear a timer.
+
+**DoCheck**: Any time that change detection runs to determine whether the application needs to be updated, the DoCheck lifecycle hook lets you implement your own type of change detection.
+
+**AfterContentInit**: When any content children have been fully initialized, this hook will allow you to do any initial work necessary to fnish setting up the content children components, such as if you need to verify whether content passed in was valid or not.
+
+**AfterContentChecked**: Every time that Angular checks the content children, this can run so you can implement additional change detection logic.
+
+**AfterViewInit**: This hook lets you run logic after all View Children have been initially rendered. This lets you know when the whole component tree has fully initialized and can be manipulated. 
+
+**AfterViewChecked**: When Angular checks the component view and any View Children have been checked, you can implement additional logic to determine whether changes occurred. 
+
+
+
+**Four roles of components**
+
+- App component—This is the root app component, and you only get one of these per application.
+- Display component—This is a stateless component that reﬂects the values passed into it, making it highly reusable.
+- Data component—This is a component that helps get data into the application by loading it from external sources.
+- Route component—When using the router, each route will render a component, and this makes the component intrinsically linked to the route.
+
+
+
 
 
 
