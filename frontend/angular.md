@@ -150,6 +150,42 @@ Angular requires at least one **component** and one **module**. A component is t
 
 
 
+**View Child to reference components**
+
+In order to access a child component’s controller inside a parent controller, we can leverage ViewChild to inject that controller into our component. This gives us a direct reference to the child controller so we can implement a call to the Dashboard component from the App component controller.
+
+ViewChild is a decorator for a controller property, like Inject or Output, which tells Angular to fll in that property with a reference to a specifc child component controller. It’s limited to injecting only children, so if you try to inject a component that isn’t a direct descendent, it will provide you with an undefned value. 
+
+
+
+**These are ways to add styles that are specifc to a single component**
+
+- Inline CSS—Component templates can have inline CSS or style attributes to set the styles of the elements. These are the default ways to add style rules to HTML elements regardless of whether you’re using Angular.
+- Component-linked CSS—Using the component’s styleUrls property with links to external CSS fles. Angular will load the CSS fle and inject the rules inside a style element for your app.
+- Component inline CSS—Using the component’s styles property with an array of CSS rules, Angular will inject the rules inside a style element for your app. 
+
+
+
+**CSS Priority**
+
+1 Inline style attribute rules
+2 Inline style block rules in the template
+3 Component styles rules or styleUrls rules (if both, then last declared has
+priority)
+4 Global CSS rules 
+
+
+
+Enter the **Shadow DOM**, the offcial native browser standard for encapsulating styles.
+Shadow DOM provides us with a good set of features to ensure that our styles don’t conﬂict and bleed in or out of a component, except that it might not be available on older
+browsers.
+
+
+
+**routerLink**
+
+In order to facilitate navigating around, links must know which URL to go to, and typically href is the attribute for an anchor tag that gives the browser that information. When you use href with links, the browser will request a new URL from the server, which isn’t what we want. With Angular, routerLink is the attribute directive that denotes the expected route to navigate to and allows the Angular router to handle the actual navigation. In short, if you use href to link to a page, it will trigger a page load from the server, even if it’s a valid Angular route, and that’s much slower than using the router. This is a primary tenet of client-side routing. 
+
 
 
 
