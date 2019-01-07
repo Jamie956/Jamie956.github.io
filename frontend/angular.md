@@ -188,6 +188,39 @@ In order to facilitate navigating around, links must know which URL to go to, an
 
 
 
+**structural and attribute directives**
+
+Therefore, the primary difference between structural and attribute directives is that a structural directive is designed to modify the DOM tree of an element, whereas an attribute directive is designed to only modify the properties or DOM of a single element. 
+
+
+
+```
+//attribute directive 
+[cardType]="stock.change"
+//structural directives
+*delay="i * 100"
+```
+
+
+
+**directives and pipes**
+
+- Directives come in three ﬂavors: attribute, structural, and components.
+- Attribute directives are the most common to create and are great for modifying an existing element.
+- Structural directives are less common and are meant to be used to modify the existence or structure of DOM elements.
+- Pure pipes are the most useful and allow you to transform a value before output using a pure function.
+- Impure pipes allow you to maintain state inside of a pipe, but they’re run with every change detection check and are to be avoided if possible. 
+
+
+
+**Template-driven forms**
+
+The primary goal of a form is to be able to synchronize the data in the view with data in the controller so it can be submitted to be handled. Secondary goals are to perform tasks like validation, notify about errors, and handle other events like cancel. 
+
+
+
+
+
 
 
 
