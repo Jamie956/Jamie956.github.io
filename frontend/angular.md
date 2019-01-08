@@ -219,17 +219,40 @@ The primary goal of a form is to be able to synchronize the data in the view wit
 
 
 
+**In both the reactive and template-driven styles**
+¡	Template-driven forms defne the form using NgModel on form controls.
+¡	You can apply normal HTML validation attributes, and NgModel will automatically
+try to validate based on those rules.
+¡	Custom validation is possible through a custom validator function and directive,
+which gets registered with the built-in list of validators.
+¡	The NgForm directive, though it can be transparent, exposes features to help
+manage submit events and overall form validation inspection.
+¡	Reactive forms are different in that you defne the form model in the controller
+and link form controls using FormControlName.
+¡	You can observe the changes of a form control with reactive forms and run logic
+every time a new value is emitted.
+¡	Reactive forms declare validation in the controller form defnition, and creating
+custom validations is easier because they don’t require a directive.
+¡	Ultimately, both form patterns are available to you. I tend to use reactive forms,
+especially as the form gets more complex.
+¡	Creating a new form control requires implementing the ControlValueAccessor
+methods and registering it with the controls provider. 
 
 
 
-
-
-
-
-
-
-
-
+**Jasmine**
+¡	describe—A container for a set of tests that cover the same overall entity, such as
+describing the test suite for a pipe.
+¡	it—A container for a single test that is used to describe a single feature, such as
+testing a specifc component method that handles saving.
+¡	expect—A way to assert that a value meets expected requirements, such as the
+response from a method must equal true.
+¡	beforeEach/beforeAll—These are a way to execute code before each individual
+test, or before all tests, such as setup logic to construct a new instance of the entity
+for each test. They only apply within the Describe block in which they’re defned.
+¡	afterEach/afterAll—These allow you to execute after each test or all tests,
+such as cleaning up anything between tests or resetting any shared state. They
+also apply only within the Describe block in which they are defned. 
 
 
 
