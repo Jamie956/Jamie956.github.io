@@ -1,3 +1,74 @@
+**Commands**
+
+```shell
+#Restart OS
+reboot
+#Shut down
+poweroff
+
+########wget########
+#Rename
+wget -O wordpress.zip URL
+#Limit rate
+wget --limit-rate=300k URL
+#Continue from the point at last
+wget -c URL
+#Running in background
+wget -b URL
+#Check wget process
+tail -f wget-log
+#Setting user agent, if it's refuse to download
+wget --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" URL
+#Testing whether work or not
+wget --spider URL
+#Just retry
+wget --tries=40 URL
+#Download Files by a list URL
+wget -i filelist.txt
+
+ps
+
+top
+
+#Port ID of Process
+pidof chrome
+#List sign
+kill -l
+#List all process and then find it!
+ps -ef | grep vim
+
+ifconfig
+
+########cd########
+#User dir
+cd
+cd ~
+#Last
+cd -
+#Back
+cd ..
+
+########ls########
+#List files
+ls
+#List files under the path
+ls <path>
+#List files detail
+ls -l
+#List files by order
+ls -lt
+#List files by order reverse
+ls -ltr
+#List all
+ls -a
+#List files by letter
+ls | sort
+#List files by size
+ls -lS
+```
+
+
+
 ## Set Path
 
 ```shell
@@ -22,28 +93,6 @@ sh hello.sh //excute sh
 
 
 
-## wget
-
-```
-wget url
-    -b：后台下载，Wget默认的是把文件下载到当前目录
-    -O：将文件下载到指定的目录中
-    -P：保存文件之前先创建指定名称的目录
-    -t：尝试连接次数，当Wget无法与服务器建立连接时，尝试连接多少次
-    -c：断点续传，如果下载中断，那么连接恢复时会从上次断点开始下载
-    -r：使用递归下载
-wget -b -P <output path> <url>
-```
-
-## nano
-
-```
-nano <file> //编辑文件
-ctrl + k //删除一行
-Ctrl + a //光标到行首
-Ctrl + e //光标到行尾
-```
-
 ## Groups
 
 ```
@@ -54,28 +103,7 @@ gpasswd –d user1 users //remove user1 from groups users
 sudo groupdel users //delete groups users
 ```
 
-## ls
 
-```shell
-ls //list 列出目录内容
-ls <path> //指定目录
-ls -l //详情
-ls -lt //时间排序
-ls -ltr //倒序
-ls -a //全部，包括隐藏文件
-ls | sort //字母排序
-ls -lS //大小排序
-
-```
-
-## cd
-
-```shell
-cd //到home目录
-cd - //到先前目录
-cd <path> //到指定目录
-cd .. //上一级目录
-```
 
 ## cp
 
