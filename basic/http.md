@@ -62,9 +62,9 @@ Connect：用隧道协议连接代理，使用SSL( Secure Sockets Layer )和TLS(
 
 
 
-HTTP方法
+HTTP methods
 
-| 方法                |                      |
+| -                   |                      |
 | ------------------- | -------------------- |
 | GET                 | 获取资源             |
 | POST                | 传输实体             |
@@ -91,7 +91,7 @@ Cookie：在请求和响应报文中写入Cookie信息来控制客户端状态
 
 
 
-## HTTP报文
+## HTTP Message
 
 HTTP报文：用于HTTP协议交互的信息
 
@@ -114,45 +114,33 @@ MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图�
 
 
 
-## 状态码
-
-|      | 类别          | 原因短语                         |
-| ---- | ------------- | -------------------------------- |
-| 1XX  | Informational | 接收的请求正在处理               |
-| 2XX  | Success       | 请求正常处理完毕                 |
-| 3XX  | Redirection   | 浏览器需要进行附加操作以完成请求 |
-| 4XX  | Client Error  | 服务器无法处理请求               |
-| 5XX  | Server Error  | 服务器处理请求出错               |
+## Status Code
 
 
 
-200 OK：表示从客户端发来的请求在服务器端被正常处理
-
-204 No Content：服务器接收的请求成功处理，但响应报文不含实体主体部分
-
-206 Partial Content：表示客户端进行范围请求，响应报文包含Content-Range
-
-301 Moved Permanently：永久性重定向，表示请求的资源被分配了新的URI，以后应使用资源现在指向的URI
-
-302 Found：临时重定向，表示请求的资源被分配了新的URI，但不更新书签
-
-303 See Other：表示对应的资源存在另一个URI，应使用GET获取请求资源
-
-400 Bad Request：表示请求报文中存在语法错误
-
-401 Unauthorized：表示发送的请求需要通过HTTP认证
-
-403 Forbidden：表示请求资源的访问被服务器拒绝
-
-404 Not Found：表示服务器上无法找到请求的资源
-
-500 Internal Server Error：表示服务器执行请求时发生错误
-
-503 Service Unavailable：服务器暂时处于超负载或进行停机维护，无法处理请求
+| -    |                       |                                                              |
+| ---- | --------------------- | ------------------------------------------------------------ |
+| 1XX  | Informational         | 接收的请求正在处理                                           |
+| 2XX  | Success               | 请求正常处理完毕                                             |
+| 200  | OK                    | 服务器端正常处理客户端请求                                   |
+| 204  | No Content            | 服务器端正常处理客户端请求，但响应报文不含实体主体部分       |
+| 206  | Partial Content       | 客户端进行范围请求，响应报文包含Content-Range                |
+| 3XX  | Redirection           | 浏览器需要进行附加操作以完成请求                             |
+| 301  | Moved Permanently     | 永久性重定向，表示请求的资源被分配了新的URI，以后应使用资源现在指向的URI |
+| 302  | Found                 | 临时重定向，表示请求的资源被分配了新的URI，但不更新书签      |
+| 303  | See Other             | 表示对应的资源存在另一个URI，应使用GET获取请求资源           |
+| 4XX  | Client Error          | 服务器无法处理请求                                           |
+| 400  | Bad Request           | 请求报文中存在语法错误                                       |
+| 401  | Unauthorized          | 发送的请求需要通过HTTP认证                                   |
+| 403  | Forbidden             | 请求资源的访问被服务器拒绝                                   |
+| 404  | Not Found             | 服务器上无法找到请求的资源                                   |
+| 5XX  | Server Error          | 服务器处理请求出错                                           |
+| 500  | Internal Server Error | 服务器执行请求时发生错误                                     |
+| 503  | Service Unavailable   | 服务器暂时处于超负载或进行停机维护，无法处理请求             |
 
 
 
-## Web服务器
+## Web Server
 
 代理：有转发功能的应用程序，接收客户端请求并转发给服务器，接收服务器响应并转发给客户端
 
@@ -165,11 +153,11 @@ MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图�
 
 
 
-## HTTP 首部
+## HTTP Header
 
-### 通用首部字段
+**通用首部字段**
 
-| 首部字段名        | 说明                       |
+| -                 |                            |
 | ----------------- | -------------------------- |
 | Cache-Control     | 控制缓存行为               |
 | Connection        | 逐跳首部、连接的管理       |
@@ -183,9 +171,9 @@ MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图�
 
 
 
-### 请求首部字段
+**请求首部字段**
 
-| 首部字段名          | 说明                               |
+| -                   |                                    |
 | ------------------- | ---------------------------------- |
 | Accept              | 用户代理可处理的媒体类型           |
 | Accept-Charset      | 优先的字符集                       |
@@ -209,9 +197,9 @@ MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图�
 
 
 
-### 响应首部字段
+**响应首部字段**
 
-| 首部字段名         | 说明                         |
+| -                  |                              |
 | ------------------ | ---------------------------- |
 | Accept-Ranges      | 是否接收字节范围请求         |
 | Age                | 推算资源创建经过时间         |
@@ -225,9 +213,9 @@ MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图�
 
 
 
-### 实体首部资源
+**实体首部资源**
 
-| 首部字段名       | 说明                   |
+| - |                        |
 | ---------------- | ---------------------- |
 | Allow            | 资源可支持的HTTP方法   |
 | Content-Encoding | 实体主体编码方式       |
@@ -242,9 +230,9 @@ MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图�
 
 
 
-### Set-Cookie
+**Set-Cookie**
 
-| 属性         | 说明                              |
+| -            |                                   |
 | ------------ | --------------------------------- |
 | NAME=VALUE   | 名称                              |
 | expires=DATE | 有效期，默认是浏览器关闭为止      |
@@ -284,7 +272,7 @@ HTTPS缺点：
 
 
 
-## Web攻击
+## Web Attack
 
 客户端篡改请求：通过URL查询字段、表单、HTTP首部、Cookie等途径把攻击代码传入
 
@@ -302,7 +290,7 @@ passive attack( 被动攻击 )：攻击者诱使用户触发嵌入攻击代码�
 
 
 
-### Web安全对策
+**Web安全对策**
 
 - 输入值验证
 - 输出值转义
@@ -333,7 +321,7 @@ HTTP Response Splitting Attack：向首部主体内添加内容的攻击
 
 Mail Header Injection：Web应用中的邮件发送，攻击者通过向邮件首部To或Subject内任意添加非法内容，发起攻击
 
-目录遍历攻击 （ Directory Traversal, Path Traversal ）：对无意公开的文件目录，通过非法截断其目录路劲后，达成访问目的的一种攻击
+目录遍历攻击 （ Directory Traversal, Path Traversal ）：对无意公开的文件目录，通过非法截断其目录路径后，达成访问目的的一种攻击
 
 
 
