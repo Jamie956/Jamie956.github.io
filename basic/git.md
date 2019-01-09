@@ -1,4 +1,4 @@
-**Command**
+**Commands**
 
 ```shell
 git help
