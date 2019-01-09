@@ -1,7 +1,7 @@
-### 命令
+**Commands**
 
 
-| 命令                       | 说明              |
+| -                      |               |
 | -------------------------- | ----------------- |
 | npm i gitbook-cli       | 安装 gitbook  |
 | touch README.md SUMMARY.md | 创建索引结构      |
@@ -12,7 +12,9 @@
 | gh-pages -d _book | 将文件夹_book 的内容同步到分支 gh-pages |
 | gitbook install      | 安装gitbook插件 |
 
-### 快速开始
+
+
+**Quickly Start**
 
 ```js
 npm i
@@ -22,7 +24,10 @@ npm run serve
 npm run sync
 ```
 
-### 如何安装插件
+
+
+**Install Plugings**
+
 1. touch book.json
 ```
 {
@@ -35,7 +40,10 @@ npm run sync
 gitbook install
 ```
 
-### Gitbook 配置
+
+
+**book.json config**
+
 ```json
 {
   "plugins": ["page-treeview","splitter"],
@@ -44,3 +52,4 @@ gitbook install
   "description" : "V5"
 }
 ```
+
