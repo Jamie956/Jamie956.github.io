@@ -1,4 +1,4 @@
-## Set ENV
+## Set Path
 
 ```shell
 sudo nano /etc/profile
