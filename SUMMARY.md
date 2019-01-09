@@ -1,6 +1,6 @@
 # Summary
 
-* [Root](README.md)
+* [Guide](README.md)
 * [Basic](basic/README.md)
     * [Git](basic/git.md)
     * [Data Structure](basic/dataStructure.md)
@@ -11,7 +11,6 @@
     * [NodeJS](frontend/nodejs.md)
     * [Nginx](frontend/nginx.md)
     * [JavaScript](frontend/javascript.md)
-    * [React](frontend/react.md)
     * [Angular](frontend/angular.md)
 * [Backend](backend/README.md)
     * [Java](backend/java.md)
@@ -26,8 +25,6 @@
         * [Tomcat](devops/tomcat.md)
     * [Linux](devops/linux.md)
     * [Windows](devops/windows.md)
-    * [OS](devops/os.md)
-    * [Design Patterns](devops/design-patterns.md)
 * [Tool](tool/README.md)
     * [VSCode](tool/vscode.md)
     * [Eclipse](tool/eclipse.md)
