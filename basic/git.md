@@ -1,64 +1,62 @@
-### Command
-```
-git clone git@github.com:Jamie956/test-git.git //SSH克隆，默认master
-git clone -b dev git@github.com:Jamie956/test-git.git //SSH克隆dev分支
+**Command**
 
-git status //1.Current branch 2.Is up-to-date 3.Which commit
-
-git fetch //up-to-date from remote
-git fetch <url>
-
-git pull //拉取新的commit
-git pull <url>
-git pull <url> <branch>
-
-git commit -a -m "<balabala>" 
-git commit -m "<msg>" <file>
-
-git add <file>
+```shell
+git help
+//clone, default master
+git clone <URL>
+//clone, certain branch
+git clone -b <Branch name> <URL>
+git status
+git fetch
+git pull
+//Stage All Files
 git add .
-
+//Stage certain File
+git add <File>
+git rm --cached <File>
+git commit -a -m "<Description>" 
+git commit -m "<Description>" <File>
+//Push commit files to remote
 git push
 git push origin master
-
-git log //commit记录
-
-git checkout -b <branch> //New branch & Checkout branch
-git branch <branch> //New branch
-git checkout <branch> //Checkout branch
-
-git merge <branch> //合并指定branch到当前branch
-
-git branch -d <branch> //删除branch
+//Commit history
+git log
+//New branch & Checkout branch
+git checkout -b <Branch>
+//New branch
+git branch <Branch>
+//Checkout branch
+git checkout <Branch>
+//Merge branch to current
+git merge <Branch>
+//Delete branch
+git branch -d <Branch>
 ```
 
-### SSH
-1. 生成SSH密钥
+
+
+**Using SSH Key by Github**
+
 ```shell
+#1.Create SSH key
 ssh-keygen -t rsa -C "your@eamil.com"
-```
-2. 查看
-```shell
+#2.Print SSH Key
 cat ~/.ssh/id_rsa.pub
-```
-3. 把SSH添加到git
-4. 测试
-```shell
+#3.Add SSH key to git
+#4.Testing
 ssh -T git@github.com
-```
-5. 全局配置用户信息
-```shell
+#5.Global config
 git config --global user.name "yournamee"
 git config --global user.email "your@eamil.com"
 ```
 
 
 
-### Gitlab Pages Deploy Gitbook
+**Gitlab Pages Deploy Gitbook**
 
-1. 新建项目
+1. New repo
 
-2. 创建.gitlab-ci.yml
+2. Create File `.gitlab-ci.yml`
 
    ```yml
    image: node:8.9
@@ -83,66 +81,19 @@ git config --global user.email "your@eamil.com"
        - master
    ```
 
-3. Gitlab项目主页 -> CI/CD -> Pipelines -> Run Pipeline
+3. Deploy: CI/CD -> Pipelines -> Run Pipeline
 
-4. 查看部署地址：Settings -> Pages
+4. Address：Settings -> Pages
 
-
-
-补充：
-
-- fork的项目需要解除fork relationship，步骤：Settings -> General -> Advance -> remove fork relationship
+PS: Fork repo need to remove fork relationship, Step: Settings -> General -> Advance -> remove fork relationship
 
 
 
-### Gitlab 同步push到Github
+**Gitlab sync to Github**
 
-思想：通过添加 remote url，实现 push 代码到指定url
-
-问题：每次push都要更改（切换）地址
-
-命令解释：
-
-```shell
-git remote //origin
-git remote -v //查看关联的 remote url
-git remote set-url --add origin git@github.com:Jamie956/test-git.git //添加remote url
-git remote add origin git@github.com:Jamie956/test-git.git //添加remote url
-git remote rm origin //移除origin
-```
-
-方法一步骤：
-
-1. cd到gitlab项目目录下
-2. `git remote -v` 查看remote url信息
-3. `git remote set-url --add origin git@github.com:Jamie956/test-git.git` github添加为remote url
-4. push代码，（注意，这时代码只会push到github）
-5. `git remote set-url --add origin git@gitlab.com:Jamie956/test-git.git` 切换到gitlab
-6. push代码
-
-方法二步骤：
-
-1. cd到gitlab项目目录下
+1. cd to gitlab repo
 2. `git remote add origin git@github.com:Jamie956/test-git.git`
 3. check out github branch
-4. 在gitlab branch做出更改并push代码
-5. 将gitlab branch merge 到github branch
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+4. gitlab merge to github branch
 
 
