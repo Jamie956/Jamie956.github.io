@@ -449,9 +449,9 @@ Buffer在文件I/O和网络I/O中运用广泛，在网络中传输，都需要�
 
 
 
-## 网络编程
+## Network
 
-### 构建TCP服务
+### TCP Server
 
 TCP是面向连接的协议，传输之前需要3次握手形成回话
 
@@ -501,7 +501,7 @@ Nagle算法：TCP针对网络中的小数据包的优化策略，要求缓冲区
 
 
 
-### 构建UDP服务
+### UDP Server
 
 与TCP不同，UDP不是面向连接
 
@@ -542,7 +542,7 @@ client.send(message, 0, message.length, 41234, 'localhost', function(err, bytes)
 
 
 
-### 构建HTTP服务
+### HTTP Server
 
 HyperText Transfer Protocol
 
@@ -591,7 +591,7 @@ req.end();
 
 
 
-### 构建WebSocket服务
+### WebSocket
 
 WebScoket实现了客户端与服务端之间的长连接，而Node事件驱动的方式十分擅长与大量的客户端保持高并发连接
 
@@ -619,9 +619,9 @@ WebScoket实现了客户端与服务端之间的长连接，而Node事件驱动�
 
 
 
-## 构建Web应用
+## Web App
 
-### 基础功能
+### Basic
 
 **请求方法**
 
@@ -629,12 +629,8 @@ WebScoket实现了客户端与服务端之间的长连接，而Node事件驱动�
 
 **路径解析**
 
-场景：
-
 - 静态文件服务器，根据路径查找磁盘中的文件，响应给客户端
 - 根据路径来选择控制器
-
-
 
 **查询字符串**
 
@@ -680,23 +676,7 @@ Session的数据只保留在服务器端，客户端无法修改，数据的安�
 
 
 
-**缓存**
-
-**Basic认证**
-
-Basic认证是当客户端与服务端进行请求时，允许通过用户名和密码实现的一种身份认证方式
-
-如果一个页面需要Basic认证，它会检查请求报文头部中的Authorization字段的内容，该字段的值由认证方式和加密值构成 `Authorization: Basic dXNlcjpwsNK`
-
-```js
-var encode = function(username, password){
-    return new Buffer(username + ':' + password).toString('base64);
-};
-```
-
-
-
-### 数据上传
+### Form
 
 **表单数据**
 
@@ -738,7 +718,7 @@ var handle = function(req, res){
 
 
 
-### 路由解析
+### Router
 
 **文件路径型**
 
@@ -762,7 +742,7 @@ View：数据操作结束后，调用视图和相关数据进行页面渲染，�
 
 Node在V8引擎之上构建，JavaScript运行在单个进程的单个线程上，好处就是，程序状态单一，没有多线程情况下的锁、线程同步问题，操作系统在调度时较少上下文切换，提高CPU的使用率
 
-但是如何利用多核CPU服务器
+
 
 由于Node执行在单线程上，一旦线程上抛出的异常没有被捕获，会引起整个进程的崩溃
 
@@ -802,7 +782,7 @@ for (let i = 0; i < cpus.length; i++) {
 }
 ```
 
-通过fork()复制的进程都是一个独立的进程，这个进程是新的V8实例，
+通过fork()复制的进程都是一个独立的进程，这个进程是新的V8实例
 
 
 
@@ -892,40 +872,6 @@ process.on("message", function(m, tcp) {
 
 
 
-### 集群
-
-**进程事件**
-
-error
-
-exit
-
-close
-
-disconnection
-
-
-
-**自动重启**
-
-自杀信号
-
-限量重启
-
-
-
-**负载均衡**
-
-保证多个处理单元工作量公平的策略
-
-
-
-**状态共享**
-
-通知进程：发送通知和查询状态是否更改的进程
-
-
-
 ### Cluster模块
 
 ```js
@@ -946,27 +892,11 @@ cluster模块是child_process和net模块的组合应用
 
 cluster启动时，它会在内部启动TCP服务器，在cluster.fork()子进程时，将这个TCP服务器端socket的文件描述符发送给工作进程
 
-**Cluster事件**
-
-fork
-
-online
-
-listening
-
-disconnect
-
-exit
-
-setup
 
 
+## Test
 
-## 测试
-
-### 单元测试
-
-**单元测试的意义**
+**Unit Test**
 
 测试代码遵循原则
 
@@ -1062,25 +992,3 @@ web 测试， supertest
 makefile
 
 持续集成，travis-ci
-
-
-
-### 性能测试
-
-**负载测试**
-
-**基准测试**
-
-统计在多少时间内执行了多少次某个方法
-
-库：benchmark
-
-
-
-**压力测试**
-
-测试网络接口性能，指标包含有吞吐率、响应时间、并发数
-
-库：ab
-
-
