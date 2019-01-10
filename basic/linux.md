@@ -65,6 +65,116 @@ ls -a
 ls | sort
 #List files by size
 ls -lS
+
+########cat########
+#Print File
+cat <File>
+#Rewrite File
+cat <File1> > <File2>
+#Copy to File2 from File1
+cat <File1> >> <File2>
+
+#Print head of lines
+head -n <Num> <File>
+
+#Print tail of lines
+tail -n <Num> <File>
+#Observe File and Print
+tail -f <File>
+#Print from line 20 to the end
+tail +20 file
+
+########tr########
+#To low case
+echo "HELLO WORLD" | tr 'A-Z' 'a-z'
+#Delete
+echo "hello 123 world 456" | tr -d '0-9'
+#Squeeze Repeats
+echo "thissss is      a text linnnnnnne." | tr -s ' sn'
+
+########wc########
+#Print File lines,words,bytes
+wc <file>
+#Print bytes or chars
+wc -c <File>
+#Print lines
+wc -l <File>
+#Print words
+wc -w <File>
+
+#File detail
+stat <File>
+
+#Differ File
+diff <File1> <File2>
+
+########cp########
+cp <filepath> . //复制文件到当前目录
+cp file1 file2 // file1 -> file2，file2存在就重写，否则就创建
+cp file1 file2 dir1 //file1,file2 -> dir1
+cp dir1/* dir2 //复制dir1下的文件
+cp -r dir1 dir2 //递归复制
+
+########others########
+clear //清空终端
+exit //退出终端
+history //查看执行过的命令
+!<num> //执行指定历史命令
+NAME=tom //赋值
+echo $NAME //取值
+ssh -i ~/Documents/your.pem ubuntu@<ip> //ssh连接服务器
+scp -i your.pem src ubuntu@<ip>:target //上传单个文件
+tar -xjvf yourdownload.tar.bz2 //解压文件
+date //日期时间
+cal //日历
+df //磁盘剩余容量
+df -h //人看的
+free //内存
+pwd //当前目录
+#Create Directory
+mkdir <directory...>
+#Create File
+touch <File>
+locate <filename> //搜索文件
+file <filename> //查看文件描述
+less <filename> //浏览文本，q退出，/查找
+printenv //查看环境变量
+
+type <command> //显示命令类型
+which <command> //显示会执行哪个可执行程序
+help <command>
+<command> --help //
+man <command> //显示命令手册页
+alias foo='cd /usr; ls; cd -' //创建命令别名
+unalias foo //移除别名
+
+########mv########
+mv <item1> <item2> //重命名 或移动目录
+mv <item...> <directory>
+
+########rm########
+rm <item...> //删除文件或目录
+rm -r <item> //递归删除
+rm -f <item> //强制删除
+rm -i file1 //显示确认信息
+
+########tar########
+#压　缩
+tar -jcv -f filename.tar.bz2
+#查　询
+tar -jtv -f filename.tar.bz2
+#解压缩
+tar -jxv -f filename.tar.bz2 -C
+
+########grep########
+grep pattern [file...] //打印匹配行
+grep -c pattern [file...] //lines
+
+########find########
+find /home -name "*.txt"
+find . -regex ".*\(\.txt\|\.pdf\)$"
+#搜索大于10KB的文件
+find . -type f -size +10k
 ```
 
 
@@ -105,87 +215,6 @@ sudo groupdel users //delete groups users
 
 
 
-## cp
-
-```shell
-cp <filepath> . //复制文件到当前目录
-cp file1 file2 // file1 -> file2，file2存在就重写，否则就创建
-cp file1 file2 dir1 //file1,file2 -> dir1
-cp dir1/* dir2 //复制dir1下的文件
-cp -r dir1 dir2 //递归复制
-```
-
-## mv
-
-```shell
-mv <item1> <item2> //重命名 或移动目录
-mv <item...> <directory>
-```
-
-## rm
-
-```shell
-rm <item...> //删除文件或目录
-rm -r <item> //递归删除
-rm -f <item> //强制删除
-rm -i file1 //显示确认信息
-```
-
-## others
-
-```
-clear //清空终端
-exit //退出终端
-history //查看执行过的命令
-!<num> //执行指定历史命令
-NAME=tom //赋值
-echo $NAME //取值
-ssh -i ~/Documents/your.pem ubuntu@<ip> //ssh连接服务器
-scp -i your.pem src ubuntu@<ip>:target //上传单个文件
-tar -xjvf yourdownload.tar.bz2 //解压文件
-date //日期时间
-cal //日历
-df //磁盘剩余容量
-df -h //人看的
-free //内存
-pwd //当前目录
-mkdir <directory...> //创建文件夹
-touch <filename> //创建文件 
-locate <filename> //搜索文件
-file <filename> //查看文件描述
-less <filename> //浏览文本，q退出，/查找
-printenv //查看环境变量
-```
-
-## command
-
-```shell
-type <command> //显示命令类型
-which <command> //显示会执行哪个可执行程序
-help <command> //
-<command> --help //
-man <command> //显示命令手册页
-alias foo='cd /usr; ls; cd -' //创建命令别名
-unalias foo //移除别名
-```
-
-## redirection
-
-```shell
-ls -l /usr/bin > ls-output.txt //运行结果输送到文件 ls-output.txt
-> ls-output.txt //清空文件内容
-ls -l /usr/bin >> ls-output.txt //追加内容
-ls -l /bin/usr &> ls-output.txt //重定向标准输出和错误到文件 ls-output.txt
-```
-
-## cat
-
-```shell
-cat <file> //显示文件内容
-cat <file1> > <file2> //复制文件file1的内容到file2
-cat <file> >> <file2>
-```
-
 ## pipelines
 
 ```shell
@@ -194,22 +223,17 @@ ls -l /usr/bin | less
 ls /bin /usr/bin | sort | less
 ```
 
+
+
 ## filter
 
 ```shell
 sort //排序
 uniq //省略重复行
 uniq -d //显示重复行
-wc <file> //打印文件中换行符，字，和字节个数
-wc -l //输出行数
-grep pattern [file...] //打印匹配行
-grep -c pattern [file...] //详情看help
-head -n <x> <file> //输出指定文件前x行内容
-tail -n <x> <file> //输出指定文件后x行内容
-ls /usr/bin | tail -n 5
-tail -f /var/log/messages //监测并输出文件内容
-ls /usr/bin | tee ls.txt | grep zip //从标准输入读取数据，同时写到标准输出和文件
 ```
+
+
 
 ## 权限
 
@@ -242,12 +266,10 @@ kill 28401 //杀死指定程序
 killall – 杀死指定名字的进程
 shutdown – 关机或重启系统
 
-
 # 关闭占用端口的进程
 netstat -an //查看全部端口
 netstat -tunlp | grep 8082 //查找8082端口的进程ID
 kill -9 3383 //终止进程ID3382
-
 ```
 
 当系统启动的时候，内核先把一些它自己的活动初始化为进程，然后运行一个叫做 init 的程序。init，
@@ -454,25 +476,4 @@ EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~
 3. `. hi.sh`
 
 4. Install packages as you need.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
