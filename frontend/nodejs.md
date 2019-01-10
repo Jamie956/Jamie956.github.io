@@ -6,22 +6,19 @@
 
    ```json
    {
-     // Use IntelliSense to learn about possible attributes.
-     // Hover to view descriptions of existing attributes.
-     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
      "version": "0.2.0",
      "configurations": [
        {
          "type": "node",
          "request": "launch",
          "name": "Launch Program",
-         "program": "${workspaceFolder}/micro-packages/index.js" //执行文件
+         "program": "${workspaceFolder}/debug.js"
        }
      ]
    }
    ```
 
-2. F5 Start Debugging
+2. Press F5, let's Debug
 
 
 
@@ -39,7 +36,7 @@ chrome://inspect
 
 
 
-## 安装
+## Install
 
 ```
 sudo apt-get update
@@ -58,13 +55,11 @@ nvm alias default <version>
 
 **To Do**
 
-《JavaScript设计模式》
-
 《了不起的Node.js》
 
 **In Progress**
 
-《JavaScript权威指南》
+
 
 **Done**
 
@@ -75,7 +70,7 @@ nvm alias default <version>
 
 
 
-## 简介
+## Intro
 
 Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
 
@@ -85,19 +80,11 @@ Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.j
 
 
 
-### 特点
 
-**异步I/O**
-
-```
-fs.readFile('/path', function(){})
-```
 
 It's very common to conflate the terms "async" and "parallel," but they are actually quite different. Remember, async is about the gap between now and later. But parallel is about things being able to occur simultaneously.
 
 
-
-**事件与回调函数**
 
 Whenever there are events to run, the event loop runs until the queue is empty. Each iteration of the event loop is a "tick." User interaction, IO, and timers enqueue events on the event queue.
 
@@ -118,52 +105,7 @@ Whenever there are events to run, the event loop runs until the queue is empty. 
 
 
 
-### 应用场景
-
-I/O密集型：Node利用事件循环的处理能力，而不是启动每一个线程为每一个请求服务，资源占用极少
-
-CUP密集型：单线程下，如果有长时间运行计算，将会导致CPU时间片不能释放，使后续I/O无法发起，但是适当调整和分解大型运算任务为多个小任务，使得运算能够适时释放，不阻塞I/O调用的发起
-
-
-
-## 模块机制
-
-### CommonJS模块规范
-
-- 模块引用
-
-  `var math = require('math');`
-
-- 模块定义
-
-  `export.add = function(){};`
-
-- 模块标识
-
-
-
-同步，用在服务端
-
-
-
-### Node的模块实现
-
-Node引入模块步骤：
-
-1. 路径分析
-2. 文件定位
-3. 编译执行
-
-模块类型：
-
-- 核心模块：由Node提供的模块，直接加载进内存中，加载速度最快
-- 文件模块：用户编写的模块，运行时动态加载
-
-无论核心模块还是文件模块，require()对相同模块的二次加载采用缓存优先的方式
-
-
-
-### 包与NPM
+## NPM Commands
 
 ```
 设version 0.1.0
@@ -198,23 +140,7 @@ npm run <script> //运行package.json里scripts定义好的命令
 
 
 
-### 前后端共用模块
-
-**AMD规范**
-
-`defined(id?, dependencies?, factory);`
-
-id和dependencies是可选的，factory的内存就是实际代码的内容
-
-
-
-**CMD规范**
-
-`define(['dep1','dep2'],function(dep1,dep2){})`
-
-
-
-## 异步I/O
+## Async I/O
 
 |        | 执行任务的方式 | 性能                     | 问题         |
 | ------ | -------------- | ------------------------ | ------------ |
@@ -233,23 +159,15 @@ id和dependencies是可选的，factory的内存就是实际代码的内容
 
 
 
-轮询：重复调用判断操作是否完成的技术
+轮询：重复调用判断操作是否完成
 
 
-
-### Node的异步I/O
 
 事件循环：进程启动时，Node创建一个类似while(true)的循环，每执行一次循环体（tick），查看是否有事件待处理，如果有就取出事件及其相关回调函数
 
-观察者
-
-请求对象
 
 
-
-## 异步编程
-
-### 异步编程解决方案
+## Async
 
 **事件发布/订阅模式**
 
@@ -257,69 +175,67 @@ id和dependencies是可选的，factory的内存就是实际代码的内容
 - EventEmitter
 
 ```js
-var EventEmitter = require('events')
-var util = require('util')
+var EventEmitter = require("events");
 
-//定义一个函数对象
-var MyEmitter = function () {}
+class MyEmitter extends EventEmitter {}
 
-//继承EventEmitter
-util.inherits(MyEmitter, EventEmitter)
-
-//实例化函数对象
 const myEmitter = new MyEmitter();
 
-//创建event事件
-myEmitter.on('event', (a, b) => {
-    console.log(a, b, this);
+myEmitter.on("event", (a, b) => {
+  console.log(a, b);
 });
 
-//订阅event
-myEmitter.emit('event', 'a', 'b');
+setTimeout(() => {
+  myEmitter.emit("event", "1", "2");
+}, 3000);
 ```
 
 
 
 **Promise/Deferred模式**
 
-- Promise
+Promise
 
 ```js
-new Promise(function(resolve, reject) {
-    if (ok) {
-        resolve("Stuff worked!");
-    }
-    else {
-        reject(Error("It broke"));
-    }
-}).then(function(text){
-    console.log(text)
-    return Promise.reject(new Error('my error'))
-}).catch(function(err){
-    console.log(err)
+new Promise((resolve, reject) => {
+    resolve(42);
+    // reject(new Error("Something Wrong"));
 })
+    .then(res => {
+    console.log(res);
+})
+    .catch(e => {
+    console.log(e);
+});
 ```
 
-- Async/Await
+Async/Await
 
 ```js
-async (ctx, next) => {
-    try {
-        let students = await Student.getAllAsync();
-        await ctx.render('students/index', {
-            students : students
-        })
-    } catch (err) {
-        return ctx.api_error(err);
-    }
-};
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling');
+  var result = await resolveAfter2Seconds();
+  console.log(result);
+}
+
+asyncCall();
 ```
 
 
 
-## 内存控制
+## Memory
 
-### V8的垃圾回收机制与内存限制
+
+
+### Memory Limit
 
 Node中通过JavaScript使用的内存限制为1.4G（64位系统）
 
@@ -330,7 +246,6 @@ $ node
   heapTotal: 9682944, # V8申请到的堆内存
   heapUsed: 5281200, # 当前使用的量
   external: 16904 }
-
 ```
 
 
@@ -349,7 +264,7 @@ node --max-new-space-size=1024 test.js // 单位为kB，设置新生代内存空
 
 
 
-**V8的垃圾回收机制**
+### GC
 
 - V8垃圾回收策略：分代式垃圾回收机制
 
@@ -357,11 +272,9 @@ node --max-new-space-size=1024 test.js // 单位为kB，设置新生代内存空
 
 - V8的内存分代：在V8中，主要将内存分为新生代（存活时间较短的对象）和老年代（存活时间较长或常驻内存的对象）
 
- -V8堆的整体大小 = 新生代所用内存空间（两个semispace空间大小） + 老年代的内存空间
+- V8堆的整体大小 = 新生代所用内存空间（两个semispace空间大小） + 老年代的内存空间
 
-
-
-- Scavenge算法：在分代的基础上，新生代的对象主要通过Scavenge算法进行垃圾回收，在Scavenge的具体现实中，主要采用了Cheney算法，该算法是一种采用复制的方式实现的垃圾回收算法，它将堆内存一分为二，每一部分空间称为semispace，在两个semispace空间中，只有一个处于使用中（From空间），另一个处于闲置状态（to空间）。分配对象时，先是在From空间进行分配，当开始垃圾回收时，检查From空间中的存活对象，将这些存活对象复制到To空间，而非存活对象占用的空间将会被释放。复制完成后，From空间和To空间的角色发生对换（翻转）。Scavenge的缺点是只能使用堆内存的一半，它是典型的牺牲空间换取时间的算法，无法大规模应用到所有的垃圾回收，但非常适合应用在生命周期短的新生代中
+- Scavenge：在分代的基础上，新生代的对象主要通过Scavenge算法进行垃圾回收，在Scavenge的具体现实中，主要采用了Cheney算法，该算法是一种采用复制的方式实现的垃圾回收算法，它将堆内存一分为二，每一部分空间称为semispace，在两个semispace空间中，只有一个处于使用中（From空间），另一个处于闲置状态（to空间）。分配对象时，先是在From空间进行分配，当开始垃圾回收时，检查From空间中的存活对象，将这些存活对象复制到To空间，而非存活对象占用的空间将会被释放。复制完成后，From空间和To空间的角色发生对换（翻转）。Scavenge的缺点是只能使用堆内存的一半，它是典型的牺牲空间换取时间的算法，无法大规模应用到所有的垃圾回收，但非常适合应用在生命周期短的新生代中
 
 - 晋升：当一个对象经过多次复制依然存活时，被认为是生命周期较长的对象，随后会被移到老年代中
 
@@ -412,27 +325,9 @@ linux-tick-processor v8.log
 
 
 
-### 高效使用内存
-
-**作用域**
-
-- 标识符查找
-- 作用域链
-- 变量的主动释放
-
-
-
-**闭包**
-
-外部作用域访问内部作用域中的变量
-
-
-
 ### 内存指标
 
 **查看内存使用情况**
-
-
 
 - 查看进程的内存占用
 
@@ -514,7 +409,7 @@ Node的内存构成主要由通过V8进行分配的部分和Node自行分配的�
 
 
 
-### 内存泄漏排查
+**内存泄漏排查**
 
 工具
 
@@ -527,8 +422,6 @@ Node的内存构成主要由通过V8进行分配的部分和Node自行分配的�
 
 
 ## Buffer
-
-### Buffer结构
 
 Buffer对象类似于数组，它的元素为16进制的两位数，即0-255的数值
 
@@ -551,42 +444,6 @@ Node以8KB为界限区分Buffer是大对象还是小对象
 真正的内存实在Node的C++层面提供，JavaScript层面只是使用它，当进行小而频繁的Buffer操作时，采用slab机制进行预先申请和事后分配，使JavaScript到操作系统之间不必有过多的内存申请方面的系统调用，对于大块的Buffer，则直接使用C++层面提供的内存
 
 
-
-### Buffer的转换
-
-str -> Buffer
-
-`new Buffer(str, [encoding]);`
-
-`buf.write(str, [offset], [length], [encoding])`
-
-
-
-Buffer -> str
-
-`buf.toString([encoding], [start], [end])`
-
-
-
-### Buffer的拼接
-
-```js
-var chunks = [];
-var size = 0;
-res.on('data', function(chunk){
-   chunks.push(chunk);
-   size += chunk.length;
-});
-res.on('end',function(){
-   var buf = Buffer.concat(chunks, size);
-    var str = iconv.decode(buf, 'utf8');
-    console.log(str);
-});
-```
-
-
-
-### Buffer与性能
 
 Buffer在文件I/O和网络I/O中运用广泛，在网络中传输，都需要转换为Buffer，以二进制数据传输，提高字符串到Buffer的转换效率，可以很大程度地提高网络吞吐率
 
