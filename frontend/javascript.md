@@ -1,4 +1,4 @@
-### call stack
+call stack
 
 > Reference
 >
@@ -31,9 +31,9 @@ The code above would be executed like this:
 
 3. Add the `greeting` function to the call stack list.
 
-   Call stack list
+   Call stack list:
 
-   - greeting
+   greeting
 
 4. Execute all lines of code inside the `greeting` function.
 
@@ -41,10 +41,11 @@ The code above would be executed like this:
 
 6. Add the `sayHi()` function to the call stack list.
 
-   Call stack list
+   Call stack list:
 
-   - greeting
-   - sayHi
+   greeting
+
+   sayHi
 
 7. Execute all lines of code inside the `sayHi()` function, until reaches its end.
 
@@ -52,17 +53,16 @@ The code above would be executed like this:
 
 9. Delete the `sayHi()` function from our call stack list.
 
-   Call stack list
+   Call stack list:
 
-   - greeting
+   greeting
 
 10. When everything inside the `greeting()` function has been executed, return to its invoking line to continue executing the rest of the JS code.
 
 11. Delete the `greeting()` function from the call stack list.
 
-    Call stack list
+    Call stack list: EMPTY
 
-    - EMPTY
 
 We started with an empty Call Stack, and whenever we invoke a function,  it is automatically added to the Call Stack, after executing all of its  codes, it is automatically removed from the Call Stack. At the end, we  ended up with an empty stack too.
 
