@@ -1,18 +1,15 @@
 **Commands**
 
-
-| -                      |               |
-| -------------------------- | ----------------- |
-| npm i gitbook-cli       | 安装 gitbook  |
-| touch README.md SUMMARY.md | 创建索引结构      |
-| gitbook init               | 生成索引结构文件  |
-| gitbook build              | 编译              |
-| gitbook serve              | 编译并开启 server |
-| npm i gh-pages | 安装 gh-pages |
-| gh-pages -d _book | 将文件夹_book 的内容同步到分支 gh-pages |
-| gitbook install      | 安装gitbook插件 |
-
-
+```shell
+npm i gitbook-cli #gitbook-cli install
+touch README.md SUMMARY.md #创建索引结构
+gitbook init #生成索引结构文件
+gitbook build #编译
+gitbook serve #编译并开启 server
+npm i gh-pages #gh-pages install
+gh-pages -d _book #将文件夹_book 的内容同步到分支 gh-pages
+gitbook install #安装gitbook插件
+```
 
 **Quickly Start**
 
