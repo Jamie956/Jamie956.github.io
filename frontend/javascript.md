@@ -1346,3 +1346,96 @@ console.log(person1.sayName === person2.sayName);    // true
 ```
 
 
+
+### MDN
+
+key word: #JIT-compiled programming language  #prototype-based #multi-paradigm #dynamic language #object-oriented #imperative #declarative
+
+Everything in JavaScript is an object, and can be stored in a variable.
+
+variable scoping: variables defined inside functions are only available inside those functions.
+
+
+
+**WEB**
+
+- **Your internet connection**: Allows you to send and receive data on the web. It's basically like the street between your house and the shop.
+
+- **TCP/IP**: Transmission Control Protocol and Internet  Protocol are communication protocols that define how data should travel  across the web. This is like the transport mechanisms that let  you place an order, go to the shop, and buy your goods. In our example,  this is like a car or a bike (or however else you might get around).
+
+- **DNS**: Domain Name Servers are like an address book  for websites. When you type a web address in your browser, the browser  looks at the DNS to find the website's real address before it can  retrieve the website. The browser needs to find out which server the  website lives on, so it can send HTTP messages to the right place (see  below). This is like looking up the address of the shop so you can  access it.
+
+- **HTTP**: Hypertext Transfer Protocol is an application [protocol](https://developer.mozilla.org/en-US/docs/Glossary/Protocol) that defines a language for clients and servers to speak to each other. This is like the language you use to order your goods.
+
+- Component files
+
+  : A website is made up of many  different files, which are like the different parts of the goods you buy  from the shop. These files come in two main types:   
+
+  - **Code files**: Websites are built primarily from HTML, CSS, and JavaScript, though you'll meet other technologies a bit later.
+  - **Assets**: This is a collective name for all the  other stuff that makes up a website, such as images, music, video, Word  documents, and PDFs.
+
+
+
+**So what happens, exactly?**
+
+When you type a web address into your browser (for our analogy that's like walking to the shop):
+
+1. The browser goes to the DNS server, and finds the real address of  the server that the website lives on (you find the address of the shop).
+2. The browser sends an HTTP request message to the server, asking it  to send a copy of the website to the client (you go to the shop and  order your goods). This message, and all other data sent between the  client and the server, is sent across your internet connection using  TCP/IP.
+3. If the server approves the client's request, the server sends the  client a "200 OK" message, which means "Of course you can look at that  website! Here it is", and then starts sending the website's files to the  browser as a series of small chunks called data packets (the shop  gives you your goods, and you bring them back to your house).
+4. The browser assembles the small chunks into a complete website and  displays it to you (the goods arrive at your door — new shiny stuff,  awesome!).
+
+
+
+- *Client-side JavaScript* extends the core language by  supplying objects to control a browser and its Document Object Model  (DOM). For example, client-side extensions allow an application to place  elements on an HTML form and respond to user events such as mouse  clicks, form input, and page navigation.
+- *Server-side JavaScript* extends the core language by  supplying objects relevant to running JavaScript on a server. For  example, server-side extensions allow an application to communicate with  a database, provide continuity of information from one invocation to  another of the application, or perform file manipulations on a server.
+
+
+
+**Declarations**
+
+
+var: Declares a variable, optionally initializing it to a value.
+
+
+let: Declares a block-scoped, local variable, optionally initializing it to a value.
+
+const: Declares a block-scoped, read-only named constant.
+
+
+
+**Function hoisting**
+
+```js
+/* Function declaration */
+
+foo(); // "bar"
+
+function foo() {
+  console.log('bar');
+}
+
+
+/* Function expression */
+
+baz(); // TypeError: baz is not a function
+
+var baz = function() {
+  console.log('bar2');
+};
+```
+
+
+
+**Data types**
+
+The latest ECMAScript standard defines seven data types:
+
+- Six data types that are primitives:   
+  - [Boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean). `true` and `false`.
+  - [null](https://developer.mozilla.org/en-US/docs/Glossary/null). A special keyword denoting a null value. Because JavaScript is case-sensitive, `null` is not the same as `Null`, `NULL`, or any other variant.
+  - [undefined](https://developer.mozilla.org/en-US/docs/Glossary/undefined). A top-level property whose value is not defined.
+  - [Number](https://developer.mozilla.org/en-US/docs/Glossary/Number). An integer or floating point number. For example: `42` or `3.14159`.
+  - [String](https://developer.mozilla.org/en-US/docs/Glossary/String). A sequence of characters that represent a text value. For example:  "Howdy"
+  - [Symbol](https://developer.mozilla.org/en-US/docs/Glossary/Symbol) (new in ECMAScript 2015). A data type whose instances are unique and immutable.
+- and [Object](https://developer.mozilla.org/en-US/docs/Glossary/Object)
