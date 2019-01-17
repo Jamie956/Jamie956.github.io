@@ -348,47 +348,6 @@ false
 
 
 
-#### number
-
-JavaScript 内部，所有数字都是以64位浮点数形式储存
-
-根据国际标准 IEEE 754，JavaScript 浮点数的64个二进制位
-
-- 第1位：符号位，`0`表示正数，`1`表示负数
-- 第2位到第12位（共11位）：指数部分，表示数值的大小( 0 ~ 2047 )
-- 第13位到第64位（共52位）：小数部分（即有效数字），表示数值的精度( -2^53 ~ 2^53 )
-
-
-
-```js
-//浮点数不是精确的值
-0.1 + 0.2 === 0.3	//false
-0.3 / 0.1	// 2.9999999999999996
-(0.3 - 0.2) === (0.2 - 0.1)	// false
-```
-
-
-
-十进制：没有前导0的数值
-
-八进制：有前缀`0o`或`0O`的数值，或者有前导0、且只用到0-7的八个阿拉伯数字的数值
-
-十六进制：有前缀`0x`或`0X`的数值
-
-二进制：有前缀`0b`或`0B`的数值
-
-```js
-var iNum = 10;
-iNum.toString(2) //1010，10 -> 2进制
-iNum.toString(8) //12，10 -> 8进制
-iNum.toString(16) //A，10 -> 16进制
-
-parseInt(String) //str -> int
-parseFloat(String) //str -> float
-
-parseInt("AF", 16) //175, 16 -> 10进制
-```
-
 
 
 ### object
@@ -524,35 +483,6 @@ console.log(changedAlex); // { name: 'Alex', age: 25 }
 ```
 
 
-
-### typeof
-
-区分原始值和对象
-
-```js
-typeof "abc" //'string'
-typeof 123 //'number'
-typeof {} //'object'
-typeof [] //'object'
-```
-
-
-
-### instanceof
-
-区分对象
-
-```js
-//检测一个值是否是某个构造函数的实例
-value instanceof Constructor //true, value是Constructor 的一个实例
-//相当于
-Constructor.prototype.isPrototypeOf(value)
-
-//例子
-let person = function () {}
-let nicole = new person()
-nicole instanceof person // true
-```
 
 
 
@@ -710,62 +640,6 @@ newFn(); //Tyler
 
 
 
-### scope
-
-作用域是变量与函数的可访问范围，控制变量与函数的可见性和生命周期
-
-ECMAScript6之前只有全局作用域和函数作用域
-
-- Lexical Scope（词法作用域，静态作用域），函数作用域在函数定义时确定
-- Dynamic Scope（动态作用域），函数作用域在函数调用时确定
-
-
-
-### closure
-
-> 参考
->
-> https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures
-
-闭包：有权访问另一个函数作用域中的变量的函数
-
-通常，函数的作用域及其所有变量都会在函数执行结束后被销毁。但是，在创建了一个闭包以后，这个函数的作用域就会一直保存到闭包不存在为止
-
-应用：设计私有的方法和变量
-
-缺点：减慢处理速度，内存消耗
-
-
-
-### variable
-
-变量生命周期：
-
-1. 变量声明（Declaration Phase）：在作用域中注册变量
-2. 变量初始化（Initialization Phase）：为变量分配内存并且创建作用域绑定，此时变量会被初始化为 undefined
-3. 变量赋值（Assignment Phase）：将开发者指定的值分配给该变量
-
-
-
-var声明的名称提升变量
-
-被赋值的不会被提升
-
-
-
-```js
-//只会提升名称，不提升函数体
-var foo = function () { 
-    alert("this won't run!");
-}
-//函数体提升
-function bar() { 
-    alert("this will run!");
-}
-```
-
-
-
 ### MVVM
 
 In the JQuery period, if you need to refresh the UI, you need to get the corresponding DOM and then update the UI, so the data and business logic are strongly-coupled with the page.
@@ -777,172 +651,6 @@ In MVVM, the UI is driven by data. Once the data is changed, the corresponding U
  
 
 In MVVM, the core is the two-way binding of data, such as dirty checking by Angular and data hijacking in Vue.
-
-
-
-### recursion
-
-> https://juejin.im/post/5948c0d8fe88c2006a939e2a
-
-一个过程或函数在其定义或说明中有直接或间接调用自身的一种方法
-
-```js
-function factorial(n) {
-    console.trace();//查看调用栈
-    if (n === 0) {
-        return 1
-    }
-    return n * factorial(n - 1)
-}
-```
-
-
-
-<img width="65%" src="https://user-gold-cdn.xitu.io/2017/6/20/d28ba98f3835845671655db33dfe14bb?imageView2/0/w/1280/h/960/ignore-error/1" />
-
-
-
-尾递归：是一种递归的写法，避免不断将函数压栈最终导致堆栈溢出。通过设置一个累加参数，并且每一次都将当前的值累加上去，然后递归调用
-
-```js
-function factorial(n, total = 1) {
-    console.trace();//查看调用栈
-    if (n === 0) {
-        return total
-    }
-    return factorial(n - 1, n * total)
-}
-factorial(3);
-```
-
-
-
-函数之间没有依赖关系，调用后可进行垃圾回收
-
-factorial(3, 1)
-factorial(2, 3)
-factorial(1, 6)
-factorial(0, 6)
-
-
-
-补充：
-
-Nodejs需要使用`strict mode`和`--harmony_tailcalls`开启尾递归(proper tail call)
-
-```shell
-node --harmony_tailcalls factorial.js
-```
-
-
-
-
-### sort
-
-> 参考
->
-> https://juejin.im/post/57dcd394a22b9d00610c5ec8
-
-
-
-
-**稳定**：如果a原本在b前面，而a=b，排序之后a仍然在b的前面； 
-
-**不稳定**：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；
-
-**内排序**：所有排序操作都在内存中完成； 
-
-**外排序**：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；
-
-**时间复杂度**: 一个算法执行所耗费的时间。 
-
-**空间复杂度**: 运行完一个程序所需内存的大小。
-
-  
-
-<img width="88%" src="https://user-gold-cdn.xitu.io/2016/11/29/4abde1748817d7f35f2bf8b6a058aa40?imageView2/0/w/1280/h/960/ignore-error/1" /> 
-
- n: 数据规模 k:“桶”的个数
-
-In-place: 占用常数内存，不占用额外内存
-
-Out-place: 占用额外内存
-
-
-
-冒泡排序
-
-<img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/30/f427727489dff5fcb0debdd69b478ecf?imageView2/0/w/1280/h/960/ignore-error/1" />
-
-
-
-选择排序
-
-<img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/29/138a44298f3693e3fdd1722235e72f0f?imageView2/0/w/1280/h/960/ignore-error/1" />
-
-
-
-插入排序
-
-<img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/29/f0e1e3b7f95c3888ab2791b6abbfae41?imageView2/0/w/1280/h/960/ignore-error/1" />
-
-
-
-归并排序
-
-<img width="70%" src="https://user-gold-cdn.xitu.io/2016/11/29/33d105e7e7e9c60221c445f5684ccfb6?imageView2/0/w/1280/h/960/ignore-error/1" />
-
-
-
-### Bitwise operators
-
-> reference
->
-> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators
-
- 
-
-The operands of all bitwise operators are converted to signed 32-bit  integers in two's complement format. Two's complement format means that a number's negative counterpart (e.g. 5 vs. -5) is all the number's bits  inverted (bitwise NOT of the number, a.k.a. ones' complement of the  number) plus one. For example, the following encodes the integer 314:
-
-
-
-```
-00000000000000000000000100111010
-```
-
-The following encodes `~314`, i.e. the ones' complement of `314`:
-
-```
-11111111111111111111111011000101
-```
-
-Finally, the following encodes `-314,` i.e. the two's complement of `314`:
-
-```
-11111111111111111111111011000110
-```
-
-
-
--7>>1 = -4
-
-```
-00000000 00000000 00000000 00000111 //7
-11111111 11111111 11111111 11111001 //-7
-11111111 11111111 11111111 11111100	//-7>>1
-00000000 00000000 00000000 00000100 //4
-10000000 00000000 00000000 00000100 //-4
-```
-
-
-
- -1>>>4 = ox0FFFFFFF
-
-```
-00000000 00000000 00000000 00000001 //1
-11111111 11111111 11111111 11111111 //-1
-00001111 11111111 11111111 11111111 //-1>>>4
-```
 
 
 
@@ -1347,60 +1055,49 @@ console.log(person1.sayName === person2.sayName);    // true
 
 
 
-### MDN
-
-key word: #JIT-compiled programming language  #prototype-based #multi-paradigm #dynamic language #object-oriented #imperative #declarative
-
-Everything in JavaScript is an object, and can be stored in a variable.
-
-variable scoping: variables defined inside functions are only available inside those functions.
-
-
-
-**WEB**
-
-- **Your internet connection**: Allows you to send and receive data on the web. It's basically like the street between your house and the shop.
-
-- **TCP/IP**: Transmission Control Protocol and Internet  Protocol are communication protocols that define how data should travel  across the web. This is like the transport mechanisms that let  you place an order, go to the shop, and buy your goods. In our example,  this is like a car or a bike (or however else you might get around).
-
-- **DNS**: Domain Name Servers are like an address book  for websites. When you type a web address in your browser, the browser  looks at the DNS to find the website's real address before it can  retrieve the website. The browser needs to find out which server the  website lives on, so it can send HTTP messages to the right place (see  below). This is like looking up the address of the shop so you can  access it.
-
-- **HTTP**: Hypertext Transfer Protocol is an application [protocol](https://developer.mozilla.org/en-US/docs/Glossary/Protocol) that defines a language for clients and servers to speak to each other. This is like the language you use to order your goods.
-
-- Component files
-
-  : A website is made up of many  different files, which are like the different parts of the goods you buy  from the shop. These files come in two main types:   
-
-  - **Code files**: Websites are built primarily from HTML, CSS, and JavaScript, though you'll meet other technologies a bit later.
-  - **Assets**: This is a collective name for all the  other stuff that makes up a website, such as images, music, video, Word  documents, and PDFs.
-
-
-
-**So what happens, exactly?**
-
-When you type a web address into your browser (for our analogy that's like walking to the shop):
-
-1. The browser goes to the DNS server, and finds the real address of  the server that the website lives on (you find the address of the shop).
-2. The browser sends an HTTP request message to the server, asking it  to send a copy of the website to the client (you go to the shop and  order your goods). This message, and all other data sent between the  client and the server, is sent across your internet connection using  TCP/IP.
-3. If the server approves the client's request, the server sends the  client a "200 OK" message, which means "Of course you can look at that  website! Here it is", and then starts sending the website's files to the  browser as a series of small chunks called data packets (the shop  gives you your goods, and you bring them back to your house).
-4. The browser assembles the small chunks into a complete website and  displays it to you (the goods arrive at your door — new shiny stuff,  awesome!).
-
-
-
-- *Client-side JavaScript* extends the core language by  supplying objects to control a browser and its Document Object Model  (DOM). For example, client-side extensions allow an application to place  elements on an HTML form and respond to user events such as mouse  clicks, form input, and page navigation.
-- *Server-side JavaScript* extends the core language by  supplying objects relevant to running JavaScript on a server. For  example, server-side extensions allow an application to communicate with  a database, provide continuity of information from one invocation to  another of the application, or perform file manipulations on a server.
-
-
+### Grammar and types
 
 **Declarations**
 
-
 var: Declares a variable, optionally initializing it to a value.
-
 
 let: Declares a block-scoped, local variable, optionally initializing it to a value.
 
 const: Declares a block-scoped, read-only named constant.
+
+
+
+**Variable scope**
+
+```js
+if (true) {
+  let y = 5;
+}
+console.log(y);  // ReferenceError: y is not defined
+```
+
+
+
+**Variable hoisting**
+
+```js
+/**
+ * Example 1
+ */
+console.log(x === undefined); // true
+var x = 3;
+
+/**
+ * Example 2
+ */
+// will return a value of undefined
+var myvar = 'my value';
+ 
+(function() {
+  console.log(myvar); // undefined
+  var myvar = 'local value';
+})();
+```
 
 
 
@@ -1431,11 +1128,571 @@ var baz = function() {
 
 The latest ECMAScript standard defines seven data types:
 
-- Six data types that are primitives:   
-  - [Boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean). `true` and `false`.
-  - [null](https://developer.mozilla.org/en-US/docs/Glossary/null). A special keyword denoting a null value. Because JavaScript is case-sensitive, `null` is not the same as `Null`, `NULL`, or any other variant.
-  - [undefined](https://developer.mozilla.org/en-US/docs/Glossary/undefined). A top-level property whose value is not defined.
-  - [Number](https://developer.mozilla.org/en-US/docs/Glossary/Number). An integer or floating point number. For example: `42` or `3.14159`.
-  - [String](https://developer.mozilla.org/en-US/docs/Glossary/String). A sequence of characters that represent a text value. For example:  "Howdy"
-  - [Symbol](https://developer.mozilla.org/en-US/docs/Glossary/Symbol) (new in ECMAScript 2015). A data type whose instances are unique and immutable.
-- and [Object](https://developer.mozilla.org/en-US/docs/Glossary/Object)
+- Six data types that are primitives:
+  - Boolean. true and false.
+  - null. A special keyword denoting a null value. Because JavaScript is case-sensitive, null is not the same as Null, NULL, or any other variant.
+  - undefined. A top-level property whose value is not defined.
+  - Number. An integer or floating point number. For example: 42 or 3.14159.
+  - String. A sequence of characters that represent a text value. For example:  "Howdy"
+  - Symbol (new in ECMAScript 2015). A data type whose instances are unique and immutable.
+- and Object
+
+
+
+**Data type conversion**
+
+```js
+'37' - 7 // 30
+'37' + 7 // "377"
+```
+
+
+
+### Control flow and error handling
+
+**Block statement**
+
+```js
+var x = 1;
+{
+  var x = 2;
+}
+console.log(x); // outputs 2
+```
+
+
+
+**Conditional statements**
+
+```js
+if (condition) {
+  statement_1;
+} else {
+  statement_2;
+}
+```
+
+
+
+**Exception handling statements**
+
+```js
+throw 'Error2';   // String type
+throw 42;         // Number type
+throw true;       // Boolean type
+throw {toString: function() { return "I'm an object!"; } };
+```
+
+
+
+```js
+// Create an object type UserException
+function UserException(message) {
+  this.message = message;
+  this.name = 'UserException';
+}
+
+// Make the exception convert to a pretty string when used as a string 
+// (e.g. by the error console)
+UserException.prototype.toString = function() {
+  return this.name + ': "' + this.message + '"';
+}
+
+// Create an instance of the object type and throw it
+throw new UserException('Value too high');
+```
+
+
+
+```js
+function getMonthName(mo) {
+  mo = mo - 1; // Adjust month number for array index (1 = Jan, 12 = Dec)
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+                'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  if (months[mo]) {
+    return months[mo];
+  } else {
+    throw 'InvalidMonthNo'; //throw keyword is used here
+  }
+}
+
+try { // statements to try
+  monthName = getMonthName(myMonth); // function could throw exception
+}
+catch (e) {
+  monthName = 'unknown';
+  logMyErrors(e); // pass exception object to error handler -> your own function
+}
+```
+
+
+
+```js
+openMyFile();
+try {
+  writeMyFile(theData); //This may throw an error
+} catch(e) {  
+  handleError(e); // If we got an error we handle it
+} finally {
+  closeMyFile(); // always close the resource
+}
+```
+
+
+
+```js
+function doSomethingErrorProne() {
+  if (ourCodeMakesAMistake()) {
+    throw (new Error('The message'));
+  } else {
+    doSomethingToGetAJavascriptError();
+  }
+}
+....
+try {
+  doSomethingErrorProne();
+} catch (e) {
+  console.log(e.name); // logs 'Error'
+  console.log(e.message); // logs 'The message' or a JavaScript error message)
+}
+```
+
+
+
+**Promise**
+
+A `Promise` is in one of these states:
+
+- *pending*: initial state, not fulfilled or rejected.
+- *fulfilled*: successful operation
+- *rejected*: failed operation.
+- *settled*: the Promise is either fulfilled or rejected, but not pending.
+
+<img src="https://mdn.mozillademos.org/files/8633/promises.png">
+
+
+
+### Loops and iteration
+
+**for statement**
+**do...while statement**
+
+```js
+var i = 0;
+do {
+  i += 1;
+  console.log(i);
+} while (i < 5);
+```
+
+
+
+**while statement**
+
+```js
+var n = 0;
+var x = 0;
+while (n < 3) {
+  n++;
+  x += n;
+}
+```
+
+
+
+**labeled statement**
+
+```js
+markLoop:
+while (theMark == true) {
+   doSomething();
+}
+```
+
+
+
+**break statement**
+
+```js
+for (var i = 0; i < a.length; i++) {
+  if (a[i] == theValue) {
+    break;
+  }
+}
+```
+
+
+
+**continue statement**
+
+```js
+var i = 0;
+var n = 0;
+while (i < 5) {
+  i++;
+  if (i == 3) {
+    continue;
+  }
+  n += i;
+  console.log(n);
+}
+//1,3,7,12
+```
+
+
+
+**for...in statement**
+
+```js
+var arr = [3, 5, 7];
+arr.foo = 'hello';
+
+for (var i in arr) {
+   console.log(i); // logs "0", "1", "2", "foo"
+}
+```
+
+
+
+**for...of statement**
+
+```js
+var arr = [3, 5, 7];
+arr.foo = 'hello';
+
+for (var i of arr) {
+   console.log(i); // logs 3, 5, 7
+}
+```
+
+
+
+### Functions
+
+
+
+**recursion**
+
+A function can refer to and call itself.
+
+```js
+function factorial(n) {
+    console.trace();//查看调用栈
+    if (n === 0) {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+```
+
+
+
+<img width="65%" src="https://user-gold-cdn.xitu.io/2017/6/20/d28ba98f3835845671655db33dfe14bb?imageView2/0/w/1280/h/960/ignore-error/1" />
+
+
+
+尾递归：是一种递归的写法，避免不断将函数压栈最终导致堆栈溢出。通过设置一个累加参数，并且每一次都将当前的值累加上去，然后递归调用
+
+```js
+function factorial(n, total = 1) {
+    console.trace();//查看调用栈
+    if (n === 0) {
+        return total
+    }
+    return factorial(n - 1, n * total)
+}
+factorial(3);
+```
+
+
+
+函数之间没有依赖关系，调用后可进行垃圾回收
+
+factorial(3, 1)
+factorial(2, 3)
+factorial(1, 6)
+factorial(0, 6)
+
+
+
+补充：
+
+Nodejs需要使用`strict mode`和`--harmony_tailcalls`开启尾递归(proper tail call)
+
+```shell
+node --harmony_tailcalls factorial.js
+```
+
+
+
+**Closures**
+
+Closures are one of the most powerful features of JavaScript. JavaScript
+allows for the nesting of functions and grants the inner function full 
+access to all the variables and functions defined inside the outer 
+function (and all other variables and functions that the outer function 
+has access to). However, the outer function does not have access to the 
+variables and functions defined inside the inner function. This provides
+a sort of encapsulation for the variables of the inner function. Also, 
+since the inner function has access to the scope of the outer function, 
+the variables and functions defined in the outer function will live 
+longer than the duration of the outer function execution, if the inner 
+function manages to survive beyond the life of the outer function. A 
+closure is created when the inner function is somehow made available to 
+any scope outside the outer function.
+
+
+
+闭包：有权访问另一个函数作用域中的变量的函数
+
+通常，函数的作用域及其所有变量都会在函数执行结束后被销毁。但是，在创建了一个闭包以后，这个函数的作用域就会一直保存到闭包不存在为止
+
+应用：设计私有的方法和变量
+
+缺点：减慢处理速度，内存消耗
+
+
+
+**Arguments object**
+
+```js
+function myConcat(separator) {
+   var result = ''; // initialize list
+   var i;
+   // iterate through arguments
+   for (i = 1; i < arguments.length; i++) {
+      result += arguments[i] + separator;
+   }
+   return result;
+}
+
+// returns "red, orange, blue, "
+myConcat(', ', 'red', 'orange', 'blue');
+```
+
+
+
+### Expressions and operators
+
+**Bitwise operators**
+
+The operands of all bitwise operators are converted to signed 32-bit  integers in two's complement format. Two's complement format means that a number's negative counterpart (e.g. 5 vs. -5) is all the number's bits  inverted (bitwise NOT of the number, a.k.a. ones' complement of the  number) plus one. For example, the following encodes the integer 314:
+
+
+
+```
+00000000000000000000000100111010
+```
+
+The following encodes `~314`, i.e. the ones' complement of `314`:
+
+```
+11111111111111111111111011000101
+```
+
+Finally, the following encodes `-314,` i.e. the two's complement of `314`:
+
+```
+11111111111111111111111011000110
+```
+
+
+
+-7>>1 = -4
+
+```
+00000000 00000000 00000000 00000111 //7
+11111111 11111111 11111111 11111001 //-7
+11111111 11111111 11111111 11111100	//-7>>1
+00000000 00000000 00000000 00000100 //4
+10000000 00000000 00000000 00000100 //-4
+```
+
+
+
+ -1>>>4 = ox0FFFFFFF
+
+```
+00000000 00000000 00000000 00000001 //1
+11111111 11111111 11111111 11111111 //-1
+00001111 11111111 11111111 11111111 //-1>>>4
+```
+
+
+
+**Unary operators**
+
+delete
+
+```js
+x = 42;
+var y = 43;
+myobj = new Number();
+myobj.h = 4;    // create property h
+delete x;       // returns true (can delete if declared implicitly)
+delete y;       // returns false (cannot delete if declared with var)
+delete Math.PI; // returns false (cannot delete predefined properties)
+delete myobj.h; // returns true (can delete user-defined properties)
+delete myobj;   // returns true (can delete if declared implicitly)
+```
+
+
+
+typeof
+
+```js
+var myFun = new Function('5 + 2');
+var shape = 'round';
+var size = 1;
+var foo = ['Apple', 'Mango', 'Orange'];
+var today = new Date();
+
+typeof myFun;       // returns "function"
+typeof shape;       // returns "string"
+typeof size;        // returns "number"
+typeof foo;         // returns "object"
+typeof today;       // returns "object"
+typeof doesntExist; // returns "undefined"
+```
+
+
+
+**Relational operators**
+
+```js
+// Arrays
+var trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
+0 in trees;        // returns true
+3 in trees;        // returns true
+6 in trees;        // returns false
+'bay' in trees;    // returns false (you must specify the index number,
+                   // not the value at that index)
+'length' in trees; // returns true (length is an Array property)
+
+// built-in objects
+'PI' in Math;          // returns true
+var myString = new String('coral');
+'length' in myString;  // returns true
+
+// Custom objects
+var mycar = { make: 'Honda', model: 'Accord', year: 1998 };
+'make' in mycar;  // returns true
+'model' in mycar; // returns true
+```
+
+
+
+### Numbers and dates
+
+**Numbers**
+
+- Decimal numbers
+
+  ```js
+  1234567890
+  42
+  
+  // Caution when using leading zeros:
+  
+  0888 // 888 parsed as decimal
+  0777 // parsed as octal in non-strict mode (511 in decimal)
+  /*
+  Note that decimal literals can start with a zero (0) followed by another decimal digit, but if every digit after the leading 0 is smaller than 8, the number gets parsed as an octal number.
+  */
+  ```
+
+- Binary numbers
+
+  ```js
+  var FLT_SIGNBIT  = 0b10000000000000000000000000000000; // 2147483648
+  var FLT_EXPONENT = 0b01111111100000000000000000000000; // 2139095040
+  var FLT_MANTISSA = 0B00000000011111111111111111111111; // 8388607
+  ```
+
+
+- Octal numbers
+
+  ```js
+  var n = 0755; // 493
+  var m = 0644; // 420
+  
+  var a = 0o10; // ES2015: 8
+  ```
+
+
+- Hexadecimal numbers
+
+  ```js
+  0xFFFFFFFFFFFFFFFFF // 295147905179352830000
+  0x123456789ABCDEF   // 81985529216486900
+  0XA                 // 10
+  ```
+
+
+- Exponentiation
+
+  ```js
+  1E3   // 1000
+  2e6   // 2000000
+  0.1e2 // 10
+  ```
+
+
+
+JavaScript 内部，所有数字都是以64位浮点数形式储存
+
+根据国际标准 IEEE 754，JavaScript 浮点数的64个二进制位
+
+- 第1位：符号位，`0`表示正数，`1`表示负数
+- 第2位到第12位（共11位）：指数部分，表示数值的大小( 0 ~ 2047 )
+- 第13位到第64位（共52位）：小数部分（即有效数字），表示数值的精度( -2^53 ~ 2^53 )
+
+
+
+```js
+//浮点数不是精确的值
+0.1 + 0.2 === 0.3	//false
+0.3 / 0.1	// 2.9999999999999996
+(0.3 - 0.2) === (0.2 - 0.1)	// false
+```
+
+
+
+### Regular expressions
+
+```js
+var myRe = /d(b+)d/g;
+var myArray = myRe.exec('cdbbdbsbz');
+```
+
+
+
+```js
+var re = /(\w+)\s(\w+)/;
+var str = 'John Smith';
+var newstr = str.replace(re, '$2, $1');
+console.log(newstr);
+
+// "Smith, John"
+```
+
+
+
+```js
+var re = /\w+\s/g;
+var str = 'fee fi fo fum';
+var myArray = str.match(re);
+console.log(myArray);
+
+// ["fee ", "fi ", "fo "]
+```
+
+
+
+### Working with objects
+### Details of the object model
+### Using promises
+### Iterators and generators
+### Meta programming
+
+
