@@ -430,7 +430,14 @@ a == a //true
 
 
 
-### == & ===
+### Equality comparisons
+
+- double equals (`==`) will perform a type conversion when comparing two things, and will handle `NaN`, `-0`, and `+0` specially to conform to IEEE 754 (so `NaN != NaN`, and `-0 == +0`);
+
+- triple equals (`===`) will do the same comparison (including the special handling for `NaN`, `-0`, and `+0`) but without type conversion, by simply always returning `false` if the types differ;
+
+- `Object.is` does no type conversion and no special handling for `NaN`, `-0`, and `+0` (giving it the same behavior as `===` except on those special numeric values).
+
 
 ```js
 //两个变量指向同一个对象
@@ -447,8 +454,6 @@ console.log(b1 === b2); // false
 var arr1str = JSON.stringify(arr1);
 var arr2str = JSON.stringify(arr2);
 console.log(arr1str === arr2str); // true
-
-//隐式转换
 ```
 
 
@@ -1690,9 +1695,13 @@ console.log(myArray);
 
 
 ### Working with objects
-### Details of the object model
-### Using promises
-### Iterators and generators
-### Meta programming
+
+In JavaScript, an object is a standalone entity, with properties and 
+type. Compare it with a cup, for example. A cup is an object, with 
+properties. A cup has a color, a design, weight, a material it is made 
+of, etc. The same way, JavaScript objects can have properties, which 
+define their characteristics.
+
+
 
 
