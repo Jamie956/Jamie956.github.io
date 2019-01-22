@@ -9,6 +9,7 @@
     * [Regular Expression](basic/regularExpression.md)
     * [Linux](basic/linux.md)
     * [Windows](basic/windows.md)
+    * [Design Patterns](basic/designPatterns.md)
 * [Frontend](frontend/README.md)
     * [NodeJS](frontend/nodejs.md)
     * [Nginx](frontend/nginx.md)
@@ -31,4 +32,6 @@
     * [VSCode](undefined/vscode.md)
     * [Eclipse](undefined/eclipse.md)
     * [Typora](undefined/typora.md)
+    * [MapleStory](undefined/sapleStory.md)
+    * [Music](undefined/music.md)
 
