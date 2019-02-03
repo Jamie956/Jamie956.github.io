@@ -695,34 +695,63 @@ run(){
 
 
 
-### 如何分析
+## OOP
 
-1. 看顶部注释
-2. 总结
-3. type hierarchy显示类的继承和实现结构
-4. 查看继承类和实现接口
+**Encapsulation**
 
-
-
+The key to making encapsulation work is to have methods never directly access
+instance felds in a class other than their own. Programs should interact with object
+data only through the object’s methods. Encapsulation is the way to give an object its “black box” behavior, which is the key to reuse and reliability.
 
 
 
+**Inheritance**
+
+When you extend an existing class, the new class has all the properties and
+methods of the class that you extend. You then supply new methods and data
+felds that apply to your new class only. The concept of extending a class to obtain
+another class is called inheritance.
+
+
+
+**Relationships between Classes**
+
+• Dependence (“uses–a”)
+
+For example, the Order class uses the Account class because Order objects need
+to access Account objects to check for credit status. But the Item class does not depend
+on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate
+objects of that class. 
+
+• Aggregation (“has–a”)
+
+The aggregation, or “has–a” relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that
+objects of class A contain objects of class B.
+
+• Inheritance (“is–a”) 
+
+The inheritance, or “is–a” relationship, expresses a relationship between a more
+special and a more general class. For example, a RushOrder class inherits from an
+Order class. The specialized RushOrder class has special methods for priority handling
+and a different method for computing shipping charges, but its other methods,
+such as adding items and billing, are inherited from the Order class. In general, if
+class A extends class B, class A inherits methods from class B but has more capabilities.
+
+
+
+**Construct**
+
+To work with objects, you frst construct them and specify their initial state. Then
+you apply methods to the objects.
+In the Java programming language, you use constructors to construct new instances.
+A constructor is a special method whose purpose is to construct and initialize
+objects.
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+![UML notation for class relationships](..\img\UML notation for class relationships.png)
 
 
 
