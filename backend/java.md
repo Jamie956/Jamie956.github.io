@@ -1,15 +1,3 @@
-### 对象
-
-面向对象编程（Object Oriented Programming，缩写为 OOP）是目前主流的编程范式。它将真实世界各种复杂的关系，抽象为一个个对象，然后由对象之间的分工与合作，完成对真实世界的模拟。
-
-每一个对象都是功能中心，具有明确分工，可以完成接受信息、处理数据、发出信息等任务。对象可以复用，通过继承机制还可以定制。因此，面向对象编程具有灵活、代码可复用、高度模块化等特点，容易维护和开发，比起由一系列函数或指令组成的传统的过程式编程（procedural  programming），更适合多人合作的大型软件项目。
-
-（1）对象是单个实物的抽象
-
-（2）对象是一个容器，封装了属性（property）和方法（method）
-
-
-
 ## 装箱/拆箱
 
 |          | 装箱(Boxing)                                     | 拆箱(Unboxing)                                         |
@@ -107,7 +95,7 @@ public static Integer valueOf(int i) {
 
 
 
-## 面向对象特性
+## OO
 
 - 封装：把一个对象的属性私有化，同时提供一些可以被外界访问的属性的方法
 
@@ -136,21 +124,7 @@ public static Integer valueOf(int i) {
 
 
 
-### API
-
-```
-string.toUpperCase(); 大写
-string.toLowerCase(); 大写
-str1.contains(str2) 是否包含
-str.indexOf(key) 根据key获取索引
-str.split(";"); String -> Array
-String.join(" + ", array); Array -> String
-string1.concat(string2) 连接字符串
-```
-
-
-
-## 接口/抽象类
+## Interface/Abstract
 
 |      | 接口               | 抽象类               |
 | ---- | ------------------ | -------------------- |
@@ -163,7 +137,7 @@ string1.concat(string2) 连接字符串
 
 
 
-## 变量
+## Var
 
 |          | 成员变量                           | 局部变量                 |
 | -------- | ---------------------------------- | ------------------------ |
@@ -175,12 +149,6 @@ string1.concat(string2) 连接字符串
 
 
 
-## 构造方法
-
-1. 名字与类名相同
-2. 没有返回值，不能用void声明
-3. 生成类的对象时自动执行，无需调用
-
 
 
 ## == & equal
@@ -191,58 +159,12 @@ equals() ：比较内容
 
 
 
-
-## **程序**
-
-含有指令和数据的文件，被存储在磁盘或其他的数据存储设备中，也就是说程序是静态的代码
-
-
-
-## **进程**
-
-每个进程是一个应用程序，都有独立的内存空间
-
-
-
-是程序的一次执行过程，是系统运行程序的基本单位，因此进程是动态的。系统运行一个程序即是一个进程从创建，运行到消亡的过程。简单来说，一个进程就是一个执行中的程序，它在计算机中一个指令接着一个指令地执行着，同时，每个进程还占有某些系统资源如CPU时间，内存空间，文件，文件，输入输出设备的使用权等等。换句话说，当程序在执行时，将会被操作系统载入内存中。 线程是进程划分成的更小的运行单位。线程和进程最大的不同在于基本上各进程是独立的，而各线程则不一定，因为同一进程中的线程极有可能会相互影响。从另一角度来说，进程属于操作系统的范畴，主要是同一段时间内，可以同时执行一个以上的程序，而线程则是在同一程序内几乎同时执行一个以上的程序段。
-
-
-
 ## final
 
-修饰：变量、方法、类。
-
-1. 修饰变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象
-2. 修饰类，这个类不能被继承。final类中的所有成员方法都会被隐式地指定为final方法
-3. 修饰方法，防任何继承类修改它
-
-
-
-## Servlet
-
-### 生命周期
-
-1. 初始化：调用init()，只执行一次
-2. 请求：每次收到请求，调用service()，它会根据需要调用与请求对应的doGet()或doPost()
-3. 销毁：服务器关闭或项目被卸载时，调用destroy()，只执行一次
-
-
-
-## static
-
-1. **修饰成员变量/方法:** 被 static 修饰的成员属于类，不属于单个这个类的某个对象，被类中所有对象共享，静态变量 存放在 Java 内存区域的方法区。调用格式：`类名.静态变量名`    `类名.静态方法名()` 
-2. **静态代码块:** 执行顺序 静态代码块 -> 非静态代码块 -> 构造方法，该类不管创建多少对象，静态代码块只执行一次
-3. **静态内部类（static修饰类的话只能修饰内部类）：** 静态内部类与非静态内部类之间存在一个最大的区别:  非静态内部类在编译完成之后会隐含地保存着一个引用，该引用是指向创建它的外围内，但是静态内部类却没有。没有这个引用就意味着：1.  它的创建是不需要依赖外围类的创建。2. 它不能使用任何外围类的非static成员变量和方法。
-4. **静态导包(用来导入类中的静态资源，1.5之后的新特性):** 格式为：`import static` 这两个关键字连用可以指定导入某个类中的指定静态资源，并且不需要使用类名调用类中静态成员，可以直接使用类中静态成员变量和成员方法。
-
-
-
-|          | 静态方法                                            | 非静态（实例）方法     |
-| -------- | --------------------------------------------------- | ---------------------- |
-|          | 属于类本身                                          | 属于从类生成的每个对象 |
-| 应用场景 | 方法执行的操作不依赖于其类的各个变量和方法          | 否则                   |
-| 访问限制 | 访问本类成员时，只允许访问静态成员（静态变量/方法） | 无                     |
-| 调用格式 | 类名.方法名/对象名.方法名                           | 对象名.方法名          |
+1. 修饰基本数据类型变量，数值在初始化后不能更改
+2. 修饰引用类型变量，初始化后不能指向另一个对象
+3. 修饰类，该类不能被继承。final类中的所有成员方法都会被隐式地指定为final方法
+4. 修饰方法，该方法在继承类不能被修改
 
 
 
@@ -269,84 +191,6 @@ equals() ：比较内容
 | 内存占用     | 末尾预留空间                      | 每个元素存放前后节点 |
 
 
-
-## 题目
-
-
-
-```java
-Integer a = 1;
-Integer b = 2;
-Integer c = 3;
-Integer d = 3;
-Integer e = 321;
-Integer f = 321;
-Long g = 3L;
-Long h = 2L;
-
-System.out.println(c==d);// true 比较对象，指向cache
-System.out.println(e==f);// false 比较对象
-System.out.println(c==(a+b));// true 存在表达式，拆箱比较数值
-System.out.println(c.equals(a+b));// true 比较数值
-System.out.println(g==(a+b));// true 存在表达式，拆箱比较数值
-System.out.println(g.equals(a+b));// false a+b调用Integer.valueOf拆箱
-System.out.println(g.equals(a+h));// true a+h调用Long.valueOf向上转型
-```
-
-解析：
-
-- "=="运算符
-  - 两个操作数都是包装器类型的引用 =》比较地址
-  - 存在表达式 =》比较数值（自动拆箱）
-
-- equals()不会类型转换
-
-
-
-
-
-```java
-Double i1 = 100.0;
-Double i2 = 100.0;
-Double i3 = 200.0;
-Double i4 = 200.0;
-
-System.out.println(i1==i2);// false 浮点的值不是有限的
-System.out.println(i3==i4);// false
-```
-
-
-
-## Design Pattern
-
-### Singleton
-
-定义，保证一个类仅有一个实例，并提供一个访问它的全局访问点。
-要点
-
-- 单例类必须要有一个 private 访问级别的构造函数，只有这样，才能确保单例不会在系统中的其他代码内被实例化;
-- instance 成员变量和 uniqueInstance 方法必须是 static 的。
-
-饿汉方式。指全局的单例实例在类装载时构建
-懒汉方式。指全局的单例实例在第一次被使用时构建。
-
-
-
-## 面向对象
-
-- 可复用，共同点的抽象
-- 可扩展，继承
-- 灵活性好
-- 把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数
-- 面向对象的设计思想是抽象出Class，根据Class创建Instance
-
-
-
-- 面向过程：把计算机程序视为一系列的命令集合，即一组函数的顺序执行。为了简化程序设计，面向过程把函数继续切分为子函数，即把大块函数通过切割成小块函数来降低系统的复杂度。
-
-
-
-- 面向对象：把计算机程序视为一组对象的集合，而每个对象都可以接收其他对象发过来的消息，并处理这些消息，计算机程序的执行就是一系列消息在各个对象之间传递。
 
 
 
@@ -384,40 +228,6 @@ System.out.println(i3==i4);// false
 - Array -> List
 
   ```Arrays.asList(array)```
-
-
-
-## Socket
-
-- Socket：网络上运行的程序之间双向通信链路的终结点，是TCP和UDP的基础，由IP和Port组成
-- Socket套接字
-- Socket原理机制
-  - 通信的两端都有Socket
-  - 数据在两个Socket间通过IO传输
-
-### Server
-
-1. new ServerSocket(int port)，创建Server并指定监听端口
-2. accept() 接受Socket
-3. 从Socket类获取输入流
-4. 读取输入流
-5. 指定编码
-6. 存入StringBuilder
-7. 从Socket类获取输出流
-8. 写出信息
-9. 关闭Server
-
-### Client
-
-1. new Socket(String host, int port) 连接到Socket Server
-2. 从Socket获取输出流
-3. 往输出流写入信息
-4. shutdownOutput() 告诉服务器发送完数据
-5. 从Socket获取输入流
-6. 读取输入流
-7. 指定编码
-8. 存入StringBuilder
-9. 关闭Server
 
 
 
@@ -535,173 +345,27 @@ myInstance.getClass().getClassLoader().getClass().getName()
 
 
 
-### 注意
-
-- 即使同一个class创建多个实例，他们的静态成员变量是共享的
-
-
-
-## BigDecimal
-
-### 比较大小
-
-```java
-bigDecimal.compareTo(bigDecimal);
-```
-
-- 1 >
-- 0 =
-- -1 <
-
-### 运算
-
-```java
-bigDecimal.add(bigDecimal);//加
-bigDecimal.subtract(bigDecimal);//减
-bigDecimal.multiply(bigDecimal);//乘
-bigDecimal.multiply(bigDecimal, new MathContext(4, RoundingMode.HALF_DOWN));//保留位数
-bigDecimal.divide(bigDecimal,10,RoundingMode.HALF_UP);//除，必须保留位数
-bigDecimal.remainder(bigDecimal);//余数
-bigDecimal.pow(n);//n次方
-bigDecimal.max(bigDecimal);//最大值
-bigDecimal.min(bigDecimal);//最小值
-bigDecimal.movePointLeft(n);//小数点左移n位
-bigDecimal.movePointRight(n);//小数点右移n位
-```
-
-
-
-## BigInteger
-
-```java
-//long/int -> BigInteger
-BigInteger.valueOf(n);
-
-
-//string -> BigInteger
-new BigInteger(string);
-
-//10进制 -> 2进制
-new BigInteger(binaryString , 2);
-
-```
-
-
-
-## File
-
-```new File("D:\\a.txt")``` 绝对路径创建实例
-```isDirectory()``` 是否是文件夹
-```mkdir()``` 创建文件夹
-```createNewFile()``` 创建文件
-```isFile()``` 是否是文夹
-```mkdirs()``` 创建层级文件夹
-```renameTo(File)``` 重命名
-```delete()``` 删除文件
-```getName()``` 获取文件名或文件夹名
-```getAbsolutePath()``` 获取绝对路径
-```list()``` 获取绝对路径
-```listFiles()``` 获取抽象路径数组
-
-
-
-## IO
-
-```new FileInputStream(File);``` 实例化文件输入流
-```fileInputStream.read();fileInputStream.read(new byte[20]);``` 读取输入流
-```new FileOutputStream(File);``` 实例化文件输出流
-```fileOutputStream.write(byte[]);``` 写出输出流
-```fileOutputStream.write(byte[], 0, len);```
-```fileOutputStream.flush();```
-
-
-
-## Java 8 - Time
-
-```LocalDate.now();``` 获取当天格式化日期
-```LocalDate.of(2018, 05, 20);``` 获取指定格式化日期
-```Clock.systemUTC();```
-```Clock.systemDefaultZone();``` 获取系统时区
-```MonthDay.of(5, 20);```
-```LocalTime.now();``` 获取当前时间
-```YearMonth.now();``` 获取当月天数
-```Instant.now();``` 获取时间戳
-```LocalDate.parse(text, formatter)``` 解析日期
-```LocalDate.format(formatter)``` 格式化日期
-
-
-
-## NumberFormat
-
-```java
-//格式化数字
-NumberFormat.getInstance(new Locale("en", "IN")).format(10000000.99);
-//货币格式化
-NumberFormat.getCurrencyInstance(new Locale("en", "IN")).format(10340.999);
-//百分比格式化
-NumberFormat.getPercentInstance(new Locale("en", "IN")).format(10340.999);
-```
-
-
-
-## 生产者/消费者
-
-### 生产者
-
-```java
-//继承Thread，重写run()
-run(){
-    while(true){
-        synchronized (queue) {
-            //超过限制
-            while(maxSize){
-                //释放锁
-                wait()
-            }
-            //生产
-            notifyAll()
-        }
-    }
-}
-```
-
-### 消费者
-
-```java
-//继承Thread，重写run()
-run(){
-	while(true){
-		synchronized (queue) {
-			//消费队列为空
-			while(empty){
-				//释放锁
-				wait()
-			}
-			//消费
-			notifyAll()
-		}
-	}	
-}
-```
-
-
-
-## 阅读源码
-
-### eclipse查看源码
-
-1. “window”-> “Preferences” -> “Java” -> “Installed JREs”
-2. ...rt.jar -> Source attachment:(none) -> extends file -> ./jdk/src.zip
-
-
-
 ## OOP
 
 **Encapsulation**
 
 The key to making encapsulation work is to have methods never directly access
-instance felds in a class other than their own. Programs should interact with object
+instance fields in a class other than their own. Programs should interact with object
 data only through the object’s methods. Encapsulation is the way to give an object its “black box” behavior, which is the key to reuse and reliability.
+
+```java
+public String getName()
+{
+    return name;
+}
+public double getSalary()
+{
+    return salary;
+}
+```
+
+These are obvious examples of accessor methods. As they simply return the values
+of instance fields, they are sometimes called field accessors.
 
 
 
@@ -709,7 +373,7 @@ data only through the object’s methods. Encapsulation is the way to give an ob
 
 When you extend an existing class, the new class has all the properties and
 methods of the class that you extend. You then supply new methods and data
-felds that apply to your new class only. The concept of extending a class to obtain
+fields that apply to your new class only. The concept of extending a class to obtain
 another class is called inheritance.
 
 
@@ -749,9 +413,98 @@ objects.
 
 
 
-
-
 ![UML notation for class relationships](..\img\UML notation for class relationships.png)
+
+
+
+• A constructor has the same name as the class.
+• A class can have more than one constructor.
+• A constructor can take zero, one, or more parameters.
+• A constructor has no return value.
+• A constructor is always called with the new operator. 
+
+
+
+**Final Instance Fields**
+
+You can define an instance field as final. Such a field must be initialized when the
+object is constructed. That is, you must guarantee that the field value has been
+set after the end of every constructor. Afterwards, the field may not be modified
+again.
+
+```java
+class Employee
+{
+    private final String name;
+    . . .
+}
+```
+
+
+
+## 4.4 Static
+
+**Static Fields**
+
+```java
+class Employee
+{
+    private static int nextId = 1;
+    private int id;
+    . . .
+}
+```
+
+Every employee object now has its own id feld, but there is only one nextId feld
+that is shared among all instances of the class. Let’s put it another way. If there
+are 1,000 objects of the Employee class, then there are 1,000 instance felds id, one for
+each object. But there is a single static feld nextId. Even if there are no employee
+objects, the static feld nextId is present. It belongs to the class, not to any individual
+object.
+
+
+
+**Static Constants**
+
+```java
+public class Math
+{
+    . . .
+        public static final double PI = 3.14159265358979323846;
+    . . .
+}
+```
+
+If the keyword static had been omitted, then PI would have been an instance feld
+of the Math class. That is, you would need an object of this class to access PI,
+and every Math object would have its own copy of PI.
+
+
+
+**Static Methods**
+
+You can think of static methods as methods that don’t have a this parameter.
+
+A static method of the Employee class cannot access the id instance feld because it does not operate on an object. However, a static method can access a static feld.
+
+```java
+public static int getNextId()
+{
+    return nextId; // returns static field
+}
+```
+
+Use static methods in two situations:
+• When a method doesn’t need to access the object state because all needed
+parameters are supplied as explicit parameters (example: Math.pow).
+• When a method only needs to access static felds of the class (example:
+Employee.getNextId).
+
+
+
+
+
+
 
 
 
