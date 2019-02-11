@@ -166,18 +166,6 @@ equals() ：比较内容
 
 
 
-## this
-
-用于引用类的当前实例
-
-
-
-## super
-
-子类访问父类的变量和方法
-
-
-
 ## Arraylist & LinkedList
 
 |              | Arraylist                         | LinkedList           |
@@ -187,8 +175,6 @@ equals() ：比较内容
 | 复杂度       | 末尾添加 O(1)，指定位置增删O(n-i) | O(1)                 |
 | 随机元素访问 | Y                                 | N                    |
 | 内存占用     | 末尾预留空间                      | 每个元素存放前后节点 |
-
-
 
 
 
@@ -506,7 +492,26 @@ Employee.getNextId).
 
 
 
-## 4.6
+## 4.6 Object Construction
+
+**Overloading**
+
+Some classes have more than one constructor. For example, you can construct an
+empty StringBuilder object as
+`StringBuilder messages = new StringBuilder();`
+Alternatively, you can specify an initial string:
+`StringBuilder todoList = new StringBuilder("To do:\n"); `
+
+
+
+**Default Field Initialization**
+
+If you don’t set a feld explicitly in a constructor, it is automatically set to a default
+value: numbers to 0, boolean values to false, and object references to null.
+
+
+
+
 
 
 
