@@ -149,8 +149,6 @@ public static Integer valueOf(int i) {
 
 
 
-
-
 ## == & equal
 
 ==：基本数据类型比较值，引用数据类型比较内存地址
@@ -345,7 +343,7 @@ myInstance.getClass().getClassLoader().getClass().getName()
 
 
 
-## OOP
+## 4.1 OOP
 
 **Encapsulation**
 
@@ -403,9 +401,15 @@ class A extends class B, class A inherits methods from class B but has more capa
 
 
 
+![UML notation for class relationships](..\img\UML notation for class relationships.png)
+
+
+
+## 4.2 Predefined classes
+
 **Construct**
 
-To work with objects, you frst construct them and specify their initial state. Then
+To work with objects, you first construct them and specify their initial state. Then
 you apply methods to the objects.
 In the Java programming language, you use constructors to construct new instances.
 A constructor is a special method whose purpose is to construct and initialize
@@ -413,9 +417,9 @@ objects.
 
 
 
-![UML notation for class relationships](..\img\UML notation for class relationships.png)
+## 4.3 Defning Your Own Classes
 
-
+**constructor**
 
 • A constructor has the same name as the class.
 • A class can have more than one constructor.
@@ -502,9 +506,7 @@ Employee.getNextId).
 
 
 
-
-
-
+## 4.6
 
 
 
