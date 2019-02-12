@@ -426,54 +426,73 @@ EasyBCD引导Ubuntu：添加新条目 => Linux/BSD操作系统 => 驱动器 => ~
 
 
 
-## 匹配
+## ENV
 
-| 通配符        | 意义                               |
-| ------------- | ---------------------------------- |
-| *             | 匹配任意多个字符（包括零个或一个） |
-| ?             | 匹配任意一个字符（不包括零个）     |
-| [characters]  | 匹配任意一个属于字符集中的字符     |
-| [!characters] | 匹配任意一个不是字符集中的字符     |
-| [[:class:]]   | 匹配任意一个属于指定字符类中的字符 |
+**Github repo clone**
 
-
-
-| 字符类    | 意义                   |
-| --------- | ---------------------- |
-| [:alnum:] | 匹配任意一个字母或数字 |
-| [:alpha:] | 匹配任意一个字母       |
-| [:digit:] | 匹配任意一个数字       |
-| [:lower:] | 匹配任意一个小写字母   |
-| [:upper:] | 匹配任意一个大写字母   |
-
-
-
-| 模式                         | 匹配对象                                                  |
-| ---------------------------- | --------------------------------------------------------- |
-| *                            | 所有文件                                                  |
-| g*                           | 文件名以“g”开头的文件                                     |
-| b*.txt                       | 以"b"开头，中间有零个或任意多个字符，并以".txt"结尾的文件 |
-| Data???                      | 以“Data”开头，其后紧接着3个字符的文件                     |
-| [abc]*                       | 文件名以"a","b",或"c"开头的文件                           |
-| BACKUP.\[0-9\]\[0-9\]\[0-9\] | 以"BACKUP."开头，并紧接着3个数字的文件                    |
-| [[:upper:]]*                 | 以大写字母开头的文件                                      |
-| [![:digit:]]*                | 不以数字开头的文件                                        |
-| *[[:lower:]123]              | 文件名以小写字母结尾，或以 “1”，“2”，或 “3” 结尾的文件    |
+```shell
+git clone git@github.com:Jamie956/justnode.git ~/Downloads/github/justnode
+git clone git@github.com:Jamie956/javascript.git ~/Downloads/github/javascript
+git clone git@github.com:Jamie956/nodejs.git ~/Downloads/github/nodejs
+git clone git@github.com:Jamie956/bootstraptable.git ~/Downloads/github/bootstraptable
+git clone git@github.com:Jamie956/simplespring.git ~/Downloads/github/simplespring
+git clone git@github.com:Jamie956/webpack.git ~/Downloads/github/webpack
+git clone git@github.com:Jamie956/java.git ~/Downloads/github/java
+git clone git@github.com:Jamie956/css.git ~/Downloads/github/css
+git clone git@github.com:Jamie956/reactjs.git ~/Downloads/github/reactjs
+git clone git@github.com:Jamie956/jqueryplugin.git ~/Downloads/github/jqueryplugin
+git clone git@github.com:Jamie956/typescript.git ~/Downloads/github/typescript
+git clone git@github.com:Jamie956/jquery.git ~/Downloads/github/jquery
+git clone git@github.com:Jamie956/history.git ~/Downloads/github/history
+git clone git@github.com:Jamie956/awe-shell.git ~/Downloads/github/awe-shell
+git clone git@github.com:Jamie956/springboot.git ~/Downloads/github/springboot
+```
 
 
 
-## Ubuntu ENV
+**Apt install**
 
-1. `touch hi.sh`
+```shell
+sudo apt-get update
+sudo apt install git -y
+sudo apt install curl -y
+sudo apt install openjdk-8-jdk -y
+sudo apt install maven -y
+sudo apt install docker.io -y
+sudo groupadd docker
+sudo gpasswd -a ${USER} docker
+sudo service docker restart
+sudo newgrp docker
+```
 
-2. ```shell
-   sudo apt-get update
-   sudo apt install git -y
-   sudo apt install make -y
-   git clone https://github.com/Jamie956/awe-shell.git
-   ```
 
-3. `. hi.sh`
 
-4. Install packages as you need.
+**source list**
+
+```shell
+# ubuntu source list
+deb http://us.archive.ubuntu.com/ubuntu/ xenial main restricted
+deb http://us.archive.ubuntu.com/ubuntu/ xenial-updates main restricted
+deb http://us.archive.ubuntu.com/ubuntu/ xenial universe
+deb http://us.archive.ubuntu.com/ubuntu/ xenial-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ xenial multiverse
+deb http://us.archive.ubuntu.com/ubuntu/ xenial-updates multiverse
+deb http://us.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu xenial-security main restricted
+deb http://security.ubuntu.com/ubuntu xenial-security universe
+deb http://security.ubuntu.com/ubuntu xenial-security multiverse
+
+
+# ali source list
+deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+```
+
+
 

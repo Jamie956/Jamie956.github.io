@@ -53,6 +53,7 @@ Shadow DOM is really your best friend when it comes to trying to isolate styling
 
 
 **Why TypeScript**
+
 - Adds clarity to your code—Variables that have types are easier to understand, because other developers (or yourself in six months) don’t have to think very hard about what the variable should be.
 - Enables a smarter editor—When you use TypeScript with a supported editor, you’ll get automatic IntelliSense support for your code. As you write, the editor can suggest known variables or functions and tell you what type of value it expects.
 - Catches errors before you run code—TypeScript will catch syntax errors before you run the code in the browser, helping to reduce the feedback loop when you write invalid code.
@@ -253,6 +254,60 @@ for each test. They only apply within the Describe block in which they’re defn
 ¡	afterEach/afterAll—These allow you to execute after each test or all tests,
 such as cleaning up anything between tests or resetting any shared state. They
 also apply only within the Describe block in which they are defned. 
+
+
+
+## Angular in Action (Update)
+
+1, Angular: a modern web platform
+
+1.1 Why choose Angular?
+
+1.2 What you'll learn
+
+1.3 The journey from AngularJS to Angular
+
+1.4 Angular: a platform, not a framework
+
+1.5 Component architecture
+
+1.6 Modern JavaScript and Angular
+
+1.7 TypeScript and Angular
+
+
+
+
+
+2, Building your first Angular app
+
+3, App essentials
+
+4, Component basics
+
+5, Advanced components
+
+6, Services
+
+7, Routing
+
+8, Building custom directives and pipes
+
+9, Forms
+
+10, Testing your application
+
+11, Angular in production
+
+
+
+
+
+
+
+
+
+
 
 
 
