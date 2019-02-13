@@ -19,13 +19,13 @@ The CLI has a number of features that aid in the development of Angular apps. He
 are the primary features:
 
 - Generates new project scaffolding—Instead of having to create a new project from an
-existing project or creating all the fles yourself, the CLI will generate a full project with a basic app already started for you.
+existing project or creating all the files yourself, the CLI will generate a full project with a basic app already started for you.
 - Generates new application pieces—Need a new component? Easy; it can generate
-the fles for you. It can generate components, services, routes, and pipes, and it
+the files for you. It can generate components, services, routes, and pipes, and it
 also will automatically ensure they are fully wired up in the build process.
-- Manages the entire build toolchain—Because fles need to be processed before
+- Manages the entire build toolchain—Because files need to be processed before
 being served to the client (such as TypeScript compilation), the CLI will process
-your source fles and build them into an optimized version for development or
+your source files and build them into an optimized version for development or
 production.
 - Serves a localhost development server—The CLI handles the build ﬂow and then starts
 a server listening on localhost so you can see the results, with a live reload feature. 
@@ -63,6 +63,8 @@ a few primary use cases:
   assuming there’s a supported renderer. Angular will provide support for NodeJS,
   but the community is actively building and maintaining rendering support for
   other platforms such as Java and Go. 
+
+
 
 
 
@@ -132,7 +134,7 @@ and templates.
 
 **Templates**
 
-Templates are often used with the Shadow DOM because it allows you to defne the
+Templates are often used with the Shadow DOM because it allows you to define the
 template and then inject it into the shadow root. Without templates, the Shadow DOM
 APIs would require us to inject content node by node. They’re also used by Angular as
 part of the lifecycle of components and the compilation process, allowing Angular to
@@ -161,10 +163,8 @@ ahead of time and deliver the whole package to the user.
 observables are a newer pattern for JavaScript applications to
 manage asynchronous activities.  
 
-observables are a newer pattern for JavaScript applications to
-manage asynchronous activities.  
-
-
+Promises have a major limitation in that they’re
+only useful for one call cycle. 
 
 To use observables, you subscribe to the stream of data and pass a function that will
 run every time there’s a new piece of data.  
