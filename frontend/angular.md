@@ -1,5 +1,15 @@
 ## Angular in Action
 
+
+
+
+
+
+
+## 1, Angular: a modern web platform
+
+
+
 ### 1.4 Angular: a platform, not a framework
 
 Angular comes with a leaner core library and makes additional features available as
@@ -210,7 +220,34 @@ where it doesn’t matter.
 
 
 
-2, Building your first Angular app
+
+
+## 2, Building your first Angular app
+
+
+
+
+
+### 2.1 Preview the chapter project
+### 2.2 Setting up the project
+### 2.3 The basic app scaffolding
+### 2.4 How Angular renders the base application
+
+**App component**
+
+**App module**
+
+**Bootstrapping the app**
+
+### 2.5 Building services
+### 2.6 Creating your first component
+### 2.7 Components that use components and services
+### 2.8 Components with forms and events
+### 2.9 Application routing
+
+
+
+
 
 3, App essentials
 
