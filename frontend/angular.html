@@ -621,14 +621,30 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#1-angular-a-modern-web-platform">1, Angular: a modern web platform</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
 <li><div><a href="#14-angular-a-platform-not-a-framework">1.4 Angular: a platform, not a framework</a><i></i></div></li>
 <li><div><a href="#15-component-architecture">1.5 Component architecture</a><i></i></div></li>
 <li><div><a href="#16-modern-javascript-and-angular">1.6 Modern JavaScript and Angular</a><i></i></div></li>
 <li><div><a href="#17-typescript-and-angular">1.7 TypeScript and Angular</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#2-building-your-first-angular-app">2, Building your first Angular app</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#21-preview-the-chapter-project">2.1 Preview the chapter project</a><i></i></div></li>
+<li><div><a href="#22-setting-up-the-project">2.2 Setting up the project</a><i></i></div></li>
+<li><div><a href="#23-the-basic-app-scaffolding">2.3 The basic app scaffolding</a><i></i></div></li>
+<li><div><a href="#24-how-angular-renders-the-base-application">2.4 How Angular renders the base application</a><i></i></div></li>
+<li><div><a href="#25-building-services">2.5 Building services</a><i></i></div></li>
+<li><div><a href="#26-creating-your-first-component">2.6 Creating your first component</a><i></i></div></li>
+<li><div><a href="#27-components-that-use-components-and-services">2.7 Components that use components and services</a><i></i></div></li>
+<li><div><a href="#28-components-with-forms-and-events">2.8 Components with forms and events</a><i></i></div></li>
+<li><div><a href="#29-application-routing">2.9 Application routing</a><i></i></div></li>
+</ul></li>
 </ul>
 </div>
 
 <h2 id="angular-in-action">Angular in Action</h2>
+<h2 id="1-angular-a-modern-web-platform">1, Angular: a modern web platform</h2>
 <h3 id="14-angular-a-platform-not-a-framework">1.4 Angular: a platform, not a framework</h3>
 <p>Angular comes with a leaner core library and makes additional features available as
 separate packages that can be used as needed. It also has many tools that push it beyond
@@ -644,13 +660,13 @@ a simple framework, including the following:</p>
 are the primary features:</p>
 <ul>
 <li>Generates new project scaffolding&#x2014;Instead of having to create a new project from an
-existing project or creating all the fles yourself, the CLI will generate a full project with a basic app already started for you.</li>
+existing project or creating all the files yourself, the CLI will generate a full project with a basic app already started for you.</li>
 <li>Generates new application pieces&#x2014;Need a new component? Easy; it can generate
-the fles for you. It can generate components, services, routes, and pipes, and it
+the files for you. It can generate components, services, routes, and pipes, and it
 also will automatically ensure they are fully wired up in the build process.</li>
-<li>Manages the entire build toolchain&#x2014;Because fles need to be processed before
+<li>Manages the entire build toolchain&#x2014;Because files need to be processed before
 being served to the client (such as TypeScript compilation), the CLI will process
-your source fles and build them into an optimized version for development or
+your source files and build them into an optimized version for development or
 production.</li>
 <li>Serves a localhost development server&#x2014;The CLI handles the build &#xFB02;ow and then starts
 a server listening on localhost so you can see the results, with a live reload feature. </li>
@@ -721,7 +737,7 @@ affect the button inside it. </p>
 <p>Shadow DOM enables the best form of encapsulation available in the browser for styles
 and templates. </p>
 <p><strong>Templates</strong></p>
-<p>Templates are often used with the Shadow DOM because it allows you to defne the
+<p>Templates are often used with the Shadow DOM because it allows you to define the
 template and then inject it into the shadow root. Without templates, the Shadow DOM
 APIs would require us to inject content node by node. They&#x2019;re also used by Angular as
 part of the lifecycle of components and the compilation process, allowing Angular to
@@ -739,8 +755,8 @@ ahead of time and deliver the whole package to the user. </p>
 <p><strong>Observables</strong></p>
 <p>observables are a newer pattern for JavaScript applications to
 manage asynchronous activities.  </p>
-<p>observables are a newer pattern for JavaScript applications to
-manage asynchronous activities.  </p>
+<p>Promises have a major limitation in that they&#x2019;re
+only useful for one call cycle. </p>
 <p>To use observables, you subscribe to the stream of data and pass a function that will
 run every time there&#x2019;s a new piece of data.  </p>
 <h3 id="17-typescript-and-angular">1.7 TypeScript and Angular</h3>
@@ -771,7 +787,100 @@ should have events, be customizable, and be declarative.</li>
 <li>ES6 and TypeScript provide a lot of the underpinnings for Angular&#x2019;s architecture
 and syntax, making it a powerful framework without having to build a lot of custom language capabilities. </li>
 </ul>
-<p>2, Building your first Angular app</p>
+<h2 id="2-building-your-first-angular-app">2, Building your first Angular app</h2>
+<ul>
+<li>Bootstrapping the app&#x2014;To start the app, we&#x2019;ll use the bootstrap feature to kick
+things off once they&#x2019;re loaded. This happens once during the app lifecycle, and
+we&#x2019;ll bootstrap the App component.</li>
+<li>Creating components&#x2014;Angular is all about components, and we&#x2019;ll create several
+components for different purposes. We&#x2019;ll learn about how they&#x2019;re built and how
+they nest to create complex applications.</li>
+<li>Creating services and using HttpClient&#x2014;For code reuse, we&#x2019;ll encapsulate some
+logic that helps manage the list of stocks into a service and also uses the HttpClient
+service from Angular to load stock quote data.</li>
+<li>Using pipes and directives in templates&#x2014;Using pipes, we can transform data from one
+format into another during display, such as formatting a timestamp into a local date
+format. Directives are useful tools to modify the behavior of DOM elements inside
+a template, such as the ability to repeat pieces or conditionally show elements.</li>
+<li>Setting up routing&#x2014;Most applications need the ability to allow users to navigate
+around the application, and by using the router we can see how to route between
+different components. </li>
+</ul>
+<h3 id="21-preview-the-chapter-project">2.1 Preview the chapter project</h3>
+<h3 id="22-setting-up-the-project">2.2 Setting up the project</h3>
+<h3 id="23-the-basic-app-scaffolding">2.3 The basic app scaffolding</h3>
+<h3 id="24-how-angular-renders-the-base-application">2.4 How Angular renders the base application</h3>
+<p><strong>App component</strong></p>
+<p>The @Component annotation declares that this class is a component by accepting an
+object. It has a selector property that declares the HTML selector of the component.
+That means the component is used in the template by adding an HTML tag <code>&lt;app-root&gt;
+&lt;/app-root&gt;</code>. </p>
+<p>The templateUrl property declares a link to a template containing an HTML template. Likewise, the styleUrls property contains an array of links to any CSS fles that
+should be loaded for this component.</p>
+<p>, This is called interpolation and is frequently used to display data in a template. </p>
+<p><strong>App module</strong></p>
+<p>The App module is the packaging that helps tell Angular what&#x2019;s available to render. </p>
+<p>The NgModule decorator takes an object with a few different properties. </p>
+<p>The declarations property is to provide a list of any components and directives to make available to the entire application. </p>
+<p>The imports property is an array of other modules upon which this module depends </p>
+<p>the providers property, which is empty by default. Any services that are created are to be listed here </p>
+<p>the bootstrap property defnes which components to bootstrap at runtime. </p>
+<p><strong>Bootstrapping the app</strong></p>
+<p>The application must be bootstrapped at runtime to start the process of rendering. </p>
+<p>The role of main.ts is to bootstrap the Angular application. The contents of the main.ts </p>
+<p>the platformBrowserDynamic object is used to tell Angular which module is being loading </p>
+<p>It can take a moment for all the assets to load and initialize before the component renders. This is known as Just in Time compilation (JiT) </p>
+<h3 id="25-building-services">2.5 Building services</h3>
+<p>Services are objects that abstract some common logic that you plan to reuse in multiple
+places.  </p>
+<p>Another way to think of services is as sharable objects that any part of your app can
+import as needed. </p>
+<p>The intention of a service is to enable reuse of code. A service might be a set
+of common methods that need to be shared. You could have various &#x201C;helper methods&#x201D;
+that you don&#x2019;t want to write over and over, such as utilities to parse data formats or
+authentication logic that needs to be run in multiple places. </p>
+<h3 id="26-creating-your-first-component">2.6 Creating your first component</h3>
+<p>Directives allow you to modify the behavior and display of DOM elements in a template.  </p>
+<p>Directives make it possible to add some conditional logic or otherwise modify the way the template behaves or is rendered. </p>
+<p>The NgClass directive is able to add or remove CSS classes to and from the element. </p>
+<p>the safe navigation operator ?. will silently fail and not display anything if the property is missing. </p>
+<p>pipes, which are added directly into the expression to format the output.  </p>
+<p>Pipes only modify the data before it is displayed, and do not change the value in the
+controller. </p>
+<p>Input annotation. This indicates that this property is to be provided to the
+component by a parent component passing it to the summary.  </p>
+<p>The host selector is a way to specify that you want the styles to apply to the element
+that hosts the element </p>
+<h3 id="27-components-that-use-components-and-services">2.7 Components that use components and services</h3>
+<p>The constructor method runs as soon as the component is created.  </p>
+<p>don&#x2019;t load data from the service in the constructor </p>
+<p>Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur. </p>
+<h3 id="28-components-with-forms-and-events">2.8 Components with forms and events</h3>
+<p>This doesn&#x2019;t require the OnInit lifecycle hook, because it&#x2019;s a synchronous request to get data that exists in memory. </p>
+<p>(submit)=&quot;add()&quot; is an event binding. </p>
+<p>[(ngModel)]=&quot;stock&quot; attribute is a two-way binding that will sync the value of the
+input and the value of the property in the controller anytime it changes from either
+location. </p>
+<h3 id="29-application-routing">2.9 Application routing</h3>
+<p>routing, configures the different pages that the application can render </p>
+<p>The router works by declaring an outlet in the template, which is the place in the
+template that the final rendered component will be displayed.  </p>
+<p><strong>Summary</strong></p>
+<ul>
+<li>Angular apps are components that contain a tree of components. The root app is
+bootstrapped on page load to initialize the application.</li>
+<li><p>A component is an ES6 class with an @Component annotation that adds metadata
+to the class for Angular to properly render it. </p>
+</li>
+<li><p>Directives are attributes that modify the template in some way, such as NgIf,
+which conditionally shows or hides the DOM element based on the value of an
+expression. </p>
+</li>
+<li><p>Routing in Angular is based around paths mapping to a component. Routes will
+render a single component, and that component will also be able to render any
+additional components it needs. </p>
+</li>
+</ul>
 <p>3, App essentials</p>
 <p>4, Component basics</p>
 <p>5, Advanced components</p>
@@ -824,7 +933,7 @@ and syntax, making it a powerful framework without having to build a lot of cust
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Angular","level":"1.3.4","depth":2,"next":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[]},{"title":"Maven","level":"1.4.2","depth":2,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.3","depth":2,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]},{"title":"Spring","level":"1.4.4","depth":2,"path":"backend/spring.md","ref":"backend/spring.md","articles":[]},{"title":"MongoDB","level":"1.4.5","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.6","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.7","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"previous":{"title":"JavaScript","level":"1.3.3","depth":2,"path":"frontend/javascript.md","ref":"frontend/javascript.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"frontend/angular.md","mtime":"2019-02-12T09:52:23.090Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-12T09:59:00.850Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Angular","level":"1.3.4","depth":2,"next":{"title":"Backend","level":"1.4","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[{"title":"Java","level":"1.4.1","depth":2,"path":"backend/java.md","ref":"backend/java.md","articles":[]},{"title":"Maven","level":"1.4.2","depth":2,"path":"backend/maven.md","ref":"backend/maven.md","articles":[]},{"title":"Concurrency","level":"1.4.3","depth":2,"path":"backend/concurrency.md","ref":"backend/concurrency.md","articles":[]},{"title":"Spring","level":"1.4.4","depth":2,"path":"backend/spring.md","ref":"backend/spring.md","articles":[]},{"title":"MongoDB","level":"1.4.5","depth":2,"path":"backend/mongodb.md","ref":"backend/mongodb.md","articles":[]},{"title":"Mysql","level":"1.4.6","depth":2,"path":"backend/mysql.md","ref":"backend/mysql.md","articles":[]},{"title":"Redis","level":"1.4.7","depth":2,"path":"backend/redis.md","ref":"backend/redis.md","articles":[]}]},"previous":{"title":"JavaScript","level":"1.3.3","depth":2,"path":"frontend/javascript.md","ref":"frontend/javascript.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"frontend/angular.md","mtime":"2019-02-14T08:55:08.553Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-14T08:56:17.629Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
