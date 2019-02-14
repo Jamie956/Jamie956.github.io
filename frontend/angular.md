@@ -245,9 +245,6 @@ different components.
 
 
 
-### 2.1 Preview the chapter project
-### 2.2 Setting up the project
-### 2.3 The basic app scaffolding
 ### 2.4 How Angular renders the base application
 
 **App component**
@@ -289,6 +286,8 @@ The role of main.ts is to bootstrap the Angular application. The contents of the
 the platformBrowserDynamic object is used to tell Angular which module is being loading 
 
 It can take a moment for all the assets to load and initialize before the component renders. This is known as Just in Time compilation (JiT) 
+
+
 
 ### 2.5 Building services
 
