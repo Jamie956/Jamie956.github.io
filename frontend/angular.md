@@ -54,7 +54,7 @@ A component is a way to create custom HTML elements in your application.
 
 **Components' key characteristics**
 
-Components have some concepts that drive their design and architecture.  
+Components have some concepts that drive their design and architecture:
 
 - Encapsulation—Keeping component logic in a single place
 - Isolation—Keeping component internals hidden from external actors
@@ -147,7 +147,7 @@ TypeScript can help catch many simple syntax errors before they affect your appl
 
 
 
-Here are the primary reasons to use TypeScript 
+Here are the primary reasons to use TypeScript:
 
 - Adds clarity to your code—Variables that have types are easier to understand, because other developers (or yourself in six months) don’t have to think very hard about what the variable should be. 
 - Enables a smarter editor—When you use TypeScript with a supported editor, you’ll get automatic IntelliSense support for your code. As you write, the editor can suggest known variables or functions and tell you what type of value it expects.
@@ -161,8 +161,6 @@ Here are the primary reasons to use TypeScript
 - Angular is a platform, with many key elements such as tooling, UI libraries, and testing built in or easily incorporated into your application projects.
 - Applications are essentially combinations of components. These components build upon the core principles of encapsulation, isolation, and reusability, which should have events, be customizable, and be declarative.
 - ES6 and TypeScript provide a lot of the underpinnings for Angular’s architecture and syntax, making it a powerful framework without having to build a lot of custom language capabilities. 
-
-
 
 
 
@@ -347,7 +345,7 @@ A component is an encapsulated element that maintains its own internal logic for
 
 
 
-Here are the key principles of a component 
+Here are the key principles of a component:
 
 - Encapsulation—Keep component logic isolated
 - Isolation—Keep component internals hidden
@@ -376,7 +374,7 @@ Structural directives (NgIf , NgFor) modify the DOM tree based on some condition
 
 
 
-The primary default directives provided by Angular consist of the following  
+The primary default directives provided by Angular consist of the following:
 
 - NgClass—Conditionally apply a class to an element
 - NgStyle—Conditionally apply a set of styles to an element
@@ -425,8 +423,6 @@ It will also resolve bindings and set up event listeners for anything that decla
 
 
 ### 3.3 Types of compilers
-
-
 
 Angular provides two types of compilers, called the Just-in-Time (JiT) compiler and the Ahead-of-Time (AoT) compiler 
 
@@ -478,15 +474,13 @@ Change detection is the mechanism that allows components to be updated when data
 
 
 
-
-
 ### 3.6 Template expressions and bingdings
 
 Angular allows the placement of logic and customization directly into the template 
 
 
 
-template template:
+Template concepts:
 
 - Interpolation—Displaying content in the page
 - Attribute and property bindings—Linking data from the component controller into attributes or properties of other elements
