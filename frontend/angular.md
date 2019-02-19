@@ -388,13 +388,13 @@ in various combinations to create your application. Here is a quick overview of 
 
 
 
-¡	Modules—Objects that help you to organize dependencies into discrete units
-¡	Components—New elements that will compose the majority of your application’s
+- Modules—Objects that help you to organize dependencies into discrete units
+- Components—New elements that will compose the majority of your application’s
 structure and logic
-¡	Directives—Objects that modify elements to give them new capabilities or change
+- Directives—Objects that modify elements to give them new capabilities or change
 behaviors
-¡	Pipes—Functions that format data before it’s rendered
-¡	Services—Reusable objects that fll niche roles such as data access or helper utilities 
+- Pipes—Functions that format data before it’s rendered
+- Services—Reusable objects that fll niche roles such as data access or helper utilities 
 
 
 
@@ -449,12 +449,12 @@ it desires to render some output
 
 here are the key principles of a component 
 
-¡	Encapsulation—Keep component logic isolated
-¡	Isolation—Keep component internals hidden
-¡	Reusability—Allow component reuse with minimal effort
-¡	Event-based—Emit events during the lifecycle of the component
-¡	Customizable—Possible to style and extend the component
-¡	Declarative—Component used with simple declarative markup 
+- Encapsulation—Keep component logic isolated
+- Isolation—Keep component internals hidden
+- Reusability—Allow component reuse with minimal effort
+- Event-based—Emit events during the lifecycle of the component
+- Customizable—Possible to style and extend the component
+- Declarative—Component used with simple declarative markup 
 
 
 
@@ -482,11 +482,11 @@ structural directives (NgIf , NgFor) modify the DOM tree based on some condition
 
 The primary default directives provided by Angular consist of the following  
 
-¡	NgClass—Conditionally apply a class to an element
-¡	NgStyle—Conditionally apply a set of styles to an element
-¡	NgIf—Conditionally insert or remove an element from the DOM
-¡	NgFor—Iterate over a collection of items
-¡	NgSwitch—Conditionally display an item from a set of options 
+- NgClass—Conditionally apply a class to an element
+- NgStyle—Conditionally apply a set of styles to an element
+- NgIf—Conditionally insert or remove an element from the DOM
+- NgFor—Iterate over a collection of items
+- NgSwitch—Conditionally display an item from a set of options 
 
 
 
@@ -609,12 +609,12 @@ Angular allows the placement of logic and customization directly into the templa
 
 template template:
 
-¡	Interpolation—Displaying content in the page
-¡	Attribute and property bindings—Linking data from the component controller into
+- Interpolation—Displaying content in the page
+- Attribute and property bindings—Linking data from the component controller into
 attributes or properties of other elements
-¡	Event bindings—Adding event listeners to elements
-¡	Directives—Modifying the behavior or adding additional structure to elements
-¡	Pipes—Formatting data before it’s displayed on the page 
+- Event bindings—Adding event listeners to elements
+- Directives—Modifying the behavior or adding additional structure to elements
+- Pipes—Formatting data before it’s displayed on the page 
 
 
 
@@ -665,15 +665,15 @@ setting a class and style property for an element.
 
 **Summary** 
 
-¡	An Angular application is a tree of components, and there is always a root application component.
-¡	The various entity types (modules, components, directives, pipes, services) each
+- An Angular application is a tree of components, and there is always a root application component.
+- The various entity types (modules, components, directives, pipes, services) each
 have a specifc role and purpose.
-¡	Angular has two types of compilers, Ahead-of-Time (AoT) and Just-in-Time (JiT),
+- Angular has two types of compilers, Ahead-of-Time (AoT) and Just-in-Time (JiT),
 to give you different ways to render the application.
-¡	Dependency injection is fundamental for Angular to track all the objects in the
+- Dependency injection is fundamental for Angular to track all the objects in the
 application and make them available when they’re requested.
-¡	Change detection keeps the components in sync with the model data as asynchronous changes occur from user input or other events.
-¡	Templates contain several types of bindings: interpolation for displaying data,
+- Change detection keeps the components in sync with the model data as asynchronous changes occur from user input or other events.
+- Templates contain several types of bindings: interpolation for displaying data,
 property bindings for modifying the element’s properties, attribute bindings for
 modifying non-property values of an element, and event bindings for handling
 events. 
