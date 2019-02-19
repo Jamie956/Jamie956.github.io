@@ -2,10 +2,6 @@
 
 
 
-
-
-
-
 ## 1, Angular: a modern web platform
 
 
@@ -508,7 +504,7 @@ interpolation is a shortcut for a property binding to the textContent property o
 
 
 
-Using the [] syntax binds to an element’s property, not the attribute. This is an important distinction, because properties are the DOM element’s property. That makes it possible to use any valid HTML element property (such as the img src property). Instead of binding the data to the attribute, you’re binding data directly to the element property, which is quite effcient 
+Using the [] syntax binds to an element’s property, not the attribute. This is an important distinction, because properties are the DOM element’s property. That makes it possible to use any valid HTML element property (such as the img src property). Instead of binding the data to the attribute, you’re binding data directly to the element property, which is quite efficient 
 
 
 
