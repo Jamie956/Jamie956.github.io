@@ -50,6 +50,8 @@ A few primary use cases:
 
 A component is a way to create custom HTML elements in your application. 
 
+
+
 **Components' key characteristics**
 
 Components have some concepts that drive their design and architecture.  
@@ -78,7 +80,7 @@ HTML is the language of the web because it describes the content of a page in a 
 
 
 
-The offcial specifcation for custom elements is intended to allow developers to create new HTML elements that essentially blend naturally and natively into the DOM. 
+The offcial specification for custom elements is intended to allow developers to create new HTML elements that essentially blend naturally and natively into the DOM. 
 
 
 
@@ -183,7 +185,7 @@ Here are the primary reasons to use TypeScript
 The @Component annotation declares that this class is a component by accepting an object. It has a selector property that declares the HTML selector of the component.
 That means the component is used in the template by adding an HTML tag `<app-root> </app-root>`. 
 
-The templateUrl property declares a link to a template containing an HTML template. Likewise, the styleUrls property contains an array of links to any CSS fles that should be loaded for this component.
+The templateUrl property declares a link to a template containing an HTML template. Likewise, the styleUrls property contains an array of links to any CSS files that should be loaded for this component.
 
 {{title}}, This is called interpolation and is frequently used to display data in a template. 
 
@@ -201,7 +203,7 @@ The imports property is an array of other modules upon which this module depends
 
 The providers property, which is empty by default. Any services that are created are to be listed here 
 
-The bootstrap property defnes which components to bootstrap at runtime. 
+The bootstrap property defines which components to bootstrap at runtime. 
 
 
 
@@ -209,11 +211,15 @@ The bootstrap property defnes which components to bootstrap at runtime.
 
 The application must be bootstrapped at runtime to start the process of rendering. 
 
-The role of main.ts is to bootstrap the Angular application. The contents of the main.ts 
 
-the platformBrowserDynamic object is used to tell Angular which module is being loading 
 
-It can take a moment for all the assets to load and initialize before the component renders. This is known as Just in Time compilation (JiT) 
+The role of main.ts is to bootstrap the Angular application.
+
+
+
+The platformBrowserDynamic object is used to tell Angular which module is being loading 
+
+It can take a moment for all the assets to load and initialize before the component renders. this is known as Just in Time compilation (JiT) 
 
 
 
@@ -235,7 +241,7 @@ Directives make it possible to add some conditional logic or otherwise modify th
 
 The NgClass directive is able to add or remove CSS classes to and from the element. 
 
-the safe navigation operator ?. will silently fail and not display anything if the property is missing. 
+The safe navigation operator ?. will silently fail and not display anything if the property is missing. 
 
 Pipes, which are added directly into the expression to format the output.  
 
@@ -289,13 +295,9 @@ The router works by declaring an outlet in the template, which is the place in t
 
 
 
-
-
 ### 3.1 Entities in Angular
 
-These different entities have specifc roles and capabilities, and you’ll be using them in various combinations to create your application. Here is a quick overview of the types: 
-
-
+These different entities have specific roles and capabilities, and you’ll be using them in various combinations to create your application. Here is a quick overview of the types: 
 
 - Modules—Objects that help you to organize dependencies into discrete units
 - Components—New elements that will compose the majority of your application’s structure and logic
@@ -305,15 +307,13 @@ These different entities have specifc roles and capabilities, and you’ll be us
 
 
 
-
-
 **Modules**
 
 Modules are buckets for storing related entities for easy reuse and distribution. 
 
 
 
-JavaScript modules are language constructs and are a way to separate code into different fles that can be loaded as needed. 
+JavaScript modules are language constructs and are a way to separate code into different files that can be loaded as needed. 
 
 
 
@@ -329,7 +329,7 @@ The declarations array contains a list of all components and directives that the
 
 
 
-the providers array contains a list of all of the services that you want to make available to the whole application. 
+The providers array contains a list of all of the services that you want to make available to the whole application. 
 
 
 
@@ -342,8 +342,6 @@ To start rendering, Angular also needs to know what component(s) to render on th
 
 
 **Components**
-
-
 
 A component is an encapsulated element that maintains its own internal logic for how it desires to render some output 
 
@@ -388,15 +386,9 @@ The primary default directives provided by Angular consist of the following
 
 
 
-
-
 **Pipes**
 
-
-
 Using pipes, we can transform the data in the view during rendering without changing the underlying data value. 
-
-
 
 
 
@@ -406,9 +398,9 @@ Reuse functional pieces of JavaScript logic across your application.
 
 
 
-
-
 ### 3.2 How Angular begins to render an app
+
+
 
 <img src="../img/How Angular renders the base app into the browser.png" />
 
@@ -430,6 +422,8 @@ Any child components are also rendered as part of the component tree.
 
 It will also resolve bindings and set up event listeners for anything that declares it. 
 
+
+
 ### 3.3 Types of compilers
 
 
@@ -444,6 +438,8 @@ With JiT compilation, it means that the compiling of the application happens in 
 
 AoT, is a way to render the content before sending it to the browser.  
 
+
+
 ### 3.4 Dependency injection
 
 Dependency injection (DI) is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. 
@@ -453,6 +449,8 @@ Dependency injection (DI) is a pattern for obtaining objects that uses a registr
 Injector. This is the service that Angular provides for requesting and registering dependencies 
 
 Providers are responsible for creating the instanceof the object requested. 
+
+
 
 ### 3.5 Change detection
 
@@ -506,8 +504,6 @@ Bindings are the conduit for data or methods to be used from a controller in the
 
 
 
-**Interpolation**
-
 **Property bindings**
 
 property bindings, which allow you to bind values to properties of an element to modify their behavior or appearance. 
@@ -522,22 +518,10 @@ Using the [] syntax binds to an element’s property, not the attribute. This is
 
 
 
-**Special property bindings**
-
-Setting a class and style property for an element. 
-
-
-
-**Attribute bindings**
-
-**Event bindings**
-
-
-
 **Summary** 
 
 - An Angular application is a tree of components, and there is always a root application component.
-- The various entity types (modules, components, directives, pipes, services) each have a specifc role and purpose.
+- The various entity types (modules, components, directives, pipes, services) each have a specific role and purpose.
 - Angular has two types of compilers, Ahead-of-Time (AoT) and Just-in-Time (JiT), to give you different ways to render the application.
 - Dependency injection is fundamental for Angular to track all the objects in the application and make them available when they’re requested.
 - Change detection keeps the components in sync with the model data as asynchronous changes occur from user input or other events.
