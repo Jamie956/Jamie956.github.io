@@ -10,115 +10,47 @@
 
 
 
-### 概念
-
-Nginx：轻量级的Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器
-
-- 处理静态文件，索引文件以及自动索引； 
-- 反向代理加速(无缓存)，简单的负载均衡和容错； 
-- FastCGI，简单的负载均衡和容错； 
-- 模块化的结构。过滤器包括gzipping, byte ranges, chunked responses, 以及 SSI-filter 。在SSI过滤器中，到同一个 proxy 或者 FastCGI 的多个子请求并发处理；  
-- SSL 和 TLS SNI 支持； 
-
-反向代理（Reverse Proxy）：指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器
+### 概述
 
 
 
-Nginx 相对于 Apache 优点： 
+Nginx (engine x)：轻量级的 Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器	
 
-1) 高并发响应性能非常好，官方 Nginx 处理静态文件并发 5w/s 
-
-2) 反向代理性能非常强。（可用于负载均衡） 
-
-3) 内存和 cpu 占用率低。（为 Apache 的 1/5-1/10） 
-
-4) 对后端服务有健康检查功能。
-
-5) 支持 PHP cgi 方式和 fastcgi 方式。 
-
-6) 配置代码简洁且容易上手。  
-
-
-
-### Log
-
-In case something does not work as expected, you may try to find out the reason in `access.log` and `error.log` files in the directory `/usr/local/nginx/logs` or `/var/log/nginx`. 
-
-
-
-### 目录
-
-conf 存放配置文件
-
-html 网页文件
-
-logs 存放日志
-
-sbin   shell启动、停止等脚本
+反向代理(Reverse Proxy)：指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器
 
 
 
 ### 命令
 
 ```shell
-#关闭进程
-ps -ef | grep nginx	#查看进程
-kill –INT进程号
-
 nginx				#启动
-nginx -s stop       # 快速关闭Nginx，可能不保存相关信息，并迅速终止web服务
-nginx -s quit       #平稳关闭Nginx，保存相关信息，有安排的结束web服务
-nginx -s reload     #因改变了Nginx相关配置，需要重新加载配置而重载
+nginx -s stop       #快速关闭Nginx，可能不保存相关信息
+nginx -s quit       #平稳关闭Nginx，保存相关信息
+nginx -s reload     #重新加载配置
 nginx -s reopen     #重新打开日志文件
-nginx -c filename   #为 Nginx 指定一个配置文件，来代替缺省的
-nginx -t            #不运行，而仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件
-nginx -v            #显示 nginx 的版本
-nginx -V            #显示 nginx 的版本，编译器版本和配置参数
+nginx -c [yourconf] #指定一个配置文件启动nginx
+nginx -t            #测试配置文件
+nginx -v            #版本
+nginx -V            #编译器版本和配置参数
+```
 
-#启动步骤
+**启动步骤**
+
+```shell
 nginx -s stop
-nginx -t -c conf/nginx.conf
+nginx -tc conf/nginx.conf
 nginx -v
-nginx -c conf/nginx.conf	#按照指定配置去启动nginx
+nginx -c conf/nginx.conf
 ```
 
 
 
-### 模型
-
-nginx 采用 epoll 模型，异步非阻塞
-
-epoll 对于句柄事件的选择不是遍历的，是事件响应的，就是句柄上事 件来就马上选择出来，不需要遍历整个句柄链表，因此效率非常高  
-
-
-
-**master-worker**
-
-nginx在启动后，会有一个master进程和多个worker进程。master进程主要用来管理worker进程，包含：接收来自外界的信号，向各worker进程发送信号，监控worker进程的运行状态，当worker进程退出后(异常情况下)，会自动重新启动新的worker进程。而基本的网络事件，则是放在worker进程中来处理了。多个worker进程之间是对等的，他们同等竞争来自客户端的请求，各进程互相之间是独立的。一个请求，只可能在一个worker进程中处理，一个worker进程，不可能处理其它进程的请求。worker进程的个数是可以设置的，一般我们会设置与机器cpu核数一致
-
-
-
-<img src="http://tengine.taobao.org/book/_images/chapter-2-1.PNG"/>
-
-
-
-
-
-master进程在接到信号后，会先重新加载配置文件，然后再启动新的worker进程，并向所有老的worker进程发送信号，告诉他们可以光荣退休了。新的worker在启动后，就开始接收新的请求，而老的worker在收到来自master的信号后，就不再接收新的请求，并且在当前进程中的所有未处理完的请求处理完成后，再退出。
-
-
-
-首先，每个worker进程都是从master进程fork过来，在master进程里面，先建立好需要listen的socket（listenfd）之后，然后再fork出多个worker进程。所有worker进程的listenfd会在新连接到来时变得可读，为保证只有一个进程处理该连接，所有worker进程在注册listenfd读事件前抢accept_mutex，抢到互斥锁的那个进程注册listenfd读事件，在读事件里调用accept接受该连接。当一个worker进程在accept这个连接之后，就开始读取请求，解析请求，处理请求，产生数据后，再返回给客户端，最后才断开连接，这样一个完整的请求就是这样的了。我们可以看到，一个请求，完全由worker进程来处理，而且只在一个worker进程中处理。
-
-
-
-nginx为了更好的利用多核特性，提供了cpu亲缘性的绑定选项，我们可以将某一个进程绑定在某一个核上，这样就不会因为进程的切换带来cache的失效
-
-
-
-### HTTP反向代理配置
+### http反向代理配置
 
 ```shell
+#运行用户
+#user somebody;
+
 #启动进程,通常设置成和cpu的数量相等
 worker_processes  1;
 
