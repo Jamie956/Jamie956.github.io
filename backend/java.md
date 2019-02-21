@@ -178,43 +178,6 @@ equals() ：比较内容
 
 
 
-## Array
-
-- 定义一个指定长度的数组
-
-  ```java
-  int[] a = new int[3];
-  ```
-
-- 定义一个包含元素的数组
-
-  ```java
-  int[] b = { 1, 2, 3 };
-  int[] c = new int[] { 1, 2, 3 };
-  ```
-
-- 定义一个指定长度的二维数组
-
-  ```java
-  int[][] f = new int[5][4];
-  ```
-
-- 定义一个包含元素的二维数组 
-
-  ```java
-  int[][] d = { { 1, 2 }, { 3, 4, 5 } };
-  ```
-
-- 遍历
-
-  ```for (T element : array) {}```
-
-- Array -> List
-
-  ```Arrays.asList(array)```
-
-
-
 ## proxy
 
 1. 在运行时判断任意一个对象所属的类；
@@ -439,27 +402,105 @@ Class files can also be stored in a JAR (Java archive) file. A JAR file contains
 
 ### 4.9 Documentation Comments
 
-**Comment Insertion**
-
 **Class Comments**
+
+```java
+/**
+* A {@code Card} object represents a playing card, such
+* as "Queen of Hearts". A card has a suit (Diamond, Heart,
+* Spade or Club) and a value (1 = Ace, 2 . . . 10, 11 = Jack,
+* 12 = Queen, 13 = King)
+*/
+public class Card
+{
+    . . .
+}
+```
+
+
 
 **Method Commnets**
 
+```java
+/**
+* Raises the salary of an employee.
+* @param byPercent the percentage by which to raise the salary (e.g. 10 means 10%)
+* @return the amount of the raise
+*/
+public double raiseSalary(double byPercent)
+{
+    double raise = salary * byPercent / 100;
+    salary += raise;
+    return raise;
+}
+```
+
+
+
 **Field Comments**
 
-**General Comments**
-
-**Package and Overivew Commnets**
-
-**Commnet Extraction**
-
-
-
-4.10 Class Design Hints
+```java
+/**
+* The "Hearts" card suit
+*/
+public static final int HEARTS = 1;
+```
 
 
 
+### 4.10 Class Design Hints
 
+- Always keep data private. 
+- Always initialize data. 
+- Don’t use too many basic types in a class. 
+- Not all fields need individual field accessors and mutators. 
+- Not all felds need individual feld accessors and mutators. 
+- Make the names of your classes and methods reﬂect their responsibilities. 
+- Prefer immutable classes 
+
+
+
+## 5 Inheritance
+
+
+
+### 5.1 Classes, Superclasses, and Subclasses
+
+**Defining Subclasses**
+
+**Overriding Methods**
+
+**Subclass Constructors**
+
+**Inheritance Hierarchies**
+
+**Polymorphism**
+
+**Understanding Method Calls**
+
+**Preventing Inheritance: Final Classes and Methods**
+
+**Casting**
+
+**Abstract Classes**
+
+**Protected Acess**
+
+
+
+5.2 Object: The Cosmic Superclass
+
+5.3 Generic Array Lists
+
+5.4 Object Wrappers and Autoboxing
+
+5.5 Methods with a Variable Number of Parameters
+
+5.6 Enmeration Classes
+
+5.7 Reflection
+
+5.8 Design Hints for Inheritance
 
 
 
