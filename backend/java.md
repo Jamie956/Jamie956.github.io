@@ -223,7 +223,17 @@ equals() ：比较内容
 
 
 
-## 4.1 OOP
+## ===Core Java===
+
+
+
+
+
+## 4 Objects and Classes
+
+
+
+### 4.1 Introduction to Object-Oriented Programming
 
 **Encapsulation**
 
@@ -285,7 +295,7 @@ class A extends class B, class A inherits methods from class B but has more capa
 
 
 
-## 4.2 Predefined classes
+### 4.2 Using Predefined classes
 
 **Construct**
 
@@ -297,7 +307,7 @@ objects.
 
 
 
-## 4.3 Defning Your Own Classes
+### 4.3 Defning Your Own Classes
 
 **constructor**
 
@@ -326,7 +336,7 @@ class Employee
 
 
 
-## 4.4 Static
+### 4.4 Static Field and Methods
 
 **Static Fields**
 
@@ -386,7 +396,7 @@ Employee.getNextId).
 
 
 
-## 4.6 Object Construction
+### 4.6 Object Construction
 
 **Overloading**
 
@@ -405,7 +415,7 @@ value: numbers to 0, boolean values to false, and object references to null.
 
 
 
-## 4.7 Packages
+### 4.7 Packages
 
 **Class Importation**
 
