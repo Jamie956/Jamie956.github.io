@@ -215,117 +215,11 @@ equals() ：比较内容
 
 
 
-## 反射
-
-### 作用
+## proxy
 
 1. 在运行时判断任意一个对象所属的类；
 2. 在运行时获取类的对象；
 3. 在运行时访问java对象的属性，方法，构造方法等。
-
-### API
-
-- 具体实例 -> 包名类名
-
-```java
-myInstance.getClass().getName()
-```
-
-- 包名类名 -> Class实例
-
-```java
-Class.forName("com.example.MyInstance");
-```
-
-- Class实例 -> 创建具体实例
-
-```java
-(MyInstance) classInstance.newInstance();
-```
-
-- Class实例 -> 获取构造函数
-
-```java
-classInstance.getConstructors();
-```
-
-- 构造函数 -> 创建具体实例
-
-```java
-(MyInstance) constructors[0].newInstance();
-```
-
-- Class实例 -> 获取实现的接口
-
-```java
-classInstance.getInterfaces();
-```
-
-- Class实例 -> 继承的父类
-
-```java
-classInstance.getSuperclass();
-```
-
-- Class实例 -> 成员变量
-
-```java
-classInstance.getDeclaredFields();
-classInstance.getDeclaredFields("name");
-```
-
-- Class实例 -> 父类或接口的变量
-
-```java
-classInstance.getFields();
-```
-
-- fields[i] -> 权限修饰符
-
-```java
-Modifier.toString(fields[i].getModifiers());
-
-```
-
-- fields[i] -> 类型
-
-```java
-fields[i].getType().getName()
-```
-
-- Class实例 -> Method实例
-
-```java
-classInstance.getMethod("hello");
-classInstance.getMethod("hello", String.class);
-```
-
-- Method实例 -> Method调用
-
-```java
-method.invoke(classInstance.newInstance());
-method.invoke(classInstance.newInstance(), "tom");
-```
-
-- 操作属性
-
-```java
-field.setAccessible(true);
-field.set(myInstance,"cat");
-```
-
-- 获取类加载器类型
-
-```java
-myInstance.getClass().getClassLoader().getClass().getName()
-```
-
-- 动态代理结构
-
-1. 定义实体（要实现接口）
-2. 自定义InvocationHandler，需要实现接口InvocationHandler
-3. 重写方法invoke
-4. 获取代理对象，Proxy.newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h)
 
 
 
@@ -511,7 +405,23 @@ value: numbers to 0, boolean values to false, and object references to null.
 
 
 
+## 4.7 Packages
 
+**Class Importation**
+
+**Static Imports**
+
+**Addition of a Class into a Package**
+
+**Package Scope**
+
+
+
+4.8 The Class Path
+
+4.9 Documentation Comments
+
+4.10 Class Design Hints
 
 
 
