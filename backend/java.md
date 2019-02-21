@@ -237,9 +237,9 @@ equals() ：比较内容
 
 **Encapsulation**
 
-The key to making encapsulation work is to have methods never directly access
-instance fields in a class other than their own. Programs should interact with object
-data only through the object’s methods. Encapsulation is the way to give an object its “black box” behavior, which is the key to reuse and reliability.
+The key to making encapsulation work is to have methods never directly access instance fields in a class other than their own. Programs should interact with object data only through the object’s methods. 
+
+Encapsulation is the way to give an object its “black box” behavior, which is the key to reuse and reliability.
 
 ```java
 public String getName()
@@ -252,17 +252,13 @@ public double getSalary()
 }
 ```
 
-These are obvious examples of accessor methods. As they simply return the values
-of instance fields, they are sometimes called field accessors.
+These are obvious examples of accessor methods. As they simply return the values of instance fields, they are sometimes called field accessors.
 
 
 
 **Inheritance**
 
-When you extend an existing class, the new class has all the properties and
-methods of the class that you extend. You then supply new methods and data
-fields that apply to your new class only. The concept of extending a class to obtain
-another class is called inheritance.
+When you extend an existing class, the new class has all the properties and methods of the class that you extend. You then supply new methods and data fields that apply to your new class only. The concept of extending a class to obtain another class is called inheritance.
 
 
 
@@ -270,24 +266,15 @@ another class is called inheritance.
 
 • Dependence (“uses–a”)
 
-For example, the Order class uses the Account class because Order objects need
-to access Account objects to check for credit status. But the Item class does not depend
-on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate
-objects of that class. 
+For example, the Order class uses the Account class because Order objects need to access Account objects to check for credit status. But the Item class does not depend on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate objects of that class. 
 
 • Aggregation (“has–a”)
 
-The aggregation, or “has–a” relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that
-objects of class A contain objects of class B.
+The aggregation, or “has–a” relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that objects of class A contain objects of class B.
 
 • Inheritance (“is–a”) 
 
-The inheritance, or “is–a” relationship, expresses a relationship between a more
-special and a more general class. For example, a RushOrder class inherits from an
-Order class. The specialized RushOrder class has special methods for priority handling
-and a different method for computing shipping charges, but its other methods,
-such as adding items and billing, are inherited from the Order class. In general, if
-class A extends class B, class A inherits methods from class B but has more capabilities.
+The inheritance, or “is–a” relationship, expresses a relationship between a more special and a more general class. For example, a RushOrder class inherits from an Order class. The specialized RushOrder class has special methods for priority handling and a different method for computing shipping charges, but its other methods, such as adding items and billing, are inherited from the Order class. In general, if class A extends class B, class A inherits methods from class B but has more capabilities.
 
 
 
@@ -299,11 +286,11 @@ class A extends class B, class A inherits methods from class B but has more capa
 
 **Construct**
 
-To work with objects, you first construct them and specify their initial state. Then
-you apply methods to the objects.
+To work with objects, you first construct them and specify their initial state. Then you apply methods to the objects.
+
 In the Java programming language, you use constructors to construct new instances.
-A constructor is a special method whose purpose is to construct and initialize
-objects.
+
+A constructor is a special method whose purpose is to construct and initialize objects.
 
 
 
@@ -321,10 +308,7 @@ objects.
 
 **Final Instance Fields**
 
-You can define an instance field as final. Such a field must be initialized when the
-object is constructed. That is, you must guarantee that the field value has been
-set after the end of every constructor. Afterwards, the field may not be modified
-again.
+You can define an instance field as final. Such a field must be initialized when the object is constructed. That is, you must guarantee that the field value has been set after the end of every constructor. Afterwards, the field may not be modified again.
 
 ```java
 class Employee
@@ -349,12 +333,7 @@ class Employee
 }
 ```
 
-Every employee object now has its own id feld, but there is only one nextId feld
-that is shared among all instances of the class. Let’s put it another way. If there
-are 1,000 objects of the Employee class, then there are 1,000 instance felds id, one for
-each object. But there is a single static feld nextId. Even if there are no employee
-objects, the static feld nextId is present. It belongs to the class, not to any individual
-object.
+Every employee object now has its own id feld, but there is only one nextId feld that is shared among all instances of the class. Let’s put it another way. If there are 1,000 objects of the Employee class, then there are 1,000 instance felds id, one for each object. But there is a single static feld nextId. Even if there are no employee objects, the static feld nextId is present. It belongs to the class, not to any individual object.
 
 
 
@@ -369,9 +348,7 @@ public class Math
 }
 ```
 
-If the keyword static had been omitted, then PI would have been an instance feld
-of the Math class. That is, you would need an object of this class to access PI,
-and every Math object would have its own copy of PI.
+If the keyword static had been omitted, then PI would have been an instance feld of the Math class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.
 
 
 
@@ -389,10 +366,8 @@ public static int getNextId()
 ```
 
 Use static methods in two situations:
-• When a method doesn’t need to access the object state because all needed
-parameters are supplied as explicit parameters (example: Math.pow).
-• When a method only needs to access static felds of the class (example:
-Employee.getNextId).
+• When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
+• When a method only needs to access static felds of the class (example: Employee.getNextId).
 
 
 
@@ -400,8 +375,7 @@ Employee.getNextId).
 
 **Overloading**
 
-Some classes have more than one constructor. For example, you can construct an
-empty StringBuilder object as
+Some classes have more than one constructor. For example, you can construct an empty StringBuilder object as
 `StringBuilder messages = new StringBuilder();`
 Alternatively, you can specify an initial string:
 `StringBuilder todoList = new StringBuilder("To do:\n"); `
@@ -410,26 +384,76 @@ Alternatively, you can specify an initial string:
 
 **Default Field Initialization**
 
-If you don’t set a feld explicitly in a constructor, it is automatically set to a default
-value: numbers to 0, boolean values to false, and object references to null.
+If you don’t set a field explicitly in a constructor, it is automatically set to a default value: numbers to 0, boolean values to false, and object references to null.
 
 
 
 ### 4.7 Packages
 
+Java allows you to group classes in a collection called a package. Packages are convenient for organizing your work and for separating your work from code libraries provided by others. 
+
+
+
+The main reason for using packages is to guarantee the uniqueness of class names. 
+
+
+
+As long as both of them place their class into different packages, there is no conﬂict. In fact, to absolutely guarantee a unique package name, use an Internet domain name (which is known to be unique) written in reverse. 
+
+
+
 **Class Importation**
+
+A class can use all classes from its own package and all public classes from other packages. 
+
+
+
+Locating classes in packages is an activity of the compiler. The bytecodes in class files always use full package names to refer to other classes. 
+
+
 
 **Static Imports**
 
-**Addition of a Class into a Package**
+A form of the import statement permits the importing of static methods and fields, not just classes. 
+
+```java
+import static java.lang.System.*;
+
+out.println("Goodbye, World!"); // i.e., System.out
+exit(0); // i.e., System.exit
+```
+
+
 
 **Package Scope**
 
+If you don’t specify either public or private, the feature (that is, the class, method, or variable) can be accessed by all methods in the same package. 
 
 
-4.8 The Class Path
 
-4.9 Documentation Comments
+### 4.8 The Class Path
+
+Class files can also be stored in a JAR (Java archive) file. A JAR file contains multiple class files and subdirectories in a compressed format, saving space and improving performance. 
+
+
+
+### 4.9 Documentation Comments
+
+**Comment Insertion**
+
+**Class Comments**
+
+**Method Commnets**
+
+**Field Comments**
+
+**General Comments**
+
+**Package and Overivew Commnets**
+
+**Commnet Extraction**
+
+
 
 4.10 Class Design Hints
 
