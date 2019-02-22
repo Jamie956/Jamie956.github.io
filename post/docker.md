@@ -1,10 +1,9 @@
-# 命令
-## Base
 ```docker
 docker -v //查看版本
 docker info
 ```
-## image相关命令
+### image
+
 ```docker
 docker search <image>
 docker pull <image:tag>
@@ -28,7 +27,8 @@ docker commit -a jamie956 <container> <image>:<tag>
 docker save -o <name>.tar <image>
 docker load -i <name>.tar
 ```
-## Container相关命令
+Container
+
 ```docker
 docker ps
 docker ps -a
@@ -44,28 +44,34 @@ docker rm $(docker ps -a -q)
 docker exec -it <container> bash
 docker cp <host> <container>:</>
 ```
-## Docker hub 拉取和提交
+### Docker hub 拉取和提交
 ```docker
 docker login
 docker pull <username>/<repository>:<tag>
 docker push <username>/<repository>:<tag>
 ```
-## volume相关命令
+### volume
+
 ```docker
 docker volume create <name>
 -v <volumename>:<path>
 docker volume prune
 docker volume rm <name>
 ```
-## 容器重启
+### 容器重启
+
 ```docker
 docker run --restart always <container>
 docker run --restart on-failure:5 <container>
 docker run --restart unless-stopped <container>
 ```
 
-# Install Images
-## Jenkins
+
+
+### Install Images
+
+**Jenkins**
+
 ```docker
 docker run \
 --name myjenkins -u root --privileged=true \
@@ -77,7 +83,8 @@ docker run \
 -v /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7 \
 -it <image>
 ```
-## RabbitMQ
+**RabbitMQ**
+
 ```docker
 docker run \
 -d \
@@ -88,7 +95,8 @@ docker run \
 --name myrabbitmq \
 rabbitmq
 ```
-## mongodb
+**mongodb**
+
 ```docker
 docker run \
 --name mymongo \
@@ -105,7 +113,8 @@ ls -alh|grep db
 
 win10 => docker run -p 27017:27017 -d mongo
 ```
-## mongo express
+**mongo express**
+
 ```docker
 docker run \
 --name mymongo-express \
@@ -118,23 +127,28 @@ docker run \
 --rm \
 mongo-express
 ```
-## mysql
+**mysql**
+
 ```docker
 docker pull mysql:5.7
 docker run -itd --name mysql -v /d/container/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7
 ```
-## adminer
+**adminer**
+
 ```docker
 docker run -d --name adminer --link mysql-server:db -p 8085:8080 adminer
 ```
-## phpmyadmin
+**phpmyadmin**
+
 ```docker
 docker pull phpmyadmin/phpmyadmin
 docker run -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
 ```
 
-# Other
-## docker命令不需要再使用sudo啦
+
+
+### no sudo
+
 ```docker
 sudo groupadd docker
 sudo gpasswd -a jamie956 docker

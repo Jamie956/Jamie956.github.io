@@ -1,4 +1,4 @@
-**Commands**
+## Commands
 
 ```shell
 git help
@@ -35,7 +35,7 @@ git branch -d <Branch>
 
 
 
-**Using SSH Key by Github**
+## Using SSH Key by Github
 
 ```shell
 #1.Create SSH key
@@ -52,7 +52,7 @@ git config --global user.email "your@eamil.com"
 
 
 
-**Gitlab Pages Deploy Gitbook**
+## Gitlab Pages Deploy Gitbook
 
 1. New repo
 
@@ -89,7 +89,7 @@ PS: Fork repo need to remove fork relationship, Step: Settings -> General -> Adv
 
 
 
-**Gitlab sync to Github**
+## Gitlab sync to Github
 
 1. cd to gitlab repo
 2. `git remote add origin git@github.com:Jamie956/test-git.git`

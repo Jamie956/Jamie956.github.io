@@ -22,8 +22,8 @@
 * [MongoDB](post/mongodb.md)
 * [Mysql](post/mysql.md)
 * [Redis](post/redis.md)
-* [Docker](devops/docker.md)
-* [Tomcat](devops/tomcat.md)
+* [Docker](post/docker.md)
+* [Docker Tomcat](post/docker-tomcat.md)
 
 * [Undefined](undefined/README.md)
     * [Hexo](undefined/hexo.md)
