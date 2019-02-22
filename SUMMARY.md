@@ -29,7 +29,6 @@
 
 
 * [Hexo](post/hexo.md)
-* [Browser](post/browser.md)
 * [VSCode](post/vscode.md)
 * [Eclipse](post/eclipse.md)
 * [Typora](post/typora.md)

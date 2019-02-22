@@ -1,5 +1,3 @@
-# Command
-
 ```
 ===basic===
 mongod --dbpath "E:\MongoDB\data" --logpath "E:\MongoDB\logs\mongo.log" --install -serviceName "MongoDB"
