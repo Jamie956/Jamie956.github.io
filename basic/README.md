@@ -1,9 +1,0 @@
-- SOLID
-  - S - SRP - Single Responsibility Principle
-  - O - OCP - Open-Closed Principle
-  - L - LSP - Liskov Substitution Principle
-  - I - ISP - Interface Segregation Principle
-  - D - DIP - Dependency Inversion Principle
-- KISS - Keep It Simple, Stupid
-- YAGNI - You Aren’t Gonna Need It
-- DRY - Don’t Repeat Yourself

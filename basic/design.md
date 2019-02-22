@@ -1,4 +1,4 @@
-### Glossary
+### Design Pattern
 
 **abstract class** A class whose primary purpose is to define an interface. An abstract class defers some or all of its implementation to subclasses. An abstract class cannot be instantiated.
 
@@ -94,3 +94,16 @@
 
 **white-box reuse** A style of reuse based on class inheritance. A subclass reuses the interface and implementation of its parent class,but it may have access to otherwise private aspects of its parent.
 
+
+
+### Rule
+
+- SOLID
+  - S - SRP - Single Responsibility Principle
+  - O - OCP - Open-Closed Principle
+  - L - LSP - Liskov Substitution Principle
+  - I - ISP - Interface Segregation Principle
+  - D - DIP - Dependency Inversion Principle
+- KISS - Keep It Simple, Stupid
+- YAGNI - You Aren’t Gonna Need It
+- DRY - Don’t Repeat Yourself
