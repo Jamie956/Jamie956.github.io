@@ -1,14 +1,15 @@
 # Summary
 
 * [Guide](README.md)
-* [Basic](basic/README.md)
-    * [Git](basic/git.md)
-    * [Data Structure](basic/dataStructure.md)
-    * [Http](basic/http.md)
-    * [Regular Expression](basic/regularExpression.md)
-    * [Linux](basic/linux.md)
-    * [Windows](basic/windows.md)
-    * [Design](basic/design.md)
+
+* [Git](post/git.md)
+* [Data Structure](post/dataStructure.md)
+* [Http](post/http.md)
+* [Regular Expression](post/regularExpression.md)
+* [Linux](post/linux.md)
+* [Windows](post/windows.md)
+* [Design](post/design.md)
+
 * [Frontend](frontend/README.md)
     * [NodeJS](frontend/nodejs.md)
     * [Nginx](frontend/nginx.md)
