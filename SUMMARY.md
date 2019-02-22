@@ -31,6 +31,6 @@
 * [Music](post/music.md)
 
 
-* [History](post/hisory.md)
+* [History](post/history.md)
 
 
