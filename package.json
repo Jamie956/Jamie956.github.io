@@ -1,5 +1,5 @@
 {
-  "name": "mybok",
+  "name": "justnote",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,7 @@
   "dependencies": {
     "gh-pages": "^2.0.1",
     "gitbook-cli": "^2.3.2",
-    "gitbook-plugin-page-treeview": "^2.9.8",
+    "gitbook-plugin-page-treeview": "^3.0.0",
     "gitbook-plugin-splitter": "0.0.8"
   }
 }

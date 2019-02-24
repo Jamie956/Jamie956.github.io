@@ -106,7 +106,7 @@ Whenever there are events to run, the event loop runs until the queue is empty. 
 
 ## NPM Commands
 
-```
+```she&#39;l&#39;l
 设version 0.1.0
 npm version major //v1.0.0 主版本号
 npm version premajor //v1.0.0-0 预备主版本
@@ -135,6 +135,10 @@ npm init //生成package.json
 npm init -y //生成package.json并设置默认值
 
 npm run <script> //运行package.json里scripts定义好的命令
+
+
+npm install -g npm-check-updates //更新全部依赖包
+ncu -u //检查全部依赖包
 ```
 
 

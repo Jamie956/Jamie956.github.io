@@ -29,6 +29,7 @@
 
 
 * [Music](post/music.md)
+* [Fit](post/fit.md)
 
 
 * [History](post/history.md)
