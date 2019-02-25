@@ -5,7 +5,6 @@
 * [Http](post/http.md)
 * [Regular Expression](post/regularExpression.md)
 * [Linux](post/linux.md)
-* [Windows](post/windows.md)
 * [Design](post/design.md)
 
 

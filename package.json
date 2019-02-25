@@ -11,6 +11,7 @@
   },
   "keywords": [],
   "author": "",
+  "private": true,
   "license": "ISC",
   "dependencies": {
     "gh-pages": "^2.0.1",
