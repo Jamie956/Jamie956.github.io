@@ -1,6 +1,8 @@
 # Summary
 
-* [Guide](README.md)
+* [Contents](README.md)
+
+-----
 * [Git](post/git.md)
 * [Data Structure](post/dataStructure.md)
 * [Http](post/http.md)
@@ -31,4 +33,6 @@
 
 -----
 * [History](post/history.md)
+* [Undefined](post/undefined.md)
+* [Guide](post/Guide.md)
 

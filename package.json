@@ -15,7 +15,6 @@
   "license": "ISC",
   "dependencies": {
     "gh-pages": "^2.0.1",
-    "gitbook-cli": "^2.3.2",
     "gitbook-plugin-page-treeview": "^3.0.0",
     "gitbook-plugin-splitter": "0.0.8"
   }
