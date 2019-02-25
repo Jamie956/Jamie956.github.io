@@ -1,0 +1,711 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker · Jamie House</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Jamie">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="docker-tomcat.html" />
+    
+    
+    <link rel="prev" href="redis.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Contents
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="git.html">
+            
+                <a href="git.html">
+            
+                    
+                    Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="dataStructure.html">
+            
+                <a href="dataStructure.html">
+            
+                    
+                    Data Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="http.html">
+            
+                <a href="http.html">
+            
+                    
+                    Http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="regularExpression.html">
+            
+                <a href="regularExpression.html">
+            
+                    
+                    Regular Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="linux.html">
+            
+                <a href="linux.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="design.html">
+            
+                <a href="design.html">
+            
+                    
+                    Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="nodejs.html">
+            
+                <a href="nodejs.html">
+            
+                    
+                    NodeJS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="nginx.html">
+            
+                <a href="nginx.html">
+            
+                    
+                    Nginx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="javascript.html">
+            
+                <a href="javascript.html">
+            
+                    
+                    JavaScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="angular.html">
+            
+                <a href="angular.html">
+            
+                    
+                    Angular
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="java.html">
+            
+                <a href="java.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="maven.html">
+            
+                <a href="maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    Concurrency
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="spring.html">
+            
+                <a href="spring.html">
+            
+                    
+                    Spring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="mongodb.html">
+            
+                <a href="mongodb.html">
+            
+                    
+                    MongoDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="mysql.html">
+            
+                <a href="mysql.html">
+            
+                    
+                    Mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="redis.html">
+            
+                <a href="redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.8" data-path="docker.html">
+            
+                <a href="docker.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="docker-tomcat.html">
+            
+                <a href="docker-tomcat.html">
+            
+                    
+                    Docker Tomcat
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="music.html">
+            
+                <a href="music.html">
+            
+                    
+                    Music
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="fit.html">
+            
+                <a href="fit.html">
+            
+                    
+                    Fit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="history.html">
+            
+                <a href="history.html">
+            
+                    
+                    History
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="undefined.html">
+            
+                <a href="undefined.html">
+            
+                    
+                    Undefined
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="guide.html">
+            
+                <a href="guide.html">
+            
+                    
+                    Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Docker</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <pre><code class="lang-docker">docker -v //&#x67E5;&#x770B;&#x7248;&#x672C;
+docker info
+</code></pre>
+<h3 id="image">image</h3>
+<pre><code class="lang-docker">docker search &lt;image&gt;
+docker pull &lt;image:tag&gt;
+docker images
+docker images -f dangling=true
+docker images -a
+docker rmi &lt;image&gt;
+docker rmi $(docker images -q -f dangling=true)
+docker rmi -f $(docker images -a -q)
+docker tag &lt;image&gt; &lt;new image&gt;
+docker <span class="hljs-keyword">run</span> -it &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -it -p &lt;port&gt;:&lt;port&gt; &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -itd &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -it --rm &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -it --name &lt;container_name&gt; &lt;image&gt;
+docker <span class="hljs-keyword">run</span> -it -v &lt;/&gt;:&lt;/&gt; &lt;image&gt;
+docker commit -a &lt;username&gt; &lt;container&gt; &lt;username&gt;/&lt;repository&gt;:&lt;tag&gt;
+docker build -t &lt;image&gt; .
+docker inspect &lt;image&gt;
+docker commit -a jamie956 &lt;container&gt; &lt;image&gt;:&lt;tag&gt;
+docker save -o &lt;name&gt;.tar &lt;image&gt;
+docker load -i &lt;name&gt;.tar
+</code></pre>
+<p>Container</p>
+<pre><code class="lang-docker">docker ps
+docker ps -a
+docker logs &lt;container&gt;
+docker logs -f --tail  20  &lt;container&gt;
+docker stop &lt;container&gt;
+docker start &lt;container&gt;
+docker start  $(docker ps -a)
+docker restart &lt;container&gt;
+docker rm &lt;container&gt;
+docker rm -f &lt;container&gt;
+docker rm $(docker ps -a -q)
+docker exec -it &lt;container&gt; bash
+docker cp &lt;host&gt; &lt;container&gt;:&lt;/&gt;
+</code></pre>
+<h3 id="docker-hub-&#x62C9;&#x53D6;&#x548C;&#x63D0;&#x4EA4;">Docker hub &#x62C9;&#x53D6;&#x548C;&#x63D0;&#x4EA4;</h3>
+<pre><code class="lang-docker">docker login
+docker pull &lt;username&gt;/&lt;repository&gt;:&lt;tag&gt;
+docker push &lt;username&gt;/&lt;repository&gt;:&lt;tag&gt;
+</code></pre>
+<h3 id="volume">volume</h3>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">volume</span> create &lt;name&gt;
+-v &lt;volumename&gt;:&lt;path&gt;
+docker <span class="hljs-keyword">volume</span> prune
+docker <span class="hljs-keyword">volume</span> rm &lt;name&gt;
+</code></pre>
+<h3 id="&#x5BB9;&#x5668;&#x91CD;&#x542F;">&#x5BB9;&#x5668;&#x91CD;&#x542F;</h3>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> --restart always &lt;container&gt;
+docker <span class="hljs-keyword">run</span> --restart on-failure:5 &lt;container&gt;
+docker <span class="hljs-keyword">run</span> --restart unless-stopped &lt;container&gt;
+</code></pre>
+<h3 id="install-images">Install Images</h3>
+<p><strong>Jenkins</strong></p>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> \
+--name myjenkins -u root --privileged=true \
+-p 9090:8080 \
+-v /var/<span class="hljs-keyword">run</span>/docker.sock:/var/<span class="hljs-keyword">run</span>/docker.sock \
+-v $(which docker):/usr/bin/docker \
+-v /var/<span class="hljs-keyword">run</span>:/var/<span class="hljs-keyword">run</span>:rw \
+-v $PWD/data/jenkins:/var/jenkins_home \
+-v /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7 \
+-it &lt;image&gt;
+</code></pre>
+<p><strong>RabbitMQ</strong></p>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> \
+-d \
+-p 15672:15672 \
+-p  5672:5672 \
+-e RABBITMQ_DEFAULT_USER=admin \
+-e RABBITMQ_DEFAULT_PASS=admin \
+--name myrabbitmq \
+rabbitmq
+</code></pre>
+<p><strong>mongodb</strong></p>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> \
+--name mymongo \
+-d \
+-e MONGO_INITDB_ROOT_USERNAME=root \
+-e MONGO_INITDB_ROOT_PASSWORD=123456 \
+-e MONGO_INITDB_DATABASE=admin \
+-p 27017:27017 \
+-v ~/container/mongo:/data/db \
+mongo \
+--auth 
+
+ls -alh|grep db
+
+win10 =&gt; docker <span class="hljs-keyword">run</span> -p 27017:27017 -d mongo
+</code></pre>
+<p><strong>mongo express</strong></p>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> \
+--name mymongo-express \
+--link mymongo:mongo \
+-p 8081:8081 \
+-e ME_CONFIG_BASICAUTH_USERNAME=&quot;admin&quot; \
+-e ME_CONFIG_BASICAUTH_PASSWORD=&quot;admin&quot; \
+-e ME_CONFIG_MONGODB_ADMINUSERNAME=&quot;root&quot; \
+-e ME_CONFIG_MONGODB_ADMINPASSWORD=&quot;123456&quot; \
+--rm \
+mongo-express
+</code></pre>
+<p><strong>mysql</strong></p>
+<pre><code class="lang-docker">docker pull mysql:5.7
+docker <span class="hljs-keyword">run</span> -itd --name mysql -v /d/container/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7
+</code></pre>
+<p><strong>adminer</strong></p>
+<pre><code class="lang-docker">docker <span class="hljs-keyword">run</span> -d --name adminer --link mysql-server:db -p 8085:8080 adminer
+</code></pre>
+<p><strong>phpmyadmin</strong></p>
+<pre><code class="lang-docker">docker pull phpmyadmin/phpmyadmin
+docker <span class="hljs-keyword">run</span> -d --name phpmyadmin --link mysql:db -p 8084:80 phpmyadmin/phpmyadmin
+</code></pre>
+<h3 id="no-sudo">no sudo</h3>
+<pre><code class="lang-docker">sudo groupadd docker
+sudo gpasswd -a jamie956 docker
+newgrp docker
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="redis.html" class="navigation navigation-prev " aria-label="Previous page: Redis">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="docker-tomcat.html" class="navigation navigation-next " aria-label="Next page: Docker Tomcat">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Docker","level":"4.8","depth":1,"next":{"title":"Docker Tomcat","level":"4.9","depth":1,"path":"post/docker-tomcat.md","ref":"post/docker-tomcat.md","articles":[]},"previous":{"title":"Redis","level":"4.7","depth":1,"path":"post/redis.md","ref":"post/redis.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/docker.md","mtime":"2019-02-25T08:34:23.784Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-25T08:46:04.843Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
