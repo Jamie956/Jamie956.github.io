@@ -32,4 +32,4 @@
 -----
 * [History](post/history.md)
 * [Undefined](post/undefined.md)
-* [Guide](post/Guide.md)
+* [Guide](post/guide.md)
