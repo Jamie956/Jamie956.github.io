@@ -1,5 +1,3 @@
-# Summary
-
 * [Contents](README.md)
 
 -----
@@ -35,4 +33,3 @@
 * [History](post/history.md)
 * [Undefined](post/undefined.md)
 * [Guide](post/Guide.md)
-
