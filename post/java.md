@@ -468,13 +468,98 @@ public static final int HEARTS = 1;
 
 **Defining Subclasses**
 
+- Here is how you defne a Manager class that inherits from the Employee class. Use the Java keyword extends to denote inheritance. 
+
+```java
+public class Manager extends Employee{
+    added methods and fields
+}
+```
+
+- The keyword extends indicates that you are making a new class that derives from an existing class. The existing class is called the superclass, base class, or parent class. The new class is called the subclass, derived class, or child class. 
+
+- Subclasses have more functionality than their superclasses.  The Manager class encapsulates more data and has more functionality than its superclass Employee. 
+
+
+
 **Overriding Methods**
+
+- Some of the superclass methods are not appropriate for the Manager subclass. In particular, the getSalary method should return the sum of the base salary and the bonus. You need to supply a new method to override the superclass method: 
+
+```java
+public class Manager extends Employee{
+    public double getSalary(){
+        double baseSalary = super.getSalary();
+        return baseSalary + bonus;
+    }
+}
+```
+
+- As you saw, a subclass can add felds, and it can add methods or override the methods of the superclass. However, inheritance can never take away any felds or methods. 
+
+
 
 **Subclass Constructors**
 
+- Here, the keyword super has a different meaning. The instruction is shorthand for “call the constructor of the Employee superclass with n, s, year, month, and day as parameters.” 
+
+```java
+public class Manager extends Employee{
+    public Manager(String name, double salary, int year, int month, int day){
+        super(name, salary, year, month, day);
+        bonus = 0;
+    }
+}
+```
+
+- Since the Manager constructor cannot access the private felds of the Employee class, it must initialize them through a constructor. The constructor is invoked with the special super syntax. The call using super must be the frst statement in the constructor for the subclass. 
+
+- If the subclass constructor does not call a superclass constructor explicitly, the no-argument constructor of the superclass is invoked. 
+- If the superclass does not have a no-argument constructor and the subclass constructor does not call another superclass constructor explicitly, the Java compiler reports an error. 
+- Recall that the this keyword has two meanings: to denote a reference to the implicit parameter and to call another constructor of the same class. Likewise, the super keyword has two meanings: to invoke a superclass method and to invoke a superclass constructor.  
+
+
+
 **Inheritance Hierarchies**
 
+- Inheritance need not stop at deriving one layer of classes. We could have an Executive class that extends Manager, for example. The collection of all classes extending a common superclass is called an inheritance hierarchy 
+- The path from a particular class to its ancestors in the inheritance hierarchy is its inheritance chain. 
+
+![Employee inheritance hierarchy](..\img\Employee inheritance hierarchy.png)
+
+
+
 **Polymorphism**
+
+- The “is–a” rule states that every object of the subclass is an object of the superclass. For example, every manager is an employee. Thus, it makes sense for the Manager class to be a subclass of the Employee class. Naturally, the opposite is not true—not every employee is a manager. 
+- Another way of formulating the “is–a” rule is the substitution principle. That principle states that you can use a subclass object whenever the program expects a superclass object. 
+
+```java
+Employee e;
+e = new Employee(. . .); // Employee object expected
+e = new Manager(. . .); // OK, Manager can be used as well
+```
+
+- In the Java programming language, object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on). 
+- In this case, the variables staff[0] and boss refer to the same object. However, staff[0] is considered to be only an Employee object by the compiler 
+
+```java
+Manager boss = new Manager(. . .);
+Employee[] staff = new Employee[3];
+staff[0] = boss;
+
+boss.setBonus(5000); // OK
+//The declared type of staff[0] is Employee, and the setBonus method is not a method of the Employee class.
+staff[0].setBonus(5000); // Error
+```
+
+- However, you cannot assign a superclass reference to a subclass variable. The reason is clear: Not all employees are managers. 
+
+```java
+Manager m = staff[i]; // Error
+```
+
+
 
 **Understanding Method Calls**
 
