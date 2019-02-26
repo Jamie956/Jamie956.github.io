@@ -124,19 +124,6 @@ public static Integer valueOf(int i) {
 
 
 
-## Interface/Abstract
-
-|      | 接口               | 抽象类               |
-| ---- | ------------------ | -------------------- |
-| 方法 | 抽象               | 抽象/非抽象          |
-| 变量 | final              |                      |
-|      | 一个类实现多个接口 | 一个类实现一个抽象类 |
-|      | 类实现接口所有方法 | 不一定               |
-|      | 不能用 new 实例化  |                      |
-|      | 行为规范           | 模板设计             |
-
-
-
 ## Var
 
 |          | 成员变量                           | 局部变量                 |
@@ -174,12 +161,6 @@ equals() ：比较内容
 1. 在运行时判断任意一个对象所属的类；
 2. 在运行时获取类的对象；
 3. 在运行时访问java对象的属性，方法，构造方法等。
-
-
-
-## ===Core Java===
-
-
 
 
 
@@ -730,7 +711,20 @@ p.getDescription()
 
 
 
-5.2 Object: The Cosmic Superclass
+### 5.2 Object: The Cosmic Superclass
+
+- The Object class is the ultimate ancestor—every class in Java extends Object. 
+- In Java, only the values of primitive types (numbers, characters, and boolean values) are not objects. 
+
+**The equals Method**
+
+**Equality Testing and Inheritance**
+
+**The hashCode Method**
+
+**The toString Method**
+
+
 
 5.3 Generic Array Lists
 
