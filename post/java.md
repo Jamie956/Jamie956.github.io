@@ -744,6 +744,50 @@ public class Employee{
 
 **Equality Testing and Inheritance**
 
+- The Java Language Specifcation requires that the equals method has the following properties: 
+  - It is reﬂexive: For any non-null reference x, x.equals(x) should return true.
+  - It is symmetric: For any references x and y, x.equals(y) should return true if and only if y.equals(x) returns true.
+  - It is transitive: For any references x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.
+  - It is consistent: If the objects to which x and y refer haven’t changed, then repeated calls to x.equals(y) return the same value.
+  - For any non-null reference x, x.equals(null) should return false. 
+
+
+
+- Here is a recipe for writing the perfect equals method:
+  - Name the explicit parameter otherObject—later, you will need to cast it to another variable that you should call other.
+
+  - Test whether this happens to be identical to otherObject: 
+
+    `if (this == otherObject) return true;`
+
+    This statement is just an optimization. In practice, this is a common case. It is much cheaper to check for identity than to compare the felds.
+
+  - Test whether otherObject is null and return false if it is. This test is required. 
+
+    `if (otherObject == null) return false;`
+
+  - Compare the classes of this and otherObject. If the semantics of equals can change in subclasses, use the getClass test: 
+
+    `if (getClass() != otherObject.getClass()) return false;`
+
+    If the same semantics holds for all subclasses, you can use an instanceof test: 
+
+    `if (!(otherObject instanceof ClassName)) return false;`
+
+  - Cast otherObject to a variable of your class type: 
+
+    `ClassName other = (ClassName) otherObject`
+
+  - Now compare the felds, as required by your notion of equality. Use == for primitive type felds, Objects.equals for object felds. Return true if all felds match, false otherwise.
+
+    ```java
+    return field1 == other.field1
+    && Objects.equals(field2, other.field2)
+        && . . .;
+    ```
+
+    If you redefne equals in a subclass, include a call to super.equals(other). 
+
 **The hashCode Method**
 
 **The toString Method**
