@@ -788,6 +788,25 @@ public static final int HEARTS = 1;
 
 **The hashCode Method**
 
+- A hash code is an integer that is derived from an object. 
+
+- The hashCode method is defned in the Object class. Therefore, every object has a default hash code. That hash code is derived from the object’s memory address.
+
+- The strings s and t have the same hash code because, for strings, the hash codes are derived from their contents. The string builders sb and tb have different hash codes because no hashCode method has been defned for the StringBuilder class and the default hashCode method in the Object class derives the hash code from the object’s memory address. 
+
+  ```java
+  String s = "Ok";
+  StringBuilder sb = new StringBuilder(s);
+  System.out.println(s.hashCode() + " " + sb.hashCode());
+  String t = new String("Ok");
+  StringBuilder tb = new StringBuilder(t);
+  System.out.println(t.hashCode() + " " + tb.hashCode());
+  ```
+
+  ![Hash Codes of Strings and String Builders](..\img\Hash Codes of Strings and String Builders.png)
+
+
+
 **The toString Method**
 
 
