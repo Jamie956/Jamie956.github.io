@@ -442,11 +442,11 @@ public static final int HEARTS = 1;
 
 - Here is how you defne a Manager class that inherits from the Employee class. Use the Java keyword extends to denote inheritance. 
 
-```java
-public class Manager extends Employee{
-    added methods and fields
-}
-```
+    ```java
+    public class Manager extends Employee{
+        added methods and fields
+    }
+    ```
 
 - The keyword extends indicates that you are making a new class that derives from an existing class. The existing class is called the superclass, base class, or parent class. The new class is called the subclass, derived class, or child class. 
 
@@ -458,14 +458,14 @@ public class Manager extends Employee{
 
 - Some of the superclass methods are not appropriate for the Manager subclass. In particular, the getSalary method should return the sum of the base salary and the bonus. You need to supply a new method to override the superclass method: 
 
-```java
-public class Manager extends Employee{
-    public double getSalary(){
-        double baseSalary = super.getSalary();
-        return baseSalary + bonus;
+    ```java
+    public class Manager extends Employee{
+        public double getSalary(){
+            double baseSalary = super.getSalary();
+            return baseSalary + bonus;
+        }
     }
-}
-```
+    ```
 
 - As you saw, a subclass can add felds, and it can add methods or override the methods of the superclass. However, inheritance can never take away any felds or methods. 
 
@@ -475,14 +475,14 @@ public class Manager extends Employee{
 
 - Here, the keyword super has a different meaning. The instruction is shorthand for “call the constructor of the Employee superclass with n, s, year, month, and day as parameters.” 
 
-```java
-public class Manager extends Employee{
-    public Manager(String name, double salary, int year, int month, int day){
-        super(name, salary, year, month, day);
-        bonus = 0;
+    ```java
+    public class Manager extends Employee{
+        public Manager(String name, double salary, int year, int month, int day){
+            super(name, salary, year, month, day);
+            bonus = 0;
+        }
     }
-}
-```
+    ```
 
 - Since the Manager constructor cannot access the private felds of the Employee class, it must initialize them through a constructor. The constructor is invoked with the special super syntax. The call using super must be the frst statement in the constructor for the subclass. 
 
@@ -506,30 +506,30 @@ public class Manager extends Employee{
 - The “is–a” rule states that every object of the subclass is an object of the superclass. For example, every manager is an employee. Thus, it makes sense for the Manager class to be a subclass of the Employee class. Naturally, the opposite is not true—not every employee is a manager. 
 - Another way of formulating the “is–a” rule is the substitution principle. That principle states that you can use a subclass object whenever the program expects a superclass object. 
 
-```java
-Employee e;
-e = new Employee(. . .); // Employee object expected
-e = new Manager(. . .); // OK, Manager can be used as well
-```
+    ```java
+    Employee e;
+    e = new Employee(. . .); // Employee object expected
+    e = new Manager(. . .); // OK, Manager can be used as well
+    ```
 
 - In the Java programming language, object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on). 
 - In this case, the variables staff[0] and boss refer to the same object. However, staff[0] is considered to be only an Employee object by the compiler 
 
-```java
-Manager boss = new Manager(. . .);
-Employee[] staff = new Employee[3];
-staff[0] = boss;
+    ```java
+    Manager boss = new Manager(. . .);
+    Employee[] staff = new Employee[3];
+    staff[0] = boss;
 
-boss.setBonus(5000); // OK
-//The declared type of staff[0] is Employee, and the setBonus method is not a method of the Employee class.
-staff[0].setBonus(5000); // Error
-```
+    boss.setBonus(5000); // OK
+    //The declared type of staff[0] is Employee, and the setBonus method is not a method of the Employee class.
+    staff[0].setBonus(5000); // Error
+    ```
 
 - However, you cannot assign a superclass reference to a subclass variable. The reason is clear: Not all employees are managers. 
 
-```java
-Manager m = staff[i]; // Error
-```
+    ```java
+    Manager m = staff[i]; // Error
+    ```
 
 
 
@@ -549,26 +549,26 @@ Manager m = staff[i]; // Error
 
 - The getSalary method is not private, static, or final, so it is dynamically bound. The virtual machine produces method tables for the Employee and Manager classes. The Employeetable shows that all methods are defned in the Employee class itself:
 
-```tab
-Employee:
-getName() -> Employee.getName()
-getSalary() -> Employee.getSalary()
-getHireDay() -> Employee.getHireDay()
-raiseSalary(double) -> Employee.raiseSalary(double) 
-```
+    ```
+    Employee:
+    getName() -> Employee.getName()
+    getSalary() -> Employee.getSalary()
+    getHireDay() -> Employee.getHireDay()
+    raiseSalary(double) -> Employee.raiseSalary(double) 
+    ```
 
 
 
 - The Manager method table is slightly different. Three methods are inherited, one method is redefned, and one method is added. 
 
-```
-Manager:
-getName() -> Employee.getName()
-getSalary() -> Manager.getSalary()
-getHireDay() -> Employee.getHireDay()
-raiseSalary(double) -> Employee.raiseSalary(double)
-setBonus(double) -> Manager.setBonus(double)
-```
+    ```
+    Manager:
+    getName() -> Employee.getName()
+    getSalary() -> Manager.getSalary()
+    getHireDay() -> Employee.getHireDay()
+    raiseSalary(double) -> Employee.raiseSalary(double)
+    setBonus(double) -> Manager.setBonus(double)
+    ```
 
 
 
@@ -584,23 +584,23 @@ setBonus(double) -> Manager.setBonus(double)
 
 - Occasionally, you want to prevent someone from forming a subclass from one of your classes. Classes that cannot be extended are called fnal classes, and you use the final modifer in the defnition of the class to indicate this. 
 
-```java
-public final class Executive extends Manager{
+    ```java
+    public final class Executive extends Manager{
 
-}
-```
+    }
+    ```
 
 
 
 - You can also make a specifc method in a class final. If you do this, then no subclass can override that method. (All methods in a final class are automatically final.) 
 
-```java
-public class Employee{
-    public final String getName(){
-        return name;
+    ```java
+    public class Employee{
+        public final String getName(){
+            return name;
+        }
     }
-}
-```
+    ```
 
 
 
@@ -616,26 +616,26 @@ public class Employee{
 
 - The process of forcing a conversion from one type to another is called casting. 
 
-```java
-double x = 3.405;
-int nx = (int) x;
-```
+    ```java
+    double x = 3.405;
+    int nx = (int) x;
+    ```
 
 
 
 - The compiler checks that you do not promise too much when you store a value in a variable. If you assign a subclass reference to a superclass variable, you are promising less, and the compiler will simply let you do it. If you assign a superclass reference to a subclass variable, you are promising more. Then you must use a cast so that your promise can be checked at runtime 
 
-```java
-Manager boss = (Manager) staff[0];
-```
+    ```java
+    Manager boss = (Manager) staff[0];
+    ```
 
 - Thus, it is good programming practice to fnd out whether a cast will succeed before attempting it. 
 
-```java
-if (staff[1] instanceof Manager){
-    boss = (Manager) staff[1];
-}
-```
+    ```java
+    if (staff[1] instanceof Manager){
+        boss = (Manager) staff[1];
+    }
+    ```
 
 
 
@@ -657,27 +657,27 @@ if (staff[1] instanceof Manager){
 
 - If you use the abstract keyword, you do not need to implement the method at all. 
 
-```java
-public abstract class Person{
-    // no implementation required
-    public abstract String getDescription();
-}
-```
+    ```java
+    public abstract class Person{
+        // no implementation required
+        public abstract String getDescription();
+    }
+    ```
 
 - In addition to abstract methods, abstract classes can have felds and concrete methods.  
 
-```java
-public abstract class Person{
-    private String name;
-    public Person(String name){
-        this.name = name;
+    ```java
+    public abstract class Person{
+        private String name;
+        public Person(String name){
+            this.name = name;
+        }
+        public abstract String getDescription();
+        public String getName(){
+            return name;
+        }
     }
-    public abstract String getDescription();
-    public String getName(){
-        return name;
-    }
-}
-```
+    ```
 
 
 
@@ -685,16 +685,16 @@ public abstract class Person{
 - Abstract classes cannot be instantiated. That is, if a class is declared as abstract, no objects of that class can be created. 
 - Note that you can still create object variables of an abstract class, but such a variable must refer to an object of a nonabstract subclass. For example: 
 
-```java
-Person p = new Student("Vince Vu", "Economics");
-```
+    ```java
+    Person p = new Student("Vince Vu", "Economics");
+    ```
 
 - Keep in mind that the variable p never refers to a Person object because it is impossible to construct an object of the abstract Person class. 
 
-```
-Person p = new Student(. . .);
-p.getDescription()
-```
+    ```java
+    Person p = new Student(. . .);
+    p.getDescription()
+    ```
 
 
 
@@ -720,25 +720,25 @@ p.getDescription()
 
 - The equals method in the Object class tests whether one object is considered equal to another. The equals method, as implemented in the Object class, determines whether two object references are identical. This is a pretty reasonable default—if two objects are identical, they should certainly be equal. 
 
-```java
-public class Employee{
-    public boolean equals(Object otherObject){
-        // a quick test to see if the objects are identical
-        if (this == otherObject) return true;
-        // must return false if the explicit parameter is null
-        if (otherObject == null) return false;
-        // if the classes don't match, they can't be equal
-        if (getClass() != otherObject.getClass())
-            return false;
-        // now we know otherObject is a non-null Employee
-        Employee other = (Employee) otherObject;
-        // test whether the fields have identical values
-        return Objects.equals(name, other.name)
-            && salary == other.salary
-            && Object.equals(hireDay, other.hireDay);
+    ```java
+    public class Employee{
+        public boolean equals(Object otherObject){
+            // a quick test to see if the objects are identical
+            if (this == otherObject) return true;
+            // must return false if the explicit parameter is null
+            if (otherObject == null) return false;
+            // if the classes don't match, they can't be equal
+            if (getClass() != otherObject.getClass())
+                return false;
+            // now we know otherObject is a non-null Employee
+            Employee other = (Employee) otherObject;
+            // test whether the fields have identical values
+            return Objects.equals(name, other.name)
+                && salary == other.salary
+                && Object.equals(hireDay, other.hireDay);
+        }
     }
-}
-```
+    ```
 
 
 
@@ -750,8 +750,6 @@ public class Employee{
   - It is transitive: For any references x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.
   - It is consistent: If the objects to which x and y refer haven’t changed, then repeated calls to x.equals(y) return the same value.
   - For any non-null reference x, x.equals(null) should return false. 
-
-
 
 - Here is a recipe for writing the perfect equals method:
   - Name the explicit parameter otherObject—later, you will need to cast it to another variable that you should call other.
