@@ -718,6 +718,30 @@ p.getDescription()
 
 **The equals Method**
 
+- The equals method in the Object class tests whether one object is considered equal to another. The equals method, as implemented in the Object class, determines whether two object references are identical. This is a pretty reasonable default—if two objects are identical, they should certainly be equal. 
+
+```java
+public class Employee{
+    public boolean equals(Object otherObject){
+        // a quick test to see if the objects are identical
+        if (this == otherObject) return true;
+        // must return false if the explicit parameter is null
+        if (otherObject == null) return false;
+        // if the classes don't match, they can't be equal
+        if (getClass() != otherObject.getClass())
+            return false;
+        // now we know otherObject is a non-null Employee
+        Employee other = (Employee) otherObject;
+        // test whether the fields have identical values
+        return Objects.equals(name, other.name)
+            && salary == other.salary
+            && Object.equals(hireDay, other.hireDay);
+    }
+}
+```
+
+
+
 **Equality Testing and Inheritance**
 
 **The hashCode Method**
