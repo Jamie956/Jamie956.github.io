@@ -515,13 +515,10 @@
 </ul></li>
 <li><div><a href="#oo">OO</a><i></i></div></li>
 <li><div><a href="#string">String</a><i></i></div></li>
-<li><div><a href="#interfaceabstract">Interface/Abstract</a><i></i></div></li>
 <li><div><a href="#var">Var</a><i></i></div></li>
 <li><div><a href="#-equal">== &amp; equal</a><i></i></div></li>
-<li><div><a href="#final">final</a><i></i></div></li>
-<li><div><a href="#arraylist--linkedlist">Arraylist &amp; LinkedList</a><i></i></div></li>
+<li><div><a href="#list">List</a><i></i></div></li>
 <li><div><a href="#proxy">proxy</a><i></i></div></li>
-<li><div><a href="#core-java">===Core Java===</a><i></i></div></li>
 <li><div><a href="#4-objects-and-classes">4 Objects and Classes</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
 <li><div><a href="#41-introduction-to-object-oriented-programming">4.1 Introduction to Object-Oriented Programming</a><i></i></div></li>
@@ -537,6 +534,7 @@
 <li><div><a href="#5-inheritance">5 Inheritance</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
 <li><div><a href="#51-classes-superclasses-and-subclasses">5.1 Classes, Superclasses, and Subclasses</a><i></i></div></li>
+<li><div><a href="#52-object-the-cosmic-superclass">5.2 Object: The Cosmic Superclass</a><i></i></div></li>
 </ul></li>
 </ul>
 </div>
@@ -692,48 +690,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="interfaceabstract">Interface/Abstract</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>&#x63A5;&#x53E3;</th>
-<th>&#x62BD;&#x8C61;&#x7C7B;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&#x65B9;&#x6CD5;</td>
-<td>&#x62BD;&#x8C61;</td>
-<td>&#x62BD;&#x8C61;/&#x975E;&#x62BD;&#x8C61;</td>
-</tr>
-<tr>
-<td>&#x53D8;&#x91CF;</td>
-<td>final</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>&#x4E00;&#x4E2A;&#x7C7B;&#x5B9E;&#x73B0;&#x591A;&#x4E2A;&#x63A5;&#x53E3;</td>
-<td>&#x4E00;&#x4E2A;&#x7C7B;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;</td>
-</tr>
-<tr>
-<td></td>
-<td>&#x7C7B;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x6240;&#x6709;&#x65B9;&#x6CD5;</td>
-<td>&#x4E0D;&#x4E00;&#x5B9A;</td>
-</tr>
-<tr>
-<td></td>
-<td>&#x4E0D;&#x80FD;&#x7528; new &#x5B9E;&#x4F8B;&#x5316;</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>&#x884C;&#x4E3A;&#x89C4;&#x8303;</td>
-<td>&#x6A21;&#x677F;&#x8BBE;&#x8BA1;</td>
-</tr>
-</tbody>
-</table>
 <h2 id="var">Var</h2>
 <table>
 <thead>
@@ -774,14 +730,7 @@
 <h2 id="-equal">== &amp; equal</h2>
 <p>==&#xFF1A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6BD4;&#x8F83;&#x503C;&#xFF0C;&#x5F15;&#x7528;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6BD4;&#x8F83;&#x5185;&#x5B58;&#x5730;&#x5740;</p>
 <p>equals() &#xFF1A;&#x6BD4;&#x8F83;&#x5185;&#x5BB9;</p>
-<h2 id="final">final</h2>
-<ol>
-<li>&#x4FEE;&#x9970;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#xFF0C;&#x6570;&#x503C;&#x5728;&#x521D;&#x59CB;&#x5316;&#x540E;&#x4E0D;&#x80FD;&#x66F4;&#x6539;</li>
-<li>&#x4FEE;&#x9970;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x540E;&#x4E0D;&#x80FD;&#x6307;&#x5411;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</li>
-<li>&#x4FEE;&#x9970;&#x7C7B;&#xFF0C;&#x8BE5;&#x7C7B;&#x4E0D;&#x80FD;&#x88AB;&#x7EE7;&#x627F;&#x3002;final&#x7C7B;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6210;&#x5458;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x88AB;&#x9690;&#x5F0F;&#x5730;&#x6307;&#x5B9A;&#x4E3A;final&#x65B9;&#x6CD5;</li>
-<li>&#x4FEE;&#x9970;&#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5728;&#x7EE7;&#x627F;&#x7C7B;&#x4E0D;&#x80FD;&#x88AB;&#x4FEE;&#x6539;</li>
-</ol>
-<h2 id="arraylist--linkedlist">Arraylist &amp; LinkedList</h2>
+<h2 id="list">List</h2>
 <table>
 <thead>
 <tr>
@@ -824,7 +773,6 @@
 <li>&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#xFF1B;</li>
 <li>&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x8BBF;&#x95EE;java&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x65B9;&#x6CD5;&#xFF0C;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x7B49;&#x3002;</li>
 </ol>
-<h2 id="core-java">===Core Java===</h2>
 <h2 id="4-objects-and-classes">4 Objects and Classes</h2>
 <h3 id="41-introduction-to-object-oriented-programming">4.1 Introduction to Object-Oriented Programming</h3>
 <p><strong>Encapsulation</strong></p>
@@ -971,16 +919,313 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
 <h2 id="5-inheritance">5 Inheritance</h2>
 <h3 id="51-classes-superclasses-and-subclasses">5.1 Classes, Superclasses, and Subclasses</h3>
 <p><strong>Defining Subclasses</strong></p>
+<ul>
+<li><p>Here is how you defne a Manager class that inherits from the Employee class. Use the Java keyword extends to denote inheritance. </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>{
+      added methods and fields
+  }
+</code></pre>
+</li>
+<li><p>The keyword extends indicates that you are making a new class that derives from an existing class. The existing class is called the superclass, base class, or parent class. The new class is called the subclass, derived class, or child class. </p>
+</li>
+<li><p>Subclasses have more functionality than their superclasses.  The Manager class encapsulates more data and has more functionality than its superclass Employee. </p>
+</li>
+</ul>
 <p><strong>Overriding Methods</strong></p>
+<ul>
+<li><p>Some of the superclass methods are not appropriate for the Manager subclass. In particular, the getSalary method should return the sum of the base salary and the bonus. You need to supply a new method to override the superclass method: </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>{
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span>{
+          <span class="hljs-keyword">double</span> baseSalary = <span class="hljs-keyword">super</span>.getSalary();
+          <span class="hljs-keyword">return</span> baseSalary + bonus;
+      }
+  }
+</code></pre>
+</li>
+<li><p>As you saw, a subclass can add felds, and it can add methods or override the methods of the superclass. However, inheritance can never take away any felds or methods. </p>
+</li>
+</ul>
 <p><strong>Subclass Constructors</strong></p>
+<ul>
+<li><p>Here, the keyword super has a different meaning. The instruction is shorthand for &#x201C;call the constructor of the Employee superclass with n, s, year, month, and day as parameters.&#x201D; </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>{
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Manager</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary, <span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> day)</span></span>{
+          <span class="hljs-keyword">super</span>(name, salary, year, month, day);
+          bonus = <span class="hljs-number">0</span>;
+      }
+  }
+</code></pre>
+</li>
+<li><p>Since the Manager constructor cannot access the private felds of the Employee class, it must initialize them through a constructor. The constructor is invoked with the special super syntax. The call using super must be the frst statement in the constructor for the subclass. </p>
+</li>
+<li><p>If the subclass constructor does not call a superclass constructor explicitly, the no-argument constructor of the superclass is invoked. </p>
+</li>
+<li>If the superclass does not have a no-argument constructor and the subclass constructor does not call another superclass constructor explicitly, the Java compiler reports an error. </li>
+<li>Recall that the this keyword has two meanings: to denote a reference to the implicit parameter and to call another constructor of the same class. Likewise, the super keyword has two meanings: to invoke a superclass method and to invoke a superclass constructor.  </li>
+</ul>
 <p><strong>Inheritance Hierarchies</strong></p>
+<ul>
+<li>Inheritance need not stop at deriving one layer of classes. We could have an Executive class that extends Manager, for example. The collection of all classes extending a common superclass is called an inheritance hierarchy </li>
+<li>The path from a particular class to its ancestors in the inheritance hierarchy is its inheritance chain. </li>
+</ul>
+<p><img src="../img/Employee inheritance hierarchy.png" alt="Employee inheritance hierarchy"></p>
 <p><strong>Polymorphism</strong></p>
+<ul>
+<li>The &#x201C;is&#x2013;a&#x201D; rule states that every object of the subclass is an object of the superclass. For example, every manager is an employee. Thus, it makes sense for the Manager class to be a subclass of the Employee class. Naturally, the opposite is not true&#x2014;not every employee is a manager. </li>
+<li><p>Another way of formulating the &#x201C;is&#x2013;a&#x201D; rule is the substitution principle. That principle states that you can use a subclass object whenever the program expects a superclass object. </p>
+<pre><code class="lang-java">  Employee e;
+  e = <span class="hljs-keyword">new</span> Employee(. . .); <span class="hljs-comment">// Employee object expected</span>
+  e = <span class="hljs-keyword">new</span> Manager(. . .); <span class="hljs-comment">// OK, Manager can be used as well</span>
+</code></pre>
+</li>
+<li><p>In the Java programming language, object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on). </p>
+</li>
+<li><p>In this case, the variables staff[0] and boss refer to the same object. However, staff[0] is considered to be only an Employee object by the compiler </p>
+<pre><code class="lang-java">  Manager boss = <span class="hljs-keyword">new</span> Manager(. . .);
+  Employee[] staff = <span class="hljs-keyword">new</span> Employee[<span class="hljs-number">3</span>];
+  staff[<span class="hljs-number">0</span>] = boss;
+
+  boss.setBonus(<span class="hljs-number">5000</span>); <span class="hljs-comment">// OK</span>
+  <span class="hljs-comment">//The declared type of staff[0] is Employee, and the setBonus method is not a method of the Employee class.</span>
+  staff[<span class="hljs-number">0</span>].setBonus(<span class="hljs-number">5000</span>); <span class="hljs-comment">// Error</span>
+</code></pre>
+</li>
+<li><p>However, you cannot assign a superclass reference to a subclass variable. The reason is clear: Not all employees are managers. </p>
+<pre><code class="lang-java">  Manager m = staff[i]; <span class="hljs-comment">// Error</span>
+</code></pre>
+</li>
+</ul>
 <p><strong>Understanding Method Calls</strong></p>
+<ol>
+<li><p>The compiler looks at the declared type of the object and the method name. Note that there may be multiple methods, all with the same name, f, but with different parameter types. For example, there may be a method f(int) and a method f(String). The compiler enumerates all methods called f in the class C and all accessible methods called f in the superclasses of C. (Private methods of the superclass are not accessible.) Now the compiler knows all possible candidates for the method to be called.</p>
+</li>
+<li><p>Next, the compiler determines the types of the arguments that are supplied in the method call. If among all the methods called f there is a unique method whose parameter types are a best match for the supplied arguments, that method is chosen to be called. This process is called overloading resolution. For example, in a call x.f(&quot;Hello&quot;), the compiler picks f(String) and not f(int). The situation can get complex because of type conversions (int to double, Manager to Employee, and so on). If the compiler cannot fnd any method with matching parameter types or if multiple methods all match after applying conversions, the compiler reports an error. Now the compiler knows the name and parameter types of the method that needs to be called. </p>
+</li>
+<li><p>If the method is private, static, final, or a constructor, then the compiler knows exactly which method to call. (The final modifer is explained in the next section.) This is called static binding. Otherwise, the method to be called depends on the actual type of the implicit parameter, and dynamic binding must be used at runtime. In our example, the compiler would generate an instruction to call f(String) with dynamic binding. </p>
+</li>
+<li><p>When the program runs and uses dynamic binding to call a method, the virtual machine must call the version of the method that is appropriate for the actual type of the object to which x refers. Let&#x2019;s say the actual type is D, a subclass of C. If the class D defnes a method f(String), that method is called. If not, D&#x2019;s superclass is searched for a method f(String), and so on.</p>
+</li>
+<li><p>It would be time consuming to carry out this search every time a method is called. Therefore, the virtual machine precomputes for each class a method table that lists all method signatures and the actual methods to be called. When a method is actually called, the virtual machine simply makes a table lookup. In our example, the virtual machine consults the method table for the class D and looks up the method to call for f(String). That method may be D.f(String) or X.f(String), where X is some superclass of D. There is one twist to this scenario. If the call is super.f(param), then the compiler consults the method table of the superclass of the implicit parameter. </p>
+</li>
+</ol>
+<ul>
+<li><p>The getSalary method is not private, static, or final, so it is dynamically bound. The virtual machine produces method tables for the Employee and Manager classes. The Employeetable shows that all methods are defned in the Employee class itself:</p>
+<pre><code>  Employee:
+  getName() -&gt; Employee.getName()
+  getSalary() -&gt; Employee.getSalary()
+  getHireDay() -&gt; Employee.getHireDay()
+  raiseSalary(double) -&gt; Employee.raiseSalary(double)
+</code></pre></li>
+</ul>
+<ul>
+<li><p>The Manager method table is slightly different. Three methods are inherited, one method is redefned, and one method is added. </p>
+<pre><code>  Manager:
+  getName() -&gt; Employee.getName()
+  getSalary() -&gt; Manager.getSalary()
+  getHireDay() -&gt; Employee.getHireDay()
+  raiseSalary(double) -&gt; Employee.raiseSalary(double)
+  setBonus(double) -&gt; Manager.setBonus(double)
+</code></pre></li>
+</ul>
+<ul>
+<li>Dynamic binding has a very important property: It makes programs extensible without the need for modifying existing code. Suppose a new class Executive is added and there is the possibility that the variable e refers to an object of that class. The code containing the call e.getSalary() need not be recompiled. The Executive.getSalary() method is called automatically if e happens to refer to an object of type Executive. </li>
+</ul>
+<ul>
+<li>When you override a method, the subclass method must be at least as visible as the superclass method. In particular, if the superclass method is public, the subclass method must also be declared public. It is a common error to accidentally omit the public specifer for the subclass method. The compiler then complains that you try to supply a more restrictive access privilege. </li>
+</ul>
 <p><strong>Preventing Inheritance: Final Classes and Methods</strong></p>
+<ul>
+<li><p>Occasionally, you want to prevent someone from forming a subclass from one of your classes. Classes that cannot be extended are called fnal classes, and you use the final modifer in the defnition of the class to indicate this. </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Executive</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Manager</span></span>{
+
+  }
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>You can also make a specifc method in a class final. If you do this, then no subclass can override that method. (All methods in a final class are automatically final.) </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>{
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>{
+          <span class="hljs-keyword">return</span> name;
+      }
+  }
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>Recall that fields can also be declared as final. A final field cannot be changed after the object has been constructed. However, if a class is declared final, only the methods, not the fields, are automatically final. </li>
+</ul>
+<ul>
+<li>Fortunately, the just-in-time compiler in the virtual machine can do a better job than a traditional compiler. It knows exactly which classes extend a given class, and it can check whether any class actually overrides a given method. If a method is short, frequently called, and not actually overridden, the just-in-time compiler can inline the method. </li>
+</ul>
 <p><strong>Casting</strong></p>
+<ul>
+<li><p>The process of forcing a conversion from one type to another is called casting. </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">double</span> x = <span class="hljs-number">3.405</span>;
+  <span class="hljs-keyword">int</span> nx = (<span class="hljs-keyword">int</span>) x;
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>The compiler checks that you do not promise too much when you store a value in a variable. If you assign a subclass reference to a superclass variable, you are promising less, and the compiler will simply let you do it. If you assign a superclass reference to a subclass variable, you are promising more. Then you must use a cast so that your promise can be checked at runtime </p>
+<pre><code class="lang-java">  Manager boss = (Manager) staff[<span class="hljs-number">0</span>];
+</code></pre>
+</li>
+<li><p>Thus, it is good programming practice to fnd out whether a cast will succeed before attempting it. </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">if</span> (staff[<span class="hljs-number">1</span>] <span class="hljs-keyword">instanceof</span> Manager){
+      boss = (Manager) staff[<span class="hljs-number">1</span>];
+  }
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>You can cast only within an inheritance hierarchy.</li>
+<li>Use instanceof to check before casting from a superclass to a subclass. </li>
+<li>The only reason to make the cast is to use a method that is unique to managers, such as setBonus. </li>
+</ul>
 <p><strong>Abstract Classes</strong></p>
+<ul>
+<li><p>As you move up the inheritance hierarchy, classes become more general and probably more abstract. At some point, the ancestor class becomes so general that you think of it more as a basis for other classes than as a class with specifc instances you want to use. Consider, for example, an extension of our Employee class hierarchy. An employee is a person, and so is a student. Let us extend our class hierarchy to include classes Person and Student. </p>
+</li>
+<li><p>Why bother with so high a level of abstraction? There are some attributes that make sense for every person, such as name. Both students and employees have names, and introducing a common superclass lets us factor out the getName method to a higher level in the inheritance hierarchy </p>
+</li>
+</ul>
+<p><img src="../img/Inheritance diagram for Person and its subclasses.png" alt="Inheritance diagram for Person and its subclasses"></p>
+<ul>
+<li><p>If you use the abstract keyword, you do not need to implement the method at all. </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>{
+      <span class="hljs-comment">// no implementation required</span>
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">getDescription</span><span class="hljs-params">()</span></span>;
+  }
+</code></pre>
+</li>
+<li><p>In addition to abstract methods, abstract classes can have felds and concrete methods.  </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>{
+      <span class="hljs-keyword">private</span> String name;
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(String name)</span></span>{
+          <span class="hljs-keyword">this</span>.name = name;
+      }
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">getDescription</span><span class="hljs-params">()</span></span>;
+      <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>{
+          <span class="hljs-keyword">return</span> name;
+      }
+  }
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>Abstract methods act as placeholders for methods that are implemented in the subclasses. When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods undefned; then you must tag the subclass as abstract as well. Or you can defne all methods, and the subclass is no longer abstract. </li>
+<li>Abstract classes cannot be instantiated. That is, if a class is declared as abstract, no objects of that class can be created. </li>
+<li><p>Note that you can still create object variables of an abstract class, but such a variable must refer to an object of a nonabstract subclass. For example: </p>
+<pre><code class="lang-java">  Person p = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;Vince Vu&quot;</span>, <span class="hljs-string">&quot;Economics&quot;</span>);
+</code></pre>
+</li>
+<li><p>Keep in mind that the variable p never refers to a Person object because it is impossible to construct an object of the abstract Person class. </p>
+<pre><code class="lang-java">  Person p = <span class="hljs-keyword">new</span> Student(. . .);
+  p.getDescription()
+</code></pre>
+</li>
+</ul>
 <p><strong>Protected Acess</strong></p>
-<p>5.2 Object: The Cosmic Superclass</p>
+<ul>
+<li><p>As you know, felds in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won&#x2019;t be visible to other classes. </p>
+</li>
+<li><p>Protected methods make more sense. A class may declare a method as protected if it is tricky to use. This indicates that the subclasses (which, presumably, know their ancestor well) can be trusted to use the method correctly, but other classes cannot. </p>
+</li>
+<li>The four access modifers in Java that control visibility: <ul>
+<li>Visible to the class only (private).</li>
+<li>Visible to the world (public).</li>
+<li>Visible to the package and all subclasses (protected).</li>
+<li>Visible to the package&#x2014;the (unfortunate) default. No modifers are needed. </li>
+</ul>
+</li>
+</ul>
+<h3 id="52-object-the-cosmic-superclass">5.2 Object: The Cosmic Superclass</h3>
+<ul>
+<li>The Object class is the ultimate ancestor&#x2014;every class in Java extends Object. </li>
+<li>In Java, only the values of primitive types (numbers, characters, and boolean values) are not objects. </li>
+</ul>
+<p><strong>The equals Method</strong></p>
+<ul>
+<li><p>The equals method in the Object class tests whether one object is considered equal to another. The equals method, as implemented in the Object class, determines whether two object references are identical. This is a pretty reasonable default&#x2014;if two objects are identical, they should certainly be equal. </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>{
+      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object otherObject)</span></span>{
+          <span class="hljs-comment">// a quick test to see if the objects are identical</span>
+          <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> == otherObject) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+          <span class="hljs-comment">// must return false if the explicit parameter is null</span>
+          <span class="hljs-keyword">if</span> (otherObject == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+          <span class="hljs-comment">// if the classes don&apos;t match, they can&apos;t be equal</span>
+          <span class="hljs-keyword">if</span> (getClass() != otherObject.getClass())
+              <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+          <span class="hljs-comment">// now we know otherObject is a non-null Employee</span>
+          Employee other = (Employee) otherObject;
+          <span class="hljs-comment">// test whether the fields have identical values</span>
+          <span class="hljs-keyword">return</span> Objects.equals(name, other.name)
+              &amp;&amp; salary == other.salary
+              &amp;&amp; Object.equals(hireDay, other.hireDay);
+      }
+  }
+</code></pre>
+</li>
+</ul>
+<p><strong>Equality Testing and Inheritance</strong></p>
+<ul>
+<li><p>The Java Language Specifcation requires that the equals method has the following properties: </p>
+<ul>
+<li>It is re&#xFB02;exive: For any non-null reference x, x.equals(x) should return true.</li>
+<li>It is symmetric: For any references x and y, x.equals(y) should return true if and only if y.equals(x) returns true.</li>
+<li>It is transitive: For any references x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.</li>
+<li>It is consistent: If the objects to which x and y refer haven&#x2019;t changed, then repeated calls to x.equals(y) return the same value.</li>
+<li>For any non-null reference x, x.equals(null) should return false. </li>
+</ul>
+</li>
+<li><p>Here is a recipe for writing the perfect equals method:</p>
+<ul>
+<li><p>Name the explicit parameter otherObject&#x2014;later, you will need to cast it to another variable that you should call other.</p>
+</li>
+<li><p>Test whether this happens to be identical to otherObject: </p>
+<p><code>if (this == otherObject) return true;</code></p>
+<p>This statement is just an optimization. In practice, this is a common case. It is much cheaper to check for identity than to compare the felds.</p>
+</li>
+<li><p>Test whether otherObject is null and return false if it is. This test is required. </p>
+<p><code>if (otherObject == null) return false;</code></p>
+</li>
+<li><p>Compare the classes of this and otherObject. If the semantics of equals can change in subclasses, use the getClass test: </p>
+<p><code>if (getClass() != otherObject.getClass()) return false;</code></p>
+<p>If the same semantics holds for all subclasses, you can use an instanceof test: </p>
+<p><code>if (!(otherObject instanceof ClassName)) return false;</code></p>
+</li>
+<li><p>Cast otherObject to a variable of your class type: </p>
+<p><code>ClassName other = (ClassName) otherObject</code></p>
+</li>
+<li><p>Now compare the felds, as required by your notion of equality. Use == for primitive type felds, Objects.equals for object felds. Return true if all felds match, false otherwise.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">return</span> field1 == other.field1
+&amp;&amp; Objects.equals(field2, other.field2)
+    &amp;&amp; . . .;
+</code></pre>
+<p>If you redefne equals in a subclass, include a call to super.equals(other). </p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>The hashCode Method</strong></p>
+<ul>
+<li><p>A hash code is an integer that is derived from an object. </p>
+</li>
+<li><p>The hashCode method is defned in the Object class. Therefore, every object has a default hash code. That hash code is derived from the object&#x2019;s memory address.</p>
+</li>
+<li><p>The strings s and t have the same hash code because, for strings, the hash codes are derived from their contents. The string builders sb and tb have different hash codes because no hashCode method has been defned for the StringBuilder class and the default hashCode method in the Object class derives the hash code from the object&#x2019;s memory address. </p>
+<pre><code class="lang-java">String s = <span class="hljs-string">&quot;Ok&quot;</span>;
+StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder(s);
+System.out.println(s.hashCode() + <span class="hljs-string">&quot; &quot;</span> + sb.hashCode());
+String t = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;Ok&quot;</span>);
+StringBuilder tb = <span class="hljs-keyword">new</span> StringBuilder(t);
+System.out.println(t.hashCode() + <span class="hljs-string">&quot; &quot;</span> + tb.hashCode());
+</code></pre>
+<p><img src="../img/Hash Codes of Strings and String Builders.png" alt="Hash Codes of Strings and String Builders"></p>
+</li>
+</ul>
+<p><strong>The toString Method</strong></p>
 <p>5.3 Generic Array Lists</p>
 <p>5.4 Object Wrappers and Autoboxing</p>
 <p>5.5 Methods with a Variable Number of Parameters</p>
@@ -1030,7 +1275,7 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"4.1","depth":1,"next":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"previous":{"title":"Angular","level":"3.4","depth":1,"path":"post/angular.md","ref":"post/angular.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/java.md","mtime":"2019-02-25T08:34:23.796Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-25T08:46:04.843Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"4.1","depth":1,"next":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"previous":{"title":"Angular","level":"3.4","depth":1,"path":"post/angular.md","ref":"post/angular.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/java.md","mtime":"2019-02-26T09:52:57.144Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-26T09:54:29.820Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
