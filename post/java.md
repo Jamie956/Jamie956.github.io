@@ -719,17 +719,14 @@ p.getDescription()
 
 **Protected Acess**
 
+- As you know, felds in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won’t be visible to other classes. 
 
-
-
-
-
-
-
-
-
-
-
+- Protected methods make more sense. A class may declare a method as protected if it is tricky to use. This indicates that the subclasses (which, presumably, know their ancestor well) can be trusted to use the method correctly, but other classes cannot. 
+- The four access modifers in Java that control visibility: 
+  - Visible to the class only (private).
+  - Visible to the world (public).
+  - Visible to the package and all subclasses (protected).
+  - Visible to the package—the (unfortunate) default. No modifers are needed. 
 
 
 
