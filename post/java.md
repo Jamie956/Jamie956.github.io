@@ -666,7 +666,70 @@ if (staff[1] instanceof Manager){
 
 **Abstract Classes**
 
+- As you move up the inheritance hierarchy, classes become more general and probably more abstract. At some point, the ancestor class becomes so general that you think of it more as a basis for other classes than as a class with specifc instances you want to use. Consider, for example, an extension of our Employee class hierarchy. An employee is a person, and so is a student. Let us extend our class hierarchy to include classes Person and Student. 
+
+- Why bother with so high a level of abstraction? There are some attributes that make sense for every person, such as name. Both students and employees have names, and introducing a common superclass lets us factor out the getName method to a higher level in the inheritance hierarchy 
+
+![Inheritance diagram for Person and its subclasses](..\img\Inheritance diagram for Person and its subclasses.png)
+
+
+
+- If you use the abstract keyword, you do not need to implement the method at all. 
+
+```java
+public abstract class Person{
+    // no implementation required
+    public abstract String getDescription();
+}
+```
+
+- In addition to abstract methods, abstract classes can have felds and concrete methods.  
+
+```java
+public abstract class Person{
+    private String name;
+    public Person(String name){
+        this.name = name;
+    }
+    public abstract String getDescription();
+    public String getName(){
+        return name;
+    }
+}
+```
+
+
+
+- Abstract methods act as placeholders for methods that are implemented in the subclasses. When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods undefned; then you must tag the subclass as abstract as well. Or you can defne all methods, and the subclass is no longer abstract. 
+- Abstract classes cannot be instantiated. That is, if a class is declared as abstract, no objects of that class can be created. 
+- Note that you can still create object variables of an abstract class, but such a variable must refer to an object of a nonabstract subclass. For example: 
+
+```java
+Person p = new Student("Vince Vu", "Economics");
+```
+
+- Keep in mind that the variable p never refers to a Person object because it is impossible to construct an object of the abstract Person class. 
+
+```
+Person p = new Student(. . .);
+p.getDescription()
+```
+
+
+
 **Protected Acess**
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
