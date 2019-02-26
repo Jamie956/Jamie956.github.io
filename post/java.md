@@ -610,6 +610,36 @@ When you override a method, the subclass method must be at least as visible as t
 
 **Preventing Inheritance: Final Classes and Methods**
 
+Occasionally, you want to prevent someone from forming a subclass from one of your classes. Classes that cannot be extended are called fnal classes, and you use the final modifer in the defnition of the class to indicate this. 
+
+```java
+public final class Executive extends Manager{
+
+}
+```
+
+
+
+You can also make a specifc method in a class final. If you do this, then no subclass can override that method. (All methods in a final class are automatically final.) 
+
+```java
+public class Employee{
+    public final String getName(){
+        return name;
+    }
+}
+```
+
+
+
+Recall that fields can also be declared as final. A final field cannot be changed after the object has been constructed. However, if a class is declared final, only the methods, not the fields, are automatically final. 
+
+
+
+Fortunately, the just-in-time compiler in the virtual machine can do a better job than a traditional compiler. It knows exactly which classes extend a given class, and it can check whether any class actually overrides a given method. If a method is short, frequently called, and not actually overridden, the just-in-time compiler can inline the method. 
+
+
+
 **Casting**
 
 **Abstract Classes**
