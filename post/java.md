@@ -191,15 +191,15 @@ When you extend an existing class, the new class has all the properties and meth
 
 **Relationships between Classes**
 
-• Dependence (“uses–a”)
+- Dependence (“uses–a”)
 
 For example, the Order class uses the Account class because Order objects need to access Account objects to check for credit status. But the Item class does not depend on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate objects of that class. 
 
-• Aggregation (“has–a”)
+- Aggregation (“has–a”)
 
 The aggregation, or “has–a” relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that objects of class A contain objects of class B.
 
-• Inheritance (“is–a”) 
+- Inheritance (“is–a”) 
 
 The inheritance, or “is–a” relationship, expresses a relationship between a more special and a more general class. For example, a RushOrder class inherits from an Order class. The specialized RushOrder class has special methods for priority handling and a different method for computing shipping charges, but its other methods, such as adding items and billing, are inherited from the Order class. In general, if class A extends class B, class A inherits methods from class B but has more capabilities.
 
@@ -225,11 +225,11 @@ A constructor is a special method whose purpose is to construct and initialize o
 
 **constructor**
 
-• A constructor has the same name as the class.
-• A class can have more than one constructor.
-• A constructor can take zero, one, or more parameters.
-• A constructor has no return value.
-• A constructor is always called with the new operator. 
+- A constructor has the same name as the class.
+- A class can have more than one constructor.
+- A constructor can take zero, one, or more parameters.
+- A constructor has no return value.
+- A constructor is always called with the new operator. 
 
 
 
@@ -293,8 +293,8 @@ public static int getNextId()
 ```
 
 Use static methods in two situations:
-• When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
-• When a method only needs to access static felds of the class (example: Employee.getNextId).
+- When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
+- When a method only needs to access static felds of the class (example: Employee.getNextId).
 
 
 
@@ -876,6 +876,16 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 
 ### 5.7 Reflection
+
+- The reﬂection library gives you a very rich and elaborate toolset to write programsthat manipulate Java code dynamically 
+
+- A program that can analyze the capabilities of classes is called reﬂective. The reﬂection mechanism is extremely powerful. As the next sections show, you can use it to
+  - Analyze the capabilities of classes at runtime;
+  - Inspect objects at runtime—for example, to write a single toString method that works for all classes;
+  - Implement generic array manipulation code; and
+  - Take advantage of Method objects that work just like function pointers in languages such as C++. 
+
+
 
 **The Class Class**
 
