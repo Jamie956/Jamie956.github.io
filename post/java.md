@@ -1,11 +1,3 @@
-## 装箱/拆箱
-
-|          | 装箱(Boxing)                                     | 拆箱(Unboxing)                                         |
-| -------- | ------------------------------------------------ | ------------------------------------------------------ |
-| 定义     | 基本数据类型 -> 包装器类型                       | 包装器类型 -> 基本数据类型                             |
-| 实现     | int i = 1;<br />Integer rs = Integer.valueOf(i); | Integer i = new Integer(1);<br/>int rs = i.intValue(); |
-| 自动转换 | Integer a = 1;                                   | int b = new Integer(1);                                |
-
 
 
 Integer.valueOf()
@@ -857,13 +849,31 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 
 
-**Compatibility between Typed and Raw Array Lists**
+### 5.4 Object Wrappers and Autoboxing
+
+- A class Integer corresponds to the primitive type int. These kinds of classes are usually called wrappers.  
+- The wrapper classes have obvious names: Integer, Long, Float, Double, Short, Byte, Character, and Boolean. 
+- The wrapper classes are immutable—you cannot change a wrapped value after the wrapper has been constructed. They are also final, so you cannot subclass them. 
+- autoboxing
+
+    ```java
+    ArrayList<Integer> list = new ArrayList<>();
+    list.add(3);
+    //automatically translated to
+    list.add(Integer.valueOf(3));
+    ```
+
+- unboxing
+
+  ```java
+  int n = list.get(i);
+  // the compiler translates into
+  int n = list.get(i).intValue();
+  ```
+
+- Boxing and unboxing is a courtesy of the compiler, not the virtual machine. The compiler inserts the necessary calls when it generates the bytecodes of a class. The virtual machine simply executes those bytecodes. 
 
 
-
-
-
-5.4 Object Wrappers and Autoboxing
 
 5.5 Methods with a Variable Number of Parameters
 
