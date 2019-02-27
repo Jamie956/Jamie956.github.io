@@ -823,6 +823,27 @@ public static final int HEARTS = 1;
 
 ### 5.3 Generic Array Lists
 
+- The ArrayList class is similar to an array, but it automatically adjusts its capacity as you add and remove elements, without any additional code. 
+
+- ArrayList is a generic class with a type parameter. To specify the type of the element objects that the array list holds, you append a class name enclosed in angle brackets, such as `ArrayList<Employee>`
+
+- Here we declare and construct an array list that holds Employee objects: 
+
+  ```java
+  ArrayList<Employee> staff = new ArrayList<Employee>();
+  //Java7 - omit the type parameter on the right-hand side
+  ArrayList<Employee> staff = new ArrayList<>();
+  ```
+
+- If you call add and the internal array is full, the array list automatically creates a bigger array and copies all the objects from the smaller to the bigger array. 
+
+- If you already know, or have a good guess, how many elements you want to store, call the ensureCapacity method before flling the array list:
+  `staff.ensureCapacity(100); `
+
+- You can also pass an initial capacity to the ArrayList constructor: 
+
+  `ArrayList<Employee> staff = new ArrayList<>(100); `
+
 
 
 **Accessing Array List Elements**
