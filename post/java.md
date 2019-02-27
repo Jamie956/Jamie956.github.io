@@ -875,11 +875,21 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 
 
-5.5 Methods with a Variable Number of Parameters
+### 5.7 Reflection
 
-5.6 Enmeration Classes
+**The Class Class**
 
-5.7 Reflection
+**A Primer on Catching Exceptions**
+
+**Using Reﬂection to Analyze the Capabilities of Classes**
+
+**Using Reﬂection to Analyze Objects at Runtime**
+
+**Using Reﬂection to Write Generic Array Code**
+
+**Invoking Arbitrary Methods**
+
+
 
 5.8 Design Hints for Inheritance
 
