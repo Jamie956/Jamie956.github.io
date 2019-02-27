@@ -809,6 +809,16 @@ public static final int HEARTS = 1;
 
 **The toString Method**
 
+- Another important method in Object is the toString method that returns a string representing the value of this object.  
+
+- Whenever an object is concatenated with a string by the “+” operator, the Java compiler automatically invokes the toString method to obtain a string representation of the object. 
+
+  ```java
+  Point p = new Point(10, 20);
+  String message = "The current position is " + p;
+  // automatically invokes p.toString()
+  ```
+
 
 
 5.3 Generic Array Lists
