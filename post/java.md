@@ -889,7 +889,40 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 **The Class Class**
 
+- While your program is running, the Java runtime system always maintains what is called runtime type identifcation on all objects. This information keeps track of the class to which each object belongs. Runtime type information is used by the virtual machine to select the correct methods to execute. 
+
+- The getClass() method in the Object class returns an instance of Class type. 
+
+  ```java
+  Employee e;
+  . . .
+  Class cl = e.getClass();
+  ```
+
+
+
 **A Primer on Catching Exceptions**
+
+- There are two kinds of exceptions: unchecked exceptions and checked exceptions. With checked exceptions, the compiler checks that you provide a handler. However, many common exceptions, such as accessing a null reference, are unchecked. The compiler does not check whether you provided a handler for these errors—after all, you should spend your mental energy on avoiding these mistakes rather than coding handlers for them. 
+
+- But not all errors are avoidable. If an exception can occur despite your best efforts, then the compiler insists that you provide a handler. The Class.forName method is an example of a method that throws a checked exception. 
+
+- Place one or more statements that might throw checked exceptions inside a try block. Then provide the handler code in the catch clause. 
+
+  ```java
+  try{
+      String name = . . .; // get class name
+      Class cl = Class.forName(name); // might throw exception
+      do something with cl
+  }
+  catch (Exception e){
+      e.printStackTrace();
+  }
+  ```
+
+- If the class name doesn’t exist, the remainder of the code in the try block is skipped and the program enters the catch clause. (Here, we print a stack trace by using the printStackTrace method of the Throwable class. Throwable is the superclass of the Exception class.) If none of the methods in the try block throws an exception, the handler code in the catch clause is skipped 
+
+
 
 **Using Reﬂection to Analyze the Capabilities of Classes**
 
