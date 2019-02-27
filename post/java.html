@@ -535,37 +535,15 @@
 <ul>
 <li><div><a href="#51-classes-superclasses-and-subclasses">5.1 Classes, Superclasses, and Subclasses</a><i></i></div></li>
 <li><div><a href="#52-object-the-cosmic-superclass">5.2 Object: The Cosmic Superclass</a><i></i></div></li>
+<li><div><a href="#53-generic-array-lists">5.3 Generic Array Lists</a><i></i></div></li>
+<li><div><a href="#54-object-wrappers-and-autoboxing">5.4 Object Wrappers and Autoboxing</a><i></i></div></li>
+<li><div><a href="#57-reflection">5.7 Reflection</a><i></i></div></li>
 </ul></li>
 </ul>
 </div>
 
-<h2 id="&#x88C5;&#x7BB1;&#x62C6;&#x7BB1;">&#x88C5;&#x7BB1;/&#x62C6;&#x7BB1;</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>&#x88C5;&#x7BB1;(Boxing)</th>
-<th>&#x62C6;&#x7BB1;(Unboxing)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&#x5B9A;&#x4E49;</td>
-<td>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B; -&gt; &#x5305;&#x88C5;&#x5668;&#x7C7B;&#x578B;</td>
-<td>&#x5305;&#x88C5;&#x5668;&#x7C7B;&#x578B; -&gt; &#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</td>
-</tr>
-<tr>
-<td>&#x5B9E;&#x73B0;</td>
-<td>int i = 1;<br>Integer rs = Integer.valueOf(i);</td>
-<td>Integer i = new Integer(1);<br>int rs = i.intValue();</td>
-</tr>
-<tr>
-<td>&#x81EA;&#x52A8;&#x8F6C;&#x6362;</td>
-<td>Integer a = 1;</td>
-<td>int b = new Integer(1);</td>
-</tr>
-</tbody>
-</table>
+
+
 <p>Integer.valueOf()</p>
 <pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Integer <span class="hljs-title">valueOf</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{
     <span class="hljs-keyword">if</span>(i &gt;= -<span class="hljs-number">128</span> &amp;&amp; i &lt;= IntegerCache.high)
@@ -791,11 +769,17 @@
 <p><strong>Inheritance</strong></p>
 <p>When you extend an existing class, the new class has all the properties and methods of the class that you extend. You then supply new methods and data fields that apply to your new class only. The concept of extending a class to obtain another class is called inheritance.</p>
 <p><strong>Relationships between Classes</strong></p>
-<p>&#x2022; Dependence (&#x201C;uses&#x2013;a&#x201D;)</p>
+<ul>
+<li>Dependence (&#x201C;uses&#x2013;a&#x201D;)</li>
+</ul>
 <p>For example, the Order class uses the Account class because Order objects need to access Account objects to check for credit status. But the Item class does not depend on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate objects of that class. </p>
-<p>&#x2022; Aggregation (&#x201C;has&#x2013;a&#x201D;)</p>
+<ul>
+<li>Aggregation (&#x201C;has&#x2013;a&#x201D;)</li>
+</ul>
 <p>The aggregation, or &#x201C;has&#x2013;a&#x201D; relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that objects of class A contain objects of class B.</p>
-<p>&#x2022; Inheritance (&#x201C;is&#x2013;a&#x201D;) </p>
+<ul>
+<li>Inheritance (&#x201C;is&#x2013;a&#x201D;) </li>
+</ul>
 <p>The inheritance, or &#x201C;is&#x2013;a&#x201D; relationship, expresses a relationship between a more special and a more general class. For example, a RushOrder class inherits from an Order class. The specialized RushOrder class has special methods for priority handling and a different method for computing shipping charges, but its other methods, such as adding items and billing, are inherited from the Order class. In general, if class A extends class B, class A inherits methods from class B but has more capabilities.</p>
 <p><img src="../img/UML notation for class relationships.png" alt="UML notation for class relationships"></p>
 <h3 id="42-using-predefined-classes">4.2 Using Predefined classes</h3>
@@ -805,11 +789,13 @@
 <p>A constructor is a special method whose purpose is to construct and initialize objects.</p>
 <h3 id="43-defning-your-own-classes">4.3 Defning Your Own Classes</h3>
 <p><strong>constructor</strong></p>
-<p>&#x2022; A constructor has the same name as the class.
-&#x2022; A class can have more than one constructor.
-&#x2022; A constructor can take zero, one, or more parameters.
-&#x2022; A constructor has no return value.
-&#x2022; A constructor is always called with the new operator. </p>
+<ul>
+<li>A constructor has the same name as the class.</li>
+<li>A class can have more than one constructor.</li>
+<li>A constructor can take zero, one, or more parameters.</li>
+<li>A constructor has no return value.</li>
+<li>A constructor is always called with the new operator. </li>
+</ul>
 <p><strong>Final Instance Fields</strong></p>
 <p>You can define an instance field as final. Such a field must be initialized when the object is constructed. That is, you must guarantee that the field value has been set after the end of every constructor. Afterwards, the field may not be modified again.</p>
 <pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span>
@@ -845,9 +831,11 @@
     <span class="hljs-keyword">return</span> nextId; <span class="hljs-comment">// returns static field</span>
 }
 </code></pre>
-<p>Use static methods in two situations:
-&#x2022; When a method doesn&#x2019;t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
-&#x2022; When a method only needs to access static felds of the class (example: Employee.getNextId).</p>
+<p>Use static methods in two situations:</p>
+<ul>
+<li>When a method doesn&#x2019;t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).</li>
+<li>When a method only needs to access static felds of the class (example: Employee.getNextId).</li>
+</ul>
 <h3 id="46-object-construction">4.6 Object Construction</h3>
 <p><strong>Overloading</strong></p>
 <p>Some classes have more than one constructor. For example, you can construct an empty StringBuilder object as
@@ -1226,12 +1214,114 @@ System.out.println(t.hashCode() + <span class="hljs-string">&quot; &quot;</span>
 </li>
 </ul>
 <p><strong>The toString Method</strong></p>
-<p>5.3 Generic Array Lists</p>
-<p>5.4 Object Wrappers and Autoboxing</p>
-<p>5.5 Methods with a Variable Number of Parameters</p>
-<p>5.6 Enmeration Classes</p>
-<p>5.7 Reflection</p>
-<p>5.8 Design Hints for Inheritance</p>
+<ul>
+<li><p>Another important method in Object is the toString method that returns a string representing the value of this object.  </p>
+</li>
+<li><p>Whenever an object is concatenated with a string by the &#x201C;+&#x201D; operator, the Java compiler automatically invokes the toString method to obtain a string representation of the object. </p>
+<pre><code class="lang-java">Point p = <span class="hljs-keyword">new</span> Point(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>);
+String message = <span class="hljs-string">&quot;The current position is &quot;</span> + p;
+<span class="hljs-comment">// automatically invokes p.toString()</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="53-generic-array-lists">5.3 Generic Array Lists</h3>
+<ul>
+<li><p>The ArrayList class is similar to an array, but it automatically adjusts its capacity as you add and remove elements, without any additional code. </p>
+</li>
+<li><p>ArrayList is a generic class with a type parameter. To specify the type of the element objects that the array list holds, you append a class name enclosed in angle brackets, such as <code>ArrayList&lt;Employee&gt;</code></p>
+</li>
+<li><p>Here we declare and construct an array list that holds Employee objects: </p>
+<pre><code class="lang-java">ArrayList&lt;Employee&gt; staff = <span class="hljs-keyword">new</span> ArrayList&lt;Employee&gt;();
+<span class="hljs-comment">//Java7 - omit the type parameter on the right-hand side</span>
+ArrayList&lt;Employee&gt; staff = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+</code></pre>
+</li>
+<li><p>If you call add and the internal array is full, the array list automatically creates a bigger array and copies all the objects from the smaller to the bigger array. </p>
+</li>
+<li><p>If you already know, or have a good guess, how many elements you want to store, call the ensureCapacity method before flling the array list:
+<code>staff.ensureCapacity(100);</code></p>
+</li>
+<li><p>You can also pass an initial capacity to the ArrayList constructor: </p>
+<p><code>ArrayList&lt;Employee&gt; staff = new ArrayList&lt;&gt;(100);</code></p>
+</li>
+</ul>
+<p><strong>Accessing Array List Elements</strong></p>
+<p>Employee[] array is replaced by an <code>ArrayList&lt;Employee&gt;</code>. Note the following changes: </p>
+<ul>
+<li>You don&#x2019;t have to specify the array size.</li>
+<li>You use add to add as many elements as you like.</li>
+<li>You use size() instead of length to count the number of elements.</li>
+<li>You use a.get(i) instead of a[i] to access an element.</li>
+</ul>
+<h3 id="54-object-wrappers-and-autoboxing">5.4 Object Wrappers and Autoboxing</h3>
+<ul>
+<li>A class Integer corresponds to the primitive type int. These kinds of classes are usually called wrappers.  </li>
+<li>The wrapper classes have obvious names: Integer, Long, Float, Double, Short, Byte, Character, and Boolean. </li>
+<li>The wrapper classes are immutable&#x2014;you cannot change a wrapped value after the wrapper has been constructed. They are also final, so you cannot subclass them. </li>
+<li><p>autoboxing</p>
+<pre><code class="lang-java">  ArrayList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+  list.add(<span class="hljs-number">3</span>);
+  <span class="hljs-comment">//automatically translated to</span>
+  list.add(Integer.valueOf(<span class="hljs-number">3</span>));
+</code></pre>
+</li>
+<li><p>unboxing</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> n = list.get(i);
+<span class="hljs-comment">// the compiler translates into</span>
+<span class="hljs-keyword">int</span> n = list.get(i).intValue();
+</code></pre>
+</li>
+<li><p>Boxing and unboxing is a courtesy of the compiler, not the virtual machine. The compiler inserts the necessary calls when it generates the bytecodes of a class. The virtual machine simply executes those bytecodes. </p>
+</li>
+</ul>
+<h3 id="57-reflection">5.7 Reflection</h3>
+<ul>
+<li><p>The re&#xFB02;ection library gives you a very rich and elaborate toolset to write programsthat manipulate Java code dynamically </p>
+</li>
+<li><p>A program that can analyze the capabilities of classes is called re&#xFB02;ective. The re&#xFB02;ection mechanism is extremely powerful. As the next sections show, you can use it to</p>
+<ul>
+<li>Analyze the capabilities of classes at runtime;</li>
+<li>Inspect objects at runtime&#x2014;for example, to write a single toString method that works for all classes;</li>
+<li>Implement generic array manipulation code; and</li>
+<li>Take advantage of Method objects that work just like function pointers in languages such as C++. </li>
+</ul>
+</li>
+</ul>
+<p><strong>The Class Class</strong></p>
+<ul>
+<li><p>While your program is running, the Java runtime system always maintains what is called runtime type identifcation on all objects. This information keeps track of the class to which each object belongs. Runtime type information is used by the virtual machine to select the correct methods to execute. </p>
+</li>
+<li><p>The getClass() method in the Object class returns an instance of Class type. </p>
+<pre><code class="lang-java">Employee e;
+. . .
+Class cl = e.getClass();
+</code></pre>
+</li>
+</ul>
+<p><strong>A Primer on Catching Exceptions</strong></p>
+<ul>
+<li><p>There are two kinds of exceptions: unchecked exceptions and checked exceptions. With checked exceptions, the compiler checks that you provide a handler. However, many common exceptions, such as accessing a null reference, are unchecked. The compiler does not check whether you provided a handler for these errors&#x2014;after all, you should spend your mental energy on avoiding these mistakes rather than coding handlers for them. </p>
+</li>
+<li><p>But not all errors are avoidable. If an exception can occur despite your best efforts, then the compiler insists that you provide a handler. The Class.forName method is an example of a method that throws a checked exception. </p>
+</li>
+<li><p>Place one or more statements that might throw checked exceptions inside a try block. Then provide the handler code in the catch clause. </p>
+<pre><code class="lang-java"><span class="hljs-keyword">try</span>{
+    String name = . . .; <span class="hljs-comment">// get class name</span>
+    Class cl = Class.forName(name); <span class="hljs-comment">// might throw exception</span>
+    do something with cl
+}
+<span class="hljs-keyword">catch</span> (Exception e){
+    e.printStackTrace();
+}
+</code></pre>
+</li>
+<li><p>If the class name doesn&#x2019;t exist, the remainder of the code in the try block is skipped and the program enters the catch clause. (Here, we print a stack trace by using the printStackTrace method of the Throwable class. Throwable is the superclass of the Exception class.) If none of the methods in the try block throws an exception, the handler code in the catch clause is skipped </p>
+</li>
+</ul>
+<p><strong>Using Re&#xFB02;ection to Analyze Objects at Runtime</strong></p>
+<ul>
+<li>The default behavior of the re&#xFB02;ection mechanism is to respect Java access control. However, if a Java program is not controlled by a security manager that disallows it, you can override access control. To do this, invoke the setAccessible method on a Field, Method, or Constructor object. For example: <code>f.setAccessible(true); // now OK to call f.get(harry);</code></li>
+</ul>
 
                                 
                                 </section>
@@ -1275,7 +1365,7 @@ System.out.println(t.hashCode() + <span class="hljs-string">&quot; &quot;</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"4.1","depth":1,"next":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"previous":{"title":"Angular","level":"3.4","depth":1,"path":"post/angular.md","ref":"post/angular.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/java.md","mtime":"2019-02-26T09:52:57.144Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-26T09:54:29.820Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"4.1","depth":1,"next":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"previous":{"title":"Angular","level":"3.4","depth":1,"path":"post/angular.md","ref":"post/angular.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/java.md","mtime":"2019-02-27T08:12:53.391Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-27T09:29:26.743Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,11 +1,3 @@
-## 装箱/拆箱
-
-|          | 装箱(Boxing)                                     | 拆箱(Unboxing)                                         |
-| -------- | ------------------------------------------------ | ------------------------------------------------------ |
-| 定义     | 基本数据类型 -> 包装器类型                       | 包装器类型 -> 基本数据类型                             |
-| 实现     | int i = 1;<br />Integer rs = Integer.valueOf(i); | Integer i = new Integer(1);<br/>int rs = i.intValue(); |
-| 自动转换 | Integer a = 1;                                   | int b = new Integer(1);                                |
-
 
 
 Integer.valueOf()
@@ -199,15 +191,15 @@ When you extend an existing class, the new class has all the properties and meth
 
 **Relationships between Classes**
 
-• Dependence (“uses–a”)
+- Dependence (“uses–a”)
 
 For example, the Order class uses the Account class because Order objects need to access Account objects to check for credit status. But the Item class does not depend on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate objects of that class. 
 
-• Aggregation (“has–a”)
+- Aggregation (“has–a”)
 
 The aggregation, or “has–a” relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that objects of class A contain objects of class B.
 
-• Inheritance (“is–a”) 
+- Inheritance (“is–a”) 
 
 The inheritance, or “is–a” relationship, expresses a relationship between a more special and a more general class. For example, a RushOrder class inherits from an Order class. The specialized RushOrder class has special methods for priority handling and a different method for computing shipping charges, but its other methods, such as adding items and billing, are inherited from the Order class. In general, if class A extends class B, class A inherits methods from class B but has more capabilities.
 
@@ -233,11 +225,11 @@ A constructor is a special method whose purpose is to construct and initialize o
 
 **constructor**
 
-• A constructor has the same name as the class.
-• A class can have more than one constructor.
-• A constructor can take zero, one, or more parameters.
-• A constructor has no return value.
-• A constructor is always called with the new operator. 
+- A constructor has the same name as the class.
+- A class can have more than one constructor.
+- A constructor can take zero, one, or more parameters.
+- A constructor has no return value.
+- A constructor is always called with the new operator. 
 
 
 
@@ -301,8 +293,8 @@ public static int getNextId()
 ```
 
 Use static methods in two situations:
-• When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
-• When a method only needs to access static felds of the class (example: Employee.getNextId).
+- When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
+- When a method only needs to access static felds of the class (example: Employee.getNextId).
 
 
 
@@ -809,19 +801,130 @@ public static final int HEARTS = 1;
 
 **The toString Method**
 
+- Another important method in Object is the toString method that returns a string representing the value of this object.  
+
+- Whenever an object is concatenated with a string by the “+” operator, the Java compiler automatically invokes the toString method to obtain a string representation of the object. 
+
+  ```java
+  Point p = new Point(10, 20);
+  String message = "The current position is " + p;
+  // automatically invokes p.toString()
+  ```
 
 
-5.3 Generic Array Lists
 
-5.4 Object Wrappers and Autoboxing
+### 5.3 Generic Array Lists
 
-5.5 Methods with a Variable Number of Parameters
+- The ArrayList class is similar to an array, but it automatically adjusts its capacity as you add and remove elements, without any additional code. 
 
-5.6 Enmeration Classes
+- ArrayList is a generic class with a type parameter. To specify the type of the element objects that the array list holds, you append a class name enclosed in angle brackets, such as `ArrayList<Employee>`
 
-5.7 Reflection
+- Here we declare and construct an array list that holds Employee objects: 
 
-5.8 Design Hints for Inheritance
+  ```java
+  ArrayList<Employee> staff = new ArrayList<Employee>();
+  //Java7 - omit the type parameter on the right-hand side
+  ArrayList<Employee> staff = new ArrayList<>();
+  ```
+
+- If you call add and the internal array is full, the array list automatically creates a bigger array and copies all the objects from the smaller to the bigger array. 
+
+- If you already know, or have a good guess, how many elements you want to store, call the ensureCapacity method before flling the array list:
+  `staff.ensureCapacity(100); `
+
+- You can also pass an initial capacity to the ArrayList constructor: 
+
+  `ArrayList<Employee> staff = new ArrayList<>(100); `
 
 
+
+**Accessing Array List Elements**
+
+Employee[] array is replaced by an `ArrayList<Employee>`. Note the following changes: 
+
+- You don’t have to specify the array size.
+- You use add to add as many elements as you like.
+- You use size() instead of length to count the number of elements.
+- You use a.get(i) instead of a[i] to access an element.
+
+
+
+### 5.4 Object Wrappers and Autoboxing
+
+- A class Integer corresponds to the primitive type int. These kinds of classes are usually called wrappers.  
+- The wrapper classes have obvious names: Integer, Long, Float, Double, Short, Byte, Character, and Boolean. 
+- The wrapper classes are immutable—you cannot change a wrapped value after the wrapper has been constructed. They are also final, so you cannot subclass them. 
+- autoboxing
+
+    ```java
+    ArrayList<Integer> list = new ArrayList<>();
+    list.add(3);
+    //automatically translated to
+    list.add(Integer.valueOf(3));
+    ```
+
+- unboxing
+
+  ```java
+  int n = list.get(i);
+  // the compiler translates into
+  int n = list.get(i).intValue();
+  ```
+
+- Boxing and unboxing is a courtesy of the compiler, not the virtual machine. The compiler inserts the necessary calls when it generates the bytecodes of a class. The virtual machine simply executes those bytecodes. 
+
+
+
+### 5.7 Reflection
+
+- The reﬂection library gives you a very rich and elaborate toolset to write programsthat manipulate Java code dynamically 
+
+- A program that can analyze the capabilities of classes is called reﬂective. The reﬂection mechanism is extremely powerful. As the next sections show, you can use it to
+  - Analyze the capabilities of classes at runtime;
+  - Inspect objects at runtime—for example, to write a single toString method that works for all classes;
+  - Implement generic array manipulation code; and
+  - Take advantage of Method objects that work just like function pointers in languages such as C++. 
+
+
+
+**The Class Class**
+
+- While your program is running, the Java runtime system always maintains what is called runtime type identifcation on all objects. This information keeps track of the class to which each object belongs. Runtime type information is used by the virtual machine to select the correct methods to execute. 
+
+- The getClass() method in the Object class returns an instance of Class type. 
+
+  ```java
+  Employee e;
+  . . .
+  Class cl = e.getClass();
+  ```
+
+
+
+**A Primer on Catching Exceptions**
+
+- There are two kinds of exceptions: unchecked exceptions and checked exceptions. With checked exceptions, the compiler checks that you provide a handler. However, many common exceptions, such as accessing a null reference, are unchecked. The compiler does not check whether you provided a handler for these errors—after all, you should spend your mental energy on avoiding these mistakes rather than coding handlers for them. 
+
+- But not all errors are avoidable. If an exception can occur despite your best efforts, then the compiler insists that you provide a handler. The Class.forName method is an example of a method that throws a checked exception. 
+
+- Place one or more statements that might throw checked exceptions inside a try block. Then provide the handler code in the catch clause. 
+
+  ```java
+  try{
+      String name = . . .; // get class name
+      Class cl = Class.forName(name); // might throw exception
+      do something with cl
+  }
+  catch (Exception e){
+      e.printStackTrace();
+  }
+  ```
+
+- If the class name doesn’t exist, the remainder of the code in the try block is skipped and the program enters the catch clause. (Here, we print a stack trace by using the printStackTrace method of the Throwable class. Throwable is the superclass of the Exception class.) If none of the methods in the try block throws an exception, the handler code in the catch clause is skipped 
+
+
+
+**Using Reﬂection to Analyze Objects at Runtime**
+
+- The default behavior of the reﬂection mechanism is to respect Java access control. However, if a Java program is not controlled by a security manager that disallows it, you can override access control. To do this, invoke the setAccessible method on a Field, Method, or Constructor object. For example: `f.setAccessible(true); // now OK to call f.get(harry); `
 
