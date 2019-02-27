@@ -924,9 +924,11 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 
 
-**Using Reﬂection to Analyze the Capabilities of Classes**
-
 **Using Reﬂection to Analyze Objects at Runtime**
+
+- The default behavior of the reﬂection mechanism is to respect Java access control. However, if a Java program is not controlled by a security manager that disallows it, you can override access control. To do this, invoke the setAccessible method on a Field, Method, or Constructor object. For example: `f.setAccessible(true); // now OK to call f.get(harry); `
+
+
 
 **Using Reﬂection to Write Generic Array Code**
 
