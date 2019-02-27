@@ -821,7 +821,17 @@ public static final int HEARTS = 1;
 
 
 
-5.3 Generic Array Lists
+### 5.3 Generic Array Lists
+
+
+
+**Accessing Array List Elements**
+
+**Compatibility between Typed and Raw Array Lists**
+
+
+
+
 
 5.4 Object Wrappers and Autoboxing
 
