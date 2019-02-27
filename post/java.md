@@ -848,6 +848,15 @@ public static final int HEARTS = 1;
 
 **Accessing Array List Elements**
 
+Employee[] array is replaced by an `ArrayList<Employee>`. Note the following changes: 
+
+- You don’t have to specify the array size.
+- You use add to add as many elements as you like.
+- You use size() instead of length to count the number of elements.
+- You use a.get(i) instead of a[i] to access an element.
+
+
+
 **Compatibility between Typed and Raw Array Lists**
 
 
