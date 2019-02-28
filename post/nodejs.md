@@ -36,7 +36,7 @@ chrome://inspect
 
 
 
-## Install
+## NVM
 
 ```shell
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
@@ -49,43 +49,17 @@ nvm alias default 8.11.3
 
 
 
-
-## Book
-
-**To Do**
-
-《了不起的Node.js》
-
-**In Progress**
-
-
-
-**Done**
-
-《Node.js in action》
-
-《深入浅出Node.js》
-
-
-
-
 ## Intro
 
-Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+- What: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+  - Chrome's V8: V8 is Google’s open source high-performance JavaScript and WebAssembly engine, written in C++. It is used in Chrome and in Node.js, among others. It implements ECMAScript and WebAssembly, and runs on Windows 7 or later, macOS 10.12+, and Linux systems that use x64, IA-32, ARM, or MIPS processors. V8 can run standalone, or can be embedded into any C++ application.
+  - event-driven: In an event-driven application, there is generally a main loop that listens for events, and then triggers a callback function when one of those events is detected.
+  - non-blocking I/O model
+  - npm
+
+![Node-architeture](..\img\Node-architeture.png)
 
 
-
-<img width="60%" src="https://static.cnodejs.org/FkTMjCoX4xyL0rJtmm7oBc6V0i8W" />
-
-
-
-
-
-It's very common to conflate the terms "async" and "parallel," but they are actually quite different. Remember, async is about the gap between now and later. But parallel is about things being able to occur simultaneously.
-
-
-
-Whenever there are events to run, the event loop runs until the queue is empty. Each iteration of the event loop is a "tick." User interaction, IO, and timers enqueue events on the event queue.
 
 
 
@@ -106,20 +80,11 @@ Whenever there are events to run, the event loop runs until the queue is empty. 
 
 ## NPM Commands
 
-```she&#39;l&#39;l
-设version 0.1.0
-npm version major //v1.0.0 主版本号
-npm version premajor //v1.0.0-0 预备主版本
-npm version minor //v0.1.0 次版本号
-npm version preminor //v0.1.0-0 预备次版本
-npm version patch //v0.1.1 修订号
-npm version prepatch //v0.1.1-0 预备修订版
-npm version prerelease //v0.1.2-0 预发布版本
-
-npm -v //查看node版本
-npm config list //查看node配置
-npm root //查看node_modules目录
-npm root -g //查看全局node_modules目录
+```shell
+npm -v //version
+npm config list //node config
+npm root //node_modules root path
+npm root -g
 
 npm i <module> //安装最新模块
 npm i //安装package.json里的模块
@@ -129,7 +94,7 @@ npm i -D <lib> //安装模块到dev-dependencies
 npm remove <module> //移除模块
 npm update <module> //更新模块
 npm view <module> //查看模块信息
-npm view <module> versions //查看模块历史版本
+npm view <module> versions //历史版本
 
 npm init //生成package.json
 npm init -y //生成package.json并设置默认值
@@ -166,16 +131,13 @@ ncu -u //检查全部依赖包
 
 
 
-事件循环：进程启动时，Node创建一个类似while(true)的循环，每执行一次循环体（tick），查看是否有事件待处理，如果有就取出事件及其相关回调函数
-
-
-
 ## Async
 
-**事件发布/订阅模式**
 
 
-- EventEmitter
+EventEmitter
+
+EventEmitter is at the core of Node asynchronous event-driven architecture.
 
 ```js
 var EventEmitter = require("events");
@@ -195,8 +157,6 @@ setTimeout(() => {
 
 
 
-**Promise/Deferred模式**
-
 Promise
 
 ```js
@@ -211,6 +171,8 @@ new Promise((resolve, reject) => {
     console.log(e);
 });
 ```
+
+
 
 Async/Await
 
