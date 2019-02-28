@@ -983,17 +983,21 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
   `class Employee extends Person, Comparable // Error `
 
-**Static Methods**
+
+
+### 6.2 Examples of Interfaces
 
 
 
-**Default Methods**
-
-**Resolving Default Method Conﬂicts**
+**Interfaces and Callbacks**
 
 
 
-6.2 Examples of Interfaces
+**The Comparator Interface**
+
+**Object Cloning**
+
+
 
 6.3 Lambda Expressions
 
