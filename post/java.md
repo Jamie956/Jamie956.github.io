@@ -936,9 +936,46 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 ### 6.1 Interfaces
 
+
+
 **The Interface Concept**
 
+- This means that any class that implements the Comparable interface is required to have a compareTo method, and the method must take an Object parameter and return an integer. 
+
+  ```java
+  public interface Comparable{
+      int compareTo(Object other);
+  }
+  ```
+
+- All methods of an interface are automatically public. For that reason, it is not necessary to supply the keyword public when declaring a method in an interface. 
+
+- The reason for interfaces is that the Java programming language is strongly typed. When making a method call, the compiler needs to be able to check that the method actually exists. 
+
+
+
 **Properties of Interfaces**
+
+- Interfaces are not classes. In particular, you can never use the new operator to instantiate an interface
+
+  `x = new Comparable(. . .); // ERROR `
+
+- An interface variable must refer to an object of a class that implements the interface 
+
+- Next, just as you use instanceof to check whether an object is of a specifc class, you can use instanceof to check whether an object implements an interface: 
+
+  `if (anObject instanceof Comparable) { . . . } `
+
+- Although you cannot put instance felds or static methods in an interface, you can supply constants in them. For example: 
+
+  ```java
+  public interface Powered extends Moveable{
+      double milesPerGallon();
+      double SPEED_LIMIT = 95; // a public static final constant
+  }
+  ```
+
+  Just as methods in an interface are automatically public, felds are always public static final. 
 
 **Interfaces and Abstract Classes**
 
