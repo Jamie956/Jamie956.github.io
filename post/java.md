@@ -928,3 +928,32 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 - The default behavior of the reﬂection mechanism is to respect Java access control. However, if a Java program is not controlled by a security manager that disallows it, you can override access control. To do this, invoke the setAccessible method on a Field, Method, or Constructor object. For example: `f.setAccessible(true); // now OK to call f.get(harry); `
 
+
+
+## 6 Interfaces, Lambda Expressions, and Inner Classes 
+
+
+
+### 6.1 Interfaces
+
+**The Interface Concept**
+
+**Properties of Interfaces**
+
+**Interfaces and Abstract Classes**
+
+**Static Methods**
+
+**Default Methods**
+
+**Resolving Default Method Conﬂicts**
+
+
+
+6.2 Examples of Interfaces
+
+6.3 Lambda Expressions
+
+6.4 Inner Classes
+
+6.5 Proxies
