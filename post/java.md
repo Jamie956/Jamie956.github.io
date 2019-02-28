@@ -979,7 +979,13 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 **Interfaces and Abstract Classes**
 
+- There is, unfortunately, a major problem with using an abstract base class to express a generic property. A class can only extend a single class. Suppose the Employee class already extends a different class, say, Person. Then it can’t extend a second class. 
+
+  `class Employee extends Person, Comparable // Error `
+
 **Static Methods**
+
+
 
 **Default Methods**
 
