@@ -32,9 +32,7 @@
 
 
 
-<img src="https://camo.githubusercontent.com/5b764ff5af6204f82c7ae6237b20c41f9505aef8/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031382f382f392f313635316631396437633465393361333f773d38373626683d34393226663d706e6726733d313238303932" alt="https://camo.githubusercontent.com/5b764ff5af6204f82c7ae6237b20c41f9505aef8/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031382f382f392f313635316631396437633465393361333f773d38373626683d34393226663d706e6726733d313238303932" class="transparent">
-
-
+![con life](D:\project\justnote\img\con life.png)
 
 **wait/notify**
 
@@ -44,26 +42,11 @@
 
 
 
-**常用方法**
-
-- `hread.currentThread()` 静态方法，获取当前线程对象；
-- `isAlive()` 判断线程是否处于活动状态，即线程已启动且尚未终止；
-- `Thread.sleep(long)` 在指定的毫秒数内让当前线程休眠，需要`catch InterruptedException`；
-- `Thread.interrupted()` 判断该线程是否中断，执行后将清除中断标志；
-- `isInterrupted()` 测试线程是否已经中断；
-- `suspend()   resume()  stop()` 暂停、开始和结束线程，不应该使用。暂停方法不会释放资源；
-- `yield()` 该线程放弃当前CPU资源，放弃后马上进行CPU竞争；
-- `setPriority()`优先级具有继承性，即子线程有父线程的优先级；
-  - 高优先级的线程总是大部分先执行完，但不代表高优先级将全部先完成；
-  - 优先级较高的不一定每一次都先执行完，具有随机性；
-  - 具体的与OS相关；
-- `setDaemon()` 设置守护线程，当进程不存在非守护线程时则守护线程将销魂而后进程销毁；
-
 
 
 **非线程安全**
 
-存在多个线程对同一个对象中的实例变量进行并发访问控制由此导致的数据脏读；
+存在多个线程对同一个对象中的实例变量进行并发访问控制由此导致的数据脏读
 
 
 
@@ -78,7 +61,7 @@
 **ThreadPoolExecutor**
 
 - corePoolSize：默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务来之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中
-- maximumPoolSize：线程池最大线程数，表示在线程池中最多能创建多少个线程
+- maximumPoolSize：表示在线程池中最多能创建多少个线程
 - keepAliveTime：表示线程没有任务执行时最多保持多久时间会终止。默认情况下，只有当线程池中的线程数大于corePoolSize时，keepAliveTime才会起作用，直到线程池中的线程数不大于corePoolSize
 - unit：参数keepAliveTime的时间单位
 - workQueue：一个阻塞队列，用来存储等待执行的任务
@@ -91,51 +74,28 @@
 - largestPoolSize： 曾经出现过的最大线程数
 - completedTaskCount：执行完毕的任务个数
 
-**实现原理**
 
-- 线程池状态
-- 任务的执行
-  - 线程池线程数 < corePoolSize，来一个任务，就创建一个线程去执行这个任务
-  - 线程池线程数 >= corePoolSize，来一个任务，尝试将它添加到任务缓存队列，如果添加成功，就等待空闲线程将它取出，否则（一般是任务缓存队列满了），就会尝试创建新线程执行这个任务
-  - 线程池线程数 = maximumPoolSize，采取任务拒绝策略
-  - 线程池线程数 > corePoolSize，如果线程空闲时间超过keepAliveTime，就会被终止，直到 线程池线程数 < corePoolSize
 
-- 线程池中的线程初始化
 
-- 任务缓存队列及排队策略
 
-- 任务拒绝策略
+- 线程池线程数 < corePoolSize，来一个任务，就创建一个线程去执行这个任务
+- 线程池线程数 >= corePoolSize，来一个任务，尝试将它添加到任务缓存队列，如果添加成功，就等待空闲线程将它取出，否则（一般是任务缓存队列满了），就会尝试创建新线程执行这个任务
+- 线程池线程数 = maximumPoolSize，采取任务拒绝策略
+- 线程池线程数 > corePoolSize，如果线程空闲时间超过keepAliveTime，就会被终止，直到线程池线程数 < corePoolSize
 
-  当线程池的任务缓存队列已满并且线程池中的线程数目达到maximumPoolSize，如果还有任务到来就会采取任务拒绝策略
 
-```
-ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。
-ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。
-ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
-ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务 
-```
+
+
 
 - 线程池的关闭
   - shutdown()：不会立即终止线程池，等缓存队列中的任务执行完才终止，且不接受新任务
   - shutdownNow()：立即终止线程池，尝试打断正在执行的任务，清空任务缓存队列，返回尚未执行的任务
-- 线程池容量的动态调整
+
 
 **配置线程池大小**
 
-- 如果是CPU密集型任务，就需要尽量压榨CPU，参考值可以设为 *N*CPU+1
-- 如果是IO密集型任务，参考值可以设置为2**N*CPU
-
-
-
-**创建**
-
-```java
-ThreadPoolExecutor.ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue)
-
-threadPoolExecutor.execute(thread);
-threadPoolExecutor.shutdown();
-
-```
+- CPU密集型任务，参考值为 *N*CPU+1
+- IO密集型任务，参考值为2**N*CPU
 
 
 
