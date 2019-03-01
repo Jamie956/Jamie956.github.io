@@ -6,7 +6,6 @@
 * [Git](post/git.md)
 * [Data Structure](post/dataStructure.md)
 * [Http](post/http.md)
-* [Regular Expression](post/regularExpression.md)
 * [Linux](post/linux.md)
 * [Design](post/design.md)
 
@@ -20,7 +19,6 @@
 * [Java](post/java.md)
 * [Maven](post/maven.md)
 * [Concurrency](post/concurrency.md)
-* [Spring](post/spring.md)
 * [MongoDB](post/mongodb.md)
 * [Mysql](post/mysql.md)
 * [Redis](post/redis.md)
