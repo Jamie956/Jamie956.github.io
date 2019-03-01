@@ -22,7 +22,7 @@ leverage a CDN to serve static HTML pages.
 
 
 
-### X
+### Feynman
 
 - The Feynman Technique
   - Step 1: Narrow down on a topic which you find difficult to grasp. Learn about the topic.
@@ -50,3 +50,5 @@ leverage a CDN to serve static HTML pages.
     uncertainty over defensiveness — replacing attachment to always being 
     right with the joy of learning what’s true.
 - Realize that the game of life is about *playing it—* not about winning it.
+
+
