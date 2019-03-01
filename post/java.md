@@ -987,6 +987,12 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 ### 6.4 Inner Classes
 
+An inner class is a class that is defned inside another class. Why would you want to do that? There are three reasons:
+
+- Inner class methods can access the data from the scope in which they are defned—including the data that would otherwise be private.
+- Inner classes can be hidden from other classes in the same package.
+- Anonymous inner classes are handy when you want to defne callbacks without writing a lot of code. 
+
 
 
 **Use of an Inner Class to Access Object State**
