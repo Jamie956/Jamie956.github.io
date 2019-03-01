@@ -985,22 +985,24 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 
 
-### 6.2 Examples of Interfaces
+### 6.4 Inner Classes
 
 
 
-**Interfaces and Callbacks**
+**Use of an Inner Class to Access Object State**
+
+**Special Syntax Rules for Inner Classes**
+
+**Are Inner Classes Useful? Actually Necessary? Secure?**
+
+**Local Inner Classes**
+
+**Accessing Variables from Outer Methods**
+
+**Anonymous Inner Classes**
+
+**Static Inner Classes**
 
 
-
-**The Comparator Interface**
-
-**Object Cloning**
-
-
-
-6.3 Lambda Expressions
-
-6.4 Inner Classes
 
 6.5 Proxies
