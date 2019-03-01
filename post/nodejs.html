@@ -156,20 +156,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="regularExpression.html">
-            
-                <a href="regularExpression.html">
-            
-                    
-                    Regular Expression
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.5" data-path="linux.html">
+        <li class="chapter " data-level="2.4" data-path="linux.html">
             
                 <a href="linux.html">
             
@@ -182,7 +169,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="design.html">
+        <li class="chapter " data-level="2.5" data-path="design.html">
             
                 <a href="design.html">
             
@@ -300,20 +287,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4" data-path="spring.html">
-            
-                <a href="spring.html">
-            
-                    
-                    Spring
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.5" data-path="mongodb.html">
+        <li class="chapter " data-level="4.4" data-path="mongodb.html">
             
                 <a href="mongodb.html">
             
@@ -326,7 +300,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6" data-path="mysql.html">
+        <li class="chapter " data-level="4.5" data-path="mysql.html">
             
                 <a href="mysql.html">
             
@@ -339,7 +313,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.7" data-path="redis.html">
+        <li class="chapter " data-level="4.6" data-path="redis.html">
             
                 <a href="redis.html">
             
@@ -352,7 +326,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.8" data-path="docker.html">
+        <li class="chapter " data-level="4.7" data-path="docker.html">
             
                 <a href="docker.html">
             
@@ -365,7 +339,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.9" data-path="docker-tomcat.html">
+        <li class="chapter " data-level="4.8" data-path="docker-tomcat.html">
             
                 <a href="docker-tomcat.html">
             
@@ -503,8 +477,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#install">Install</a><i></i></div></li>
-<li><div><a href="#book">Book</a><i></i></div></li>
+<li><div><a href="#nvm">NVM</a><i></i></div></li>
 <li><div><a href="#intro">Intro</a><i></i></div></li>
 <li><div><a href="#npm-commands">NPM Commands</a><i></i></div></li>
 <li><div><a href="#async-io">Async I/O</a><i></i></div></li>
@@ -565,25 +538,24 @@
 </code></pre>
 <p>&#x6253;&#x5F00;&#x6D4F;&#x89C8;&#x5668;&#xFF1A;</p>
 <p>chrome://inspect</p>
-<h2 id="install">Install</h2>
+<h2 id="nvm">NVM</h2>
 <pre><code class="lang-shell">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 export NVM_DIR=&quot;$HOME/.nvm&quot;
 [ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;
 nvm install v8.11.3
 nvm alias default 8.11.3
 </code></pre>
-<h2 id="book">Book</h2>
-<p><strong>To Do</strong></p>
-<p>&#x300A;&#x4E86;&#x4E0D;&#x8D77;&#x7684;Node.js&#x300B;</p>
-<p><strong>In Progress</strong></p>
-<p><strong>Done</strong></p>
-<p>&#x300A;Node.js in action&#x300B;</p>
-<p>&#x300A;&#x6DF1;&#x5165;&#x6D45;&#x51FA;Node.js&#x300B;</p>
 <h2 id="intro">Intro</h2>
-<p>Node.js&#xAE; is a JavaScript runtime built on Chrome&apos;s V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js&apos; package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
-<p><img width="60%" src="https://static.cnodejs.org/FkTMjCoX4xyL0rJtmm7oBc6V0i8W"></p>
-<p>It&apos;s very common to conflate the terms &quot;async&quot; and &quot;parallel,&quot; but they are actually quite different. Remember, async is about the gap between now and later. But parallel is about things being able to occur simultaneously.</p>
-<p>Whenever there are events to run, the event loop runs until the queue is empty. Each iteration of the event loop is a &quot;tick.&quot; User interaction, IO, and timers enqueue events on the event queue.</p>
+<ul>
+<li>What: Node.js is a JavaScript runtime built on Chrome&apos;s V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js&apos; package ecosystem, npm, is the largest ecosystem of open source libraries in the world.<ul>
+<li>Chrome&apos;s V8: V8 is Google&#x2019;s open source high-performance JavaScript and WebAssembly engine, written in C++. It is used in Chrome and in Node.js, among others. It implements ECMAScript and WebAssembly, and runs on Windows 7 or later, macOS 10.12+, and Linux systems that use x64, IA-32, ARM, or MIPS processors. V8 can run standalone, or can be embedded into any C++ application.</li>
+<li>event-driven: In an event-driven application, there is generally a main loop that listens for events, and then triggers a callback function when one of those events is detected.</li>
+<li>non-blocking I/O model</li>
+<li>npm</li>
+</ul>
+</li>
+</ul>
+<p><img src="../img/Node-architeture.png" alt="Node-architeture"></p>
 <p><strong>&#x5355;&#x7EBF;&#x7A0B;</strong></p>
 <p>&#x4F18;&#x70B9;</p>
 <ul>
@@ -597,19 +569,10 @@ nvm alias default 8.11.3
 <li>&#x5927;&#x91CF;&#x8BA1;&#x7B97;&#x5360;&#x7528;CPU&#xFF0C;&#x5BFC;&#x81F4;&#x65E0;&#x6CD5;&#x7EE7;&#x7EED;&#x8C03;&#x7528;&#x5F02;&#x6B65;I/O</li>
 </ul>
 <h2 id="npm-commands">NPM Commands</h2>
-<pre><code class="lang-she&amp;#39;l&amp;#39;l">&#x8BBE;version 0.1.0
-npm version major //v1.0.0 &#x4E3B;&#x7248;&#x672C;&#x53F7;
-npm version premajor //v1.0.0-0 &#x9884;&#x5907;&#x4E3B;&#x7248;&#x672C;
-npm version minor //v0.1.0 &#x6B21;&#x7248;&#x672C;&#x53F7;
-npm version preminor //v0.1.0-0 &#x9884;&#x5907;&#x6B21;&#x7248;&#x672C;
-npm version patch //v0.1.1 &#x4FEE;&#x8BA2;&#x53F7;
-npm version prepatch //v0.1.1-0 &#x9884;&#x5907;&#x4FEE;&#x8BA2;&#x7248;
-npm version prerelease //v0.1.2-0 &#x9884;&#x53D1;&#x5E03;&#x7248;&#x672C;
-
-npm -v //&#x67E5;&#x770B;node&#x7248;&#x672C;
-npm config list //&#x67E5;&#x770B;node&#x914D;&#x7F6E;
-npm root //&#x67E5;&#x770B;node_modules&#x76EE;&#x5F55;
-npm root -g //&#x67E5;&#x770B;&#x5168;&#x5C40;node_modules&#x76EE;&#x5F55;
+<pre><code class="lang-shell">npm -v //version
+npm config list //node config
+npm root //node_modules root path
+npm root -g
 
 npm i &lt;module&gt; //&#x5B89;&#x88C5;&#x6700;&#x65B0;&#x6A21;&#x5757;
 npm i //&#x5B89;&#x88C5;package.json&#x91CC;&#x7684;&#x6A21;&#x5757;
@@ -619,7 +582,7 @@ npm i -D &lt;lib&gt; //&#x5B89;&#x88C5;&#x6A21;&#x5757;&#x5230;dev-dependencies
 npm remove &lt;module&gt; //&#x79FB;&#x9664;&#x6A21;&#x5757;
 npm update &lt;module&gt; //&#x66F4;&#x65B0;&#x6A21;&#x5757;
 npm view &lt;module&gt; //&#x67E5;&#x770B;&#x6A21;&#x5757;&#x4FE1;&#x606F;
-npm view &lt;module&gt; versions //&#x67E5;&#x770B;&#x6A21;&#x5757;&#x5386;&#x53F2;&#x7248;&#x672C;
+npm view &lt;module&gt; versions //&#x5386;&#x53F2;&#x7248;&#x672C;
 
 npm init //&#x751F;&#x6210;package.json
 npm init -y //&#x751F;&#x6210;package.json&#x5E76;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x503C;
@@ -659,12 +622,9 @@ ncu -u //&#x68C0;&#x67E5;&#x5168;&#x90E8;&#x4F9D;&#x8D56;&#x5305;
 <p>&#x963B;&#x585E;I/O&#xFF1A;&#x8C03;&#x7528;&#x4E4B;&#x540E;&#x7B49;&#x5230;&#x7CFB;&#x7EDF;&#x5185;&#x6838;&#x5C42;&#x9762;&#x5B8C;&#x6210;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;&#x8C03;&#x7528;&#x624D;&#x7ED3;&#x675F;&#xFF0C;&#x6BD4;&#x5982;&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x4E00;&#x6BB5;&#x6587;&#x4EF6;&#xFF0C;&#x7CFB;&#x7EDF;&#x5185;&#x6838;&#x8FDB;&#x884C;&#x78C1;&#x76D8;&#x5BFB;&#x9053;&#x3001;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x3001;&#x590D;&#x5236;&#x6570;&#x636E;&#x5230;&#x5185;&#x5B58;&#x540E;&#xFF0C;&#x8C03;&#x7528;&#x624D;&#x7ED3;&#x675F;</p>
 <p>&#x963B;&#x585E;I/O&#x9020;&#x6210;CUP&#x7B49;&#x5F85;I/O&#xFF0C;CPU&#x7684;&#x5904;&#x7406;&#x80FD;&#x529B;&#x6CA1;&#x7528;&#x5145;&#x5206;&#x5229;&#x7528;&#xFF0C;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#xFF0C;&#x5185;&#x6838;&#x63D0;&#x4F9B;&#x975E;&#x963B;&#x585E;I/O&#xFF0C;&#x5B83;&#x8C03;&#x7528;&#x4E4B;&#x540E;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;</p>
 <p>&#x8F6E;&#x8BE2;&#xFF1A;&#x91CD;&#x590D;&#x8C03;&#x7528;&#x5224;&#x65AD;&#x64CD;&#x4F5C;&#x662F;&#x5426;&#x5B8C;&#x6210;</p>
-<p>&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#xFF1A;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x65F6;&#xFF0C;Node&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;while(true)&#x7684;&#x5FAA;&#x73AF;&#xFF0C;&#x6BCF;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x5FAA;&#x73AF;&#x4F53;&#xFF08;tick&#xFF09;&#xFF0C;&#x67E5;&#x770B;&#x662F;&#x5426;&#x6709;&#x4E8B;&#x4EF6;&#x5F85;&#x5904;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5C31;&#x53D6;&#x51FA;&#x4E8B;&#x4EF6;&#x53CA;&#x5176;&#x76F8;&#x5173;&#x56DE;&#x8C03;&#x51FD;&#x6570;</p>
 <h2 id="async">Async</h2>
-<p><strong>&#x4E8B;&#x4EF6;&#x53D1;&#x5E03;/&#x8BA2;&#x9605;&#x6A21;&#x5F0F;</strong></p>
-<ul>
-<li>EventEmitter</li>
-</ul>
+<p>EventEmitter</p>
+<p>EventEmitter is at the core of Node asynchronous event-driven architecture.</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> EventEmitter = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;events&quot;</span>);
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEmitter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EventEmitter</span> </span>{}
@@ -679,7 +639,6 @@ setTimeout(() =&gt; {
   myEmitter.emit(<span class="hljs-string">&quot;event&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>);
 }, <span class="hljs-number">3000</span>);
 </code></pre>
-<p><strong>Promise/Deferred&#x6A21;&#x5F0F;</strong></p>
 <p>Promise</p>
 <pre><code class="lang-js"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {
     resolve(<span class="hljs-number">42</span>);
@@ -1306,7 +1265,7 @@ assert.equal(<span class="hljs-built_in">Math</span>.max(<span class="hljs-numbe
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"NodeJS","level":"3.1","depth":1,"next":{"title":"Nginx","level":"3.2","depth":1,"path":"post/nginx.md","ref":"post/nginx.md","articles":[]},"previous":{"title":"Design","level":"2.6","depth":1,"path":"post/design.md","ref":"post/design.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/nodejs.md","mtime":"2019-02-25T08:34:23.814Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-27T09:29:26.743Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"NodeJS","level":"3.1","depth":1,"next":{"title":"Nginx","level":"3.2","depth":1,"path":"post/nginx.md","ref":"post/nginx.md","articles":[]},"previous":{"title":"Design","level":"2.5","depth":1,"path":"post/design.md","ref":"post/design.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/nodejs.md","mtime":"2019-02-28T07:33:08.076Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-01T09:29:44.735Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -65,7 +65,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="spring.html" />
+    <link rel="next" href="mongodb.html" />
     
     
     <link rel="prev" href="maven.html" />
@@ -156,20 +156,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="regularExpression.html">
-            
-                <a href="regularExpression.html">
-            
-                    
-                    Regular Expression
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.5" data-path="linux.html">
+        <li class="chapter " data-level="2.4" data-path="linux.html">
             
                 <a href="linux.html">
             
@@ -182,7 +169,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="design.html">
+        <li class="chapter " data-level="2.5" data-path="design.html">
             
                 <a href="design.html">
             
@@ -300,20 +287,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4" data-path="spring.html">
-            
-                <a href="spring.html">
-            
-                    
-                    Spring
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.5" data-path="mongodb.html">
+        <li class="chapter " data-level="4.4" data-path="mongodb.html">
             
                 <a href="mongodb.html">
             
@@ -326,7 +300,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.6" data-path="mysql.html">
+        <li class="chapter " data-level="4.5" data-path="mysql.html">
             
                 <a href="mysql.html">
             
@@ -339,7 +313,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.7" data-path="redis.html">
+        <li class="chapter " data-level="4.6" data-path="redis.html">
             
                 <a href="redis.html">
             
@@ -352,7 +326,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.8" data-path="docker.html">
+        <li class="chapter " data-level="4.7" data-path="docker.html">
             
                 <a href="docker.html">
             
@@ -365,7 +339,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.9" data-path="docker-tomcat.html">
+        <li class="chapter " data-level="4.8" data-path="docker-tomcat.html">
             
                 <a href="docker-tomcat.html">
             
@@ -505,6 +479,7 @@
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
 <li><div><a href="#&#x7EBF;&#x7A0B;&#x6C60;">&#x7EBF;&#x7A0B;&#x6C60;</a><i></i></div></li>
 <li><div><a href="#&#x9501;">&#x9501;</a><i></i></div></li>
+<li><div><a href="#concurrency">Concurrency</a><i></i></div></li>
 </ul>
 </div>
 
@@ -535,32 +510,15 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://camo.githubusercontent.com/5b764ff5af6204f82c7ae6237b20c41f9505aef8/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031382f382f392f313635316631396437633465393361333f773d38373626683d34393226663d706e6726733d313238303932" alt="https://camo.githubusercontent.com/5b764ff5af6204f82c7ae6237b20c41f9505aef8/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031382f382f392f313635316631396437633465393361333f773d38373626683d34393226663d706e6726733d313238303932" class="transparent"></p>
+<p><img src="D:\project\justnote\img\con life.png" alt="con life"></p>
 <p><strong>wait/notify</strong></p>
 <ul>
 <li>wait &#x8BA9;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4E14;&#x91CA;&#x653E;&#x9501;</li>
 <li>notify &#x5524;&#x9192;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x7B49;&#x5F85;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5E76;&#x4E14;&#x8BA9;&#x5B83;&#x5F97;&#x5230;&#x9501;</li>
 <li>notifyAll &#x5524;&#x9192;&#x6240;&#x6709;&#x7B49;&#x5F85;&#x5BF9;&#x8C61;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x88AB;&#x5524;&#x9192;&#xFF0C;&#x90A3;&#x4E48;&#x9501;&#x5C06;&#x4F1A;&#x88AB;&#x4ED6;&#x4EEC;&#x4E89;&#x593A;&#xFF0C;&#x540C;&#x4E00;&#x65F6;&#x95F4;&#x53EA;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5F97;&#x5230;&#x9501;</li>
 </ul>
-<p><strong>&#x5E38;&#x7528;&#x65B9;&#x6CD5;</strong></p>
-<ul>
-<li><code>hread.currentThread()</code> &#x9759;&#x6001;&#x65B9;&#x6CD5;&#xFF0C;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5BF9;&#x8C61;&#xFF1B;</li>
-<li><code>isAlive()</code> &#x5224;&#x65AD;&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x5904;&#x4E8E;&#x6D3B;&#x52A8;&#x72B6;&#x6001;&#xFF0C;&#x5373;&#x7EBF;&#x7A0B;&#x5DF2;&#x542F;&#x52A8;&#x4E14;&#x5C1A;&#x672A;&#x7EC8;&#x6B62;&#xFF1B;</li>
-<li><code>Thread.sleep(long)</code> &#x5728;&#x6307;&#x5B9A;&#x7684;&#x6BEB;&#x79D2;&#x6570;&#x5185;&#x8BA9;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4F11;&#x7720;&#xFF0C;&#x9700;&#x8981;<code>catch InterruptedException</code>&#xFF1B;</li>
-<li><code>Thread.interrupted()</code> &#x5224;&#x65AD;&#x8BE5;&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x4E2D;&#x65AD;&#xFF0C;&#x6267;&#x884C;&#x540E;&#x5C06;&#x6E05;&#x9664;&#x4E2D;&#x65AD;&#x6807;&#x5FD7;&#xFF1B;</li>
-<li><code>isInterrupted()</code> &#x6D4B;&#x8BD5;&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x4E2D;&#x65AD;&#xFF1B;</li>
-<li><code>suspend()   resume()  stop()</code> &#x6682;&#x505C;&#x3001;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E0D;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x3002;&#x6682;&#x505C;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF1B;</li>
-<li><code>yield()</code> &#x8BE5;&#x7EBF;&#x7A0B;&#x653E;&#x5F03;&#x5F53;&#x524D;CPU&#x8D44;&#x6E90;&#xFF0C;&#x653E;&#x5F03;&#x540E;&#x9A6C;&#x4E0A;&#x8FDB;&#x884C;CPU&#x7ADE;&#x4E89;&#xFF1B;</li>
-<li><code>setPriority()</code>&#x4F18;&#x5148;&#x7EA7;&#x5177;&#x6709;&#x7EE7;&#x627F;&#x6027;&#xFF0C;&#x5373;&#x5B50;&#x7EBF;&#x7A0B;&#x6709;&#x7236;&#x7EBF;&#x7A0B;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#xFF1B;<ul>
-<li>&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x7EBF;&#x7A0B;&#x603B;&#x662F;&#x5927;&#x90E8;&#x5206;&#x5148;&#x6267;&#x884C;&#x5B8C;&#xFF0C;&#x4F46;&#x4E0D;&#x4EE3;&#x8868;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x5C06;&#x5168;&#x90E8;&#x5148;&#x5B8C;&#x6210;&#xFF1B;</li>
-<li>&#x4F18;&#x5148;&#x7EA7;&#x8F83;&#x9AD8;&#x7684;&#x4E0D;&#x4E00;&#x5B9A;&#x6BCF;&#x4E00;&#x6B21;&#x90FD;&#x5148;&#x6267;&#x884C;&#x5B8C;&#xFF0C;&#x5177;&#x6709;&#x968F;&#x673A;&#x6027;&#xFF1B;</li>
-<li>&#x5177;&#x4F53;&#x7684;&#x4E0E;OS&#x76F8;&#x5173;&#xFF1B;</li>
-</ul>
-</li>
-<li><code>setDaemon()</code> &#x8BBE;&#x7F6E;&#x5B88;&#x62A4;&#x7EBF;&#x7A0B;&#xFF0C;&#x5F53;&#x8FDB;&#x7A0B;&#x4E0D;&#x5B58;&#x5728;&#x975E;&#x5B88;&#x62A4;&#x7EBF;&#x7A0B;&#x65F6;&#x5219;&#x5B88;&#x62A4;&#x7EBF;&#x7A0B;&#x5C06;&#x9500;&#x9B42;&#x800C;&#x540E;&#x8FDB;&#x7A0B;&#x9500;&#x6BC1;&#xFF1B;</li>
-</ul>
 <p><strong>&#x975E;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</strong></p>
-<p>&#x5B58;&#x5728;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x7531;&#x6B64;&#x5BFC;&#x81F4;&#x7684;&#x6570;&#x636E;&#x810F;&#x8BFB;&#xFF1B;</p>
+<p>&#x5B58;&#x5728;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x7531;&#x6B64;&#x5BFC;&#x81F4;&#x7684;&#x6570;&#x636E;&#x810F;&#x8BFB;</p>
 <h2 id="&#x7EBF;&#x7A0B;&#x6C60;">&#x7EBF;&#x7A0B;&#x6C60;</h2>
 <ul>
 <li><p>&#x51CF;&#x5C11;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x7EBF;&#x7A0B;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x7EBF;&#x7A0B;</p>
@@ -571,7 +529,7 @@
 <p><strong>ThreadPoolExecutor</strong></p>
 <ul>
 <li>corePoolSize&#xFF1A;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5728;&#x521B;&#x5EFA;&#x4E86;&#x7EBF;&#x7A0B;&#x6C60;&#x540E;&#xFF0C;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x4E3A;0&#xFF0C;&#x5F53;&#x6709;&#x4EFB;&#x52A1;&#x6765;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53BB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#xFF0C;&#x5F53;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x76EE;&#x8FBE;&#x5230;corePoolSize&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x628A;&#x5230;&#x8FBE;&#x7684;&#x4EFB;&#x52A1;&#x653E;&#x5230;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x5F53;&#x4E2D;</li>
-<li>maximumPoolSize&#xFF1A;&#x7EBF;&#x7A0B;&#x6C60;&#x6700;&#x5927;&#x7EBF;&#x7A0B;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x5728;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x6700;&#x591A;&#x80FD;&#x521B;&#x5EFA;&#x591A;&#x5C11;&#x4E2A;&#x7EBF;&#x7A0B;</li>
+<li>maximumPoolSize&#xFF1A;&#x8868;&#x793A;&#x5728;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x6700;&#x591A;&#x80FD;&#x521B;&#x5EFA;&#x591A;&#x5C11;&#x4E2A;&#x7EBF;&#x7A0B;</li>
 <li>keepAliveTime&#xFF1A;&#x8868;&#x793A;&#x7EBF;&#x7A0B;&#x6CA1;&#x6709;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x65F6;&#x6700;&#x591A;&#x4FDD;&#x6301;&#x591A;&#x4E45;&#x65F6;&#x95F4;&#x4F1A;&#x7EC8;&#x6B62;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x5927;&#x4E8E;corePoolSize&#x65F6;&#xFF0C;keepAliveTime&#x624D;&#x4F1A;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x4E0D;&#x5927;&#x4E8E;corePoolSize</li>
 <li>unit&#xFF1A;&#x53C2;&#x6570;keepAliveTime&#x7684;&#x65F6;&#x95F4;&#x5355;&#x4F4D;</li>
 <li>workQueue&#xFF1A;&#x4E00;&#x4E2A;&#x963B;&#x585E;&#x961F;&#x5217;&#xFF0C;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x7B49;&#x5F85;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x52A1;</li>
@@ -584,48 +542,24 @@
 <li>largestPoolSize&#xFF1A; &#x66FE;&#x7ECF;&#x51FA;&#x73B0;&#x8FC7;&#x7684;&#x6700;&#x5927;&#x7EBF;&#x7A0B;&#x6570;</li>
 <li>completedTaskCount&#xFF1A;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x7684;&#x4EFB;&#x52A1;&#x4E2A;&#x6570;</li>
 </ul>
-<p><strong>&#x5B9E;&#x73B0;&#x539F;&#x7406;</strong></p>
-<ul>
-<li>&#x7EBF;&#x7A0B;&#x6C60;&#x72B6;&#x6001;</li>
-<li><p>&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;</p>
 <ul>
 <li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &lt; corePoolSize&#xFF0C;&#x6765;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x5C31;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53BB;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;</li>
 <li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &gt;= corePoolSize&#xFF0C;&#x6765;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x5C1D;&#x8BD5;&#x5C06;&#x5B83;&#x6DFB;&#x52A0;&#x5230;&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#xFF0C;&#x5982;&#x679C;&#x6DFB;&#x52A0;&#x6210;&#x529F;&#xFF0C;&#x5C31;&#x7B49;&#x5F85;&#x7A7A;&#x95F2;&#x7EBF;&#x7A0B;&#x5C06;&#x5B83;&#x53D6;&#x51FA;&#xFF0C;&#x5426;&#x5219;&#xFF08;&#x4E00;&#x822C;&#x662F;&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x6EE1;&#x4E86;&#xFF09;&#xFF0C;&#x5C31;&#x4F1A;&#x5C1D;&#x8BD5;&#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;</li>
 <li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; = maximumPoolSize&#xFF0C;&#x91C7;&#x53D6;&#x4EFB;&#x52A1;&#x62D2;&#x7EDD;&#x7B56;&#x7565;</li>
-<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &gt; corePoolSize&#xFF0C;&#x5982;&#x679C;&#x7EBF;&#x7A0B;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;keepAliveTime&#xFF0C;&#x5C31;&#x4F1A;&#x88AB;&#x7EC8;&#x6B62;&#xFF0C;&#x76F4;&#x5230; &#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &lt; corePoolSize</li>
+<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &gt; corePoolSize&#xFF0C;&#x5982;&#x679C;&#x7EBF;&#x7A0B;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;keepAliveTime&#xFF0C;&#x5C31;&#x4F1A;&#x88AB;&#x7EC8;&#x6B62;&#xFF0C;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &lt; corePoolSize</li>
 </ul>
-</li>
-<li><p>&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x521D;&#x59CB;&#x5316;</p>
-</li>
-<li><p>&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x53CA;&#x6392;&#x961F;&#x7B56;&#x7565;</p>
-</li>
-<li><p>&#x4EFB;&#x52A1;&#x62D2;&#x7EDD;&#x7B56;&#x7565;</p>
-<p>&#x5F53;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x5DF2;&#x6EE1;&#x5E76;&#x4E14;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x76EE;&#x8FBE;&#x5230;maximumPoolSize&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x6709;&#x4EFB;&#x52A1;&#x5230;&#x6765;&#x5C31;&#x4F1A;&#x91C7;&#x53D6;&#x4EFB;&#x52A1;&#x62D2;&#x7EDD;&#x7B56;&#x7565;</p>
-</li>
-</ul>
-<pre><code>ThreadPoolExecutor.AbortPolicy:&#x4E22;&#x5F03;&#x4EFB;&#x52A1;&#x5E76;&#x629B;&#x51FA;RejectedExecutionException&#x5F02;&#x5E38;&#x3002;
-ThreadPoolExecutor.DiscardPolicy&#xFF1A;&#x4E5F;&#x662F;&#x4E22;&#x5F03;&#x4EFB;&#x52A1;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;
-ThreadPoolExecutor.DiscardOldestPolicy&#xFF1A;&#x4E22;&#x5F03;&#x961F;&#x5217;&#x6700;&#x524D;&#x9762;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x65B0;&#x5C1D;&#x8BD5;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#xFF08;&#x91CD;&#x590D;&#x6B64;&#x8FC7;&#x7A0B;&#xFF09;
-ThreadPoolExecutor.CallerRunsPolicy&#xFF1A;&#x7531;&#x8C03;&#x7528;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#x8BE5;&#x4EFB;&#x52A1;
-</code></pre><ul>
+<ul>
 <li>&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x5173;&#x95ED;<ul>
 <li>shutdown()&#xFF1A;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x7B49;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x624D;&#x7EC8;&#x6B62;&#xFF0C;&#x4E14;&#x4E0D;&#x63A5;&#x53D7;&#x65B0;&#x4EFB;&#x52A1;</li>
 <li>shutdownNow()&#xFF1A;&#x7ACB;&#x5373;&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x5C1D;&#x8BD5;&#x6253;&#x65AD;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x6E05;&#x7A7A;&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#xFF0C;&#x8FD4;&#x56DE;&#x5C1A;&#x672A;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x52A1;</li>
 </ul>
 </li>
-<li>&#x7EBF;&#x7A0B;&#x6C60;&#x5BB9;&#x91CF;&#x7684;&#x52A8;&#x6001;&#x8C03;&#x6574;</li>
 </ul>
 <p><strong>&#x914D;&#x7F6E;&#x7EBF;&#x7A0B;&#x6C60;&#x5927;&#x5C0F;</strong></p>
 <ul>
-<li>&#x5982;&#x679C;&#x662F;CPU&#x5BC6;&#x96C6;&#x578B;&#x4EFB;&#x52A1;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5C3D;&#x91CF;&#x538B;&#x69A8;CPU&#xFF0C;&#x53C2;&#x8003;&#x503C;&#x53EF;&#x4EE5;&#x8BBE;&#x4E3A; <em>N</em>CPU+1</li>
-<li>&#x5982;&#x679C;&#x662F;IO&#x5BC6;&#x96C6;&#x578B;&#x4EFB;&#x52A1;&#xFF0C;&#x53C2;&#x8003;&#x503C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E3A;2<em>*N</em>CPU</li>
+<li>CPU&#x5BC6;&#x96C6;&#x578B;&#x4EFB;&#x52A1;&#xFF0C;&#x53C2;&#x8003;&#x503C;&#x4E3A; <em>N</em>CPU+1</li>
+<li>IO&#x5BC6;&#x96C6;&#x578B;&#x4EFB;&#x52A1;&#xFF0C;&#x53C2;&#x8003;&#x503C;&#x4E3A;2<em>*N</em>CPU</li>
 </ul>
-<p><strong>&#x521B;&#x5EFA;</strong></p>
-<pre><code class="lang-java">ThreadPoolExecutor.ThreadPoolExecutor(<span class="hljs-keyword">int</span> corePoolSize, <span class="hljs-keyword">int</span> maximumPoolSize, <span class="hljs-keyword">long</span> keepAliveTime, TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue)
-
-threadPoolExecutor.execute(thread);
-threadPoolExecutor.shutdown();
-</code></pre>
 <h2 id="&#x9501;">&#x9501;</h2>
 <p><strong>&#x4E50;&#x89C2;&#x9501;</strong></p>
 <blockquote>
@@ -646,6 +580,18 @@ threadPoolExecutor.shutdown();
 <li>&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6301;&#x6709;&#x9501;&#x4F1A;&#x5BFC;&#x81F4;&#x5176;&#x5B83;&#x6240;&#x6709;&#x9700;&#x8981;&#x6B64;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#x6302;&#x8D77;</li>
 <li>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x9AD8;&#x7684;&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x4F4E;&#x7684;&#x7EBF;&#x7A0B;&#x91CA;&#x653E;&#x9501;&#x4F1A;&#x5BFC;&#x81F4;&#x4F18;&#x5148;&#x7EA7;&#x5012;&#x7F6E;&#xFF0C;&#x5F15;&#x8D77;&#x6027;&#x80FD;&#x98CE;&#x9669;</li>
 </ol>
+<h2 id="concurrency">Concurrency</h2>
+<p>What Are Threads?</p>
+<p>Interrupting Threads</p>
+<p>Thread States</p>
+<p>Thread Properties</p>
+<p>Synchronization</p>
+<p>Blocking Queues</p>
+<p>Thread-Safe Collections</p>
+<p>Callables and Futures</p>
+<p>Executors</p>
+<p>Synchronizers</p>
+<p>Threads and Swing</p>
 
                                 
                                 </section>
@@ -678,7 +624,7 @@ threadPoolExecutor.shutdown();
                 </a>
                 
                 
-                <a href="spring.html" class="navigation navigation-next " aria-label="Next page: Spring">
+                <a href="mongodb.html" class="navigation navigation-next " aria-label="Next page: MongoDB">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -689,7 +635,7 @@ threadPoolExecutor.shutdown();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Concurrency","level":"4.3","depth":1,"next":{"title":"Spring","level":"4.4","depth":1,"path":"post/spring.md","ref":"post/spring.md","articles":[]},"previous":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/concurrency.md","mtime":"2019-02-25T08:34:23.814Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-27T09:29:26.743Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Concurrency","level":"4.3","depth":1,"next":{"title":"MongoDB","level":"4.4","depth":1,"path":"post/mongodb.md","ref":"post/mongodb.md","articles":[]},"previous":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/concurrency.md","mtime":"2019-03-01T09:21:46.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-01T09:29:44.735Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

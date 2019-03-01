@@ -1,166 +1,13 @@
-
-
-Integer.valueOf()
-
-```java
-public static Integer valueOf(int i) {
-    if(i >= -128 && i <= IntegerCache.high)
-        return IntegerCache.cache[i + 128];
-    else
-        return new Integer(i);
-}
-```
-
-
-
-## 对象创建过程
-
-1. new 类名
-2. 根据new的参数在常量池中定位一个类的符号引用
-3. 如果没有找到这个符号引用，说明类还没被加载，则进行类的加载、解析和初始化
-4. 虚拟机为对象分配堆内存
-5. 将分配的内存初始化为零值
-6. 设置对象头，Mark Word (HashCode、GC 分代年龄、锁状态标志、线程持有的锁、偏向线程 ID、偏向时间戳、对象分代年龄)，类型指针
-7. 调用对象的init方法
-
-
-
-### 执行顺序
-
-```
-父类静态代变量
-父类静态代码块
-子类静态变量
-子类静态代码块
-
-父类非静态变量（父类实例成员变量）
-父类代码块
-父类构造函数
-
-子类非静态变量（子类实例成员变量）
-子类代码块
-子类构造函数
-```
-
-
-
-
-## 类加载
-
-### 步骤
-
-1. 装载：由类加载器完成，将.class文件的二进制文件载入JVM的方法区，并且在堆区创建描述这个类的java.lang.Class对象，作为该类访问入口
-2. 链接：分三步			
-    1. 校验：确认此二进制文件是否适合当前的JVM
-    2. 准备：为静态成员分配内存空间，并设置默认值
-    3. 解析：转换常量池中的代码作为直接引用的过程，直到所有的符号引用都可以被运行程序使用（建立完整的对应关系）
-3. 初始化：执行类中定义的java程序代码（类构造器）
-4. 卸载：没有任何引用指向Class对象时就会被卸载
-
-
-
-### 加载器
-
-- 启动类加载器 Bootstrap ClassLoader：加载<JAVA_HOME>\lib目录下核心库
-
-- 扩展类加载器 Extension ClassLoader：加载<JAVA_HOME>\lib\ext目录下扩展包
-
-- 应用程序类加载器 Application ClassLoader：  加载用户路径(classpath)上指定的类库
-
-
-
-### 双亲委派模型
-
-如果一个类加载器收到类加载的请求，它不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成
-
-1. 当Application ClassLoader 收到一个类加载请求时，他首先不会自己去尝试加载这个类，而是将这个请求委派给父类加载器Extension ClassLoader去完成
-
-2. 当Extension ClassLoader收到一个类加载请求时，他首先也不会自己去尝试加载这个类，而是将请求委派给父类加载器Bootstrap ClassLoader去完成
-
-3. 如果Bootstrap ClassLoader加载失败(在<JAVA_HOME>\lib中未找到所需类)，就会让Extension ClassLoader尝试加载
-
-4. 如果Extension ClassLoader也加载失败，就会使用Application ClassLoader加载
-
-5. 如果Application ClassLoader也加载失败，就会使用自定义加载器去尝试加载
-
-6. 如果均加载失败，就会抛出ClassNotFoundException异常
-
-
-
-## OO
-
-- 封装：把一个对象的属性私有化，同时提供一些可以被外界访问的属性的方法
-
-- 继承：使用已存在的类作为基础创建新的类，新类可以增加新的数据或新的功能，也可以用父类的功能
-
-1. 子类拥有父类非 private 的属性和方法
-2. 子类可以拥有自己属性和方法，即子类可以对父类进行扩展
-3. 子类可以用自己的方式实现父类的方法
-
-- 多态：在Java中有两种形式实现多态：继承（多个子类对同一方法的重写）和接口（实现接口并覆盖接口中同一方法）
-
-- 重载：发生在同一个类中，方法名相同，参数类型不同、个数不同、顺序不同，方法返回值和访问修饰符可以不同
-
-- 重写：发生在父子类中，方法名、参数列表必须相同，返回值范围小于等于父类，抛出的异常范围小于等于父类，访问修饰符范围大于等于父类；如果父类方法访问修饰符为 private 则子类就不能重写该方法
-
-
-
-## String
-
-|          | String                                                       | StringBuilder                                                | StringBuffer                             |
-| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
-| 可变     | N                                                            | Y                                                            | Y                                        |
-| 线程安全 | Y                                                            | N                                                            | Y(同步锁)                                |
-|          | 创建 String 类型的对象时，虚拟机到常量池查找是否有相同的值的对象，如果有就赋值给当前引用，否则在常量池创建一个String对象 | 比使用 StringBuffer 获得 10%~15% 左右的性能提升，但有线程安全问题 | 每次都会对 StringBuffer 对象本身进行操作 |
-| 应用场景 | 操作少量的数据                                               | 单线程操作字符串缓冲区下操作大量数据                         | 多线程操作字符串缓冲区下操作大量数据     |
-
-
-
-## Var
-
-|          | 成员变量                           | 局部变量                 |
-| -------- | ---------------------------------- | ------------------------ |
-|          | 属于类                             | 在方法中定义/参数        |
-| 修饰     | 被 public,private,static 修饰      | 只有final修饰            |
-| 存储     | 是对象的一部分，而对象存在于堆内存 | 存在于栈内存             |
-| 生存时间 | 随着对象的创建而存在               | 随着方法的调用而自动消失 |
-|          | 以类型的默认值而赋值               | 不会自动赋值             |
-
-
-
-## == & equal
-
-==：基本数据类型比较值，引用数据类型比较内存地址
-
-equals() ：比较内容
-
-
-
-## List
-
-|              | Arraylist                         | LinkedList           |
-| ------------ | --------------------------------- | -------------------- |
-| 线程安全     | N                                 | N                    |
-| 底层数据结构 | 数组                              | 双向循环链表         |
-| 复杂度       | 末尾添加 O(1)，指定位置增删O(n-i) | O(1)                 |
-| 随机元素访问 | Y                                 | N                    |
-| 内存占用     | 末尾预留空间                      | 每个元素存放前后节点 |
-
-
-
-## proxy
-
-1. 在运行时判断任意一个对象所属的类；
-2. 在运行时获取类的对象；
-3. 在运行时访问java对象的属性，方法，构造方法等。
-
-
-
-## 4 Objects and Classes
-
-
-
-### 4.1 Introduction to Object-Oriented Programming
+### String
+
+|          | String                                                       | StringBuilder                                                | StringBuffer |
+| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------ |
+| 可变     | N                                                            | Y                                                            | Y            |
+| 线程安全 | Y                                                            | N                                                            | Y(同步锁)    |
+|          | 创建String时，如果向量池如果有相等的值，就不创建对象，而是引用那个值 | 比使用 StringBuffer 获得 10%~15% 左右的性能提升，但有线程安全问题 |              |
+| 应用场景 | 操作少量数据                                                 | 单线程                                                       | 多线程       |
+
+### Object-Oriented Programming
 
 **Encapsulation**
 
@@ -209,21 +56,13 @@ The inheritance, or “is–a” relationship, expresses a relationship between 
 
 
 
-### 4.2 Using Predefined classes
+### Construct
 
-**Construct**
+- To work with objects, you first construct them and specify their initial state. Then you apply methods to the objects.
 
-To work with objects, you first construct them and specify their initial state. Then you apply methods to the objects.
+- In the Java programming language, you use constructors to construct new instances.
 
-In the Java programming language, you use constructors to construct new instances.
-
-A constructor is a special method whose purpose is to construct and initialize objects.
-
-
-
-### 4.3 Defning Your Own Classes
-
-**constructor**
+- A constructor is a special method whose purpose is to construct and initialize objects.
 
 - A constructor has the same name as the class.
 - A class can have more than one constructor.
@@ -247,7 +86,7 @@ class Employee
 
 
 
-### 4.4 Static Field and Methods
+### Static Field and Methods
 
 **Static Fields**
 
@@ -298,7 +137,7 @@ Use static methods in two situations:
 
 
 
-### 4.6 Object Construction
+### Object Construction
 
 **Overloading**
 
@@ -315,7 +154,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-### 4.7 Packages
+### Packages
 
 Java allows you to group classes in a collection called a package. Packages are convenient for organizing your work and for separating your work from code libraries provided by others. 
 
@@ -358,77 +197,18 @@ If you don’t specify either public or private, the feature (that is, the class
 
 
 
-### 4.8 The Class Path
-
-Class files can also be stored in a JAR (Java archive) file. A JAR file contains multiple class files and subdirectories in a compressed format, saving space and improving performance. 
-
-
-
-### 4.9 Documentation Comments
-
-**Class Comments**
-
-```java
-/**
-* A {@code Card} object represents a playing card, such
-* as "Queen of Hearts". A card has a suit (Diamond, Heart,
-* Spade or Club) and a value (1 = Ace, 2 . . . 10, 11 = Jack,
-* 12 = Queen, 13 = King)
-*/
-public class Card
-{
-    . . .
-}
-```
-
-
-
-**Method Commnets**
-
-```java
-/**
-* Raises the salary of an employee.
-* @param byPercent the percentage by which to raise the salary (e.g. 10 means 10%)
-* @return the amount of the raise
-*/
-public double raiseSalary(double byPercent)
-{
-    double raise = salary * byPercent / 100;
-    salary += raise;
-    return raise;
-}
-```
-
-
-
-**Field Comments**
-
-```java
-/**
-* The "Hearts" card suit
-*/
-public static final int HEARTS = 1;
-```
-
-
-
-### 4.10 Class Design Hints
+### Class Design Hints
 
 - Always keep data private. 
 - Always initialize data. 
 - Don’t use too many basic types in a class. 
 - Not all fields need individual field accessors and mutators. 
-- Not all felds need individual feld accessors and mutators. 
 - Make the names of your classes and methods reﬂect their responsibilities. 
-- Prefer immutable classes 
+- Prefer immutable classes
 
 
 
-## 5 Inheritance
-
-
-
-### 5.1 Classes, Superclasses, and Subclasses
+###  Classes, Superclasses, and Subclasses
 
 **Defining Subclasses**
 
@@ -703,7 +483,7 @@ public static final int HEARTS = 1;
 
 
 
-### 5.2 Object: The Cosmic Superclass
+### Object: The Cosmic Superclass
 
 - The Object class is the ultimate ancestor—every class in Java extends Object. 
 - In Java, only the values of primitive types (numbers, characters, and boolean values) are not objects. 
@@ -813,7 +593,7 @@ public static final int HEARTS = 1;
 
 
 
-### 5.3 Generic Array Lists
+### Generic Array Lists
 
 - The ArrayList class is similar to an array, but it automatically adjusts its capacity as you add and remove elements, without any additional code. 
 
@@ -849,7 +629,7 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 
 
-### 5.4 Object Wrappers and Autoboxing
+### Object Wrappers and Autoboxing
 
 - A class Integer corresponds to the primitive type int. These kinds of classes are usually called wrappers.  
 - The wrapper classes have obvious names: Integer, Long, Float, Double, Short, Byte, Character, and Boolean. 
@@ -875,7 +655,7 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 
 
-### 5.7 Reflection
+### Reflection
 
 - The reﬂection library gives you a very rich and elaborate toolset to write programsthat manipulate Java code dynamically 
 
@@ -927,4 +707,56 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 **Using Reﬂection to Analyze Objects at Runtime**
 
 - The default behavior of the reﬂection mechanism is to respect Java access control. However, if a Java program is not controlled by a security manager that disallows it, you can override access control. To do this, invoke the setAccessible method on a Field, Method, or Constructor object. For example: `f.setAccessible(true); // now OK to call f.get(harry); `
+
+
+
+### Interfaces
+
+
+
+**The Interface Concept**
+
+- This means that any class that implements the Comparable interface is required to have a compareTo method, and the method must take an Object parameter and return an integer. 
+
+  ```java
+  public interface Comparable{
+      int compareTo(Object other);
+  }
+  ```
+
+- All methods of an interface are automatically public. For that reason, it is not necessary to supply the keyword public when declaring a method in an interface. 
+
+- The reason for interfaces is that the Java programming language is strongly typed. When making a method call, the compiler needs to be able to check that the method actually exists. 
+
+
+
+**Properties of Interfaces**
+
+- Interfaces are not classes. In particular, you can never use the new operator to instantiate an interface
+
+  `x = new Comparable(. . .); // ERROR `
+
+- An interface variable must refer to an object of a class that implements the interface 
+
+- Next, just as you use instanceof to check whether an object is of a specifc class, you can use instanceof to check whether an object implements an interface: 
+
+  `if (anObject instanceof Comparable) { . . . } `
+
+- Although you cannot put instance felds or static methods in an interface, you can supply constants in them. For example: 
+
+  ```java
+  public interface Powered extends Moveable{
+      double milesPerGallon();
+      double SPEED_LIMIT = 95; // a public static final constant
+  }
+  ```
+
+  Just as methods in an interface are automatically public, felds are always public static final. 
+
+**Interfaces and Abstract Classes**
+
+- There is, unfortunately, a major problem with using an abstract base class to express a generic property. A class can only extend a single class. Suppose the Employee class already extends a different class, say, Person. Then it can’t extend a second class. 
+
+  `class Employee extends Person, Comparable // Error `
+
 
