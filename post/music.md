@@ -264,7 +264,11 @@
 
   ![滑音奏法](D:\project\justnote\img\滑音奏法.png)
 
-- 
+- 短倚音：由一个音或数个音构成
+
+- 短倚音和弦：数个音的短倚音同时弹奏
+
+  ![倚音](D:\project\justnote\img\倚音.png)
 
 
 
