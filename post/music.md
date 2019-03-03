@@ -125,7 +125,7 @@
     - 向下 ：符干写在符头的左边 
   - 符尾：记在符干的右边并向符头方向弯曲 
 
-![音符](D:\project\justnote\img\音符.png)
+![音符](..\img\音符.png)
 
 
 
@@ -134,13 +134,13 @@
   - 一个附点， 表示增长原有音符或休止符时值的一半
   - 双附点：增长第一个附点时值的一半
 
-  ![附点](D:\project\justnote\img\附点.png)
+  ![附点](..\img\附点.png)
 
 
 
 - 延长记号：一条小的弧线， 中间加一点， 写在音符或休止符的上面， 表示根据表演的需要自由延长其时值
 
-![延长记号](D:\project\justnote\img\延长记号.png)
+![延长记号](..\img\延长记号.png)
 
 
 
@@ -148,11 +148,11 @@
 
 - 线、间
 
-![线](D:\project\justnote\img\线.png)
+![线](..\img\线.png)
 
-![间](D:\project\justnote\img\间.png)
+![间](..\img\间.png)
 
-![加线](D:\project\justnote\img\加线.png)
+![加线](..\img\加线.png)
 
 
 
@@ -160,15 +160,15 @@
 
   - G谱号（高音谱表），确定g1
 
-    ![G谱号](D:\project\justnote\img\G谱号.png)
+    ![G谱号](..\img\G谱号.png)
 
   - F谱号（低音谱表），确定f
 
-    ![F谱号](D:\project\justnote\img\F谱号.png)
+    ![F谱号](..\img\F谱号.png)
 
   - C谱号（中音谱表），确定c1
 
-    ![C谱号](D:\project\justnote\img\C谱号.png)
+    ![C谱号](..\img\C谱号.png)
 
 - 变音记号：表示音级升高或降低的记号
 
@@ -177,98 +177,98 @@
 
 - 调号：记在谱号后面的变音记号
 
-  ![调号](D:\project\justnote\img\调号.png)
+  ![调号](..\img\调号.png)
 
 - 临时变音记号：记在音符符头前面的变音记号
 
 - 还原号：降音升高半音时， 用还原号
 
-  ![还原号](D:\project\justnote\img\还原号.png)
+  ![还原号](..\img\还原号.png)
 
 - 移动八度记号：用记号记在五线谱的上面，表示将虚线以内的音移高八度用记号 记在五线谱的下面，表示将虚线以内的音移低八度
 
 
 
-![移动八度记号](D:\project\justnote\img\移动八度记号.png)
+![移动八度记号](..\img\移动八度记号.png)
 
 
 
 - 重复八度记号：用数字“ 8 ”记在音的上面，表示高八度重复；记在音符的下面，表示
   低八度重复
 
-  ![重复八度记号](D:\project\justnote\img\重复八度记号.png)
+  ![重复八度记号](..\img\重复八度记号.png)
 
 - 较长时间八度重复
 
-  ![较长时间八度重复](D:\project\justnote\img\较长时间八度重复.png)
+  ![较长时间八度重复](..\img\较长时间八度重复.png)
 
 
 - 长休止记号：记写许多小节的休止 
 
-  ![长休止记号](D:\project\justnote\img\长休止记号.png)
+  ![长休止记号](..\img\长休止记号.png)
 
 - 震音记号：用斜线标记
 
-  ![震音记号](D:\project\justnote\img\震音记号.png)
+  ![震音记号](..\img\震音记号.png)
 
-  ![震音记号2](D:\project\justnote\img\震音记号2.png)
+  ![震音记号2](..\img\震音记号2.png)
 
 - 反复记号：表示乐曲的某一部分或全部重复演唱演奏
 
-  ![反复记号](D:\project\justnote\img\反复记号.png)
+  ![反复记号](..\img\反复记号.png)
 
 - 记号写在两小节中间的小节线上， 表示小节旋律再重复一次
 
-  ![小节重复](D:\project\justnote\img\小节重复.png)
+  ![小节重复](..\img\小节重复.png)
 
 
 
 - 表示记号内的部分要重复演奏或演唱
 
-  ![竖线点反复](D:\project\justnote\img\竖线点反复.png)
+  ![竖线点反复](..\img\竖线点反复.png)
 
 - 大反复中套用小反复时，可用不同的反复记号来标记
 
   - D.C. 表示从头反复
   - D.S. 表示从记号反复 
 
-  ![DC-DS](D:\project\justnote\img\DC-DS.png)
+  ![DC-DS](..\img\DC-DS.png)
 
-  ![DC-DS2](D:\project\justnote\img\DC-DS2.png)
+  ![DC-DS2](..\img\DC-DS2.png)
 
 - 连音奏法：表示弧线以内的音要唱奏得连贯
 
-  ![连音奏法](D:\project\justnote\img\连音奏法.png)
+  ![连音奏法](..\img\连音奏法.png)
 
 - 断音奏法：带圆点的叫“ 长跳音”，带三角的叫“ 短跳音”
 
-  ![断音奏法](D:\project\justnote\img\断音奏法.png)
+  ![断音奏法](..\img\断音奏法.png)
 
 - 保持音奏法：用短横标记，表示该音要充分保持时值并从头到尾强奏
 
-  ![保持音奏法](D:\project\justnote\img\保持音奏法.png)
+  ![保持音奏法](..\img\保持音奏法.png)
 
 - 半连音：连音与断音相结合；半保持音：断音与保持音相结合
 
-  ![半连音](D:\project\justnote\img\半连音.png)
+  ![半连音](..\img\半连音.png)
 
 - 琶音奏法：用垂直的曲线来标记，表示将和弦中的音由下而上分散弹奏
 
-  ![琶音奏法](D:\project\justnote\img\琶音奏法.png)
+  ![琶音奏法](..\img\琶音奏法.png)
 
 - 逆琶音奏法：将琶音奏法的标记下面加一箭头，表示由上而下分散弹奏
 
-  ![逆琶音奏法](D:\project\justnote\img\逆琶音奏法.png)
+  ![逆琶音奏法](..\img\逆琶音奏法.png)
 
 - 滑音奏法：用带箭头的弧线标记，记在音符的前面，表示滑向该音符；记在音符的后面， 表示从该音符滑开去
 
-  ![滑音奏法](D:\project\justnote\img\滑音奏法.png)
+  ![滑音奏法](..\img\滑音奏法.png)
 
 - 短倚音：由一个音或数个音构成
 
 - 短倚音和弦：数个音的短倚音同时弹奏
 
-  ![倚音](D:\project\justnote\img\倚音.png)
+  ![倚音](..\img\倚音.png)
 
 
 
