@@ -190,7 +190,20 @@
 
 
 
-Thread Properties
+### Thread Properties
+
+**Thread Priorities**
+
+- In the Java programming language, every thread has a priority. By default, a thread inherits the priority of the thread that constructed it. You can increase or decrease the priority of any thread with the setPriority method. You can set the priority to any value between MIN_PRIORITY (defned as 1 in the Thread class) and MAX_PRIORITY (defned as 10). NORM_PRIORITY is defned as 5. 
+- If you have several threads with a high priority that don’t become inactive, the lower-priority threads may never execute. Whenever the scheduler decides to run a new thread, it will choose among the highest-priority threads frst, even though that may starve the lower-priority threads completely. 
+
+
+
+**Daemon Threads**
+
+**Handlers for Uncaught Exceptions**
+
+
 
 Synchronization
 
