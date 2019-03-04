@@ -183,7 +183,10 @@
 
 **Terminated Threads**
 
-
+- A thread is terminated for one of two reasons:
+  - It dies a natural death because the run method exits normally.
+  - It dies abruptly because an uncaught exception terminates the run method.
+- In particular, you can kill a thread by invoking its stop method. That method throws a ThreadDeath error object that kills the thread. However, the stop method is deprecated, and you should never call it in your own code. 
 
 
 
