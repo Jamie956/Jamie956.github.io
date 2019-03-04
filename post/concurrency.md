@@ -138,9 +138,40 @@
 
 
 
+### Thread States
+
+- Threads can be in one of six states:
+  - New
+  - Runnable
+  - Blocked
+  - Waiting
+  - Timed waiting
+  - Terminated
 
 
-Thread States
+
+**New Threads**
+
+- When you create a thread with the new operator—for example, new Thread(r)—the thread is not yet running. This means that it is in the new state. When a thread is in the new state, the program has not started executing code inside of it. A certain amount of bookkeeping needs to be done before a thread can run. 
+
+
+
+**Runnable Threads**
+
+- Once you invoke the start method, the thread is in the runnable state. A runnable thread may or may not actually be running. It is up to the operating system to give the thread time to run. 
+- Once a thread is running, it doesn’t necessarily keep running. In fact, it is desirable that running threads occasionally pause so that other threads have a chance to run. The details of thread scheduling depend on the services that the operating system provides. Preemptive scheduling systems give each runnable thread a slice of time to perform its task. When that slice of time is exhausted, the operating system preempts the thread and gives another thread an opportunity to work . When selecting the next thread, the operating system takes into account the thread priorities 
+- All modern desktop and server operating systems use preemptive scheduling. However, small devices such as cell phones may use cooperative scheduling. In such a device, a thread loses control only when it calls the yield method, or when it is blocked or waiting. 
+- Always keep in mind that a runnable thread may or may not be running at any given time. (This is why the state is called “runnable” and not “running.”) 
+
+
+
+**Blocked and Waiting Threads**
+
+**Terminated Threads**
+
+
+
+
 
 Thread Properties
 
