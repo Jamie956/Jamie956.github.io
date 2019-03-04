@@ -1,11 +1,5 @@
 ## **线程**
 
-**定义**
-
-在进程中独立运行的子任务
-
-一个进程在其执行的过程中可以产生多个线程，同一个进程中的线程共享其进程中的内存和资源（共享的内存是堆内存和方法区内存，栈内存不共享），相比进程，线程之间的切换效率较高
-
 
 
 **生命周期**
@@ -126,6 +120,15 @@
 
 
 ## Concurrency
+
+- You are probably familiar with multitasking—your operating system’s ability tohave more than one program working at what seems like the same time. For example, you can print while editing or downloading your email. Nowadays, you are likely to have a computer with more than one CPU, but the number of concurrently executing processes is not limited by the number of CPUs. The operating system assigns CPU time slices to each process, giving the impression of parallel activity. 
+- Multithreaded programs extend the idea of multitasking by taking it one level lower: Individual programs will appear to do multiple tasks at the same time. Each task is usually called a thread, which is short for thread of control. Programs that can run more than one thread at once are said to be multithreaded. 
+- The essential difference is that while each process has a complete set of its own variables, threads share the same data.  
+- shared variables make communication between threads more effcient and easier to program than interprocess communication. Moreover, on some operating systems, threads are more “lightweight” than processes—it takes less overhead to create and destroy individual threads than it does to launch new processes. 
+- Multithreading is extremely useful in practice. For example, a browser should be able to simultaneously download multiple images. A web server needs to be able to serve concurrent requests. Graphical user interface (GUI) programs have a separate thread for gathering user interface events from the host operating environment. 
+
+
+
 
 What Are Threads?
 
