@@ -304,6 +304,49 @@
 
 **The synchronized Keyword**
 
+- let us summarize the key points about locks and conditions:
+
+  - A lock protects sections of code, allowing only one thread to execute the code at a time.
+  - A lock manages threads that are trying to enter a protected code segment.
+  - A lock can have one or more associated condition objects.
+  - Each condition object manages threads that have entered a protected code section but that cannot proceed. 
+
+- If a method is declared with the synchronized keyword, the object’s lock protects the entire method.  
+
+  ```java
+  public synchronized void method(){
+      method body
+  }
+  //is the equivalent of
+  public void method(){
+      this.intrinsicLock.lock();
+      try{
+          method body
+      }
+      finally { this.intrinsicLock.unlock(); }
+  }
+  ```
+
+- As you can see, using the synchronized keyword yields code that is much more concise. Of course, to understand this code, you have to know that each object has an intrinsic lock, and that the lock has an intrinsic condition. The lock manages the threads that try to enter a synchronized method. The condition manages the threads that have called wait.
+
+  ```java
+  class Bank{
+      private double[] accounts;
+      public synchronized void transfer(int from, int to, int amount) throws InterruptedException{
+          while (accounts[from] < amount)
+              wait(); // wait on intrinsic object lock's single condition
+          accounts[from] -= amount;
+          accounts[to] += amount;
+          notifyAll(); // notify all threads waiting on the condition
+      }
+      public synchronized double getTotalBalance() { . . . }
+  }
+  ```
+
+- It is also legal to declare static methods as synchronized. If such a method is called, it acquires the intrinsic lock of the associated class object. For example, if the Bank class has a static synchronized method, then the lock of the Bank.class object is locked when it is called. As a result, no other thread can call this or any other synchronized static method of the same class. 
+
+
+
 **Synchronized Blocks**
 
 **The Monitor Concept**
