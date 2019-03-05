@@ -209,11 +209,50 @@
 
 ### Synchronization
 
-**An Example of a Race Condition**
+- In most practical multithreaded applications, two or more threads need to share
+  access to the same data. What happens if two threads have access to the same
+  object and each calls a method that modifes the state of the object? As you might
+  imagine, the threads can step on each other’s toes. Depending on the order in
+  which the data were accessed, corrupted objects can result. Such a situation is
+  often called a race condition. 
+
+
 
 **The Race Condition Explained**
 
+![Simultaneous access by two threads](..\img\Simultaneous access by two threads.png)
+
+
+
 **Lock Objects**
+
+- This construct guarantees that only one thread at a time can enter the critical section. As soon as one thread locks the lock object, no other thread can get past the lock statement. When other threads call lock, they are deactivated until the frst thread unlocks the lock object. 
+
+  ```java
+  myLock.lock(); // a ReentrantLock object
+  try
+  {
+  critical section
+  }
+  finally
+  {
+  myLock.unlock(); // make sure the lock is unlocked even if an exception is thrown
+  }
+  ```
+
+- It is critically important that the unlock operation is enclosed in a finally clause. If the code in the critical section throws an exception, the lock must be unlocked. Otherwise, the other threads will be blocked forever. 
+
+- Suppose one thread calls transfer and gets preempted before it is done. Suppose a second thread also calls transfer. The second thread cannot acquire the lock and is blocked in the call to the lock method. It is deactivated and must wait for the frst thread to fnish executing the transfer method. When the frst thread unlocks the lock, then the second thread can proceed 
+
+- Note that each Bank object has its own ReentrantLock object. If two threads try to access the same Bank object, then the lock serves to serialize the access. However, if two threads access different Bank objects, each thread acquires a different lock and neither thread is blocked. This is as it should be, because the threads cannot interfere with one another when they manipulate different Bank instances. 
+
+- The lock is called reentrant because a thread can repeatedly acquire a lock that it already owns. The lock has a hold count that keeps track of the nested calls to the lock method. The thread has to call unlock for every call to lock in order to relinquish the lock. Because of this feature, code protected by a lock can call another method that uses the same locks. 
+
+- In general, you will want to protect blocks of code that update or inspect a shared object, so you can be assured that these operations run to completion before another thread can use the same object. 
+
+- Be careful to ensure that the code in a critical section is not bypassed by throwing an exception. If an exception is thrown before the end of the section, the finally clause will relinquish the lock, but the object may be in a damaged state. 
+
+
 
 **Condition Objects**
 
