@@ -349,7 +349,29 @@
 
 **Synchronized Blocks**
 
+- Here, the lock object is created only to use the lock that every Java object possesses. 
+
+  ```java
+  public void transfer(int from, int to, int amount)
+  {
+  synchronized (lock) // an ad-hoc lock
+  {
+  accounts[from] -= amount;
+  accounts[to] += amount;
+  }
+  System.out.println(. . .);
+  }
+  ```
+
+- Sometimes, programmers use the lock of an object to implement additional atomic operations—a practice known as client-side locking. 
+
+
+
 **The Monitor Concept**
+
+
+
+
 
 **Volatile Fields**
 
