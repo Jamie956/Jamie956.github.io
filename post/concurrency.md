@@ -209,12 +209,7 @@
 
 ### Synchronization
 
-- In most practical multithreaded applications, two or more threads need to share
-  access to the same data. What happens if two threads have access to the same
-  object and each calls a method that modifes the state of the object? As you might
-  imagine, the threads can step on each other’s toes. Depending on the order in
-  which the data were accessed, corrupted objects can result. Such a situation is
-  often called a race condition. 
+- In most practical multithreaded applications, two or more threads need to share access to the same data. What happens if two threads have access to the same object and each calls a method that modifes the state of the object? As you might imagine, the threads can step on each other’s toes. Depending on the order in which the data were accessed, corrupted objects can result. Such a situation is often called a race condition. 
 
 
 
@@ -230,13 +225,11 @@
 
   ```java
   myLock.lock(); // a ReentrantLock object
-  try
-  {
-  critical section
+  try{
+      critical section
   }
-  finally
-  {
-  myLock.unlock(); // make sure the lock is unlocked even if an exception is thrown
+  finally{
+      myLock.unlock(); // make sure the lock is unlocked even if an exception is thrown
   }
   ```
 
@@ -255,6 +248,59 @@
 
 
 **Condition Objects**
+
+- Often, a thread enters a critical section only to discover that it can’t proceed until a condition is fulflled. Use a condition object to manage threads that have acquired a lock but cannot do useful work.  
+
+- It is entirely possible that the current thread will be deactivated between the successful outcome of the test and the call to transfer. 
+
+  ```java
+  if (bank.getBalance(from) >= amount)
+      // thread might be deactivated at this point
+      bank.transfer(from, to, amount);
+  ```
+
+- You must make sure that no other thread can modify the balance between the test and the transfer action. You do so by protecting both the test and the transfer action with a lock: 
+
+  ```java
+  public void transfer(int from, int to, int amount){
+      bankLock.lock();
+      try{
+          while (accounts[from] < amount){
+              // wait
+              . . .
+          }
+          // transfer funds
+          . . .
+      }
+      finally{
+          bankLock.unlock();
+      }
+  }
+  ```
+
+- When a thread calls await, it has no way of reactivating itself. It puts its faith in the other threads. If none of them bother to reactivate the waiting thread, it will never run again. This can lead to unpleasant deadlock situations. If all other threads are blocked and the last active thread calls await without unblocking one of the others, it also blocks. No thread is left to unblock the others, and the program hangs. 
+
+- When should you call signalAll? The rule of thumb is to call signalAll whenever the state of an object changes in a way that might be advantageous to waiting threads. For example, whenever an account balance changes, the waiting threads should be given another chance to inspect the balance. In our example, we call signalAll when we have fnished the funds transfer. 
+
+  ```java
+  public void transfer(int from, int to, int amount){
+      bankLock.lock();
+      try{
+          while (accounts[from] < amount)
+              sufficientFunds.await();
+          // transfer funds
+          . . .
+              sufficientFunds.signalAll();
+      }
+      finally{
+          bankLock.unlock();
+      }
+  }
+  ```
+
+- Note that the call to signalAll does not immediately activate a waiting thread. It only unblocks the waiting threads so that they can compete for entry into the object after the current thread has relinquished the lock. 
+
+
 
 **The synchronized Keyword**
 
