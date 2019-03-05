@@ -199,9 +199,11 @@
 
 
 
-**Daemon Threads**
-
 **Handlers for Uncaught Exceptions**
+
+- The run method of a thread cannot throw any checked exceptions, but it can be terminated by an unchecked exception. In that case, the thread dies.
+
+- However, there is no catch clause to which the exception can be propagated. Instead, just before the thread dies, the exception is passed to a handler for uncaught exceptions. 
 
 
 
