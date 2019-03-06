@@ -430,6 +430,10 @@
 
 **Deadlocks**
 
+- It is possible that all threads get blocked because each is waiting for more money. Such a situation is called a deadlock. 
+
+
+
 **Thread-Local Variables**
 
 **Lock Testing and Timeouts**
