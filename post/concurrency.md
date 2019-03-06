@@ -398,7 +398,19 @@
 
 **Final Variables**
 
+- As you saw in the preceding section, you cannot safely read a feld from multiple threads unless you use locks or the volatile modifer. 
 
+- There is one other situation in which it is safe to access a shared feld—when it is declared final. Consider 
+
+  ```java
+  final Map<String, Double> accounts = new HashMap<>();
+  ```
+
+- Other threads get to see the accounts variable after the constructor has fnished. 
+
+- Without using final, there would be no guarantee that other threads would see the updated value of accounts—they might all see null, not the constructed HashMap. 
+
+- Of course, the operations on the map are not thread safe. If multiple threads mutate and read the map, you still need synchronization. 
 
 
 
