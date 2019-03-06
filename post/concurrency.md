@@ -2,7 +2,7 @@
 
 
 
-![con life](D:\project\justnote\img\con life.png)
+![con life](..\img\con life.png)
 
 
 
@@ -135,7 +135,7 @@
 
   - When a thread is blocked or waiting (or, of course, when it terminates), another thread will be scheduled to run. When a thread is reactivated (for example, because its timeout has expired or it has succeeded in acquiring a lock), the scheduler checks to see if it has a higher priority than the currently running threads. If so, it preempts one of the current threads and picks a new thread to run. 
 
-    ![Thread states](D:\project\justnote\img\Thread states.png)
+    ![Thread states](..\img\Thread states.png)
 
 
 
