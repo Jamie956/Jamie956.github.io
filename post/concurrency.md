@@ -380,11 +380,27 @@
 
 **Volatile Fields**
 
+- Computers with multiple processors can temporarily hold memory values in registers or local memory caches. As a consequence, threads running in different processors may see different values for the same memory location!
 
+- Compilers can reorder instructions for maximum throughput. Compilers won’t choose an ordering that changes the meaning of the code, but they make the assumption that memory values are only changed when there are explicit instructions in the code. However, a memory value can be changed by another thread! 
+
+- The volatile keyword offers a lock-free mechanism for synchronizing access to an instance feld. If you declare a feld as volatile, then the compiler and the virtual machine take into account that the feld may be concurrently updated by another thread. 
+
+- The compiler will insert the appropriate code to ensure that a change to the done variable in one thread is visible from any other thread that reads the variable. 
+
+  ```java
+  private volatile boolean done;
+  public boolean isDone() { return done; }
+  public void setDone() { done = true; }
+  ```
 
 
 
 **Final Variables**
+
+
+
+
 
 **Atomics**
 
