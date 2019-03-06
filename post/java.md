@@ -99,7 +99,7 @@ class Employee
 }
 ```
 
-Every employee object now has its own id feld, but there is only one nextId feld that is shared among all instances of the class. Let’s put it another way. If there are 1,000 objects of the Employee class, then there are 1,000 instance felds id, one for each object. But there is a single static feld nextId. Even if there are no employee objects, the static feld nextId is present. It belongs to the class, not to any individual object.
+Every employee object now has its own id field, but there is only one nextId field that is shared among all instances of the class. Let’s put it another way. If there are 1,000 objects of the Employee class, then there are 1,000 instance fields id, one for each object. But there is a single static field nextId. Even if there are no employee objects, the static field nextId is present. It belongs to the class, not to any individual object.
 
 
 
@@ -114,7 +114,7 @@ public class Math
 }
 ```
 
-If the keyword static had been omitted, then PI would have been an instance feld of the Math class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.
+If the keyword static had been omitted, then PI would have been an instance field of the Math class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.
 
 
 
@@ -122,7 +122,7 @@ If the keyword static had been omitted, then PI would have been an instance feld
 
 You can think of static methods as methods that don’t have a this parameter.
 
-A static method of the Employee class cannot access the id instance feld because it does not operate on an object. However, a static method can access a static feld.
+A static method of the Employee class cannot access the id instance field because it does not operate on an object. However, a static method can access a static field.
 
 ```java
 public static int getNextId()
@@ -133,7 +133,7 @@ public static int getNextId()
 
 Use static methods in two situations:
 - When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
-- When a method only needs to access static felds of the class (example: Employee.getNextId).
+- When a method only needs to access static fields of the class (example: Employee.getNextId).
 
 
 
@@ -239,7 +239,7 @@ If you don’t specify either public or private, the feature (that is, the class
     }
     ```
 
-- As you saw, a subclass can add felds, and it can add methods or override the methods of the superclass. However, inheritance can never take away any felds or methods. 
+- As you saw, a subclass can add fields, and it can add methods or override the methods of the superclass. However, inheritance can never take away any fields or methods. 
 
 
 
@@ -256,7 +256,7 @@ If you don’t specify either public or private, the feature (that is, the class
     }
     ```
 
-- Since the Manager constructor cannot access the private felds of the Employee class, it must initialize them through a constructor. The constructor is invoked with the special super syntax. The call using super must be the frst statement in the constructor for the subclass. 
+- Since the Manager constructor cannot access the private fields of the Employee class, it must initialize them through a constructor. The constructor is invoked with the special super syntax. The call using super must be the frst statement in the constructor for the subclass. 
 
 - If the subclass constructor does not call a superclass constructor explicitly, the no-argument constructor of the superclass is invoked. 
 - If the superclass does not have a no-argument constructor and the subclass constructor does not call another superclass constructor explicitly, the Java compiler reports an error. 
@@ -436,7 +436,7 @@ If you don’t specify either public or private, the feature (that is, the class
     }
     ```
 
-- In addition to abstract methods, abstract classes can have felds and concrete methods.  
+- In addition to abstract methods, abstract classes can have fields and concrete methods.  
 
     ```java
     public abstract class Person{
@@ -472,7 +472,7 @@ If you don’t specify either public or private, the feature (that is, the class
 
 **Protected Acess**
 
-- As you know, felds in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won’t be visible to other classes. 
+- As you know, fields in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won’t be visible to other classes. 
 
 - Protected methods make more sense. A class may declare a method as protected if it is tricky to use. This indicates that the subclasses (which, presumably, know their ancestor well) can be trusted to use the method correctly, but other classes cannot. 
 - The four access modifers in Java that control visibility: 
@@ -530,7 +530,7 @@ If you don’t specify either public or private, the feature (that is, the class
 
     `if (this == otherObject) return true;`
 
-    This statement is just an optimization. In practice, this is a common case. It is much cheaper to check for identity than to compare the felds.
+    This statement is just an optimization. In practice, this is a common case. It is much cheaper to check for identity than to compare the fields.
 
   - Test whether otherObject is null and return false if it is. This test is required. 
 
@@ -548,7 +548,7 @@ If you don’t specify either public or private, the feature (that is, the class
 
     `ClassName other = (ClassName) otherObject`
 
-  - Now compare the felds, as required by your notion of equality. Use == for primitive type felds, Objects.equals for object felds. Return true if all felds match, false otherwise.
+  - Now compare the fields, as required by your notion of equality. Use == for primitive type fields, Objects.equals for object fields. Return true if all fields match, false otherwise.
 
     ```java
     return field1 == other.field1
@@ -742,7 +742,7 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
   `if (anObject instanceof Comparable) { . . . } `
 
-- Although you cannot put instance felds or static methods in an interface, you can supply constants in them. For example: 
+- Although you cannot put instance fields or static methods in an interface, you can supply constants in them. For example: 
 
   ```java
   public interface Powered extends Moveable{
@@ -751,7 +751,7 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
   }
   ```
 
-  Just as methods in an interface are automatically public, felds are always public static final. 
+  Just as methods in an interface are automatically public, fields are always public static final. 
 
 **Interfaces and Abstract Classes**
 

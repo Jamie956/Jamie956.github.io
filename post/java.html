@@ -591,7 +591,7 @@
     . . .
 }
 </code></pre>
-<p>Every employee object now has its own id feld, but there is only one nextId feld that is shared among all instances of the class. Let&#x2019;s put it another way. If there are 1,000 objects of the Employee class, then there are 1,000 instance felds id, one for each object. But there is a single static feld nextId. Even if there are no employee objects, the static feld nextId is present. It belongs to the class, not to any individual object.</p>
+<p>Every employee object now has its own id field, but there is only one nextId field that is shared among all instances of the class. Let&#x2019;s put it another way. If there are 1,000 objects of the Employee class, then there are 1,000 instance fields id, one for each object. But there is a single static field nextId. Even if there are no employee objects, the static field nextId is present. It belongs to the class, not to any individual object.</p>
 <p><strong>Static Constants</strong></p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Math</span>
 </span>{
@@ -600,10 +600,10 @@
     . . .
 }
 </code></pre>
-<p>If the keyword static had been omitted, then PI would have been an instance feld of the Math class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.</p>
+<p>If the keyword static had been omitted, then PI would have been an instance field of the Math class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.</p>
 <p><strong>Static Methods</strong></p>
 <p>You can think of static methods as methods that don&#x2019;t have a this parameter.</p>
-<p>A static method of the Employee class cannot access the id instance feld because it does not operate on an object. However, a static method can access a static feld.</p>
+<p>A static method of the Employee class cannot access the id instance field because it does not operate on an object. However, a static method can access a static field.</p>
 <pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getNextId</span><span class="hljs-params">()</span>
 </span>{
     <span class="hljs-keyword">return</span> nextId; <span class="hljs-comment">// returns static field</span>
@@ -612,7 +612,7 @@
 <p>Use static methods in two situations:</p>
 <ul>
 <li>When a method doesn&#x2019;t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).</li>
-<li>When a method only needs to access static felds of the class (example: Employee.getNextId).</li>
+<li>When a method only needs to access static fields of the class (example: Employee.getNextId).</li>
 </ul>
 <h3 id="object-construction">Object Construction</h3>
 <p><strong>Overloading</strong></p>
@@ -672,7 +672,7 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
   }
 </code></pre>
 </li>
-<li><p>As you saw, a subclass can add felds, and it can add methods or override the methods of the superclass. However, inheritance can never take away any felds or methods. </p>
+<li><p>As you saw, a subclass can add fields, and it can add methods or override the methods of the superclass. However, inheritance can never take away any fields or methods. </p>
 </li>
 </ul>
 <p><strong>Subclass Constructors</strong></p>
@@ -686,7 +686,7 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
   }
 </code></pre>
 </li>
-<li><p>Since the Manager constructor cannot access the private felds of the Employee class, it must initialize them through a constructor. The constructor is invoked with the special super syntax. The call using super must be the frst statement in the constructor for the subclass. </p>
+<li><p>Since the Manager constructor cannot access the private fields of the Employee class, it must initialize them through a constructor. The constructor is invoked with the special super syntax. The call using super must be the frst statement in the constructor for the subclass. </p>
 </li>
 <li><p>If the subclass constructor does not call a superclass constructor explicitly, the no-argument constructor of the superclass is invoked. </p>
 </li>
@@ -829,7 +829,7 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
   }
 </code></pre>
 </li>
-<li><p>In addition to abstract methods, abstract classes can have felds and concrete methods.  </p>
+<li><p>In addition to abstract methods, abstract classes can have fields and concrete methods.  </p>
 <pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>{
       <span class="hljs-keyword">private</span> String name;
       <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(String name)</span></span>{
@@ -858,7 +858,7 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
 </ul>
 <p><strong>Protected Acess</strong></p>
 <ul>
-<li><p>As you know, felds in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won&#x2019;t be visible to other classes. </p>
+<li><p>As you know, fields in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won&#x2019;t be visible to other classes. </p>
 </li>
 <li><p>Protected methods make more sense. A class may declare a method as protected if it is tricky to use. This indicates that the subclasses (which, presumably, know their ancestor well) can be trusted to use the method correctly, but other classes cannot. </p>
 </li>
@@ -915,7 +915,7 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
 </li>
 <li><p>Test whether this happens to be identical to otherObject: </p>
 <p><code>if (this == otherObject) return true;</code></p>
-<p>This statement is just an optimization. In practice, this is a common case. It is much cheaper to check for identity than to compare the felds.</p>
+<p>This statement is just an optimization. In practice, this is a common case. It is much cheaper to check for identity than to compare the fields.</p>
 </li>
 <li><p>Test whether otherObject is null and return false if it is. This test is required. </p>
 <p><code>if (otherObject == null) return false;</code></p>
@@ -928,7 +928,7 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
 <li><p>Cast otherObject to a variable of your class type: </p>
 <p><code>ClassName other = (ClassName) otherObject</code></p>
 </li>
-<li><p>Now compare the felds, as required by your notion of equality. Use == for primitive type felds, Objects.equals for object felds. Return true if all felds match, false otherwise.</p>
+<li><p>Now compare the fields, as required by your notion of equality. Use == for primitive type fields, Objects.equals for object fields. Return true if all fields match, false otherwise.</p>
 <pre><code class="lang-java"><span class="hljs-keyword">return</span> field1 == other.field1
 &amp;&amp; Objects.equals(field2, other.field2)
     &amp;&amp; . . .;
@@ -1088,13 +1088,13 @@ Class cl = e.getClass();
 <li><p>Next, just as you use instanceof to check whether an object is of a specifc class, you can use instanceof to check whether an object implements an interface: </p>
 <p><code>if (anObject instanceof Comparable) { . . . }</code></p>
 </li>
-<li><p>Although you cannot put instance felds or static methods in an interface, you can supply constants in them. For example: </p>
+<li><p>Although you cannot put instance fields or static methods in an interface, you can supply constants in them. For example: </p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Powered</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Moveable</span></span>{
     <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">milesPerGallon</span><span class="hljs-params">()</span></span>;
     <span class="hljs-keyword">double</span> SPEED_LIMIT = <span class="hljs-number">95</span>; <span class="hljs-comment">// a public static final constant</span>
 }
 </code></pre>
-<p>Just as methods in an interface are automatically public, felds are always public static final. </p>
+<p>Just as methods in an interface are automatically public, fields are always public static final. </p>
 </li>
 </ul>
 <p><strong>Interfaces and Abstract Classes</strong></p>
@@ -1146,7 +1146,7 @@ Class cl = e.getClass();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"4.1","depth":1,"next":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"previous":{"title":"Angular","level":"3.4","depth":1,"path":"post/angular.md","ref":"post/angular.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/java.md","mtime":"2019-03-02T03:05:07.500Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-03T14:45:45.096Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"4.1","depth":1,"next":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"previous":{"title":"Angular","level":"3.4","depth":1,"path":"post/angular.md","ref":"post/angular.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/java.md","mtime":"2019-03-06T06:56:24.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-06T10:01:56.924Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

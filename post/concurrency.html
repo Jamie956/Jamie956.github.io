@@ -479,46 +479,18 @@
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
 <li><div><a href="#&#x7EBF;&#x7A0B;&#x6C60;">&#x7EBF;&#x7A0B;&#x6C60;</a><i></i></div></li>
 <li><div><a href="#&#x9501;">&#x9501;</a><i></i></div></li>
-<li><div><a href="#concurrency">Concurrency</a><i></i></div></li>
+<li><div><a href="#concurrency">Concurrency</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#interrupting-threads">Interrupting Threads</a><i></i></div></li>
+<li><div><a href="#thread-states">Thread States</a><i></i></div></li>
+<li><div><a href="#thread-properties">Thread Properties</a><i></i></div></li>
+<li><div><a href="#synchronization">Synchronization</a><i></i></div></li>
+</ul></li>
 </ul>
 </div>
 
-<h2 id="&#x7EBF;&#x7A0B;"><strong>&#x7EBF;&#x7A0B;</strong></h2>
-<p><strong>&#x5B9A;&#x4E49;</strong></p>
-<p>&#x5728;&#x8FDB;&#x7A0B;&#x4E2D;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x7684;&#x5B50;&#x4EFB;&#x52A1;</p>
-<p>&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5728;&#x5176;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EF;&#x4EE5;&#x4EA7;&#x751F;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x5176;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x548C;&#x8D44;&#x6E90;&#xFF08;&#x5171;&#x4EAB;&#x7684;&#x5185;&#x5B58;&#x662F;&#x5806;&#x5185;&#x5B58;&#x548C;&#x65B9;&#x6CD5;&#x533A;&#x5185;&#x5B58;&#xFF0C;&#x6808;&#x5185;&#x5B58;&#x4E0D;&#x5171;&#x4EAB;&#xFF09;&#xFF0C;&#x76F8;&#x6BD4;&#x8FDB;&#x7A0B;&#xFF0C;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5207;&#x6362;&#x6548;&#x7387;&#x8F83;&#x9AD8;</p>
-<p><strong>&#x751F;&#x547D;&#x5468;&#x671F;</strong></p>
-<ol>
-<li><p><strong>&#x65B0;&#x5EFA;(new)</strong>&#xFF1A;&#x521B;&#x5EFA;Thread&#x5B9E;&#x4F8B;&#x65F6;&#xFF0C;&#x6B64;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x65B0;&#x5EFA;&#x72B6;&#x6001;&#xFF08;&#x672A;&#x88AB;&#x542F;&#x52A8;&#xFF09;</p>
-<p><code>Thread t1 = new Thread();</code></p>
-</li>
-<li><p><strong>&#x5C31;&#x7EEA;(runnable)</strong>&#xFF1A;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x88AB;&#x542F;&#x52A8;&#xFF0C;&#x6B63;&#x5728;&#x7B49;&#x5F85;&#x88AB;&#x5206;&#x914D;&#x7ED9;CPU&#x65F6;&#x95F4;&#x7247;&#xFF0C;&#x6B64;&#x65F6;&#x7EBF;&#x7A0B;&#x6B63;&#x5728;&#x5C31;&#x7EEA;&#x961F;&#x5217;&#x4E2D;&#x6392;&#x961F;&#x7B49;&#x5019;&#x5F97;&#x5230;CPU&#x8D44;&#x6E90;</p>
-<p><code>t1.start();</code></p>
-</li>
-<li><p><strong>&#x8FD0;&#x884C;(running)</strong>&#xFF1A;&#x7EBF;&#x7A0B;&#x83B7;&#x5F97;CPU&#x8D44;&#x6E90;&#x6B63;&#x5728;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#xFF0C;&#x4E00;&#x76F4;&#x8FD0;&#x884C;&#x5230;&#x7ED3;&#x675F;&#xFF0C;&#x9664;&#x975E;&#x81EA;&#x52A8;&#x653E;&#x5F03;CPU&#x8D44;&#x6E90;&#x6216;&#x8005;&#x6709;&#x4F18;&#x5148;&#x7EA7;&#x66F4;&#x9AD8;&#x7684;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;</p>
-</li>
-<li><p><strong>&#x963B;&#x585E;(block)</strong>&#xFF1A;&#x7531;&#x4E8E;&#x67D0;&#x79CD;&#x539F;&#x56E0;&#x5BFC;&#x81F4;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x7EBF;&#x7A0B;&#x8BA9;&#x51FA;CPU&#x5E76;&#x6682;&#x505C;&#x81EA;&#x5DF1;&#x7684;&#x6267;&#x884C;</p>
-<ol>
-<li>sleep&#xFF1A;&#x5728;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x540E;&#x53EF;&#x8FDB;&#x5165;&#x5C31;&#x7EEA;&#x72B6;&#x6001;</li>
-<li>wait&#xFF1A;&#x7EBF;&#x7A0B;&#x653E;&#x5165;&#x7B49;&#x5F85;&#x961F;&#x5217;(waitting queue)&#x4E2D;</li>
-</ol>
-</li>
-<li><p><strong>&#x6B7B;&#x4EA1;(dead)</strong>&#xFF1A;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x6216;&#x88AB;&#x5176;&#x5B83;&#x7EBF;&#x7A0B;&#x6740;&#x6B7B;&#x65F6;&#xFF0C;&#x8FDB;&#x5165;&#x6B7B;&#x4EA1;&#x72B6;&#x6001;&#xFF0C;&#x8FD9;&#x65F6;&#x4E0D;&#x80FD;&#x518D;&#x8FDB;&#x5165;&#x5C31;&#x7EEA;&#x72B6;&#x6001;</p>
-<ol>
-<li>&#x81EA;&#x7136;&#x7EC8;&#x6B62;&#xFF1A;&#x6B63;&#x5E38;&#x8FD0;&#x884C;run()&#x65B9;&#x6CD5;&#x540E;&#x7EC8;&#x6B62;</li>
-<li>&#x5F02;&#x5E38;&#x7EC8;&#x6B62;&#xFF1A;&#x8C03;&#x7528;<strong>stop()</strong>&#x65B9;&#x6CD5;&#x8BA9;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x7EC8;&#x6B62;&#x8FD0;&#x884C;</li>
-</ol>
-</li>
-</ol>
-<p><img src="D:\project\justnote\img\con life.png" alt="con life"></p>
-<p><strong>wait/notify</strong></p>
-<ul>
-<li>wait &#x8BA9;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4E14;&#x91CA;&#x653E;&#x9501;</li>
-<li>notify &#x5524;&#x9192;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x7B49;&#x5F85;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5E76;&#x4E14;&#x8BA9;&#x5B83;&#x5F97;&#x5230;&#x9501;</li>
-<li>notifyAll &#x5524;&#x9192;&#x6240;&#x6709;&#x7B49;&#x5F85;&#x5BF9;&#x8C61;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x88AB;&#x5524;&#x9192;&#xFF0C;&#x90A3;&#x4E48;&#x9501;&#x5C06;&#x4F1A;&#x88AB;&#x4ED6;&#x4EEC;&#x4E89;&#x593A;&#xFF0C;&#x540C;&#x4E00;&#x65F6;&#x95F4;&#x53EA;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5F97;&#x5230;&#x9501;</li>
-</ul>
-<p><strong>&#x975E;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</strong></p>
-<p>&#x5B58;&#x5728;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x7531;&#x6B64;&#x5BFC;&#x81F4;&#x7684;&#x6570;&#x636E;&#x810F;&#x8BFB;</p>
+<h2 id="life-cycle">Life Cycle</h2>
+<p><img src="../img/con life.png" alt="con life"></p>
 <h2 id="&#x7EBF;&#x7A0B;&#x6C60;">&#x7EBF;&#x7A0B;&#x6C60;</h2>
 <ul>
 <li><p>&#x51CF;&#x5C11;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x7EBF;&#x7A0B;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x7EBF;&#x7A0B;</p>
@@ -581,11 +553,293 @@
 <li>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x9AD8;&#x7684;&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x4F4E;&#x7684;&#x7EBF;&#x7A0B;&#x91CA;&#x653E;&#x9501;&#x4F1A;&#x5BFC;&#x81F4;&#x4F18;&#x5148;&#x7EA7;&#x5012;&#x7F6E;&#xFF0C;&#x5F15;&#x8D77;&#x6027;&#x80FD;&#x98CE;&#x9669;</li>
 </ol>
 <h2 id="concurrency">Concurrency</h2>
-<p>What Are Threads?</p>
-<p>Interrupting Threads</p>
-<p>Thread States</p>
-<p>Thread Properties</p>
-<p>Synchronization</p>
+<ul>
+<li>You are probably familiar with multitasking&#x2014;your operating system&#x2019;s ability tohave more than one program working at what seems like the same time. For example, you can print while editing or downloading your email. Nowadays, you are likely to have a computer with more than one CPU, but the number of concurrently executing processes is not limited by the number of CPUs. The operating system assigns CPU time slices to each process, giving the impression of parallel activity. </li>
+<li>Multithreaded programs extend the idea of multitasking by taking it one level lower: Individual programs will appear to do multiple tasks at the same time. Each task is usually called a thread, which is short for thread of control. Programs that can run more than one thread at once are said to be multithreaded. </li>
+<li>The essential difference is that while each process has a complete set of its own variables, threads share the same data.  </li>
+<li>shared variables make communication between threads more effcient and easier to program than interprocess communication. Moreover, on some operating systems, threads are more &#x201C;lightweight&#x201D; than processes&#x2014;it takes less overhead to create and destroy individual threads than it does to launch new processes. </li>
+<li>Multithreading is extremely useful in practice. For example, a browser should be able to simultaneously download multiple images. A web server needs to be able to serve concurrent requests. Graphical user interface (GUI) programs have a separate thread for gathering user interface events from the host operating environment. </li>
+</ul>
+<h3 id="interrupting-threads">Interrupting Threads</h3>
+<ul>
+<li>A thread terminates when its run method returns&#x2014;by executing a return statement, after executing the last statement in the method body, or if an exception occurs that is not caught in the method. In the initial release of Java, there also was a stop method that another thread could call to terminate a thread. However, that method is now deprecated.  </li>
+<li>When the interrupt method is called on a thread, the interrupted status of the thread is set. This is a boolean &#xFB02;ag that is present in every thread. Each thread should occasionally check whether it has been interrupted. </li>
+<li>However, if a thread is blocked, it cannot check the interrupted status. This is where the InterruptedException comes in. When the interrupt method is called on a thread that blocks on a call such as sleep or wait, the blocking call is terminated by an InterruptedException. </li>
+<li>There is no language requirement that a thread which is interrupted should terminate. Interrupting a thread simply grabs its attention. The interrupted thread can decide how to react to the interruption. Some threads are so important that they should handle the exception and continue. But quite commonly, a thread will simply want to interpret an interruption as a request for termination.  </li>
+</ul>
+<h3 id="thread-states">Thread States</h3>
+<ul>
+<li>Threads can be in one of six states:<ul>
+<li>New</li>
+<li>Runnable</li>
+<li>Blocked</li>
+<li>Waiting</li>
+<li>Timed waiting</li>
+<li>Terminated</li>
+</ul>
+</li>
+</ul>
+<p><strong>New Threads</strong></p>
+<ul>
+<li>When you create a thread with the new operator&#x2014;for example, new Thread(r)&#x2014;the thread is not yet running. This means that it is in the new state. When a thread is in the new state, the program has not started executing code inside of it. A certain amount of bookkeeping needs to be done before a thread can run. </li>
+</ul>
+<p><strong>Runnable Threads</strong></p>
+<ul>
+<li>Once you invoke the start method, the thread is in the runnable state. A runnable thread may or may not actually be running. It is up to the operating system to give the thread time to run. </li>
+<li>Once a thread is running, it doesn&#x2019;t necessarily keep running. In fact, it is desirable that running threads occasionally pause so that other threads have a chance to run. The details of thread scheduling depend on the services that the operating system provides. Preemptive scheduling systems give each runnable thread a slice of time to perform its task. When that slice of time is exhausted, the operating system preempts the thread and gives another thread an opportunity to work . When selecting the next thread, the operating system takes into account the thread priorities </li>
+<li>All modern desktop and server operating systems use preemptive scheduling. However, small devices such as cell phones may use cooperative scheduling. In such a device, a thread loses control only when it calls the yield method, or when it is blocked or waiting. </li>
+<li>Always keep in mind that a runnable thread may or may not be running at any given time. (This is why the state is called &#x201C;runnable&#x201D; and not &#x201C;running.&#x201D;) </li>
+</ul>
+<p><strong>Blocked and Waiting Threads</strong></p>
+<ul>
+<li><p>When a thread is blocked or waiting, it is temporarily inactive. It doesn&#x2019;t execute any code and consumes minimal resources. It is up to the thread scheduler to reactivate it. The details depend on how the inactive state was reached. </p>
+<ul>
+<li><p>When the thread tries to acquire an intrinsic object lock (but not a Lock in the java.util.concurrent library) that is currently held by another thread, it becomes blocked. The thread becomes unblocked when all other threads have relinquished the lock and the thread scheduler has allowed this thread to hold it. </p>
+</li>
+<li><p>When the thread waits for another thread to notify the scheduler of a condition, it enters the waiting state. This happens by calling the Object.wait or Thread.join method, or by waiting for a Lock or Condition in the java.util.concurrent library. In practice, the difference between the blocked and waiting state is not signifcant. </p>
+</li>
+<li><p>Several methods have a timeout parameter. Calling them causes the thread to enter the timed waiting state. This state persists either until the timeout expires or the appropriate notifcation has been received. Methods with timeout include Thread.sleep and the timed versions of Object.wait, Thread.join, Lock.tryLock, and Condition.await. </p>
+</li>
+<li><p>When a thread is blocked or waiting (or, of course, when it terminates), another thread will be scheduled to run. When a thread is reactivated (for example, because its timeout has expired or it has succeeded in acquiring a lock), the scheduler checks to see if it has a higher priority than the currently running threads. If so, it preempts one of the current threads and picks a new thread to run. </p>
+<p><img src="../img/Thread states.png" alt="Thread states"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Terminated Threads</strong></p>
+<ul>
+<li>A thread is terminated for one of two reasons:<ul>
+<li>It dies a natural death because the run method exits normally.</li>
+<li>It dies abruptly because an uncaught exception terminates the run method.</li>
+</ul>
+</li>
+<li>In particular, you can kill a thread by invoking its stop method. That method throws a ThreadDeath error object that kills the thread. However, the stop method is deprecated, and you should never call it in your own code. </li>
+</ul>
+<h3 id="thread-properties">Thread Properties</h3>
+<p><strong>Thread Priorities</strong></p>
+<ul>
+<li>In the Java programming language, every thread has a priority. By default, a thread inherits the priority of the thread that constructed it. You can increase or decrease the priority of any thread with the setPriority method. You can set the priority to any value between MIN_PRIORITY (defned as 1 in the Thread class) and MAX_PRIORITY (defned as 10). NORM_PRIORITY is defned as 5. </li>
+<li>If you have several threads with a high priority that don&#x2019;t become inactive, the lower-priority threads may never execute. Whenever the scheduler decides to run a new thread, it will choose among the highest-priority threads frst, even though that may starve the lower-priority threads completely. </li>
+</ul>
+<p><strong>Handlers for Uncaught Exceptions</strong></p>
+<ul>
+<li><p>The run method of a thread cannot throw any checked exceptions, but it can be terminated by an unchecked exception. In that case, the thread dies.</p>
+</li>
+<li><p>However, there is no catch clause to which the exception can be propagated. Instead, just before the thread dies, the exception is passed to a handler for uncaught exceptions. </p>
+</li>
+</ul>
+<h3 id="synchronization">Synchronization</h3>
+<ul>
+<li>In most practical multithreaded applications, two or more threads need to share access to the same data. What happens if two threads have access to the same object and each calls a method that modifes the state of the object? As you might imagine, the threads can step on each other&#x2019;s toes. Depending on the order in which the data were accessed, corrupted objects can result. Such a situation is often called a race condition. </li>
+</ul>
+<p><strong>The Race Condition Explained</strong></p>
+<p><img src="../img/Simultaneous access by two threads.png" alt="Simultaneous access by two threads"></p>
+<p><strong>Lock Objects</strong></p>
+<ul>
+<li><p>This construct guarantees that only one thread at a time can enter the critical section. As soon as one thread locks the lock object, no other thread can get past the lock statement. When other threads call lock, they are deactivated until the frst thread unlocks the lock object. </p>
+<pre><code class="lang-java">myLock.lock(); <span class="hljs-comment">// a ReentrantLock object</span>
+<span class="hljs-keyword">try</span>{
+    critical section
+}
+<span class="hljs-keyword">finally</span>{
+    myLock.unlock(); <span class="hljs-comment">// make sure the lock is unlocked even if an exception is thrown</span>
+}
+</code></pre>
+</li>
+<li><p>It is critically important that the unlock operation is enclosed in a finally clause. If the code in the critical section throws an exception, the lock must be unlocked. Otherwise, the other threads will be blocked forever. </p>
+</li>
+<li><p>Suppose one thread calls transfer and gets preempted before it is done. Suppose a second thread also calls transfer. The second thread cannot acquire the lock and is blocked in the call to the lock method. It is deactivated and must wait for the frst thread to fnish executing the transfer method. When the frst thread unlocks the lock, then the second thread can proceed </p>
+</li>
+<li><p>Note that each Bank object has its own ReentrantLock object. If two threads try to access the same Bank object, then the lock serves to serialize the access. However, if two threads access different Bank objects, each thread acquires a different lock and neither thread is blocked. This is as it should be, because the threads cannot interfere with one another when they manipulate different Bank instances. </p>
+</li>
+<li><p>The lock is called reentrant because a thread can repeatedly acquire a lock that it already owns. The lock has a hold count that keeps track of the nested calls to the lock method. The thread has to call unlock for every call to lock in order to relinquish the lock. Because of this feature, code protected by a lock can call another method that uses the same locks. </p>
+</li>
+<li><p>In general, you will want to protect blocks of code that update or inspect a shared object, so you can be assured that these operations run to completion before another thread can use the same object. </p>
+</li>
+<li><p>Be careful to ensure that the code in a critical section is not bypassed by throwing an exception. If an exception is thrown before the end of the section, the finally clause will relinquish the lock, but the object may be in a damaged state. </p>
+</li>
+</ul>
+<p><strong>Condition Objects</strong></p>
+<ul>
+<li><p>Often, a thread enters a critical section only to discover that it can&#x2019;t proceed until a condition is fulflled. Use a condition object to manage threads that have acquired a lock but cannot do useful work.  </p>
+</li>
+<li><p>It is entirely possible that the current thread will be deactivated between the successful outcome of the test and the call to transfer. </p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span> (bank.getBalance(from) &gt;= amount)
+    <span class="hljs-comment">// thread might be deactivated at this point</span>
+    bank.transfer(from, to, amount);
+</code></pre>
+</li>
+<li><p>You must make sure that no other thread can modify the balance between the test and the transfer action. You do so by protecting both the test and the transfer action with a lock: </p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span></span>{
+    bankLock.lock();
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">while</span> (accounts[from] &lt; amount){
+            <span class="hljs-comment">// wait</span>
+            . . .
+        }
+        <span class="hljs-comment">// transfer funds</span>
+        . . .
+    }
+    <span class="hljs-keyword">finally</span>{
+        bankLock.unlock();
+    }
+}
+</code></pre>
+</li>
+<li><p>When a thread calls await, it has no way of reactivating itself. It puts its faith in the other threads. If none of them bother to reactivate the waiting thread, it will never run again. This can lead to unpleasant deadlock situations. If all other threads are blocked and the last active thread calls await without unblocking one of the others, it also blocks. No thread is left to unblock the others, and the program hangs. </p>
+</li>
+<li><p>When should you call signalAll? The rule of thumb is to call signalAll whenever the state of an object changes in a way that might be advantageous to waiting threads. For example, whenever an account balance changes, the waiting threads should be given another chance to inspect the balance. In our example, we call signalAll when we have fnished the funds transfer. </p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span></span>{
+    bankLock.lock();
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">while</span> (accounts[from] &lt; amount)
+            sufficientFunds.await();
+        <span class="hljs-comment">// transfer funds</span>
+        . . .
+            sufficientFunds.signalAll();
+    }
+    <span class="hljs-keyword">finally</span>{
+        bankLock.unlock();
+    }
+}
+</code></pre>
+</li>
+<li><p>Note that the call to signalAll does not immediately activate a waiting thread. It only unblocks the waiting threads so that they can compete for entry into the object after the current thread has relinquished the lock. </p>
+</li>
+</ul>
+<p><strong>The synchronized Keyword</strong></p>
+<ul>
+<li><p>let us summarize the key points about locks and conditions:</p>
+<ul>
+<li>A lock protects sections of code, allowing only one thread to execute the code at a time.</li>
+<li>A lock manages threads that are trying to enter a protected code segment.</li>
+<li>A lock can have one or more associated condition objects.</li>
+<li>Each condition object manages threads that have entered a protected code section but that cannot proceed. </li>
+</ul>
+</li>
+<li><p>If a method is declared with the synchronized keyword, the object&#x2019;s lock protects the entire method.  </p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">method</span><span class="hljs-params">()</span></span>{
+    method body
+}
+<span class="hljs-comment">//is the equivalent of</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">method</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">this</span>.intrinsicLock.lock();
+    <span class="hljs-keyword">try</span>{
+        method body
+    }
+    <span class="hljs-keyword">finally</span> { <span class="hljs-keyword">this</span>.intrinsicLock.unlock(); }
+}
+</code></pre>
+</li>
+<li><p>As you can see, using the synchronized keyword yields code that is much more concise. Of course, to understand this code, you have to know that each object has an intrinsic lock, and that the lock has an intrinsic condition. The lock manages the threads that try to enter a synchronized method. The condition manages the threads that have called wait.</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bank</span></span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span>[] accounts;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span> <span class="hljs-keyword">throws</span> InterruptedException</span>{
+        <span class="hljs-keyword">while</span> (accounts[from] &lt; amount)
+            wait(); <span class="hljs-comment">// wait on intrinsic object lock&apos;s single condition</span>
+        accounts[from] -= amount;
+        accounts[to] += amount;
+        notifyAll(); <span class="hljs-comment">// notify all threads waiting on the condition</span>
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getTotalBalance</span><span class="hljs-params">()</span> </span>{ . . . }
+}
+</code></pre>
+</li>
+<li><p>It is also legal to declare static methods as synchronized. If such a method is called, it acquires the intrinsic lock of the associated class object. For example, if the Bank class has a static synchronized method, then the lock of the Bank.class object is locked when it is called. As a result, no other thread can call this or any other synchronized static method of the same class. </p>
+</li>
+</ul>
+<p><strong>Synchronized Blocks</strong></p>
+<ul>
+<li><p>Here, the lock object is created only to use the lock that every Java object possesses. </p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span>
+</span>{
+<span class="hljs-keyword">synchronized</span> (lock) <span class="hljs-comment">// an ad-hoc lock</span>
+{
+accounts[from] -= amount;
+accounts[to] += amount;
+}
+System.out.println(. . .);
+}
+</code></pre>
+</li>
+<li><p>Sometimes, programmers use the lock of an object to implement additional atomic operations&#x2014;a practice known as client-side locking. </p>
+</li>
+</ul>
+<p><strong>The Monitor Concept</strong></p>
+<ul>
+<li>In the terminology of Java, a monitor has these properties:<ul>
+<li>A monitor is a class with only private felds.</li>
+<li>Each object of that class has an associated lock.</li>
+<li>All methods are locked by that lock. In other words, if a client calls obj.method(), then the lock for obj is automatically acquired at the beginning of the method call and relinquished when the method returns. Since all felds are private, this arrangement ensures that no thread can access the felds while another thread manipulates them.</li>
+<li>The lock can have any number of associated conditions. </li>
+</ul>
+</li>
+<li>Every object in Java has an intrinsic lock and an intrinsic condition. If a method is declared with the synchronized keyword, it acts like a monitor method. The condition variable is accessed by calling wait/notifyAll/notify. </li>
+</ul>
+<p><strong>Volatile Fields</strong></p>
+<ul>
+<li><p>Computers with multiple processors can temporarily hold memory values in registers or local memory caches. As a consequence, threads running in different processors may see different values for the same memory location!</p>
+</li>
+<li><p>Compilers can reorder instructions for maximum throughput. Compilers won&#x2019;t choose an ordering that changes the meaning of the code, but they make the assumption that memory values are only changed when there are explicit instructions in the code. However, a memory value can be changed by another thread! </p>
+</li>
+<li><p>The volatile keyword offers a lock-free mechanism for synchronizing access to an instance feld. If you declare a feld as volatile, then the compiler and the virtual machine take into account that the feld may be concurrently updated by another thread. </p>
+</li>
+<li><p>The compiler will insert the appropriate code to ensure that a change to the done variable in one thread is visible from any other thread that reads the variable. </p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">boolean</span> done;
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isDone</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> done; }
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setDone</span><span class="hljs-params">()</span> </span>{ done = <span class="hljs-keyword">true</span>; }
+</code></pre>
+</li>
+</ul>
+<p><strong>Final Variables</strong></p>
+<ul>
+<li><p>As you saw in the preceding section, you cannot safely read a feld from multiple threads unless you use locks or the volatile modifer. </p>
+</li>
+<li><p>There is one other situation in which it is safe to access a shared feld&#x2014;when it is declared final. Consider </p>
+<pre><code class="lang-java"><span class="hljs-keyword">final</span> Map&lt;String, Double&gt; accounts = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+</code></pre>
+</li>
+<li><p>Other threads get to see the accounts variable after the constructor has fnished. </p>
+</li>
+<li><p>Without using final, there would be no guarantee that other threads would see the updated value of accounts&#x2014;they might all see null, not the constructed HashMap. </p>
+</li>
+<li><p>Of course, the operations on the map are not thread safe. If multiple threads mutate and read the map, you still need synchronization. </p>
+</li>
+</ul>
+<p><strong>Atomics</strong></p>
+<ul>
+<li><p>There are a number of classes in the java.util.concurrent.atomic package that use effcient machine-level instructions to guarantee atomicity of other operations without using locks. For example, the AtomicInteger class has methods incrementAndGet and decrementAndGet that atomically increment or decrement an integer. For example, you can safely generate a sequence of numbers like this: </p>
+</li>
+<li><p>The incrementAndGet method atomically increments the AtomicLong and returns the postincrement value. That is, the operations of getting the value, adding 1, setting it, and producing the new value cannot be interrupted. It is guaranteed that the correct value is computed and returned, even if multiple threads access the same instance concurrently </p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AtomicLong nextNumber = <span class="hljs-keyword">new</span> AtomicLong();
+<span class="hljs-comment">// In some thread...</span>
+<span class="hljs-keyword">long</span> id = nextNumber.incrementAndGet();
+</code></pre>
+</li>
+</ul>
+<p><strong>Deadlocks</strong></p>
+<ul>
+<li>It is possible that all threads get blocked because each is waiting for more money. Such a situation is called a deadlock. </li>
+</ul>
+<p><strong>Lock Testing and Timeouts</strong></p>
+<ul>
+<li><p>A thread blocks indefnitely when it calls the lock method to acquire a lock that is owned by another thread. You can be more cautious about acquiring a lock. The tryLock method tries to acquire a lock and returns true if it was successful. Otherwise, it immediately returns false, and the thread can go off and do something else. </p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span> (myLock.tryLock()){
+    <span class="hljs-comment">// now the thread owns the lock</span>
+    <span class="hljs-keyword">try</span> { . . . }
+    <span class="hljs-keyword">finally</span> { myLock.unlock(); }
+}
+<span class="hljs-keyword">else</span>
+    <span class="hljs-comment">// do something else</span>
+</code></pre>
+</li>
+<li><p>The lock method cannot be interrupted. If a thread is interrupted while it is waiting to acquire a lock, the interrupted thread continues to be blocked until the lock is available. If a deadlock occurs, then the lock method can never terminate. </p>
+</li>
+<li><p>However, if you call tryLock with a timeout, an InterruptedException is thrown if the thread is interrupted while it is waiting. This is clearly a useful feature because it allows a program to break up deadlocks. </p>
+</li>
+</ul>
+<p><strong>Read/Write Locks</strong></p>
+<p><strong>Why the stop and suspend Methods Are Deprecated</strong></p>
 <p>Blocking Queues</p>
 <p>Thread-Safe Collections</p>
 <p>Callables and Futures</p>
@@ -635,7 +889,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Concurrency","level":"4.3","depth":1,"next":{"title":"MongoDB","level":"4.4","depth":1,"path":"post/mongodb.md","ref":"post/mongodb.md","articles":[]},"previous":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/concurrency.md","mtime":"2019-03-02T03:05:07.475Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-03T14:45:45.096Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Concurrency","level":"4.3","depth":1,"next":{"title":"MongoDB","level":"4.4","depth":1,"path":"post/mongodb.md","ref":"post/mongodb.md","articles":[]},"previous":{"title":"Maven","level":"4.2","depth":1,"path":"post/maven.md","ref":"post/maven.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/concurrency.md","mtime":"2019-03-06T10:00:52.964Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-06T10:01:56.924Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
