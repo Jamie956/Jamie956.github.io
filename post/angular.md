@@ -80,7 +80,7 @@ The offcial specification for custom elements is intended to allow developers to
 
 
 
-Every Angular component is a custom element and fulflls the four tenets (and more) that we expect to get from a custom element. 
+Every Angular component is a custom element and fulfills the four tenets (and more) that we expect to get from a custom element. 
 
 
 
@@ -297,7 +297,7 @@ These different entities have specific roles and capabilities, and you’ll be u
 - Components—New elements that will compose the majority of your application’s structure and logic
 - Directives—Objects that modify elements to give them new capabilities or change behaviors
 - Pipes—Functions that format data before it’s rendered
-- Services—Reusable objects that fll niche roles such as data access or helper utilities 
+- Services—Reusable objects that fill niche roles such as data access or helper utilities 
 
 
 
