@@ -416,6 +416,18 @@
 
 **Atomics**
 
+- There are a number of classes in the java.util.concurrent.atomic package that use effcient machine-level instructions to guarantee atomicity of other operations without using locks. For example, the AtomicInteger class has methods incrementAndGet and decrementAndGet that atomically increment or decrement an integer. For example, you can safely generate a sequence of numbers like this: 
+
+- The incrementAndGet method atomically increments the AtomicLong and returns the postincrement value. That is, the operations of getting the value, adding 1, setting it, and producing the new value cannot be interrupted. It is guaranteed that the correct value is computed and returned, even if multiple threads access the same instance concurrently 
+
+  ```java
+  public static AtomicLong nextNumber = new AtomicLong();
+  // In some thread...
+  long id = nextNumber.incrementAndGet();
+  ```
+
+
+
 **Deadlocks**
 
 **Thread-Local Variables**
