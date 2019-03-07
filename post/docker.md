@@ -44,7 +44,7 @@ docker rm $(docker ps -a -q)
 docker exec -it <container> bash
 docker cp <host> <container>:</>
 ```
-### Docker hub 拉取和提交
+### Docker hub
 ```docker
 docker login
 docker pull <username>/<repository>:<tag>
@@ -58,7 +58,7 @@ docker volume create <name>
 docker volume prune
 docker volume rm <name>
 ```
-### 容器重启
+### Restart
 
 ```docker
 docker run --restart always <container>
@@ -154,3 +154,94 @@ sudo groupadd docker
 sudo gpasswd -a jamie956 docker
 newgrp docker
 ```
+
+
+
+
+
+### Docker tomcat部署war包
+
+#### 一，上传到tomcat容器
+
+1. 启动tomcat容器
+
+```shell
+docker run -d --name tomcat -p 8081:8080 tomcat
+```
+
+1. 进入容器查看webapps的路径:/usr/local/tomcat/webapps
+
+```shell
+docker exec -it tomcat bash
+```
+
+1. 上传war到webapps路径下
+
+```shell
+docker cp demo.war tomcat:/usr/local/tomcat/webapps/demo.war
+```
+
+1. 到webapps路劲下检查是否上传成功
+2. 重启tomcat
+
+```shell
+docker restart tomcat
+```
+
+#### 二，Dockerfile构建
+
+1. 拉取镜像
+
+```shell
+docker pull tomcat
+```
+
+1. Dockerfile将war构建成一个新镜像
+
+```dockerfile
+FROM tomcat:9.0-slim
+MAINTAINER "youremail <your@email.com>"
+ADD demo.war /usr/local/tomcat/webapps/demo.war
+CMD ["catalina.sh", "run"]
+```
+
+1. 构建
+
+```shell
+docker build -t demo .
+```
+
+1. 运行镜像
+
+```shell
+docker run -d --name demo -p 8081:8080 demo
+```
+
+**注意**
+
+webapps里的war文件与访问路径要保持一致
+
+**流程**
+
+```makefile
+pull-tomcat:
+  docker pull tomcat:9.0-slim
+clean-project:
+  mvn clean
+package-project:
+  mvn package -Dmaven.test.skip=true
+build-image:
+  docker build -t demo .
+run-container:
+  docker run -d --name demo -p 8081:8080 demo
+remove-container:
+	docker stop demo
+	docker rm -f demo
+remove-image:
+	docker rmi demo
+clone-repo:
+	git clone -b dev http://github/jamie/demo.git
+pull-repo:
+	git pull http://github/jamie/demo.git dev
+```
+

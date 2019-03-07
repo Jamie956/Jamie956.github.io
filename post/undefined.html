@@ -261,90 +261,12 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="maven.html">
-            
-                <a href="maven.html">
-            
-                    
-                    Maven
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.3" data-path="concurrency.html">
-            
-                <a href="concurrency.html">
-            
-                    
-                    Concurrency
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.4" data-path="mongodb.html">
-            
-                <a href="mongodb.html">
-            
-                    
-                    MongoDB
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.5" data-path="mysql.html">
-            
-                <a href="mysql.html">
-            
-                    
-                    Mysql
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.6" data-path="redis.html">
-            
-                <a href="redis.html">
-            
-                    
-                    Redis
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.7" data-path="docker.html">
+        <li class="chapter " data-level="4.2" data-path="docker.html">
             
                 <a href="docker.html">
             
                     
                     Docker
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.8" data-path="docker-tomcat.html">
-            
-                <a href="docker-tomcat.html">
-            
-                    
-                    Docker Tomcat
             
                 </a>
             
@@ -478,6 +400,10 @@
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
 <li><div><a href="#feynman">Feynman</a><i></i></div></li>
+<li><div><a href="#mongo">Mongo</a><i></i></div></li>
+<li><div><a href="#redis">Redis</a><i></i></div></li>
+<li><div><a href="#maven">Maven</a><i></i></div></li>
+<li><div><a href="#mysql">Mysql</a><i></i></div></li>
 </ul>
 </div>
 
@@ -530,6 +456,197 @@ right with the joy of learning what&#x2019;s true.</li>
 </li>
 <li>Realize that the game of life is about <em>playing it&#x2014;</em> not about winning it.</li>
 </ul>
+<h3 id="mongo">Mongo</h3>
+<pre><code class="lang-shell">===basic===
+mongod --dbpath &quot;E:\MongoDB\data&quot; --logpath &quot;E:\MongoDB\logs\mongo.log&quot; --install -serviceName &quot;MongoDB&quot;
+net start MongoDB
+
+===auth===
+use admin
+db.createUser({user:&quot;admin&quot;,pwd:&quot;admin&quot;,roles:[{&quot;role&quot;:&quot;userAdmin&quot;,&quot;db&quot;:&quot;admin&quot;},{&quot;role&quot;:&quot;root&quot;,&quot;db&quot;:&quot;admin&quot;},{&quot;role&quot;:&quot;userAdminAnyDatabase&quot;,&quot;db&quot;:&quot;admin&quot;}]})
+db.auth(&quot;admin&quot;,&quot;admin&quot;)
+sc delete MongoDB
+mongod --dbpath &quot;E:\MongoDB\data&quot; --logpath &quot;E:\MongoDB\logs\mongo.log&quot; --auth --install -serviceName &quot;MongoDB&quot;
+net start MongoDB
+
+mongo -u admin -p 123456 localhost:27017/admin
+
+mongodb://&lt;user&gt;:&lt;pwd&gt;@&lt;host&gt;:27017/&lt;collection&gt;
+
+===create user===
+use &lt;db&gt;
+db.createUser({user:&quot;jamie956&quot;, pwd:&quot;123456&quot;, roles:[&quot;readWrite&quot;,&quot;dbAdmin&quot;]})
+db.auth(&quot;jamie956&quot;,&quot;123456&quot;)
+
+===db===
+show dbs
+db
+use &lt;db&gt;
+db.dropDatabase()
+
+===collection===
+show collections
+db.createCollection(&quot;&lt;collection&gt;&quot;)
+db.createCollection(&quot;&lt;collection&gt;&quot;, { capped : true, autoIndexId : true, size : 6142800, max : 10000 } )
+db.&lt;collection&gt;.drop()
+
+===document===
+db.&lt;collection&gt;.find()
+db.&lt;collection&gt;.find().pretty()
+db.&lt;collection&gt;.find({key1:&quot;val1&quot;}).pretty()
+db.&lt;collection&gt;.find( { $or:[{key1:&quot;val1&quot;},{key2:&quot;val2&quot;}] } ).pretty()
+db.&lt;collection&gt;.find().count()
+db.&lt;collection&gt;.find( {num:{$lt:&lt;num&gt;}} ).pretty()
+db.&lt;collection&gt;.find().sort({&lt;key&gt;:&lt;1 or -1&gt;}).pretty()
+db.&lt;collection&gt;.find().limit(1)
+db.&lt;collection&gt;.insert( { [&lt;key&gt;:&quot;&lt;val&gt;&quot;, &#x2026;] } )
+db.&lt;collection&gt;.remove({key1:&quot;val1&quot;})
+
+===field===
+add =&gt; db.&lt;collection&gt;.update( {key1:&quot;val1&quot;}, {$set:{key3:&quot;val3&quot;}} )
+update =&gt; db.&lt;collection&gt;.update( {key1:&quot;val1&quot;}, {$set:{key2:&quot;update val2&quot;}} )
+db.&lt;collection&gt;.update( {key1:&quot;val1&quot;}, {$inc:{num:10}} )
+db.&lt;collection&gt;.update( {key1:&quot;val1&quot;}, {$rename:{&quot;key3&quot;:&quot;rename key3&quot;}} )
+remove =&gt;  db.&lt;collection&gt;.update( {key1:&quot;val1&quot;},{$unset:{key3:1}} )
+</code></pre>
+<h3 id="redis">Redis</h3>
+<pre><code>===basic===
+start server =&gt; redis-server.exe redis.windows.conf
+start client =&gt; redis-cli(or redis-cli.exe -h 127.0.0.1 -p 6379)
+
+===command===
+set &lt;key&gt; &lt;val&gt;
+get &lt;key&gt;
+keys *
+flushall
+incr &lt;key&gt; &lt;default 1&gt;
+incrby &lt;key&gt; &lt;num&gt;
+decr &lt;key&gt; &lt;default 1&gt;
+decrby &lt;key&gt; &lt;num&gt;
+
+===sort===
+LPUSH &lt;key&gt; &lt;num1 num2 &#x2026; numn&gt;
+RPUSH &lt;key&gt; &lt;num1 num2 &#x2026; numn&gt;
+SORT &lt;key&gt;
+SORT &lt;key&gt; DESC
+
+LPUSH &lt;key&gt; &lt;str&gt;
+SORT &lt;key&gt; ALPHA
+
+SORT &lt;key&gt; LIMIT &lt;offset&gt; &lt;count&gt;
+
+LPUSH uid &lt;n&gt;
+SET &lt;key1_n&gt; &lt;val1&gt;
+SET &lt;key2_n&gt; &lt;val2&gt;
+
+SORT uid BY &lt;key_*&gt;
+SORT uid GET &lt;key_*&gt;
+SORT uid GET &lt;key1_*&gt; GET &lt;key2_*&gt;
+SORT uid GET #
+
+HMSET &lt;hash_n&gt; &lt;key1&gt; &lt;val1&gt; &lt;key2&gt; &lt;val2&gt; &lt;key3&gt; &lt;val3&gt; &#x2026;
+SORT uid BY &lt;hash_*&gt;-&gt;&lt;key&gt;
+SORT uid BY &lt;hash_*&gt;-&gt;&lt;key&gt; GET &lt;hash_*&gt;-&gt;&lt;key&gt;
+
+LRANGE &lt;list&gt; 0 -1
+SORT &lt;list&gt; STORE &lt;list2&gt;
+
+===hash===
+HSET &lt;hash&gt; &lt;key&gt; &lt;val&gt;
+HDEL &lt;hash&gt; &lt;key&gt;
+HEXISTS &lt;hash&gt; &lt;key&gt;
+HGET &lt;hash&gt; &lt;key&gt;
+HGETALL &lt;hash&gt;
+HINCRBY &lt;hash&gt; &lt;key&gt; &lt;num&gt;
+HINCRBYFLOAT &lt;hash&gt; &lt;key&gt; &lt;num&gt;
+HKEYS &lt;hash&gt;
+HLEN &lt;hash&gt;
+HMGET &lt;hash&gt; &lt;key1&gt; &lt;key2&gt;
+HMSET &lt;hash&gt; [&lt;key&gt; &lt;val&gt; &#x2026;]
+HVALS &lt;hash&gt;
+</code></pre><h3 id="maven">Maven</h3>
+<p><strong>&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x76EE;&#x5F55;</strong></p>
+<p><code>maven/bin</code></p>
+<p><strong>&#x914D;&#x7F6E;</strong></p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- maven/conf/setting.xml --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>./m2/repository<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>alimaven<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>aliyun maven<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span>
+</code></pre>
+<p><strong>Commands</strong></p>
+<pre><code class="lang-shel">mvn package -Dmaven.test.skip=true #&#x6253;&#x5305;&#x8DF3;&#x8FC7;&#x6D4B;&#x8BD5;
+mvn -v #&#x67E5;&#x770B;&#x7248;&#x672C;
+mvn clean #&#x6E05;&#x9664;target
+mvn package #&#x6253;&#x5305;
+mvn clean package #&#x6E05;&#x9664;&#x5E76;&#x6253;&#x5305;
+</code></pre>
+<p><strong>pom.xml &#x6307;&#x5B9A;JDK&#x7248;&#x672C;</strong></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span> 
+  <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span> 
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span> 
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span> 
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span> 
+      <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span> 
+      <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span> 
+    <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span> 
+<span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+</code></pre>
+<h3 id="mysql">Mysql</h3>
+<pre><code class="lang-shell">source sqlfile.sql
+show variables like &apos;%max_connections%&apos;
+show processlist
+show full processlist
+show engine innodb status
+
+mysql -uroot -p123456 --default-character-set=utf8
+
+SET character_set_client = utf8;
+
+set global wait_timeout=604800; 
+
+===change password===
+set password for root@localhost = password(&apos;&lt;new password&gt;&apos;); 
+
+jdbc:mysql://192.168.145.130:3306/mydb?characterEncoding=utf8&amp;useSSL=false
+</code></pre>
+<pre><code class="lang-sql">===setting password===
+<span class="hljs-keyword">set</span> <span class="hljs-keyword">password</span> <span class="hljs-keyword">for</span> root@localhost = <span class="hljs-keyword">password</span>(<span class="hljs-string">&apos;123456&apos;</span>);
+===group by===
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">status</span> <span class="hljs-keyword">FROM</span> orders <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">status</span>;
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">YEAR</span>(orderDate) <span class="hljs-keyword">AS</span> <span class="hljs-keyword">YEAR</span>, <span class="hljs-keyword">SUM</span>( customerNumber) <span class="hljs-keyword">AS</span> cus_total <span class="hljs-keyword">FROM</span> orders <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">YEAR</span>(orderDate) <span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">YEAR</span> &gt; <span class="hljs-number">2003</span>
+===<span class="hljs-keyword">distinct</span>===
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> [<span class="hljs-keyword">column</span>] <span class="hljs-keyword">FROM</span> [<span class="hljs-keyword">table</span>]
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> [column2]) <span class="hljs-keyword">FROM</span> [<span class="hljs-keyword">table</span>] <span class="hljs-keyword">WHERE</span> [column1] = <span class="hljs-string">&apos;xx&apos;</span>
+===<span class="hljs-keyword">index</span>===
+<span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">INDEX</span> <span class="hljs-keyword">FROM</span> [<span class="hljs-keyword">table</span>]
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> [index_name] <span class="hljs-keyword">ON</span> [<span class="hljs-keyword">table</span>] ([<span class="hljs-keyword">column</span>])
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">INDEX</span> [index_name] <span class="hljs-keyword">ON</span> [<span class="hljs-keyword">table</span>]
+===<span class="hljs-keyword">view</span>===
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> [view_name] <span class="hljs-keyword">AS</span> <span class="hljs-keyword">SELECT</span> [column1], [column2] <span class="hljs-keyword">FROM</span> [<span class="hljs-keyword">table</span>]
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> [view_name]
+<span class="hljs-keyword">UPDATE</span> [view_name] <span class="hljs-keyword">SET</span> [column2]=<span class="hljs-string">&apos;XX&apos;</span> <span class="hljs-keyword">WHERE</span> [column1]=<span class="hljs-string">&apos;XX&apos;</span>
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">VIEW</span> [view_name]
+===subquery===
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> [<span class="hljs-keyword">table</span>] <span class="hljs-keyword">WHERE</span> [column1] =(<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">MAX</span>(column2) <span class="hljs-keyword">FROM</span> [<span class="hljs-keyword">table</span>])
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span>(<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> [<span class="hljs-keyword">table</span>]) <span class="hljs-keyword">AS</span> t
+
+===<span class="hljs-keyword">function</span>===
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">CONCAT</span>( <span class="hljs-string">&apos;%&apos;</span>, <span class="hljs-string">&apos;d&apos;</span>, <span class="hljs-string">&apos;%&apos;</span> )
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">group_concat</span>(<span class="hljs-string">&apos;listen &apos;</span>, <span class="hljs-string">&apos;to &apos;</span>, <span class="hljs-string">&apos;new &apos;</span>, <span class="hljs-string">&apos;age&apos;</span>)
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> yyyymmdd) <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">table</span> //&#x83B7;&#x53D6;<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> &#x603B;&#x884C;&#x6570;
+</code></pre>
 
                                 
                                 </section>
@@ -573,7 +690,7 @@ right with the joy of learning what&#x2019;s true.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Undefined","level":"6.2","depth":1,"next":{"title":"Guide","level":"6.3","depth":1,"path":"post/guide.md","ref":"post/guide.md","articles":[]},"previous":{"title":"History","level":"6.1","depth":1,"path":"post/history.md","ref":"post/history.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/undefined.md","mtime":"2019-03-01T09:25:48.115Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-06T10:01:56.924Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Undefined","level":"6.2","depth":1,"next":{"title":"Guide","level":"6.3","depth":1,"path":"post/guide.md","ref":"post/guide.md","articles":[]},"previous":{"title":"History","level":"6.1","depth":1,"path":"post/history.md","ref":"post/history.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/undefined.md","mtime":"2019-03-07T09:10:39.531Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-07T09:13:08.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -584,6 +701,10 @@ right with the joy of learning what&#x2019;s true.</li>
     
         
         <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

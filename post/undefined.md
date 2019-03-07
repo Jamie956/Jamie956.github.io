@@ -52,3 +52,235 @@ leverage a CDN to serve static HTML pages.
 - Realize that the game of life is about *playing it—* not about winning it.
 
 
+
+### Mongo
+
+```shell
+===basic===
+mongod --dbpath "E:\MongoDB\data" --logpath "E:\MongoDB\logs\mongo.log" --install -serviceName "MongoDB"
+net start MongoDB
+
+===auth===
+use admin
+db.createUser({user:"admin",pwd:"admin",roles:[{"role":"userAdmin","db":"admin"},{"role":"root","db":"admin"},{"role":"userAdminAnyDatabase","db":"admin"}]})
+db.auth("admin","admin")
+sc delete MongoDB
+mongod --dbpath "E:\MongoDB\data" --logpath "E:\MongoDB\logs\mongo.log" --auth --install -serviceName "MongoDB"
+net start MongoDB
+
+mongo -u admin -p 123456 localhost:27017/admin
+
+mongodb://<user>:<pwd>@<host>:27017/<collection>
+
+===create user===
+use <db>
+db.createUser({user:"jamie956", pwd:"123456", roles:["readWrite","dbAdmin"]})
+db.auth("jamie956","123456")
+
+===db===
+show dbs
+db
+use <db>
+db.dropDatabase()
+	
+===collection===
+show collections
+db.createCollection("<collection>")
+db.createCollection("<collection>", { capped : true, autoIndexId : true, size : 6142800, max : 10000 } )
+db.<collection>.drop()
+
+===document===
+db.<collection>.find()
+db.<collection>.find().pretty()
+db.<collection>.find({key1:"val1"}).pretty()
+db.<collection>.find( { $or:[{key1:"val1"},{key2:"val2"}] } ).pretty()
+db.<collection>.find().count()
+db.<collection>.find( {num:{$lt:<num>}} ).pretty()
+db.<collection>.find().sort({<key>:<1 or -1>}).pretty()
+db.<collection>.find().limit(1)
+db.<collection>.insert( { [<key>:"<val>", …] } )
+db.<collection>.remove({key1:"val1"})
+
+===field===
+add => db.<collection>.update( {key1:"val1"}, {$set:{key3:"val3"}} )
+update => db.<collection>.update( {key1:"val1"}, {$set:{key2:"update val2"}} )
+db.<collection>.update( {key1:"val1"}, {$inc:{num:10}} )
+db.<collection>.update( {key1:"val1"}, {$rename:{"key3":"rename key3"}} )
+remove =>  db.<collection>.update( {key1:"val1"},{$unset:{key3:1}} )
+
+```
+
+
+
+### Redis
+
+```
+===basic===
+start server => redis-server.exe redis.windows.conf
+start client => redis-cli(or redis-cli.exe -h 127.0.0.1 -p 6379)
+
+===command===
+set <key> <val>
+get <key>
+keys *
+flushall
+incr <key> <default 1>
+incrby <key> <num>
+decr <key> <default 1>
+decrby <key> <num>
+
+===sort===
+LPUSH <key> <num1 num2 … numn>
+RPUSH <key> <num1 num2 … numn>
+SORT <key>
+SORT <key> DESC
+
+LPUSH <key> <str>
+SORT <key> ALPHA
+
+SORT <key> LIMIT <offset> <count>
+
+LPUSH uid <n>
+SET <key1_n> <val1>
+SET <key2_n> <val2>
+
+SORT uid BY <key_*>
+SORT uid GET <key_*>
+SORT uid GET <key1_*> GET <key2_*>
+SORT uid GET #
+
+HMSET <hash_n> <key1> <val1> <key2> <val2> <key3> <val3> …
+SORT uid BY <hash_*>-><key>
+SORT uid BY <hash_*>-><key> GET <hash_*>-><key>
+
+LRANGE <list> 0 -1
+SORT <list> STORE <list2>
+
+===hash===
+HSET <hash> <key> <val>
+HDEL <hash> <key>
+HEXISTS <hash> <key>
+HGET <hash> <key>
+HGETALL <hash>
+HINCRBY <hash> <key> <num>
+HINCRBYFLOAT <hash> <key> <num>
+HKEYS <hash>
+HLEN <hash>
+HMGET <hash> <key1> <key2>
+HMSET <hash> [<key> <val> …]
+HVALS <hash>
+```
+
+
+
+### Maven
+
+
+
+**环境变量目录**
+
+`maven/bin`
+
+
+
+**配置**
+
+```xml
+<!-- maven/conf/setting.xml -->
+
+<localRepository>./m2/repository</localRepository>
+
+<mirror>
+    <id>alimaven</id>
+    <name>aliyun maven</name>
+    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    <mirrorOf>central</mirrorOf>
+</mirror>
+```
+
+
+
+**Commands**
+
+```shel
+mvn package -Dmaven.test.skip=true #打包跳过测试
+mvn -v #查看版本
+mvn clean #清除target
+mvn package #打包
+mvn clean package #清除并打包
+```
+
+**pom.xml 指定JDK版本**
+
+```xml
+<build> 
+  <plugins> 
+    <plugin> 
+      <groupId>org.apache.maven.plugins</groupId> 
+      <artifactId>maven-compiler-plugin</artifactId> 
+      <version>2.0.2</version> 
+      <configuration> 
+        <source>1.8</source> 
+        <target>1.8</target> 
+      </configuration> 
+    </plugin> 
+  </plugins> 
+</build>  
+```
+
+
+
+### Mysql
+
+```shell
+source sqlfile.sql
+show variables like '%max_connections%'
+show processlist
+show full processlist
+show engine innodb status
+
+mysql -uroot -p123456 --default-character-set=utf8
+
+SET character_set_client = utf8;
+
+set global wait_timeout=604800; 
+
+===change password===
+set password for root@localhost = password('<new password>'); 
+
+jdbc:mysql://192.168.145.130:3306/mydb?characterEncoding=utf8&useSSL=false
+
+```
+
+
+
+```sql
+===setting password===
+set password for root@localhost = password('123456');
+===group by===
+SELECT status FROM orders GROUP BY status;
+SELECT YEAR(orderDate) AS YEAR, SUM( customerNumber) AS cus_total FROM orders GROUP BY YEAR(orderDate) HAVING YEAR > 2003
+===distinct===
+SELECT DISTINCT [column] FROM [table]
+SELECT COUNT(DISTINCT [column2]) FROM [table] WHERE [column1] = 'xx'
+===index===
+SHOW INDEX FROM [table]
+CREATE INDEX [index_name] ON [table] ([column])
+DROP INDEX [index_name] ON [table]
+===view===
+CREATE VIEW [view_name] AS SELECT [column1], [column2] FROM [table]
+SELECT * FROM [view_name]
+UPDATE [view_name] SET [column2]='XX' WHERE [column1]='XX'
+DROP VIEW [view_name]
+===subquery===
+SELECT * FROM [table] WHERE [column1] =(SELECT MAX(column2) FROM [table])
+SELECT * FROM(SELECT * FROM [table]) AS t
+
+===function===
+SELECT CONCAT( '%', 'd', '%' )
+
+SELECT group_concat('listen ', 'to ', 'new ', 'age')
+
+SELECT COUNT(DISTINCT yyyymmdd) FROM table //获取group by 总行数
+```
+
