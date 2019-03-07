@@ -228,3 +228,59 @@ mvn clean package #清除并打包
 </build>  
 ```
 
+
+
+### Mysql
+
+```shell
+source sqlfile.sql
+show variables like '%max_connections%'
+show processlist
+show full processlist
+show engine innodb status
+
+mysql -uroot -p123456 --default-character-set=utf8
+
+SET character_set_client = utf8;
+
+set global wait_timeout=604800; 
+
+===change password===
+set password for root@localhost = password('<new password>'); 
+
+jdbc:mysql://192.168.145.130:3306/mydb?characterEncoding=utf8&useSSL=false
+
+```
+
+
+
+```sql
+===setting password===
+set password for root@localhost = password('123456');
+===group by===
+SELECT status FROM orders GROUP BY status;
+SELECT YEAR(orderDate) AS YEAR, SUM( customerNumber) AS cus_total FROM orders GROUP BY YEAR(orderDate) HAVING YEAR > 2003
+===distinct===
+SELECT DISTINCT [column] FROM [table]
+SELECT COUNT(DISTINCT [column2]) FROM [table] WHERE [column1] = 'xx'
+===index===
+SHOW INDEX FROM [table]
+CREATE INDEX [index_name] ON [table] ([column])
+DROP INDEX [index_name] ON [table]
+===view===
+CREATE VIEW [view_name] AS SELECT [column1], [column2] FROM [table]
+SELECT * FROM [view_name]
+UPDATE [view_name] SET [column2]='XX' WHERE [column1]='XX'
+DROP VIEW [view_name]
+===subquery===
+SELECT * FROM [table] WHERE [column1] =(SELECT MAX(column2) FROM [table])
+SELECT * FROM(SELECT * FROM [table]) AS t
+
+===function===
+SELECT CONCAT( '%', 'd', '%' )
+
+SELECT group_concat('listen ', 'to ', 'new ', 'age')
+
+SELECT COUNT(DISTINCT yyyymmdd) FROM table //获取group by 总行数
+```
+

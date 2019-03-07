@@ -17,7 +17,6 @@
 
 -----
 * [Java](post/java.md)
-* [Mysql](post/mysql.md)
 * [Docker](post/docker.md)
 
 -----
