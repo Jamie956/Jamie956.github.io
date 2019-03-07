@@ -480,7 +480,15 @@
 
 ## 4 Component basics
 
-Setting up the chapter example
+
+
+### Setting up the chapter example
+
+![The completed application with the three component types noted](..\img\The completed application with the three component types noted.png)
+
+![Component tree showing relationships between instances of each component](..\img\Component tree showing relationships between instances of each component.png)
+
+
 
 Composition and lifecycle of a component
 
