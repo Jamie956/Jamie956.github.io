@@ -19,7 +19,6 @@
 * [Java](post/java.md)
 * [Maven](post/maven.md)
 * [Mysql](post/mysql.md)
-* [Redis](post/redis.md)
 * [Docker](post/docker.md)
 * [Docker Tomcat](post/docker-tomcat.md)
 
