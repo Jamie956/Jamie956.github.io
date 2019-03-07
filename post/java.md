@@ -1116,7 +1116,7 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 
 
-![con life](D:/project/justnote/img/con%20life.png)
+![con life](../img/con%20life.png)
 
 
 
