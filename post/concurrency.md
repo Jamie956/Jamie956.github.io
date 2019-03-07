@@ -6,7 +6,7 @@
 
 
 
-## 线程池
+## Thread Pool
 
 - 减少创建和销毁线程的次数，重复使用线程
 
@@ -44,14 +44,8 @@
   - shutdownNow()：立即终止线程池，尝试打断正在执行的任务，清空任务缓存队列，返回尚未执行的任务
 
 
-**配置线程池大小**
 
-- CPU密集型任务，参考值为 *N*CPU+1
-- IO密集型任务，参考值为2**N*CPU
-
-
-
-## 锁
+## Lock
 
 **乐观锁**：每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据。乐观锁适用于多读的应用类型，提高吞吐量
 
@@ -413,16 +407,3 @@ CAS 操作中包含三个操作数 —— 需要读写的内存位置（V）、�
 
 - A blocking queue causes a thread to block when you try to add an element when the queue is currently full or to remove an element when the queue is empty. Blocking queues are a useful tool for coordinating the work of multiple threads. Worker threads can periodically deposit intermediate results into a blocking queue. Other worker threads remove the intermediate results and modify them further. The queue automatically balances the workload. If the frst set of threads runs slower than the second, the second set blocks while waiting for the results. If the frst set of threads runs faster, the queue flls up until the second set catches up.  
 - The blocking queue methods fall into three categories that differ by the action they perform when the queue is full or empty. If you use the queue as a thread management tool, use the put and take methods. The add, remove, and element operations throw an exception when you try to add to a full queue or get the head of an empty queue. Of course, in a multithreaded program, the queue might become full or empty at any time, so you will instead want to use the offer, poll, and peek methods. These methods simply return with a failure indicator instead of throwing an exception if they cannot carry out their tasks. 
-
-Thread-Safe Collections
-
-Callables and Futures
-
-Executors
-
-Synchronizers
-
-Threads and Swing
-
-
-
