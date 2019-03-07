@@ -402,13 +402,16 @@ CAS 操作中包含三个操作数 —— 需要读写的内存位置（V）、�
 
 
 
-**Read/Write Locks**
-
 **Why the stop and suspend Methods Are Deprecated**
 
+- Let us turn to the stop method frst. This method terminates all pending methods, including the run method. When a thread is stopped, it immediately gives up the locks on all objects that it has locked. This can leave objects in an inconsistent state. For example, suppose a TransferRunnable is stopped in the middle of moving money from one account to another, after the withdrawal and before the deposit. Now the bank object is damaged. Since the lock has been relinquished, the damage is observable from the other threads that have not been stopped. 
+- Next, let us see what is wrong with the suspend method. Unlike stop, suspend won’t damage objects. However, if you suspend a thread that owns a lock, then the lock Next, let us see what is wrong with the suspend method. Unlike stop, suspend won’t damage objects. However, if you suspend a thread that owns a lock, then the lock 
 
 
-Blocking Queues
+
+### Blocking Queues
+
+
 
 Thread-Safe Collections
 
