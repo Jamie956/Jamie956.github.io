@@ -16,7 +16,6 @@
 -----
 * [Java](post/java.md)
 * [Maven](post/maven.md)
-* [Concurrency](post/concurrency.md)
 * [MongoDB](post/mongodb.md)
 * [Mysql](post/mysql.md)
 * [Redis](post/redis.md)
