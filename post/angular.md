@@ -480,17 +480,61 @@
 
 ## 4 Component basics
 
-
-
-### Setting up the chapter example
+- The completed application with the three component types noted
 
 ![The completed application with the three component types noted](..\img\The completed application with the three component types noted.png)
+
+- Component tree showing relationships between instances of each component 
 
 ![Component tree showing relationships between instances of each component](..\img\Component tree showing relationships between instances of each component.png)
 
 
 
-Composition and lifecycle of a component
+### Composition and lifecycle of a component
+
+- Components have a lifecycle that begins with their initial instantiation, and continues with their rendering until they’re destroyed and removed from the application. 
+
+- Concepts that compose and inﬂuence a component’s behavior 
+
+![component behavior](..\img\component behavior.png)
+
+
+
+- Here’s a list of the primary things that compose a component:
+  - Component Metadata Decorator —All components must be annotated with the @Component() decorator to properly register the component with Angular. The metadata contains numerous properties to help modify the way the component behaves or is rendered.
+  - Controller—The controller is the class that is decorated with @Component(), and it contains all the properties and methods for the component. Most of the logic exists in the controller.
+  - Template—A component isn’t a component without a template. The markup for a component defnes the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any 
+
+
+
+**Component lifecycle**
+
+- Component lifecycle while the application is running 
+
+![component behavior](..\img\component behavior.png)
+
+- The component metadata will then be fully processed by Angular, including the parsing of the component template, styles, and bindings. If the template contains any child components, those will kick off the same lifecycle for those components as well, but they won’t block this component from continuing to render. 
+
+
+
+**Lifecycle hooks**
+
+- Lifecycle hooks aren’t like event listeners—they’re special methods with specifc names that are called during the component’s lifecycle if they’re defned. 
+- Lifecycle hook
+  - OnChanges: Fires any time the input bindings have changed
+  - OnInit: This runs once after the component has fully initialized
+  - OnDestroy: Before a component is completely removed, the OnDestroy hook allows you to run some logic. 
+  - DoCheck: Any time that change detection runs to determine whether the application needs to be updated 
+  - AfterContentInit: When any content children have been fully initialized, this hook will allow you to do any initial work 
+  - AfterContentChecked: Every time that Angular checks the content children 
+  - AfterViewInit: This hook lets you run logic after all View Children have been initially rendered. 
+  - AfterViewChecked: When Angular checks the component view and any View Children have been checked
+
+
+
+**Nesting components**
+
+
 
 Types of components
 
