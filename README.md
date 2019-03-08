@@ -20,6 +20,5 @@
 * [Music](post/music.md)
 
 -----
-* [History](post/history.md)
 * [Undefined](post/undefined.md)
 * [Guide](post/guide.md)
