@@ -7,7 +7,6 @@
 * [Data Structure](post/dataStructure.md)
 * [Http](post/http.md)
 * [Linux](post/linux.md)
-* [Design](post/design.md)
 
 -----
 * [NodeJS](post/nodejs.md)
