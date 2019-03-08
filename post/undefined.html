@@ -68,7 +68,7 @@
     <link rel="next" href="guide.html" />
     
     
-    <link rel="prev" href="history.html" />
+    <link rel="prev" href="music.html" />
     
 
     </head>
@@ -162,19 +162,6 @@
             
                     
                     Linux
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.5" data-path="design.html">
-            
-                <a href="design.html">
-            
-                    
-                    Design
             
                 </a>
             
@@ -294,19 +281,6 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="fit.html">
-            
-                <a href="fit.html">
-            
-                    
-                    Fit
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -314,20 +288,7 @@
         
         
     
-        <li class="chapter " data-level="6.1" data-path="history.html">
-            
-                <a href="history.html">
-            
-                    
-                    History
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="6.2" data-path="undefined.html">
+        <li class="chapter active" data-level="6.1" data-path="undefined.html">
             
                 <a href="undefined.html">
             
@@ -340,7 +301,7 @@
             
         </li>
     
-        <li class="chapter " data-level="6.3" data-path="guide.html">
+        <li class="chapter " data-level="6.2" data-path="guide.html">
             
                 <a href="guide.html">
             
@@ -404,6 +365,14 @@
 <li><div><a href="#redis">Redis</a><i></i></div></li>
 <li><div><a href="#maven">Maven</a><i></i></div></li>
 <li><div><a href="#mysql">Mysql</a><i></i></div></li>
+<li><div><a href="#fit">Fit</a><i></i></div></li>
+<li><div><a href="#design-pattern">Design Pattern</a><i></i></div></li>
+<li><div><a href="#rule">Rule</a><i></i></div></li>
+<li><div><a href="#vscode">VSCode</a><i></i></div></li>
+<li><div><a href="#typora">Typora</a><i></i></div></li>
+<li><div><a href="#eclipse">Eclipse</a><i></i></div></li>
+<li><div><a href="#hexo">Hexo</a><i></i></div></li>
+<li><div><a href="#regular-express">Regular Express</a><i></i></div></li>
 </ul>
 </div>
 
@@ -647,6 +616,293 @@ jdbc:mysql://192.168.145.130:3306/mydb?characterEncoding=utf8&amp;useSSL=false
 
 <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> yyyymmdd) <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">table</span> //&#x83B7;&#x53D6;<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> &#x603B;&#x884C;&#x6570;
 </code></pre>
+<h3 id="fit">Fit</h3>
+<p>&#x80F0;&#x5C9B;&#x7D20;&#x4E0E;&#x51CF;&#x8102;&#x80AA;</p>
+<p>&#x70ED;&#x91CF;&#x5E73;&#x8861;</p>
+<p>&#x5408;&#x6210;&#x4EE3;&#x8C22;</p>
+<p>&#x5206;&#x89E3;&#x4EE3;&#x8C22;</p>
+<p>&#x80F0;&#x5C9B;&#x7D20;&#xFF1A;&#x5408;&#x6210;&#x4EE3;&#x8C22;&#x6FC0;&#x7D20;&#xFF0C;&#x964D;&#x8840;&#x7CD6;&#xFF0C;&#x6291;&#x5236;&#x5206;&#x89E3;&#x4EE3;&#x8C22;</p>
+<p>&#x80F0;&#x5C9B;&#x7D20;&#x654F;&#x611F;&#x6027;</p>
+<p>&#x80F0;&#x5C9B;&#x7D20;&#x62B5;&#x6297;</p>
+<p>&#x5EFA;&#x8BAE;</p>
+<ul>
+<li>&#x5C11;&#x5403;&#x78B3;&#x6C34;</li>
+<li>&#x8FD0;&#x52A8;</li>
+<li>&#x51CF;&#x80A5;</li>
+<li>&#x4E0D;&#x8981;&#x9891;&#x7E41;&#x5403;&#x4E1C;&#x897F;</li>
+<li>&#x9002;&#x5F53;&#x5EF6;&#x957F;&#x7A7A;&#x8179;&#x65F6;&#x95F4;</li>
+</ul>
+<p>&#x63D0;&#x9AD8;&#x65B0;&#x9648;&#x4EE3;&#x8C22;</p>
+<ul>
+<li>&#x63D0;&#x9AD8;&#x7EC4;&#x7EC7;&#x5668;&#x5B98;&#x4EE3;&#x8C22;</li>
+<li>&#x996E;&#x98DF;&#xFF08;&#x86CB;&#x767D;&#x3001;&#x5747;&#x8861;&#x996E;&#x98DF;&#xFF09;</li>
+<li>&#x953B;&#x70BC;&#xFF08;&#x9AD8;&#x5F3A;&#x5EA6;&#x6700;&#x4F73;&#xFF09;</li>
+<li>&#x8865;&#x5145;&#x5242;&#xFF08;&#x8336;&#x3001;&#x5496;&#x5561;&#x3001;&#x82F9;&#x679C;&#x918B;&#x3001;&#x8FA3;&#x6912;&#xFF09;</li>
+</ul>
+<h3 id="design-pattern">Design Pattern</h3>
+<p><strong>abstract class</strong> A class whose primary purpose is to define an interface. An abstract class defers some or all of its implementation to subclasses. An abstract class cannot be instantiated.</p>
+<p><strong>abstract coupling</strong> Given a class A that maintains a reference to an abstract class B, class A is said to be abstractly coupled to B. We call this abstract coupling because A refers to a type of object, not a concrete object.</p>
+<p><strong>abstract operation</strong> An operation that declares a signature but doesn&apos;t implement it. In C++, an abstract operation corresponds to a pure virtual member function.</p>
+<p><strong>acquaintance relationship</strong> A class that refers to another class has an acquaintance with that class.</p>
+<p><strong>aggregate object</strong> An object that&apos;s composed of subobjects. The subobjects are called the aggregate&apos;s parts, and the aggregate is responsible for them.</p>
+<p><strong>aggregation relationship</strong> The relationship of an aggregate object to its parts. A class defines this relationship for its instances (e.g., aggregate objects).</p>
+<p><strong>black-box reuse</strong> A style of reuse based on object composition. Composed objects reveal no internal details to each other and are thus analogous to &quot;black boxes.&quot;</p>
+<p><strong>class</strong> A class defines an object&apos;s interface and implementation. It specifies the object&apos;s internal representation and defines the operations the object can perform.</p>
+<p><strong>class diagram</strong> A diagram that depicts classes, their internal structure and operations, and the static relationships between them.</p>
+<p><strong>class operation</strong> An operation targeted to a class and not to an individual object. In C++, class operations are are called static member functions.</p>
+<p><strong>concrete class</strong> A class having no abstract operations. It can be instantiated.</p>
+<p><strong>constructor</strong> In C++, an operation that is automatically invoked to initialize new instances.</p>
+<p><strong>coupling</strong> The degree to which software components depend on each other.</p>
+<p><strong>delegation</strong> An implementation mechanism in which an object forwards or delegates a request to another object. The delegate carries out the request on behalf of the original object.</p>
+<p><strong>design pattern</strong> A design pattern systematically names, motivates, and explains a general design that addresses a recurring design problem in object-oriented systems. It describes the problem, the solution, when to apply the solution, and its consequences. It also gives implementation hints and examples. The solution is a general arrangement of objects and classes that solve the problem. The solution is customized and implemented to solve the problem in a particular context.</p>
+<p><strong>destructor</strong> In C++, an operation that is automatically invoked to finalize an object that is about to be deleted.</p>
+<p><strong>dynamic binding</strong> The run-time association of a request to an object and one of its operations. In C++,only virtual functions are dynamically bound.</p>
+<p><strong>encapsulation</strong> The result of hiding a representation and implementation in an object. The representation is not visible and cannot be accessed directly from outside the object. Operations are the only way to access and modify an object&apos;s representation.</p>
+<p><strong>framework</strong> A set of cooperating classes that makes up a reusable design for a specific class of software.A framework provides architectural guidance by partitioning the design into abstract classes and defining their responsibilities and collaborations. A developer customizes the framework to a particular application by subclassing and composing instances of framework classes.</p>
+<p><strong>friend class</strong> In C++,a class that has the same access rights to the operations and data of a class as that class itself.</p>
+<p><strong>inheritance</strong> A relationship that defines one entity in terms of another. Class inheritance defines a new class in terms of one or more parent classes. The new class inherits its interface and implementation from its parents. The new class is called a subclass or (in C++) a derived class. Class inheritance combines interface inheritance and implementation inheritance. Interface inheritance defines a new interface in terms of one or more existing interfaces.Implementation inheritance defines a new implementation in terms of one or more existing implementations.</p>
+<p><strong>instance variable</strong> A piece of data that defines part of an object&apos;s representation. C++ uses the term data member.</p>
+<p><strong>interaction diagram</strong> A diagram that shows the flow of requests between objects.</p>
+<p><strong>interface</strong> The set of all signatures defined by an object&apos;s operations. The interface describes the set of requests to which an object can respond.</p>
+<p><strong>metaclass</strong> Classes are objects in Smalltalk. A metaclass is the class of a class object.</p>
+<p><strong>mixin class</strong> A class designed to be combined with other classes through inheritance. Mixin classes are usually abstract.</p>
+<p><strong>object</strong> A run-time entity that packages both data and the procedures that operate on that data.</p>
+<p><strong>object composition</strong> Assembling or composing objects to get more complex behavior.</p>
+<p><strong>object diagram</strong> A diagram that depicts a particular object structure at run-time.</p>
+<p><strong>object reference</strong> A value that identifies another object.</p>
+<p><strong>operation</strong> An object&apos;s data can be manipulated only by its operations. An object performs an operation when it receives a request. In C++, operations are called member functions. Smalltalk uses the term method.</p>
+<p><strong>overriding</strong> Redefining an operation (inherited from a parent class) in a subclass.</p>
+<p><strong>parameterized type</strong> A type that leaves some constituent types unspecified. The unspecified types are supplied as parameters at the point of use. In C++, parameterized types are called templates.</p>
+<p><strong>parent class</strong> The class from which another class inherits. Synonyms are superclass (Smalltalk), base class (C++), and ancestor class.</p>
+<p><strong>polymorphism</strong> The ability to substitute objects of matching interface for one another at run-time.</p>
+<p><strong>private inheritance</strong> In C++,a class inherited solely for its implementation.</p>
+<p><strong>protocol</strong> Extends the concept of an interface to include the allowable sequences of requests.</p>
+<p><strong>receiver</strong> The target object of a request.</p>
+<p><strong>request</strong> An object performs an operation when it receives a corresponding request from another object. A common synonym for request is message.</p>
+<p><strong>signature</strong> An operation&apos;s signature defines its name, parameters, and return value.</p>
+<p><strong>subclass</strong> A class that inherits from another class. In C++, a subclass is called a derived class.</p>
+<p><strong>subsystem</strong> An independent group of classes that collaborate to fulfill a set of responsibilities.</p>
+<p><strong>subtype</strong> A type is a subtype of another if its interface contains the interface of the other type.</p>
+<p><strong>supertype</strong> The parent type from which a type inherits.</p>
+<p><strong>toolkit</strong> A collection of classes that provides useful functionality but does not define the design of an application.</p>
+<p><strong>type</strong> The name of a particular interface.</p>
+<p><strong>white-box reuse</strong> A style of reuse based on class inheritance. A subclass reuses the interface and implementation of its parent class,but it may have access to otherwise private aspects of its parent.</p>
+<h3 id="rule">Rule</h3>
+<ul>
+<li>SOLID<ul>
+<li>S - SRP - Single Responsibility Principle</li>
+<li>O - OCP - Open-Closed Principle</li>
+<li>L - LSP - Liskov Substitution Principle</li>
+<li>I - ISP - Interface Segregation Principle</li>
+<li>D - DIP - Dependency Inversion Principle</li>
+</ul>
+</li>
+<li>KISS - Keep It Simple, Stupid</li>
+<li>YAGNI - You Aren&#x2019;t Gonna Need It</li>
+<li>DRY - Don&#x2019;t Repeat Yourself</li>
+</ul>
+<p>windows</p>
+<p><strong>Service start/stop/delete</strong></p>
+<pre><code>sc delete &lt;service&gt;
+net stop &lt;service&gt;
+net start &lt;service&gt;
+</code></pre><p><strong>&#x67E5;&#x770B; port</strong></p>
+<pre><code class="lang-shell">netstat -ano | findstr &lt;port&gt;
+tasklist|findstr &lt;PID&gt;
+</code></pre>
+<p><strong>&#x67E5;&#x770B;win10&#x7CFB;&#x7EDF;&#x6FC0;&#x6D3B;&#x60C5;&#x51B5;</strong></p>
+<pre><code>slmgr.vbs -xpr
+</code></pre><h3 id="vscode">VSCode</h3>
+<p><strong>Settings</strong></p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;editor.fontSize&quot;</span>: <span class="hljs-number">12</span>,
+    <span class="hljs-string">&quot;explorer.confirmDelete&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;workbench.iconTheme&quot;</span>: <span class="hljs-string">&quot;vscode-icons&quot;</span>,
+    <span class="hljs-string">&quot;explorer.confirmDragAndDrop&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;editor.tabSize&quot;</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">&quot;files.associations&quot;</span>: {
+        <span class="hljs-string">&quot;*.ejs&quot;</span>: <span class="hljs-string">&quot;html&quot;</span>
+    },
+    <span class="hljs-string">&quot;open-in-browser.default&quot;</span>: <span class="hljs-string">&quot;chrome&quot;</span>
+}
+</code></pre>
+<p><strong>&#x5FEB;&#x6377;&#x952E;</strong></p>
+<ul>
+<li>ctrl+k+0 //&#x6298;&#x53E0;&#x4EE3;&#x7801;</li>
+<li>ctrl+k+j //&#x6253;&#x5F00;&#x4EE3;&#x7801;</li>
+<li>shift+alt+i //&#x7F16;&#x8F91;&#x591A;&#x884C;&#x884C;&#x5C3E;</li>
+<li>shift+alt+&#x9009;&#x4E2D; //&#x591A;&#x884C;&#x7F16;&#x8F91;</li>
+</ul>
+<p><strong>plugin</strong></p>
+<ul>
+<li>Local History</li>
+<li>open in browser</li>
+<li>Prettier</li>
+<li>vscode-icons</li>
+</ul>
+<h3 id="typora">Typora</h3>
+<p>ctrl + 1 //&#x6807;&#x9898;1</p>
+<p>ctrl + 2 //&#x6807;&#x9898;2</p>
+<p>...</p>
+<p>ctrl + 5 //&#x6807;&#x9898;5</p>
+<p>ctrl + u //&#x4E0B;&#x5212;&#x7EBF;</p>
+<p>ctrl + b //&#x52A0;&#x7C97;</p>
+<p>ctrl + i //&#x659C;&#x4F53;</p>
+<p>ctrl + k //&#x8D85;&#x94FE;&#x63A5; <a href="http://www.baidu.com" target="_blank">&#x767E;&#x5EA6;</a></p>
+<p>ctrl + t //&#x8868;&#x683C;</p>
+<p>&gt; + &#x7A7A;&#x683C; //&#x5F15;&#x7528;</p>
+<p>ctrl + l //&#x9009;&#x4E2D;&#x884C;</p>
+<p>ctrl + d //&#x9009;&#x4E2D;&#x8BCD;</p>
+<p>alt + shift + 5 //&#x5220;&#x9664;&#x7EBF;</p>
+<p>ctrl + f //&#x641C;&#x7D22;</p>
+<p>ctrl + h //&#x641C;&#x7D22;&#x66FF;&#x6362;</p>
+<p>ctrl + shift + i //&#x63D2;&#x5165;&#x56FE;&#x7247;</p>
+<p>- + &#x7A7A;&#x683C; //&#x65E0;&#x5E8F;&#x5217;&#x8868;</p>
+<p>1 + . //&#x6709;&#x5E8F;&#x5217;&#x8868;</p>
+<h3 id="eclipse">Eclipse</h3>
+<p><strong>&#x5FEB;&#x6377;&#x952E;</strong></p>
+<ul>
+<li>ctrl+alt+down //&#x590D;&#x5236;&#x5E76;&#x7C98;&#x8D34;&#x4E00;&#x884C;&#x4EE3;&#x7801;</li>
+<li>ctrl+shift + /(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x6298;&#x53E0;&#x4EE3;&#x7801;</li>
+<li>ctrl+shift + *(&#x6570;&#x5B57;&#x5C0F;&#x952E;&#x76D8;) //&#x5C55;&#x5F00;&#x4EE3;&#x7801;</li>
+</ul>
+<p><strong>&#x4EE3;&#x7801;&#x63D0;&#x793A;</strong></p>
+<p>preferences -&gt; java -&gt; editor -&gt; content assist -&gt; auto activation triggers for java -&gt; &#x8F93;&#x5165;abcdefghijklmnopqrstuvwxyz. </p>
+<h3 id="hexo">Hexo</h3>
+<pre><code class="lang-shell">npm install -g hexo-cli
+hexo -v
+hexo init
+npm i
+hexo server
+
+hexo new a
+hexo new draft b
+hexo server --draft
+
+hexo publish b
+
+hexo new page c
+
+default_layout
+
+[tag1, tag2]
+
+categories:
+- [cat1, cat1.1]
+- [cat2]
+- [cat3]
+
+ssh-keygen -t rsa -C &quot;752492509@qq.com&quot;
+C:\Users\bxm09\.ssh\id_rsa.pub
+https://github.com/settings/ssh =&gt; new SSH key
+ssh -T git@github.com
+git config --global user.name &quot;jamie956&quot;
+git config --global user.email &quot;752492509@qq.com&quot;
+
+npm install hexo-deployer-git --save
+
+hexo clean
+hexo g
+hexo d
+
+[Writing](https://hexo.io/docs/writing.html)
+</code></pre>
+<h3 id="regular-express">Regular Express</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x7B26;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$</td>
+<td>&#x5339;&#x914D;&#x8F93;&#x5165;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7ED3;&#x5C3E;&#x4F4D;&#x7F6E;</td>
+</tr>
+<tr>
+<td style="text-align:left">()</td>
+<td>&#x6807;&#x8BB0;&#x4E00;&#x4E2A;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;</td>
+</tr>
+<tr>
+<td style="text-align:left">{}</td>
+<td>&#x6807;&#x8BB0;&#x9650;&#x5B9A;&#x7B26;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5F00;&#x59CB;</td>
+</tr>
+<tr>
+<td style="text-align:left">\w</td>
+<td>&#x5339;&#x914D;&#x5305;&#x62EC;&#x4E0B;&#x5212;&#x7EBF;&#x7684;&#x4EFB;&#x4F55;&#x5355;&#x8BCD;&#x5B57;&#x7B26;,&#x7B49;&#x4EF7;&#x4E8E;&#x201C;[A-Za-z0-9_]&#x201D;</td>
+</tr>
+<tr>
+<td style="text-align:left">\d</td>
+<td>&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x3002;&#x7B49;&#x4EF7;&#x4E8E;[0-9]</td>
+</tr>
+<tr>
+<td style="text-align:left">\s</td>
+<td>&#x5339;&#x914D;&#x4EFB;&#x4F55;&#x7A7A;&#x767D;&#x5B57;&#x7B26;&#xFF0C;&#x5305;&#x62EC;&#x7A7A;&#x683C;&#x3001;&#x5236;&#x8868;&#x7B26;&#x3001;&#x6362;&#x9875;&#x7B26;&#x7B49;&#x7B49;&#x3002;&#x7B49;&#x4EF7;&#x4E8E;[ \f\n\r\t\v]</td>
+</tr>
+<tr>
+<td style="text-align:left">\D</td>
+<td>&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x975E;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x3002;&#x7B49;&#x4EF7;&#x4E8E;<sup><a href="#fn_0-9" id="reffn_0-9">0-9</a></sup></td>
+</tr>
+<tr>
+<td style="text-align:left">\W</td>
+<td>&#x5339;&#x914D;&#x4EFB;&#x4F55;&#x975E;&#x5355;&#x8BCD;&#x5B57;&#x7B26;&#x3002;&#x7B49;&#x4EF7;&#x4E8E;[A-Za-z0-9]</td>
+</tr>
+<tr>
+<td style="text-align:left">[]</td>
+<td>&#x5B57;&#x7B26;&#x8303;&#x56F4;&#xFF0C;&#x5339;&#x914D;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">[xyz]</td>
+<td>&#x5B57;&#x7B26;&#x96C6;&#x5408;&#x3002;&#x5339;&#x914D;&#x6240;&#x5305;&#x542B;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left"><sup><a href="#fn_xyz" id="reffn_xyz">xyz</a></sup></td>
+<td>&#x8D1F;&#x503C;&#x5B57;&#x7B26;&#x96C6;&#x5408;&#x3002;&#x5339;&#x914D;&#x672A;&#x5305;&#x542B;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left">[a-z]</td>
+<td>&#x5B57;&#x7B26;&#x8303;&#x56F4;&#x3002;&#x5339;&#x914D;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">.</td>
+<td>&#x5339;&#x914D;&#x9664;&#x201C;\n&#x201D;&#x4E4B;&#x5916;&#x7684;&#x4EFB;&#x4F55;&#x5355;&#x4E2A;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td>&#x5339;&#x914D;&#x524D;&#x9762;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x96F6;&#x6B21;&#x6216;&#x591A;&#x6B21;</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td>&#x5339;&#x914D;&#x524D;&#x9762;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x4E00;&#x6B21;&#x6216;&#x591A;&#x6B21;</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td>&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;&#x5219;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x5339;&#x914D;&#x6240;&#x641C;&#x7D22;&#x7684;&#x5B57;&#x7B26;&#x4E32;</td>
+</tr>
+<tr>
+<td style="text-align:left">{n}</td>
+<td>n&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x8D1F;&#x6574;&#x6570;&#x3002;&#x5339;&#x914D;&#x786E;&#x5B9A;&#x7684;n&#x6B21;</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,}</td>
+<td>&#x81F3;&#x5C11;&#x5339;&#x914D;n&#x6B21;</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,m}</td>
+<td>m&#x548C;n&#x5747;&#x4E3A;&#x975E;&#x8D1F;&#x6574;&#x6570;&#xFF0C;&#x5176;&#x4E2D;n&lt;=m&#x3002;&#x6700;&#x5C11;&#x5339;&#x914D;n&#x6B21;&#x4E14;&#x6700;&#x591A;&#x5339;&#x914D;m&#x6B21;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> s1 = <span class="hljs-string">&apos;a1b23~!@&apos;</span>.match(<span class="hljs-regexp">/\d/</span>);<span class="hljs-comment">//1</span>
+<span class="hljs-keyword">let</span> s2 = <span class="hljs-string">&apos;a1b23~!@&apos;</span>.match(<span class="hljs-regexp">/\d+/</span>);<span class="hljs-comment">//1</span>
+<span class="hljs-keyword">let</span> s3 = <span class="hljs-string">&apos;a1b23~!@&apos;</span>.match(<span class="hljs-regexp">/\d+/g</span>);<span class="hljs-comment">//1,23</span>
+<span class="hljs-keyword">let</span> s4 = <span class="hljs-string">&apos;sduabnjkbf&apos;</span>.match(<span class="hljs-regexp">/[ab]/g</span>);<span class="hljs-comment">//a,b,b</span>
+<span class="hljs-keyword">let</span> s5 = <span class="hljs-string">&apos;a1b23~!@&apos;</span>.match(<span class="hljs-regexp">/[a-z]/g</span>);<span class="hljs-comment">//a,b</span>
+<span class="hljs-keyword">let</span> s6 = <span class="hljs-string">&apos;a1b23~!@&apos;</span>.match(<span class="hljs-regexp">/[^a-z]/g</span>);<span class="hljs-comment">//1,2,3,~,!,@</span>
+<span class="hljs-keyword">let</span> s7 = <span class="hljs-string">&apos;a1b23~!@&apos;</span>.match(<span class="hljs-regexp">/b/</span>);<span class="hljs-comment">//b</span>
+<span class="hljs-keyword">let</span> s8 = <span class="hljs-string">&apos;a1b23~!@&apos;</span>.match(<span class="hljs-regexp">/[^a-z0-9]/g</span>);<span class="hljs-comment">//~,!,@</span>
+</code></pre>
 
                                 
                                 </section>
@@ -674,7 +930,7 @@ jdbc:mysql://192.168.145.130:3306/mydb?characterEncoding=utf8&amp;useSSL=false
 
             
                 
-                <a href="history.html" class="navigation navigation-prev " aria-label="Previous page: History">
+                <a href="music.html" class="navigation navigation-prev " aria-label="Previous page: Music">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -690,7 +946,7 @@ jdbc:mysql://192.168.145.130:3306/mydb?characterEncoding=utf8&amp;useSSL=false
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Undefined","level":"6.2","depth":1,"next":{"title":"Guide","level":"6.3","depth":1,"path":"post/guide.md","ref":"post/guide.md","articles":[]},"previous":{"title":"History","level":"6.1","depth":1,"path":"post/history.md","ref":"post/history.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/undefined.md","mtime":"2019-03-07T09:10:39.531Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-07T09:59:17.335Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Undefined","level":"6.1","depth":1,"next":{"title":"Guide","level":"6.2","depth":1,"path":"post/guide.md","ref":"post/guide.md","articles":[]},"previous":{"title":"Music","level":"5.1","depth":1,"path":"post/music.md","ref":"post/music.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/undefined.md","mtime":"2019-03-08T08:37:21.130Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-08T08:40:16.719Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
