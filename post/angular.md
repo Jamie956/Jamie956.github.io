@@ -542,10 +542,8 @@
 ### Types of components
 
 - Here are the four roles of components 
-  - App component—This is the root app component, and you only get one of these
-    per application.
-  - Display component—This is a stateless component that reﬂects the values passed
-    into it, making it highly reusable.
+  - App component—This is the root app component, and you only get one of these per application.
+  - Display component—This is a stateless component that reﬂects the values passed into it, making it highly reusable.
   - Data component—This is a component that helps get data into the application by loading it from external sources.
   - Route component—When using the router, each route will render a component, and this makes the component intrinsically linked to the route. 
 
@@ -554,13 +552,9 @@
 **App component** 
 
 - Here are the guidelines I recommend for your App component: 
-  - Keep it simple —If possible, don’t put any logic into the component. Think
-    of it more like a container. It’s easier to reuse and optimize the rest of your
-    components if the App component doesn’t have complex behaviors they
-    depend upon.
+  - Keep it simple —If possible, don’t put any logic into the component. Think of it more like a container. It’s easier to reuse and optimize the rest of your components if the App component doesn’t have complex behaviors they depend upon.
   - Use for application layout scaffolding—The template is the primary part of the component, and you’ll see later in this chapter how we create the primary application layout in this component.
-  - Avoid loading data—Usually you will avoid loading data in this component,
-    because I like to load data closer to the component that uses that data. You might load some global data (perhaps something like a user session), though that could also be done separately. On less complex applications, you might load data because it’s more complicated to abstract it on smaller applications. 
+  - Avoid loading data—Usually you will avoid loading data in this component, because I like to load data closer to the component that uses that data. You might load some global data (perhaps something like a user session), though that could also be done separately. On less complex applications, you might load data because it’s more complicated to abstract it on smaller applications. 
 
 
 
@@ -568,8 +562,7 @@
 
 - Here are the primary guidelines I suggest for a Display component: 
   - Decouple—Ensure that the component has no real coupling to other components, except that data may be passed into it as an input when requested.
-  - Make it only as ﬂexible as necessary—Avoid making these components overly complex and adding a lot of confguration and options out of the box. Over time, you
-    might enhance them, but I fnd it’s best to start simple and add later.
+  - Make it only as ﬂexible as necessary—Avoid making these components overly complex and adding a lot of confguration and options out of the box. Over time, you might enhance them, but I fnd it’s best to start simple and add later.
   - Don’t load data—Always accept data through an input binding instead of loading data dynamically through HTTP or through a service.
   - Have a clean API —Accept input bindings to obtain data into the component and emit events for any actions that need to be pushed back up to other components.
   - Optionally use a service for confguration—Sometimes you may need to provide confguration defaults, and instead of having to declare the preferences with every use of the component, you can use a service that sets application defaults.
@@ -580,6 +573,21 @@
 
 
 **Data component**
+
+- Data components are primarily about handling, retrieving, or accepting data. Typically, they rely on a service to handle the loading of data. Here are some considerations for a Data component: 
+  - Use appropriate lifecycle hooks—To do the initial data loading, always leverage the best lifecycle hook for when to trigger the loading or persistence of data. We’ll look at this more later in this chapter.
+  - Don’t worry about reusability—These components are not likely to be reused because they have a special role to manage data, which is diffcult to decouple.
+  - Set up display components—Think about how this component can load data needed by other display components and handle any data from user interactions.
+  - Isolate business logic inside—This can be a great place to store your application business logic, because anytime you manage data, you’re likely dealing with a specialized implementation that works for a specifc use case.
+
+
+
+**Route component**
+
+- A route component should primarily follow these guidelines: 
+  - Template scaffolding for the route—The route will render this component, so this is the most logical place to put the template that’s associated with the route.
+  - Load data or rely on data components—Depending on the complexity of your route, the route component may load data for the route or rely on one or more data components to do that for it. If you’re unsure, I’d suggest loading data initially in the Route component and decoupling as your view gets more complex.
+  - Handles route parameters—As you navigate, there are likely to be router parameters (such as the ID of the content item being viewed), and this is the best place to handle those parameters, which often determine what content to load from the back end. 
 
 
 
