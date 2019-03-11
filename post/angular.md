@@ -591,11 +591,7 @@
 
 
 
-Creating a Data component
-
-Using inputs with components
-
-Content projection
+### Content projection
 
 
 
