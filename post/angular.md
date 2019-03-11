@@ -541,7 +541,45 @@
 
 ### Types of components
 
+- Here are the four roles of components 
+  - App component—This is the root app component, and you only get one of these
+    per application.
+  - Display component—This is a stateless component that reﬂects the values passed
+    into it, making it highly reusable.
+  - Data component—This is a component that helps get data into the application by loading it from external sources.
+  - Route component—When using the router, each route will render a component, and this makes the component intrinsically linked to the route. 
 
+
+
+**App component** 
+
+- Here are the guidelines I recommend for your App component: 
+  - Keep it simple —If possible, don’t put any logic into the component. Think
+    of it more like a container. It’s easier to reuse and optimize the rest of your
+    components if the App component doesn’t have complex behaviors they
+    depend upon.
+  - Use for application layout scaffolding—The template is the primary part of the component, and you’ll see later in this chapter how we create the primary application layout in this component.
+  - Avoid loading data—Usually you will avoid loading data in this component,
+    because I like to load data closer to the component that uses that data. You might load some global data (perhaps something like a user session), though that could also be done separately. On less complex applications, you might load data because it’s more complicated to abstract it on smaller applications. 
+
+
+
+**Display component **
+
+- Here are the primary guidelines I suggest for a Display component: 
+  - Decouple—Ensure that the component has no real coupling to other components, except that data may be passed into it as an input when requested.
+  - Make it only as ﬂexible as necessary—Avoid making these components overly complex and adding a lot of confguration and options out of the box. Over time, you
+    might enhance them, but I fnd it’s best to start simple and add later.
+  - Don’t load data—Always accept data through an input binding instead of loading data dynamically through HTTP or through a service.
+  - Have a clean API —Accept input bindings to obtain data into the component and emit events for any actions that need to be pushed back up to other components.
+  - Optionally use a service for confguration—Sometimes you may need to provide confguration defaults, and instead of having to declare the preferences with every use of the component, you can use a service that sets application defaults.
+- The more encapsulated and isolated the component is, the easier it will be to reuse. 
+- I often fnd that when I start to refactor some code, I begin by identifying individual aspects of my code that could be standalone display components. I might notice a lot of repeated snippets of code that mostly have the same capabilities and refactor them into a single component. It’s also common for these components to have a template and little to no logic in the controller. That’s perfectly acceptable, because it allows you to easily reuse a template snippet across your application. 
+- It’s also common for these components to have a template and little to no logic in the controller. That’s perfectly acceptable, because it allows you to easily reuse a template snippet across your application. 
+
+
+
+**Data component**
 
 
 
