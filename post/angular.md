@@ -511,7 +511,7 @@
 
 - Component lifecycle while the application is running 
 
-![component behavior](..\img\component behavior.png)
+![component behavior](..\img\Component lifecycle.png)
 
 - The component metadata will then be fully processed by Angular, including the parsing of the component template, styles, and bindings. If the template contains any child components, those will kick off the same lifecycle for those components as well, but they won’t block this component from continuing to render. 
 
@@ -534,9 +534,16 @@
 
 **Nesting components**
 
+- Any component that’s nested inside another’s template is called a View Child
+- Occasionally a component accepts content to be inserted into its template, and this is known as a Content Child
 
 
-Types of components
+
+### Types of components
+
+
+
+
 
 Creating a Data component
 
