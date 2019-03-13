@@ -598,11 +598,19 @@
 - Angular ships with a change detection framework that determines when components
   need to be rendered if inputs have changed. Components need to react to changes
   made somewhere in the component tree, and the way they change is through inputs. 
+
 - Changes are always triggered by some asynchronous activity, such as when a user
   interacts with the page. When these changes occur, there is a chance (though no guarantee) that the application state or data has changed. Here are some examples: 
   - ¡	A user clicks a button to trigger a form submission (user activity).
   - ¡	An interval fres every x seconds to refresh data (intervals or timers).
   - ¡	Callbacks, observables, or promises are resolved (XHR requests, event streams). 
+
+- Change detection starts at the top and goes down the tree by default, or with OnPush only
+  goes down the tree with changed inputs. 
+
+  ![Change detection](D:\project\justnote\img\Change detection.png)
+
+- 
 
 
 
