@@ -591,15 +591,23 @@
 
 
 
-### Content projection
+## 5 Advanced components
+
+#### Change detection and optimizations
 
 
 
 
 
+#### Communicating between components
+
+#### Styling components and encapsulation modes
+
+#### Dynamically rendering components
 
 
-5 Advanced components
+
+
 
 6 Services
 
