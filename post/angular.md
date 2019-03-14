@@ -616,6 +616,14 @@
 
 
 
+**Output events and template variables**
+
+![output event](..\img\output event.png)
+
+
+
+**View Child to reference components**
+
 
 
 

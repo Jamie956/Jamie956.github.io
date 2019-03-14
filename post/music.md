@@ -375,19 +375,19 @@
 
 - 下方音（ 根音）：在音程中，低的音
 
-  ![根音冠音](D:\project\justnote\img\根音冠音.png)
+  ![根音冠音](..\img\根音冠音.png)
 
 - 旋律音程：音程中的两个音， 先后发声，依照其进行的方向，分为上行、下行和同音进行
 
-  ![旋律音程](D:\project\justnote\img\旋律音程.png)
+  ![旋律音程](..\img\旋律音程.png)
 
 - 和声音程：音程中的两个音，同时发声
 
-![和声音程](D:\project\justnote\img\和声音程.png)
+![和声音程](..\img\和声音程.png)
 
 - 音程读法
 
-  ![音程读法](D:\project\justnote\img\音程读法.png)
+  ![音程读法](..\img\音程读法.png)
 
 - 
 
