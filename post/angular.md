@@ -618,17 +618,69 @@
 
 **Output events and template variables**
 
+```ts
+import { Component, Output, EventEmitter } from '@angular/core';
+@Component({
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent {
+    @Output() onRefresh: EventEmitter<null> = new EventEmitter<null>();
+    refresh() {
+        this.onRefresh.emit();
+    }
+}
+```
+
+
+
 ![output event](..\img\output event.png)
 
 
 
 **View Child to reference components**
 
+- ViewChild is a decorator for a controller property, like Inject or Output, which tells
+  Angular to fll in that property with a reference to a specifc child component controller. It’s limited to injecting only children, so if you try to inject a component that isn’t a
+  direct descendent, it will provide you with an undefned value. 
 
+```ts
+import { Component, ViewChild } from '@angular/core';
+import { DashboardComponent } from './dashboard/dashboard.component';
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+    @ViewChild(DashboardComponent) dashboard: DashboardComponent;
+    refresh() {
+        this.dashboard.generateData();
+    }
+}
+```
+
+- If you ever need to do anything more than access
+  properties or methods of a child controller, you probably need to use the ViewChild
+  approach. This does cause a coupling between the two components, which should be
+  avoided when possible. 
 
 
 
 #### Styling components and encapsulation modes
+
+
+
+**Adding styles to a component**
+
+
+
+**Encapsulation modes**
+
+
+
+
 
 #### Dynamically rendering components
 
