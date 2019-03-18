@@ -593,7 +593,9 @@
 
 ## 5 Advanced components
 
-#### Change detection and optimizations
+
+
+### Change detection and optimizations
 
 - Angular ships with a change detection framework that determines when components need to be rendered if inputs have changed. Components need to react to changes made somewhere in the component tree, and the way they change is through inputs. 
 
@@ -612,7 +614,7 @@
 
 
 
-#### Communicating between components
+### Communicating between components
 
 
 
@@ -668,7 +670,7 @@ export class AppComponent {
 
 
 
-#### Styling components and encapsulation modes
+### Styling components and encapsulation modes
 
 
 
@@ -697,13 +699,21 @@ export class AppComponent {
     and are therefore localized to the component. None of the templates or styles
     declared for the component are visible outside the component. 
 
-#### Dynamically rendering components
 
 
+### Dynamically rendering components
+
+- There are a few fairly common situations that you’ve seen where a dynamic component is often a good solution. For example 
+  - Modals that display over the page with dynamic content
+  - Alerts that conditionally display
+  - Carousel or tabs that might dynamically expand the amount of content
+  - Collapsible content that needs to be removed afterward 
 
 
 
 6 Services
+
+
 
 7 Routing
 
