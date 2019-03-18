@@ -711,7 +711,27 @@ export class AppComponent {
 
 
 
-6 Services
+## 6 Services
+
+
+
+Setting up the chapter example
+
+Creating Angular services
+
+Dependency injection and injector trees
+
+Services without dependency injection
+
+Using the HttpClient service
+
+Helper services
+
+Services for sharing
+
+Additional services
+
+
 
 
 
