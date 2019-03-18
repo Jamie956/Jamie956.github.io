@@ -1,22 +1,4 @@
-
-
-​	
-
 <img src="http://www.choose-piano-lessons.com/images/1-2-5-1-chord-progression.jpg" />
-
-
-
-<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551515115840&di=f6094d05b609199a2fe186656f429285&imgtype=0&src=http%3A%2F%2Fimg1.ph.126.net%2F3ZfIUQhxzuUG_9ItI3pG5A%3D%3D%2F6630343187536464733.gif"/>
-
-
-
-
-
-<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551515114120&di=e4a272b127b456018d077ba9b3f25572&imgtype=0&src=http%3A%2F%2Fs15.sinaimg.cn%2Fmw690%2F002Iu97nzy6Hb8z1iNMbe%26690" />
-
-
-
-
 
 
 
@@ -400,8 +382,22 @@
 ![度数](D:\project\justnote\img\度数.png)
 
 - 音数：音程所包含的全音、半音的数目
+
 - C-#E，三度
+
 - C-F，四度
+
+- 度数-音程名称-音数：识别音程必须从音数和度数两个方面去考虑 
+
+  ![timg](D:\project\justnote\img\timg.jpg)
+
+
+  ![timg2](D:\project\justnote\img\timg2.gif)
+
+- 单音程：八度以内（包括八度）的音程
+- 复音程：超过八度的音程
+
+
 
 
 
