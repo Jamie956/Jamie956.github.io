@@ -713,15 +713,50 @@ export class AppComponent {
 
 ## 6 Services
 
+- Shared code across your application is almost always best placed inside of a service.
+  In Angular, most of the time a service also is something that you can inject into your
+  controllers using dependency injection, though there is no exact defnition of what
+  makes an object a service. 
+- Service roles
+  - Injectable services are the typical Angular services that provide a feature for the
+    application and work with Angular’s DI system to be injected into components.
+    An example would be a service that handles how to load data from an API.
+  - Non-injectable services are JavaScript objects that aren’t tied into Angular’s DI system and are just imported into the fle. This can be useful to make a service available outside of Angular’s DI, such as in the application’s main fle.
+  - Helper services are services that make it easier to use a component or feature. An example would be a service to help manage the currently active alert on the page.
+  - Data services are for sharing data across the application. An example is an object
+    holding data for the logged-in user. 
 
 
-Setting up the chapter example
 
-Creating Angular services
+### Dependency injection and injector trees
 
-Dependency injection and injector trees
+- Why do we want to use DI instead of regular module loading in JavaScript? There are
+  a few key reasons you’ll usually want to make your services injectable: 
+  - It allows you to focus on consuming services and not worry about how to create them.
+  - It resolves external dependencies for you, simplifying consumption.
+  - It’s easier to test your Angular entities because you can always inject a mock service instead of the real thing.
+  - It can allow you to control the injection of a service without having to worry about where another piece of the application might also inject the service.
+  - It gives you a clean instance of the service for each injector tree. 
+- DI is powerful and is vital for our applications to be easy to manage, but keeping up
+  with the nuances can be a little challenging if you try to combine these capabilities all
+  of the time. Here are a few tips to keep in mind when it comes to DI and services: 
+  - Inject at the lowest level—Instead of adding everything to the App module providers array, try to add it to the lowest component providers array. This will minimize the “surface area” of your service to only be available to the components
+    that might use it.
+  - Name your services wisely—Give your services semantic and meaningful names. PostsService might be clear enough, or perhaps BlogPostsService, depending on the context. I fnd it’s easier to type a few more characters than it is to guess what a service named BPService might be, especially when multiple people are working on your application.
+  - Keep services focused—Rather than creating one mega service that you inject everywhere with lots of abilities, make a sensible number of services that do specifc tasks. The longer your service is, the harder it is to maintain and test, and it will likely become tangled in your application.
+  - Keep services meaningful—On the ﬂip side of keeping services focused, you’ll need to balance the utility of adding another service. Do you need a service for something that’s used only once? It may add more complexity for little beneft, so
+    strike the right balance between number of services and their roles.
+  - Use consistent patterns—Follow the same design for your services for consistency. For example, if you have several services that handle making REST API calls, you’d likely want to give them the same kinds of methods, like get to load an object, or save to store a record. 
 
-Services without dependency injection
+
+
+### Services without dependency injection
+
+
+
+
+
+
 
 Using the HttpClient service
 
