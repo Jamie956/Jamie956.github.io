@@ -750,15 +750,15 @@ export class AppComponent {
 
 
 
-### Services without dependency injection
+### Using the HttpClient service
+
+- t’s considered best practice to never use HttpClient in the component controller
+  directly (yet many articles and even the documentation may demonstrate this case),
+  because this helps create a separation of concerns. That’s why we’ll create a new service that will use the HttpClient service and abstract some of the logic from the controller. 
 
 
 
 
-
-
-
-Using the HttpClient service
 
 Helper services
 
@@ -779,16 +779,3 @@ Additional services
 10 Testing your application
 
 11 Angular in production
-
-
-
-
-
-
-
-
-
-
-
-
-
