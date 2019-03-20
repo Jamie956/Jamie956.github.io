@@ -480,35 +480,281 @@
 
 ## 4 Component basics
 
-
-
-### Setting up the chapter example
+- The completed application with the three component types noted
 
 ![The completed application with the three component types noted](..\img\The completed application with the three component types noted.png)
+
+- Component tree showing relationships between instances of each component 
 
 ![Component tree showing relationships between instances of each component](..\img\Component tree showing relationships between instances of each component.png)
 
 
 
-Composition and lifecycle of a component
+### Composition and lifecycle of a component
 
-Types of components
+- Components have a lifecycle that begins with their initial instantiation, and continues with their rendering until they’re destroyed and removed from the application. 
 
-Creating a Data component
+- Concepts that compose and inﬂuence a component’s behavior 
 
-Using inputs with components
-
-Content projection
+![component behavior](..\img\component behavior.png)
 
 
 
+- Here’s a list of the primary things that compose a component:
+  - Component Metadata Decorator —All components must be annotated with the @Component() decorator to properly register the component with Angular. The metadata contains numerous properties to help modify the way the component behaves or is rendered.
+  - Controller—The controller is the class that is decorated with @Component(), and it contains all the properties and methods for the component. Most of the logic exists in the controller.
+  - Template—A component isn’t a component without a template. The markup for a component defnes the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any 
+
+
+
+**Component lifecycle**
+
+- Component lifecycle while the application is running 
+
+![component behavior](..\img\Component lifecycle.png)
+
+- The component metadata will then be fully processed by Angular, including the parsing of the component template, styles, and bindings. If the template contains any child components, those will kick off the same lifecycle for those components as well, but they won’t block this component from continuing to render. 
+
+
+
+**Lifecycle hooks**
+
+- Lifecycle hooks aren’t like event listeners—they’re special methods with specifc names that are called during the component’s lifecycle if they’re defned. 
+- Lifecycle hook
+  - OnChanges: Fires any time the input bindings have changed
+  - OnInit: This runs once after the component has fully initialized
+  - OnDestroy: Before a component is completely removed, the OnDestroy hook allows you to run some logic. 
+  - DoCheck: Any time that change detection runs to determine whether the application needs to be updated 
+  - AfterContentInit: When any content children have been fully initialized, this hook will allow you to do any initial work 
+  - AfterContentChecked: Every time that Angular checks the content children 
+  - AfterViewInit: This hook lets you run logic after all View Children have been initially rendered. 
+  - AfterViewChecked: When Angular checks the component view and any View Children have been checked
+
+
+
+**Nesting components**
+
+- Any component that’s nested inside another’s template is called a View Child
+- Occasionally a component accepts content to be inserted into its template, and this is known as a Content Child
+
+
+
+### Types of components
+
+- Here are the four roles of components 
+  - App component—This is the root app component, and you only get one of these per application.
+  - Display component—This is a stateless component that reﬂects the values passed into it, making it highly reusable.
+  - Data component—This is a component that helps get data into the application by loading it from external sources.
+  - Route component—When using the router, each route will render a component, and this makes the component intrinsically linked to the route. 
+
+
+
+**App component** 
+
+- Here are the guidelines I recommend for your App component: 
+  - Keep it simple —If possible, don’t put any logic into the component. Think of it more like a container. It’s easier to reuse and optimize the rest of your components if the App component doesn’t have complex behaviors they depend upon.
+  - Use for application layout scaffolding—The template is the primary part of the component, and you’ll see later in this chapter how we create the primary application layout in this component.
+  - Avoid loading data—Usually you will avoid loading data in this component, because I like to load data closer to the component that uses that data. You might load some global data (perhaps something like a user session), though that could also be done separately. On less complex applications, you might load data because it’s more complicated to abstract it on smaller applications. 
+
+
+
+**Display component **
+
+- Here are the primary guidelines I suggest for a Display component: 
+  - Decouple—Ensure that the component has no real coupling to other components, except that data may be passed into it as an input when requested.
+  - Make it only as ﬂexible as necessary—Avoid making these components overly complex and adding a lot of confguration and options out of the box. Over time, you might enhance them, but I fnd it’s best to start simple and add later.
+  - Don’t load data—Always accept data through an input binding instead of loading data dynamically through HTTP or through a service.
+  - Have a clean API —Accept input bindings to obtain data into the component and emit events for any actions that need to be pushed back up to other components.
+  - Optionally use a service for confguration—Sometimes you may need to provide confguration defaults, and instead of having to declare the preferences with every use of the component, you can use a service that sets application defaults.
+- The more encapsulated and isolated the component is, the easier it will be to reuse. 
+- I often fnd that when I start to refactor some code, I begin by identifying individual aspects of my code that could be standalone display components. I might notice a lot of repeated snippets of code that mostly have the same capabilities and refactor them into a single component. It’s also common for these components to have a template and little to no logic in the controller. That’s perfectly acceptable, because it allows you to easily reuse a template snippet across your application. 
+- It’s also common for these components to have a template and little to no logic in the controller. That’s perfectly acceptable, because it allows you to easily reuse a template snippet across your application. 
+
+
+
+**Data component**
+
+- Data components are primarily about handling, retrieving, or accepting data. Typically, they rely on a service to handle the loading of data. Here are some considerations for a Data component: 
+  - Use appropriate lifecycle hooks—To do the initial data loading, always leverage the best lifecycle hook for when to trigger the loading or persistence of data. We’ll look at this more later in this chapter.
+  - Don’t worry about reusability—These components are not likely to be reused because they have a special role to manage data, which is diffcult to decouple.
+  - Set up display components—Think about how this component can load data needed by other display components and handle any data from user interactions.
+  - Isolate business logic inside—This can be a great place to store your application business logic, because anytime you manage data, you’re likely dealing with a specialized implementation that works for a specifc use case.
+
+
+
+**Route component**
+
+- A route component should primarily follow these guidelines: 
+  - Template scaffolding for the route—The route will render this component, so this is the most logical place to put the template that’s associated with the route.
+  - Load data or rely on data components—Depending on the complexity of your route, the route component may load data for the route or rely on one or more data components to do that for it. If you’re unsure, I’d suggest loading data initially in the Route component and decoupling as your view gets more complex.
+  - Handles route parameters—As you navigate, there are likely to be router parameters (such as the ID of the content item being viewed), and this is the best place to handle those parameters, which often determine what content to load from the back end. 
+
+
+
+## 5 Advanced components
+
+
+
+### Change detection and optimizations
+
+- Angular ships with a change detection framework that determines when components need to be rendered if inputs have changed. Components need to react to changes made somewhere in the component tree, and the way they change is through inputs. 
+
+- Changes are always triggered by some asynchronous activity, such as when a user interacts with the page. When these changes occur, there is a chance (though no guarantee) that the application state or data has changed. Here are some examples: 
+  - A user clicks a button to trigger a form submission (user activity).
+  - An interval fres every x seconds to refresh data (intervals or timers).
+  - Callbacks, observables, or promises are resolved (XHR requests, event streams). 
+
+- Change detection starts at the top and goes down the tree by default, or with OnPush only goes down the tree with changed inputs. 
+
+  ![Change detection](..\img\Change detection.png)
+
+- There’s another way to intercept and detect changes using the OnChanges lifecycle hook 
+
+- We still need to declare our input properties, so we go back to the previous way to declare them without the getter and setter methods. The ngOnChanges method implements the lifecycle hook for OnChanges, and it provides a single parameter as an object populated with any changed inputs, which then have their current and previous values available. For example, if only the value input was changed in the parent, then only the change.value property will be set on the lifecycle hook. 
+
+
+
+### Communicating between components
+
+
+
+**Output events and template variables**
+
+```ts
+import { Component, Output, EventEmitter } from '@angular/core';
+@Component({
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent {
+    @Output() onRefresh: EventEmitter<null> = new EventEmitter<null>();
+    refresh() {
+        this.onRefresh.emit();
+    }
+}
+```
+
+
+
+![output event](..\img\output event.png)
+
+
+
+**View Child to reference components**
+
+- ViewChild is a decorator for a controller property, like Inject or Output, which tells Angular to fll in that property with a reference to a specifc child component controller. It’s limited to injecting only children, so if you try to inject a component that isn’t a direct descendent, it will provide you with an undefned value. 
+
+```ts
+import { Component, ViewChild } from '@angular/core';
+import { DashboardComponent } from './dashboard/dashboard.component';
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+    @ViewChild(DashboardComponent) dashboard: DashboardComponent;
+    refresh() {
+        this.dashboard.generateData();
+    }
+}
+```
+
+- If you ever need to do anything more than access properties or methods of a child controller, you probably need to use the ViewChild approach. This does cause a coupling between the two components, which should be avoided when possible. 
+
+
+
+### Styling components and encapsulation modes
+
+
+
+**Adding styles to a component**
+
+- Here we have a simple component that has styling applied from fve different approaches: 
+  - Global CSS rules
+  - Inline CSS style element
+  - Inline style declaration
+  - Component styles property
+  - Component styleUrls property linked to a CSS fle 
+
+**Encapsulation modes**
+
+- One key capability is the ability to ensure that CSS styling for a component doesn’t bleed over into the rest of the app, which is called styling encapsulation.  
+
+- Angular comes with three encapsulation modes for a view. 
+  - None—No encapsulation is used during rendering of the view, and the component DOM is subject to the normal rules of CSS. Templates aren’t modifed when injected into the app except for the removal of any CSS style elements from the template to the document head.
+  - Emulated—Emulated encapsulation is used to simulate styling encapsulation by adding unique CSS selectors to your CSS rules at runtime. CSS can cascade into the component easily from the global CSS rules.
+  - Native—Uses the native Shadow DOM for styling and markup encapsulation and provides the best encapsulation. All styles are injected inside the shadow root and are therefore localized to the component. None of the templates or styles declared for the component are visible outside the component. 
+
+
+
+**Dynamically rendering components**
+
+- There are a few fairly common situations that you’ve seen where a dynamic component is often a good solution. For example 
+  - Modals that display over the page with dynamic content
+  - Alerts that conditionally display
+  - Carousel or tabs that might dynamically expand the amount of content
+  - Collapsible content that needs to be removed afterward 
+
+
+
+## 6 Services
+
+- Shared code across your application is almost always best placed inside of a service. In Angular, most of the time a service also is something that you can inject into your
+  controllers using dependency injection, though there is no exact defnition of what makes an object a service. 
+- Service roles
+  - Injectable services are the typical Angular services that provide a feature for the
+    application and work with Angular’s DI system to be injected into components. An example would be a service that handles how to load data from an API.
+  - Non-injectable services are JavaScript objects that aren’t tied into Angular’s DI system and are just imported into the fle. This can be useful to make a service available outside of Angular’s DI, such as in the application’s main fle.
+  - Helper services are services that make it easier to use a component or feature. An example would be a service to help manage the currently active alert on the page.
+  - Data services are for sharing data across the application. An example is an object holding data for the logged-in user. 
+
+
+
+**Dependency injection and injector trees**
+
+- Why do we want to use DI instead of regular module loading in JavaScript? There are a few key reasons you’ll usually want to make your services injectable: 
+  - It allows you to focus on consuming services and not worry about how to create them.
+  - It resolves external dependencies for you, simplifying consumption.
+  - It’s easier to test your Angular entities because you can always inject a mock service instead of the real thing.
+  - It can allow you to control the injection of a service without having to worry about where another piece of the application might also inject the service.
+  - It gives you a clean instance of the service for each injector tree. 
+- DI is powerful and is vital for our applications to be easy to manage, but keeping up with the nuances can be a little challenging if you try to combine these capabilities all of the time. Here are a few tips to keep in mind when it comes to DI and services: 
+  - Inject at the lowest level—Instead of adding everything to the App module providers array, try to add it to the lowest component providers array. This will minimize the “surface area” of your service to only be available to the components that might use it.
+  - Name your services wisely—Give your services semantic and meaningful names. PostsService might be clear enough, or perhaps BlogPostsService, depending on the context. I fnd it’s easier to type a few more characters than it is to guess what a service named BPService might be, especially when multiple people are working on your application.
+  - Keep services focused—Rather than creating one mega service that you inject everywhere with lots of abilities, make a sensible number of services that do specifc tasks. The longer your service is, the harder it is to maintain and test, and it will likely become tangled in your application.
+  - Keep services meaningful—On the ﬂip side of keeping services focused, you’ll need to balance the utility of adding another service. Do you need a service for something that’s used only once? It may add more complexity for little beneft, so strike the right balance between number of services and their roles.
+  - Use consistent patterns—Follow the same design for your services for consistency. For example, if you have several services that handle making REST API calls, you’d likely want to give them the same kinds of methods, like get to load an object, or save to store a record. 
+
+
+
+**Using the HttpClient service**
+
+- t’s considered best practice to never use HttpClient in the component controller directly (yet many articles and even the documentation may demonstrate this case), because this helps create a separation of concerns. That’s why we’ll create a new service that will use the HttpClient service and abstract some of the logic from the controller. 
+- Often you’ll want to intercept HTTP requests or responses before they’re handled elsewhere in the application. 
+
+
+
+**Helper services**
+
+- As you build your application, you may see some code start to reappear in various places. That’s what all services help to reduce, but sometimes you’ll fnd that some
+  code feels out of place and needs to be extracted into a service. When you do that, you’re creating a service that exposes helper functions to simplify your components.
+
+
+
+**Summary**
+
+- Services are best for taking on specifc tasks, such as data access and managing confguration.
+- Services can be injected anywhere in the application as long as they’ve been registered with a provider.
+- Angular provides an HttpClient service that helps manage making XHR requests, and you can wrap your own services around it to simplify data access.
+- Services can hold values that get propagated, but you need to be aware of the injection tree to avoid getting different copies of the service.
+- A class could be used like a service, without having to use dependency injection, but it should be limited to only situations that make sense.
+- Angular exposes many entities in the API that you can use in your application, such as a Location service for managing URLs. 
 
 
 
 
-5 Advanced components
-
-6 Services
 
 7 Routing
 
@@ -516,19 +762,8 @@ Content projection
 
 9 Forms
 
+
+
 10 Testing your application
 
 11 Angular in production
-
-
-
-
-
-
-
-
-
-
-
-
-

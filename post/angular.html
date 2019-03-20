@@ -387,8 +387,16 @@
 </ul></li>
 <li><div><a href="#4-component-basics">4 Component basics</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
-<li><div><a href="#setting-up-the-chapter-example">Setting up the chapter example</a><i></i></div></li>
+<li><div><a href="#composition-and-lifecycle-of-a-component">Composition and lifecycle of a component</a><i></i></div></li>
+<li><div><a href="#types-of-components">Types of components</a><i></i></div></li>
 </ul></li>
+<li><div><a href="#5-advanced-components">5 Advanced components</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#change-detection-and-optimizations">Change detection and optimizations</a><i></i></div></li>
+<li><div><a href="#communicating-between-components">Communicating between components</a><i></i></div></li>
+<li><div><a href="#styling-components-and-encapsulation-modes">Styling components and encapsulation modes</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#6-services">6 Services</a><i></i></div></li>
 </ul>
 </div>
 
@@ -818,16 +826,252 @@ That means the component is used in the template by adding an HTML tag <code>&lt
 <li>Templates contain several types of bindings: interpolation for displaying data, property bindings for modifying the element&#x2019;s properties, attribute bindings for modifying non-property values of an element, and event bindings for handling events. </li>
 </ul>
 <h2 id="4-component-basics">4 Component basics</h2>
-<h3 id="setting-up-the-chapter-example">Setting up the chapter example</h3>
+<ul>
+<li>The completed application with the three component types noted</li>
+</ul>
 <p><img src="../img/The completed application with the three component types noted.png" alt="The completed application with the three component types noted"></p>
+<ul>
+<li>Component tree showing relationships between instances of each component </li>
+</ul>
 <p><img src="../img/Component tree showing relationships between instances of each component.png" alt="Component tree showing relationships between instances of each component"></p>
-<p>Composition and lifecycle of a component</p>
-<p>Types of components</p>
-<p>Creating a Data component</p>
-<p>Using inputs with components</p>
-<p>Content projection</p>
-<p>5 Advanced components</p>
-<p>6 Services</p>
+<h3 id="composition-and-lifecycle-of-a-component">Composition and lifecycle of a component</h3>
+<ul>
+<li><p>Components have a lifecycle that begins with their initial instantiation, and continues with their rendering until they&#x2019;re destroyed and removed from the application. </p>
+</li>
+<li><p>Concepts that compose and in&#xFB02;uence a component&#x2019;s behavior </p>
+</li>
+</ul>
+<p><img src="../img/component behavior.png" alt="component behavior"></p>
+<ul>
+<li>Here&#x2019;s a list of the primary things that compose a component:<ul>
+<li>Component Metadata Decorator &#x2014;All components must be annotated with the @Component() decorator to properly register the component with Angular. The metadata contains numerous properties to help modify the way the component behaves or is rendered.</li>
+<li>Controller&#x2014;The controller is the class that is decorated with @Component(), and it contains all the properties and methods for the component. Most of the logic exists in the controller.</li>
+<li>Template&#x2014;A component isn&#x2019;t a component without a template. The markup for a component defnes the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any </li>
+</ul>
+</li>
+</ul>
+<p><strong>Component lifecycle</strong></p>
+<ul>
+<li>Component lifecycle while the application is running </li>
+</ul>
+<p><img src="../img/Component lifecycle.png" alt="component behavior"></p>
+<ul>
+<li>The component metadata will then be fully processed by Angular, including the parsing of the component template, styles, and bindings. If the template contains any child components, those will kick off the same lifecycle for those components as well, but they won&#x2019;t block this component from continuing to render. </li>
+</ul>
+<p><strong>Lifecycle hooks</strong></p>
+<ul>
+<li>Lifecycle hooks aren&#x2019;t like event listeners&#x2014;they&#x2019;re special methods with specifc names that are called during the component&#x2019;s lifecycle if they&#x2019;re defned. </li>
+<li>Lifecycle hook<ul>
+<li>OnChanges: Fires any time the input bindings have changed</li>
+<li>OnInit: This runs once after the component has fully initialized</li>
+<li>OnDestroy: Before a component is completely removed, the OnDestroy hook allows you to run some logic. </li>
+<li>DoCheck: Any time that change detection runs to determine whether the application needs to be updated </li>
+<li>AfterContentInit: When any content children have been fully initialized, this hook will allow you to do any initial work </li>
+<li>AfterContentChecked: Every time that Angular checks the content children </li>
+<li>AfterViewInit: This hook lets you run logic after all View Children have been initially rendered. </li>
+<li>AfterViewChecked: When Angular checks the component view and any View Children have been checked</li>
+</ul>
+</li>
+</ul>
+<p><strong>Nesting components</strong></p>
+<ul>
+<li>Any component that&#x2019;s nested inside another&#x2019;s template is called a View Child</li>
+<li>Occasionally a component accepts content to be inserted into its template, and this is known as a Content Child</li>
+</ul>
+<h3 id="types-of-components">Types of components</h3>
+<ul>
+<li>Here are the four roles of components <ul>
+<li>App component&#x2014;This is the root app component, and you only get one of these per application.</li>
+<li>Display component&#x2014;This is a stateless component that re&#xFB02;ects the values passed into it, making it highly reusable.</li>
+<li>Data component&#x2014;This is a component that helps get data into the application by loading it from external sources.</li>
+<li>Route component&#x2014;When using the router, each route will render a component, and this makes the component intrinsically linked to the route. </li>
+</ul>
+</li>
+</ul>
+<p><strong>App component</strong> </p>
+<ul>
+<li>Here are the guidelines I recommend for your App component: <ul>
+<li>Keep it simple &#x2014;If possible, don&#x2019;t put any logic into the component. Think of it more like a container. It&#x2019;s easier to reuse and optimize the rest of your components if the App component doesn&#x2019;t have complex behaviors they depend upon.</li>
+<li>Use for application layout scaffolding&#x2014;The template is the primary part of the component, and you&#x2019;ll see later in this chapter how we create the primary application layout in this component.</li>
+<li>Avoid loading data&#x2014;Usually you will avoid loading data in this component, because I like to load data closer to the component that uses that data. You might load some global data (perhaps something like a user session), though that could also be done separately. On less complex applications, you might load data because it&#x2019;s more complicated to abstract it on smaller applications. </li>
+</ul>
+</li>
+</ul>
+<p><strong>Display component </strong></p>
+<ul>
+<li>Here are the primary guidelines I suggest for a Display component: <ul>
+<li>Decouple&#x2014;Ensure that the component has no real coupling to other components, except that data may be passed into it as an input when requested.</li>
+<li>Make it only as &#xFB02;exible as necessary&#x2014;Avoid making these components overly complex and adding a lot of confguration and options out of the box. Over time, you might enhance them, but I fnd it&#x2019;s best to start simple and add later.</li>
+<li>Don&#x2019;t load data&#x2014;Always accept data through an input binding instead of loading data dynamically through HTTP or through a service.</li>
+<li>Have a clean API &#x2014;Accept input bindings to obtain data into the component and emit events for any actions that need to be pushed back up to other components.</li>
+<li>Optionally use a service for confguration&#x2014;Sometimes you may need to provide confguration defaults, and instead of having to declare the preferences with every use of the component, you can use a service that sets application defaults.</li>
+</ul>
+</li>
+<li>The more encapsulated and isolated the component is, the easier it will be to reuse. </li>
+<li>I often fnd that when I start to refactor some code, I begin by identifying individual aspects of my code that could be standalone display components. I might notice a lot of repeated snippets of code that mostly have the same capabilities and refactor them into a single component. It&#x2019;s also common for these components to have a template and little to no logic in the controller. That&#x2019;s perfectly acceptable, because it allows you to easily reuse a template snippet across your application. </li>
+<li>It&#x2019;s also common for these components to have a template and little to no logic in the controller. That&#x2019;s perfectly acceptable, because it allows you to easily reuse a template snippet across your application. </li>
+</ul>
+<p><strong>Data component</strong></p>
+<ul>
+<li>Data components are primarily about handling, retrieving, or accepting data. Typically, they rely on a service to handle the loading of data. Here are some considerations for a Data component: <ul>
+<li>Use appropriate lifecycle hooks&#x2014;To do the initial data loading, always leverage the best lifecycle hook for when to trigger the loading or persistence of data. We&#x2019;ll look at this more later in this chapter.</li>
+<li>Don&#x2019;t worry about reusability&#x2014;These components are not likely to be reused because they have a special role to manage data, which is diffcult to decouple.</li>
+<li>Set up display components&#x2014;Think about how this component can load data needed by other display components and handle any data from user interactions.</li>
+<li>Isolate business logic inside&#x2014;This can be a great place to store your application business logic, because anytime you manage data, you&#x2019;re likely dealing with a specialized implementation that works for a specifc use case.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Route component</strong></p>
+<ul>
+<li>A route component should primarily follow these guidelines: <ul>
+<li>Template scaffolding for the route&#x2014;The route will render this component, so this is the most logical place to put the template that&#x2019;s associated with the route.</li>
+<li>Load data or rely on data components&#x2014;Depending on the complexity of your route, the route component may load data for the route or rely on one or more data components to do that for it. If you&#x2019;re unsure, I&#x2019;d suggest loading data initially in the Route component and decoupling as your view gets more complex.</li>
+<li>Handles route parameters&#x2014;As you navigate, there are likely to be router parameters (such as the ID of the content item being viewed), and this is the best place to handle those parameters, which often determine what content to load from the back end. </li>
+</ul>
+</li>
+</ul>
+<h2 id="5-advanced-components">5 Advanced components</h2>
+<h3 id="change-detection-and-optimizations">Change detection and optimizations</h3>
+<ul>
+<li><p>Angular ships with a change detection framework that determines when components need to be rendered if inputs have changed. Components need to react to changes made somewhere in the component tree, and the way they change is through inputs. </p>
+</li>
+<li><p>Changes are always triggered by some asynchronous activity, such as when a user interacts with the page. When these changes occur, there is a chance (though no guarantee) that the application state or data has changed. Here are some examples: </p>
+<ul>
+<li>A user clicks a button to trigger a form submission (user activity).</li>
+<li>An interval fres every x seconds to refresh data (intervals or timers).</li>
+<li>Callbacks, observables, or promises are resolved (XHR requests, event streams). </li>
+</ul>
+</li>
+<li><p>Change detection starts at the top and goes down the tree by default, or with OnPush only goes down the tree with changed inputs. </p>
+<p><img src="../img/Change detection.png" alt="Change detection"></p>
+</li>
+<li><p>There&#x2019;s another way to intercept and detect changes using the OnChanges lifecycle hook </p>
+</li>
+<li><p>We still need to declare our input properties, so we go back to the previous way to declare them without the getter and setter methods. The ngOnChanges method implements the lifecycle hook for OnChanges, and it provides a single parameter as an object populated with any changed inputs, which then have their current and previous values available. For example, if only the value input was changed in the parent, then only the change.value property will be set on the lifecycle hook. </p>
+</li>
+</ul>
+<h3 id="communicating-between-components">Communicating between components</h3>
+<p><strong>Output events and template variables</strong></p>
+<pre><code class="lang-ts"><span class="hljs-keyword">import</span> { Component, Output, EventEmitter } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+@Component({
+    selector: <span class="hljs-string">&apos;app-navbar&apos;</span>,
+    templateUrl: <span class="hljs-string">&apos;./navbar.component.html&apos;</span>,
+    styleUrls: [<span class="hljs-string">&apos;./navbar.component.css&apos;</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> NavbarComponent {
+    @Output() onRefresh: EventEmitter&lt;<span class="hljs-literal">null</span>&gt; = <span class="hljs-keyword">new</span> EventEmitter&lt;<span class="hljs-literal">null</span>&gt;();
+    refresh() {
+        <span class="hljs-keyword">this</span>.onRefresh.emit();
+    }
+}
+</code></pre>
+<p><img src="../img/output event.png" alt="output event"></p>
+<p><strong>View Child to reference components</strong></p>
+<ul>
+<li>ViewChild is a decorator for a controller property, like Inject or Output, which tells Angular to fll in that property with a reference to a specifc child component controller. It&#x2019;s limited to injecting only children, so if you try to inject a component that isn&#x2019;t a direct descendent, it will provide you with an undefned value. </li>
+</ul>
+<pre><code class="lang-ts"><span class="hljs-keyword">import</span> { Component, ViewChild } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { DashboardComponent } from <span class="hljs-string">&apos;./dashboard/dashboard.component&apos;</span>;
+@Component({
+    selector: <span class="hljs-string">&apos;app-root&apos;</span>,
+    templateUrl: <span class="hljs-string">&apos;./app.component.html&apos;</span>,
+    styleUrls: [<span class="hljs-string">&apos;./app.component.css&apos;</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
+    @ViewChild(DashboardComponent) dashboard: DashboardComponent;
+    refresh() {
+        <span class="hljs-keyword">this</span>.dashboard.generateData();
+    }
+}
+</code></pre>
+<ul>
+<li>If you ever need to do anything more than access properties or methods of a child controller, you probably need to use the ViewChild approach. This does cause a coupling between the two components, which should be avoided when possible. </li>
+</ul>
+<h3 id="styling-components-and-encapsulation-modes">Styling components and encapsulation modes</h3>
+<p><strong>Adding styles to a component</strong></p>
+<ul>
+<li>Here we have a simple component that has styling applied from fve different approaches: <ul>
+<li>Global CSS rules</li>
+<li>Inline CSS style element</li>
+<li>Inline style declaration</li>
+<li>Component styles property</li>
+<li>Component styleUrls property linked to a CSS fle </li>
+</ul>
+</li>
+</ul>
+<p><strong>Encapsulation modes</strong></p>
+<ul>
+<li><p>One key capability is the ability to ensure that CSS styling for a component doesn&#x2019;t bleed over into the rest of the app, which is called styling encapsulation.  </p>
+</li>
+<li><p>Angular comes with three encapsulation modes for a view. </p>
+<ul>
+<li>None&#x2014;No encapsulation is used during rendering of the view, and the component DOM is subject to the normal rules of CSS. Templates aren&#x2019;t modifed when injected into the app except for the removal of any CSS style elements from the template to the document head.</li>
+<li>Emulated&#x2014;Emulated encapsulation is used to simulate styling encapsulation by adding unique CSS selectors to your CSS rules at runtime. CSS can cascade into the component easily from the global CSS rules.</li>
+<li>Native&#x2014;Uses the native Shadow DOM for styling and markup encapsulation and provides the best encapsulation. All styles are injected inside the shadow root and are therefore localized to the component. None of the templates or styles declared for the component are visible outside the component. </li>
+</ul>
+</li>
+</ul>
+<p><strong>Dynamically rendering components</strong></p>
+<ul>
+<li>There are a few fairly common situations that you&#x2019;ve seen where a dynamic component is often a good solution. For example <ul>
+<li>Modals that display over the page with dynamic content</li>
+<li>Alerts that conditionally display</li>
+<li>Carousel or tabs that might dynamically expand the amount of content</li>
+<li>Collapsible content that needs to be removed afterward </li>
+</ul>
+</li>
+</ul>
+<h2 id="6-services">6 Services</h2>
+<ul>
+<li>Shared code across your application is almost always best placed inside of a service. In Angular, most of the time a service also is something that you can inject into your
+controllers using dependency injection, though there is no exact defnition of what makes an object a service. </li>
+<li>Service roles<ul>
+<li>Injectable services are the typical Angular services that provide a feature for the
+application and work with Angular&#x2019;s DI system to be injected into components. An example would be a service that handles how to load data from an API.</li>
+<li>Non-injectable services are JavaScript objects that aren&#x2019;t tied into Angular&#x2019;s DI system and are just imported into the fle. This can be useful to make a service available outside of Angular&#x2019;s DI, such as in the application&#x2019;s main fle.</li>
+<li>Helper services are services that make it easier to use a component or feature. An example would be a service to help manage the currently active alert on the page.</li>
+<li>Data services are for sharing data across the application. An example is an object holding data for the logged-in user. </li>
+</ul>
+</li>
+</ul>
+<p><strong>Dependency injection and injector trees</strong></p>
+<ul>
+<li>Why do we want to use DI instead of regular module loading in JavaScript? There are a few key reasons you&#x2019;ll usually want to make your services injectable: <ul>
+<li>It allows you to focus on consuming services and not worry about how to create them.</li>
+<li>It resolves external dependencies for you, simplifying consumption.</li>
+<li>It&#x2019;s easier to test your Angular entities because you can always inject a mock service instead of the real thing.</li>
+<li>It can allow you to control the injection of a service without having to worry about where another piece of the application might also inject the service.</li>
+<li>It gives you a clean instance of the service for each injector tree. </li>
+</ul>
+</li>
+<li>DI is powerful and is vital for our applications to be easy to manage, but keeping up with the nuances can be a little challenging if you try to combine these capabilities all of the time. Here are a few tips to keep in mind when it comes to DI and services: <ul>
+<li>Inject at the lowest level&#x2014;Instead of adding everything to the App module providers array, try to add it to the lowest component providers array. This will minimize the &#x201C;surface area&#x201D; of your service to only be available to the components that might use it.</li>
+<li>Name your services wisely&#x2014;Give your services semantic and meaningful names. PostsService might be clear enough, or perhaps BlogPostsService, depending on the context. I fnd it&#x2019;s easier to type a few more characters than it is to guess what a service named BPService might be, especially when multiple people are working on your application.</li>
+<li>Keep services focused&#x2014;Rather than creating one mega service that you inject everywhere with lots of abilities, make a sensible number of services that do specifc tasks. The longer your service is, the harder it is to maintain and test, and it will likely become tangled in your application.</li>
+<li>Keep services meaningful&#x2014;On the &#xFB02;ip side of keeping services focused, you&#x2019;ll need to balance the utility of adding another service. Do you need a service for something that&#x2019;s used only once? It may add more complexity for little beneft, so strike the right balance between number of services and their roles.</li>
+<li>Use consistent patterns&#x2014;Follow the same design for your services for consistency. For example, if you have several services that handle making REST API calls, you&#x2019;d likely want to give them the same kinds of methods, like get to load an object, or save to store a record. </li>
+</ul>
+</li>
+</ul>
+<p><strong>Using the HttpClient service</strong></p>
+<ul>
+<li>t&#x2019;s considered best practice to never use HttpClient in the component controller directly (yet many articles and even the documentation may demonstrate this case), because this helps create a separation of concerns. That&#x2019;s why we&#x2019;ll create a new service that will use the HttpClient service and abstract some of the logic from the controller. </li>
+<li>Often you&#x2019;ll want to intercept HTTP requests or responses before they&#x2019;re handled elsewhere in the application. </li>
+</ul>
+<p><strong>Helper services</strong></p>
+<ul>
+<li>As you build your application, you may see some code start to reappear in various places. That&#x2019;s what all services help to reduce, but sometimes you&#x2019;ll fnd that some
+code feels out of place and needs to be extracted into a service. When you do that, you&#x2019;re creating a service that exposes helper functions to simplify your components.</li>
+</ul>
+<p><strong>Summary</strong></p>
+<ul>
+<li>Services are best for taking on specifc tasks, such as data access and managing confguration.</li>
+<li>Services can be injected anywhere in the application as long as they&#x2019;ve been registered with a provider.</li>
+<li>Angular provides an HttpClient service that helps manage making XHR requests, and you can wrap your own services around it to simplify data access.</li>
+<li>Services can hold values that get propagated, but you need to be aware of the injection tree to avoid getting different copies of the service.</li>
+<li>A class could be used like a service, without having to use dependency injection, but it should be limited to only situations that make sense.</li>
+<li>Angular exposes many entities in the API that you can use in your application, such as a Location service for managing URLs. </li>
+</ul>
 <p>7 Routing</p>
 <p>8 Building custom directives and pipes</p>
 <p>9 Forms</p>
@@ -876,7 +1120,7 @@ That means the component is used in the template by adding an HTML tag <code>&lt
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Angular","level":"3.4","depth":1,"next":{"title":"Java","level":"4.1","depth":1,"path":"post/java.md","ref":"post/java.md","articles":[]},"previous":{"title":"JavaScript","level":"3.3","depth":1,"path":"post/javascript.md","ref":"post/javascript.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/angular.md","mtime":"2019-03-07T09:55:47.266Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-08T08:40:16.719Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Angular","level":"3.4","depth":1,"next":{"title":"Java","level":"4.1","depth":1,"path":"post/java.md","ref":"post/java.md","articles":[]},"previous":{"title":"JavaScript","level":"3.3","depth":1,"path":"post/javascript.md","ref":"post/javascript.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/angular.md","mtime":"2019-03-20T12:38:40.410Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T16:16:16.349Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
