@@ -755,16 +755,29 @@ export class AppComponent {
 - t’s considered best practice to never use HttpClient in the component controller
   directly (yet many articles and even the documentation may demonstrate this case),
   because this helps create a separation of concerns. That’s why we’ll create a new service that will use the HttpClient service and abstract some of the logic from the controller. 
+- Often you’ll want to intercept HTTP requests or responses before they’re handled elsewhere in the application. 
 
 
 
+### Helper services
+
+- As you build your application, you may see some code start to reappear in various
+  places. That’s what all services help to reduce, but sometimes you’ll fnd that some
+  code feels out of place and needs to be extracted into a service. When you do that,
+  you’re creating a service that exposes helper functions to simplify your components.
 
 
-Helper services
 
-Services for sharing
+**Summary**
 
-Additional services
+- ¡	Services are best for taking on specifc tasks, such as data access and managing confguration.
+- ¡	Services can be injected anywhere in the application as long as they’ve been registered with a provider.
+- ¡	Angular provides an HttpClient service that helps manage making XHR requests, and you can wrap your own services around it to simplify data access.
+- ¡	Services can hold values that get propagated, but you need to be aware of the
+  injection tree to avoid getting different copies of the service.
+- ¡	A class could be used like a service, without having to use dependency injection, but it should be limited to only situations that make sense.
+- ¡	Angular exposes many entities in the API that you can use in your application,
+  such as a Location service for managing URLs. 
 
 
 
