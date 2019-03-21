@@ -737,14 +737,6 @@ export class AppComponent {
 
 
 
-### Route parameters
-
-
-
-
-
-Child routes
-
 Secondary routes
 
 Route guards to limit access
