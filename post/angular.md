@@ -737,6 +737,24 @@ export class AppComponent {
 
 
 
+### Route parameters
+
+
+
+
+
+Child routes
+
+Secondary routes
+
+Route guards to limit access
+
+Lazy loading
+
+Routing best practices
+
+
+
 
 
 8 Building custom directives and pipes
