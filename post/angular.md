@@ -2,11 +2,11 @@
 
 
 
-## 1 Angular: a modern web platform
+## 1 web platform
 
 
 
-### Angular: a platform, not a framework
+### A platform
 
 - Angular comes with a leaner core library and makes additional features available as separate packages that can be used as needed. It also has many tools that push it beyond a simple framework, including the following:
   - Dedicated CLI for application development, testing, and deployment
@@ -130,26 +130,7 @@
 
 
 
-### Modern JavaScript and Angular
-
-- Classes
-- Decorators
-- Modules
-- Template literals 
-
-
-
-**Observables**
-
-- observables are a newer pattern for JavaScript applications to manage asynchronous activities.  
-
-- Promises have a major limitation in that they’re only useful for one call cycle. 
-
-- To use observables, you subscribe to the stream of data and pass a function that will run every time there’s a new piece of data.  
-
-
-
-### TypeScript and Angular
+### TypeScript
 
 - The basic value proposition of TypeScript is it can force restrictions on what types of values variables hold. 
 
@@ -171,7 +152,7 @@
 
 
 
-## 2 Building your first Angular app
+## 2 Building your App
 
 
 
@@ -183,7 +164,7 @@
 
 
 
-### How Angular renders the base application
+### Render
 
 **App component**
 
@@ -234,7 +215,7 @@
 
 
 
-### Creating your first component
+### Creating component
 
 - Directives allow you to modify the behavior and display of DOM elements in a template.  
 
@@ -254,7 +235,7 @@
 
 
 
-### Components that use components and services
+**Components**
 
 - The constructor method runs as soon as the component is created.  
 
@@ -264,7 +245,7 @@
 
 
 
-### Components with forms and events
+**Forms and events**
 
 - This doesn’t require the OnInit lifecycle hook, because it’s a synchronous request to get data that exists in memory. 
 
@@ -274,7 +255,7 @@
 
 
 
-### Application routing
+**Routing**
 
 - Routing, configures the different pages that the application can render 
 
@@ -382,7 +363,7 @@
 
 
 
-### How Angular begins to render an app
+### render
 
 
 
@@ -490,7 +471,7 @@
 
 
 
-### Composition and lifecycle of a component
+### Lifecycle
 
 - Components have a lifecycle that begins with their initial instantiation, and continues with their rendering until they’re destroyed and removed from the application. 
 
@@ -595,7 +576,7 @@
 
 
 
-### Change detection and optimizations
+### Change detection
 
 - Angular ships with a change detection framework that determines when components need to be rendered if inputs have changed. Components need to react to changes made somewhere in the component tree, and the way they change is through inputs. 
 
@@ -614,7 +595,7 @@
 
 
 
-### Communicating between components
+### Communicating
 
 
 
@@ -665,7 +646,7 @@ export class AppComponent {
 
 
 
-### Styling components and encapsulation modes
+### Styling
 
 
 
