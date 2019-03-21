@@ -130,7 +130,7 @@
 
 
 
-### TypeScript
+**TypeScript**
 
 - The basic value proposition of TypeScript is it can force restrictions on what types of values variables hold. 
 
@@ -163,8 +163,6 @@
 - Setting up routing—Most applications need the ability to allow users to navigate around the application, and by using the router we can see how to route between different components. 
 
 
-
-### Render
 
 **App component**
 
@@ -205,7 +203,7 @@
 
 
 
-### Building services
+**Building services**
 
 - Services are objects that abstract some common logic that you plan to reuse in multiple places.  
 
@@ -215,7 +213,7 @@
 
 
 
-### Creating component
+**Creating component**
 
 - Directives allow you to modify the behavior and display of DOM elements in a template.  
 
@@ -363,7 +361,7 @@
 
 
 
-### render
+**render**
 
 
 
@@ -383,7 +381,7 @@
 
 
 
-### Types of compilers
+**Types of compilers**
 
 - Angular provides two types of compilers, called the Just-in-Time (JiT) compiler and the Ahead-of-Time (AoT) compiler 
 
@@ -393,7 +391,7 @@
 
 
 
-### Dependency injection
+**Dependency injection**
 
 - Dependency injection (DI) is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. 
 
@@ -403,7 +401,7 @@
 
 
 
-### Change detection
+**Change detection**
 
 - Change detection is the mechanism for keeping data and the rendered views in sync with one another. Changes always come down from the model into the view, and Angular employs a unidirectional propagation of changes from parents down to children. This helps ensure that if a parent changes, any children are also checked, due to potential linked data. 
 
@@ -419,7 +417,7 @@
 
 
 
-### Template
+**Template**
 
 - Angular allows the placement of logic and customization directly into the template 
 
@@ -735,9 +733,11 @@ export class AppComponent {
 
 
 
+## 7 Routing
 
 
-7 Routing
+
+
 
 8 Building custom directives and pipes
 
