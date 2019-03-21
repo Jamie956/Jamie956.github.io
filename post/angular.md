@@ -419,7 +419,7 @@
 
 
 
-### Template expressions and bingdings
+### Template
 
 - Angular allows the placement of logic and customization directly into the template 
 
