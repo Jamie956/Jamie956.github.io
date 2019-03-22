@@ -737,7 +737,7 @@ export class AppComponent {
 
 
 
-### Route guards to limit access
+**Route guards to limit access**
 
 - Angular allows you to control the conditions that allow a route to render, which
   usually is done to prevent the application from going into a bad state. For example,
@@ -787,17 +787,29 @@ export class AppComponent {
 
 
 
-### Lazy loading
+**Lazy loading**
+
+Feature modules can be lazy loaded into the application, giving you the ability to
+reduce the fle size of the code that’s initially downloaded to users. It only loads
+the module when the user navigates to a route that’s part of the feature module. 
 
 
 
-Routing best practices
+
+
+## 8 Building custom directives and pipes
 
 
 
+### Setting up the chapter example
 
 
-8 Building custom directives and pipes
+
+Crafting custom directives
+
+Crafting custom pipes
+
+
 
 9 Forms
 
