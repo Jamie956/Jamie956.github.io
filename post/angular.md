@@ -737,11 +737,59 @@ export class AppComponent {
 
 
 
-Secondary routes
+### Route guards to limit access
 
-Route guards to limit access
+- Angular allows you to control the conditions that allow a route to render, which
+  usually is done to prevent the application from going into a bad state. For example,
+  you shouldn’t allow an unauthenticated user to view portions of the application that
+  require them to be logged in or they will likely get a lot of errors. 
 
-Lazy loading
+- A guard is like a lifecycle hook for route changes that allows an application to verify
+  certain conditions or load data before a change occurs 
+
+- Here are the fve types of guards and their basic roles: 
+
+  - CanActivate—Used to determine whether the route can be activated (such as
+    user validation)
+  - CanActivateChild—Same as CanActivate, but specifcally for child routes
+  - CanDeactivate—Used to determine whether the current route can be deactivated (such as preventing leaving an unsaved form without confrmation)
+  - CanLoad—Used to determine whether the user can navigate to a lazy loaded
+    module prior to loading it
+  - Resolve—Used to access route data and pass data to the component’s list of
+    providers 
+
+- AuthGuard service for limiting access to routes 
+
+  ```ts
+  import { Injectable } from '@angular/core';
+  import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot }
+  from '@angular/router';
+  import { UserService } from './user.service';
+  @Injectable()
+  export class AuthGuardService implements CanActivate {
+      constructor(
+      private userService: UserService,
+       private router: Router) {}
+      canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+          if (!this.userService.isGuest()) {
+              return true;
+          } else {
+              this.router.navigate(['/login'], {
+                  queryParams: {
+                      return: state.url
+                  }
+              });
+              return false;
+          }
+      }
+  }
+  ```
+
+
+
+### Lazy loading
+
+
 
 Routing best practices
 
