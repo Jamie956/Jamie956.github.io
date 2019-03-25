@@ -855,11 +855,44 @@ structural directive is designed to modify the DOM tree of an element, whereas a
 
 
 
-**Impure pipe**
+**Summary**
+
+- Directives come in three ﬂavors: attribute, structural, and components.
+- Attribute directives are the most common to create and are great for modifying
+  an existing element.
+- Structural directives are less common and are meant to be used to modify the
+  existence or structure of DOM elements.
+- Pure pipes are the most useful and allow you to transform a value before output
+  using a pure function.
+- Impure pipes allow you to maintain state inside of a pipe, but they’re run with
+  every change detection check and are to be avoided if possible. 
 
 
 
-9 Forms
+## 9 Forms
+
+Angular provides two approaches to building forms: reactive forms and template
+forms. 
+
+
+
+### Template-driven forms
+
+**Binding model data to inputs with NgModel**
+
+- 
+
+**Validating form controls with NgModel**
+
+**Custom validation with directives**
+
+**Handling submit or cancel events**
+
+
+
+### Reactive forms
+
+
 
 
 
