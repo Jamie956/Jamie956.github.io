@@ -795,19 +795,44 @@ the module when the user navigates to a route that’s part of the feature modul
 
 
 
-
-
 ## 8 Building custom directives and pipes
 
+- The main reasons apply to both directives and pipes: 
+  - Reuse and reduce—Instead of each component having to implement similar logic, it can be abstracted out and easily reused. This also reduces code footprint and helps standardize logic.
+  - Maintainability and focused components—Components sometimes become a dumping ground for code and logic that are tangential to the component itself. Removing that from the component makes it easier to maintain your components.
+  - Testability—Moving everything into smaller blocks means you can create smaller test cases and limit permutations. 
 
 
-### Setting up the chapter example
+
+### Crafting custom directives
+
+- There are two types of directives: structural and attribute.  
+
+- NgIf is a structural directive and is able to control whether the DOM element is rendered or not. On the other hand, the ngClass directive is an attribute directive and doesn’t have the * when it’s used, such as [ngClass]="{active: true}". 
+
+- NgFor structural directive creates multiple instances of the Summary component,
+  whereas the NgClass attribute modifes the background color of those same instances. 
+
+  ![structural or attribute directive](D:\project\justnote\img\structural or attribute directive.png)
+
+- Therefore, the primary difference between structural and attribute directives is that a
+structural directive is designed to modify the DOM tree of an element, whereas an attribute directive is designed to only modify the properties or DOM of a single element. 
 
 
 
-Crafting custom directives
+**Creating an attribute directive**
 
-Crafting custom pipes
+**Modifying a component with a directive with events**
+
+**Creating a structural directive**
+
+
+
+### Crafting custom pipes
+
+**Creating a pure pipe**
+
+**Creating an impure pipe**
 
 
 
