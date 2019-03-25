@@ -2,11 +2,11 @@
 
 
 
-## 1 Angular: a modern web platform
+## 1 web platform
 
 
 
-### Angular: a platform, not a framework
+### A platform
 
 - Angular comes with a leaner core library and makes additional features available as separate packages that can be used as needed. It also has many tools that push it beyond a simple framework, including the following:
   - Dedicated CLI for application development, testing, and deployment
@@ -130,26 +130,7 @@
 
 
 
-### Modern JavaScript and Angular
-
-- Classes
-- Decorators
-- Modules
-- Template literals 
-
-
-
-**Observables**
-
-- observables are a newer pattern for JavaScript applications to manage asynchronous activities.  
-
-- Promises have a major limitation in that they’re only useful for one call cycle. 
-
-- To use observables, you subscribe to the stream of data and pass a function that will run every time there’s a new piece of data.  
-
-
-
-### TypeScript and Angular
+**TypeScript**
 
 - The basic value proposition of TypeScript is it can force restrictions on what types of values variables hold. 
 
@@ -171,7 +152,7 @@
 
 
 
-## 2 Building your first Angular app
+## 2 Building your App
 
 
 
@@ -182,8 +163,6 @@
 - Setting up routing—Most applications need the ability to allow users to navigate around the application, and by using the router we can see how to route between different components. 
 
 
-
-### How Angular renders the base application
 
 **App component**
 
@@ -224,7 +203,7 @@
 
 
 
-### Building services
+**Building services**
 
 - Services are objects that abstract some common logic that you plan to reuse in multiple places.  
 
@@ -234,7 +213,7 @@
 
 
 
-### Creating your first component
+**Creating component**
 
 - Directives allow you to modify the behavior and display of DOM elements in a template.  
 
@@ -254,7 +233,7 @@
 
 
 
-### Components that use components and services
+**Components**
 
 - The constructor method runs as soon as the component is created.  
 
@@ -264,7 +243,7 @@
 
 
 
-### Components with forms and events
+**Forms and events**
 
 - This doesn’t require the OnInit lifecycle hook, because it’s a synchronous request to get data that exists in memory. 
 
@@ -274,7 +253,7 @@
 
 
 
-### Application routing
+**Routing**
 
 - Routing, configures the different pages that the application can render 
 
@@ -382,7 +361,7 @@
 
 
 
-### How Angular begins to render an app
+**render**
 
 
 
@@ -402,7 +381,7 @@
 
 
 
-### Types of compilers
+**Types of compilers**
 
 - Angular provides two types of compilers, called the Just-in-Time (JiT) compiler and the Ahead-of-Time (AoT) compiler 
 
@@ -412,7 +391,7 @@
 
 
 
-### Dependency injection
+**Dependency injection**
 
 - Dependency injection (DI) is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. 
 
@@ -422,7 +401,7 @@
 
 
 
-### Change detection
+**Change detection**
 
 - Change detection is the mechanism for keeping data and the rendered views in sync with one another. Changes always come down from the model into the view, and Angular employs a unidirectional propagation of changes from parents down to children. This helps ensure that if a parent changes, any children are also checked, due to potential linked data. 
 
@@ -438,7 +417,7 @@
 
 
 
-### Template expressions and bingdings
+**Template**
 
 - Angular allows the placement of logic and customization directly into the template 
 
@@ -490,7 +469,7 @@
 
 
 
-### Composition and lifecycle of a component
+### Lifecycle
 
 - Components have a lifecycle that begins with their initial instantiation, and continues with their rendering until they’re destroyed and removed from the application. 
 
@@ -595,7 +574,7 @@
 
 
 
-### Change detection and optimizations
+### Change detection
 
 - Angular ships with a change detection framework that determines when components need to be rendered if inputs have changed. Components need to react to changes made somewhere in the component tree, and the way they change is through inputs. 
 
@@ -614,7 +593,7 @@
 
 
 
-### Communicating between components
+### Communicating
 
 
 
@@ -665,7 +644,7 @@ export class AppComponent {
 
 
 
-### Styling components and encapsulation modes
+### Styling
 
 
 
@@ -754,13 +733,166 @@ export class AppComponent {
 
 
 
+## 7 Routing
 
 
-7 Routing
 
-8 Building custom directives and pipes
+**Route guards to limit access**
 
-9 Forms
+- Angular allows you to control the conditions that allow a route to render, which
+  usually is done to prevent the application from going into a bad state. For example,
+  you shouldn’t allow an unauthenticated user to view portions of the application that
+  require them to be logged in or they will likely get a lot of errors. 
+
+- A guard is like a lifecycle hook for route changes that allows an application to verify
+  certain conditions or load data before a change occurs 
+
+- Here are the fve types of guards and their basic roles: 
+
+  - CanActivate—Used to determine whether the route can be activated (such as
+    user validation)
+  - CanActivateChild—Same as CanActivate, but specifcally for child routes
+  - CanDeactivate—Used to determine whether the current route can be deactivated (such as preventing leaving an unsaved form without confrmation)
+  - CanLoad—Used to determine whether the user can navigate to a lazy loaded
+    module prior to loading it
+  - Resolve—Used to access route data and pass data to the component’s list of
+    providers 
+
+- AuthGuard service for limiting access to routes 
+
+  ```ts
+  import { Injectable } from '@angular/core';
+  import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot }
+  from '@angular/router';
+  import { UserService } from './user.service';
+  @Injectable()
+  export class AuthGuardService implements CanActivate {
+      constructor(
+      private userService: UserService,
+       private router: Router) {}
+      canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+          if (!this.userService.isGuest()) {
+              return true;
+          } else {
+              this.router.navigate(['/login'], {
+                  queryParams: {
+                      return: state.url
+                  }
+              });
+              return false;
+          }
+      }
+  }
+  ```
+
+
+
+**Lazy loading**
+
+Feature modules can be lazy loaded into the application, giving you the ability to
+reduce the fle size of the code that’s initially downloaded to users. It only loads
+the module when the user navigates to a route that’s part of the feature module. 
+
+
+
+## 8 Directives and Pipes
+
+- The main reasons apply to both directives and pipes: 
+  - Reuse and reduce—Instead of each component having to implement similar logic, it can be abstracted out and easily reused. This also reduces code footprint and helps standardize logic.
+  - Maintainability and focused components—Components sometimes become a dumping ground for code and logic that are tangential to the component itself. Removing that from the component makes it easier to maintain your components.
+  - Testability—Moving everything into smaller blocks means you can create smaller test cases and limit permutations. 
+
+
+
+### Directives
+
+- There are two types of directives: structural and attribute.  
+
+- NgIf is a structural directive and is able to control whether the DOM element is rendered or not. On the other hand, the ngClass directive is an attribute directive and doesn’t have the * when it’s used, such as [ngClass]="{active: true}". 
+
+- NgFor structural directive creates multiple instances of the Summary component,
+  whereas the NgClass attribute modifes the background color of those same instances. 
+
+  ![structural or attribute directive](D:\project\justnote\img\structural or attribute directive.png)
+
+- Therefore, the primary difference between structural and attribute directives is that a
+structural directive is designed to modify the DOM tree of an element, whereas an attribute directive is designed to only modify the properties or DOM of a single element. 
+
+
+
+**Creating a structural directive**
+
+- When the structural directive is rendered by Angular, it creates a placeholder space,
+  called an embedded view, where the directive can decide what to insert inside of this new view container. 
+- Data is passed through a pipe before being rendered in a template binding
+
+
+
+### Pipes
+
+- Pipes are essentially a way to format data
+
+  ![pipe](D:\project\justnote\img\pipe.png)
+
+- There are fundamentally two types of pipes: pure and impure. 
+
+  - Pure pipes maintain no state information
+  - Impure pipes maintain state
+
+- How pure and impure pipes are handled by Angular
+
+  ![pure and impure pipes](D:\project\justnote\img\pure and impure pipes.png)
+
+
+
+**Pure pipe**
+
+- Pure pipes are so named because they implement a pure function—a function that
+  doesn’t maintain any internal state and returns the same output given the same input. 
+- Pure functions are important for performance, because Angular doesn’t need to run
+  them with each change detection lifecycle unless the input value has changed. This can
+  save a reasonable amount of overhead for performance reasons. 
+
+
+
+**Summary**
+
+- Directives come in three ﬂavors: attribute, structural, and components.
+- Attribute directives are the most common to create and are great for modifying
+  an existing element.
+- Structural directives are less common and are meant to be used to modify the
+  existence or structure of DOM elements.
+- Pure pipes are the most useful and allow you to transform a value before output
+  using a pure function.
+- Impure pipes allow you to maintain state inside of a pipe, but they’re run with
+  every change detection check and are to be avoided if possible. 
+
+
+
+## 9 Forms
+
+Angular provides two approaches to building forms: reactive forms and template
+forms. 
+
+
+
+### Template-driven forms
+
+**Binding model data to inputs with NgModel**
+
+- 
+
+**Validating form controls with NgModel**
+
+**Custom validation with directives**
+
+**Handling submit or cancel events**
+
+
+
+### Reactive forms
+
+
 
 
 
