@@ -795,7 +795,7 @@ the module when the user navigates to a route that’s part of the feature modul
 
 
 
-## 8 Building custom directives and pipes
+## 8 Directives and Pipes
 
 - The main reasons apply to both directives and pipes: 
   - Reuse and reduce—Instead of each component having to implement similar logic, it can be abstracted out and easily reused. This also reduces code footprint and helps standardize logic.
@@ -804,7 +804,7 @@ the module when the user navigates to a route that’s part of the feature modul
 
 
 
-### Crafting custom directives
+### Directives
 
 - There are two types of directives: structural and attribute.  
 
@@ -820,19 +820,42 @@ structural directive is designed to modify the DOM tree of an element, whereas a
 
 
 
-**Creating an attribute directive**
-
-**Modifying a component with a directive with events**
-
 **Creating a structural directive**
 
+- When the structural directive is rendered by Angular, it creates a placeholder space,
+  called an embedded view, where the directive can decide what to insert inside of this new view container. 
+- Data is passed through a pipe before being rendered in a template binding
 
 
-### Crafting custom pipes
 
-**Creating a pure pipe**
+### Pipes
 
-**Creating an impure pipe**
+- Pipes are essentially a way to format data
+
+  ![pipe](D:\project\justnote\img\pipe.png)
+
+- There are fundamentally two types of pipes: pure and impure. 
+
+  - Pure pipes maintain no state information
+  - Impure pipes maintain state
+
+- How pure and impure pipes are handled by Angular
+
+  ![pure and impure pipes](D:\project\justnote\img\pure and impure pipes.png)
+
+
+
+**Pure pipe**
+
+- Pure pipes are so named because they implement a pure function—a function that
+  doesn’t maintain any internal state and returns the same output given the same input. 
+- Pure functions are important for performance, because Angular doesn’t need to run
+  them with each change detection lifecycle unless the input value has changed. This can
+  save a reasonable amount of overhead for performance reasons. 
+
+
+
+**Impure pipe**
 
 
 
