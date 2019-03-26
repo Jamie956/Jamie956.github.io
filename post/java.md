@@ -57,26 +57,47 @@ public static void test02() {
 
 
 
-### Object-Oriented Programming
+### Object-Oriented
 
 **Encapsulation**
 
-The key to making encapsulation work is to have methods never directly access instance fields in a class other than their own. Programs should interact with object data only through the object’s methods. 
+- The key to making encapsulation work is to have methods never directly access instance fields in a class other than their own. Programs should interact with object data only through the object’s methods. 
 
-Encapsulation is the way to give an object its “black box” behavior, which is the key to reuse and reliability.
+- Encapsulation is the way to give an object its “black box” behavior, which is the key to reuse and reliability.
 
 ```java
-public String getName()
-{
-    return name;
-}
-public double getSalary()
-{
-    return salary;
-}
+public class Encapsulate { 
+
+    private String geekName; 
+
+    private int geekAge; 
+
+
+    public int getAge() { 
+        return geekAge; 
+    } 
+
+    public String getName() { 
+        return geekName; 
+    } 
+
+    public void setAge( int newAge) { 
+        geekAge = newAge; 
+    } 
+
+    public void setName(String newName) { 
+        geekName = newName; 
+    } 
+} 
 ```
 
-These are obvious examples of accessor methods. As they simply return the values of instance fields, they are sometimes called field accessors.
+- These are obvious examples of accessor methods. As they simply return the values of instance fields, they are sometimes called field accessors.
+
+- Advantages of Encapsulation:
+  - **Data Hiding:** The user will have no idea about the  inner implementation of the class. It will not be visible to the user  that how the class is storing values in the variables. He only knows  that we are passing the values to a setter method and variables are  getting initialized with that value.
+  - **Increased Flexibility:** We can make the variables of  the class as read-only or write-only depending on our requirement. If  we wish to make the variables as read-only then we have to omit the  setter methods like setName(), setAge() etc. from the above program or  if we wish to make the variables as write-only then we have to omit the  get methods like getName(), getAge() etc. from the above program
+  - **Reusability:** Encapsulation also improves the re-usability and easy to change with new requirements.
+  - **Testing code is easy:** Encapsulated code is easy to test for unit testing.
 
 
 
