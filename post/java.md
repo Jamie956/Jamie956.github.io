@@ -1,11 +1,61 @@
 ### String
 
-|          | String                                                       | StringBuilder                                                | StringBuffer |
-| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------ |
-| 可变     | N                                                            | Y                                                            | Y            |
-| 线程安全 | Y                                                            | N                                                            | Y(同步锁)    |
-|          | 创建String时，如果向量池如果有相等的值，就不创建对象，而是引用那个值 | 比使用 StringBuffer 获得 10%~15% 左右的性能提升，但有线程安全问题 |              |
-| 应用场景 | 操作少量数据                                                 | 单线程                                                       | 多线程       |
+|          | String   | StringBuilder | StringBuffer |
+| -------- | -------- | ------------- | ------------ |
+| 可变     | N        | Y             | Y            |
+| 线程安全 | Y        | N             | Y(同步锁)    |
+| 场景     | 少量数据 | 单线程        | 多线程       |
+
+
+
+```java
+public static void test01() {
+    String s1 = "ab";
+    String s2 = "cd";
+    String s3 = "ab";
+
+    System.out.println(s1.hashCode());//3105
+    System.out.println(s2.hashCode());//3169
+    System.out.println(s3.hashCode());//3105
+
+    /**
+		 * Conclusion:
+		 * 1. String value not equal -> hashcode not equal.
+		 * 2. String value equal -> hashcode equal, no need to create new String.
+		 */
+}
+```
+
+
+
+```java
+public static void test02() {
+    //A
+    StringBuilder sb1 = new StringBuilder();
+    long start1 = System.currentTimeMillis();
+    for (int i = 0; i < 10000000; i++) {
+        sb1.append(i);
+    }
+    long end1 = System.currentTimeMillis();
+    System.err.println(end1-start1);
+
+    //B
+    StringBuffer sb2 = new StringBuffer();
+    long start2 = System.currentTimeMillis();
+    for (int i = 0; i < 10000000; i++) {
+        sb2.append(i);
+    }
+    long end2 = System.currentTimeMillis();
+    System.err.println(end2-start2);
+
+    /**
+		 * Conclusion:
+		 * StringBuilder faster than StringBuffer, cause the lock.
+		 */
+}
+```
+
+
 
 ### Object-Oriented Programming
 
