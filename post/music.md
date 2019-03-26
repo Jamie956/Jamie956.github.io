@@ -579,6 +579,37 @@
 
 - 调：由基本音级所构成的音列的音高位置
 
+- C调：由七个基本音级所构成的调
+
+  ![C调](D:\project\justnote\img\C调.png)
+
+- G调：将七个基本音级所构成的音列，整个移高纯五度
+
+  ![G调](D:\project\justnote\img\G调.png)
+
+- D调：将七个基本音级所构成的音列，整个移高大二度
+
+  ![F调](D:\project\justnote\img\F调.png)
+
+- F调：将七个基本音级所构成的音列，整个移低纯五度
+
+  ![D调](D:\project\justnote\img\D调.png)
+
+- 基本调：由七个基本音级构成的调
+
+- 升号调
+
+  ![升号调](D:\project\justnote\img\升号调.png)
+
+- 降号调
+
+  ![降号调](D:\project\justnote\img\降号调.png)
+
+
+
+
+
+
 
 
 调式
