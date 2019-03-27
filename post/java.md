@@ -301,15 +301,15 @@ public class Encapsulate {
 
 - Dependence (“uses–a”)
 
-For example, the Order class uses the Account class because Order objects need to access Account objects to check for credit status. But the Item class does not depend on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate objects of that class. 
+  - For example, the Order class uses the Account class because Order objects need to access Account objects to check for credit status. But the Item class does not depend on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate objects of that class. 
 
 - Aggregation (“has–a”)
 
-The aggregation, or “has–a” relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that objects of class A contain objects of class B.
+  - The aggregation, or “has–a” relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that objects of class A contain objects of class B.
 
 - Inheritance (“is–a”) 
 
-The inheritance, or “is–a” relationship, expresses a relationship between a more special and a more general class. For example, a RushOrder class inherits from an Order class. The specialized RushOrder class has special methods for priority handling and a different method for computing shipping charges, but its other methods, such as adding items and billing, are inherited from the Order class. In general, if class A extends class B, class A inherits methods from class B but has more capabilities.
+  - The inheritance, or “is–a” relationship, expresses a relationship between a more special and a more general class. For example, a RushOrder class inherits from an Order class. The specialized RushOrder class has special methods for priority handling and a different method for computing shipping charges, but its other methods, such as adding items and billing, are inherited from the Order class. In general, if class A extends class B, class A inherits methods from class B but has more capabilities.
 
 
 
@@ -333,68 +333,60 @@ The inheritance, or “is–a” relationship, expresses a relationship between 
 
 
 
-**Final Instance Fields**
+### Final
 
-You can define an instance field as final. Such a field must be initialized when the object is constructed. That is, you must guarantee that the field value has been set after the end of every constructor. Afterwards, the field may not be modified again.
+- You can define an instance field as final. Such a field must be initialized when the object is constructed. That is, you must guarantee that the field value has been set after the end of every constructor. Afterwards, the field may not be modified again.
 
 ```java
-class Employee
-{
-    private final String name;
-    . . .
+class Employee {
+ private final String name;
 }
 ```
 
 
 
-### Static Field and Methods
+### Static
 
 **Static Fields**
 
 ```java
-class Employee
-{
-    private static int nextId = 1;
-    private int id;
-    . . .
+class Employee {
+ private static int nextId = 1;
+ private int id;
+ ...
 }
 ```
 
-Every employee object now has its own id field, but there is only one nextId field that is shared among all instances of the class. Let’s put it another way. If there are 1,000 objects of the Employee class, then there are 1,000 instance fields id, one for each object. But there is a single static field nextId. Even if there are no employee objects, the static field nextId is present. It belongs to the class, not to any individual object.
+- Every employee object now has its own id field, but there is only one nextId field that is shared among all instances of the class. Let’s put it another way. If there are 1,000 objects of the Employee class, then there are 1,000 instance fields id, one for each object. But there is a single static field nextId. Even if there are no employee objects, the static field nextId is present. It belongs to the class, not to any individual object.
 
 
 
 **Static Constants**
 
 ```java
-public class Math
-{
-    . . .
-        public static final double PI = 3.14159265358979323846;
-    . . .
+public class Math {
+ public static final double PI = 3.14159265358979323846;
 }
 ```
 
-If the keyword static had been omitted, then PI would have been an instance field of the Math class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.
+- If the keyword static had been omitted, then PI would have been an instance field of the Math class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.
 
 
 
 **Static Methods**
 
-You can think of static methods as methods that don’t have a this parameter.
-
-A static method of the Employee class cannot access the id instance field because it does not operate on an object. However, a static method can access a static field.
+- You can think of static methods as methods that don’t have a this parameter.
+- A static method of the Employee class cannot access the id instance field because it does not operate on an object. However, a static method can access a static field.
 
 ```java
-public static int getNextId()
-{
-    return nextId; // returns static field
+public static int getNextId() {
+ return nextId; // returns static field
 }
 ```
 
-Use static methods in two situations:
-- When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
-- When a method only needs to access static fields of the class (example: Employee.getNextId).
+- Use static methods in two situations:
+  - When a method doesn’t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).
+  - When a method only needs to access static fields of the class (example: Employee.getNextId).
 
 
 
