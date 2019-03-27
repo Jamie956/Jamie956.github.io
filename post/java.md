@@ -10,19 +10,19 @@
 
 ```java
 public static void test01() {
-    String s1 = "ab";
-    String s2 = "cd";
-    String s3 = "ab";
+ String s1 = "ab";
+ String s2 = "cd";
+ String s3 = "ab";
 
-    System.out.println(s1.hashCode());//3105
-    System.out.println(s2.hashCode());//3169
-    System.out.println(s3.hashCode());//3105
+ System.out.println(s1.hashCode()); //3105
+ System.out.println(s2.hashCode()); //3169
+ System.out.println(s3.hashCode()); //3105
 
-    /**
-		 * Conclusion:
-		 * 1. String value not equal -> hashcode not equal.
-		 * 2. String value equal -> hashcode equal, no need to create new String.
-		 */
+ /**
+  * Conclusion:
+  * 1. String value not equal -> hashcode not equal.
+  * 2. String value equal -> hashcode equal, no need to create new String.
+  */
 }
 ```
 
@@ -30,28 +30,28 @@ public static void test01() {
 
 ```java
 public static void test02() {
-    //A
-    StringBuilder sb1 = new StringBuilder();
-    long start1 = System.currentTimeMillis();
-    for (int i = 0; i < 10000000; i++) {
-        sb1.append(i);
-    }
-    long end1 = System.currentTimeMillis();
-    System.err.println(end1-start1);
+ //A
+ StringBuilder sb1 = new StringBuilder();
+ long start1 = System.currentTimeMillis();
+ for (int i = 0; i < 10000000; i++) {
+  sb1.append(i);
+ }
+ long end1 = System.currentTimeMillis();
+ System.err.println(end1 - start1);
 
-    //B
-    StringBuffer sb2 = new StringBuffer();
-    long start2 = System.currentTimeMillis();
-    for (int i = 0; i < 10000000; i++) {
-        sb2.append(i);
-    }
-    long end2 = System.currentTimeMillis();
-    System.err.println(end2-start2);
+ //B
+ StringBuffer sb2 = new StringBuffer();
+ long start2 = System.currentTimeMillis();
+ for (int i = 0; i < 10000000; i++) {
+  sb2.append(i);
+ }
+ long end2 = System.currentTimeMillis();
+ System.err.println(end2 - start2);
 
-    /**
-		 * Conclusion:
-		 * StringBuilder faster than StringBuffer, cause the lock.
-		 */
+ /**
+  * Conclusion:
+  * StringBuilder faster than StringBuffer, cause the lock.
+  */
 }
 ```
 
@@ -66,29 +66,23 @@ public static void test02() {
 - Encapsulation is the way to give an object its “black box” behavior, which is the key to reuse and reliability.
 
 ```java
-public class Encapsulate { 
+public class Encapsulate {
+ private String geekName;
+ private int geekAge;
 
-    private String geekName; 
-
-    private int geekAge; 
-
-
-    public int getAge() { 
-        return geekAge; 
-    } 
-
-    public String getName() { 
-        return geekName; 
-    } 
-
-    public void setAge( int newAge) { 
-        geekAge = newAge; 
-    } 
-
-    public void setName(String newName) { 
-        geekName = newName; 
-    } 
-} 
+ public int getAge() {
+  return geekAge;
+ }
+ public String getName() {
+  return geekName;
+ }
+ public void setAge(int newAge) {
+  geekAge = newAge;
+ }
+ public void setName(String newName) {
+  geekName = newName;
+ }
+}
 ```
 
 - These are obvious examples of accessor methods. As they simply return the values of instance fields, they are sometimes called field accessors.
@@ -103,7 +97,203 @@ public class Encapsulate {
 
 **Inheritance**
 
-When you extend an existing class, the new class has all the properties and methods of the class that you extend. You then supply new methods and data fields that apply to your new class only. The concept of extending a class to obtain another class is called inheritance.
+- When you extend an existing class, the new class has all the properties and methods of the class that you extend. You then supply new methods and data fields that apply to your new class only. The concept of extending a class to obtain another class is called inheritance.
+
+- Important terminology: 
+  - **Super Class:** The class whose features are inherited is known as super class(or a base class or a parent class).
+  - **Sub Class:** The class that inherits the other class  is known as sub class(or a derived class, extended class, or child  class). The subclass can add its own fields and methods in addition to  the superclass fields and methods.
+  - **Reusability:**  Inheritance supports the concept of  “reusability”, i.e. when we want to create a new class and there is  already a class that includes some of the code that we want, we can  derive our new class from the existing class. By doing this, we are  reusing the fields and methods of the existing class.
+
+- Example
+
+  ```java
+  // base class 
+  class Bicycle {
+   public int gear;
+   public int speed;
+  
+   public Bicycle(int gear, int speed) {
+    this.gear = gear;
+    this.speed = speed;
+   }
+  
+   public void applyBrake(int decrement) {
+    speed -= decrement;
+   }
+  
+   public void speedUp(int increment) {
+    speed += increment;
+   }
+  
+   public String toString() {
+    return ("No of gears are " + gear +
+     "\n" +
+     "speed of bicycle is " + speed);
+   }
+  }
+  
+  // derived class 
+  class MountainBike extends Bicycle {
+   public int seatHeight;
+  
+   public MountainBike(int gear, int speed, int startHeight) {
+    super(gear, speed);
+    seatHeight = startHeight;
+   }
+  
+   public void setHeight(int newValue) {
+    seatHeight = newValue;
+   }
+  
+   @Override
+   public String toString() {
+    return (super.toString() +
+     "\nseat height is " + seatHeight);
+   }
+  }
+  
+  public class Test {
+   public static void main(String args[]) {
+    MountainBike mb = new MountainBike(3, 100, 25);
+    System.out.println(mb.toString());
+   }
+  }
+  ```
+
+- Types of Inheritance in Java
+
+  - Single Inheritance
+
+    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance1.png"/>
+
+    ```java
+    class one {
+     public void print_geek() {
+      System.out.println("Geeks");
+     }
+    }
+    
+    class two extends one {
+     public void print_for() {
+      System.out.println("for");
+     }
+    }
+    
+    public class Main {
+     public static void main(String[] args) {
+      two g = new two();
+      g.print_geek();
+      g.print_for();
+      g.print_geek();
+     }
+    }
+    ```
+
+  - Multilevel Inheritance
+
+    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance3.png" />
+
+    ```java
+    class one {
+     public void print_geek() {
+      System.out.println("Geeks1");
+     }
+    }
+    
+    class two extends one {
+     public void print_for() {
+      System.out.println("for");
+     }
+    }
+    
+    class three extends two {
+     public void print_geek() {
+      System.out.println("Geeks2");
+     }
+    }
+    
+    public class Main {
+     public static void main(String[] args) {
+      three g = new three();
+      g.print_geek();
+      g.print_for();
+      g.print_geek();
+     }
+    }
+    ```
+
+  - Hierarchical Inheritance
+
+    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance4.png" />
+
+    ```java
+    class one {
+     public void print_geek() {
+      System.out.println("Geeks");
+     }
+    }
+    
+    class two extends one {
+     public void print_for() {
+      System.out.println("for");
+     }
+    }
+    
+    class three extends one {
+     /*............*/
+    }
+    
+    public class Main {
+     public static void main(String[] args) {
+      three g = new three();
+      g.print_geek();
+      two t = new two();
+      t.print_for();
+      g.print_geek();
+     }
+    }
+    ```
+
+  - Multiple Inheritance (Through Interfaces)
+
+    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance2-1.png" />
+
+    ```java
+    interface one {
+     public void print_geek();
+    }
+    
+    interface two {
+     public void print_for();
+    }
+    
+    interface three extends one, two {
+     public void print_geek();
+    }
+    class child implements three {
+     @Override
+     public void print_geek() {
+      System.out.println("Geeks");
+     }
+    
+     public void print_for() {
+      System.out.println("for");
+     }
+    }
+    
+    public class Main {
+     public static void main(String[] args) {
+      child c = new child();
+      c.print_geek();
+      c.print_for();
+      c.print_geek();
+     }
+    }
+    ```
+
+  - Hybrid Inheritance(Through Interfaces)
+
+    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance-1.png" />
 
 
 
