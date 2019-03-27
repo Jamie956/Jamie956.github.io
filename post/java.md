@@ -409,73 +409,50 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 ### Packages
 
-Java allows you to group classes in a collection called a package. Packages are convenient for organizing your work and for separating your work from code libraries provided by others. 
+- Java allows you to group classes in a collection called a package. Packages are convenient for organizing your work and for separating your work from code libraries provided by others. 
+- The main reason for using packages is to guarantee the uniqueness of class names. 
 
-
-
-The main reason for using packages is to guarantee the uniqueness of class names. 
-
-
-
-As long as both of them place their class into different packages, there is no conﬂict. In fact, to absolutely guarantee a unique package name, use an Internet domain name (which is known to be unique) written in reverse. 
+- As long as both of them place their class into different packages, there is no conﬂict. In fact, to absolutely guarantee a unique package name, use an Internet domain name (which is known to be unique) written in reverse. 
 
 
 
 **Class Importation**
 
-A class can use all classes from its own package and all public classes from other packages. 
+- A class can use all classes from its own package and all public classes from other packages. 
 
-
-
-Locating classes in packages is an activity of the compiler. The bytecodes in class files always use full package names to refer to other classes. 
+- Locating classes in packages is an activity of the compiler. The bytecodes in class files always use full package names to refer to other classes. 
 
 
 
 **Static Imports**
 
-A form of the import statement permits the importing of static methods and fields, not just classes. 
+- A form of the import statement permits the importing of static methods and fields, not just classes. 
 
-```java
-import static java.lang.System.*;
-
-out.println("Goodbye, World!"); // i.e., System.out
-exit(0); // i.e., System.exit
-```
+  ```java
+  import static java.lang.System.*;
+  
+  out.println("Goodbye, World!"); // i.e. System.out
+  exit(0); // i.e. System.exit
+  ```
 
 
 
 **Package Scope**
 
-If you don’t specify either public or private, the feature (that is, the class, method, or variable) can be accessed by all methods in the same package. 
+- If you don’t specify either public or private, the feature (that is, the class, method, or variable) can be accessed by all methods in the same package. 
 
 
 
-### Class Design Hints
+### Class
 
-- Always keep data private. 
-- Always initialize data. 
-- Don’t use too many basic types in a class. 
-- Not all fields need individual field accessors and mutators. 
-- Make the names of your classes and methods reﬂect their responsibilities. 
+**Class Design Hints**
+
+- Always keep data private
+- Always initialize data
+- Don’t use too many basic types in a class
+- Not all fields need individual field accessors and mutators
+- Make the names of your classes and methods reﬂect their responsibilities
 - Prefer immutable classes
-
-
-
-###  Classes, Superclasses, and Subclasses
-
-**Defining Subclasses**
-
-- Here is how you defne a Manager class that inherits from the Employee class. Use the Java keyword extends to denote inheritance. 
-
-    ```java
-    public class Manager extends Employee{
-        added methods and fields
-    }
-    ```
-
-- The keyword extends indicates that you are making a new class that derives from an existing class. The existing class is called the superclass, base class, or parent class. The new class is called the subclass, derived class, or child class. 
-
-- Subclasses have more functionality than their superclasses.  The Manager class encapsulates more data and has more functionality than its superclass Employee. 
 
 
 
@@ -484,11 +461,11 @@ If you don’t specify either public or private, the feature (that is, the class
 - Some of the superclass methods are not appropriate for the Manager subclass. In particular, the getSalary method should return the sum of the base salary and the bonus. You need to supply a new method to override the superclass method: 
 
     ```java
-    public class Manager extends Employee{
-        public double getSalary(){
-            double baseSalary = super.getSalary();
-            return baseSalary + bonus;
-        }
+    public class Manager extends Employee {
+     public double getSalary() {
+      double baseSalary = super.getSalary();
+      return baseSalary + bonus;
+     }
     }
     ```
 
@@ -501,11 +478,11 @@ If you don’t specify either public or private, the feature (that is, the class
 - Here, the keyword super has a different meaning. The instruction is shorthand for “call the constructor of the Employee superclass with n, s, year, month, and day as parameters.” 
 
     ```java
-    public class Manager extends Employee{
-        public Manager(String name, double salary, int year, int month, int day){
-            super(name, salary, year, month, day);
-            bonus = 0;
-        }
+    public class Manager extends Employee {
+     public Manager(String name, double salary, int year, int month, int day) {
+      super(name, salary, year, month, day);
+      bonus = 0;
+     }
     }
     ```
 
@@ -517,19 +494,11 @@ If you don’t specify either public or private, the feature (that is, the class
 
 
 
-**Inheritance Hierarchies**
-
-- Inheritance need not stop at deriving one layer of classes. We could have an Executive class that extends Manager, for example. The collection of all classes extending a common superclass is called an inheritance hierarchy 
-- The path from a particular class to its ancestors in the inheritance hierarchy is its inheritance chain. 
-
-![Employee inheritance hierarchy](..\img\Employee inheritance hierarchy.png)
-
-
-
 **Polymorphism**
 
 - The “is–a” rule states that every object of the subclass is an object of the superclass. For example, every manager is an employee. Thus, it makes sense for the Manager class to be a subclass of the Employee class. Naturally, the opposite is not true—not every employee is a manager. 
-- Another way of formulating the “is–a” rule is the substitution principle. That principle states that you can use a subclass object whenever the program expects a superclass object. 
+
+- In the Java programming language, object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on). 
 
     ```java
     Employee e;
@@ -537,14 +506,13 @@ If you don’t specify either public or private, the feature (that is, the class
     e = new Manager(. . .); // OK, Manager can be used as well
     ```
 
-- In the Java programming language, object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on). 
 - In this case, the variables staff[0] and boss refer to the same object. However, staff[0] is considered to be only an Employee object by the compiler 
 
     ```java
     Manager boss = new Manager(. . .);
     Employee[] staff = new Employee[3];
     staff[0] = boss;
-
+    
     boss.setBonus(5000); // OK
     //The declared type of staff[0] is Employee, and the setBonus method is not a method of the Employee class.
     staff[0].setBonus(5000); // Error
@@ -558,7 +526,7 @@ If you don’t specify either public or private, the feature (that is, the class
 
 
 
-**Understanding Method Calls**
+**Method Calls**
 
 1. The compiler looks at the declared type of the object and the method name. Note that there may be multiple methods, all with the same name, f, but with different parameter types. For example, there may be a method f(int) and a method f(String). The compiler enumerates all methods called f in the class C and all accessible methods called f in the superclasses of C. (Private methods of the superclass are not accessible.) Now the compiler knows all possible candidates for the method to be called.
 
