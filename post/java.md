@@ -317,7 +317,7 @@ The inheritance, or “is–a” relationship, expresses a relationship between 
 
 
 
-### Construct
+### Constructor
 
 - To work with objects, you first construct them and specify their initial state. Then you apply methods to the objects.
 
