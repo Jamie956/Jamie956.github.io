@@ -317,6 +317,38 @@ public class Encapsulate {
 
 
 
+**Polymorphism**
+
+- The “is–a” rule states that every object of the subclass is an object of the superclass. For example, every manager is an employee. Thus, it makes sense for the Manager class to be a subclass of the Employee class. Naturally, the opposite is not true—not every employee is a manager. 
+
+- In the Java programming language, object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on). 
+
+  ```java
+  Employee e;
+  e = new Employee(. . .); // Employee object expected
+  e = new Manager(. . .); // OK, Manager can be used as well
+  ```
+
+- In this case, the variables staff[0] and boss refer to the same object. However, staff[0] is considered to be only an Employee object by the compiler 
+
+  ```java
+  Manager boss = new Manager(. . .);
+  Employee[] staff = new Employee[3];
+  staff[0] = boss;
+  
+  boss.setBonus(5000); // OK
+  //The declared type of staff[0] is Employee, and the setBonus method is not a method of the Employee class.
+  staff[0].setBonus(5000); // Error
+  ```
+
+- However, you cannot assign a superclass reference to a subclass variable. The reason is clear: Not all employees are managers. 
+
+  ```java
+  Manager m = staff[i]; // Error
+  ```
+
+
+
 ### Constructor
 
 - To work with objects, you first construct them and specify their initial state. Then you apply methods to the objects.
@@ -515,39 +547,71 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-**Polymorphism**
+**Abstract Classes**
 
-- The “is–a” rule states that every object of the subclass is an object of the superclass. For example, every manager is an employee. Thus, it makes sense for the Manager class to be a subclass of the Employee class. Naturally, the opposite is not true—not every employee is a manager. 
+- As you move up the inheritance hierarchy, classes become more general and probably more abstract. At some point, the ancestor class becomes so general that you think of it more as a basis for other classes than as a class with specifc instances you want to use. Consider, for example, an extension of our Employee class hierarchy. An employee is a person, and so is a student. Let us extend our class hierarchy to include classes Person and Student. 
+- Why bother with so high a level of abstraction? There are some attributes that make sense for every person, such as name. Both students and employees have names, and introducing a common superclass lets us factor out the getName method to a higher level in the inheritance hierarchy 
 
-- In the Java programming language, object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on). 
-
-    ```java
-    Employee e;
-    e = new Employee(. . .); // Employee object expected
-    e = new Manager(. . .); // OK, Manager can be used as well
-    ```
-
-- In this case, the variables staff[0] and boss refer to the same object. However, staff[0] is considered to be only an Employee object by the compiler 
-
-    ```java
-    Manager boss = new Manager(. . .);
-    Employee[] staff = new Employee[3];
-    staff[0] = boss;
-    
-    boss.setBonus(5000); // OK
-    //The declared type of staff[0] is Employee, and the setBonus method is not a method of the Employee class.
-    staff[0].setBonus(5000); // Error
-    ```
-
-- However, you cannot assign a superclass reference to a subclass variable. The reason is clear: Not all employees are managers. 
-
-    ```java
-    Manager m = staff[i]; // Error
-    ```
+![Inheritance diagram for Person and its subclasses](D:/project/justnote/img/Inheritance%20diagram%20for%20Person%20and%20its%20subclasses.png)
 
 
 
-**Method Calls**
+- If you use the abstract keyword, you do not need to implement the method at all. 
+
+  ```java
+  public abstract class Person{
+      // no implementation required
+      public abstract String getDescription();
+  }
+  ```
+
+- In addition to abstract methods, abstract classes can have fields and concrete methods.  
+
+  ```java
+  public abstract class Person{
+      private String name;
+      public Person(String name){
+          this.name = name;
+      }
+      public abstract String getDescription();
+      public String getName(){
+          return name;
+      }
+  }
+  ```
+
+- Abstract methods act as placeholders for methods that are implemented in the subclasses. When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods undefned; then you must tag the subclass as abstract as well. Or you can defne all methods, and the subclass is no longer abstract. 
+
+- Abstract classes cannot be instantiated. That is, if a class is declared as abstract, no objects of that class can be created. 
+
+- Note that you can still create object variables of an abstract class, but such a variable must refer to an object of a nonabstract subclass. For example: 
+
+  ```java
+  Person p = new Student("Vince Vu", "Economics");
+  ```
+
+- Keep in mind that the variable p never refers to a Person object because it is impossible to construct an object of the abstract Person class. 
+
+  ```java
+  Person p = new Student(. . .);
+  p.getDescription()
+  ```
+
+
+
+**Protected Acess**
+
+- As you know, fields in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won’t be visible to other classes. 
+- Protected methods make more sense. A class may declare a method as protected if it is tricky to use. This indicates that the subclasses (which, presumably, know their ancestor well) can be trusted to use the method correctly, but other classes cannot. 
+- The four access modifers in Java that control visibility: 
+  - Visible to the class only (private).
+  - Visible to the world (public).
+  - Visible to the package and all subclasses (protected).
+  - Visible to the package—the (unfortunate) default. No modifers are needed. 
+
+
+
+### Method
 
 1. The compiler looks at the declared type of the object and the method name. Note that there may be multiple methods, all with the same name, f, but with different parameter types. For example, there may be a method f(int) and a method f(String). The compiler enumerates all methods called f in the class C and all accessible methods called f in the superclasses of C. (Private methods of the superclass are not accessible.) Now the compiler knows all possible candidates for the method to be called.
 2. Next, the compiler determines the types of the arguments that are supplied in the method call. If among all the methods called f there is a unique method whose parameter types are a best match for the supplied arguments, that method is chosen to be called. This process is called overloading resolution. For example, in a call x.f("Hello"), the compiler picks f(String) and not f(int). The situation can get complex because of type conversions (int to double, Manager to Employee, and so on). If the compiler cannot find any method with matching parameter types or if multiple methods all match after applying conversions, the compiler reports an error. Now the compiler knows the name and parameter types of the method that needs to be called. 
@@ -587,7 +651,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-**Casting**
+### Casting
 
 - The process of forcing a conversion from one type to another is called casting. 
 
@@ -613,70 +677,6 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 - You can cast only within an inheritance hierarchy.
 - Use instanceof to check before casting from a superclass to a subclass. 
 - The only reason to make the cast is to use a method that is unique to managers, such as setBonus. 
-
-
-
-**Abstract Classes**
-
-- As you move up the inheritance hierarchy, classes become more general and probably more abstract. At some point, the ancestor class becomes so general that you think of it more as a basis for other classes than as a class with specifc instances you want to use. Consider, for example, an extension of our Employee class hierarchy. An employee is a person, and so is a student. Let us extend our class hierarchy to include classes Person and Student. 
-
-- Why bother with so high a level of abstraction? There are some attributes that make sense for every person, such as name. Both students and employees have names, and introducing a common superclass lets us factor out the getName method to a higher level in the inheritance hierarchy 
-
-![Inheritance diagram for Person and its subclasses](..\img\Inheritance diagram for Person and its subclasses.png)
-
-
-
-- If you use the abstract keyword, you do not need to implement the method at all. 
-
-    ```java
-    public abstract class Person{
-        // no implementation required
-        public abstract String getDescription();
-    }
-    ```
-
-- In addition to abstract methods, abstract classes can have fields and concrete methods.  
-
-    ```java
-    public abstract class Person{
-        private String name;
-        public Person(String name){
-            this.name = name;
-        }
-        public abstract String getDescription();
-        public String getName(){
-            return name;
-        }
-    }
-    ```
-
-- Abstract methods act as placeholders for methods that are implemented in the subclasses. When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods undefned; then you must tag the subclass as abstract as well. Or you can defne all methods, and the subclass is no longer abstract. 
-- Abstract classes cannot be instantiated. That is, if a class is declared as abstract, no objects of that class can be created. 
-- Note that you can still create object variables of an abstract class, but such a variable must refer to an object of a nonabstract subclass. For example: 
-
-    ```java
-    Person p = new Student("Vince Vu", "Economics");
-    ```
-
-- Keep in mind that the variable p never refers to a Person object because it is impossible to construct an object of the abstract Person class. 
-
-    ```java
-    Person p = new Student(. . .);
-    p.getDescription()
-    ```
-
-
-
-**Protected Acess**
-
-- As you know, fields in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won’t be visible to other classes. 
-
-- Protected methods make more sense. A class may declare a method as protected if it is tricky to use. This indicates that the subclasses (which, presumably, know their ancestor well) can be trusted to use the method correctly, but other classes cannot. 
-- The four access modifers in Java that control visibility: 
-  - Visible to the class only (private).
-  - Visible to the world (public).
-  - Visible to the package and all subclasses (protected).
-  - Visible to the package—the (unfortunate) default. No modifers are needed. 
 
 
 
