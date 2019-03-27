@@ -337,11 +337,32 @@ public class Encapsulate {
 
 - You can define an instance field as final. Such a field must be initialized when the object is constructed. That is, you must guarantee that the field value has been set after the end of every constructor. Afterwards, the field may not be modified again.
 
-```java
-class Employee {
- private final String name;
-}
-```
+  ```java
+  class Employee {
+   private final String name;
+  }
+  ```
+
+- Occasionally, you want to prevent someone from forming a subclass from one of your classes. Classes that cannot be extended are called fnal classes, and you use the final modifer in the defnition of the class to indicate this. 
+
+  ```java
+  public final class Executive extends Manager{
+  }
+  ```
+
+- You can also make a specifc method in a class final. If you do this, then no subclass can override that method. (All methods in a final class are automatically final.) 
+
+  ```java
+  public class Employee {
+   public final String getName() {
+    return name;
+   }
+  }
+  ```
+
+- Recall that fields can also be declared as final. A final field cannot be changed after the object has been constructed. However, if a class is declared final, only the methods, not the fields, are automatically final. 
+
+- Fortunately, the just-in-time compiler in the virtual machine can do a better job than a traditional compiler. It knows exactly which classes extend a given class, and it can check whether any class actually overrides a given method. If a method is short, frequently called, and not actually overridden, the just-in-time compiler can inline the method. 
 
 
 
@@ -529,12 +550,11 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 **Method Calls**
 
 1. The compiler looks at the declared type of the object and the method name. Note that there may be multiple methods, all with the same name, f, but with different parameter types. For example, there may be a method f(int) and a method f(String). The compiler enumerates all methods called f in the class C and all accessible methods called f in the superclasses of C. (Private methods of the superclass are not accessible.) Now the compiler knows all possible candidates for the method to be called.
-
 2. Next, the compiler determines the types of the arguments that are supplied in the method call. If among all the methods called f there is a unique method whose parameter types are a best match for the supplied arguments, that method is chosen to be called. This process is called overloading resolution. For example, in a call x.f("Hello"), the compiler picks f(String) and not f(int). The situation can get complex because of type conversions (int to double, Manager to Employee, and so on). If the compiler cannot find any method with matching parameter types or if multiple methods all match after applying conversions, the compiler reports an error. Now the compiler knows the name and parameter types of the method that needs to be called. 
-
 3. If the method is private, static, final, or a constructor, then the compiler knows exactly which method to call. (The final modifer is explained in the next section.) This is called static binding. Otherwise, the method to be called depends on the actual type of the implicit parameter, and dynamic binding must be used at runtime. In our example, the compiler would generate an instruction to call f(String) with dynamic binding. 
-
 4. When the program runs and uses dynamic binding to call a method, the virtual machine must call the version of the method that is appropriate for the actual type of the object to which x refers. Let’s say the actual type is D, a subclass of C. If the class D defnes a method f(String), that method is called. If not, D’s superclass is searched for a method f(String), and so on.
+
+
 
 - It would be time consuming to carry out this search every time a method is called. Therefore, the virtual machine precomputes for each class a method table that lists all method signatures and the actual methods to be called. When a method is actually called, the virtual machine simply makes a table lookup. In our example, the virtual machine consults the method table for the class D and looks up the method to call for f(String). That method may be D.f(String) or X.f(String), where X is some superclass of D. There is one twist to this scenario. If the call is super.f(param), then the compiler consults the method table of the superclass of the implicit parameter. 
 
@@ -550,8 +570,6 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
     raiseSalary(double) -> Employee.raiseSalary(double) 
     ```
 
-
-
 - The Manager method table is slightly different. Three methods are inherited, one method is redefned, and one method is added. 
 
     ```
@@ -563,45 +581,9 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
     setBonus(double) -> Manager.setBonus(double)
     ```
 
-
-
 - Dynamic binding has a very important property: It makes programs extensible without the need for modifying existing code. Suppose a new class Executive is added and there is the possibility that the variable e refers to an object of that class. The code containing the call e.getSalary() need not be recompiled. The Executive.getSalary() method is called automatically if e happens to refer to an object of type Executive. 
 
-
-
 - When you override a method, the subclass method must be at least as visible as the superclass method. In particular, if the superclass method is public, the subclass method must also be declared public. It is a common error to accidentally omit the public specifer for the subclass method. The compiler then complains that you try to supply a more restrictive access privilege. 
-
-
-
-**Preventing Inheritance: Final Classes and Methods**
-
-- Occasionally, you want to prevent someone from forming a subclass from one of your classes. Classes that cannot be extended are called fnal classes, and you use the final modifer in the defnition of the class to indicate this. 
-
-    ```java
-    public final class Executive extends Manager{
-
-    }
-    ```
-
-
-
-- You can also make a specifc method in a class final. If you do this, then no subclass can override that method. (All methods in a final class are automatically final.) 
-
-    ```java
-    public class Employee{
-        public final String getName(){
-            return name;
-        }
-    }
-    ```
-
-
-
-- Recall that fields can also be declared as final. A final field cannot be changed after the object has been constructed. However, if a class is declared final, only the methods, not the fields, are automatically final. 
-
-
-
-- Fortunately, the just-in-time compiler in the virtual machine can do a better job than a traditional compiler. It knows exactly which classes extend a given class, and it can check whether any class actually overrides a given method. If a method is short, frequently called, and not actually overridden, the just-in-time compiler can inline the method. 
 
 
 
@@ -613,8 +595,6 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
     double x = 3.405;
     int nx = (int) x;
     ```
-
-
 
 - The compiler checks that you do not promise too much when you store a value in a variable. If you assign a subclass reference to a superclass variable, you are promising less, and the compiler will simply let you do it. If you assign a superclass reference to a subclass variable, you are promising more. Then you must use a cast so that your promise can be checked at runtime 
 
@@ -629,8 +609,6 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
         boss = (Manager) staff[1];
     }
     ```
-
-
 
 - You can cast only within an inheritance hierarchy.
 - Use instanceof to check before casting from a superclass to a subclass. 
@@ -672,8 +650,6 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
     }
     ```
 
-
-
 - Abstract methods act as placeholders for methods that are implemented in the subclasses. When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods undefned; then you must tag the subclass as abstract as well. Or you can defne all methods, and the subclass is no longer abstract. 
 - Abstract classes cannot be instantiated. That is, if a class is declared as abstract, no objects of that class can be created. 
 - Note that you can still create object variables of an abstract class, but such a variable must refer to an object of a nonabstract subclass. For example: 
@@ -704,7 +680,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-### Object: The Cosmic Superclass
+### Object
 
 - The Object class is the ultimate ancestor—every class in Java extends Object. 
 - In Java, only the values of primitive types (numbers, characters, and boolean values) are not objects. 
