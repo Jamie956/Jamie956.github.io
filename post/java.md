@@ -530,7 +530,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 1. The compiler looks at the declared type of the object and the method name. Note that there may be multiple methods, all with the same name, f, but with different parameter types. For example, there may be a method f(int) and a method f(String). The compiler enumerates all methods called f in the class C and all accessible methods called f in the superclasses of C. (Private methods of the superclass are not accessible.) Now the compiler knows all possible candidates for the method to be called.
 
-2. Next, the compiler determines the types of the arguments that are supplied in the method call. If among all the methods called f there is a unique method whose parameter types are a best match for the supplied arguments, that method is chosen to be called. This process is called overloading resolution. For example, in a call x.f("Hello"), the compiler picks f(String) and not f(int). The situation can get complex because of type conversions (int to double, Manager to Employee, and so on). If the compiler cannot fnd any method with matching parameter types or if multiple methods all match after applying conversions, the compiler reports an error. Now the compiler knows the name and parameter types of the method that needs to be called. 
+2. Next, the compiler determines the types of the arguments that are supplied in the method call. If among all the methods called f there is a unique method whose parameter types are a best match for the supplied arguments, that method is chosen to be called. This process is called overloading resolution. For example, in a call x.f("Hello"), the compiler picks f(String) and not f(int). The situation can get complex because of type conversions (int to double, Manager to Employee, and so on). If the compiler cannot find any method with matching parameter types or if multiple methods all match after applying conversions, the compiler reports an error. Now the compiler knows the name and parameter types of the method that needs to be called. 
 
 3. If the method is private, static, final, or a constructor, then the compiler knows exactly which method to call. (The final modifer is explained in the next section.) This is called static binding. Otherwise, the method to be called depends on the actual type of the implicit parameter, and dynamic binding must be used at runtime. In our example, the compiler would generate an instruction to call f(String) with dynamic binding. 
 
@@ -622,7 +622,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
     Manager boss = (Manager) staff[0];
     ```
 
-- Thus, it is good programming practice to fnd out whether a cast will succeed before attempting it. 
+- Thus, it is good programming practice to find out whether a cast will succeed before attempting it. 
 
     ```java
     if (staff[1] instanceof Manager){
