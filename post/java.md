@@ -907,6 +907,8 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
+### Thread
+
 #### Interrupting
 
 - A thread terminates when its run method returns—by executing a return statement, after executing the last statement in the method body, or if an exception occurs that is not caught in the method. In the initial release of Java, there also was a stop method that another thread could call to terminate a thread. However, that method is now deprecated.  
