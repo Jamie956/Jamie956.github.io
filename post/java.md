@@ -680,10 +680,12 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-### Object
+### Object Method
 
 - The Object class is the ultimate ancestor—every class in Java extends Object. 
 - In Java, only the values of primitive types (numbers, characters, and boolean values) are not objects. 
+
+
 
 **The equals Method**
 
@@ -754,6 +756,8 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
     ```
 
     If you redefne equals in a subclass, include a call to super.equals(other). 
+
+
 
 **The hashCode Method**
 
