@@ -391,7 +391,6 @@
 <li><div><a href="#9-forms">9 Forms</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
 <li><div><a href="#template-driven-forms">Template-driven forms</a><i></i></div></li>
-<li><div><a href="#reactive-forms">Reactive forms</a><i></i></div></li>
 </ul></li>
 </ul>
 </div>
@@ -1172,14 +1171,41 @@ every change detection check and are to be avoided if possible. </li>
 <p>Angular provides two approaches to building forms: reactive forms and template
 forms. </p>
 <h3 id="template-driven-forms">Template-driven forms</h3>
-<p><strong>Binding model data to inputs with NgModel</strong></p>
+<p><strong>Custom validation with directives</strong></p>
 <ul>
-<li><p><strong>Validating form controls with NgModel</strong></p>
+<li><p>Phone validator </p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { AbstractControl, ValidatorFn } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@angular/forms&apos;</span>;
+<span class="hljs-keyword">const</span> expression = <span class="hljs-regexp">/((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">PhoneValidator</span>(<span class="hljs-params"></span>): <span class="hljs-title">ValidatorFn</span> </span>{
+    <span class="hljs-keyword">return</span> (control: AbstractControl): { [key: string]: any } =&gt; {
+        <span class="hljs-keyword">const</span> valid = expression.test(control.value) &amp;&amp; control.value.length &lt;
+              <span class="hljs-number">14</span>;
+        <span class="hljs-keyword">return</span> valid ? <span class="hljs-literal">null</span> : { phone: <span class="hljs-literal">true</span> };
+    };
+}
+</code></pre>
 </li>
 </ul>
-<p><strong>Custom validation with directives</strong></p>
-<p><strong>Handling submit or cancel events</strong></p>
-<h3 id="reactive-forms">Reactive forms</h3>
+<p><strong>Summary</strong></p>
+<ul>
+<li>Template-driven forms defne the form using NgModel on form controls.</li>
+<li>You can apply normal HTML validation attributes, and NgModel will automatically
+try to validate based on those rules.</li>
+<li>Custom validation is possible through a custom validator function and directive,
+which gets registered with the built-in list of validators.</li>
+<li>The NgForm directive, though it can be transparent, exposes features to help
+manage submit events and overall form validation inspection.</li>
+<li>Reactive forms are different in that you defne the form model in the controller
+and link form controls using FormControlName.</li>
+<li>You can observe the changes of a form control with reactive forms and run logic
+every time a new value is emitted.</li>
+<li>Reactive forms declare validation in the controller form defnition, and creating
+custom validations is easier because they don&#x2019;t require a directive.</li>
+<li>Ultimately, both form patterns are available to you. I tend to use reactive forms,
+especially as the form gets more complex.</li>
+<li>Creating a new form control requires implementing the ControlValueAccessor
+methods and registering it with the controls provider. </li>
+</ul>
 <p>10 Testing your application</p>
 <p>11 Angular in production</p>
 
@@ -1225,7 +1251,7 @@ forms. </p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Angular","level":"3.4","depth":1,"next":{"title":"Java","level":"4.1","depth":1,"path":"post/java.md","ref":"post/java.md","articles":[]},"previous":{"title":"JavaScript","level":"3.3","depth":1,"path":"post/javascript.md","ref":"post/javascript.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/angular.md","mtime":"2019-03-25T08:43:53.419Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-25T09:35:10.018Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Angular","level":"3.4","depth":1,"next":{"title":"Java","level":"4.1","depth":1,"path":"post/java.md","ref":"post/java.md","articles":[]},"previous":{"title":"JavaScript","level":"3.3","depth":1,"path":"post/javascript.md","ref":"post/javascript.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/angular.md","mtime":"2019-03-26T06:36:32.820Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-28T09:56:40.397Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

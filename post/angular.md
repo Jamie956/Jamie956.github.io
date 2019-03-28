@@ -878,21 +878,45 @@ forms.
 
 ### Template-driven forms
 
-**Binding model data to inputs with NgModel**
 
-- 
-
-**Validating form controls with NgModel**
 
 **Custom validation with directives**
 
-**Handling submit or cancel events**
+- Phone validator 
+
+  ```js
+  import { AbstractControl, ValidatorFn } from '@angular/forms';
+  const expression = /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/;
+  export function PhoneValidator(): ValidatorFn {
+      return (control: AbstractControl): { [key: string]: any } => {
+          const valid = expression.test(control.value) && control.value.length <
+                14;
+          return valid ? null : { phone: true };
+      };
+  }
+  ```
 
 
 
-### Reactive forms
+**Summary**
 
-
+- Template-driven forms defne the form using NgModel on form controls.
+- You can apply normal HTML validation attributes, and NgModel will automatically
+  try to validate based on those rules.
+- Custom validation is possible through a custom validator function and directive,
+  which gets registered with the built-in list of validators.
+- The NgForm directive, though it can be transparent, exposes features to help
+  manage submit events and overall form validation inspection.
+- Reactive forms are different in that you defne the form model in the controller
+  and link form controls using FormControlName.
+- You can observe the changes of a form control with reactive forms and run logic
+  every time a new value is emitted.
+- Reactive forms declare validation in the controller form defnition, and creating
+  custom validations is easier because they don’t require a directive.
+- Ultimately, both form patterns are available to you. I tend to use reactive forms,
+  especially as the form gets more complex.
+- Creating a new form control requires implementing the ControlValueAccessor
+  methods and registering it with the controls provider. 
 
 
 

@@ -360,28 +360,30 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#object-oriented-programming">Object-Oriented Programming</a><i></i></div></li>
-<li><div><a href="#construct">Construct</a><i></i></div></li>
-<li><div><a href="#static-field-and-methods">Static Field and Methods</a><i></i></div></li>
+<li><div><a href="#object-oriented">Object-Oriented</a><i></i></div></li>
+<li><div><a href="#constructor">Constructor</a><i></i></div></li>
+<li><div><a href="#final">Final</a><i></i></div></li>
+<li><div><a href="#static">Static</a><i></i></div></li>
 <li><div><a href="#object-construction">Object Construction</a><i></i></div></li>
 <li><div><a href="#packages">Packages</a><i></i></div></li>
-<li><div><a href="#class-design-hints">Class Design Hints</a><i></i></div></li>
-<li><div><a href="#classes-superclasses-and-subclasses">Classes, Superclasses, and Subclasses</a><i></i></div></li>
-<li><div><a href="#object-the-cosmic-superclass">Object: The Cosmic Superclass</a><i></i></div></li>
-<li><div><a href="#generic-array-lists">Generic Array Lists</a><i></i></div></li>
-<li><div><a href="#object-wrappers-and-autoboxing">Object Wrappers and Autoboxing</a><i></i></div></li>
+<li><div><a href="#class">Class</a><i></i></div></li>
+<li><div><a href="#method">Method</a><i></i></div></li>
+<li><div><a href="#casting">Casting</a><i></i></div></li>
+<li><div><a href="#object-method">Object Method</a><i></i></div></li>
+<li><div><a href="#array-lists">Array Lists</a><i></i></div></li>
+<li><div><a href="#wrappers--autoboxing">Wrappers &amp; Autoboxing</a><i></i></div></li>
 <li><div><a href="#reflection">Reflection</a><i></i></div></li>
 <li><div><a href="#interfaces">Interfaces</a><i></i></div></li>
-<li><div><a href="#concurrency">Concurrency</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<li><div><a href="#concurrency">Concurrency</a><i></i></div></li>
+<li><div><a href="#thread">Thread</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
 <ul>
-<li><div><a href="#interrupting-threads">Interrupting Threads</a><i></i></div></li>
-<li><div><a href="#thread-states">Thread States</a><i></i></div></li>
-<li><div><a href="#thread-properties">Thread Properties</a><i></i></div></li>
+<li><div><a href="#interrupting">Interrupting</a><i></i></div></li>
+<li><div><a href="#states">States</a><i></i></div></li>
+<li><div><a href="#properties">Properties</a><i></i></div></li>
 <li><div><a href="#synchronization">Synchronization</a><i></i></div></li>
 <li><div><a href="#blocking-queues">Blocking Queues</a><i></i></div></li>
-<li><div><a href="#life-cycle">Life Cycle</a><i></i></div></li>
-<li><div><a href="#lock">Lock</a><i></i></div></li>
 </ul></li>
+<li><div><a href="#thread-pool">Thread Pool</a><i></i></div></li>
 </ul>
 </div>
 
@@ -409,50 +411,327 @@
 <td>Y(&#x540C;&#x6B65;&#x9501;)</td>
 </tr>
 <tr>
-<td></td>
-<td>&#x521B;&#x5EFA;String&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x5411;&#x91CF;&#x6C60;&#x5982;&#x679C;&#x6709;&#x76F8;&#x7B49;&#x7684;&#x503C;&#xFF0C;&#x5C31;&#x4E0D;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x662F;&#x5F15;&#x7528;&#x90A3;&#x4E2A;&#x503C;</td>
-<td>&#x6BD4;&#x4F7F;&#x7528; StringBuffer &#x83B7;&#x5F97; 10%~15% &#x5DE6;&#x53F3;&#x7684;&#x6027;&#x80FD;&#x63D0;&#x5347;&#xFF0C;&#x4F46;&#x6709;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x95EE;&#x9898;</td>
-<td></td>
-</tr>
-<tr>
-<td>&#x5E94;&#x7528;&#x573A;&#x666F;</td>
-<td>&#x64CD;&#x4F5C;&#x5C11;&#x91CF;&#x6570;&#x636E;</td>
+<td>&#x573A;&#x666F;</td>
+<td>&#x5C11;&#x91CF;&#x6570;&#x636E;</td>
 <td>&#x5355;&#x7EBF;&#x7A0B;</td>
 <td>&#x591A;&#x7EBF;&#x7A0B;</td>
 </tr>
 </tbody>
 </table>
-<h3 id="object-oriented-programming">Object-Oriented Programming</h3>
-<p><strong>Encapsulation</strong></p>
-<p>The key to making encapsulation work is to have methods never directly access instance fields in a class other than their own. Programs should interact with object data only through the object&#x2019;s methods. </p>
-<p>Encapsulation is the way to give an object its &#x201C;black box&#x201D; behavior, which is the key to reuse and reliability.</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span>
-</span>{
-    <span class="hljs-keyword">return</span> name;
-}
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span>
-</span>{
-    <span class="hljs-keyword">return</span> salary;
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test01</span><span class="hljs-params">()</span> </span>{
+ String s1 = <span class="hljs-string">&quot;ab&quot;</span>;
+ String s2 = <span class="hljs-string">&quot;cd&quot;</span>;
+ String s3 = <span class="hljs-string">&quot;ab&quot;</span>;
+
+ System.out.println(s1.hashCode()); <span class="hljs-comment">//3105</span>
+ System.out.println(s2.hashCode()); <span class="hljs-comment">//3169</span>
+ System.out.println(s3.hashCode()); <span class="hljs-comment">//3105</span>
+
+ <span class="hljs-comment">/**
+  * Conclusion:
+  * 1. String value not equal -&gt; hashcode not equal.
+  * 2. String value equal -&gt; hashcode equal, no need to create new String.
+  */</span>
 }
 </code></pre>
-<p>These are obvious examples of accessor methods. As they simply return the values of instance fields, they are sometimes called field accessors.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test02</span><span class="hljs-params">()</span> </span>{
+ <span class="hljs-comment">//A</span>
+ StringBuilder sb1 = <span class="hljs-keyword">new</span> StringBuilder();
+ <span class="hljs-keyword">long</span> start1 = System.currentTimeMillis();
+ <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000000</span>; i++) {
+  sb1.append(i);
+ }
+ <span class="hljs-keyword">long</span> end1 = System.currentTimeMillis();
+ System.err.println(end1 - start1);
+
+ <span class="hljs-comment">//B</span>
+ StringBuffer sb2 = <span class="hljs-keyword">new</span> StringBuffer();
+ <span class="hljs-keyword">long</span> start2 = System.currentTimeMillis();
+ <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000000</span>; i++) {
+  sb2.append(i);
+ }
+ <span class="hljs-keyword">long</span> end2 = System.currentTimeMillis();
+ System.err.println(end2 - start2);
+
+ <span class="hljs-comment">/**
+  * Conclusion:
+  * StringBuilder faster than StringBuffer, cause the lock.
+  */</span>
+}
+</code></pre>
+<h3 id="object-oriented">Object-Oriented</h3>
+<p><strong>Encapsulation</strong></p>
+<ul>
+<li><p>The key to making encapsulation work is to have methods never directly access instance fields in a class other than their own. Programs should interact with object data only through the object&#x2019;s methods. </p>
+</li>
+<li><p>Encapsulation is the way to give an object its &#x201C;black box&#x201D; behavior, which is the key to reuse and reliability.</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Encapsulate</span> </span>{
+ <span class="hljs-keyword">private</span> String geekName;
+ <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> geekAge;
+
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getAge</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> geekAge;
+ }
+ <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> geekName;
+ }
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> newAge)</span> </span>{
+  geekAge = newAge;
+ }
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String newName)</span> </span>{
+  geekName = newName;
+ }
+}
+</code></pre>
+<ul>
+<li><p>These are obvious examples of accessor methods. As they simply return the values of instance fields, they are sometimes called field accessors.</p>
+</li>
+<li><p>Advantages of Encapsulation:</p>
+<ul>
+<li><strong>Data Hiding:</strong> The user will have no idea about the  inner implementation of the class. It will not be visible to the user  that how the class is storing values in the variables. He only knows  that we are passing the values to a setter method and variables are  getting initialized with that value.</li>
+<li><strong>Increased Flexibility:</strong> We can make the variables of  the class as read-only or write-only depending on our requirement. If  we wish to make the variables as read-only then we have to omit the  setter methods like setName(), setAge() etc. from the above program or  if we wish to make the variables as write-only then we have to omit the  get methods like getName(), getAge() etc. from the above program</li>
+<li><strong>Reusability:</strong> Encapsulation also improves the re-usability and easy to change with new requirements.</li>
+<li><strong>Testing code is easy:</strong> Encapsulated code is easy to test for unit testing.</li>
+</ul>
+</li>
+</ul>
 <p><strong>Inheritance</strong></p>
-<p>When you extend an existing class, the new class has all the properties and methods of the class that you extend. You then supply new methods and data fields that apply to your new class only. The concept of extending a class to obtain another class is called inheritance.</p>
+<ul>
+<li><p>When you extend an existing class, the new class has all the properties and methods of the class that you extend. You then supply new methods and data fields that apply to your new class only. The concept of extending a class to obtain another class is called inheritance.</p>
+</li>
+<li><p>Important terminology: </p>
+<ul>
+<li><strong>Super Class:</strong> The class whose features are inherited is known as super class(or a base class or a parent class).</li>
+<li><strong>Sub Class:</strong> The class that inherits the other class  is known as sub class(or a derived class, extended class, or child  class). The subclass can add its own fields and methods in addition to  the superclass fields and methods.</li>
+<li><strong>Reusability:</strong>  Inheritance supports the concept of  &#x201C;reusability&#x201D;, i.e. when we want to create a new class and there is  already a class that includes some of the code that we want, we can  derive our new class from the existing class. By doing this, we are  reusing the fields and methods of the existing class.</li>
+</ul>
+</li>
+<li><p>Example</p>
+<pre><code class="lang-java"><span class="hljs-comment">// base class </span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bicycle</span> </span>{
+ <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> gear;
+ <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> speed;
+
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Bicycle</span><span class="hljs-params">(<span class="hljs-keyword">int</span> gear, <span class="hljs-keyword">int</span> speed)</span> </span>{
+  <span class="hljs-keyword">this</span>.gear = gear;
+  <span class="hljs-keyword">this</span>.speed = speed;
+ }
+
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">applyBrake</span><span class="hljs-params">(<span class="hljs-keyword">int</span> decrement)</span> </span>{
+  speed -= decrement;
+ }
+
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">speedUp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> increment)</span> </span>{
+  speed += increment;
+ }
+
+ <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> (<span class="hljs-string">&quot;No of gears are &quot;</span> + gear +
+   <span class="hljs-string">&quot;\n&quot;</span> +
+   <span class="hljs-string">&quot;speed of bicycle is &quot;</span> + speed);
+ }
+}
+
+<span class="hljs-comment">// derived class </span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MountainBike</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Bicycle</span> </span>{
+ <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> seatHeight;
+
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MountainBike</span><span class="hljs-params">(<span class="hljs-keyword">int</span> gear, <span class="hljs-keyword">int</span> speed, <span class="hljs-keyword">int</span> startHeight)</span> </span>{
+  <span class="hljs-keyword">super</span>(gear, speed);
+  seatHeight = startHeight;
+ }
+
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setHeight</span><span class="hljs-params">(<span class="hljs-keyword">int</span> newValue)</span> </span>{
+  seatHeight = newValue;
+ }
+
+ <span class="hljs-meta">@Override</span>
+ <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> (<span class="hljs-keyword">super</span>.toString() +
+   <span class="hljs-string">&quot;\nseat height is &quot;</span> + seatHeight);
+ }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> </span>{
+  MountainBike mb = <span class="hljs-keyword">new</span> MountainBike(<span class="hljs-number">3</span>, <span class="hljs-number">100</span>, <span class="hljs-number">25</span>);
+  System.out.println(mb.toString());
+ }
+}
+</code></pre>
+</li>
+<li><p>Types of Inheritance in Java</p>
+<ul>
+<li><p>Single Inheritance</p>
+<p><img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance1.png"></p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">one</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_geek</span><span class="hljs-params">()</span> </span>{
+  System.out.println(<span class="hljs-string">&quot;Geeks&quot;</span>);
+ }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">two</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">one</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_for</span><span class="hljs-params">()</span> </span>{
+  System.out.println(<span class="hljs-string">&quot;for&quot;</span>);
+ }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+  two g = <span class="hljs-keyword">new</span> two();
+  g.print_geek();
+  g.print_for();
+  g.print_geek();
+ }
+}
+</code></pre>
+</li>
+<li><p>Multilevel Inheritance</p>
+<p><img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance3.png"></p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">one</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_geek</span><span class="hljs-params">()</span> </span>{
+  System.out.println(<span class="hljs-string">&quot;Geeks1&quot;</span>);
+ }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">two</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">one</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_for</span><span class="hljs-params">()</span> </span>{
+  System.out.println(<span class="hljs-string">&quot;for&quot;</span>);
+ }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">three</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">two</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_geek</span><span class="hljs-params">()</span> </span>{
+  System.out.println(<span class="hljs-string">&quot;Geeks2&quot;</span>);
+ }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+  three g = <span class="hljs-keyword">new</span> three();
+  g.print_geek();
+  g.print_for();
+  g.print_geek();
+ }
+}
+</code></pre>
+</li>
+<li><p>Hierarchical Inheritance</p>
+<p><img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance4.png"></p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">one</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_geek</span><span class="hljs-params">()</span> </span>{
+  System.out.println(<span class="hljs-string">&quot;Geeks&quot;</span>);
+ }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">two</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">one</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_for</span><span class="hljs-params">()</span> </span>{
+  System.out.println(<span class="hljs-string">&quot;for&quot;</span>);
+ }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">three</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">one</span> </span>{
+ <span class="hljs-comment">/*............*/</span>
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+  three g = <span class="hljs-keyword">new</span> three();
+  g.print_geek();
+  two t = <span class="hljs-keyword">new</span> two();
+  t.print_for();
+  g.print_geek();
+ }
+}
+</code></pre>
+</li>
+<li><p>Multiple Inheritance (Through Interfaces)</p>
+<p><img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance2-1.png"></p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">one</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_geek</span><span class="hljs-params">()</span></span>;
+}
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">two</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_for</span><span class="hljs-params">()</span></span>;
+}
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">three</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">one</span>, <span class="hljs-title">two</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_geek</span><span class="hljs-params">()</span></span>;
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">child</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">three</span> </span>{
+ <span class="hljs-meta">@Override</span>
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_geek</span><span class="hljs-params">()</span> </span>{
+  System.out.println(<span class="hljs-string">&quot;Geeks&quot;</span>);
+ }
+
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print_for</span><span class="hljs-params">()</span> </span>{
+  System.out.println(<span class="hljs-string">&quot;for&quot;</span>);
+ }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+  child c = <span class="hljs-keyword">new</span> child();
+  c.print_geek();
+  c.print_for();
+  c.print_geek();
+ }
+}
+</code></pre>
+</li>
+<li><p>Hybrid Inheritance(Through Interfaces)</p>
+<p><img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/inheritance-1.png"></p>
+</li>
+</ul>
+</li>
+</ul>
 <p><strong>Relationships between Classes</strong></p>
 <ul>
-<li>Dependence (&#x201C;uses&#x2013;a&#x201D;)</li>
-</ul>
-<p>For example, the Order class uses the Account class because Order objects need to access Account objects to check for credit status. But the Item class does not depend on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate objects of that class. </p>
+<li><p>Dependence (&#x201C;uses&#x2013;a&#x201D;)</p>
 <ul>
-<li>Aggregation (&#x201C;has&#x2013;a&#x201D;)</li>
+<li>For example, the Order class uses the Account class because Order objects need to access Account objects to check for credit status. But the Item class does not depend on the Account class, because Item objects never need to worry about customer accounts. Thus, a class depends on another class if its methods use or manipulate objects of that class. </li>
 </ul>
-<p>The aggregation, or &#x201C;has&#x2013;a&#x201D; relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that objects of class A contain objects of class B.</p>
+</li>
+<li><p>Aggregation (&#x201C;has&#x2013;a&#x201D;)</p>
 <ul>
-<li>Inheritance (&#x201C;is&#x2013;a&#x201D;) </li>
+<li>The aggregation, or &#x201C;has&#x2013;a&#x201D; relationship, is easy to understand because it is concrete; for example, an Order object contains Item objects. Containment means that objects of class A contain objects of class B.</li>
 </ul>
-<p>The inheritance, or &#x201C;is&#x2013;a&#x201D; relationship, expresses a relationship between a more special and a more general class. For example, a RushOrder class inherits from an Order class. The specialized RushOrder class has special methods for priority handling and a different method for computing shipping charges, but its other methods, such as adding items and billing, are inherited from the Order class. In general, if class A extends class B, class A inherits methods from class B but has more capabilities.</p>
+</li>
+<li><p>Inheritance (&#x201C;is&#x2013;a&#x201D;) </p>
+<ul>
+<li>The inheritance, or &#x201C;is&#x2013;a&#x201D; relationship, expresses a relationship between a more special and a more general class. For example, a RushOrder class inherits from an Order class. The specialized RushOrder class has special methods for priority handling and a different method for computing shipping charges, but its other methods, such as adding items and billing, are inherited from the Order class. In general, if class A extends class B, class A inherits methods from class B but has more capabilities.</li>
+</ul>
+</li>
+</ul>
 <p><img src="../img/UML notation for class relationships.png" alt="UML notation for class relationships"></p>
-<h3 id="construct">Construct</h3>
+<p><strong>Polymorphism</strong></p>
+<ul>
+<li><p>The &#x201C;is&#x2013;a&#x201D; rule states that every object of the subclass is an object of the superclass. For example, every manager is an employee. Thus, it makes sense for the Manager class to be a subclass of the Employee class. Naturally, the opposite is not true&#x2014;not every employee is a manager. </p>
+</li>
+<li><p>In the Java programming language, object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on). </p>
+<pre><code class="lang-java">Employee e;
+e = <span class="hljs-keyword">new</span> Employee(. . .); <span class="hljs-comment">// Employee object expected</span>
+e = <span class="hljs-keyword">new</span> Manager(. . .); <span class="hljs-comment">// OK, Manager can be used as well</span>
+</code></pre>
+</li>
+<li><p>In this case, the variables staff[0] and boss refer to the same object. However, staff[0] is considered to be only an Employee object by the compiler </p>
+<pre><code class="lang-java">Manager boss = <span class="hljs-keyword">new</span> Manager(. . .);
+Employee[] staff = <span class="hljs-keyword">new</span> Employee[<span class="hljs-number">3</span>];
+staff[<span class="hljs-number">0</span>] = boss;
+
+boss.setBonus(<span class="hljs-number">5000</span>); <span class="hljs-comment">// OK</span>
+<span class="hljs-comment">//The declared type of staff[0] is Employee, and the setBonus method is not a method of the Employee class.</span>
+staff[<span class="hljs-number">0</span>].setBonus(<span class="hljs-number">5000</span>); <span class="hljs-comment">// Error</span>
+</code></pre>
+</li>
+<li><p>However, you cannot assign a superclass reference to a subclass variable. The reason is clear: Not all employees are managers. </p>
+<pre><code class="lang-java">Manager m = staff[i]; <span class="hljs-comment">// Error</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="constructor">Constructor</h3>
 <ul>
 <li><p>To work with objects, you first construct them and specify their initial state. Then you apply methods to the objects.</p>
 </li>
@@ -467,45 +746,66 @@
 <li>A constructor has no return value.</li>
 <li>A constructor is always called with the new operator. </li>
 </ul>
-<p><strong>Final Instance Fields</strong></p>
-<p>You can define an instance field as final. Such a field must be initialized when the object is constructed. That is, you must guarantee that the field value has been set after the end of every constructor. Afterwards, the field may not be modified again.</p>
-<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span>
-</span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String name;
-    . . .
-}
-</code></pre>
-<h3 id="static-field-and-methods">Static Field and Methods</h3>
-<p><strong>Static Fields</strong></p>
-<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span>
-</span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> nextId = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
-    . . .
-}
-</code></pre>
-<p>Every employee object now has its own id field, but there is only one nextId field that is shared among all instances of the class. Let&#x2019;s put it another way. If there are 1,000 objects of the Employee class, then there are 1,000 instance fields id, one for each object. But there is a single static field nextId. Even if there are no employee objects, the static field nextId is present. It belongs to the class, not to any individual object.</p>
-<p><strong>Static Constants</strong></p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Math</span>
-</span>{
-    . . .
-        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">double</span> PI = <span class="hljs-number">3.14159265358979323846</span>;
-    . . .
-}
-</code></pre>
-<p>If the keyword static had been omitted, then PI would have been an instance field of the Math class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.</p>
-<p><strong>Static Methods</strong></p>
-<p>You can think of static methods as methods that don&#x2019;t have a this parameter.</p>
-<p>A static method of the Employee class cannot access the id instance field because it does not operate on an object. However, a static method can access a static field.</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getNextId</span><span class="hljs-params">()</span>
-</span>{
-    <span class="hljs-keyword">return</span> nextId; <span class="hljs-comment">// returns static field</span>
-}
-</code></pre>
-<p>Use static methods in two situations:</p>
+<h3 id="final">Final</h3>
 <ul>
+<li><p>You can define an instance field as final. Such a field must be initialized when the object is constructed. That is, you must guarantee that the field value has been set after the end of every constructor. Afterwards, the field may not be modified again.</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> </span>{
+ <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String name;
+}
+</code></pre>
+</li>
+<li><p>Occasionally, you want to prevent someone from forming a subclass from one of your classes. Classes that cannot be extended are called fnal classes, and you use the final modifer in the defnition of the class to indicate this. </p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Executive</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Manager</span></span>{
+}
+</code></pre>
+</li>
+<li><p>You can also make a specifc method in a class final. If you do this, then no subclass can override that method. (All methods in a final class are automatically final.) </p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> </span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> name;
+ }
+}
+</code></pre>
+</li>
+<li><p>Recall that fields can also be declared as final. A final field cannot be changed after the object has been constructed. However, if a class is declared final, only the methods, not the fields, are automatically final. </p>
+</li>
+<li><p>Fortunately, the just-in-time compiler in the virtual machine can do a better job than a traditional compiler. It knows exactly which classes extend a given class, and it can check whether any class actually overrides a given method. If a method is short, frequently called, and not actually overridden, the just-in-time compiler can inline the method. </p>
+</li>
+</ul>
+<h3 id="static">Static</h3>
+<p><strong>Static Fields</strong></p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> </span>{
+ <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> nextId = <span class="hljs-number">1</span>;
+ <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
+ ...
+}
+</code></pre>
+<ul>
+<li>Every employee object now has its own id field, but there is only one nextId field that is shared among all instances of the class. Let&#x2019;s put it another way. If there are 1,000 objects of the Employee class, then there are 1,000 instance fields id, one for each object. But there is a single static field nextId. Even if there are no employee objects, the static field nextId is present. It belongs to the class, not to any individual object.</li>
+</ul>
+<p><strong>Static Constants</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Math</span> </span>{
+ <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">double</span> PI = <span class="hljs-number">3.14159265358979323846</span>;
+}
+</code></pre>
+<ul>
+<li>If the keyword static had been omitted, then PI would have been an instance field of the Math class. That is, you would need an object of this class to access PI, and every Math object would have its own copy of PI.</li>
+</ul>
+<p><strong>Static Methods</strong></p>
+<ul>
+<li>You can think of static methods as methods that don&#x2019;t have a this parameter.</li>
+<li>A static method of the Employee class cannot access the id instance field because it does not operate on an object. However, a static method can access a static field.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getNextId</span><span class="hljs-params">()</span> </span>{
+ <span class="hljs-keyword">return</span> nextId; <span class="hljs-comment">// returns static field</span>
+}
+</code></pre>
+<ul>
+<li>Use static methods in two situations:<ul>
 <li>When a method doesn&#x2019;t need to access the object state because all needed parameters are supplied as explicit parameters (example: Math.pow).</li>
 <li>When a method only needs to access static fields of the class (example: Employee.getNextId).</li>
+</ul>
+</li>
 </ul>
 <h3 id="object-construction">Object Construction</h3>
 <p><strong>Overloading</strong></p>
@@ -516,52 +816,52 @@ Alternatively, you can specify an initial string:
 <p><strong>Default Field Initialization</strong></p>
 <p>If you don&#x2019;t set a field explicitly in a constructor, it is automatically set to a default value: numbers to 0, boolean values to false, and object references to null.</p>
 <h3 id="packages">Packages</h3>
-<p>Java allows you to group classes in a collection called a package. Packages are convenient for organizing your work and for separating your work from code libraries provided by others. </p>
-<p>The main reason for using packages is to guarantee the uniqueness of class names. </p>
-<p>As long as both of them place their class into different packages, there is no con&#xFB02;ict. In fact, to absolutely guarantee a unique package name, use an Internet domain name (which is known to be unique) written in reverse. </p>
+<ul>
+<li>Java allows you to group classes in a collection called a package. Packages are convenient for organizing your work and for separating your work from code libraries provided by others. </li>
+<li><p>The main reason for using packages is to guarantee the uniqueness of class names. </p>
+</li>
+<li><p>As long as both of them place their class into different packages, there is no con&#xFB02;ict. In fact, to absolutely guarantee a unique package name, use an Internet domain name (which is known to be unique) written in reverse. </p>
+</li>
+</ul>
 <p><strong>Class Importation</strong></p>
-<p>A class can use all classes from its own package and all public classes from other packages. </p>
-<p>Locating classes in packages is an activity of the compiler. The bytecodes in class files always use full package names to refer to other classes. </p>
+<ul>
+<li><p>A class can use all classes from its own package and all public classes from other packages. </p>
+</li>
+<li><p>Locating classes in packages is an activity of the compiler. The bytecodes in class files always use full package names to refer to other classes. </p>
+</li>
+</ul>
 <p><strong>Static Imports</strong></p>
-<p>A form of the import statement permits the importing of static methods and fields, not just classes. </p>
+<ul>
+<li><p>A form of the import statement permits the importing of static methods and fields, not just classes. </p>
 <pre><code class="lang-java"><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.lang.System.*;
 
-out.println(<span class="hljs-string">&quot;Goodbye, World!&quot;</span>); <span class="hljs-comment">// i.e., System.out</span>
-exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., System.exit</span>
+out.println(<span class="hljs-string">&quot;Goodbye, World!&quot;</span>); <span class="hljs-comment">// i.e. System.out</span>
+exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e. System.exit</span>
 </code></pre>
-<p><strong>Package Scope</strong></p>
-<p>If you don&#x2019;t specify either public or private, the feature (that is, the class, method, or variable) can be accessed by all methods in the same package. </p>
-<h3 id="class-design-hints">Class Design Hints</h3>
-<ul>
-<li>Always keep data private. </li>
-<li>Always initialize data. </li>
-<li>Don&#x2019;t use too many basic types in a class. </li>
-<li>Not all fields need individual field accessors and mutators. </li>
-<li>Make the names of your classes and methods re&#xFB02;ect their responsibilities. </li>
-<li>Prefer immutable classes</li>
+</li>
 </ul>
-<h3 id="classes-superclasses-and-subclasses">Classes, Superclasses, and Subclasses</h3>
-<p><strong>Defining Subclasses</strong></p>
+<p><strong>Package Scope</strong></p>
 <ul>
-<li><p>Here is how you defne a Manager class that inherits from the Employee class. Use the Java keyword extends to denote inheritance. </p>
-<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>{
-      added methods and fields
-  }
-</code></pre>
-</li>
-<li><p>The keyword extends indicates that you are making a new class that derives from an existing class. The existing class is called the superclass, base class, or parent class. The new class is called the subclass, derived class, or child class. </p>
-</li>
-<li><p>Subclasses have more functionality than their superclasses.  The Manager class encapsulates more data and has more functionality than its superclass Employee. </p>
-</li>
+<li>If you don&#x2019;t specify either public or private, the feature (that is, the class, method, or variable) can be accessed by all methods in the same package. </li>
+</ul>
+<h3 id="class">Class</h3>
+<p><strong>Class Design Hints</strong></p>
+<ul>
+<li>Always keep data private</li>
+<li>Always initialize data</li>
+<li>Don&#x2019;t use too many basic types in a class</li>
+<li>Not all fields need individual field accessors and mutators</li>
+<li>Make the names of your classes and methods re&#xFB02;ect their responsibilities</li>
+<li>Prefer immutable classes</li>
 </ul>
 <p><strong>Overriding Methods</strong></p>
 <ul>
 <li><p>Some of the superclass methods are not appropriate for the Manager subclass. In particular, the getSalary method should return the sum of the base salary and the bonus. You need to supply a new method to override the superclass method: </p>
-<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>{
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span>{
-          <span class="hljs-keyword">double</span> baseSalary = <span class="hljs-keyword">super</span>.getSalary();
-          <span class="hljs-keyword">return</span> baseSalary + bonus;
-      }
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span> </span>{
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">double</span> baseSalary = <span class="hljs-keyword">super</span>.getSalary();
+    <span class="hljs-keyword">return</span> baseSalary + bonus;
+   }
   }
 </code></pre>
 </li>
@@ -571,190 +871,66 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
 <p><strong>Subclass Constructors</strong></p>
 <ul>
 <li><p>Here, the keyword super has a different meaning. The instruction is shorthand for &#x201C;call the constructor of the Employee superclass with n, s, year, month, and day as parameters.&#x201D; </p>
-<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>{
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Manager</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary, <span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> day)</span></span>{
-          <span class="hljs-keyword">super</span>(name, salary, year, month, day);
-          bonus = <span class="hljs-number">0</span>;
-      }
+<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span> </span>{
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Manager</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary, <span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> day)</span> </span>{
+    <span class="hljs-keyword">super</span>(name, salary, year, month, day);
+    bonus = <span class="hljs-number">0</span>;
+   }
   }
 </code></pre>
 </li>
-<li><p>Since the Manager constructor cannot access the private fields of the Employee class, it must initialize them through a constructor. The constructor is invoked with the special super syntax. The call using super must be the frst statement in the constructor for the subclass. </p>
+<li><p>Since the Manager constructor cannot access the private fields of the Employee class, it must initialize them through a constructor. The constructor is invoked with the special super syntax. The call using super must be the first statement in the constructor for the subclass. </p>
 </li>
 <li><p>If the subclass constructor does not call a superclass constructor explicitly, the no-argument constructor of the superclass is invoked. </p>
 </li>
 <li>If the superclass does not have a no-argument constructor and the subclass constructor does not call another superclass constructor explicitly, the Java compiler reports an error. </li>
 <li>Recall that the this keyword has two meanings: to denote a reference to the implicit parameter and to call another constructor of the same class. Likewise, the super keyword has two meanings: to invoke a superclass method and to invoke a superclass constructor.  </li>
 </ul>
-<p><strong>Inheritance Hierarchies</strong></p>
-<ul>
-<li>Inheritance need not stop at deriving one layer of classes. We could have an Executive class that extends Manager, for example. The collection of all classes extending a common superclass is called an inheritance hierarchy </li>
-<li>The path from a particular class to its ancestors in the inheritance hierarchy is its inheritance chain. </li>
-</ul>
-<p><img src="../img/Employee inheritance hierarchy.png" alt="Employee inheritance hierarchy"></p>
-<p><strong>Polymorphism</strong></p>
-<ul>
-<li>The &#x201C;is&#x2013;a&#x201D; rule states that every object of the subclass is an object of the superclass. For example, every manager is an employee. Thus, it makes sense for the Manager class to be a subclass of the Employee class. Naturally, the opposite is not true&#x2014;not every employee is a manager. </li>
-<li><p>Another way of formulating the &#x201C;is&#x2013;a&#x201D; rule is the substitution principle. That principle states that you can use a subclass object whenever the program expects a superclass object. </p>
-<pre><code class="lang-java">  Employee e;
-  e = <span class="hljs-keyword">new</span> Employee(. . .); <span class="hljs-comment">// Employee object expected</span>
-  e = <span class="hljs-keyword">new</span> Manager(. . .); <span class="hljs-comment">// OK, Manager can be used as well</span>
-</code></pre>
-</li>
-<li><p>In the Java programming language, object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of any subclass of the Employee class (such as Manager, Executive, Secretary, and so on). </p>
-</li>
-<li><p>In this case, the variables staff[0] and boss refer to the same object. However, staff[0] is considered to be only an Employee object by the compiler </p>
-<pre><code class="lang-java">  Manager boss = <span class="hljs-keyword">new</span> Manager(. . .);
-  Employee[] staff = <span class="hljs-keyword">new</span> Employee[<span class="hljs-number">3</span>];
-  staff[<span class="hljs-number">0</span>] = boss;
-
-  boss.setBonus(<span class="hljs-number">5000</span>); <span class="hljs-comment">// OK</span>
-  <span class="hljs-comment">//The declared type of staff[0] is Employee, and the setBonus method is not a method of the Employee class.</span>
-  staff[<span class="hljs-number">0</span>].setBonus(<span class="hljs-number">5000</span>); <span class="hljs-comment">// Error</span>
-</code></pre>
-</li>
-<li><p>However, you cannot assign a superclass reference to a subclass variable. The reason is clear: Not all employees are managers. </p>
-<pre><code class="lang-java">  Manager m = staff[i]; <span class="hljs-comment">// Error</span>
-</code></pre>
-</li>
-</ul>
-<p><strong>Understanding Method Calls</strong></p>
-<ol>
-<li><p>The compiler looks at the declared type of the object and the method name. Note that there may be multiple methods, all with the same name, f, but with different parameter types. For example, there may be a method f(int) and a method f(String). The compiler enumerates all methods called f in the class C and all accessible methods called f in the superclasses of C. (Private methods of the superclass are not accessible.) Now the compiler knows all possible candidates for the method to be called.</p>
-</li>
-<li><p>Next, the compiler determines the types of the arguments that are supplied in the method call. If among all the methods called f there is a unique method whose parameter types are a best match for the supplied arguments, that method is chosen to be called. This process is called overloading resolution. For example, in a call x.f(&quot;Hello&quot;), the compiler picks f(String) and not f(int). The situation can get complex because of type conversions (int to double, Manager to Employee, and so on). If the compiler cannot fnd any method with matching parameter types or if multiple methods all match after applying conversions, the compiler reports an error. Now the compiler knows the name and parameter types of the method that needs to be called. </p>
-</li>
-<li><p>If the method is private, static, final, or a constructor, then the compiler knows exactly which method to call. (The final modifer is explained in the next section.) This is called static binding. Otherwise, the method to be called depends on the actual type of the implicit parameter, and dynamic binding must be used at runtime. In our example, the compiler would generate an instruction to call f(String) with dynamic binding. </p>
-</li>
-<li><p>When the program runs and uses dynamic binding to call a method, the virtual machine must call the version of the method that is appropriate for the actual type of the object to which x refers. Let&#x2019;s say the actual type is D, a subclass of C. If the class D defnes a method f(String), that method is called. If not, D&#x2019;s superclass is searched for a method f(String), and so on.</p>
-</li>
-<li><p>It would be time consuming to carry out this search every time a method is called. Therefore, the virtual machine precomputes for each class a method table that lists all method signatures and the actual methods to be called. When a method is actually called, the virtual machine simply makes a table lookup. In our example, the virtual machine consults the method table for the class D and looks up the method to call for f(String). That method may be D.f(String) or X.f(String), where X is some superclass of D. There is one twist to this scenario. If the call is super.f(param), then the compiler consults the method table of the superclass of the implicit parameter. </p>
-</li>
-</ol>
-<ul>
-<li><p>The getSalary method is not private, static, or final, so it is dynamically bound. The virtual machine produces method tables for the Employee and Manager classes. The Employeetable shows that all methods are defned in the Employee class itself:</p>
-<pre><code>  Employee:
-  getName() -&gt; Employee.getName()
-  getSalary() -&gt; Employee.getSalary()
-  getHireDay() -&gt; Employee.getHireDay()
-  raiseSalary(double) -&gt; Employee.raiseSalary(double)
-</code></pre></li>
-</ul>
-<ul>
-<li><p>The Manager method table is slightly different. Three methods are inherited, one method is redefned, and one method is added. </p>
-<pre><code>  Manager:
-  getName() -&gt; Employee.getName()
-  getSalary() -&gt; Manager.getSalary()
-  getHireDay() -&gt; Employee.getHireDay()
-  raiseSalary(double) -&gt; Employee.raiseSalary(double)
-  setBonus(double) -&gt; Manager.setBonus(double)
-</code></pre></li>
-</ul>
-<ul>
-<li>Dynamic binding has a very important property: It makes programs extensible without the need for modifying existing code. Suppose a new class Executive is added and there is the possibility that the variable e refers to an object of that class. The code containing the call e.getSalary() need not be recompiled. The Executive.getSalary() method is called automatically if e happens to refer to an object of type Executive. </li>
-</ul>
-<ul>
-<li>When you override a method, the subclass method must be at least as visible as the superclass method. In particular, if the superclass method is public, the subclass method must also be declared public. It is a common error to accidentally omit the public specifer for the subclass method. The compiler then complains that you try to supply a more restrictive access privilege. </li>
-</ul>
-<p><strong>Preventing Inheritance: Final Classes and Methods</strong></p>
-<ul>
-<li><p>Occasionally, you want to prevent someone from forming a subclass from one of your classes. Classes that cannot be extended are called fnal classes, and you use the final modifer in the defnition of the class to indicate this. </p>
-<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Executive</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Manager</span></span>{
-
-  }
-</code></pre>
-</li>
-</ul>
-<ul>
-<li><p>You can also make a specifc method in a class final. If you do this, then no subclass can override that method. (All methods in a final class are automatically final.) </p>
-<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>{
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>{
-          <span class="hljs-keyword">return</span> name;
-      }
-  }
-</code></pre>
-</li>
-</ul>
-<ul>
-<li>Recall that fields can also be declared as final. A final field cannot be changed after the object has been constructed. However, if a class is declared final, only the methods, not the fields, are automatically final. </li>
-</ul>
-<ul>
-<li>Fortunately, the just-in-time compiler in the virtual machine can do a better job than a traditional compiler. It knows exactly which classes extend a given class, and it can check whether any class actually overrides a given method. If a method is short, frequently called, and not actually overridden, the just-in-time compiler can inline the method. </li>
-</ul>
-<p><strong>Casting</strong></p>
-<ul>
-<li><p>The process of forcing a conversion from one type to another is called casting. </p>
-<pre><code class="lang-java">  <span class="hljs-keyword">double</span> x = <span class="hljs-number">3.405</span>;
-  <span class="hljs-keyword">int</span> nx = (<span class="hljs-keyword">int</span>) x;
-</code></pre>
-</li>
-</ul>
-<ul>
-<li><p>The compiler checks that you do not promise too much when you store a value in a variable. If you assign a subclass reference to a superclass variable, you are promising less, and the compiler will simply let you do it. If you assign a superclass reference to a subclass variable, you are promising more. Then you must use a cast so that your promise can be checked at runtime </p>
-<pre><code class="lang-java">  Manager boss = (Manager) staff[<span class="hljs-number">0</span>];
-</code></pre>
-</li>
-<li><p>Thus, it is good programming practice to fnd out whether a cast will succeed before attempting it. </p>
-<pre><code class="lang-java">  <span class="hljs-keyword">if</span> (staff[<span class="hljs-number">1</span>] <span class="hljs-keyword">instanceof</span> Manager){
-      boss = (Manager) staff[<span class="hljs-number">1</span>];
-  }
-</code></pre>
-</li>
-</ul>
-<ul>
-<li>You can cast only within an inheritance hierarchy.</li>
-<li>Use instanceof to check before casting from a superclass to a subclass. </li>
-<li>The only reason to make the cast is to use a method that is unique to managers, such as setBonus. </li>
-</ul>
 <p><strong>Abstract Classes</strong></p>
 <ul>
-<li><p>As you move up the inheritance hierarchy, classes become more general and probably more abstract. At some point, the ancestor class becomes so general that you think of it more as a basis for other classes than as a class with specifc instances you want to use. Consider, for example, an extension of our Employee class hierarchy. An employee is a person, and so is a student. Let us extend our class hierarchy to include classes Person and Student. </p>
-</li>
-<li><p>Why bother with so high a level of abstraction? There are some attributes that make sense for every person, such as name. Both students and employees have names, and introducing a common superclass lets us factor out the getName method to a higher level in the inheritance hierarchy </p>
-</li>
+<li>As you move up the inheritance hierarchy, classes become more general and probably more abstract. At some point, the ancestor class becomes so general that you think of it more as a basis for other classes than as a class with specifc instances you want to use. Consider, for example, an extension of our Employee class hierarchy. An employee is a person, and so is a student. Let us extend our class hierarchy to include classes Person and Student. </li>
+<li>Why bother with so high a level of abstraction? There are some attributes that make sense for every person, such as name. Both students and employees have names, and introducing a common superclass lets us factor out the getName method to a higher level in the inheritance hierarchy </li>
 </ul>
-<p><img src="../img/Inheritance diagram for Person and its subclasses.png" alt="Inheritance diagram for Person and its subclasses"></p>
+<p><img src="../img/Inheritance%20diagram%20for%20Person%20and%20its%20subclasses.png" alt="Inheritance diagram for Person and its subclasses"></p>
 <ul>
 <li><p>If you use the abstract keyword, you do not need to implement the method at all. </p>
-<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>{
-      <span class="hljs-comment">// no implementation required</span>
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">getDescription</span><span class="hljs-params">()</span></span>;
-  }
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>{
+    <span class="hljs-comment">// no implementation required</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">getDescription</span><span class="hljs-params">()</span></span>;
+}
 </code></pre>
 </li>
 <li><p>In addition to abstract methods, abstract classes can have fields and concrete methods.  </p>
-<pre><code class="lang-java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>{
-      <span class="hljs-keyword">private</span> String name;
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(String name)</span></span>{
-          <span class="hljs-keyword">this</span>.name = name;
-      }
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">getDescription</span><span class="hljs-params">()</span></span>;
-      <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>{
-          <span class="hljs-keyword">return</span> name;
-      }
-  }
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>{
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(String name)</span></span>{
+        <span class="hljs-keyword">this</span>.name = name;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">getDescription</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">return</span> name;
+    }
+}
 </code></pre>
 </li>
-</ul>
-<ul>
-<li>Abstract methods act as placeholders for methods that are implemented in the subclasses. When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods undefned; then you must tag the subclass as abstract as well. Or you can defne all methods, and the subclass is no longer abstract. </li>
-<li>Abstract classes cannot be instantiated. That is, if a class is declared as abstract, no objects of that class can be created. </li>
+<li><p>Abstract methods act as placeholders for methods that are implemented in the subclasses. When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods undefined; then you must tag the subclass as abstract as well. Or you can defne all methods, and the subclass is no longer abstract. </p>
+</li>
+<li><p>Abstract classes cannot be instantiated. That is, if a class is declared as abstract, no objects of that class can be created. </p>
+</li>
 <li><p>Note that you can still create object variables of an abstract class, but such a variable must refer to an object of a nonabstract subclass. For example: </p>
-<pre><code class="lang-java">  Person p = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;Vince Vu&quot;</span>, <span class="hljs-string">&quot;Economics&quot;</span>);
+<pre><code class="lang-java">Person p = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;Vince Vu&quot;</span>, <span class="hljs-string">&quot;Economics&quot;</span>);
 </code></pre>
 </li>
 <li><p>Keep in mind that the variable p never refers to a Person object because it is impossible to construct an object of the abstract Person class. </p>
-<pre><code class="lang-java">  Person p = <span class="hljs-keyword">new</span> Student(. . .);
-  p.getDescription()
+<pre><code class="lang-java">Person p = <span class="hljs-keyword">new</span> Student(. . .);
+p.getDescription()
 </code></pre>
 </li>
 </ul>
 <p><strong>Protected Acess</strong></p>
 <ul>
-<li><p>As you know, fields in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won&#x2019;t be visible to other classes. </p>
-</li>
-<li><p>Protected methods make more sense. A class may declare a method as protected if it is tricky to use. This indicates that the subclasses (which, presumably, know their ancestor well) can be trusted to use the method correctly, but other classes cannot. </p>
-</li>
+<li>As you know, fields in a class are best tagged as private, and methods are usually tagged as public. Any features declared private won&#x2019;t be visible to other classes. </li>
+<li>Protected methods make more sense. A class may declare a method as protected if it is tricky to use. This indicates that the subclasses (which, presumably, know their ancestor well) can be trusted to use the method correctly, but other classes cannot. </li>
 <li>The four access modifers in Java that control visibility: <ul>
 <li>Visible to the class only (private).</li>
 <li>Visible to the world (public).</li>
@@ -763,7 +939,60 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
 </ul>
 </li>
 </ul>
-<h3 id="object-the-cosmic-superclass">Object: The Cosmic Superclass</h3>
+<h3 id="method">Method</h3>
+<ol>
+<li>The compiler looks at the declared type of the object and the method name. Note that there may be multiple methods, all with the same name, f, but with different parameter types. For example, there may be a method f(int) and a method f(String). The compiler enumerates all methods called f in the class C and all accessible methods called f in the superclasses of C. (Private methods of the superclass are not accessible.) Now the compiler knows all possible candidates for the method to be called.</li>
+<li>Next, the compiler determines the types of the arguments that are supplied in the method call. If among all the methods called f there is a unique method whose parameter types are a best match for the supplied arguments, that method is chosen to be called. This process is called overloading resolution. For example, in a call x.f(&quot;Hello&quot;), the compiler picks f(String) and not f(int). The situation can get complex because of type conversions (int to double, Manager to Employee, and so on). If the compiler cannot find any method with matching parameter types or if multiple methods all match after applying conversions, the compiler reports an error. Now the compiler knows the name and parameter types of the method that needs to be called. </li>
+<li>If the method is private, static, final, or a constructor, then the compiler knows exactly which method to call. (The final modifer is explained in the next section.) This is called static binding. Otherwise, the method to be called depends on the actual type of the implicit parameter, and dynamic binding must be used at runtime. In our example, the compiler would generate an instruction to call f(String) with dynamic binding. </li>
+<li>When the program runs and uses dynamic binding to call a method, the virtual machine must call the version of the method that is appropriate for the actual type of the object to which x refers. Let&#x2019;s say the actual type is D, a subclass of C. If the class D defnes a method f(String), that method is called. If not, D&#x2019;s superclass is searched for a method f(String), and so on.</li>
+</ol>
+<ul>
+<li>It would be time consuming to carry out this search every time a method is called. Therefore, the virtual machine precomputes for each class a method table that lists all method signatures and the actual methods to be called. When a method is actually called, the virtual machine simply makes a table lookup. In our example, the virtual machine consults the method table for the class D and looks up the method to call for f(String). That method may be D.f(String) or X.f(String), where X is some superclass of D. There is one twist to this scenario. If the call is super.f(param), then the compiler consults the method table of the superclass of the implicit parameter. </li>
+</ul>
+<ul>
+<li><p>The getSalary method is not private, static, or final, so it is dynamically bound. The virtual machine produces method tables for the Employee and Manager classes. The Employeetable shows that all methods are defined in the Employee class itself:</p>
+<pre><code>  Employee:
+  getName() -&gt; Employee.getName()
+  getSalary() -&gt; Employee.getSalary()
+  getHireDay() -&gt; Employee.getHireDay()
+  raiseSalary(double) -&gt; Employee.raiseSalary(double)
+</code></pre></li>
+<li><p>The Manager method table is slightly different. Three methods are inherited, one method is redefined, and one method is added. </p>
+<pre><code>  Manager:
+  getName() -&gt; Employee.getName()
+  getSalary() -&gt; Manager.getSalary()
+  getHireDay() -&gt; Employee.getHireDay()
+  raiseSalary(double) -&gt; Employee.raiseSalary(double)
+  setBonus(double) -&gt; Manager.setBonus(double)
+</code></pre></li>
+<li><p>Dynamic binding has a very important property: It makes programs extensible without the need for modifying existing code. Suppose a new class Executive is added and there is the possibility that the variable e refers to an object of that class. The code containing the call e.getSalary() need not be recompiled. The Executive.getSalary() method is called automatically if e happens to refer to an object of type Executive. </p>
+</li>
+<li><p>When you override a method, the subclass method must be at least as visible as the superclass method. In particular, if the superclass method is public, the subclass method must also be declared public. It is a common error to accidentally omit the public specifer for the subclass method. The compiler then complains that you try to supply a more restrictive access privilege. </p>
+</li>
+</ul>
+<h3 id="casting">Casting</h3>
+<ul>
+<li><p>The process of forcing a conversion from one type to another is called casting. </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">double</span> x = <span class="hljs-number">3.405</span>;
+  <span class="hljs-keyword">int</span> nx = (<span class="hljs-keyword">int</span>) x;
+</code></pre>
+</li>
+<li><p>The compiler checks that you do not promise too much when you store a value in a variable. If you assign a subclass reference to a superclass variable, you are promising less, and the compiler will simply let you do it. If you assign a superclass reference to a subclass variable, you are promising more. Then you must use a cast so that your promise can be checked at runtime </p>
+<pre><code class="lang-java">  Manager boss = (Manager) staff[<span class="hljs-number">0</span>];
+</code></pre>
+</li>
+<li><p>Thus, it is good programming practice to find out whether a cast will succeed before attempting it. </p>
+<pre><code class="lang-java">  <span class="hljs-keyword">if</span> (staff[<span class="hljs-number">1</span>] <span class="hljs-keyword">instanceof</span> Manager){
+      boss = (Manager) staff[<span class="hljs-number">1</span>];
+  }
+</code></pre>
+</li>
+<li><p>You can cast only within an inheritance hierarchy.</p>
+</li>
+<li>Use instanceof to check before casting from a superclass to a subclass. </li>
+<li>The only reason to make the cast is to use a method that is unique to managers, such as setBonus. </li>
+</ul>
+<h3 id="object-method">Object Method</h3>
 <ul>
 <li>The Object class is the ultimate ancestor&#x2014;every class in Java extends Object. </li>
 <li>In Java, only the values of primitive types (numbers, characters, and boolean values) are not objects. </li>
@@ -835,22 +1064,19 @@ exit(<span class="hljs-number">0</span>); <span class="hljs-comment">// i.e., Sy
 <ul>
 <li><p>A hash code is an integer that is derived from an object. </p>
 </li>
-<li><p>The hashCode method is defned in the Object class. Therefore, every object has a default hash code. That hash code is derived from the object&#x2019;s memory address.</p>
+<li><p>The hashCode method is defined in the Object class. Therefore, every object has a default hash code. That hash code is derived from the object&#x2019;s memory address.</p>
 </li>
-<li><p>The strings s and t have the same hash code because, for strings, the hash codes are derived from their contents. The string builders sb and tb have different hash codes because no hashCode method has been defned for the StringBuilder class and the default hashCode method in the Object class derives the hash code from the object&#x2019;s memory address. </p>
-<pre><code class="lang-java">String s = <span class="hljs-string">&quot;Ok&quot;</span>;
-StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder(s);
-System.out.println(s.hashCode() + <span class="hljs-string">&quot; &quot;</span> + sb.hashCode());
-String t = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;Ok&quot;</span>);
-StringBuilder tb = <span class="hljs-keyword">new</span> StringBuilder(t);
-System.out.println(t.hashCode() + <span class="hljs-string">&quot; &quot;</span> + tb.hashCode());
+<li><p>The strings s and t have the same hash code because, for strings, the hash codes are derived from their contents. The string builders sb and tb have different hash codes because no hashCode method has been defined for the StringBuilder class and the default hashCode method in the Object class derives the hash code from the object&#x2019;s memory address. </p>
+<pre><code class="lang-java">String s = <span class="hljs-string">&quot;Ok&quot;</span>;<span class="hljs-comment">//2556</span>
+StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder(s);<span class="hljs-comment">//366712642</span>
+String t = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;Ok&quot;</span>);<span class="hljs-comment">//2556</span>
+StringBuilder tb = <span class="hljs-keyword">new</span> StringBuilder(t);<span class="hljs-comment">//1829164700</span>
 </code></pre>
-<p><img src="../img/Hash Codes of Strings and String Builders.png" alt="Hash Codes of Strings and String Builders"></p>
 </li>
 </ul>
 <p><strong>The toString Method</strong></p>
 <ul>
-<li><p>Another important method in Object is the toString method that returns a string representing the value of this object.  </p>
+<li><p>Returns a string representing the value of this object.  </p>
 </li>
 <li><p>Whenever an object is concatenated with a string by the &#x201C;+&#x201D; operator, the Java compiler automatically invokes the toString method to obtain a string representation of the object. </p>
 <pre><code class="lang-java">Point p = <span class="hljs-keyword">new</span> Point(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>);
@@ -859,7 +1085,7 @@ String message = <span class="hljs-string">&quot;The current position is &quot;<
 </code></pre>
 </li>
 </ul>
-<h3 id="generic-array-lists">Generic Array Lists</h3>
+<h3 id="array-lists">Array Lists</h3>
 <ul>
 <li><p>The ArrayList class is similar to an array, but it automatically adjusts its capacity as you add and remove elements, without any additional code. </p>
 </li>
@@ -880,18 +1106,9 @@ ArrayList&lt;Employee&gt; staff = <span class="hljs-keyword">new</span> ArrayLis
 <p><code>ArrayList&lt;Employee&gt; staff = new ArrayList&lt;&gt;(100);</code></p>
 </li>
 </ul>
-<p><strong>Accessing Array List Elements</strong></p>
-<p>Employee[] array is replaced by an <code>ArrayList&lt;Employee&gt;</code>. Note the following changes: </p>
+<h3 id="wrappers--autoboxing">Wrappers &amp; Autoboxing</h3>
 <ul>
-<li>You don&#x2019;t have to specify the array size.</li>
-<li>You use add to add as many elements as you like.</li>
-<li>You use size() instead of length to count the number of elements.</li>
-<li>You use a.get(i) instead of a[i] to access an element.</li>
-</ul>
-<h3 id="object-wrappers-and-autoboxing">Object Wrappers and Autoboxing</h3>
-<ul>
-<li>A class Integer corresponds to the primitive type int. These kinds of classes are usually called wrappers.  </li>
-<li>The wrapper classes have obvious names: Integer, Long, Float, Double, Short, Byte, Character, and Boolean. </li>
+<li>Wrappers: A class Integer corresponds to the primitive type int, names: Integer, Long, Float, Double, Short, Byte, Character, and Boolean. </li>
 <li>The wrapper classes are immutable&#x2014;you cannot change a wrapped value after the wrapper has been constructed. They are also final, so you cannot subclass them. </li>
 <li><p>autoboxing</p>
 <pre><code class="lang-java">  ArrayList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
@@ -911,26 +1128,15 @@ ArrayList&lt;Employee&gt; staff = <span class="hljs-keyword">new</span> ArrayLis
 </ul>
 <h3 id="reflection">Reflection</h3>
 <ul>
-<li><p>The re&#xFB02;ection library gives you a very rich and elaborate toolset to write programsthat manipulate Java code dynamically </p>
+<li><p>The re&#xFB02;ection library gives you a very rich and elaborate toolset to write programs that manipulate Java code dynamically </p>
 </li>
 <li><p>A program that can analyze the capabilities of classes is called re&#xFB02;ective. The re&#xFB02;ection mechanism is extremely powerful. As the next sections show, you can use it to</p>
 <ul>
 <li>Analyze the capabilities of classes at runtime;</li>
 <li>Inspect objects at runtime&#x2014;for example, to write a single toString method that works for all classes;</li>
-<li>Implement generic array manipulation code; and</li>
-<li>Take advantage of Method objects that work just like function pointers in languages such as C++. </li>
+<li>Implement generic array manipulation code</li>
+<li>Take advantage of Method objects</li>
 </ul>
-</li>
-</ul>
-<p><strong>The Class Class</strong></p>
-<ul>
-<li><p>While your program is running, the Java runtime system always maintains what is called runtime type identifcation on all objects. This information keeps track of the class to which each object belongs. Runtime type information is used by the virtual machine to select the correct methods to execute. </p>
-</li>
-<li><p>The getClass() method in the Object class returns an instance of Class type. </p>
-<pre><code class="lang-java">Employee e;
-. . .
-Class cl = e.getClass();
-</code></pre>
 </li>
 </ul>
 <p><strong>A Primer on Catching Exceptions</strong></p>
@@ -940,38 +1146,18 @@ Class cl = e.getClass();
 <li><p>But not all errors are avoidable. If an exception can occur despite your best efforts, then the compiler insists that you provide a handler. The Class.forName method is an example of a method that throws a checked exception. </p>
 </li>
 <li><p>Place one or more statements that might throw checked exceptions inside a try block. Then provide the handler code in the catch clause. </p>
-<pre><code class="lang-java"><span class="hljs-keyword">try</span>{
-    String name = . . .; <span class="hljs-comment">// get class name</span>
-    Class cl = Class.forName(name); <span class="hljs-comment">// might throw exception</span>
-    do something with cl
-}
-<span class="hljs-keyword">catch</span> (Exception e){
-    e.printStackTrace();
-}
-</code></pre>
 </li>
 <li><p>If the class name doesn&#x2019;t exist, the remainder of the code in the try block is skipped and the program enters the catch clause. (Here, we print a stack trace by using the printStackTrace method of the Throwable class. Throwable is the superclass of the Exception class.) If none of the methods in the try block throws an exception, the handler code in the catch clause is skipped </p>
 </li>
 </ul>
-<p><strong>Using Re&#xFB02;ection to Analyze Objects at Runtime</strong></p>
-<ul>
-<li>The default behavior of the re&#xFB02;ection mechanism is to respect Java access control. However, if a Java program is not controlled by a security manager that disallows it, you can override access control. To do this, invoke the setAccessible method on a Field, Method, or Constructor object. For example: <code>f.setAccessible(true); // now OK to call f.get(harry);</code></li>
-</ul>
 <h3 id="interfaces">Interfaces</h3>
-<p><strong>The Interface Concept</strong></p>
 <ul>
-<li><p>This means that any class that implements the Comparable interface is required to have a compareTo method, and the method must take an Object parameter and return an integer. </p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Comparable</span></span>{
-    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(Object other)</span></span>;
-}
-</code></pre>
-</li>
 <li><p>All methods of an interface are automatically public. For that reason, it is not necessary to supply the keyword public when declaring a method in an interface. </p>
 </li>
 <li><p>The reason for interfaces is that the Java programming language is strongly typed. When making a method call, the compiler needs to be able to check that the method actually exists. </p>
 </li>
 </ul>
-<p><strong>Properties of Interfaces</strong></p>
+<p><strong>Properties</strong></p>
 <ul>
 <li><p>Interfaces are not classes. In particular, you can never use the new operator to instantiate an interface</p>
 <p><code>x = new Comparable(. . .); // ERROR</code></p>
@@ -990,109 +1176,93 @@ Class cl = e.getClass();
 <p>Just as methods in an interface are automatically public, fields are always public static final. </p>
 </li>
 </ul>
-<p><strong>Interfaces and Abstract Classes</strong></p>
-<ul>
-<li><p>There is, unfortunately, a major problem with using an abstract base class to express a generic property. A class can only extend a single class. Suppose the Employee class already extends a different class, say, Person. Then it can&#x2019;t extend a second class. </p>
-<p><code>class Employee extends Person, Comparable // Error</code></p>
-</li>
-</ul>
 <h3 id="concurrency">Concurrency</h3>
 <ul>
 <li>You are probably familiar with multitasking&#x2014;your operating system&#x2019;s ability tohave more than one program working at what seems like the same time. For example, you can print while editing or downloading your email. Nowadays, you are likely to have a computer with more than one CPU, but the number of concurrently executing processes is not limited by the number of CPUs. The operating system assigns CPU time slices to each process, giving the impression of parallel activity. </li>
 <li>Multithreaded programs extend the idea of multitasking by taking it one level lower: Individual programs will appear to do multiple tasks at the same time. Each task is usually called a thread, which is short for thread of control. Programs that can run more than one thread at once are said to be multithreaded. </li>
 <li>The essential difference is that while each process has a complete set of its own variables, threads share the same data.  </li>
-<li>shared variables make communication between threads more effcient and easier to program than interprocess communication. Moreover, on some operating systems, threads are more &#x201C;lightweight&#x201D; than processes&#x2014;it takes less overhead to create and destroy individual threads than it does to launch new processes. </li>
+<li>Shared variables make communication between threads more effcient and easier to program than interprocess communication. Moreover, on some operating systems, threads are more &#x201C;lightweight&#x201D; than processes&#x2014;it takes less overhead to create and destroy individual threads than it does to launch new processes. </li>
 <li>Multithreading is extremely useful in practice. For example, a browser should be able to simultaneously download multiple images. A web server needs to be able to serve concurrent requests. Graphical user interface (GUI) programs have a separate thread for gathering user interface events from the host operating environment. </li>
 </ul>
-<h4 id="interrupting-threads">Interrupting Threads</h4>
+<h3 id="thread">Thread</h3>
+<h4 id="interrupting">Interrupting</h4>
 <ul>
 <li>A thread terminates when its run method returns&#x2014;by executing a return statement, after executing the last statement in the method body, or if an exception occurs that is not caught in the method. In the initial release of Java, there also was a stop method that another thread could call to terminate a thread. However, that method is now deprecated.  </li>
 <li>When the interrupt method is called on a thread, the interrupted status of the thread is set. This is a boolean &#xFB02;ag that is present in every thread. Each thread should occasionally check whether it has been interrupted. </li>
 <li>However, if a thread is blocked, it cannot check the interrupted status. This is where the InterruptedException comes in. When the interrupt method is called on a thread that blocks on a call such as sleep or wait, the blocking call is terminated by an InterruptedException. </li>
 <li>There is no language requirement that a thread which is interrupted should terminate. Interrupting a thread simply grabs its attention. The interrupted thread can decide how to react to the interruption. Some threads are so important that they should handle the exception and continue. But quite commonly, a thread will simply want to interpret an interruption as a request for termination.  </li>
 </ul>
-<h4 id="thread-states">Thread States</h4>
-<ul>
-<li>Threads can be in one of six states:<ul>
-<li>New</li>
-<li>Runnable</li>
-<li>Blocked</li>
-<li>Waiting</li>
-<li>Timed waiting</li>
-<li>Terminated</li>
-</ul>
-</li>
-</ul>
-<p><strong>New Threads</strong></p>
-<ul>
-<li>When you create a thread with the new operator&#x2014;for example, new Thread(r)&#x2014;the thread is not yet running. This means that it is in the new state. When a thread is in the new state, the program has not started executing code inside of it. A certain amount of bookkeeping needs to be done before a thread can run. </li>
-</ul>
-<p><strong>Runnable Threads</strong></p>
-<ul>
-<li>Once you invoke the start method, the thread is in the runnable state. A runnable thread may or may not actually be running. It is up to the operating system to give the thread time to run. </li>
-<li>Once a thread is running, it doesn&#x2019;t necessarily keep running. In fact, it is desirable that running threads occasionally pause so that other threads have a chance to run. The details of thread scheduling depend on the services that the operating system provides. Preemptive scheduling systems give each runnable thread a slice of time to perform its task. When that slice of time is exhausted, the operating system preempts the thread and gives another thread an opportunity to work . When selecting the next thread, the operating system takes into account the thread priorities </li>
-<li>All modern desktop and server operating systems use preemptive scheduling. However, small devices such as cell phones may use cooperative scheduling. In such a device, a thread loses control only when it calls the yield method, or when it is blocked or waiting. </li>
-<li>Always keep in mind that a runnable thread may or may not be running at any given time. (This is why the state is called &#x201C;runnable&#x201D; and not &#x201C;running.&#x201D;) </li>
-</ul>
-<p><strong>Blocked and Waiting Threads</strong></p>
-<ul>
-<li><p>When a thread is blocked or waiting, it is temporarily inactive. It doesn&#x2019;t execute any code and consumes minimal resources. It is up to the thread scheduler to reactivate it. The details depend on how the inactive state was reached. </p>
-<ul>
-<li><p>When the thread tries to acquire an intrinsic object lock (but not a Lock in the java.util.concurrent library) that is currently held by another thread, it becomes blocked. The thread becomes unblocked when all other threads have relinquished the lock and the thread scheduler has allowed this thread to hold it. </p>
-</li>
-<li><p>When the thread waits for another thread to notify the scheduler of a condition, it enters the waiting state. This happens by calling the Object.wait or Thread.join method, or by waiting for a Lock or Condition in the java.util.concurrent library. In practice, the difference between the blocked and waiting state is not signifcant. </p>
-</li>
-<li><p>Several methods have a timeout parameter. Calling them causes the thread to enter the timed waiting state. This state persists either until the timeout expires or the appropriate notifcation has been received. Methods with timeout include Thread.sleep and the timed versions of Object.wait, Thread.join, Lock.tryLock, and Condition.await. </p>
-</li>
-<li><p>When a thread is blocked or waiting (or, of course, when it terminates), another thread will be scheduled to run. When a thread is reactivated (for example, because its timeout has expired or it has succeeded in acquiring a lock), the scheduler checks to see if it has a higher priority than the currently running threads. If so, it preempts one of the current threads and picks a new thread to run. </p>
+<h4 id="states">States</h4>
+<p><strong>Threads can be in one of six states:</strong></p>
 <p><img src="../img/Thread states.png" alt="Thread states"></p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Terminated Threads</strong></p>
+<p><img src="../img/con%20life.png" alt="con life"></p>
 <ul>
+<li>New<ul>
+<li>When you create a thread with the new operator&#x2014;for example, new Thread(r)&#x2014;the thread is not yet running. This means that it is in the new state. When a thread is in the new state, the program has not started executing code inside of it. A certain amount of bookkeeping needs to be done before a thread can run.</li>
+</ul>
+</li>
+<li>Runnable<ul>
+<li>Once you invoke the start method, the thread is in the runnable state. A runnable thread may or may not actually be running. It is up to the operating system to give the thread time to run.</li>
+<li>Once a thread is running, it doesn&#x2019;t necessarily keep running. In fact, it is desirable that running threads occasionally pause so that other threads have a chance to run. The details of thread scheduling depend on the services that the operating system provides. Preemptive scheduling systems give each runnable thread a slice of time to perform its task. When that slice of time is exhausted, the operating system preempts the thread and gives another thread an opportunity to work . When selecting the next thread, the operating system takes into account the thread priorities</li>
+<li>All modern desktop and server operating systems use preemptive scheduling. However, small devices such as cell phones may use cooperative scheduling. In such a device, a thread loses control only when it calls the yield method, or when it is blocked or waiting.</li>
+<li>Always keep in mind that a runnable thread may or may not be running at any given time. (This is why the state is called &#x201C;runnable&#x201D; and not &#x201C;running.&#x201D;)</li>
+</ul>
+</li>
+<li>Blocked<ul>
+<li>When the thread tries to acquire an intrinsic object lock (but not a Lock in the java.util.concurrent library) that is currently held by another thread, it becomes blocked. The thread becomes unblocked when all other threads have relinquished the lock and the thread scheduler has allowed this thread to hold it.</li>
+</ul>
+</li>
+<li>Waiting<ul>
+<li>When the thread waits for another thread to notify the scheduler of a condition, it enters the waiting state. This happens by calling the Object.wait or Thread.join method, or by waiting for a Lock or Condition in the java.util.concurrent library. In practice, the difference between the blocked and waiting state is not significant.</li>
+</ul>
+</li>
+<li>Timed waiting<ul>
+<li>Several methods have a timeout parameter. Calling them causes the thread to enter the timed waiting state. This state persists either until the timeout expires or the appropriate notifcation has been received. Methods with timeout include Thread.sleep and the timed versions of Object.wait, Thread.join, Lock.tryLock, and Condition.await.</li>
+</ul>
+</li>
+<li>Terminated<ul>
 <li>A thread is terminated for one of two reasons:<ul>
 <li>It dies a natural death because the run method exits normally.</li>
 <li>It dies abruptly because an uncaught exception terminates the run method.</li>
 </ul>
 </li>
-<li>In particular, you can kill a thread by invoking its stop method. That method throws a ThreadDeath error object that kills the thread. However, the stop method is deprecated, and you should never call it in your own code. </li>
 </ul>
-<h4 id="thread-properties">Thread Properties</h4>
-<p><strong>Thread Priorities</strong></p>
+</li>
+</ul>
+<h4 id="properties">Properties</h4>
+<p><strong>Priority</strong></p>
 <ul>
-<li>In the Java programming language, every thread has a priority. By default, a thread inherits the priority of the thread that constructed it. You can increase or decrease the priority of any thread with the setPriority method. You can set the priority to any value between MIN_PRIORITY (defned as 1 in the Thread class) and MAX_PRIORITY (defned as 10). NORM_PRIORITY is defned as 5. </li>
-<li>If you have several threads with a high priority that don&#x2019;t become inactive, the lower-priority threads may never execute. Whenever the scheduler decides to run a new thread, it will choose among the highest-priority threads frst, even though that may starve the lower-priority threads completely. </li>
+<li>In the Java programming language, every thread has a priority. By default, a thread inherits the priority of the thread that constructed it. You can increase or decrease the priority of any thread with the setPriority method. You can set the priority to any value between MIN_PRIORITY (defined as 1 in the Thread class) and MAX_PRIORITY (defined as 10). NORM_PRIORITY is defined as 5. </li>
+<li>If you have several threads with a high priority that don&#x2019;t become inactive, the lower-priority threads may never execute. Whenever the scheduler decides to run a new thread, it will choose among the highest-priority threads first, even though that may starve the lower-priority threads completely. </li>
 </ul>
-<p><strong>Handlers for Uncaught Exceptions</strong></p>
+<p><strong>Uncaught Exceptions</strong></p>
 <ul>
 <li><p>The run method of a thread cannot throw any checked exceptions, but it can be terminated by an unchecked exception. In that case, the thread dies.</p>
 </li>
-<li><p>However, there is no catch clause to which the exception can be propagated. Instead, just before the thread dies, the exception is passed to a handler for uncaught exceptions. </p>
+<li><p>However, there is no catch clause to which the exception can be propagated. Instead, just before the thread dies, the exception is passed to a handler for uncaught exceptions.</p>
 </li>
 </ul>
 <h4 id="synchronization">Synchronization</h4>
+<p><strong>Race Condition</strong></p>
 <ul>
-<li>In most practical multithreaded applications, two or more threads need to share access to the same data. What happens if two threads have access to the same object and each calls a method that modifes the state of the object? As you might imagine, the threads can step on each other&#x2019;s toes. Depending on the order in which the data were accessed, corrupted objects can result. Such a situation is often called a race condition. </li>
-</ul>
-<p><strong>The Race Condition Explained</strong></p>
+<li><p>In most practical multithreaded applications, two or more threads need to share access to the same data. What happens if two threads have access to the same object and each calls a method that modifes the state of the object? As you might imagine, the threads can step on each other&#x2019;s toes. Depending on the order in which the data were accessed, corrupted objects can result. Such a situation is often called a race condition. </p>
 <p><img src="../img/Simultaneous access by two threads.png" alt="Simultaneous access by two threads"></p>
+</li>
+</ul>
 <p><strong>Lock Objects</strong></p>
 <ul>
-<li><p>This construct guarantees that only one thread at a time can enter the critical section. As soon as one thread locks the lock object, no other thread can get past the lock statement. When other threads call lock, they are deactivated until the frst thread unlocks the lock object. </p>
+<li><p>This construct guarantees that only one thread at a time can enter the critical section. As soon as one thread locks the lock object, no other thread can get past the lock statement. When other threads call lock, they are deactivated until the first thread unlocks the lock object. </p>
 <pre><code class="lang-java">myLock.lock(); <span class="hljs-comment">// a ReentrantLock object</span>
 <span class="hljs-keyword">try</span>{
     critical section
-}
-<span class="hljs-keyword">finally</span>{
+}<span class="hljs-keyword">finally</span>{
     myLock.unlock(); <span class="hljs-comment">// make sure the lock is unlocked even if an exception is thrown</span>
 }
 </code></pre>
 </li>
 <li><p>It is critically important that the unlock operation is enclosed in a finally clause. If the code in the critical section throws an exception, the lock must be unlocked. Otherwise, the other threads will be blocked forever. </p>
 </li>
-<li><p>Suppose one thread calls transfer and gets preempted before it is done. Suppose a second thread also calls transfer. The second thread cannot acquire the lock and is blocked in the call to the lock method. It is deactivated and must wait for the frst thread to fnish executing the transfer method. When the frst thread unlocks the lock, then the second thread can proceed </p>
+<li><p>Suppose one thread calls transfer and gets preempted before it is done. Suppose a second thread also calls transfer. The second thread cannot acquire the lock and is blocked in the call to the lock method. It is deactivated and must wait for the first thread to fnish executing the transfer method. When the first thread unlocks the lock, then the second thread can proceed </p>
 </li>
 <li><p>Note that each Bank object has its own ReentrantLock object. If two threads try to access the same Bank object, then the lock serves to serialize the access. However, if two threads access different Bank objects, each thread acquires a different lock and neither thread is blocked. This is as it should be, because the threads cannot interfere with one another when they manipulate different Bank instances. </p>
 </li>
@@ -1114,44 +1284,42 @@ Class cl = e.getClass();
 </code></pre>
 </li>
 <li><p>You must make sure that no other thread can modify the balance between the test and the transfer action. You do so by protecting both the test and the transfer action with a lock: </p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span></span>{
-    bankLock.lock();
-    <span class="hljs-keyword">try</span>{
-        <span class="hljs-keyword">while</span> (accounts[from] &lt; amount){
-            <span class="hljs-comment">// wait</span>
-            . . .
-        }
-        <span class="hljs-comment">// transfer funds</span>
-        . . .
-    }
-    <span class="hljs-keyword">finally</span>{
-        bankLock.unlock();
-    }
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span> </span>{
+ bankLock.lock();
+ <span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">while</span> (accounts[from] &lt; amount) {
+   <span class="hljs-comment">// wait</span>
+   ...
+  }
+  <span class="hljs-comment">// transfer funds</span>
+  ...
+ } <span class="hljs-keyword">finally</span> {
+  bankLock.unlock();
+ }
 }
 </code></pre>
 </li>
 <li><p>When a thread calls await, it has no way of reactivating itself. It puts its faith in the other threads. If none of them bother to reactivate the waiting thread, it will never run again. This can lead to unpleasant deadlock situations. If all other threads are blocked and the last active thread calls await without unblocking one of the others, it also blocks. No thread is left to unblock the others, and the program hangs. </p>
 </li>
 <li><p>When should you call signalAll? The rule of thumb is to call signalAll whenever the state of an object changes in a way that might be advantageous to waiting threads. For example, whenever an account balance changes, the waiting threads should be given another chance to inspect the balance. In our example, we call signalAll when we have fnished the funds transfer. </p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span></span>{
-    bankLock.lock();
-    <span class="hljs-keyword">try</span>{
-        <span class="hljs-keyword">while</span> (accounts[from] &lt; amount)
-            sufficientFunds.await();
-        <span class="hljs-comment">// transfer funds</span>
-        . . .
-            sufficientFunds.signalAll();
-    }
-    <span class="hljs-keyword">finally</span>{
-        bankLock.unlock();
-    }
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span> </span>{
+ bankLock.lock();
+ <span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">while</span> (accounts[from] &lt; amount)
+   sufficientFunds.await();
+  <span class="hljs-comment">// transfer funds</span>
+  ...
+  sufficientFunds.signalAll();
+ } <span class="hljs-keyword">finally</span> {
+  bankLock.unlock();
+ }
 }
 </code></pre>
 </li>
 <li><p>Note that the call to signalAll does not immediately activate a waiting thread. It only unblocks the waiting threads so that they can compete for entry into the object after the current thread has relinquished the lock. </p>
 </li>
 </ul>
-<p><strong>The synchronized Keyword</strong></p>
+<p><strong>Keyword</strong></p>
 <ul>
 <li><p>let us summarize the key points about locks and conditions:</p>
 <ul>
@@ -1161,31 +1329,33 @@ Class cl = e.getClass();
 <li>Each condition object manages threads that have entered a protected code section but that cannot proceed. </li>
 </ul>
 </li>
-<li><p>If a method is declared with the synchronized keyword, the object&#x2019;s lock protects the entire method.  </p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">method</span><span class="hljs-params">()</span></span>{
-    method body
+<li><p>If a method is declared with the synchronized keyword, the object&#x2019;s lock protects the entire method.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">method</span><span class="hljs-params">()</span> </span>{
+ method body
 }
 <span class="hljs-comment">//is the equivalent of</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">method</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-keyword">this</span>.intrinsicLock.lock();
-    <span class="hljs-keyword">try</span>{
-        method body
-    }
-    <span class="hljs-keyword">finally</span> { <span class="hljs-keyword">this</span>.intrinsicLock.unlock(); }
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">method</span><span class="hljs-params">()</span> </span>{
+ <span class="hljs-keyword">this</span>.intrinsicLock.lock();
+ <span class="hljs-keyword">try</span> {
+  method body
+ } <span class="hljs-keyword">finally</span> {
+  <span class="hljs-keyword">this</span>.intrinsicLock.unlock();
+ }
 }
 </code></pre>
 </li>
 <li><p>As you can see, using the synchronized keyword yields code that is much more concise. Of course, to understand this code, you have to know that each object has an intrinsic lock, and that the lock has an intrinsic condition. The lock manages the threads that try to enter a synchronized method. The condition manages the threads that have called wait.</p>
-<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bank</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span>[] accounts;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span> <span class="hljs-keyword">throws</span> InterruptedException</span>{
-        <span class="hljs-keyword">while</span> (accounts[from] &lt; amount)
-            wait(); <span class="hljs-comment">// wait on intrinsic object lock&apos;s single condition</span>
-        accounts[from] -= amount;
-        accounts[to] += amount;
-        notifyAll(); <span class="hljs-comment">// notify all threads waiting on the condition</span>
-    }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getTotalBalance</span><span class="hljs-params">()</span> </span>{ . . . }
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bank</span> </span>{
+ <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span>[] accounts;
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>{
+  <span class="hljs-keyword">while</span> (accounts[from] &lt; amount)
+   wait(); <span class="hljs-comment">// wait on intrinsic object lock&apos;s single condition</span>
+  accounts[from] -= amount;
+  accounts[to] += amount;
+  notifyAll(); <span class="hljs-comment">// notify all threads waiting on the condition</span>
+ }
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getTotalBalance</span><span class="hljs-params">()</span> </span>{...
+ }
 }
 </code></pre>
 </li>
@@ -1195,30 +1365,18 @@ Class cl = e.getClass();
 <p><strong>Synchronized Blocks</strong></p>
 <ul>
 <li><p>Here, the lock object is created only to use the lock that every Java object possesses. </p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span>
-</span>{
-<span class="hljs-keyword">synchronized</span> (lock) <span class="hljs-comment">// an ad-hoc lock</span>
-{
-accounts[from] -= amount;
-accounts[to] += amount;
-}
-System.out.println(. . .);
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> amount)</span> </span>{
+ <span class="hljs-keyword">synchronized</span>(lock) <span class="hljs-comment">// an ad-hoc lock</span>
+ {
+  accounts[from] -= amount;
+  accounts[to] += amount;
+ }
+ System.out.println(...);
 }
 </code></pre>
 </li>
 <li><p>Sometimes, programmers use the lock of an object to implement additional atomic operations&#x2014;a practice known as client-side locking. </p>
 </li>
-</ul>
-<p><strong>The Monitor Concept</strong></p>
-<ul>
-<li>In the terminology of Java, a monitor has these properties:<ul>
-<li>A monitor is a class with only private felds.</li>
-<li>Each object of that class has an associated lock.</li>
-<li>All methods are locked by that lock. In other words, if a client calls obj.method(), then the lock for obj is automatically acquired at the beginning of the method call and relinquished when the method returns. Since all felds are private, this arrangement ensures that no thread can access the felds while another thread manipulates them.</li>
-<li>The lock can have any number of associated conditions. </li>
-</ul>
-</li>
-<li>Every object in Java has an intrinsic lock and an intrinsic condition. If a method is declared with the synchronized keyword, it acts like a monitor method. The condition variable is accessed by calling wait/notifyAll/notify. </li>
 </ul>
 <p><strong>Volatile Fields</strong></p>
 <ul>
@@ -1226,7 +1384,7 @@ System.out.println(. . .);
 </li>
 <li><p>Compilers can reorder instructions for maximum throughput. Compilers won&#x2019;t choose an ordering that changes the meaning of the code, but they make the assumption that memory values are only changed when there are explicit instructions in the code. However, a memory value can be changed by another thread! </p>
 </li>
-<li><p>The volatile keyword offers a lock-free mechanism for synchronizing access to an instance feld. If you declare a feld as volatile, then the compiler and the virtual machine take into account that the feld may be concurrently updated by another thread. </p>
+<li><p>The volatile keyword offers a lock-free mechanism for synchronizing access to an instance field. If you declare a field as volatile, then the compiler and the virtual machine take into account that the field may be concurrently updated by another thread. </p>
 </li>
 <li><p>The compiler will insert the appropriate code to ensure that a change to the done variable in one thread is visible from any other thread that reads the variable. </p>
 <pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">boolean</span> done;
@@ -1237,9 +1395,9 @@ System.out.println(. . .);
 </ul>
 <p><strong>Final Variables</strong></p>
 <ul>
-<li><p>As you saw in the preceding section, you cannot safely read a feld from multiple threads unless you use locks or the volatile modifer. </p>
+<li><p>As you saw in the preceding section, you cannot safely read a field from multiple threads unless you use locks or the volatile modifer. </p>
 </li>
-<li><p>There is one other situation in which it is safe to access a shared feld&#x2014;when it is declared final. Consider </p>
+<li><p>There is one other situation in which it is safe to access a shared field&#x2014;when it is declared final. Consider </p>
 <pre><code class="lang-java"><span class="hljs-keyword">final</span> Map&lt;String, Double&gt; accounts = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
 </code></pre>
 </li>
@@ -1250,58 +1408,51 @@ System.out.println(. . .);
 <li><p>Of course, the operations on the map are not thread safe. If multiple threads mutate and read the map, you still need synchronization. </p>
 </li>
 </ul>
-<p><strong>Atomics</strong></p>
-<ul>
-<li><p>There are a number of classes in the java.util.concurrent.atomic package that use effcient machine-level instructions to guarantee atomicity of other operations without using locks. For example, the AtomicInteger class has methods incrementAndGet and decrementAndGet that atomically increment or decrement an integer. For example, you can safely generate a sequence of numbers like this: </p>
-</li>
-<li><p>The incrementAndGet method atomically increments the AtomicLong and returns the postincrement value. That is, the operations of getting the value, adding 1, setting it, and producing the new value cannot be interrupted. It is guaranteed that the correct value is computed and returned, even if multiple threads access the same instance concurrently </p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AtomicLong nextNumber = <span class="hljs-keyword">new</span> AtomicLong();
-<span class="hljs-comment">// In some thread...</span>
-<span class="hljs-keyword">long</span> id = nextNumber.incrementAndGet();
-</code></pre>
-</li>
-</ul>
 <p><strong>Deadlocks</strong></p>
 <ul>
 <li>It is possible that all threads get blocked because each is waiting for more money. Such a situation is called a deadlock. </li>
 </ul>
 <p><strong>Lock Testing and Timeouts</strong></p>
 <ul>
-<li><p>A thread blocks indefnitely when it calls the lock method to acquire a lock that is owned by another thread. You can be more cautious about acquiring a lock. The tryLock method tries to acquire a lock and returns true if it was successful. Otherwise, it immediately returns false, and the thread can go off and do something else. </p>
-<pre><code class="lang-java"><span class="hljs-keyword">if</span> (myLock.tryLock()){
-    <span class="hljs-comment">// now the thread owns the lock</span>
-    <span class="hljs-keyword">try</span> { . . . }
-    <span class="hljs-keyword">finally</span> { myLock.unlock(); }
-}
-<span class="hljs-keyword">else</span>
-    <span class="hljs-comment">// do something else</span>
+<li><p>A thread blocks indefnitely when it calls the lock method to acquire a lock that is owned by another thread. You can be more cautious about acquiring a lock. The tryLock method tries to acquire a lock and returns true if it was successful. Otherwise, it immediately returns false, and the thread can go off and do something else.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span> (myLock.tryLock()) {
+ <span class="hljs-comment">// now the thread owns the lock</span>
+ <span class="hljs-keyword">try</span> {...
+ } <span class="hljs-keyword">finally</span> {
+  myLock.unlock();
+ }
+} <span class="hljs-keyword">else</span>
+<span class="hljs-comment">// do something else</span>
 </code></pre>
 </li>
-<li><p>The lock method cannot be interrupted. If a thread is interrupted while it is waiting to acquire a lock, the interrupted thread continues to be blocked until the lock is available. If a deadlock occurs, then the lock method can never terminate. </p>
+<li><p>The lock method cannot be interrupted. If a thread is interrupted while it is waiting to acquire a lock, the interrupted thread continues to be blocked until the lock is available. If a deadlock occurs, then the lock method can never terminate.</p>
 </li>
-<li><p>However, if you call tryLock with a timeout, an InterruptedException is thrown if the thread is interrupted while it is waiting. This is clearly a useful feature because it allows a program to break up deadlocks. </p>
+<li><p>However, if you call tryLock with a timeout, an InterruptedException is thrown if the thread is interrupted while it is waiting. This is clearly a useful feature because it allows a program to break up deadlocks.</p>
 </li>
 </ul>
-<p><strong>Why the stop and suspend Methods Are Deprecated</strong></p>
+<p><strong>Deprecated stop &amp; suspend</strong></p>
 <ul>
-<li>Let us turn to the stop method frst. This method terminates all pending methods, including the run method. When a thread is stopped, it immediately gives up the locks on all objects that it has locked. This can leave objects in an inconsistent state. For example, suppose a TransferRunnable is stopped in the middle of moving money from one account to another, after the withdrawal and before the deposit. Now the bank object is damaged. Since the lock has been relinquished, the damage is observable from the other threads that have not been stopped. </li>
-<li>Next, let us see what is wrong with the suspend method. Unlike stop, suspend won&#x2019;t damage objects. However, if you suspend a thread that owns a lock, then the lock Next, let us see what is wrong with the suspend method. Unlike stop, suspend won&#x2019;t damage objects. However, if you suspend a thread that owns a lock, then the lock </li>
+<li>Let us turn to the stop method first. This method terminates all pending methods, including the run method. When a thread is stopped, it immediately gives up the locks on all objects that it has locked. This can leave objects in an inconsistent state. For example, suppose a TransferRunnable is stopped in the middle of moving money from one account to another, after the withdrawal and before the deposit. Now the bank object is damaged. Since the lock has been relinquished, the damage is observable from the other threads that have not been stopped. </li>
+<li>Next, let us see what is wrong with the suspend method. Unlike stop, suspend won&#x2019;t damage objects. However, if you suspend a thread that owns a lock, then the lock is unavailable until the thread is resumed. If the thread that calls the suspend method tries to acquire the same lock, the program deadlocks: The suspended thread waits to be resumed, and the suspending thread waits for the lock. </li>
 </ul>
 <h4 id="blocking-queues">Blocking Queues</h4>
 <ul>
-<li>A blocking queue causes a thread to block when you try to add an element when the queue is currently full or to remove an element when the queue is empty. Blocking queues are a useful tool for coordinating the work of multiple threads. Worker threads can periodically deposit intermediate results into a blocking queue. Other worker threads remove the intermediate results and modify them further. The queue automatically balances the workload. If the frst set of threads runs slower than the second, the second set blocks while waiting for the results. If the frst set of threads runs faster, the queue flls up until the second set catches up.  </li>
+<li>A blocking queue causes a thread to block when you try to add an element when the queue is currently full or to remove an element when the queue is empty. Blocking queues are a useful tool for coordinating the work of multiple threads. Worker threads can periodically deposit intermediate results into a blocking queue. Other worker threads remove the intermediate results and modify them further. The queue automatically balances the workload. If the first set of threads runs slower than the second, the second set blocks while waiting for the results. If the first set of threads runs faster, the queue flls up until the second set catches up.  </li>
 <li>The blocking queue methods fall into three categories that differ by the action they perform when the queue is full or empty. If you use the queue as a thread management tool, use the put and take methods. The add, remove, and element operations throw an exception when you try to add to a full queue or get the head of an empty queue. Of course, in a multithreaded program, the queue might become full or empty at any time, so you will instead want to use the offer, poll, and peek methods. These methods simply return with a failure indicator instead of throwing an exception if they cannot carry out their tasks. </li>
 </ul>
-<h4 id="life-cycle">Life Cycle</h4>
-<p><img src="../img/con%20life.png" alt="con life"></p>
-<p>Thread Pool</p>
+<h3 id="thread-pool">Thread Pool</h3>
 <ul>
 <li>&#x51CF;&#x5C11;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x7EBF;&#x7A0B;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x7EBF;&#x7A0B;</li>
 <li>&#x6839;&#x636E;&#x7CFB;&#x7EDF;&#x7684;&#x627F;&#x53D7;&#x80FD;&#x529B;&#xFF0C;&#x8C03;&#x6574;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x9632;&#x6B62;&#x6D88;&#x8017;&#x8FC7;&#x591A;&#x5185;&#x5B58;&#x5BFC;&#x81F4;&#x670D;&#x52A1;&#x5668;&#x5D29;&#x6E83;</li>
 </ul>
-<p><strong>ThreadPoolExecutor</strong></p>
 <ul>
-<li>corePoolSize&#xFF1A;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5728;&#x521B;&#x5EFA;&#x4E86;&#x7EBF;&#x7A0B;&#x6C60;&#x540E;&#xFF0C;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x4E3A;0&#xFF0C;&#x5F53;&#x6709;&#x4EFB;&#x52A1;&#x6765;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53BB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#xFF0C;&#x5F53;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x76EE;&#x8FBE;&#x5230;corePoolSize&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x628A;&#x5230;&#x8FBE;&#x7684;&#x4EFB;&#x52A1;&#x653E;&#x5230;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x5F53;&#x4E2D;</li>
+<li>corePoolSize&#xFF1A;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5728;&#x521B;&#x5EFA;&#x4E86;&#x7EBF;&#x7A0B;&#x6C60;&#x540E;&#xFF0C;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x4E3A;0&#xFF0C;&#x5F53;&#x6709;&#x4EFB;&#x52A1;&#x6765;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53BB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#xFF0C;&#x5F53;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x76EE;&#x8FBE;&#x5230;corePoolSize&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x628A;&#x5230;&#x8FBE;&#x7684;&#x4EFB;&#x52A1;&#x653E;&#x5230;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x5F53;&#x4E2D;<ul>
+<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &lt; corePoolSize&#xFF0C;&#x6765;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x5C31;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53BB;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;</li>
+<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &gt;= corePoolSize&#xFF0C;&#x6765;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x5C1D;&#x8BD5;&#x5C06;&#x5B83;&#x6DFB;&#x52A0;&#x5230;&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#xFF0C;&#x5982;&#x679C;&#x6DFB;&#x52A0;&#x6210;&#x529F;&#xFF0C;&#x5C31;&#x7B49;&#x5F85;&#x7A7A;&#x95F2;&#x7EBF;&#x7A0B;&#x5C06;&#x5B83;&#x53D6;&#x51FA;&#xFF0C;&#x5426;&#x5219;&#xFF08;&#x4E00;&#x822C;&#x662F;&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x6EE1;&#x4E86;&#xFF09;&#xFF0C;&#x5C31;&#x4F1A;&#x5C1D;&#x8BD5;&#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;</li>
+<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; = maximumPoolSize&#xFF0C;&#x91C7;&#x53D6;&#x4EFB;&#x52A1;&#x62D2;&#x7EDD;&#x7B56;&#x7565;</li>
+<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &gt; corePoolSize&#xFF0C;&#x5982;&#x679C;&#x7EBF;&#x7A0B;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;keepAliveTime&#xFF0C;&#x5C31;&#x4F1A;&#x88AB;&#x7EC8;&#x6B62;&#xFF0C;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &lt; corePoolSize</li>
+</ul>
+</li>
 <li>maximumPoolSize&#xFF1A;&#x8868;&#x793A;&#x5728;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x6700;&#x591A;&#x80FD;&#x521B;&#x5EFA;&#x591A;&#x5C11;&#x4E2A;&#x7EBF;&#x7A0B;</li>
 <li>keepAliveTime&#xFF1A;&#x8868;&#x793A;&#x7EBF;&#x7A0B;&#x6CA1;&#x6709;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x65F6;&#x6700;&#x591A;&#x4FDD;&#x6301;&#x591A;&#x4E45;&#x65F6;&#x95F4;&#x4F1A;&#x7EC8;&#x6B62;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x5927;&#x4E8E;corePoolSize&#x65F6;&#xFF0C;keepAliveTime&#x624D;&#x4F1A;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x4E0D;&#x5927;&#x4E8E;corePoolSize</li>
 <li>unit&#xFF1A;&#x53C2;&#x6570;keepAliveTime&#x7684;&#x65F6;&#x95F4;&#x5355;&#x4F4D;</li>
@@ -1313,26 +1464,12 @@ System.out.println(. . .);
 <li>workers&#xFF1A;&#x7528;&#x6765;&#x5B58;&#x653E;&#x5DE5;&#x4F5C;&#x96C6;</li>
 <li>allowCoreThreadTimeOut&#xFF1A;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x4E3A;&#x6838;&#x5FC3;&#x7EBF;&#x7A0B;&#x8BBE;&#x7F6E;&#x5B58;&#x6D3B;&#x65F6;&#x95F4;</li>
 <li>largestPoolSize&#xFF1A; &#x66FE;&#x7ECF;&#x51FA;&#x73B0;&#x8FC7;&#x7684;&#x6700;&#x5927;&#x7EBF;&#x7A0B;&#x6570;</li>
-<li>completedTaskCount&#xFF1A;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x7684;&#x4EFB;&#x52A1;&#x4E2A;&#x6570;</li>
-</ul>
-<ul>
-<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &lt; corePoolSize&#xFF0C;&#x6765;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x5C31;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53BB;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;</li>
-<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &gt;= corePoolSize&#xFF0C;&#x6765;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x5C1D;&#x8BD5;&#x5C06;&#x5B83;&#x6DFB;&#x52A0;&#x5230;&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#xFF0C;&#x5982;&#x679C;&#x6DFB;&#x52A0;&#x6210;&#x529F;&#xFF0C;&#x5C31;&#x7B49;&#x5F85;&#x7A7A;&#x95F2;&#x7EBF;&#x7A0B;&#x5C06;&#x5B83;&#x53D6;&#x51FA;&#xFF0C;&#x5426;&#x5219;&#xFF08;&#x4E00;&#x822C;&#x662F;&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x6EE1;&#x4E86;&#xFF09;&#xFF0C;&#x5C31;&#x4F1A;&#x5C1D;&#x8BD5;&#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;</li>
-<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; = maximumPoolSize&#xFF0C;&#x91C7;&#x53D6;&#x4EFB;&#x52A1;&#x62D2;&#x7EDD;&#x7B56;&#x7565;</li>
-<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &gt; corePoolSize&#xFF0C;&#x5982;&#x679C;&#x7EBF;&#x7A0B;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;keepAliveTime&#xFF0C;&#x5C31;&#x4F1A;&#x88AB;&#x7EC8;&#x6B62;&#xFF0C;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x7EBF;&#x7A0B;&#x6570; &lt; corePoolSize</li>
-</ul>
-<ul>
-<li>&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x5173;&#x95ED;<ul>
-<li>shutdown()&#xFF1A;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x7B49;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x624D;&#x7EC8;&#x6B62;&#xFF0C;&#x4E14;&#x4E0D;&#x63A5;&#x53D7;&#x65B0;&#x4EFB;&#x52A1;</li>
+<li><p>completedTaskCount&#xFF1A;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x7684;&#x4EFB;&#x52A1;&#x4E2A;&#x6570;</p>
+</li>
+<li><p>shutdown()&#xFF1A;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x7B49;&#x7F13;&#x5B58;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x624D;&#x7EC8;&#x6B62;&#xFF0C;&#x4E14;&#x4E0D;&#x63A5;&#x53D7;&#x65B0;&#x4EFB;&#x52A1;</p>
+</li>
 <li>shutdownNow()&#xFF1A;&#x7ACB;&#x5373;&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x5C1D;&#x8BD5;&#x6253;&#x65AD;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x6E05;&#x7A7A;&#x4EFB;&#x52A1;&#x7F13;&#x5B58;&#x961F;&#x5217;&#xFF0C;&#x8FD4;&#x56DE;&#x5C1A;&#x672A;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x52A1;</li>
 </ul>
-</li>
-</ul>
-<h4 id="lock">Lock</h4>
-<p><strong>&#x4E50;&#x89C2;&#x9501;</strong>&#xFF1A;&#x6BCF;&#x6B21;&#x53BB;&#x62FF;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x8BA4;&#x4E3A;&#x522B;&#x4EBA;&#x4E0D;&#x4F1A;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x4E0A;&#x9501;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x66F4;&#x65B0;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5224;&#x65AD;&#x4E00;&#x4E0B;&#x5728;&#x6B64;&#x671F;&#x95F4;&#x522B;&#x4EBA;&#x6709;&#x6CA1;&#x6709;&#x53BB;&#x66F4;&#x65B0;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x3002;&#x4E50;&#x89C2;&#x9501;&#x9002;&#x7528;&#x4E8E;&#x591A;&#x8BFB;&#x7684;&#x5E94;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x63D0;&#x9AD8;&#x541E;&#x5410;&#x91CF;</p>
-<p><strong>CAS</strong>&#xFF1A;CAS&#x662F;&#x4E50;&#x89C2;&#x9501;&#x6280;&#x672F;&#xFF0C;&#x5F53;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;CAS&#x540C;&#x65F6;&#x66F4;&#x65B0;&#x540C;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x53EA;&#x6709;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x80FD;&#x66F4;&#x65B0;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x800C;&#x5176;&#x5B83;&#x7EBF;&#x7A0B;&#x90FD;&#x5931;&#x8D25;&#xFF0C;&#x5931;&#x8D25;&#x7684;&#x7EBF;&#x7A0B;&#x5E76;&#x4E0D;&#x4F1A;&#x88AB;&#x6302;&#x8D77;&#xFF0C;&#x800C;&#x662F;&#x88AB;&#x544A;&#x77E5;&#x8FD9;&#x6B21;&#x7ADE;&#x4E89;&#x4E2D;&#x5931;&#x8D25;&#xFF0C;&#x5E76;&#x53EF;&#x4EE5;&#x518D;&#x6B21;&#x5C1D;&#x8BD5;&#x3002;</p>
-<p>CAS &#x64CD;&#x4F5C;&#x4E2D;&#x5305;&#x542B;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#x6570; &#x2014;&#x2014; &#x9700;&#x8981;&#x8BFB;&#x5199;&#x7684;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#xFF08;V&#xFF09;&#x3001;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x7684;&#x9884;&#x671F;&#x539F;&#x503C;&#xFF08;A&#xFF09;&#x548C;&#x62DF;&#x5199;&#x5165;&#x7684;&#x65B0;&#x503C;(B)&#x3002;&#x5982;&#x679C;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;V&#x7684;&#x503C;&#x4E0E;&#x9884;&#x671F;&#x539F;&#x503C;A&#x76F8;&#x5339;&#x914D;&#xFF0C;&#x90A3;&#x4E48;&#x5904;&#x7406;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x8BE5;&#x4F4D;&#x7F6E;&#x503C;&#x66F4;&#x65B0;&#x4E3A;&#x65B0;&#x503C;B&#x3002;&#x5426;&#x5219;&#x5904;&#x7406;&#x5668;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x3002;</p>
-<p><strong>&#x60B2;&#x89C2;&#x9501;</strong>&#xFF1A;&#x603B;&#x662F;&#x5047;&#x8BBE;&#x6700;&#x574F;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6BCF;&#x6B21;&#x53BB;&#x62FF;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x8BA4;&#x4E3A;&#x522B;&#x4EBA;&#x4F1A;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x6B21;&#x5728;&#x62FF;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x4E0A;&#x9501;&#xFF0C;&#x8FD9;&#x6837;&#x522B;&#x4EBA;&#x60F3;&#x62FF;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5C31;&#x4F1A;&#x963B;&#x585E;&#x76F4;&#x5230;&#x5B83;&#x62FF;&#x5230;&#x9501;&#x3002;&#x4F20;&#x7EDF;&#x7684;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x91CC;&#x8FB9;&#x5C31;&#x7528;&#x5230;&#x4E86;&#x5F88;&#x591A;&#x8FD9;&#x79CD;&#x9501;&#x673A;&#x5236;&#xFF0C;&#x6BD4;&#x5982;&#x884C;&#x9501;&#xFF0C;&#x8868;&#x9501;&#x7B49;&#xFF0C;&#x8BFB;&#x9501;&#xFF0C;&#x5199;&#x9501;&#x7B49;&#xFF0C;&#x90FD;&#x662F;&#x5728;&#x505A;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#x5148;&#x4E0A;&#x9501;&#x3002;Java&#x7684;synchronized&#x5173;&#x952E;&#x5B57;&#x7684;&#x5B9E;&#x73B0;&#x4E5F;&#x662F;&#x60B2;&#x89C2;&#x9501;&#x3002;</p>
 
                                 
                                 </section>
@@ -1376,7 +1513,7 @@ System.out.println(. . .);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"4.1","depth":1,"next":{"title":"Docker","level":"4.2","depth":1,"path":"post/docker.md","ref":"post/docker.md","articles":[]},"previous":{"title":"Angular","level":"3.4","depth":1,"path":"post/angular.md","ref":"post/angular.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/java.md","mtime":"2019-03-07T09:48:54.493Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-25T09:35:10.018Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"4.1","depth":1,"next":{"title":"Docker","level":"4.2","depth":1,"path":"post/docker.md","ref":"post/docker.md","articles":[]},"previous":{"title":"Angular","level":"3.4","depth":1,"path":"post/angular.md","ref":"post/angular.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/java.md","mtime":"2019-03-28T09:31:53.539Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-28T09:56:40.397Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
