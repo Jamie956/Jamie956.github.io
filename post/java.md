@@ -961,13 +961,13 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 #### Synchronization
 
+
+
+**Race Condition**
+
 - In most practical multithreaded applications, two or more threads need to share access to the same data. What happens if two threads have access to the same object and each calls a method that modifes the state of the object? As you might imagine, the threads can step on each other’s toes. Depending on the order in which the data were accessed, corrupted objects can result. Such a situation is often called a race condition. 
 
-
-
-**The Race Condition Explained**
-
-![Simultaneous access by two threads](..\img\Simultaneous access by two threads.png)
+  ![Simultaneous access by two threads](..\img\Simultaneous access by two threads.png)
 
 
 
@@ -979,8 +979,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
   myLock.lock(); // a ReentrantLock object
   try{
       critical section
-  }
-  finally{
+  }finally{
       myLock.unlock(); // make sure the lock is unlocked even if an exception is thrown
   }
   ```
@@ -1014,19 +1013,18 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 - You must make sure that no other thread can modify the balance between the test and the transfer action. You do so by protecting both the test and the transfer action with a lock: 
 
   ```java
-  public void transfer(int from, int to, int amount){
-      bankLock.lock();
-      try{
-          while (accounts[from] < amount){
-              // wait
-              . . .
-          }
-          // transfer funds
-          . . .
-      }
-      finally{
-          bankLock.unlock();
-      }
+  public void transfer(int from, int to, int amount) {
+   bankLock.lock();
+   try {
+    while (accounts[from] < amount) {
+     // wait
+     ...
+    }
+    // transfer funds
+    ...
+   } finally {
+    bankLock.unlock();
+   }
   }
   ```
 
@@ -1035,18 +1033,17 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 - When should you call signalAll? The rule of thumb is to call signalAll whenever the state of an object changes in a way that might be advantageous to waiting threads. For example, whenever an account balance changes, the waiting threads should be given another chance to inspect the balance. In our example, we call signalAll when we have fnished the funds transfer. 
 
   ```java
-  public void transfer(int from, int to, int amount){
-      bankLock.lock();
-      try{
-          while (accounts[from] < amount)
-              sufficientFunds.await();
-          // transfer funds
-          . . .
-              sufficientFunds.signalAll();
-      }
-      finally{
-          bankLock.unlock();
-      }
+  public void transfer(int from, int to, int amount) {
+   bankLock.lock();
+   try {
+    while (accounts[from] < amount)
+     sufficientFunds.await();
+    // transfer funds
+    ...
+    sufficientFunds.signalAll();
+   } finally {
+    bankLock.unlock();
+   }
   }
   ```
 
@@ -1054,7 +1051,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-**The synchronized Keyword**
+**Keyword**
 
 - let us summarize the key points about locks and conditions:
 
@@ -1063,35 +1060,37 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
   - A lock can have one or more associated condition objects.
   - Each condition object manages threads that have entered a protected code section but that cannot proceed. 
 
-- If a method is declared with the synchronized keyword, the object’s lock protects the entire method.  
+- If a method is declared with the synchronized keyword, the object’s lock protects the entire method.
 
   ```java
-  public synchronized void method(){
-      method body
+  public synchronized void method() {
+   method body
   }
   //is the equivalent of
-  public void method(){
-      this.intrinsicLock.lock();
-      try{
-          method body
-      }
-      finally { this.intrinsicLock.unlock(); }
+  public void method() {
+   this.intrinsicLock.lock();
+   try {
+    method body
+   } finally {
+    this.intrinsicLock.unlock();
+   }
   }
   ```
 
 - As you can see, using the synchronized keyword yields code that is much more concise. Of course, to understand this code, you have to know that each object has an intrinsic lock, and that the lock has an intrinsic condition. The lock manages the threads that try to enter a synchronized method. The condition manages the threads that have called wait.
 
   ```java
-  class Bank{
-      private double[] accounts;
-      public synchronized void transfer(int from, int to, int amount) throws InterruptedException{
-          while (accounts[from] < amount)
-              wait(); // wait on intrinsic object lock's single condition
-          accounts[from] -= amount;
-          accounts[to] += amount;
-          notifyAll(); // notify all threads waiting on the condition
-      }
-      public synchronized double getTotalBalance() { . . . }
+  class Bank {
+   private double[] accounts;
+   public synchronized void transfer(int from, int to, int amount) throws InterruptedException {
+    while (accounts[from] < amount)
+     wait(); // wait on intrinsic object lock's single condition
+    accounts[from] -= amount;
+    accounts[to] += amount;
+    notifyAll(); // notify all threads waiting on the condition
+   }
+   public synchronized double getTotalBalance() {...
+   }
   }
   ```
 
@@ -1104,14 +1103,13 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 - Here, the lock object is created only to use the lock that every Java object possesses. 
 
   ```java
-  public void transfer(int from, int to, int amount)
-  {
-  synchronized (lock) // an ad-hoc lock
-  {
-  accounts[from] -= amount;
-  accounts[to] += amount;
-  }
-  System.out.println(. . .);
+  public void transfer(int from, int to, int amount) {
+   synchronized(lock) // an ad-hoc lock
+   {
+    accounts[from] -= amount;
+    accounts[to] += amount;
+   }
+   System.out.println(...);
   }
   ```
 
