@@ -1120,9 +1120,9 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 **The Monitor Concept**
 
 - In the terminology of Java, a monitor has these properties:
-  - A monitor is a class with only private felds.
+  - A monitor is a class with only private fields.
   - Each object of that class has an associated lock.
-  - All methods are locked by that lock. In other words, if a client calls obj.method(), then the lock for obj is automatically acquired at the beginning of the method call and relinquished when the method returns. Since all felds are private, this arrangement ensures that no thread can access the felds while another thread manipulates them.
+  - All methods are locked by that lock. In other words, if a client calls obj.method(), then the lock for obj is automatically acquired at the beginning of the method call and relinquished when the method returns. Since all fields are private, this arrangement ensures that no thread can access the fields while another thread manipulates them.
   - The lock can have any number of associated conditions. 
 - Every object in Java has an intrinsic lock and an intrinsic condition. If a method is declared with the synchronized keyword, it acts like a monitor method. The condition variable is accessed by calling wait/notifyAll/notify. 
 
