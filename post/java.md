@@ -313,7 +313,7 @@ public class Encapsulate {
 
 
 
-![UML notation for class relationships](..\img\UML notation for class relationships.png)
+![UML notation for class relationships](../img/UML notation for class relationships.png)
 
 
 
@@ -920,7 +920,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 **Threads can be in one of six states:**
 
-![Thread states](..\img\Thread states.png)
+![Thread states](../img/Thread states.png)
 
 ![con life](../img/con%20life.png)
 
@@ -969,7 +969,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 - In most practical multithreaded applications, two or more threads need to share access to the same data. What happens if two threads have access to the same object and each calls a method that modifes the state of the object? As you might imagine, the threads can step on each other’s toes. Depending on the order in which the data were accessed, corrupted objects can result. Such a situation is often called a race condition. 
 
-  ![Simultaneous access by two threads](..\img\Simultaneous access by two threads.png)
+  ![Simultaneous access by two threads](../img/Simultaneous access by two threads.png)
 
 
 
