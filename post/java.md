@@ -866,25 +866,13 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 ### Interfaces
 
-
-
-**The Interface Concept**
-
-- This means that any class that implements the Comparable interface is required to have a compareTo method, and the method must take an Object parameter and return an integer. 
-
-  ```java
-  public interface Comparable{
-      int compareTo(Object other);
-  }
-  ```
-
 - All methods of an interface are automatically public. For that reason, it is not necessary to supply the keyword public when declaring a method in an interface. 
 
 - The reason for interfaces is that the Java programming language is strongly typed. When making a method call, the compiler needs to be able to check that the method actually exists. 
 
 
 
-**Properties of Interfaces**
+**Properties**
 
 - Interfaces are not classes. In particular, you can never use the new operator to instantiate an interface
 
@@ -906,14 +894,6 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
   ```
 
   Just as methods in an interface are automatically public, fields are always public static final. 
-
-**Interfaces and Abstract Classes**
-
-- There is, unfortunately, a major problem with using an abstract base class to express a generic property. A class can only extend a single class. Suppose the Employee class already extends a different class, say, Person. Then it can’t extend a second class. 
-
-  `class Employee extends Person, Comparable // Error `
-
-
 
 
 
