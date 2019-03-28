@@ -768,21 +768,18 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 - The strings s and t have the same hash code because, for strings, the hash codes are derived from their contents. The string builders sb and tb have different hash codes because no hashCode method has been defined for the StringBuilder class and the default hashCode method in the Object class derives the hash code from the object’s memory address. 
 
   ```java
-  String s = "Ok";
-  StringBuilder sb = new StringBuilder(s);
-  System.out.println(s.hashCode() + " " + sb.hashCode());
-  String t = new String("Ok");
-  StringBuilder tb = new StringBuilder(t);
-  System.out.println(t.hashCode() + " " + tb.hashCode());
+  String s = "Ok";//2556
+  StringBuilder sb = new StringBuilder(s);//366712642
+  String t = new String("Ok");//2556
+  StringBuilder tb = new StringBuilder(t);//1829164700
   ```
 
-  ![Hash Codes of Strings and String Builders](..\img\Hash Codes of Strings and String Builders.png)
 
 
 
 **The toString Method**
 
-- Another important method in Object is the toString method that returns a string representing the value of this object.  
+- Returns a string representing the value of this object.  
 
 - Whenever an object is concatenated with a string by the “+” operator, the Java compiler automatically invokes the toString method to obtain a string representation of the object. 
 
