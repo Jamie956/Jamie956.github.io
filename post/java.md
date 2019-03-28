@@ -552,7 +552,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 - As you move up the inheritance hierarchy, classes become more general and probably more abstract. At some point, the ancestor class becomes so general that you think of it more as a basis for other classes than as a class with specifc instances you want to use. Consider, for example, an extension of our Employee class hierarchy. An employee is a person, and so is a student. Let us extend our class hierarchy to include classes Person and Student. 
 - Why bother with so high a level of abstraction? There are some attributes that make sense for every person, such as name. Both students and employees have names, and introducing a common superclass lets us factor out the getName method to a higher level in the inheritance hierarchy 
 
-![Inheritance diagram for Person and its subclasses](D:/project/justnote/img/Inheritance%20diagram%20for%20Person%20and%20its%20subclasses.png)
+![Inheritance diagram for Person and its subclasses](../img/Inheritance%20diagram%20for%20Person%20and%20its%20subclasses.png)
 
 
 
