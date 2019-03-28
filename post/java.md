@@ -791,7 +791,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-### Generic Array Lists
+### Array Lists
 
 - The ArrayList class is similar to an array, but it automatically adjusts its capacity as you add and remove elements, without any additional code. 
 
@@ -816,21 +816,9 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-**Accessing Array List Elements**
+### Wrappers & Autoboxing
 
-Employee[] array is replaced by an `ArrayList<Employee>`. Note the following changes: 
-
-- You don’t have to specify the array size.
-- You use add to add as many elements as you like.
-- You use size() instead of length to count the number of elements.
-- You use a.get(i) instead of a[i] to access an element.
-
-
-
-### Object Wrappers and Autoboxing
-
-- A class Integer corresponds to the primitive type int. These kinds of classes are usually called wrappers.  
-- The wrapper classes have obvious names: Integer, Long, Float, Double, Short, Byte, Character, and Boolean. 
+- Wrappers: A class Integer corresponds to the primitive type int, names: Integer, Long, Float, Double, Short, Byte, Character, and Boolean. 
 - The wrapper classes are immutable—you cannot change a wrapped value after the wrapper has been constructed. They are also final, so you cannot subclass them. 
 - autoboxing
 
