@@ -580,7 +580,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
   }
   ```
 
-- Abstract methods act as placeholders for methods that are implemented in the subclasses. When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods undefned; then you must tag the subclass as abstract as well. Or you can defne all methods, and the subclass is no longer abstract. 
+- Abstract methods act as placeholders for methods that are implemented in the subclasses. When you extend an abstract class, you have two choices. You can leave some or all of the abstract methods undefined; then you must tag the subclass as abstract as well. Or you can defne all methods, and the subclass is no longer abstract. 
 
 - Abstract classes cannot be instantiated. That is, if a class is declared as abstract, no objects of that class can be created. 
 
@@ -624,7 +624,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-- The getSalary method is not private, static, or final, so it is dynamically bound. The virtual machine produces method tables for the Employee and Manager classes. The Employeetable shows that all methods are defned in the Employee class itself:
+- The getSalary method is not private, static, or final, so it is dynamically bound. The virtual machine produces method tables for the Employee and Manager classes. The Employeetable shows that all methods are defined in the Employee class itself:
 
     ```
     Employee:
@@ -634,7 +634,7 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
     raiseSalary(double) -> Employee.raiseSalary(double) 
     ```
 
-- The Manager method table is slightly different. Three methods are inherited, one method is redefned, and one method is added. 
+- The Manager method table is slightly different. Three methods are inherited, one method is redefined, and one method is added. 
 
     ```
     Manager:
@@ -763,9 +763,9 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 - A hash code is an integer that is derived from an object. 
 
-- The hashCode method is defned in the Object class. Therefore, every object has a default hash code. That hash code is derived from the object’s memory address.
+- The hashCode method is defined in the Object class. Therefore, every object has a default hash code. That hash code is derived from the object’s memory address.
 
-- The strings s and t have the same hash code because, for strings, the hash codes are derived from their contents. The string builders sb and tb have different hash codes because no hashCode method has been defned for the StringBuilder class and the default hashCode method in the Object class derives the hash code from the object’s memory address. 
+- The strings s and t have the same hash code because, for strings, the hash codes are derived from their contents. The string builders sb and tb have different hash codes because no hashCode method has been defined for the StringBuilder class and the default hashCode method in the Object class derives the hash code from the object’s memory address. 
 
   ```java
   String s = "Ok";
@@ -1039,7 +1039,7 @@ Employee[] array is replaced by an `ArrayList<Employee>`. Note the following cha
 
 **Thread Priorities**
 
-- In the Java programming language, every thread has a priority. By default, a thread inherits the priority of the thread that constructed it. You can increase or decrease the priority of any thread with the setPriority method. You can set the priority to any value between MIN_PRIORITY (defned as 1 in the Thread class) and MAX_PRIORITY (defned as 10). NORM_PRIORITY is defned as 5. 
+- In the Java programming language, every thread has a priority. By default, a thread inherits the priority of the thread that constructed it. You can increase or decrease the priority of any thread with the setPriority method. You can set the priority to any value between MIN_PRIORITY (defined as 1 in the Thread class) and MAX_PRIORITY (defined as 10). NORM_PRIORITY is defined as 5. 
 - If you have several threads with a high priority that don’t become inactive, the lower-priority threads may never execute. Whenever the scheduler decides to run a new thread, it will choose among the highest-priority threads frst, even though that may starve the lower-priority threads completely. 
 
 
