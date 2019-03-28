@@ -922,6 +922,8 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 ![Thread states](..\img\Thread states.png)
 
+![con life](../img/con%20life.png)
+
 - New
   - When you create a thread with the new operator—for example, new Thread(r)—the thread is not yet running. This means that it is in the new state. When a thread is in the new state, the program has not started executing code inside of it. A certain amount of bookkeeping needs to be done before a thread can run.
 - Runnable
@@ -1153,20 +1155,6 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-**Atomics**
-
-- There are a number of classes in the java.util.concurrent.atomic package that use effcient machine-level instructions to guarantee atomicity of other operations without using locks. For example, the AtomicInteger class has methods incrementAndGet and decrementAndGet that atomically increment or decrement an integer. For example, you can safely generate a sequence of numbers like this: 
-
-- The incrementAndGet method atomically increments the AtomicLong and returns the postincrement value. That is, the operations of getting the value, adding 1, setting it, and producing the new value cannot be interrupted. It is guaranteed that the correct value is computed and returned, even if multiple threads access the same instance concurrently 
-
-  ```java
-  public static AtomicLong nextNumber = new AtomicLong();
-  // In some thread...
-  long id = nextNumber.incrementAndGet();
-  ```
-
-
-
 **Deadlocks**
 
 - It is possible that all threads get blocked because each is waiting for more money. Such a situation is called a deadlock. 
@@ -1175,28 +1163,29 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 **Lock Testing and Timeouts**
 
-- A thread blocks indefnitely when it calls the lock method to acquire a lock that is owned by another thread. You can be more cautious about acquiring a lock. The tryLock method tries to acquire a lock and returns true if it was successful. Otherwise, it immediately returns false, and the thread can go off and do something else. 
+- A thread blocks indefnitely when it calls the lock method to acquire a lock that is owned by another thread. You can be more cautious about acquiring a lock. The tryLock method tries to acquire a lock and returns true if it was successful. Otherwise, it immediately returns false, and the thread can go off and do something else.
 
   ```java
-  if (myLock.tryLock()){
-      // now the thread owns the lock
-      try { . . . }
-      finally { myLock.unlock(); }
-  }
-  else
-      // do something else
+  if (myLock.tryLock()) {
+   // now the thread owns the lock
+   try {...
+   } finally {
+    myLock.unlock();
+   }
+  } else
+  // do something else
   ```
 
-- The lock method cannot be interrupted. If a thread is interrupted while it is waiting to acquire a lock, the interrupted thread continues to be blocked until the lock is available. If a deadlock occurs, then the lock method can never terminate. 
+- The lock method cannot be interrupted. If a thread is interrupted while it is waiting to acquire a lock, the interrupted thread continues to be blocked until the lock is available. If a deadlock occurs, then the lock method can never terminate.
 
-- However, if you call tryLock with a timeout, an InterruptedException is thrown if the thread is interrupted while it is waiting. This is clearly a useful feature because it allows a program to break up deadlocks. 
+- However, if you call tryLock with a timeout, an InterruptedException is thrown if the thread is interrupted while it is waiting. This is clearly a useful feature because it allows a program to break up deadlocks.
 
 
 
-**Why the stop and suspend Methods Are Deprecated**
+**Deprecated stop & suspend**
 
 - Let us turn to the stop method first. This method terminates all pending methods, including the run method. When a thread is stopped, it immediately gives up the locks on all objects that it has locked. This can leave objects in an inconsistent state. For example, suppose a TransferRunnable is stopped in the middle of moving money from one account to another, after the withdrawal and before the deposit. Now the bank object is damaged. Since the lock has been relinquished, the damage is observable from the other threads that have not been stopped. 
-- Next, let us see what is wrong with the suspend method. Unlike stop, suspend won’t damage objects. However, if you suspend a thread that owns a lock, then the lock Next, let us see what is wrong with the suspend method. Unlike stop, suspend won’t damage objects. However, if you suspend a thread that owns a lock, then the lock 
+- Next, let us see what is wrong with the suspend method. Unlike stop, suspend won’t damage objects. However, if you suspend a thread that owns a lock, then the lock is unavailable until the thread is resumed. If the thread that calls the suspend method tries to acquire the same lock, the program deadlocks: The suspended thread waits to be resumed, and the suspending thread waits for the lock. 
 
 
 
@@ -1207,24 +1196,18 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-#### Life Cycle
-
-
-
-![con life](../img/con%20life.png)
-
-
-
-Thread Pool
+### Thread Pool
 
 - 减少创建和销毁线程的次数，重复使用线程
 - 根据系统的承受能力，调整线程池中工作线程的数量，防止消耗过多内存导致服务器崩溃
 
 
 
-**ThreadPoolExecutor**
-
 - corePoolSize：默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务来之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中
+  - 线程池线程数 < corePoolSize，来一个任务，就创建一个线程去执行这个任务
+  - 线程池线程数 >= corePoolSize，来一个任务，尝试将它添加到任务缓存队列，如果添加成功，就等待空闲线程将它取出，否则（一般是任务缓存队列满了），就会尝试创建新线程执行这个任务
+  - 线程池线程数 = maximumPoolSize，采取任务拒绝策略
+  - 线程池线程数 > corePoolSize，如果线程空闲时间超过keepAliveTime，就会被终止，直到线程池线程数 < corePoolSize
 - maximumPoolSize：表示在线程池中最多能创建多少个线程
 - keepAliveTime：表示线程没有任务执行时最多保持多久时间会终止。默认情况下，只有当线程池中的线程数大于corePoolSize时，keepAliveTime才会起作用，直到线程池中的线程数不大于corePoolSize
 - unit：参数keepAliveTime的时间单位
@@ -1238,32 +1221,5 @@ Thread Pool
 - largestPoolSize： 曾经出现过的最大线程数
 - completedTaskCount：执行完毕的任务个数
 
-
-
-- 线程池线程数 < corePoolSize，来一个任务，就创建一个线程去执行这个任务
-- 线程池线程数 >= corePoolSize，来一个任务，尝试将它添加到任务缓存队列，如果添加成功，就等待空闲线程将它取出，否则（一般是任务缓存队列满了），就会尝试创建新线程执行这个任务
-- 线程池线程数 = maximumPoolSize，采取任务拒绝策略
-- 线程池线程数 > corePoolSize，如果线程空闲时间超过keepAliveTime，就会被终止，直到线程池线程数 < corePoolSize
-
-
-
-- 线程池的关闭
-  - shutdown()：不会立即终止线程池，等缓存队列中的任务执行完才终止，且不接受新任务
-  - shutdownNow()：立即终止线程池，尝试打断正在执行的任务，清空任务缓存队列，返回尚未执行的任务
-
-
-
-#### Lock
-
-**乐观锁**：每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据。乐观锁适用于多读的应用类型，提高吞吐量
-
-**CAS**：CAS是乐观锁技术，当多个线程尝试使用CAS同时更新同一个变量时，只有其中一个线程能更新变量的值，而其它线程都失败，失败的线程并不会被挂起，而是被告知这次竞争中失败，并可以再次尝试。
-
-
-
-CAS 操作中包含三个操作数 —— 需要读写的内存位置（V）、进行比较的预期原值（A）和拟写入的新值(B)。如果内存位置V的值与预期原值A相匹配，那么处理器会自动将该位置值更新为新值B。否则处理器不做任何操作。
-
-
-
-**悲观锁**：总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。Java的synchronized关键字的实现也是悲观锁。
-
+- shutdown()：不会立即终止线程池，等缓存队列中的任务执行完才终止，且不接受新任务
+- shutdownNow()：立即终止线程池，尝试打断正在执行的任务，清空任务缓存队列，返回尚未执行的任务
