@@ -1117,24 +1117,13 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 
 
-**The Monitor Concept**
-
-- In the terminology of Java, a monitor has these properties:
-  - A monitor is a class with only private fields.
-  - Each object of that class has an associated lock.
-  - All methods are locked by that lock. In other words, if a client calls obj.method(), then the lock for obj is automatically acquired at the beginning of the method call and relinquished when the method returns. Since all fields are private, this arrangement ensures that no thread can access the fields while another thread manipulates them.
-  - The lock can have any number of associated conditions. 
-- Every object in Java has an intrinsic lock and an intrinsic condition. If a method is declared with the synchronized keyword, it acts like a monitor method. The condition variable is accessed by calling wait/notifyAll/notify. 
-
-
-
 **Volatile Fields**
 
 - Computers with multiple processors can temporarily hold memory values in registers or local memory caches. As a consequence, threads running in different processors may see different values for the same memory location!
 
 - Compilers can reorder instructions for maximum throughput. Compilers won’t choose an ordering that changes the meaning of the code, but they make the assumption that memory values are only changed when there are explicit instructions in the code. However, a memory value can be changed by another thread! 
 
-- The volatile keyword offers a lock-free mechanism for synchronizing access to an instance feld. If you declare a feld as volatile, then the compiler and the virtual machine take into account that the feld may be concurrently updated by another thread. 
+- The volatile keyword offers a lock-free mechanism for synchronizing access to an instance field. If you declare a field as volatile, then the compiler and the virtual machine take into account that the field may be concurrently updated by another thread. 
 
 - The compiler will insert the appropriate code to ensure that a change to the done variable in one thread is visible from any other thread that reads the variable. 
 
@@ -1148,9 +1137,9 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 **Final Variables**
 
-- As you saw in the preceding section, you cannot safely read a feld from multiple threads unless you use locks or the volatile modifer. 
+- As you saw in the preceding section, you cannot safely read a field from multiple threads unless you use locks or the volatile modifer. 
 
-- There is one other situation in which it is safe to access a shared feld—when it is declared final. Consider 
+- There is one other situation in which it is safe to access a shared field—when it is declared final. Consider 
 
   ```java
   final Map<String, Double> accounts = new HashMap<>();
