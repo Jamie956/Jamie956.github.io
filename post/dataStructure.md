@@ -1,108 +1,34 @@
-### Data structure
-
-**数据结构**
-
-数据结构：研究非数值计算的程序设计问题中的操作对象，以及它们之间的关系和操作
-程序设计 = 数据结构 + 算法
-
-数据：描述客观事物的符号，是计算机中可以操作的对象，能被计算机识别，并输入给计算机处理的符号集合
-数据对象：是性质相同的数据元素的集合，是数据的子集
-数据元素：组成数据的基本单位
-数据项：一个数据元素可以由若干个数据项组成，数据项是数据不可分割的最小单位
-
-数据结构：相互之间存在一种或多种特定的数据元素的集合
-
-
-
-逻辑结构：数据对象中数据元素之间的相互关系
-
-- 集合结构：集合结构中的数据元素除了同属于一个集合外，它们之间没有其他关系
-- 线性结构：线性结构中的数据元素之间是一对一的关系
-- 树形结构：树形结构中的数据元素之间存在一种一对多的层次关系
-- 图形结构：图形结构的数据元素是多对多的关系
-
-
-
-物理结构：数据的逻辑结构在计算机中的储存形式
-
-- 顺序存储结构：把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的
-- 链式存储结构：把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续
-
-数据类型：一组性质相同的值的集合及定义在此集合上的一些操作的总称
-
-算法：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作
-算法的五个基本特性：输入、输出、有穷性、确定性、可行性
-
-算法设计要求：正确性、可读性、健壮性、时间效率高、存储量低
-
-
-
-**时间复杂度**
-
-函数的渐近增长：给定两个函数f(n)和g(n)，如果存在一个整数N，使得对于所有的n>N，f(n)总是比g(n)大，那么，f(n)的增长渐近快于g(n)
-
-判断一个算法的效率时，函数中的常数和其他次要项常常可以忽略，而更应该关注主项（最高阶项）的阶数
-
-某个算法，随着n的增大，它会越来越优于另一种算法，或越来越差于另一算法
-
-T(n)=O(f(n)) 表示随问题规模n的增大，算法执行时间的增长率和f(n)的增长率相同，称作算法的渐进时间复杂度（时间复杂度）
-
-
-
-推导大O阶：
-
-- 用常数1取代运行时间中的所有加法常数
-- 在修改后的运行次数函数中，只保留最高阶项
-- 如果最高阶项存在且不是1，则去除与这个项相乘的常数
-
-
-
-对于分支结构，执行次数都是恒定的，不会随n的变大而发生变化，所以单纯的分支结构（不包含在循环结构中），其时间复杂度也是O(1)
-
-分析算法的复杂度，关键就是分析循环体的运行情况
-
-常数阶O(1)、线性阶O(n)、对数阶O(log<sub>2</sub>n)、平方阶O(n<sup>2</sup>)
-
-时间复杂度耗费时间排列：
-
 O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup>n</sup>) < O(n!) < O(n<sup>n</sup>)
 
 
 
-**空间复杂度**
+### Linked List
 
-S(n)=O(f(n))，n为问题规模，f(n)为语句关于n所占存储空间的函数
+- A linked list is a linear data structure, in which the elements are not 
+  stored at contiguous memory locations. The elements in a linked list are
+  linked using pointers
 
+- In simple words, a linked list consists of nodes where each node 
+  contains a data field and a reference(link) to the next node in the 
+  list.
 
+  <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist.png" />
 
-**List**
+- Advantages over arrays
+  - Dynamic size
+  - Ease of insertion/deletion
 
-线性表（List）：0个或多个数据元素的有限序列
+- Drawbacks:
+  - Random access is not allowed.  We have to access elements sequentially starting from the first node.  So we cannot do binary search with linked lists efficiently with its default implementation.
+  - Extra memory space for a pointer is required with each element of the list.
+  - Not cache friendly. Since array elements are contiguous locations, there is locality of reference which is not there in case of linked lists.
 
-地址：存储器中的每个存储单元的编号
-
-
-
-**链表**
-
-结点（Node）：数据域+指针域
-
-线性表的链式存储结构：n个结点链结成一个链表
-
-单链表：每个结点只包含一个指针域
-
-头指针：链表中第一个结点的存储位置
-
-头结点：单链表的第一个结点前附设一个结点
-
-插入或删除数据越频繁的操作，单链表的效率优势就越明显
-
-
-
-| 结构     | 存储分配方式                                         | 查找 | 插入/删除                          | 空间性能           |
-| -------- | ---------------------------------------------------- | ---- | ---------------------------------- | ------------------ |
-| 顺序存储 | 用一段连续的存储单元依次存储线性表的数据元素         | O(1) | 平均移动表长一半的元素，O(n)       | 预先分配存储空间   |
-| 单链表   | 用链式存储结构，用一组任意的存储单元存放线性表的元素 | O(n) | 找出某位置指针后，插入和删除为O(1) | 不需要分配存储空间 |
+- Representation: A linked list is represented by a pointer to the first node of the 
+  linked list.  The first node is called head.  If the linked list is 
+  empty, then value of head is NULL.
+  Each node in a list consists of at least two parts:
+  - data
+  - Pointer (Or Reference) to the next node
 
 
 
