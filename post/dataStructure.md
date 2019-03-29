@@ -2,7 +2,7 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
 
 
-### Linked List
+### Singly Linked List
 
 - A linked list is a linear data structure, in which the elements are not 
   stored at contiguous memory locations. The elements in a linked list are
@@ -51,6 +51,17 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
 
 
+### Circular Linked List
+
+- Circular linked list is a linked list where all nodes are connected to form a circle. There is no NULL at the end. A circular linked list can be a singly circular linked list or doubly circular linked list.
+
+  <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/CircularLinkeList.png">
+
+- Advantages of Circular Linked Lists
+
+  - Any node can be a starting point. We can traverse the whole list by starting from any point. We just need to stop when the first visited node is visited again.
+  - Useful for implementation of queue. Unlike this implementation, we don’t need to maintain two pointers for front and rear if we use circular linked list. We can maintain a pointer to the last inserted node and front can always be obtained as next of last.
+  - Circular lists are useful in applications to repeatedly go around the list. For example, when multiple applications are running on a PC, it is common for the operating system to put the running applications on a list and then to cycle through them, giving each of them a slice of time to execute, and then making them wait while the CPU is given to another application. It is convenient for the operating system to use a circular list so that when it reaches the end of the list it can cycle around to the front of the list. 
 
 
 
@@ -61,14 +72,6 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
 
 
-
-
-
-
-
-**循环链表**
-
-循环链表（Circular Linkedlist）：将单链表中终端结点的指针端由空指针改为指向头结点，使整个单链表形成一个环
 
 
 
