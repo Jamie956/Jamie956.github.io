@@ -61,7 +61,45 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
   - Any node can be a starting point. We can traverse the whole list by starting from any point. We just need to stop when the first visited node is visited again.
   - Useful for implementation of queue. Unlike this implementation, we don’t need to maintain two pointers for front and rear if we use circular linked list. We can maintain a pointer to the last inserted node and front can always be obtained as next of last.
-  - Circular lists are useful in applications to repeatedly go around the list. For example, when multiple applications are running on a PC, it is common for the operating system to put the running applications on a list and then to cycle through them, giving each of them a slice of time to execute, and then making them wait while the CPU is given to another application. It is convenient for the operating system to use a circular list so that when it reaches the end of the list it can cycle around to the front of the list. 
+  - Circular lists are useful in applications to repeatedly go around the list. For example, when multiple applications are running on a PC, it is common for the operating system to put the running applications on a list and then to cycle through them, giving each of them a slice of time to execute, and then making them wait while the CPU is given to another application. It is convenient for the operating system to use a circular list so that when it reaches the end of the list it can cycle around to the front of the list.
+
+
+
+### Doubly Linked List
+
+- A Doubly Linked List (DLL) contains an extra pointer, typically called previous pointer, together with next pointer and data which are there in singly linked list.
+
+  <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/03/DLL1.png">
+
+- Advantages over singly linked list
+
+  - A DLL can be traversed in both forward and backward direction.
+  - The delete operation in DLL is more efficient if pointer to the node to be deleted is given.
+  - We can quickly insert a new node before a given node.
+    In singly linked list, to delete a node, pointer to the previous node is needed. To get this previous node, sometimes the list is traversed. In DLL, we can get the previous node using previous pointer.
+
+- Disadvantages over singly linked list
+
+  - Every node of DLL Require extra space for an previous pointer.
+  - All operations require an extra pointer previous to be maintained. 
+
+- Insertion
+
+  - At the front of the DLL
+
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/03/DLL_add_front1.png">
+
+  - After a given node
+
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/03/DLL_add_middle1.png">
+
+  - At the end of the DLL
+
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/03/DLL_add_end1.png">
+
+  - Before a given node
+
+    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/5-55-300x100.png">
 
 
 
@@ -74,19 +112,6 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
 
 
-
-双向链表：结点都有两个指针域，一个指向直接后继，一个指向直接前驱
-
-
-
-线性表
-
-- 顺序存储结构
-- 链式存储结构
-  - 单链表
-  - 静态链表
-  - 循环链表
-  - 双向链表
 
 
 
