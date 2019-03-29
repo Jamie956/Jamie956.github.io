@@ -27,8 +27,38 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
   linked list.  The first node is called head.  If the linked list is 
   empty, then value of head is NULL.
   Each node in a list consists of at least two parts:
+
   - data
   - Pointer (Or Reference) to the next node
+
+- Inserting a Node
+
+  - At the front of the linked list
+
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2013/03/Linkedlist_insert_at_start.png" />
+
+  - After a given node
+
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2013/03/Linkedlist_insert_middle.png" />
+
+  - At the end of the linked list
+
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2013/03/Linkedlist_insert_last.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
