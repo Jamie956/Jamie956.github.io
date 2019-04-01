@@ -259,12 +259,27 @@ An Angular application is a tree of components, and there is always a root appli
 ### Change detection
 
 - Change detection is the mechanism for keeping data and the rendered views in sync with one another. Changes always come down from the model into the view, and Angular employs a unidirectional propagation of changes from parents down to children. This helps ensure that if a parent changes, any children are also checked, due to potential linked data. 
+
 - When a value change is detected in a component, it will update the component and potentially any child components as well.  
+
 - Angular has two ways for changes to be triggered.
+
   - The Default mode will traverse the entire tree looking for changes with each change detection process.
   - The OnPush mode tells Angular that the component only cares about changes to any values that are input into the component from its parent, and gives Angular the ability to skip checking the component during change detection if it already knows the parent hasn’t changed.
+
 - Change detection is triggered by either events, receiving HTTP responses, or timers intervals.
+
 - Change detection keeps the components in sync with the model data as asynchronous changes occur from user input or other events.
+
+- Changes are always triggered by some asynchronous activity, such as when a user interacts with the page. When these changes occur, there is a chance (though no guarantee) that the application state or data has changed. Here are some examples: 
+
+  - A user clicks a button to trigger a form submission (user activity).
+  - An interval fires every x seconds to refresh data (intervals or timers).
+  - Callbacks, observables, or promises are resolved (XHR requests, event streams). 
+
+- Change detection starts at the top and goes down the tree by default, or with OnPush only goes down the tree with changed inputs. 
+
+  ![Change detection](..\img\Change detection.png)
 
 
 
@@ -287,22 +302,7 @@ An Angular application is a tree of components, and there is always a root appli
 
 
 
-### Change detection
 
-- Angular ships with a change detection framework that determines when components need to be rendered if inputs have changed. Components need to react to changes made somewhere in the component tree, and the way they change is through inputs. 
-
-- Changes are always triggered by some asynchronous activity, such as when a user interacts with the page. When these changes occur, there is a chance (though no guarantee) that the application state or data has changed. Here are some examples: 
-  - A user clicks a button to trigger a form submission (user activity).
-  - An interval fres every x seconds to refresh data (intervals or timers).
-  - Callbacks, observables, or promises are resolved (XHR requests, event streams). 
-
-- Change detection starts at the top and goes down the tree by default, or with OnPush only goes down the tree with changed inputs. 
-
-  ![Change detection](..\img\Change detection.png)
-
-- There’s another way to intercept and detect changes using the OnChanges lifecycle hook 
-
-- We still need to declare our input properties, so we go back to the previous way to declare them without the getter and setter methods. The ngOnChanges method implements the lifecycle hook for OnChanges, and it provides a single parameter as an object populated with any changed inputs, which then have their current and previous values available. For example, if only the value input was changed in the parent, then only the change.value property will be set on the lifecycle hook. 
 
 
 
