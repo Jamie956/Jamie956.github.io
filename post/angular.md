@@ -47,7 +47,16 @@ An Angular application is a tree of components, and there is always a root appli
   - Reusability—Allow component reuse with minimal effort
   - Event-based—Emit events during the lifecycle of the component
   - Customizable—Possible to style and extend the component
-  - Declarative—Component used with simple declarative markup 
+  - Declarative—Component used with simple declarative markup
+- Here’s a list of the primary things that compose a component:
+  - Component Metadata Decorator —All components must be annotated with the @Component() decorator to properly register the component with Angular. The metadata contains numerous properties to help modify the way the component behaves or is rendered.
+  - Controller—The controller is the class that is decorated with @Component(), and it contains all the properties and methods for the component. Most of the logic exists in the controller.
+  - Template—A component isn’t a component without a template. The markup for a component defines the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any 
+- Here are the four roles of components 
+  - App component—This is the root app component, and you only get one of these per application.
+  - Display component—This is a stateless component that reﬂects the values passed into it, making it highly reusable.
+  - Data component—This is a component that helps get data into the application by loading it from external sources.
+  - Route component—When using the router, each route will render a component, and this makes the component intrinsically linked to the route. 
 
 
 
@@ -120,15 +129,28 @@ An Angular application is a tree of components, and there is always a root appli
 - The bootstrap property defines which components to bootstrap at runtime.
 
 - The constructor method runs as soon as the component is created.
+
 - Don’t load data from the service in the constructor
+
 - Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur.
+
 - Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.
+
 - <img src="../img/How Angular renders the base app into the browser.png" />
+
 - Immediately upon loading the page, the bootstrapper is called to begin Angular execution.
+
 - It loads your App module and reads through any additional dependencies that need to be loaded and bootstrapped.
+
 - Renders the App component, which is the root element of your application.
+
 - Any child components are also rendered as part of the component tree.
+
 - It will also resolve bindings and set up event listeners for anything that declares it.
+
+- Component lifecycle while the application is running
+
+  ![component behavior](..\img\Component lifecycle.png)
 
 
 
@@ -246,49 +268,10 @@ An Angular application is a tree of components, and there is always a root appli
 
 
 
-## 4 Component basics
+### Lifecycle hooks
 
-- The completed application with the three component types noted
-
-![The completed application with the three component types noted](..\img\The completed application with the three component types noted.png)
-
-- Component tree showing relationships between instances of each component 
-
-![Component tree showing relationships between instances of each component](..\img\Component tree showing relationships between instances of each component.png)
-
-
-
-### Lifecycle
-
-- Components have a lifecycle that begins with their initial instantiation, and continues with their rendering until they’re destroyed and removed from the application. 
-
-- Concepts that compose and inﬂuence a component’s behavior 
-
-![component behavior](..\img\component behavior.png)
-
-
-
-- Here’s a list of the primary things that compose a component:
-  - Component Metadata Decorator —All components must be annotated with the @Component() decorator to properly register the component with Angular. The metadata contains numerous properties to help modify the way the component behaves or is rendered.
-  - Controller—The controller is the class that is decorated with @Component(), and it contains all the properties and methods for the component. Most of the logic exists in the controller.
-  - Template—A component isn’t a component without a template. The markup for a component defnes the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any 
-
-
-
-**Component lifecycle**
-
-- Component lifecycle while the application is running 
-
-![component behavior](..\img\Component lifecycle.png)
-
-- The component metadata will then be fully processed by Angular, including the parsing of the component template, styles, and bindings. If the template contains any child components, those will kick off the same lifecycle for those components as well, but they won’t block this component from continuing to render. 
-
-
-
-**Lifecycle hooks**
-
-- Lifecycle hooks aren’t like event listeners—they’re special methods with specifc names that are called during the component’s lifecycle if they’re defned. 
-- Lifecycle hook
+- Lifecycle hooks aren’t like event listeners—they’re special methods with specifc names that are called during the component’s lifecycle if they’re defined. 
+- Methods
   - OnChanges: Fires any time the input bindings have changed
   - OnInit: This runs once after the component has fully initialized
   - OnDestroy: Before a component is completely removed, the OnDestroy hook allows you to run some logic. 
@@ -297,65 +280,6 @@ An Angular application is a tree of components, and there is always a root appli
   - AfterContentChecked: Every time that Angular checks the content children 
   - AfterViewInit: This hook lets you run logic after all View Children have been initially rendered. 
   - AfterViewChecked: When Angular checks the component view and any View Children have been checked
-
-
-
-**Nesting components**
-
-- Any component that’s nested inside another’s template is called a View Child
-- Occasionally a component accepts content to be inserted into its template, and this is known as a Content Child
-
-
-
-### Types of components
-
-- Here are the four roles of components 
-  - App component—This is the root app component, and you only get one of these per application.
-  - Display component—This is a stateless component that reﬂects the values passed into it, making it highly reusable.
-  - Data component—This is a component that helps get data into the application by loading it from external sources.
-  - Route component—When using the router, each route will render a component, and this makes the component intrinsically linked to the route. 
-
-
-
-**App component** 
-
-- Here are the guidelines I recommend for your App component: 
-  - Keep it simple —If possible, don’t put any logic into the component. Think of it more like a container. It’s easier to reuse and optimize the rest of your components if the App component doesn’t have complex behaviors they depend upon.
-  - Use for application layout scaffolding—The template is the primary part of the component, and you’ll see later in this chapter how we create the primary application layout in this component.
-  - Avoid loading data—Usually you will avoid loading data in this component, because I like to load data closer to the component that uses that data. You might load some global data (perhaps something like a user session), though that could also be done separately. On less complex applications, you might load data because it’s more complicated to abstract it on smaller applications. 
-
-
-
-**Display component **
-
-- Here are the primary guidelines I suggest for a Display component: 
-  - Decouple—Ensure that the component has no real coupling to other components, except that data may be passed into it as an input when requested.
-  - Make it only as ﬂexible as necessary—Avoid making these components overly complex and adding a lot of confguration and options out of the box. Over time, you might enhance them, but I fnd it’s best to start simple and add later.
-  - Don’t load data—Always accept data through an input binding instead of loading data dynamically through HTTP or through a service.
-  - Have a clean API —Accept input bindings to obtain data into the component and emit events for any actions that need to be pushed back up to other components.
-  - Optionally use a service for confguration—Sometimes you may need to provide confguration defaults, and instead of having to declare the preferences with every use of the component, you can use a service that sets application defaults.
-- The more encapsulated and isolated the component is, the easier it will be to reuse. 
-- I often fnd that when I start to refactor some code, I begin by identifying individual aspects of my code that could be standalone display components. I might notice a lot of repeated snippets of code that mostly have the same capabilities and refactor them into a single component. It’s also common for these components to have a template and little to no logic in the controller. That’s perfectly acceptable, because it allows you to easily reuse a template snippet across your application. 
-- It’s also common for these components to have a template and little to no logic in the controller. That’s perfectly acceptable, because it allows you to easily reuse a template snippet across your application. 
-
-
-
-**Data component**
-
-- Data components are primarily about handling, retrieving, or accepting data. Typically, they rely on a service to handle the loading of data. Here are some considerations for a Data component: 
-  - Use appropriate lifecycle hooks—To do the initial data loading, always leverage the best lifecycle hook for when to trigger the loading or persistence of data. We’ll look at this more later in this chapter.
-  - Don’t worry about reusability—These components are not likely to be reused because they have a special role to manage data, which is diffcult to decouple.
-  - Set up display components—Think about how this component can load data needed by other display components and handle any data from user interactions.
-  - Isolate business logic inside—This can be a great place to store your application business logic, because anytime you manage data, you’re likely dealing with a specialized implementation that works for a specifc use case.
-
-
-
-**Route component**
-
-- A route component should primarily follow these guidelines: 
-  - Template scaffolding for the route—The route will render this component, so this is the most logical place to put the template that’s associated with the route.
-  - Load data or rely on data components—Depending on the complexity of your route, the route component may load data for the route or rely on one or more data components to do that for it. If you’re unsure, I’d suggest loading data initially in the Route component and decoupling as your view gets more complex.
-  - Handles route parameters—As you navigate, there are likely to be router parameters (such as the ID of the content item being viewed), and this is the best place to handle those parameters, which often determine what content to load from the back end. 
 
 
 
@@ -411,7 +335,7 @@ export class NavbarComponent {
 
 **View Child to reference components**
 
-- ViewChild is a decorator for a controller property, like Inject or Output, which tells Angular to fll in that property with a reference to a specifc child component controller. It’s limited to injecting only children, so if you try to inject a component that isn’t a direct descendent, it will provide you with an undefned value. 
+- ViewChild is a decorator for a controller property, like Inject or Output, which tells Angular to fll in that property with a reference to a specifc child component controller. It’s limited to injecting only children, so if you try to inject a component that isn’t a direct descendent, it will provide you with an undefined value. 
 
 ```ts
 import { Component, ViewChild } from '@angular/core';
@@ -689,14 +613,14 @@ forms.
 
 **Summary**
 
-- Template-driven forms defne the form using NgModel on form controls.
+- Template-driven forms define the form using NgModel on form controls.
 - You can apply normal HTML validation attributes, and NgModel will automatically
   try to validate based on those rules.
 - Custom validation is possible through a custom validator function and directive,
   which gets registered with the built-in list of validators.
 - The NgForm directive, though it can be transparent, exposes features to help
   manage submit events and overall form validation inspection.
-- Reactive forms are different in that you defne the form model in the controller
+- Reactive forms are different in that you define the form model in the controller
   and link form controls using FormControlName.
 - You can observe the changes of a form control with reactive forms and run logic
   every time a new value is emitted.
