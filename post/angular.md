@@ -84,122 +84,51 @@
 
 
 
-## 2 Building your App
-
-
-
-- Bootstrapping the app—To start the app, we’ll use the bootstrap feature to kick things off once they’re loaded. This happens once during the app lifecycle, and we’ll bootstrap the App component.
-- Creating components—Angular is all about components, and we’ll create several components for different purposes. We’ll learn about how they’re built and how they nest to create complex applications.
-- Creating services and using HttpClient—For code reuse, we’ll encapsulate some logic that helps manage the list of stocks into a service and also uses the HttpClient service from Angular to load stock quote data.
-- Using pipes and directives in templates—Using pipes, we can transform data from one format into another during display, such as formatting a timestamp into a local date format. Directives are useful tools to modify the behavior of DOM elements inside a template, such as the ability to repeat pieces or conditionally show elements.
-- Setting up routing—Most applications need the ability to allow users to navigate around the application, and by using the router we can see how to route between different components. 
-
-
-
-**App component**
-
-- The @Component annotation declares that this class is a component by accepting an object. It has a selector property that declares the HTML selector of the component.
-  That means the component is used in the template by adding an HTML tag `<app-root> </app-root>`. 
-
-- The templateUrl property declares a link to a template containing an HTML template. Likewise, the styleUrls property contains an array of links to any CSS files that should be loaded for this component.
-
-- {{title}}, This is called interpolation and is frequently used to display data in a template. 
-
-
-
-**App module**
+### Lifecycle
 
 - The App module is the packaging that helps tell Angular what’s available to render. 
-
 - The NgModule decorator takes an object with a few different properties. 
-
 - The declarations property is to provide a list of any components and directives to make available to the entire application. 
-
 - The imports property is an array of other modules upon which this module depends 
-
 - The providers property, which is empty by default. Any services that are created are to be listed here 
+- The bootstrap property defines which components to bootstrap at runtime.
 
-- The bootstrap property defines which components to bootstrap at runtime. 
-
-
-
-**Bootstrapping the app**
-
-- The application must be bootstrapped at runtime to start the process of rendering. 
-
-- The role of main.ts is to bootstrap the Angular application.
-
-- The platformBrowserDynamic object is used to tell Angular which module is being loading
-
-- It can take a moment for all the assets to load and initialize before the component renders. this is known as Just in Time compilation (JiT) 
+- The constructor method runs as soon as the component is created.
+- Don’t load data from the service in the constructor
+- Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur.
+- Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.
 
 
 
-**Building services**
+### Service
 
+- Creating services and using HttpClient—For code reuse, we’ll encapsulate some logic that helps manage the list of stocks into a service and also uses the HttpClient service from Angular to load stock quote data.
 - Services are objects that abstract some common logic that you plan to reuse in multiple places.  
-
 - Another way to think of services is as sharable objects that any part of your app can import as needed. 
-
-- The intention of a service is to enable reuse of code. A service might be a set of common methods that need to be shared. You could have various “helper methods” that you don’t want to write over and over, such as utilities to parse data formats or authentication logic that needs to be run in multiple places. 
-
+- The intention of a service is to enable reuse of code. A service might be a set of common methods that need to be shared. You could have various “helper methods” that you don’t want to write over and over, such as utilities to parse data formats or authentication logic that needs to be run in multiple places.
 
 
-**Creating component**
+
+### Routing
+
+- Most applications need the ability to allow users to navigate around the application, and by using the router we can see how to route between different components.
+
+- The router works by declaring an outlet in the template, which is the place in the template that the final rendered component will be displayed.
+- Routing in Angular is based around paths mapping to a component. Routes will render a single component, and that component will also be able to render any additional components it needs.
+
+
+
+### Template
 
 - Directives allow you to modify the behavior and display of DOM elements in a template.  
-
 - Directives make it possible to add some conditional logic or otherwise modify the way the template behaves or is rendered. 
-
 - The NgClass directive is able to add or remove CSS classes to and from the element. 
-
 - The safe navigation operator ?. will silently fail and not display anything if the property is missing. 
-
 - Pipes, which are added directly into the expression to format the output.  
-
 - Pipes only modify the data before it is displayed, and do not change the value in the controller. 
-
 - Input annotation. This indicates that this property is to be provided to the component by a parent component passing it to the summary.  
-
-- The host selector is a way to specify that you want the styles to apply to the element that hosts the element 
-
-
-
-**Components**
-
-- The constructor method runs as soon as the component is created.  
-
-- Don’t load data from the service in the constructor 
-
-- Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur. 
-
-
-
-**Forms and events**
-
-- This doesn’t require the OnInit lifecycle hook, because it’s a synchronous request to get data that exists in memory. 
-
-- (submit)="add()" is an event binding. 
-
-- [(ngModel)]="stock" attribute is a two-way binding that will sync the value of the input and the value of the property in the controller anytime it changes from either location. 
-
-
-
-**Routing**
-
-- Routing, configures the different pages that the application can render 
-
-- The router works by declaring an outlet in the template, which is the place in the template that the final rendered component will be displayed.  
-
-
-
-**Summary**
-
-- Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.
-- A component is an ES6 class with an @Component annotation that adds metadata to the class for Angular to properly render it. 
-- Directives are attributes that modify the template in some way, such as NgIf, which conditionally shows or hides the DOM element based on the value of an expression. 
-
-- Routing in Angular is based around paths mapping to a component. Routes will render a single component, and that component will also be able to render any additional components it needs. 
+- The host selector is a way to specify that you want the styles to apply to the element that hosts the element
+- Directives are attributes that modify the template in some way, such as NgIf, which conditionally shows or hides the DOM element based on the value of an expression.
 
 
 
