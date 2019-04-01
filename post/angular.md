@@ -1,3 +1,9 @@
+### Angular
+
+An Angular application is a tree of components, and there is always a root application component.
+
+
+
 ### Platform
 
 - Angular comes with a leaner core library and makes additional features available as separate packages that can be used as needed. It also has many tools that push it beyond a simple framework, including the following:
@@ -32,6 +38,16 @@
 
 - A component is a way to create custom HTML elements in your application.
 - Applications are essentially combinations of components. These components build upon the core principles of encapsulation, isolation, and reusability, which should have events, be customizable, and be declarative.
+
+- A component is an encapsulated element that maintains its own internal logic for how it desires to render some output
+
+- Here are the key principles of a component:
+  - Encapsulation—Keep component logic isolated
+  - Isolation—Keep component internals hidden
+  - Reusability—Allow component reuse with minimal effort
+  - Event-based—Emit events during the lifecycle of the component
+  - Customizable—Possible to style and extend the component
+  - Declarative—Component used with simple declarative markup 
 
 
 
@@ -82,6 +98,16 @@
 
 - Templates are often used with the Shadow DOM because it allows you to define the template and then inject it into the shadow root. Without templates, the Shadow DOM APIs would require us to inject content node by node. They’re also used by Angular as part of the lifecycle of components and the compilation process, allowing Angular to keep isolated, inert copies of the template as data changes and needs to be recompiled. 
 
+- Angular allows the placement of logic and customization directly into the template 
+- Template concepts:
+  - Interpolation—Displaying content in the page
+  - Attribute and property bindings—Linking data from the component controller into attributes or properties of other elements
+  - Event bindings—Adding event listeners to elements
+  - Directives—Modifying the behavior or adding additional structure to elements
+  - Pipes—Formatting data before it’s displayed on the page 
+- Template expressions are used in three places: for interpolation, property bindings, and event bindings. 
+- Bindings are the conduit for data or methods to be used from a controller in the template; they allow data in the controller to ﬂow into the template, or events to call from the template back into the controller. 
+
 
 
 ### Lifecycle
@@ -97,6 +123,12 @@
 - Don’t load data from the service in the constructor
 - Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur.
 - Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.
+- <img src="../img/How Angular renders the base app into the browser.png" />
+- Immediately upon loading the page, the bootstrapper is called to begin Angular execution.
+- It loads your App module and reads through any additional dependencies that need to be loaded and bootstrapped.
+- Renders the App component, which is the root element of your application.
+- Any child components are also rendered as part of the component tree.
+- It will also resolve bindings and set up event listeners for anything that declares it.
 
 
 
@@ -106,6 +138,7 @@
 - Services are objects that abstract some common logic that you plan to reuse in multiple places.  
 - Another way to think of services is as sharable objects that any part of your app can import as needed. 
 - The intention of a service is to enable reuse of code. A service might be a set of common methods that need to be shared. You could have various “helper methods” that you don’t want to write over and over, such as utilities to parse data formats or authentication logic that needs to be run in multiple places.
+- Reuse functional pieces of JavaScript logic across your application.
 
 
 
@@ -129,33 +162,25 @@
 - Input annotation. This indicates that this property is to be provided to the component by a parent component passing it to the summary.  
 - The host selector is a way to specify that you want the styles to apply to the element that hosts the element
 - Directives are attributes that modify the template in some way, such as NgIf, which conditionally shows or hides the DOM element based on the value of an expression.
+- Templates contain several types of bindings:
+  - interpolation for displaying data
+  - property bindings for modifying the element’s properties
+  - attribute bindings for modifying non-property values of an element
+  - event bindings for handling events
 
 
 
-## 3 App essentials
+### Entities
+
+- Modules—Objects that help you to organize dependencies into discrete units
+- Components—New elements that will compose the majority of your application’s structure and logic
+- Directives—Objects that modify elements to give them new capabilities or change behaviors
+- Pipes—Functions that format data before it’s rendered
+- Services—Reusable objects that fill niche roles such as data access or helper utilities 
 
 
 
-### Entities in Angular
-
-- These different entities have specific roles and capabilities, and you’ll be using them in various combinations to create your application. Here is a quick overview of the types: 
-  - Modules—Objects that help you to organize dependencies into discrete units
-  - Components—New elements that will compose the majority of your application’s structure and logic
-  - Directives—Objects that modify elements to give them new capabilities or change behaviors
-  - Pipes—Functions that format data before it’s rendered
-  - Services—Reusable objects that fill niche roles such as data access or helper utilities 
-
-
-
-**Modules**
-
-- Modules are buckets for storing related entities for easy reuse and distribution. 
-
-- JavaScript modules are language constructs and are a way to separate code into different files that can be loaded as needed. 
-
-- Angular modules are logical constructs used for organizing similar groups of entities 
-
-- The @NgModule decorator contains the metadata for the App module, and the empty class acts as the vessel for storing the data. 
+### Modules
 
 - The declarations array contains a list of all components and directives that the application’s main module wants to make available to the entire application. 
 
@@ -167,39 +192,15 @@
 
 
 
-**Components**
-
-- A component is an encapsulated element that maintains its own internal logic for how it desires to render some output 
-
-
-
-- Here are the key principles of a component:
-  - Encapsulation—Keep component logic isolated
-  - Isolation—Keep component internals hidden
-  - Reusability—Allow component reuse with minimal effort
-  - Event-based—Emit events during the lifecycle of the component
-  - Customizable—Possible to style and extend the component
-  - Declarative—Component used with simple declarative markup 
-
-
-
-- The Dashboard component holds the data for all the stocks and binds that information into the individual Summary components. Each Summary component uses the provided stock data to display itself. Any changes in the dashboard data will cause the child Summary components to be updated. 
-
-
-
-**Directives**
+### Directives
 
 - Angular favors putting logic and capabilities straight into the HTML markup of the application 
 
 - NgIf gives an element the ability to conditionally render or be removed 
 
-- There are three categories of directives: attribute directives, structural directives, and components. 
-
 - Attribute directives (NgClass) modify the appearance or behavior of an element. 
 
 - Structural directives (NgIf , NgFor) modify the DOM tree based on some conditions.  
-
-
 
 - The primary default directives provided by Angular consist of the following:
   - NgClass—Conditionally apply a class to an element
@@ -210,111 +211,38 @@
 
 
 
-**Pipes**
+### Pipes
 
 - Using pipes, we can transform the data in the view during rendering without changing the underlying data value. 
 
 
 
-**Services**
+### Compilers
 
-- Reuse functional pieces of JavaScript logic across your application. 
+- Just-in-Time (JiT): The compiling of the application happens in the browser only after the assets have all been loaded. 
 
-
-
-**render**
+- Ahead-of-Time (AoT): Render the content before sending it to the browser.  
 
 
 
-<img src="../img/How Angular renders the base app into the browser.png" />
-
-
-
-- Immediately upon loading the page, the bootstrapper is called to begin Angular execution. 
-
-- It loads your App module and reads through any additional dependencies that need to be loaded and bootstrapped. 
-
-- Renders the App component, which is the root element of your application. 
-
-- Any child components are also rendered as part of the component tree.  
-
-- It will also resolve bindings and set up event listeners for anything that declares it. 
-
-
-
-**Types of compilers**
-
-- Angular provides two types of compilers, called the Just-in-Time (JiT) compiler and the Ahead-of-Time (AoT) compiler 
-
-- With JiT compilation, it means that the compiling of the application happens in the browser only after the assets have all been loaded. 
-
-- AoT, is a way to render the content before sending it to the browser.  
-
-
-
-**Dependency injection**
+### DI
 
 - Dependency injection (DI) is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. 
-
-- Injector. This is the service that Angular provides for requesting and registering dependencies 
-
-- Providers are responsible for creating the instanceof the object requested. 
-
+- Injector: This is the service that Angular provides for requesting and registering dependencies 
+- Providers are responsible for creating the instanceof the object requested.
+- Dependency injection is fundamental for Angular to track all the objects in the application and make them available when they’re requested.
 
 
-**Change detection**
+
+### Change detection
 
 - Change detection is the mechanism for keeping data and the rendered views in sync with one another. Changes always come down from the model into the view, and Angular employs a unidirectional propagation of changes from parents down to children. This helps ensure that if a parent changes, any children are also checked, due to potential linked data. 
-
-- JavaScript has no guaranteed way to notify about any change to an object, so Angular runs this process instead. 
-
 - When a value change is detected in a component, it will update the component and potentially any child components as well.  
-
-- Angular has two ways for changes to be triggered. The Default mode will traverse the entire tree looking for changes with each change detection process. The OnPush mode tells Angular that the component only cares about changes to any values that are input into the component from its parent, and gives Angular the ability to skip checking the component during change detection if it already knows the parent hasn’t changed. 
-
-- Change detection is triggered by either events, receiving HTTP responses, or timers intervals. 
-
-- Change detection is the mechanism that allows components to be updated when data changes in a parent component, and ensure views and data are in sync. 
-
-
-
-**Template**
-
-- Angular allows the placement of logic and customization directly into the template 
-
-- Template concepts:
-  - Interpolation—Displaying content in the page
-  - Attribute and property bindings—Linking data from the component controller into attributes or properties of other elements
-  - Event bindings—Adding event listeners to elements
-  - Directives—Modifying the behavior or adding additional structure to elements
-  - Pipes—Formatting data before it’s displayed on the page 
-
-- Template expressions are used in three places: for interpolation, property bindings, and event bindings. 
-
-- Bindings are the conduit for data or methods to be used from a controller in the template; they allow data in the controller to ﬂow into the template, or events to call from the template back into the controller. 
-
-
-
-**Property bindings**
-
-- property bindings, which allow you to bind values to properties of an element to modify their behavior or appearance. 
-
-- As with interpolation, the bindings are evaluated in the component context, so the binding will reference properties of the controller. 
-
-- interpolation is a shortcut for a property binding to the textContent property of an element.  
-
-- Using the [] syntax binds to an element’s property, not the attribute. This is an important distinction, because properties are the DOM element’s property. That makes it possible to use any valid HTML element property (such as the img src property). Instead of binding the data to the attribute, you’re binding data directly to the element property, which is quite efficient 
-
-
-
-**Summary** 
-
-- An Angular application is a tree of components, and there is always a root application component.
-- The various entity types (modules, components, directives, pipes, services) each have a specific role and purpose.
-- Angular has two types of compilers, Ahead-of-Time (AoT) and Just-in-Time (JiT), to give you different ways to render the application.
-- Dependency injection is fundamental for Angular to track all the objects in the application and make them available when they’re requested.
+- Angular has two ways for changes to be triggered.
+  - The Default mode will traverse the entire tree looking for changes with each change detection process.
+  - The OnPush mode tells Angular that the component only cares about changes to any values that are input into the component from its parent, and gives Angular the ability to skip checking the component during change detection if it already knows the parent hasn’t changed.
+- Change detection is triggered by either events, receiving HTTP responses, or timers intervals.
 - Change detection keeps the components in sync with the model data as asynchronous changes occur from user input or other events.
-- Templates contain several types of bindings: interpolation for displaying data, property bindings for modifying the element’s properties, attribute bindings for modifying non-property values of an element, and event bindings for handling events. 
 
 
 
