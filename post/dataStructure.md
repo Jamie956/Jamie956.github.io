@@ -4,13 +4,9 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
 ### Singly Linked List
 
-- A linked list is a linear data structure, in which the elements are not 
-  stored at contiguous memory locations. The elements in a linked list are
-  linked using pointers
+- A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers
 
-- In simple words, a linked list consists of nodes where each node 
-  contains a data field and a reference(link) to the next node in the 
-  list.
+- In simple words, a linked list consists of nodes where each node contains a data field and a reference(link) to the next node in the list.
 
   <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist.png" />
 
@@ -23,10 +19,7 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
   - Extra memory space for a pointer is required with each element of the list.
   - Not cache friendly. Since array elements are contiguous locations, there is locality of reference which is not there in case of linked lists.
 
-- Representation: A linked list is represented by a pointer to the first node of the 
-  linked list.  The first node is called head.  If the linked list is 
-  empty, then value of head is NULL.
-  Each node in a list consists of at least two parts:
+- Representation: A linked list is represented by a pointer to the first node of the linked list.  The first node is called head.  If the linked list is empty, then value of head is NULL. Each node in a list consists of at least two parts:
 
   - data
   - Pointer (Or Reference) to the next node
@@ -75,8 +68,7 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
   - A DLL can be traversed in both forward and backward direction.
   - The delete operation in DLL is more efficient if pointer to the node to be deleted is given.
-  - We can quickly insert a new node before a given node.
-    In singly linked list, to delete a node, pointer to the previous node is needed. To get this previous node, sometimes the list is traversed. In DLL, we can get the previous node using previous pointer.
+  - We can quickly insert a new node before a given node. In singly linked list, to delete a node, pointer to the previous node is needed. To get this previous node, sometimes the list is traversed. In DLL, we can get the previous node using previous pointer.
 
 - Disadvantages over singly linked list
 
@@ -105,9 +97,7 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
 ### Stack
 
-- Stack is a linear data structure which follows a particular order in 
-  which the operations are performed. The order may be LIFO(Last In First 
-  Out) or FILO(First In Last Out).
+- Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out).
 
   <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/stack.png" />
 
@@ -122,8 +112,7 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
 ### Queue				
 
-- A Queue is a linear structure which follows a particular order in which 
-  the operations are performed. The order is First In First Out (FIFO).
+- A Queue is a linear structure which follows a particular order in which  the operations are performed. The order is First In First Out (FIFO).
 
   <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/02/Queue.png">
 
@@ -136,46 +125,20 @@ O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup
 
 
 
-**树**
+### Binary Tree
 
-Tree：是n个(n>=0)个结点的有限集。n=0时为空树。任意一棵非空树种：(1)有且仅有一个特定的跟结点(Root);(2)当n>1时，其余结点可分为m(m>0)个互不相交的有限集，其中每一个集合本身又是一棵树，并且成为根的子树(SubTree)
+- A tree whose elements have at most 2 children is called a binary tree. Since each element in a binary tree can have only 2 children, we typically name them the left and right child.
 
+  <img src="https://www.geeksforgeeks.org/wp-content/uploads/binary-tree-to-DLL.png">
 
+- Why Trees?
 
-结点的度(Degree)：结点拥有的子树数
+  - One reason to use trees might be because you want to store information that naturally forms a hierarchy.
+  - Trees (with some ordering e.g., BST) provide moderate access/search (quicker than Linked List and slower than arrays).
+  - Trees provide moderate insertion/deletion (quicker than Arrays and slower than Unordered Linked Lists).
+  - Like Linked Lists and unlike Arrays, Trees don’t have an upper limit on number of nodes as nodes are linked using pointers.
 
-叶(Leaf)/终端点：Degree=0的结点
-
-非终端点/分支结点：Degree!=0的结点，除了根结点，分支结点也叫内部结点
-
-树的度：树内各结点的度的最大值
-
-
-
-结点之间的关系：Child, Parent, Sibling
-
-结点的层次(Level)：从根开始定义起，根为第一层
-
-树的深度(Depth)/高度：树中结点的最大层次
-
-有序树：将树中结点的各子树看成从左至右是有次序的，不能互换
-
-
-
-特殊二叉树：斜树、满二叉树、完全二叉树
-
-
-
-二叉树遍历：
-
-- 前序遍历：访问根结点，先遍历左子树，再遍历右子树
-- 中序遍历
-- 后序遍历
-- 层序遍历
-
-已知前序遍序列和中序遍历序列，可以唯一确定一棵二叉树
-
-已知后序遍序列和中序遍历序列，可以唯一确定一棵二叉树
+- Tree is a hierarchical data structure. Main uses of trees include maintaining hierarchical data, providing moderate access and insert/delete operations. Binary trees are special cases of tree where every node has at most two children.
 
 
 
