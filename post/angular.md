@@ -103,22 +103,6 @@ An Angular application is a tree of components, and there is always a root appli
 
 
 
-### Templates
-
-- Templates are often used with the Shadow DOM because it allows you to define the template and then inject it into the shadow root. Without templates, the Shadow DOM APIs would require us to inject content node by node. They’re also used by Angular as part of the lifecycle of components and the compilation process, allowing Angular to keep isolated, inert copies of the template as data changes and needs to be recompiled. 
-
-- Angular allows the placement of logic and customization directly into the template 
-- Template concepts:
-  - Interpolation—Displaying content in the page
-  - Attribute and property bindings—Linking data from the component controller into attributes or properties of other elements
-  - Event bindings—Adding event listeners to elements
-  - Directives—Modifying the behavior or adding additional structure to elements
-  - Pipes—Formatting data before it’s displayed on the page 
-- Template expressions are used in three places: for interpolation, property bindings, and event bindings. 
-- Bindings are the conduit for data or methods to be used from a controller in the template; they allow data in the controller to ﬂow into the template, or events to call from the template back into the controller. 
-
-
-
 ### Lifecycle
 
 - The App module is the packaging that helps tell Angular what’s available to render. 
@@ -236,22 +220,18 @@ An Angular application is a tree of components, and there is always a root appli
 
 
 
-### Template
+### Templates
 
-- Directives allow you to modify the behavior and display of DOM elements in a template.  
-- Directives make it possible to add some conditional logic or otherwise modify the way the template behaves or is rendered. 
-- The NgClass directive is able to add or remove CSS classes to and from the element. 
-- The safe navigation operator ?. will silently fail and not display anything if the property is missing. 
-- Pipes, which are added directly into the expression to format the output.  
-- Pipes only modify the data before it is displayed, and do not change the value in the controller. 
-- Input annotation. This indicates that this property is to be provided to the component by a parent component passing it to the summary.  
-- The host selector is a way to specify that you want the styles to apply to the element that hosts the element
-- Directives are attributes that modify the template in some way, such as NgIf, which conditionally shows or hides the DOM element based on the value of an expression.
-- Templates contain several types of bindings:
-  - interpolation for displaying data
-  - property bindings for modifying the element’s properties
-  - attribute bindings for modifying non-property values of an element
-  - event bindings for handling events
+- Templates are often used with the Shadow DOM because it allows you to define the template and then inject it into the shadow root. Without templates, the Shadow DOM APIs would require us to inject content node by node. They’re also used by Angular as part of the lifecycle of components and the compilation process, allowing Angular to keep isolated, inert copies of the template as data changes and needs to be recompiled. 
+- Angular allows the placement of logic and customization directly into the template 
+- Template concepts:
+  - Interpolation—Displaying content in the page
+  - Attribute and property bindings—Linking data from the component controller into attributes or properties of other elements
+  - Event bindings—Adding event listeners to elements
+  - Directives—Modifying the behavior or adding additional structure to elements
+  - Pipes—Formatting data before it’s displayed on the page 
+- Template expressions are used in three places: for interpolation, property bindings, and event bindings. 
+- Bindings are the conduit for data or methods to be used from a controller in the template; they allow data in the controller to ﬂow into the template, or events to call from the template back into the controller. 
 
 
 
@@ -279,6 +259,11 @@ An Angular application is a tree of components, and there is always a root appli
 
 ### Directives
 
+- Directives allow you to modify the behavior and display of DOM elements in a template.  
+- Directives make it possible to add some conditional logic or otherwise modify the way the template behaves or is rendered. 
+- The NgClass directive is able to add or remove CSS classes to and from the element. 
+- The safe navigation operator ?. will silently fail and not display anything if the property is missing. 
+
 - Angular favors putting logic and capabilities straight into the HTML markup of the application 
 
 - NgIf gives an element the ability to conditionally render or be removed 
@@ -304,10 +289,10 @@ An Angular application is a tree of components, and there is always a root appli
 ### Pipes
 
 - Using pipes, we can transform the data in the view during rendering without changing the underlying data value. 
+- Pipes added directly into the expression to format the output.  
+- Pipes only modify the data before it is displayed, and do not change the value in the controller. 
 
-- Pipes are essentially a way to format data
-
-  ![pipe](D:/project/justnote/img/pipe.png)
+![pipe](D:/project/justnote/img/pipe.png)
 
 - Two types of pipes
 
