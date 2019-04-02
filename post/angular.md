@@ -186,6 +186,54 @@ An Angular application is a tree of components, and there is always a root appli
 - The router works by declaring an outlet in the template, which is the place in the template that the final rendered component will be displayed.
 - Routing in Angular is based around paths mapping to a component. Routes will render a single component, and that component will also be able to render any additional components it needs.
 
+- Angular allows you to control the conditions that allow a route to render, which
+  usually is done to prevent the application from going into a bad state. For example,
+  you shouldn’t allow an unauthenticated user to view portions of the application that
+  require them to be logged in or they will likely get a lot of errors. 
+
+- A guard is like a lifecycle hook for route changes that allows an application to verify
+  certain conditions or load data before a change occurs 
+
+- Here are the five types of guards and their basic roles:
+
+  - CanActivate—Used to determine whether the route can be activated (such as
+    user validation)
+  - CanActivateChild—Same as CanActivate, but specifcally for child routes
+  - CanDeactivate—Used to determine whether the current route can be deactivated (such as preventing leaving an unsaved form without confrmation)
+  - CanLoad—Used to determine whether the user can navigate to a lazy loaded
+    module prior to loading it
+  - Resolve—Used to access route data and pass data to the component’s list of
+    providers 
+
+- AuthGuard service for limiting access to routes 
+
+  ```ts
+  import { Injectable } from '@angular/core';
+  import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+  import { UserService } from './user.service';
+  
+  @Injectable()
+  export class AuthGuardService implements CanActivate {
+      constructor(private userService: UserService, private router: Router) {}
+      canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+          if (!this.userService.isGuest()) {
+              return true;
+          } else {
+              this.router.navigate(['/login'], {
+                  queryParams: {
+                      return: state.url
+                  }
+              });
+              return false;
+          }
+      }
+  }
+  ```
+
+- Lazy loading: Feature modules can be lazy loaded into the application, giving you the ability to
+  reduce the file size of the code that’s initially downloaded to users. It only loads
+  the module when the user navigates to a route that’s part of the feature module. 
+
 
 
 ### Template
@@ -384,98 +432,18 @@ export class AppComponent {
 
 
 
-## 7 Routing
-
-
-
-**Route guards to limit access**
-
-- Angular allows you to control the conditions that allow a route to render, which
-  usually is done to prevent the application from going into a bad state. For example,
-  you shouldn’t allow an unauthenticated user to view portions of the application that
-  require them to be logged in or they will likely get a lot of errors. 
-
-- A guard is like a lifecycle hook for route changes that allows an application to verify
-  certain conditions or load data before a change occurs 
-
-- Here are the fve types of guards and their basic roles: 
-
-  - CanActivate—Used to determine whether the route can be activated (such as
-    user validation)
-  - CanActivateChild—Same as CanActivate, but specifcally for child routes
-  - CanDeactivate—Used to determine whether the current route can be deactivated (such as preventing leaving an unsaved form without confrmation)
-  - CanLoad—Used to determine whether the user can navigate to a lazy loaded
-    module prior to loading it
-  - Resolve—Used to access route data and pass data to the component’s list of
-    providers 
-
-- AuthGuard service for limiting access to routes 
-
-  ```ts
-  import { Injectable } from '@angular/core';
-  import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot }
-  from '@angular/router';
-  import { UserService } from './user.service';
-  @Injectable()
-  export class AuthGuardService implements CanActivate {
-      constructor(
-      private userService: UserService,
-       private router: Router) {}
-      canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-          if (!this.userService.isGuest()) {
-              return true;
-          } else {
-              this.router.navigate(['/login'], {
-                  queryParams: {
-                      return: state.url
-                  }
-              });
-              return false;
-          }
-      }
-  }
-  ```
-
-
-
-**Lazy loading**
-
-Feature modules can be lazy loaded into the application, giving you the ability to
-reduce the file size of the code that’s initially downloaded to users. It only loads
-the module when the user navigates to a route that’s part of the feature module. 
-
-
-
 ## 8 Directives and Pipes
-
-- The main reasons apply to both directives and pipes: 
-  - Reuse and reduce—Instead of each component having to implement similar logic, it can be abstracted out and easily reused. This also reduces code footprint and helps standardize logic.
-  - Maintainability and focused components—Components sometimes become a dumping ground for code and logic that are tangential to the component itself. Removing that from the component makes it easier to maintain your components.
-  - Testability—Moving everything into smaller blocks means you can create smaller test cases and limit permutations. 
-
 
 
 ### Directives
 
-- There are two types of directives: structural and attribute.  
+![structural or attribute directive](..\img\structural or attribute directive.png)
 
-- NgIf is a structural directive and is able to control whether the DOM element is rendered or not. On the other hand, the ngClass directive is an attribute directive and doesn’t have the * when it’s used, such as [ngClass]="{active: true}". 
-
-- NgFor structural directive creates multiple instances of the Summary component,
-  whereas the NgClass attribute modifes the background color of those same instances. 
-
-  ![structural or attribute directive](D:\project\justnote\img\structural or attribute directive.png)
-
-- Therefore, the primary difference between structural and attribute directives is that a
-structural directive is designed to modify the DOM tree of an element, whereas an attribute directive is designed to only modify the properties or DOM of a single element. 
-
-
-
-**Creating a structural directive**
-
-- When the structural directive is rendered by Angular, it creates a placeholder space,
-  called an embedded view, where the directive can decide what to insert inside of this new view container. 
-- Data is passed through a pipe before being rendered in a template binding
+- Structural directive: Designed to modify the DOM tree of an element
+  - NgIf to control whether the DOM element is rendered or not
+  - NgFor to creates multiple instances of the Summary component
+- Attribute directive: Designed to only modify the properties or DOM of a single element. 
+  - NgClass modifes the background color of those same instances
 
 
 
@@ -483,7 +451,7 @@ structural directive is designed to modify the DOM tree of an element, whereas a
 
 - Pipes are essentially a way to format data
 
-  ![pipe](D:\project\justnote\img\pipe.png)
+  ![pipe](..\img\pipe.png)
 
 - There are fundamentally two types of pipes: pure and impure. 
 
@@ -492,7 +460,7 @@ structural directive is designed to modify the DOM tree of an element, whereas a
 
 - How pure and impure pipes are handled by Angular
 
-  ![pure and impure pipes](D:\project\justnote\img\pure and impure pipes.png)
+  ![pure and impure pipes](..\img\pure and impure pipes.png)
 
 
 
