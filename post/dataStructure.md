@@ -1,245 +1,160 @@
-### Data structure
-
-**数据结构**
-
-数据结构：研究非数值计算的程序设计问题中的操作对象，以及它们之间的关系和操作
-程序设计 = 数据结构 + 算法
-
-数据：描述客观事物的符号，是计算机中可以操作的对象，能被计算机识别，并输入给计算机处理的符号集合
-数据对象：是性质相同的数据元素的集合，是数据的子集
-数据元素：组成数据的基本单位
-数据项：一个数据元素可以由若干个数据项组成，数据项是数据不可分割的最小单位
-
-数据结构：相互之间存在一种或多种特定的数据元素的集合
-
-
-
-逻辑结构：数据对象中数据元素之间的相互关系
-
-- 集合结构：集合结构中的数据元素除了同属于一个集合外，它们之间没有其他关系
-- 线性结构：线性结构中的数据元素之间是一对一的关系
-- 树形结构：树形结构中的数据元素之间存在一种一对多的层次关系
-- 图形结构：图形结构的数据元素是多对多的关系
-
-
-
-物理结构：数据的逻辑结构在计算机中的储存形式
-
-- 顺序存储结构：把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的
-- 链式存储结构：把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续
-
-数据类型：一组性质相同的值的集合及定义在此集合上的一些操作的总称
-
-算法：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作
-算法的五个基本特性：输入、输出、有穷性、确定性、可行性
-
-算法设计要求：正确性、可读性、健壮性、时间效率高、存储量低
-
-
-
-**时间复杂度**
-
-函数的渐近增长：给定两个函数f(n)和g(n)，如果存在一个整数N，使得对于所有的n>N，f(n)总是比g(n)大，那么，f(n)的增长渐近快于g(n)
-
-判断一个算法的效率时，函数中的常数和其他次要项常常可以忽略，而更应该关注主项（最高阶项）的阶数
-
-某个算法，随着n的增大，它会越来越优于另一种算法，或越来越差于另一算法
-
-T(n)=O(f(n)) 表示随问题规模n的增大，算法执行时间的增长率和f(n)的增长率相同，称作算法的渐进时间复杂度（时间复杂度）
-
-
-
-推导大O阶：
-
-- 用常数1取代运行时间中的所有加法常数
-- 在修改后的运行次数函数中，只保留最高阶项
-- 如果最高阶项存在且不是1，则去除与这个项相乘的常数
-
-
-
-对于分支结构，执行次数都是恒定的，不会随n的变大而发生变化，所以单纯的分支结构（不包含在循环结构中），其时间复杂度也是O(1)
-
-分析算法的复杂度，关键就是分析循环体的运行情况
-
-常数阶O(1)、线性阶O(n)、对数阶O(log<sub>2</sub>n)、平方阶O(n<sup>2</sup>)
-
-时间复杂度耗费时间排列：
-
 O(1) < O(logn) < O(n) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup>n</sup>) < O(n!) < O(n<sup>n</sup>)
 
 
 
-**空间复杂度**
+### Singly Linked List
 
-S(n)=O(f(n))，n为问题规模，f(n)为语句关于n所占存储空间的函数
+- A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers
 
+- In simple words, a linked list consists of nodes where each node contains a data field and a reference(link) to the next node in the list.
 
+  <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist.png" />
 
-**List**
+- Advantages over arrays
+  - Dynamic size
+  - Ease of insertion/deletion
 
-线性表（List）：0个或多个数据元素的有限序列
+- Drawbacks:
+  - Random access is not allowed.  We have to access elements sequentially starting from the first node.  So we cannot do binary search with linked lists efficiently with its default implementation.
+  - Extra memory space for a pointer is required with each element of the list.
+  - Not cache friendly. Since array elements are contiguous locations, there is locality of reference which is not there in case of linked lists.
 
-地址：存储器中的每个存储单元的编号
+- Representation: A linked list is represented by a pointer to the first node of the linked list.  The first node is called head.  If the linked list is empty, then value of head is NULL. Each node in a list consists of at least two parts:
 
+  - data
+  - Pointer (Or Reference) to the next node
 
+- Inserting a Node
 
-**链表**
+  - At the front of the linked list
 
-结点（Node）：数据域+指针域
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2013/03/Linkedlist_insert_at_start.png" />
 
-线性表的链式存储结构：n个结点链结成一个链表
+  - After a given node
 
-单链表：每个结点只包含一个指针域
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2013/03/Linkedlist_insert_middle.png" />
 
-头指针：链表中第一个结点的存储位置
+  - At the end of the linked list
 
-头结点：单链表的第一个结点前附设一个结点
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2013/03/Linkedlist_insert_last.png">
 
-插入或删除数据越频繁的操作，单链表的效率优势就越明显
+- Deleting a given key
 
+  <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/05/Linkedlist_deletion.png">
 
 
-| 结构     | 存储分配方式                                         | 查找 | 插入/删除                          | 空间性能           |
-| -------- | ---------------------------------------------------- | ---- | ---------------------------------- | ------------------ |
-| 顺序存储 | 用一段连续的存储单元依次存储线性表的数据元素         | O(1) | 平均移动表长一半的元素，O(n)       | 预先分配存储空间   |
-| 单链表   | 用链式存储结构，用一组任意的存储单元存放线性表的元素 | O(n) | 找出某位置指针后，插入和删除为O(1) | 不需要分配存储空间 |
 
+### Circular Linked List
 
+- Circular linked list is a linked list where all nodes are connected to form a circle. There is no NULL at the end. A circular linked list can be a singly circular linked list or doubly circular linked list.
 
-**循环链表**
+  <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/CircularLinkeList.png">
 
-循环链表（Circular Linkedlist）：将单链表中终端结点的指针端由空指针改为指向头结点，使整个单链表形成一个环
+- Advantages of Circular Linked Lists
 
+  - Any node can be a starting point. We can traverse the whole list by starting from any point. We just need to stop when the first visited node is visited again.
+  - Useful for implementation of queue. Unlike this implementation, we don’t need to maintain two pointers for front and rear if we use circular linked list. We can maintain a pointer to the last inserted node and front can always be obtained as next of last.
+  - Circular lists are useful in applications to repeatedly go around the list. For example, when multiple applications are running on a PC, it is common for the operating system to put the running applications on a list and then to cycle through them, giving each of them a slice of time to execute, and then making them wait while the CPU is given to another application. It is convenient for the operating system to use a circular list so that when it reaches the end of the list it can cycle around to the front of the list.
 
 
-双向链表：结点都有两个指针域，一个指向直接后继，一个指向直接前驱
 
+### Doubly Linked List
 
+- A Doubly Linked List (DLL) contains an extra pointer, typically called previous pointer, together with next pointer and data which are there in singly linked list.
 
-线性表
+  <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/03/DLL1.png">
 
-- 顺序存储结构
-- 链式存储结构
-  - 单链表
-  - 静态链表
-  - 循环链表
-  - 双向链表
+- Advantages over singly linked list
 
+  - A DLL can be traversed in both forward and backward direction.
+  - The delete operation in DLL is more efficient if pointer to the node to be deleted is given.
+  - We can quickly insert a new node before a given node. In singly linked list, to delete a node, pointer to the previous node is needed. To get this previous node, sometimes the list is traversed. In DLL, we can get the previous node using previous pointer.
 
+- Disadvantages over singly linked list
 
-**栈**（stack）：限定仅在表尾进行插入和删除操作的线性表
+  - Every node of DLL Require extra space for an previous pointer.
+  - All operations require an extra pointer previous to be maintained. 
 
-栈顶（top）：允许插入和删除的一端
+- Insertion
 
-栈底（bottom）
+  - At the front of the DLL
 
-后进先出（Last In First Out）
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/03/DLL_add_front1.png">
 
-栈的插入操作/进栈/压栈/入栈
+  - After a given node
 
-栈的删除操作/出栈/弹栈
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/03/DLL_add_middle1.png">
 
+  - At the end of the DLL
 
+    <img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/03/DLL_add_end1.png">
 
-栈的链式存储结构（链栈）
+  - Before a given node
 
+    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/5-55-300x100.png">
 
 
-| 栈     | 时间复杂度 |                                |
-| ------ | ---------- | ------------------------------ |
-| 顺序栈 | O(1)       | 预先确定长度，读取方便         |
-| 链栈   | O(1)       | 每个元素都有指针域，长度无限制 |
 
+### Stack
 
+- Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out).
 
-递归函数：一个直接调用自己或通过一系列的调用语句间接地调用自己的函数
+  <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/stack.png" />
 
-每个递归定义必须至少有一个条件，满足时递归不再进行，既不再引用自身而是返回值退出
+- Mainly the following three basic operations are performed in the stack:
 
+  - **Push:**  Adds an item in the stack. If the stack is full, then it is said to be an Overflow condition.
+  - **Pop:** Removes an item from the stack. The items are  popped in the reversed order in which they are pushed. If the stack is  empty, then it is said to be an Underflow condition.
+  - **Peek or Top:** Returns top element of stack. 
+  - **isEmpty:**  Returns true if stack is empty, else false.
 
+ 
 
-逆波兰：一种不需要括号的后缀表达法，从左到右遍历表达式的每个数字和符号，遇到数字就进栈，遇到符号就将栈顶两个数字出栈，进行运算，运算结果进栈，直到获得结果
+### Queue				
 
+- A Queue is a linear structure which follows a particular order in which  the operations are performed. The order is First In First Out (FIFO).
 
+  <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/02/Queue.png">
 
-中缀表达式转后缀表达式：
+- Mainly the following four basic operations are performed on queue:
 
+  - Enqueue: Adds an item to the queue. If the queue is full, then it is said to be an Overflow condition.
+  - Dequeue: Removes an item from the queue. The items are popped in the same order in which they are pushed. If the queue is empty, then it is said to be an Underflow condition.
+  - Front: Get the front item from queue.
+  - Rear: Get the last item from queue. 
 
 
-**队列**
 
-队列（queue）：只允许在一端进行插入操作（队尾），另一端进行删除操作（队头）的线性表
+### Binary Tree
 
-先进先出（First In First Out）
+- A tree whose elements have at most 2 children is called a binary tree. Since each element in a binary tree can have only 2 children, we typically name them the left and right child.
 
+  <img src="https://www.geeksforgeeks.org/wp-content/uploads/binary-tree-to-DLL.png">
 
+- Why Trees?
 
-串（string）：由零个或多个字符组成的有限序列，字符串
+  - One reason to use trees might be because you want to store information that naturally forms a hierarchy.
+  - Trees (with some ordering e.g., BST) provide moderate access/search (quicker than Linked List and slower than arrays).
+  - Trees provide moderate insertion/deletion (quicker than Arrays and slower than Unordered Linked Lists).
+  - Like Linked Lists and unlike Arrays, Trees don’t have an upper limit on number of nodes as nodes are linked using pointers.
 
-串的模式匹配：子串的定位操作
+- Tree is a hierarchical data structure. Main uses of trees include maintaining hierarchical data, providing moderate access and insert/delete operations. Binary trees are special cases of tree where every node has at most two children.
 
 
 
-KMP模式匹配算法：
+### Algo
 
+稳定：order a-b, and a=b, after sort a-b
 
+不稳定：order a-b, and a=b, after sort a-b or b-a
 
-**树**
+内排序：排序操作在内存中完成
 
-Tree：是n个(n>=0)个结点的有限集。n=0时为空树。任意一棵非空树种：(1)有且仅有一个特定的跟结点(Root);(2)当n>1时，其余结点可分为m(m>0)个互不相交的有限集，其中每一个集合本身又是一棵树，并且成为根的子树(SubTree)
+外排序：排序通过磁盘和内存的数据传输进行
 
+时间复杂度：一个算法执行耗费的时间
 
-
-结点的度(Degree)：结点拥有的子树数
-
-叶(Leaf)/终端点：Degree=0的结点
-
-非终端点/分支结点：Degree!=0的结点，除了根结点，分支结点也叫内部结点
-
-树的度：树内各结点的度的最大值
-
-
-
-结点之间的关系：Child, Parent, Sibling
-
-结点的层次(Level)：从根开始定义起，根为第一层
-
-树的深度(Depth)/高度：树中结点的最大层次
-
-有序树：将树中结点的各子树看成从左至右是有次序的，不能互换
-
-
-
-特殊二叉树：斜树、满二叉树、完全二叉树
-
-
-
-二叉树遍历：
-
-- 前序遍历：访问根结点，先遍历左子树，再遍历右子树
-- 中序遍历
-- 后序遍历
-- 层序遍历
-
-已知前序遍序列和中序遍历序列，可以唯一确定一棵二叉树
-
-已知后序遍序列和中序遍历序列，可以唯一确定一棵二叉树
-
-
-
-### sort
-
-**稳定**：如果a原本在b前面，而a=b，排序之后a仍然在b的前面； 
-
-**不稳定**：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；
-
-**内排序**：所有排序操作都在内存中完成； 
-
-**外排序**：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；
-
-**时间复杂度**: 一个算法执行所耗费的时间。 
-
-**空间复杂度**: 运行完一个程序所需内存的大小。
+空间复杂度：运行完一个程序所需内存的大小
 
   
 

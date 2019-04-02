@@ -1,4 +1,3 @@
-
 **Commands**
 
 ```shell
@@ -11,6 +10,8 @@ npm i gh-pages
 gh-pages -d _book #将文件夹_book 的内容同步到分支 gh-pages
 gitbook install #安装gitbook插件
 ```
+
+
 
 **Quickly Start**
 
@@ -51,3 +52,4 @@ gitbook install
   "description" : "V5"
 }
 ```
+
