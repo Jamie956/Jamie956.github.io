@@ -294,11 +294,28 @@ An Angular application is a tree of components, and there is always a root appli
   - NgFor—Iterate over a collection of items
   - NgSwitch—Conditionally display an item from a set of options 
 
+![structural or attribute directive](D:/project/justnote/img/structural%20or%20attribute%20directive.png)
+
+- Structural directive: Designed to modify the DOM tree of an element
+- Attribute directive: Designed to only modify the properties or DOM of a single element. 
+
 
 
 ### Pipes
 
 - Using pipes, we can transform the data in the view during rendering without changing the underlying data value. 
+
+- Pipes are essentially a way to format data
+
+  ![pipe](D:/project/justnote/img/pipe.png)
+
+- Two types of pipes
+
+  - Pure pipes maintain no state information and allow you to transform a value before output using a pure function.
+  - Impure pipes allow you to maintain state inside of a pipe, but they’re run with
+    every change detection check and are to be avoided if possible.
+
+  ![pure and impure pipes](D:/project/justnote/img/pure%20and%20impure%20pipes.png)
 
 
 
@@ -429,35 +446,6 @@ export class AppComponent {
   - None—No encapsulation is used during rendering of the view, and the component DOM is subject to the normal rules of CSS. Templates aren’t modifed when injected into the app except for the removal of any CSS style elements from the template to the document head.
   - Emulated—Emulated encapsulation is used to simulate styling encapsulation by adding unique CSS selectors to your CSS rules at runtime. CSS can cascade into the component easily from the global CSS rules.
   - Native—Uses the native Shadow DOM for styling and markup encapsulation and provides the best encapsulation. All styles are injected inside the shadow root and are therefore localized to the component. None of the templates or styles declared for the component are visible outside the component. 
-
-
-
-### Directives
-
-![structural or attribute directive](..\img\structural or attribute directive.png)
-
-- Structural directive: Designed to modify the DOM tree of an element
-  - NgIf to control whether the DOM element is rendered or not
-  - NgFor to creates multiple instances of the Summary component
-- Attribute directive: Designed to only modify the properties or DOM of a single element. 
-  - NgClass modifes the background color of those same instances
-
-
-
-### Pipes
-
-- Pipes are essentially a way to format data
-
-  ![pipe](..\img\pipe.png)
-
-- Two types of pipes
-
-  - Pure pipes maintain no state information and allow you to transform a value before output using a pure function.
-  - Impure pipes allow you to maintain state inside of a pipe, but they’re run with
-    every change detection check and are to be avoided if possible.
-
-  ![pure and impure pipes](..\img\pure and impure pipes.png)
-
 
 
 
