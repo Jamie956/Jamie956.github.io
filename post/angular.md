@@ -432,9 +432,6 @@ export class AppComponent {
 
 
 
-## 8 Directives and Pipes
-
-
 ### Directives
 
 ![structural or attribute directive](..\img\structural or attribute directive.png)
@@ -453,92 +450,25 @@ export class AppComponent {
 
   ![pipe](..\img\pipe.png)
 
-- There are fundamentally two types of pipes: pure and impure. 
+- Two types of pipes
 
-  - Pure pipes maintain no state information
-  - Impure pipes maintain state
-
-- How pure and impure pipes are handled by Angular
+  - Pure pipes maintain no state information and allow you to transform a value before output using a pure function.
+  - Impure pipes allow you to maintain state inside of a pipe, but they’re run with
+    every change detection check and are to be avoided if possible.
 
   ![pure and impure pipes](..\img\pure and impure pipes.png)
 
 
 
-**Pure pipe**
 
-- Pure pipes are so named because they implement a pure function—a function that
-  doesn’t maintain any internal state and returns the same output given the same input. 
-- Pure functions are important for performance, because Angular doesn’t need to run
-  them with each change detection lifecycle unless the input value has changed. This can
-  save a reasonable amount of overhead for performance reasons. 
-
-
-
-**Summary**
-
-- Directives come in three ﬂavors: attribute, structural, and components.
-- Attribute directives are the most common to create and are great for modifying
-  an existing element.
-- Structural directives are less common and are meant to be used to modify the
-  existence or structure of DOM elements.
-- Pure pipes are the most useful and allow you to transform a value before output
-  using a pure function.
-- Impure pipes allow you to maintain state inside of a pipe, but they’re run with
-  every change detection check and are to be avoided if possible. 
-
-
-
-## 9 Forms
-
-Angular provides two approaches to building forms: reactive forms and template
-forms. 
-
-
-
-### Template-driven forms
-
-
-
-**Custom validation with directives**
-
-- Phone validator 
-
-  ```js
-  import { AbstractControl, ValidatorFn } from '@angular/forms';
-  const expression = /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/;
-  export function PhoneValidator(): ValidatorFn {
-      return (control: AbstractControl): { [key: string]: any } => {
-          const valid = expression.test(control.value) && control.value.length <
-                14;
-          return valid ? null : { phone: true };
-      };
-  }
-  ```
-
-
-
-**Summary**
+### Forms
 
 - Template-driven forms define the form using NgModel on form controls.
 - You can apply normal HTML validation attributes, and NgModel will automatically
   try to validate based on those rules.
-- Custom validation is possible through a custom validator function and directive,
-  which gets registered with the built-in list of validators.
-- The NgForm directive, though it can be transparent, exposes features to help
-  manage submit events and overall form validation inspection.
 - Reactive forms are different in that you define the form model in the controller
   and link form controls using FormControlName.
 - You can observe the changes of a form control with reactive forms and run logic
   every time a new value is emitted.
-- Reactive forms declare validation in the controller form defnition, and creating
-  custom validations is easier because they don’t require a directive.
 - Ultimately, both form patterns are available to you. I tend to use reactive forms,
   especially as the form gets more complex.
-- Creating a new form control requires implementing the ControlValueAccessor
-  methods and registering it with the controls provider. 
-
-
-
-10 Testing your application
-
-11 Angular in production
