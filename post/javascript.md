@@ -1,10 +1,8 @@
-### call stack
+### Call stack
 
-> Reference
->
 > https://developer.mozilla.org/en-US/docs/Glossary/Call_stack
 
-A **call stack** is a mechanism for an interpreter (like  the JavaScript interpreter in a web browser) to keep track of its place  in a script that calls multiple functions — what function is currently being run, what functions are called from within that function and should be called next, etc.
+A call stack is a mechanism for an interpreter (like  the JavaScript interpreter in a web browser) to keep track of its place  in a script that calls multiple functions — what function is currently being run, what functions are called from within that function and should be called next, etc.
 
 - When a script calls a function, the interpreter adds it to the call stack and then starts carrying out the function.
 - Any functions that are called by that function are added to the call stack further up, and run where their calls are reached.
@@ -13,68 +11,9 @@ A **call stack** is a mechanism for an interpreter (like  the JavaScript interpr
 
 
 
-```js
-function greeting() {
-   sayHi();
-}
-function sayHi() {
-   return "Hi!";
-}
-greeting();
-```
-
-The code above would be executed like this:
-
-1. Ignore all functions, until it reaches the `greeting()` function.
-
-2. Invoke the `greeting()` function.
-
-3. Add the `greeting` function to the call stack list.
-
-   Call stack list:
-
-   greeting
-
-4. Execute all lines of code inside the `greeting` function.
-
-5. Get to the `sayHi()` function.
-
-6. Add the `sayHi()` function to the call stack list.
-
-   Call stack list:
-
-   greeting
-
-   sayHi
-
-7. Execute all lines of code inside the `sayHi()` function, until reaches its end.
-
-8. Return execution to the line that invoked `sayHi()` and continue executing the rest of the `greeting()` function.
-
-9. Delete the `sayHi()` function from our call stack list.
-
-   Call stack list:
-
-   greeting
-
-10. When everything inside the `greeting()` function has been executed, return to its invoking line to continue executing the rest of the JS code.
-
-11. Delete the `greeting()` function from the call stack list.
-
-    Call stack list: EMPTY
-
-
-We started with an empty Call Stack, and whenever we invoke a function,  it is automatically added to the Call Stack, after executing all of its  codes, it is automatically removed from the Call Stack. At the end, we  ended up with an empty stack too.
-
-
-
-### event loop
+### Event loop
 
 <img width="80%" src="https://user-gold-cdn.xitu.io/2017/11/21/15fdd88994142347?imageView2/0/w/1280/h/960/ignore-error/1" />
-
-
-
-主线程内的任务为空时，会去检查Event Queue的函数
 
 
 
@@ -84,43 +23,41 @@ $.ajax({
     url:www.javascript.com,
     data:data,
     success:() => {
-        console.log('发送成功!');
+        console.log('Send success!');
     }
 })
-console.log('代码执行结束');
+console.log('End');
  ```
 
-1. ajax进入Event Table，注册回调函数`success`
-2. 执行`console.log('代码执行结束')`
+1. 注册回调函数`success`
+2. 执行`console.log('End')`
 3. ajax事件完成，回调函数`success`进入Event Queue
-4. 主线程从Event Queue读取回调函数，执行`success`
+4. 主线程从Event Queue获取并执行`success`
 
  
 
-### setTimeout
+### Set Timeout
 
 It's important to note that setTimeout(..) doesn't put your callback on the event loop queue. What it does is set up a timer; when the timer expires, the environment places your callback into the event loop, such that some future tick will pick it up and execute it.
 
 
 
  ```js
-setTimeout(() => {
-    task();
-},3000);
+setTimeout(fn,3000);
 sleep(10000000);
  ```
 
-1. `task()`进入Event Table，计时开始
-2. 执行`sleep`
-3. 3秒到了，计时事件`timeout`完成，`task()`进入Event Queue，等待主线程
-4. `sleep`执行完
-5. 扫描Event Queue，`task()`进入主线程执行
+1. `fn`进入Event Table，计时开始
+2. `sleep`占据主线程
+3. 3秒时，`fn`进入Event Queue，等待主线程
+4. `sleep`等待1000秒后
+5. Event Queue`fn`进入主线程执行
 
  
 
-###  setInterval
+###  Set Interval
 
-`setInterval(fn,ms)`每过`ms`秒，`fn`进入Event Queue
+`setInterval(fn,ms)`每`ms`秒，`fn`进入Event Queue
 
 fn执行时间大于ms时，看起来fn连续执行，没有间隔
 
