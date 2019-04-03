@@ -137,14 +137,13 @@
 
 ## Web Server
 
-代理：有转发功能的应用程序，接收客户端请求并转发给服务器，接收服务器响应并转发给客户端
+- 代理：有转发功能的应用程序，接收客户端请求并转发给服务器，接收服务器响应并转发给客户端
+  - 缓存代理（ Caching Proxy ）：预先将资源副本缓存在代理服务器上
+  - 透明代理：转发请求或响应时不对报文做任何加工
 
-- 缓存代理（ Caching Proxy ）：预先将资源副本缓存在代理服务器上
-- 透明代理：转发请求或响应时不对报文做任何加工
+- 网关：转发其他服务器通信数据的服务器
 
-网关：转发其他服务器通信数据的服务器
-
-隧道：在客户端和服务端之间进行中转，并保持双方通信连接
+- 隧道：在客户端和服务端之间进行中转，并保持双方通信连接
 
 
 
@@ -240,104 +239,75 @@
 
 ## HTTPS
 
-HTTP缺点：
+- HTTP缺点：
+  - 通信适用明文（不加密），内容可能会被窃听
+  - 不验证通信方的身份，可能遭遇伪装
+  - 无法证明报文的完整性，可能被篡改
 
-- 通信适用明文（不加密），内容可能会被窃听
-- 不验证通信方的身份，可能遭遇伪装
-- 无法证明报文的完整性，可能被篡改
+- SSL( Secure Socket Layer )：采用共享密钥加密和公开密钥加密混合
 
-SSL( Secure Socket Layer )：采用共享密钥加密和公开密钥加密混合
+- TLS( Transport Layer Security )
 
-TLS( Transport Layer Security )
+- HTTPS( = HTTP + 加密 + 认证 + 完整性保护 )：HTTP通信接口部分用SSL和TLS代替
 
-HTTPS( = HTTP + 加密 + 认证 + 完整性保护 )：HTTP通信接口部分用SSL和TLS代替
+- Public-key cryptography( 公开密钥加密 )：公钥加密，私钥解密，解密就是对离散对数进行求值
 
-Public-key cryptography( 公开密钥加密 )：公钥加密，私钥解密，解密就是对离散对数进行求值
+- Common key crypto system ( 共享密钥加密，对称密钥加密 )：加密和解密用同一个密钥
 
-Common key crypto system ( 共享密钥加密，对称密钥加密 )：加密和解密用同一个密钥
+- CA( Certificate Authority, 数字证书认证机构 )：是客户端与服务器双方都可信赖的三方机构，颁发公钥证书
 
-CA( Certificate Authority, 数字证书认证机构 )：是客户端与服务器双方都可信赖的三方机构，颁发公钥证书
+- 客户端证书：用户自行安装客户端证书
 
-客户端证书：用户自行安装客户端证书
-
-HTTPS缺点：
-
-- 通信慢
-- 加密解密消耗CPU和内存
+- HTTPS缺点：
+  - 通信慢
+  - 加密解密消耗CPU和内存
 
 
 
 ## Web Attack
 
-客户端篡改请求：通过URL查询字段、表单、HTTP首部、Cookie等途径把攻击代码传入
+- 客户端篡改请求：通过URL查询字段、表单、HTTP首部、Cookie等途径把攻击代码传入
 
-active attack( 主动攻击 )：以服务器资源为目标，直接访问Web，把攻击代码传入
+- Active attack( 主动攻击 )：以服务器资源为目标，直接访问Web，把攻击代码传入
+  - SQL注入攻击
+  - OS命令注入
 
-- SQL注入攻击
-- OS命令注入
+- Passive attack( 被动攻击 )：攻击者诱使用户触发嵌入攻击代码的请求，窃取用户Cookie、恶意使用用户权限
+  - 跨站脚本攻击
+  - 跨站点请求伪造
 
+- Web安全对策
+  - 输入值验证
+  - 输出值转义
 
+- XSS( 跨站脚本攻击, Cross-Site Scripting )：指通过存在漏洞的Web注册用户的浏览器内运行非法的HTML标签或JavaScript进行的一种攻击
+  - 利用虚假输入表单骗取用户信息
+  - 利用脚本窃取用户Cookie值，用户在不知情下帮组攻击者发送恶意请求
+  - 显示伪造内容
 
-passive attack( 被动攻击 )：攻击者诱使用户触发嵌入攻击代码的请求，窃取用户Cookie、恶意使用用户权限
+- CSRF( Cross-Site Request Forgeries, 跨站点请求伪造 )：攻击者通过设置好的陷阱，强制对已完成认证的用户进行非预期的个人信息或设定信息等某些状态更新
 
-- 跨站脚本攻击
-- 跨站点请求伪造
+- HTTP Header Injection：攻击者通过在响应首部字段插入换行，添加任意响应首部或主体的一种攻击
+  - 设置任何Cookie信息
+  - 重定向至任意URL
+  - 显示任意的主体( HTTP Response Splitting Attack )
 
+- HTTP Response Splitting Attack：向首部主体内添加内容的攻击
 
+- Mail Header Injection：Web应用中的邮件发送，攻击者通过向邮件首部To或Subject内任意添加非法内容，发起攻击
 
-**Web安全对策**
+- 目录遍历攻击 （ Directory Traversal, Path Traversal ）：对无意公开的文件目录，通过非法截断其目录路径后，达成访问目的的一种攻击
 
-- 输入值验证
-- 输出值转义
+- 会话劫持（ Session Hijack ）：攻击者通过某种手段拿到用户的会话ID，并非法使用此会话ID伪装成用户
+  - 通过非正规生成方法推测会话ID
+  - 通过窃听或XSS攻击盗取会话ID
+  - 通过会话固定攻击强行获取会话ID
 
+- Dos( Denial of Service attack )：让运行中的服务呈停止状态的攻击
+  - 集中利用访问请求造成资源过载，资源用尽的同时，实际上服务也就呈停止状态
+  - 通过攻击安全漏洞使服务器停止
 
-
-XSS( 跨站脚本攻击, Cross-Site Scripting )：指通过存在漏洞的Web注册用户的浏览器内运行非法的HTML标签或JavaScript进行的一种攻击
-
-- 利用虚假输入表单骗取用户信息
-- 利用脚本窃取用户Cookie值，用户在不知情下帮组攻击者发送恶意请求
-- 显示伪造内容
-
-
-
-CSRF( Cross-Site Request Forgeries, 跨站点请求伪造 )：攻击者通过设置好的陷阱，强制对已完成认证的用户进行非预期的个人信息或设定信息等某些状态更新
-
-
-
-HTTP Header Injection：攻击者通过在响应首部字段插入换行，添加任意响应首部或主体的一种攻击
-
-- 设置任何Cookie信息
-- 重定向至任意URL
-- 显示任意的主体( HTTP Response Splitting Attack )
-
-HTTP Response Splitting Attack：向首部主体内添加内容的攻击
-
-
-
-Mail Header Injection：Web应用中的邮件发送，攻击者通过向邮件首部To或Subject内任意添加非法内容，发起攻击
-
-目录遍历攻击 （ Directory Traversal, Path Traversal ）：对无意公开的文件目录，通过非法截断其目录路径后，达成访问目的的一种攻击
-
-
-
-会话劫持（ Session Hijack ）：攻击者通过某种手段拿到用户的会话ID，并非法使用此会话ID伪装成用户
-
-- 通过非正规生成方法推测会话ID
-- 通过窃听或XSS攻击盗取会话ID
-- 通过会话固定攻击强行获取会话ID
-
-
-
-Dos( Denial of Service attack )：让运行中的服务呈停止状态的攻击
-
-攻击方式：
-
-- 集中利用访问请求造成资源过载，资源用尽的同时，实际上服务也就呈停止状态
-- 通过攻击安全漏洞使服务器停止
-
-DDoS ( Distributed Denial of Service attack )
-
-
+- DDoS ( Distributed Denial of Service attack )
 
 
 
