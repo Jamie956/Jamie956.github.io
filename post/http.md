@@ -1,68 +1,65 @@
 ## TCP/IP协议族
 
-协议：不同硬件、操作系统之间通信需要的规则
+- 协议：不同硬件、操作系统之间通信需要的规则
 
-TCP/IP：是互联网相关的各类协议族的总称，包括（ IP, TCP, HTTP, FTP, DNS, UDP... ）
+- TCP/IP：互联网相关的各类协议族的总称，包括（ IP, TCP, HTTP, FTP, DNS, UDP... ）
 
-TCP/IP层次
-- 应用层：向用户提供应用服务时通信的活动（ FTP, DNS, HTTP ）
-- 传输层：提供处于网络连接中的两台计算机之间的数据传输（ TCP, UDP ）
-- 网络层：通过多台计算机或网络设备传输时，选择传输线路（ IP ）
-- 数据链路层：处理连接网络的硬件部分
+- TCP/IP层次
+  - 应用层：向用户提供应用服务时通信的活动（ FTP, DNS, HTTP ）
+  - 传输层：提供处于网络连接中的两台计算机之间的数据传输（ TCP, UDP ）
+  - 网络层：通过多台计算机或网络设备传输时，选择传输线路（ IP ）
+  - 数据链路层：处理连接网络的硬件部分
 
-封装：发送端在层与层之间传输数据时，每经过一层必定被打上该层所属的首部信息
+- 封装：发送端在层与层之间传输数据时，每经过一层必定被打上该层所属的首部信息
 
-IP地址：指节点被分配到的地址，可变
+- IP地址：节点被分配到的地址，可变
 
-MAC地址：指网卡所属的固定地址，基本不变
+- MAC地址：网卡所属的固定地址，基本不变
 
-ARP( Address Resolution Protocol )：根据通信方的IP地址解析出对应的MAC地址
+- ARP( Address Resolution Protocol )：根据通信方的IP地址解析出对应的MAC地址
 
-字节流服务( Byte Stream Service )：为了方便传输，将大块数据分割成以segment为单位的数据包进行管理
+- 字节流服务( Byte Stream Service )：为了方便传输，将大块数据分割成以segment为单位的数据包进行管理
 
-三次握手( three-way handshaking )：数据包发送出去后，会向对方确认是否成功送达
+- 三次握手( three-way handshaking )：数据包发送出去后，会向对方确认是否成功送达
 
 1. 发送端：发送带SYN( synchronize )的数据包给对方
 2. 接收端：接收后，回传带SYN/ACK的数据包确认
 3. 发送端：回传带ACK的数据包，握手结束
 
-DNS( Domain Name System )：提供域名到IP地址之间的解析服务
+- DNS( Domain Name System )：提供域名到IP地址之间的解析服务
 
-URI( Uniform Resource Identifier )：用字符串标识某一互联网资源
+- URI( Uniform Resource Identifier )：用字符串标识某一互联网资源
+  - 绝对URI：http://user:pass@www.example.jp:80/dir/index/htm?uid=1#ch1 （ 协议方案://登录信息@服务器地址:端口/文件路径?查询字符串#片段标识符 ）
 
-​	绝对URI：http://user:pass@www.example.jp:80/dir/index/htm?uid=1#ch1 （ 协议方案://登录信息@服务器地址:端口/文件路径?查询字符串#片段标识符 ）
-
-URL( Uniform Resource Locator )：表示资源位置，是URI的子集
+- URL( Uniform Resource Locator )：表示资源位置，是URI的子集
 
 
 
 ## HTTP协议
 
-请求报文构成
+- 请求报文构成
+  - 请求方法
+  - 请求URI
+  - 协议版本
+  - 首部字段
+  - 内容实体
 
-- 请求方法
-- 请求URI
-- 协议版本
-- 首部字段
-- 内容实体
-
-响应报文构成
-
-- 协议版本
-- 状态码( status code )
-- 状态码的原因短语( reason-phrase )
-- 响应首部字段
-- 主体( entity body )
+- 响应报文构成
+  - 协议版本
+  - 状态码( status code )
+  - 状态码的原因短语( reason-phrase )
+  - 响应首部字段
+  - 主体( entity body )
 
 
 
-追踪路径( Trace )：设置Header Max-Forwards，经过一个服务器端就减1，等于0时停止传输
+- 追踪路径( Trace )：设置Header Max-Forwards，经过一个服务器端就减1，等于0时停止传输
 
-Connect：用隧道协议连接代理，使用SSL( Secure Sockets Layer )和TLS( Transport Layer Security )协议把通信内容加密后经网络隧道传输
+- Connect：用隧道协议连接代理，使用SSL( Secure Sockets Layer )和TLS( Transport Layer Security )协议把通信内容加密后经网络隧道传输
 
 
 
-HTTP methods
+- HTTP methods
 
 | -                   |                      |
 | ------------------- | -------------------- |
@@ -79,11 +76,11 @@ HTTP methods
 
 
 
-持久连接（ HTTP Persistent Connections, HTTP keep-alive, HTTP connection reuse ）：只要任意一端没有提出断开连接，就一直保持TCP连接状态
+- 持久连接（ HTTP Persistent Connections, HTTP keep-alive, HTTP connection reuse ）：只要任意一端没有提出断开连接，就一直保持TCP连接状态
 
-管线化（ pipelining ）：不用等待响应可直接发送下一个请求
+- 管线化（ pipelining ）：不用等待响应可直接发送下一个请求
 
-Cookie：在请求和响应报文中写入Cookie信息来控制客户端状态
+- Cookie：在请求和响应报文中写入Cookie信息来控制客户端状态
 
 1. 服务器响应 Header Set-Cookie
 2. 客户端保存Cookie
@@ -93,24 +90,22 @@ Cookie：在请求和响应报文中写入Cookie信息来控制客户端状态
 
 ## HTTP Message
 
-HTTP报文：用于HTTP协议交互的信息
+- HTTP报文：用于HTTP协议交互的信息
+  - 首部
+  - 空行( CR+LF )
+  - 主体
 
-- 首部
-- 空行( CR+LF )
-- 主体
+- 内容编码
+  - gzip ( GUN zip )
+  - compress ( UNIX 系统的标准压缩 )
+  - deflate ( zlib )
+  - identity ( 不进行编码 )
 
-内容编码
+- 分块传输编码（ Chunked Transfer Coding ）：把实体主体分割传输，每一块用十六进制标记块的大小，最后一块使用0(CR+LF)
 
-- gzip ( GUN zip )
-- compress ( UNIX 系统的标准压缩 )
-- deflate ( zlib )
-- identity ( 不进行编码 )
+- MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图片、视频等多个不同种类的数据
 
-分块传输编码（ Chunked Transfer Coding ）：把实体主体分割传输，每一块用十六进制标记块的大小，最后一块使用0(CR+LF)
-
-MIME( Multipurpose Internet Mail Extensions )：允许邮件处理文本、图片、视频等多个不同种类的数据
-
-获取部分内容的范围请求：设置 Header Range
+- 获取部分内容的范围请求：设置 Header Range
 
 
 
