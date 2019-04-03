@@ -311,7 +311,7 @@
 
 
 
-## x
+## Network
 
 - **Internet connection**: Allows you to send and receive data on the web. It's basically like the street between your house and the shop.
 
@@ -328,7 +328,7 @@
 
 
 
-**So what happens, exactly?**
+## Brower & Server
 
 When you type a web address into your browser (for our analogy that's like walking to the shop):
 
