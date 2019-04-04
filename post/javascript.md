@@ -61,15 +61,13 @@ sleep(10000000);
 
 
 
-### task
+### Task
 
-> Reference
->
 > https://juejin.im/post/59e85eebf265da430d571f89
 
-Microtasks(微任务) include process.nextTick, promise, Object.observe and MutationObserver 
+- Microtasks(微任务) include process.nextTick, promise, Object.observe and MutationObserver 
 
-Macrotasks(宏任务) include script, setTimeout, setInterval, setImmediate, I/O and UI rendering
+- Macrotasks(宏任务) include script, setTimeout, setInterval, setImmediate, I/O and UI rendering
 
 
 
@@ -77,17 +75,17 @@ Macrotasks(宏任务) include script, setTimeout, setInterval, setImmediate, I/O
 
 
 
-So the correct sequence of an event loop looks like this:
+- So the correct sequence of an event loop looks like this:
 
-1.Execute synchronous codes, which belongs to macrotask
+1. Execute synchronous codes, which belongs to macrotask
 
-2.Once call stack is empty, query if any microtasks need to be executed
+2. Once call stack is empty, query if any microtasks need to be executed
 
-3.Execute all the microtasks
+3. Execute all the microtasks
 
-4.If necessary, render the UI
+4. If necessary, render the UI
 
-5.Then start the next round of the Event loop, and execute the asynchronous operations in the macrotask
+5. Then start the next round of the Event loop, and execute the asynchronous operations in the macrotask
 
  
 
@@ -113,18 +111,19 @@ console.log('console');
 //setTimeout
 ```
 
-第一轮事件循环
+1st Event Loop
 
-1. 宏任务script进入主线程
-2. `setTimeout`的回调函数注册后分发到宏任务Event Queue
-3. `new Promise`立即执行，`then`函数分发到微任务Event Queue
+1. 主线程执行 Macrotasks `script`
+2. `setTimeout` function 进入 Macrotasks Event Queue
+3. `new Promise`立即执行，`then` function 进入 Microtasks Event Queue
 4. 立即执行`console.log()`
-5. 宏任务script执行结束
-6. 检查微任务Event Queue，执行`then`
+5. Macrotasks `script`结束
+6. 检查 Microtasks Event Queue
+7. 执行`then` function
 
-第二轮事件循环
+2nd Event Loop
 
-1. 检查宏任务Event Queue，执行`setTimeout`的回调函数
+1. 检查 Macrotasks Event Queue，执行`setTimeout` function
 
 
 
