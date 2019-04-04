@@ -59,8 +59,6 @@ sleep(10000000);
 
 `setInterval(fn,ms)`每`ms`秒，`fn`进入Event Queue
 
-fn执行时间大于ms时，看起来fn连续执行，没有间隔
-
 
 
 ### task
