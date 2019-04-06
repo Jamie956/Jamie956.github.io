@@ -1,7 +1,3 @@
-<img src="http://www.choose-piano-lessons.com/images/1-2-5-1-chord-progression.jpg" />
-
-
-
 ## 乐音体系
 
 - 人耳所能听到的声音，每秒钟振动 11-20 000次
