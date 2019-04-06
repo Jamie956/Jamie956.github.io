@@ -1,6 +1,6 @@
 # Summary
 
-* [Contents](README.md)
+* [Welcome](README.md)
 
 -----
 * [Git](post/git.md)
@@ -24,4 +24,5 @@
 -----
 * [Undefined](post/undefined.md)
 * [Guide](post/guide.md)
+* [Baking](post/baking.md)
 
