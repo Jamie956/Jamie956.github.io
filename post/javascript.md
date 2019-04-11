@@ -222,7 +222,7 @@ setTimeout(function() {
 
 <img src="https://user-gold-cdn.xitu.io/2017/11/21/15fdd96beade6575?imageView2/0/w/1280/h/960/ignore-error/1" />
 
-### primitive
+### Primitive
 
 > Reference
 >
@@ -230,7 +230,7 @@ setTimeout(function() {
 >
 > https://justjavac.com/javascript/2012/12/22/javascript-values-not-everything-is-an-object.html
 
-A **primitive** (primitive value, primitive data type) is data that is not an [object](https://developer.mozilla.org/en-US/docs/Glossary/object) and has no [methods](https://developer.mozilla.org/en-US/docs/Glossary/method). In [JavaScript](https://developer.mozilla.org/en-US/docs/Glossary/JavaScript), there are 6 primitive data types: [string](https://developer.mozilla.org/en-US/docs/Glossary/string), [number](https://developer.mozilla.org/en-US/docs/Glossary/number), [boolean](https://developer.mozilla.org/en-US/docs/Glossary/boolean), [null](https://developer.mozilla.org/en-US/docs/Glossary/null), [undefined](https://developer.mozilla.org/en-US/docs/Glossary/undefined), [symbol](https://developer.mozilla.org/en-US/docs/Glossary/symbol) (new in [ECMAScript](https://developer.mozilla.org/en-US/docs/Glossary/ECMAScript) 2015).
+A **primitive** (primitive value, primitive data type) is data that is not an object  and has no methods In JavaScript, there are 6 primitive data types: string, number, boolean, null, undefined, symbol (new in ECMAScript 2015).
 
 
 
@@ -238,49 +238,11 @@ All primitives are **immutable,** i.e., they cannot be  altered. It is importan
 
 
 
-占用空间固定，保存在栈中（当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁了。因此，所有在方法中定义的变量都是放在栈内存中的；栈中存储的是基础变量以及一些对象的引用变量，基础变量的值是存储在栈中，而引用变量存储在栈中的是指向堆中的数组或者对象的地址
+### Method
 
+方法执行时，建立内存栈，方法内的变量存入这个内存栈
 
-
-A primitive type has a fixed size in memory. For example, a number occupies eight bytes of memory, and a boolean value can be represented with only one bit. The number type is the largest of the primitive types. If each JavaScript variable reserves eight bytes of memory, the variable can directly hold any primitive value.
-
-
-
-```js
-//1.原始值不可变
-var str = "abc";
-str.foo = 123;
-str.foo //undefined
-
-//2.原始值没有内部标识，按值比较
-"abc" === "abc"
-true
-```
-
-
-
-隐式转换：
-
-```js
-Boolean(undefined)//false
-Boolean(0)//false
-'1'+2 //12
-Boolean('false')//true
-Boolean('undefined')//true
-3 + true; // 4
-```
-
-
-
-转换成false：
-
-"" 空字串
-0, -0, NaN
-null
-undefined
-false
-
-
+方法结束时，方法内存栈销毁
 
 
 
