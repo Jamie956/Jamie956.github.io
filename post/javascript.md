@@ -436,87 +436,42 @@ In MVVM, the core is the two-way binding of data, such as dirty checking by Angu
 
 
 
-###  new
+###  New
 
-> Reference
->
 > http://javascript.ruanyifeng.com/oop/basic.html
 
-构造函数名首字母大写
+- 规则
 
-函数内的`this`是对象实例
+  ```js
+  var Vehicle = function () {
+      'use strict';//防止this指向全局对象
+      //this 指向对象实例
+      this.price = 1000;
+  };
+  //首字母大写
+  var v = new Vehicle();
+  v.price // 1000
+  ```
 
-`new`执行构造函数，返回一个实例对象
+- new 原理
 
-```js
-var Vehicle = function () {
-    'use strict';//防止this指向全局对象
-    this.price = 1000;
-};
-var v = new Vehicle();
-v.price // 1000
-```
-
- 
-
- new执行步骤
-
-1. 创建一个空对象，作为将要返回的对象实例
-2. 将这个空对象的原型，指向构造函数的`prototype`属性
-3. 将这个空对象赋值给函数内部的`this`关键字
-4. 开始执行构造函数内部的代码
-
-
-
-```js
-function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
-    // 将 arguments 对象转为数组
-    var args = [].slice.call(arguments);
-    // 取出构造函数
-    var constructor = args.shift();
-    // 创建一个空对象，继承构造函数的 prototype 属性
-    var context = Object.create(constructor.prototype);
-    // 执行构造函数
-    var result = constructor.apply(context, args);
-    // 如果返回结果是对象，就直接返回，否则返回 context 对象
-    return (typeof result === 'object' && result != null) ? result : context;
-}
-
-// 实例
-var actor = _new(Person, '张三', 28);
-```
-
-
-
-`new`命令调用时，`new.target`指向当前函数
-
-```js
-function f() {
-    console.log(new.target === f);
-}
-
-f() // false
-new f() // true
-```
-
-
-
-Object.create()
-
-```js
-var person1 = {
-    name: 'Tom',
-    age: 38,
-    greeting: function() {
-        console.log('Hi! I\'m ' + this.name + '.');
-    }
-};
-
-var person2 = Object.create(person1);
-
-person2.name
-person2.greeting()
-```
+  ```js
+  function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
+      // 将 arguments 对象转为数组
+      var args = [].slice.call(arguments);
+      // 取出构造函数
+      var constructor = args.shift();
+      // 创建一个空对象，继承构造函数的 prototype 属性
+      var context = Object.create(constructor.prototype);
+      // 执行构造函数
+      var result = constructor.apply(context, args);
+      // 如果返回结果是对象，就直接返回，否则返回 context 对象
+      return (typeof result === 'object' && result != null) ? result : context;
+  }
+  
+  // 实例
+  var actor = _new(Person, '张三', 28);
+  ```
 
 
 
