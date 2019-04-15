@@ -222,15 +222,13 @@ setTimeout(function() {
 
 <img src="https://user-gold-cdn.xitu.io/2017/11/21/15fdd96beade6575?imageView2/0/w/1280/h/960/ignore-error/1" />
 
-### primitive
+### Primitive
 
-> Reference
->
 > https://developer.mozilla.org/en-US/docs/Glossary/Primitive
 >
 > https://justjavac.com/javascript/2012/12/22/javascript-values-not-everything-is-an-object.html
 
-A **primitive** (primitive value, primitive data type) is data that is not an [object](https://developer.mozilla.org/en-US/docs/Glossary/object) and has no [methods](https://developer.mozilla.org/en-US/docs/Glossary/method). In [JavaScript](https://developer.mozilla.org/en-US/docs/Glossary/JavaScript), there are 6 primitive data types: [string](https://developer.mozilla.org/en-US/docs/Glossary/string), [number](https://developer.mozilla.org/en-US/docs/Glossary/number), [boolean](https://developer.mozilla.org/en-US/docs/Glossary/boolean), [null](https://developer.mozilla.org/en-US/docs/Glossary/null), [undefined](https://developer.mozilla.org/en-US/docs/Glossary/undefined), [symbol](https://developer.mozilla.org/en-US/docs/Glossary/symbol) (new in [ECMAScript](https://developer.mozilla.org/en-US/docs/Glossary/ECMAScript) 2015).
+A **primitive** (primitive value, primitive data type) is data that is not an object  and has no methods In JavaScript, there are 6 primitive data types: string, number, boolean, null, undefined, symbol (new in ECMAScript 2015).
 
 
 
@@ -238,208 +236,93 @@ All primitives are **immutable,** i.e., they cannot be  altered. It is importan
 
 
 
-占用空间固定，保存在栈中（当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁了。因此，所有在方法中定义的变量都是放在栈内存中的；栈中存储的是基础变量以及一些对象的引用变量，基础变量的值是存储在栈中，而引用变量存储在栈中的是指向堆中的数组或者对象的地址
+### Method
+
+方法执行时，建立内存栈，方法内的变量存入这个内存栈
+
+方法结束时，方法内存栈销毁
 
 
 
-A primitive type has a fixed size in memory. For example, a number occupies eight bytes of memory, and a boolean value can be represented with only one bit. The number type is the largest of the primitive types. If each JavaScript variable reserves eight bytes of memory, the variable can directly hold any primitive value.
+### Object
+
+- 占用空间不固定
+
+- Object保存在堆
+
+- Object不会随方法的结束而销毁
+
+- 可变
+
+  ```js
+  var obj = {};
+  obj.foo = 123;
+  obj.foo//123
+  ```
+
+- 每个对象都有自己唯一的标识符，通过字面量或构造函数创建的对象和任何其他对象都不相等
+
+  ```js
+  {} === {}
+  false
+  ```
+
+- 对象是通过引用来比较的，只有两个对象有相同的标识，才认为这个对象是相等的
+
+  ```js
+  var obj = {};
+  obj === obj
+  ```
+
+- 变量保存对象的引用
+
+  ```js
+  var var1 = {};
+  var var2 = var1;
+  var1.foo = 123;
+  var2.foo //123
+  ```
 
 
 
-```js
-//1.原始值不可变
-var str = "abc";
-str.foo = 123;
-str.foo //undefined
+### Reference types
 
-//2.原始值没有内部标识，按值比较
-"abc" === "abc"
-true
-```
-
-
-
-隐式转换：
-
-```js
-Boolean(undefined)//false
-Boolean(0)//false
-'1'+2 //12
-Boolean('false')//true
-Boolean('undefined')//true
-3 + true; // 4
-```
-
-
-
-转换成false：
-
-"" 空字串
-0, -0, NaN
-null
-undefined
-false
-
-
-
-
-
-### object
-
-占用空间不固定，保存在堆中（当我们在程序中创建一个对象时，这个对象将被保存到运行时数据区中，以便反复利用（因为对象的创建成本通常较大），这个运行时数据区就是堆内存。堆内存中的对象不会随方法的结束而销毁，即使方法结束后，这个对象还可能被另一个引用变量所引用（方法的参数传递时很常见），则这个对象依然不会被销毁，只有当一个对象没有任何引用变量引用它时，系统的垃圾回收机制才会在核实的时候回收它
-
-
-
-分为：
-
-原始值的包装器：`Boolean`, `Number`, `String`
-
-`[]` 就是 `new Array()`
-
-`{}` 就是 `new Object()`
-
-`function() {}` 就是 `new Function()`
-
-`/\s*/` 就是  `new RegExp("\\s*")`
-
-`new Date("2011-12-24")`
-
-
-
-特点：
-
-```js
-//1.可变
-var obj = {};
-obj.foo = 123;
-obj.foo//123
-
-//2.每个对象都有自己唯一的标识符，通过字面量或构造函数创建的对象和任何其他对象都不相等
-{} === {}
-false
-
-//对象是通过引用来比较的，只有两个对象有相同的标识，才认为这个对象是相等的
-var obj = {};
-obj === obj
-
-//3.变量保存了对象的引用，因此，如果两个变量应用了相同的对象——我们改变其中一个变量时，两一个也会随之改变
-var var1 = {};
-var var2 = var1;
-var1.foo = 123;
-var2.foo //123
-```
-
-
-
-```js
-Object.prototype.toString.call(1) // "[object Number]"
-Object.prototype.toString.call('hi') // "[object String]"
-Object.prototype.toString.call({a:'hi'}) // "[object Object]"
-Object.prototype.toString.call([1,'a']) // "[object Array]"
-Object.prototype.toString.call(true) // "[object Boolean]"
-Object.prototype.toString.call(() => {}) // "[object Function]"
-Object.prototype.toString.call(null) // "[object Null]"
-Object.prototype.toString.call(undefined) // "[object Undefined]"
-Object.prototype.toString.call(Symbol(1)) // "[object Symbol]"
-```
-
-
-
-#### wrap
-
-```js
-typeof "abc" //'string'
-typeof new String("abc") //'object'
-
-"abc" instanceof String //false
-new String("abc") instanceof String //true
-
-"abc" === new String("abc") //false
-
-var a = new String("abc");
-var b = new String("abc");
-a == b //false
-a == a //true
-```
-
-
-
-### Equality comparisons
-
-- double equals (`==`) will perform a type conversion when comparing two things, and will handle `NaN`, `-0`, and `+0` specially to conform to IEEE 754 (so `NaN != NaN`, and `-0 == +0`);
-
-- triple equals (`===`) will do the same comparison (including the special handling for `NaN`, `-0`, and `+0`) but without type conversion, by simply always returning `false` if the types differ;
-
-- `Object.is` does no type conversion and no special handling for `NaN`, `-0`, and `+0` (giving it the same behavior as `===` except on those special numeric values).
-
-
-```js
-//两个变量指向同一个对象
-var a1 = ['Hi!'];
-var a2 = a1;
-console.log(a1 === a2); // true
-
-//两个变量指向不同对象
-var b1 = ["Hi!"];
-var b2 = ["Hi!"];
-console.log(b1 === b2); // false
-
-//比较对象的值
-var arr1str = JSON.stringify(arr1);
-var arr2str = JSON.stringify(arr2);
-console.log(arr1str === arr2str); // true
-```
-
-
-
-### reference types
-
-> Reference
->
 > https://www.cnblogs.com/leiting/p/8081413.html
 >
 > https://blog.fundebug.com/2017/08/09/explain_value_reference_in_js/
 
-```js
-//1.值传递
-function multiply(x, y) {
-    return x * y;
-}
-multiply(2, 3);
+- 值传递
 
-//2.引用传递
-function change(person) {
-    person.age = 25;
-    return person;
-}
-var alex = {
-    name: 'Alex',
-    age: 30
-};
-var changedAlex = change(alex);
-console.log(alex); // { name: 'Alex', age: 25 }
-console.log(changedAlex); // { name: 'Alex', age: 25 }
-```
+  ```js
+  function multiply(x, y) {
+      return x * y;
+  }
+  multiply(2, 3);
+  ```
+
+- 引用传递
+
+  ```js
+  function change(person) {
+      person.age = 25;
+      return person;
+  }
+  var alex = {
+      name: 'Alex',
+      age: 30
+  };
+  var changedAlex = change(alex);
+  console.log(alex); // { name: 'Alex', age: 25 }
+  console.log(changedAlex); // { name: 'Alex', age: 25 }
+  ```
 
 
 
+### This
 
-
-### this
-
-> Reference
->
 > https://www.jianshu.com/p/6b4333e78bf5
 >
 > https://juejin.im/post/5b9f176b6fb9a05d3827d03f
-
-this是函数运行时所在的环境对象
-
-this 指向最后调用它的对象
-
-箭头函数的 this 始终指向函数定义时的 this，而非执行时
-
-匿名函数的 this 指向 window
 
 ```js
 //===example1===
@@ -472,70 +355,9 @@ obj.x // 1
 
 
 
-1. 隐式绑定
+### Apply & Call & Bind
 
-   ```js
-   const user = {
-       name: 'Tyler',
-       greet() {
-           console.log(this.name);
-       }
-   };
-   user.greet();
-   ```
-
-2. 显式绑定
-
-   ```js
-   function greet () {
-       alert(`Hello, my name is ${this.name}`)
-   };
-   
-   const user = {
-       name: 'Tyler',
-       age: 27,
-   };
-   
-   greet.call(user);
-   ```
-
-3. new 绑定
-
-   ```js
-   function User (name, age) {
-     this.name = name
-     this.age = age
-   };
-   
-   const me = new User('Tyler', 27);//this指向新对象
-   ```
-
-4. window 绑定
-
-   ```js
-   window.age = 27
-   
-   function sayAge () {
-       console.log(`My age is ${this.age}`)
-   }
-   
-   sayAge ();
-   ```
-
-
-
-改变this指向
-
-- 使用 ES6 的箭头函数
-- 在函数内部使用 `_this = this`
-- 使用 `apply`、`call`、`bind`
-- new 实例化一个对象
-
-
-
-#### apply
-
-改变函数的指向，参数是一个数组，参数为空时，指向全局对象
+- apply 改变函数的指向，参数是一个数组，参数为空时，指向全局对象
 
 ```js
 var x = 0;
@@ -554,15 +376,8 @@ obj.y.apply(obj); //1
 
 
 
-#### call
-
-跟apply相似，传的参数是一个个的
-
-
-
-#### bind
-
-跟call相似，但返回一个函数
+- call 与apply的区别：参数是多个
+- bind 与call相似，返回一个函数
 
 ```js
 function greet() {
@@ -595,208 +410,68 @@ In MVVM, the core is the two-way binding of data, such as dirty checking by Angu
 
 ### DOM
 
-> Reference
->
 > https://javascript.ruanyifeng.com/dom/node.html
 
-DOM（Document Object Model）：JavaScript 操作网页的接口，它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作
+- DOM（Document Object Model）：网页转成的一个JS对象
 
-浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口
+- 结构化文档（比如 HTML 和 XML） -> DOM Tree
 
+- Node：DOM 的最小组成单位
 
+- DOM tree：由各种不同类型的节点组成
 
-Node：DOM 的最小组成单位
+- type of node
+  - Document
+  - Element
+  - Attribute
+  - Text
+  - DocumentFragment
+  - DocumentType
+  - Comment
 
-DOM 树：由各种不同类型的节点组成
-
-
-
-**7种节点**
-
-Document
-
-Element
-
-Attribute
-
-Text
-
-DocumentFragment
-
-DocumentType
-
-Comment
+- node relationship
+  - parentNode：直接的上级节点
+  - childNodes：直接的下级节点
+  - sibling：拥有同一个父节点的节点
 
 
 
-**节点的三种关系（除根节点）**
+###  New
 
-parentNode：直接的上级节点
-
-childNodes：直接的下级节点
-
-sibling：拥有同一个父节点的节点
-
-
-
-**Node 接口的属性**
-
-```js
-Node.nodeType
-Node.nodeName
-Node.nodeValue
-Node.textContent //后代节点的文本内容
-Node.baseURI
-Node.ownerDocument //返回当前节点所在的顶层文档对象
-Node.nextSibling //当前节点的下一个节点
-Node.previousSibling //当前节点的上一个节点
-Node.parentNode
-Node.parentElement //当前节点的父元素节点
-Node.firstChild
-Node.lastChild
-Node.childNodes //当前节点的所有子节点
-Node.isConnected //当前节点是否在文档之中
-```
-
-
-
-**Node接口方法**
-
-```js
-Node.appendChild()
-Node.hasChildNodes()
-Node.cloneNode()
-Node.insertBefore()
-Node.removeChild()
-Node.replaceChild()
-Node.contains()
-Node.compareDocumentPosition()
-Node.isEqualNode()
-Node.isSameNode()
-Node.normalize()
-Node.getRootNode()
-```
-
-
-
-**NodeList 接口**
-
-```js
-NodeList.prototype.length
-NodeList.prototype.forEach()
-NodeList.prototype.item() //成员的位置
-NodeList.prototype.keys()
-NodeList.prototype.values()
-NodeList.prototype.entries()
-```
-
-
-
-**ParentNode 接口**
-
-```js
-ParentNode.children
-ParentNode.firstElementChild
-ParentNode.lastElementChild
-ParentNode.childElementCount
-ParentNode.append()
-ParentNode.prepend()
-```
-
-
-
-**ChildNode 接口**
-
-```js
-ChildNode.remove()
-ChildNode.before()
-ChildNode.after()
-ChildNode.replaceWith()
-```
-
-
-
-###  new
-
-> Reference
->
 > http://javascript.ruanyifeng.com/oop/basic.html
 
-构造函数名首字母大写
+- 规则
 
-函数内的`this`是对象实例
+  ```js
+  var Vehicle = function () {
+      'use strict';//防止this指向全局对象
+      //this 指向对象实例
+      this.price = 1000;
+  };
+  //首字母大写
+  var v = new Vehicle();
+  v.price // 1000
+  ```
 
-`new`执行构造函数，返回一个实例对象
+- new 原理
 
-```js
-var Vehicle = function () {
-    'use strict';//防止this指向全局对象
-    this.price = 1000;
-};
-var v = new Vehicle();
-v.price // 1000
-```
-
- 
-
- new执行步骤
-
-1. 创建一个空对象，作为将要返回的对象实例
-2. 将这个空对象的原型，指向构造函数的`prototype`属性
-3. 将这个空对象赋值给函数内部的`this`关键字
-4. 开始执行构造函数内部的代码
-
-
-
-```js
-function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
-    // 将 arguments 对象转为数组
-    var args = [].slice.call(arguments);
-    // 取出构造函数
-    var constructor = args.shift();
-    // 创建一个空对象，继承构造函数的 prototype 属性
-    var context = Object.create(constructor.prototype);
-    // 执行构造函数
-    var result = constructor.apply(context, args);
-    // 如果返回结果是对象，就直接返回，否则返回 context 对象
-    return (typeof result === 'object' && result != null) ? result : context;
-}
-
-// 实例
-var actor = _new(Person, '张三', 28);
-```
-
-
-
-`new`命令调用时，`new.target`指向当前函数
-
-```js
-function f() {
-    console.log(new.target === f);
-}
-
-f() // false
-new f() // true
-```
-
-
-
-Object.create()
-
-```js
-var person1 = {
-    name: 'Tom',
-    age: 38,
-    greeting: function() {
-        console.log('Hi! I\'m ' + this.name + '.');
-    }
-};
-
-var person2 = Object.create(person1);
-
-person2.name
-person2.greeting()
-```
+  ```js
+  function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
+      // 将 arguments 对象转为数组
+      var args = [].slice.call(arguments);
+      // 取出构造函数
+      var constructor = args.shift();
+      // 创建一个空对象，继承构造函数的 prototype 属性
+      var context = Object.create(constructor.prototype);
+      // 执行构造函数
+      var result = constructor.apply(context, args);
+      // 如果返回结果是对象，就直接返回，否则返回 context 对象
+      return (typeof result === 'object' && result != null) ? result : context;
+  }
+  
+  // 实例
+  var actor = _new(Person, '张三', 28);
+  ```
 
 
 
