@@ -283,6 +283,74 @@ All primitives are **immutable,** i.e., they cannot be  altered. It is importan
   var2.foo //123
   ```
 
+- Object property
+
+  - configurable
+
+    ```js
+    var person = { name: 'TOM' } 
+    delete person.name; // true 
+    
+    Object.defineProperty(person, 'name', { 
+        configurable: false, 
+        value: 'Jake' 
+    }) 
+    delete person.name // false 
+    console.log(person.name) // Jake 
+    person.name = "alex";  
+    console.log(person.name) // Jake 
+    ```
+
+  - writable
+
+    ```js
+    var person = { name: 'TOM' }
+    person.name = 'Jake';
+    console.log(person.name);
+    
+    Object.defineProperty(person, 'name', {
+        writable: false 
+    })
+    person.name = 'alex';
+    console.log(person.name); // Jake
+    ```
+
+  - get/set
+
+    ```js
+    var person = {}
+    Object.defineProperties(person, {
+        name: { value: 'Jake', configurable: true }, 
+        age: {
+            get: function() { return this.value || 22 },
+            set: function(value) { this.value = value }
+        }
+    })
+     
+    person.name // Jake
+    person.age // 22
+    ```
+
+  - Property Descriptor
+
+    ```js
+    var person = {}
+    Object.defineProperty(person, 'name', {
+        value: 'alex',
+        writable: false,
+        configurable: false
+    })
+    var descripter = Object.getOwnPropertyDescriptor(person, 'name');
+    console.log(descripter);
+    
+    /*descripter = {
+        configurable: false,
+        enumerable: false,
+        value: 'alex',
+        writable: false
+    }*/
+    ```
+
 
 
 ### Reference types
@@ -475,10 +543,8 @@ In MVVM, the core is the two-way binding of data, such as dirty checking by Angu
 
 
 
-### prototype
+### Prototype
 
-> Reference
->
 > https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
 >
 > https://github.com/bigdots/blog/issues/1
@@ -491,7 +557,7 @@ In MVVM, the core is the two-way binding of data, such as dirty checking by Angu
 >
 > https://github.com/stone0090/javascript-lessons/tree/master/2.5-Prototype
 
-JavaScript is a bit confusing for developers experienced in  class-based languages (like Java or C++), as it is dynamic and does not  provide a `class` implementation per se (the `class` keyword is introduced in ES2015, but is syntactical sugar, JavaScript remains prototype-based).
+
 
 When it comes to inheritance, JavaScript only has one construct:  objects. Each object has a private property which holds a link to  another object called its **prototype**. That prototype object has a prototype of its own, and so on until an object is reached with `null` as its prototype. By definition, `null` has no prototype, and acts as the final link in this **prototype chain**.
 
@@ -500,6 +566,12 @@ When it comes to inheritance, JavaScript only has one construct:  objects. Each 
 <img src="https://www.ibm.com/developerworks/cn/web/1306_jiangjj_jsinstanceof/figure1.jpg" />
 
 
+
+<img src="https://img-blog.csdn.net/20170503152146141?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" />
+
+
+
+**Prototype chain example**
 
 ```js
 let f = function () {
@@ -511,7 +583,7 @@ let o = new f(); // {a: 1, b: 2}
 f.prototype.b = 3;
 f.prototype.c = 4;
 
-// {a: 1, b: 2} ---> {b: 3, c: 4} ---> Object.prototype ---> null
+// {a: 1, b: 2} -> {b: 3, c: 4} -> Object.prototype -> null
 console.log(o.a); // 1
 console.log(o.b); // 2
 console.log(o.c); // 4
@@ -522,102 +594,19 @@ console.log(o.d); // undefined
 
 ```js
 var a = {a: 1};
-// a ---> Object.prototype ---> null
+// a -> Object.prototype -> null
 
 var b = Object.create(a);
-// b ---> a ---> Object.prototype ---> null
+// b -> a -> Object.prototype -> null
 console.log(b.a); // 1 (inherited)
 
 var c = Object.create(b);
-// c ---> b ---> a ---> Object.prototype ---> null
+// c -> b -> a -> Object.prototype -> null
 
 var d = Object.create(null);
-// d ---> null
+// d -> null
 console.log(d.hasOwnProperty);
-// undefined, because d doesn't inherit from Object.prototype
-```
-
-
-
-构造函数、原型对象、实例化对象三者的关系 
-
-<img src="https://img-blog.csdn.net/20170503151554392?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /> 
-
-
-
-<img src="https://img-blog.csdn.net/20170503152146141?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /> 
-
-
-
-configurable
-
-```js 
-var person = { name: 'TOM' } 
-delete person.name; // true 
-
-Object.defineProperty(person, 'name', { 
-    configurable: false, 
-    value: 'Jake' 
-}) 
-delete person.name // false 
-console.log(person.name) // Jake 
-person.name = "alex";  
-console.log(person.name) // Jake 
-```
-
-
-
-
- writable
-
-```js 
-var person = { name: 'TOM' }
-person.name = 'Jake';
-console.log(person.name);
-
-Object.defineProperty(person, 'name', {
-    writable: false 
-})
-person.name = 'alex';
-console.log(person.name); // Jake
-```
-
- 
-
-get/set
-
-```js 
-var person = {}
-Object.defineProperties(person, {
-    name: { value: 'Jake', configurable: true }, 
-    age: {
-        get: function() { return this.value || 22 },
-        set: function(value) { this.value = value }
-    }
-})
- 
-person.name // Jake
-person.age // 22
-```
-
-  
-
-```js 
-var person = {}
-Object.defineProperty(person, 'name', {
-    value: 'alex',
-    writable: false,
-    configurable: false
-})
-var descripter = Object.getOwnPropertyDescriptor(person, 'name');
-console.log(descripter);
-
-/*descripter = {
-    configurable: false,
-    enumerable: false,
-    value: 'alex',
-    writable: false
-}*/
+// undefined, because d doesn't inherit from Object.prototype  
 ```
 
 
