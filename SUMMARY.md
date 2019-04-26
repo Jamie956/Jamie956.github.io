@@ -25,4 +25,5 @@
 * [Undefined](post/undefined.md)
 * [Guide](post/guide.md)
 * [Baking](post/baking.md)
+* [Money](post/money.md)
 
