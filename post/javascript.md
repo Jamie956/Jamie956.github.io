@@ -658,78 +658,64 @@ console.log(person1.sayName === person2.sayName);    // true
 
 
 
-### Grammar and types
+### Variable
 
-**Declarations**
+- Declarations
+  - var: Declares a variable, optionally initializing it to a value.
+  - let: Declares a block-scoped, local variable, optionally initializing it to a value.
+  - const: Declares a block-scoped, read-only named constant.
 
-var: Declares a variable, optionally initializing it to a value.
+- Variable scope
 
-let: Declares a block-scoped, local variable, optionally initializing it to a value.
-
-const: Declares a block-scoped, read-only named constant.
-
-
-
-**Variable scope**
-
-```js
-if (true) {
-  let y = 5;
-}
-console.log(y);  // ReferenceError: y is not defined
-```
+  ```js
+  if (true) {
+    let y = 5;
+  }
+  console.log(y);  // ReferenceError: y is not defined
+  ```
 
 
+- Variable hoisting
 
-**Variable hoisting**
+    ```js
+    /**
+     * Example 1
+     */
+    console.log(x === undefined); // true
+    var x = 3;
+    
+    /**
+     * Example 2
+     */
+    // will return a value of undefined
+    var myvar = 'my value';
+    
+    (function() {
+      console.log(myvar); // undefined
+      var myvar = 'local value';
+    })();
+    ```
 
-```js
-/**
- * Example 1
- */
-console.log(x === undefined); // true
-var x = 3;
+- Function hoisting
 
-/**
- * Example 2
- */
-// will return a value of undefined
-var myvar = 'my value';
- 
-(function() {
-  console.log(myvar); // undefined
-  var myvar = 'local value';
-})();
-```
-
-
-
-**Function hoisting**
-
-```js
-/* Function declaration */
-
-foo(); // "bar"
-
-function foo() {
-  console.log('bar');
-}
-
-
-/* Function expression */
-
-baz(); // TypeError: baz is not a function
-
-var baz = function() {
-  console.log('bar2');
-};
-```
+    ```js
+    /* Function declaration */
+    foo(); // "bar"
+    function foo() {
+      console.log('bar');
+    }
+    
+    
+    /* Function expression */
+    baz(); // TypeError: baz is not a function
+    var baz = function() {
+      console.log('bar2');
+    };
+    ```
 
 
 
-**Data types**
-
-The latest ECMAScript standard defines seven data types:
+### Data types
 
 - Six data types that are primitives:
   - Boolean. true and false.
@@ -738,11 +724,8 @@ The latest ECMAScript standard defines seven data types:
   - Number. An integer or floating point number. For example: 42 or 3.14159.
   - String. A sequence of characters that represent a text value. For example:  "Howdy"
   - Symbol (new in ECMAScript 2015). A data type whose instances are unique and immutable.
-- and Object
 
-
-
-**Data type conversion**
+- conversion
 
 ```js
 '37' - 7 // 30
@@ -751,42 +734,40 @@ The latest ECMAScript standard defines seven data types:
 
 
 
-### Control flow and error handling
+### Statement
 
-**Block statement**
+- Block statement
 
-```js
-var x = 1;
-{
-  var x = 2;
-}
-console.log(x); // outputs 2
-```
+    ```js
+    var x = 1;
+    {
+      var x = 2;
+    }
+    console.log(x); // outputs 2
+    ```
 
+- Conditional statements
 
+    ```js
+    if (condition) {
+      statement_1;
+    } else {
+      statement_2;
+    }
+    ```
 
-**Conditional statements**
+- Exception handling statements
 
-```js
-if (condition) {
-  statement_1;
-} else {
-  statement_2;
-}
-```
-
-
-
-**Exception handling statements**
-
-```js
-throw 'Error2';   // String type
-throw 42;         // Number type
-throw true;       // Boolean type
-throw {toString: function() { return "I'm an object!"; } };
-```
+    ```js
+    throw 'Error2';   // String type
+    throw 42;         // Number type
+    throw true;       // Boolean type
+    throw {toString: function() { return "I'm an object!"; } };
+    ```
 
 
+
+### Exception handling
 
 ```js
 // Create an object type UserException
@@ -821,8 +802,7 @@ function getMonthName(mo) {
 
 try { // statements to try
   monthName = getMonthName(myMonth); // function could throw exception
-}
-catch (e) {
+} catch (e) {
   monthName = 'unknown';
   logMyErrors(e); // pass exception object to error handler -> your own function
 }
@@ -862,7 +842,7 @@ try {
 
 
 
-**Promise**
+### Promise
 
 A `Promise` is in one of these states:
 
