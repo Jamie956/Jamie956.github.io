@@ -924,305 +924,23 @@ t6();
 
 
 
-### Functions
+### Closures
 
-
-
-**recursion**
-
-A function can refer to and call itself.
-
-```js
-function factorial(n) {
-    console.trace();//查看调用栈
-    if (n === 0) {
-        return 1
-    }
-    return n * factorial(n - 1)
-}
-```
-
-
-
-<img width="65%" src="https://user-gold-cdn.xitu.io/2017/6/20/d28ba98f3835845671655db33dfe14bb?imageView2/0/w/1280/h/960/ignore-error/1" />
-
-
-
-尾递归：是一种递归的写法，避免不断将函数压栈最终导致堆栈溢出。通过设置一个累加参数，并且每一次都将当前的值累加上去，然后递归调用
-
-```js
-function factorial(n, total = 1) {
-    console.trace();//查看调用栈
-    if (n === 0) {
-        return total
-    }
-    return factorial(n - 1, n * total)
-}
-factorial(3);
-```
-
-
-
-函数之间没有依赖关系，调用后可进行垃圾回收
-
-factorial(3, 1)
-factorial(2, 3)
-factorial(1, 6)
-factorial(0, 6)
-
-
-
-补充：
-
-Nodejs需要使用`strict mode`和`--harmony_tailcalls`开启尾递归(proper tail call)
-
-```shell
-node --harmony_tailcalls factorial.js
-```
-
-
-
-**Closures**
-
-Closures are one of the most powerful features of JavaScript. JavaScript
-allows for the nesting of functions and grants the inner function full 
-access to all the variables and functions defined inside the outer 
-function (and all other variables and functions that the outer function 
-has access to). However, the outer function does not have access to the 
-variables and functions defined inside the inner function. This provides
-a sort of encapsulation for the variables of the inner function. Also, 
-since the inner function has access to the scope of the outer function, 
-the variables and functions defined in the outer function will live 
-longer than the duration of the outer function execution, if the inner 
-function manages to survive beyond the life of the outer function. A 
-closure is created when the inner function is somehow made available to 
-any scope outside the outer function.
-
-
-
-闭包：有权访问另一个函数作用域中的变量的函数
-
-通常，函数的作用域及其所有变量都会在函数执行结束后被销毁。但是，在创建了一个闭包以后，这个函数的作用域就会一直保存到闭包不存在为止
-
-应用：设计私有的方法和变量
-
-缺点：减慢处理速度，内存消耗
-
-
-
-**Arguments object**
-
-```js
-function myConcat(separator) {
-   var result = ''; // initialize list
-   var i;
-   // iterate through arguments
-   for (i = 1; i < arguments.length; i++) {
-      result += arguments[i] + separator;
-   }
-   return result;
-}
-
-// returns "red, orange, blue, "
-myConcat(', ', 'red', 'orange', 'blue');
-```
-
-
-
-### Expressions and operators
-
-**Bitwise operators**
-
-The operands of all bitwise operators are converted to signed 32-bit  integers in two's complement format. Two's complement format means that a number's negative counterpart (e.g. 5 vs. -5) is all the number's bits  inverted (bitwise NOT of the number, a.k.a. ones' complement of the  number) plus one. For example, the following encodes the integer 314:
-
-
-
-```
-00000000000000000000000100111010
-```
-
-The following encodes `~314`, i.e. the ones' complement of `314`:
-
-```
-11111111111111111111111011000101
-```
-
-Finally, the following encodes `-314,` i.e. the two's complement of `314`:
-
-```
-11111111111111111111111011000110
-```
-
-
-
--7>>1 = -4
-
-```
-00000000 00000000 00000000 00000111 //7
-11111111 11111111 11111111 11111001 //-7
-11111111 11111111 11111111 11111100	//-7>>1
-00000000 00000000 00000000 00000100 //4
-10000000 00000000 00000000 00000100 //-4
-```
-
-
-
- -1>>>4 = ox0FFFFFFF
-
-```
-00000000 00000000 00000000 00000001 //1
-11111111 11111111 11111111 11111111 //-1
-00001111 11111111 11111111 11111111 //-1>>>4
-```
-
-
-
-**Unary operators**
-
-delete
-
-```js
-x = 42;
-var y = 43;
-myobj = new Number();
-myobj.h = 4;    // create property h
-delete x;       // returns true (can delete if declared implicitly)
-delete y;       // returns false (cannot delete if declared with var)
-delete Math.PI; // returns false (cannot delete predefined properties)
-delete myobj.h; // returns true (can delete user-defined properties)
-delete myobj;   // returns true (can delete if declared implicitly)
-```
-
-
-
-typeof
-
-```js
-var myFun = new Function('5 + 2');
-var shape = 'round';
-var size = 1;
-var foo = ['Apple', 'Mango', 'Orange'];
-var today = new Date();
-
-typeof myFun;       // returns "function"
-typeof shape;       // returns "string"
-typeof size;        // returns "number"
-typeof foo;         // returns "object"
-typeof today;       // returns "object"
-typeof doesntExist; // returns "undefined"
-```
-
-
-
-**Relational operators**
-
-```js
-// Arrays
-var trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
-0 in trees;        // returns true
-3 in trees;        // returns true
-6 in trees;        // returns false
-'bay' in trees;    // returns false (you must specify the index number,
-                   // not the value at that index)
-'length' in trees; // returns true (length is an Array property)
-
-// built-in objects
-'PI' in Math;          // returns true
-var myString = new String('coral');
-'length' in myString;  // returns true
-
-// Custom objects
-var mycar = { make: 'Honda', model: 'Accord', year: 1998 };
-'make' in mycar;  // returns true
-'model' in mycar; // returns true
-```
-
-
-
-### Numbers and dates
-
-**Numbers**
-
-- Decimal numbers
-
-  ```js
-  1234567890
-  42
-  
-  // Caution when using leading zeros:
-  
-  0888 // 888 parsed as decimal
-  0777 // parsed as octal in non-strict mode (511 in decimal)
-  /*
-  Note that decimal literals can start with a zero (0) followed by another decimal digit, but if every digit after the leading 0 is smaller than 8, the number gets parsed as an octal number.
-  */
-  ```
-
-- Binary numbers
-
-  ```js
-  var FLT_SIGNBIT  = 0b10000000000000000000000000000000; // 2147483648
-  var FLT_EXPONENT = 0b01111111100000000000000000000000; // 2139095040
-  var FLT_MANTISSA = 0B00000000011111111111111111111111; // 8388607
-  ```
-
-
-- Octal numbers
-
-  ```js
-  var n = 0755; // 493
-  var m = 0644; // 420
-  
-  var a = 0o10; // ES2015: 8
-  ```
-
-
-- Hexadecimal numbers
-
-  ```js
-  0xFFFFFFFFFFFFFFFFF // 295147905179352830000
-  0x123456789ABCDEF   // 81985529216486900
-  0XA                 // 10
-  ```
-
-
-- Exponentiation
-
-  ```js
-  1E3   // 1000
-  2e6   // 2000000
-  0.1e2 // 10
-  ```
-
-
-
-JavaScript 内部，所有数字都是以64位浮点数形式储存
-
-根据国际标准 IEEE 754，JavaScript 浮点数的64个二进制位
-
-- 第1位：符号位，`0`表示正数，`1`表示负数
-- 第2位到第12位（共11位）：指数部分，表示数值的大小( 0 ~ 2047 )
-- 第13位到第64位（共52位）：小数部分（即有效数字），表示数值的精度( -2^53 ~ 2^53 )
-
-
-
-```js
-//浮点数不是精确的值
-0.1 + 0.2 === 0.3	//false
-0.3 / 0.1	// 2.9999999999999996
-(0.3 - 0.2) === (0.2 - 0.1)	// false
-```
+- Closures are one of the most powerful features of JavaScript. JavaScript allows for the nesting of functions and grants the inner function full  access to all the variables and functions defined inside the outer  function (and all other variables and functions that the outer function  has access to). However, the outer function does not have access to the  variables and functions defined inside the inner function. This provides a sort of encapsulation for the variables of the inner function. Also,  since the inner function has access to the scope of the outer function,  the variables and functions defined in the outer function will live  longer than the duration of the outer function execution, if the inner  function manages to survive beyond the life of the outer function. A  closure is created when the inner function is somehow made available to  any scope outside the outer function.
 
 
 
 ### Regular expressions
 
+- Return result and info
+
 ```js
 var myRe = /d(b+)d/g;
 var myArray = myRe.exec('cdbbdbsbz');
+//[ 'dbbd', 'bb', index: 1, input: 'cdbbdbsbz' ]
 ```
 
-
+- Replace match item
 
 ```js
 var re = /(\w+)\s(\w+)/;
@@ -1233,7 +951,7 @@ console.log(newstr);
 // "Smith, John"
 ```
 
-
+- Search match item
 
 ```js
 var re = /\w+\s/g;
@@ -1243,17 +961,5 @@ console.log(myArray);
 
 // ["fee ", "fi ", "fo "]
 ```
-
-
-
-### Working with objects
-
-In JavaScript, an object is a standalone entity, with properties and 
-type. Compare it with a cup, for example. A cup is an object, with 
-properties. A cup has a color, a design, weight, a material it is made 
-of, etc. The same way, JavaScript objects can have properties, which 
-define their characteristics.
-
-
 
 
