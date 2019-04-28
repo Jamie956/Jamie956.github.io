@@ -844,108 +844,82 @@ try {
 
 ### Promise
 
-A `Promise` is in one of these states:
-
-- *pending*: initial state, not fulfilled or rejected.
-- *fulfilled*: successful operation
-- *rejected*: failed operation.
-- *settled*: the Promise is either fulfilled or rejected, but not pending.
+- A Promise is in one of these states:
+  - pending: initial state, not fulfilled or rejected
+  - fulfilled: successful operation
+  - rejected: failed operation
+  - settled: the Promise is either fulfilled or rejected, but not pending
 
 <img src="https://mdn.mozillademos.org/files/8633/promises.png">
 
 
 
-### Loops and iteration
-
-**for statement**
-**do...while statement**
+### Loops
 
 ```js
-var i = 0;
-do {
-  i += 1;
-  console.log(i);
-} while (i < 5);
-```
-
-
-
-**while statement**
-
-```js
-var n = 0;
-var x = 0;
-while (n < 3) {
-  n++;
-  x += n;
+function t1() {
+  //do...while statement
+  var i = 0;
+  do {
+    i += 1;
+    console.log(i);
+  } while (i < 5);
+  //1 2 3 4 5
 }
-```
 
-
-
-**labeled statement**
-
-```js
-markLoop:
-while (theMark == true) {
-   doSomething();
-}
-```
-
-
-
-**break statement**
-
-```js
-for (var i = 0; i < a.length; i++) {
-  if (a[i] == theValue) {
-    break;
+function t2() {
+  //while statement
+  var i = 0;
+  while (i < 5) {
+    i++;
+    console.log(i);
   }
+  //1 2 3 4 5
 }
-```
 
-
-
-**continue statement**
-
-```js
-var i = 0;
-var n = 0;
-while (i < 5) {
-  i++;
-  if (i == 3) {
-    continue;
+function t3() {
+  //break statement
+  var i = 0;
+  while (i < 5) {
+    i++;
+    if (i == 3) {
+      break;
+    }
+    console.log(i);
   }
-  n += i;
-  console.log(n);
+  //1 2
 }
-//1,3,7,12
-```
 
-
-
-**for...in statement**
-
-```js
-var arr = [3, 5, 7];
-arr.foo = 'hello';
-
-for (var i in arr) {
-   console.log(i); // logs "0", "1", "2", "foo"
+function t4() {
+  //continue statement
+  var i = 0;
+  while (i < 5) {
+    i++;
+    if (i == 3) {
+      continue;
+    }
+    console.log(i);
+  }
+  //1 2 4 5
 }
-```
 
-
-
-**for...of statement**
-
-```js
-var arr = [3, 5, 7];
-arr.foo = 'hello';
-
-for (var i of arr) {
-   console.log(i); // logs 3, 5, 7
+function t5() {
+  //for...in statement
+  for (var i in [3, 5, 7]) {
+    console.log(i);
+  }
+  //0 1 2
 }
+
+function t6() {
+  //for...of statement
+  for (var i of [3, 5, 7]) {
+    console.log(i);
+  }
+  //3 5 7
+}
+
+t6();
 ```
 
 
