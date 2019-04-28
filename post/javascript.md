@@ -283,6 +283,74 @@ All primitives are **immutable,** i.e., they cannot be  altered. It is importan
   var2.foo //123
   ```
 
+- Object property
+
+  - configurable
+
+    ```js
+    var person = { name: 'TOM' } 
+    delete person.name; // true 
+    
+    Object.defineProperty(person, 'name', { 
+        configurable: false, 
+        value: 'Jake' 
+    }) 
+    delete person.name // false 
+    console.log(person.name) // Jake 
+    person.name = "alex";  
+    console.log(person.name) // Jake 
+    ```
+
+  - writable
+
+    ```js
+    var person = { name: 'TOM' }
+    person.name = 'Jake';
+    console.log(person.name);
+    
+    Object.defineProperty(person, 'name', {
+        writable: false 
+    })
+    person.name = 'alex';
+    console.log(person.name); // Jake
+    ```
+
+  - get/set
+
+    ```js
+    var person = {}
+    Object.defineProperties(person, {
+        name: { value: 'Jake', configurable: true }, 
+        age: {
+            get: function() { return this.value || 22 },
+            set: function(value) { this.value = value }
+        }
+    })
+     
+    person.name // Jake
+    person.age // 22
+    ```
+
+  - Property Descriptor
+
+    ```js
+    var person = {}
+    Object.defineProperty(person, 'name', {
+        value: 'alex',
+        writable: false,
+        configurable: false
+    })
+    var descripter = Object.getOwnPropertyDescriptor(person, 'name');
+    console.log(descripter);
+    
+    /*descripter = {
+        configurable: false,
+        enumerable: false,
+        value: 'alex',
+        writable: false
+    }*/
+    ```
+
 
 
 ### Reference types
@@ -475,10 +543,8 @@ In MVVM, the core is the two-way binding of data, such as dirty checking by Angu
 
 
 
-### prototype
+### Prototype
 
-> Reference
->
 > https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
 >
 > https://github.com/bigdots/blog/issues/1
@@ -491,7 +557,7 @@ In MVVM, the core is the two-way binding of data, such as dirty checking by Angu
 >
 > https://github.com/stone0090/javascript-lessons/tree/master/2.5-Prototype
 
-JavaScript is a bit confusing for developers experienced in  class-based languages (like Java or C++), as it is dynamic and does not  provide a `class` implementation per se (the `class` keyword is introduced in ES2015, but is syntactical sugar, JavaScript remains prototype-based).
+
 
 When it comes to inheritance, JavaScript only has one construct:  objects. Each object has a private property which holds a link to  another object called its **prototype**. That prototype object has a prototype of its own, and so on until an object is reached with `null` as its prototype. By definition, `null` has no prototype, and acts as the final link in this **prototype chain**.
 
@@ -500,6 +566,12 @@ When it comes to inheritance, JavaScript only has one construct:  objects. Each 
 <img src="https://www.ibm.com/developerworks/cn/web/1306_jiangjj_jsinstanceof/figure1.jpg" />
 
 
+
+<img src="https://img-blog.csdn.net/20170503152146141?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" />
+
+
+
+**Prototype chain example**
 
 ```js
 let f = function () {
@@ -511,7 +583,7 @@ let o = new f(); // {a: 1, b: 2}
 f.prototype.b = 3;
 f.prototype.c = 4;
 
-// {a: 1, b: 2} ---> {b: 3, c: 4} ---> Object.prototype ---> null
+// {a: 1, b: 2} -> {b: 3, c: 4} -> Object.prototype -> null
 console.log(o.a); // 1
 console.log(o.b); // 2
 console.log(o.c); // 4
@@ -522,102 +594,19 @@ console.log(o.d); // undefined
 
 ```js
 var a = {a: 1};
-// a ---> Object.prototype ---> null
+// a -> Object.prototype -> null
 
 var b = Object.create(a);
-// b ---> a ---> Object.prototype ---> null
+// b -> a -> Object.prototype -> null
 console.log(b.a); // 1 (inherited)
 
 var c = Object.create(b);
-// c ---> b ---> a ---> Object.prototype ---> null
+// c -> b -> a -> Object.prototype -> null
 
 var d = Object.create(null);
-// d ---> null
+// d -> null
 console.log(d.hasOwnProperty);
-// undefined, because d doesn't inherit from Object.prototype
-```
-
-
-
-构造函数、原型对象、实例化对象三者的关系 
-
-<img src="https://img-blog.csdn.net/20170503151554392?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /> 
-
-
-
-<img src="https://img-blog.csdn.net/20170503152146141?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /> 
-
-
-
-configurable
-
-```js 
-var person = { name: 'TOM' } 
-delete person.name; // true 
-
-Object.defineProperty(person, 'name', { 
-    configurable: false, 
-    value: 'Jake' 
-}) 
-delete person.name // false 
-console.log(person.name) // Jake 
-person.name = "alex";  
-console.log(person.name) // Jake 
-```
-
-
-
-
- writable
-
-```js 
-var person = { name: 'TOM' }
-person.name = 'Jake';
-console.log(person.name);
-
-Object.defineProperty(person, 'name', {
-    writable: false 
-})
-person.name = 'alex';
-console.log(person.name); // Jake
-```
-
- 
-
-get/set
-
-```js 
-var person = {}
-Object.defineProperties(person, {
-    name: { value: 'Jake', configurable: true }, 
-    age: {
-        get: function() { return this.value || 22 },
-        set: function(value) { this.value = value }
-    }
-})
- 
-person.name // Jake
-person.age // 22
-```
-
-  
-
-```js 
-var person = {}
-Object.defineProperty(person, 'name', {
-    value: 'alex',
-    writable: false,
-    configurable: false
-})
-var descripter = Object.getOwnPropertyDescriptor(person, 'name');
-console.log(descripter);
-
-/*descripter = {
-    configurable: false,
-    enumerable: false,
-    value: 'alex',
-    writable: false
-}*/
+// undefined, because d doesn't inherit from Object.prototype  
 ```
 
 
@@ -669,78 +658,64 @@ console.log(person1.sayName === person2.sayName);    // true
 
 
 
-### Grammar and types
+### Variable
 
-**Declarations**
+- Declarations
+  - var: Declares a variable, optionally initializing it to a value.
+  - let: Declares a block-scoped, local variable, optionally initializing it to a value.
+  - const: Declares a block-scoped, read-only named constant.
 
-var: Declares a variable, optionally initializing it to a value.
+- Variable scope
 
-let: Declares a block-scoped, local variable, optionally initializing it to a value.
-
-const: Declares a block-scoped, read-only named constant.
-
-
-
-**Variable scope**
-
-```js
-if (true) {
-  let y = 5;
-}
-console.log(y);  // ReferenceError: y is not defined
-```
+  ```js
+  if (true) {
+    let y = 5;
+  }
+  console.log(y);  // ReferenceError: y is not defined
+  ```
 
 
+- Variable hoisting
 
-**Variable hoisting**
+    ```js
+    /**
+     * Example 1
+     */
+    console.log(x === undefined); // true
+    var x = 3;
+    
+    /**
+     * Example 2
+     */
+    // will return a value of undefined
+    var myvar = 'my value';
+    
+    (function() {
+      console.log(myvar); // undefined
+      var myvar = 'local value';
+    })();
+    ```
 
-```js
-/**
- * Example 1
- */
-console.log(x === undefined); // true
-var x = 3;
+- Function hoisting
 
-/**
- * Example 2
- */
-// will return a value of undefined
-var myvar = 'my value';
- 
-(function() {
-  console.log(myvar); // undefined
-  var myvar = 'local value';
-})();
-```
-
-
-
-**Function hoisting**
-
-```js
-/* Function declaration */
-
-foo(); // "bar"
-
-function foo() {
-  console.log('bar');
-}
-
-
-/* Function expression */
-
-baz(); // TypeError: baz is not a function
-
-var baz = function() {
-  console.log('bar2');
-};
-```
+    ```js
+    /* Function declaration */
+    foo(); // "bar"
+    function foo() {
+      console.log('bar');
+    }
+    
+    
+    /* Function expression */
+    baz(); // TypeError: baz is not a function
+    var baz = function() {
+      console.log('bar2');
+    };
+    ```
 
 
 
-**Data types**
-
-The latest ECMAScript standard defines seven data types:
+### Data types
 
 - Six data types that are primitives:
   - Boolean. true and false.
@@ -749,11 +724,8 @@ The latest ECMAScript standard defines seven data types:
   - Number. An integer or floating point number. For example: 42 or 3.14159.
   - String. A sequence of characters that represent a text value. For example:  "Howdy"
   - Symbol (new in ECMAScript 2015). A data type whose instances are unique and immutable.
-- and Object
 
-
-
-**Data type conversion**
+- conversion
 
 ```js
 '37' - 7 // 30
@@ -762,42 +734,40 @@ The latest ECMAScript standard defines seven data types:
 
 
 
-### Control flow and error handling
+### Statement
 
-**Block statement**
+- Block statement
 
-```js
-var x = 1;
-{
-  var x = 2;
-}
-console.log(x); // outputs 2
-```
+    ```js
+    var x = 1;
+    {
+      var x = 2;
+    }
+    console.log(x); // outputs 2
+    ```
 
+- Conditional statements
 
+    ```js
+    if (condition) {
+      statement_1;
+    } else {
+      statement_2;
+    }
+    ```
 
-**Conditional statements**
+- Exception handling statements
 
-```js
-if (condition) {
-  statement_1;
-} else {
-  statement_2;
-}
-```
-
-
-
-**Exception handling statements**
-
-```js
-throw 'Error2';   // String type
-throw 42;         // Number type
-throw true;       // Boolean type
-throw {toString: function() { return "I'm an object!"; } };
-```
+    ```js
+    throw 'Error2';   // String type
+    throw 42;         // Number type
+    throw true;       // Boolean type
+    throw {toString: function() { return "I'm an object!"; } };
+    ```
 
 
+
+### Exception handling
 
 ```js
 // Create an object type UserException
@@ -832,8 +802,7 @@ function getMonthName(mo) {
 
 try { // statements to try
   monthName = getMonthName(myMonth); // function could throw exception
-}
-catch (e) {
+} catch (e) {
   monthName = 'unknown';
   logMyErrors(e); // pass exception object to error handler -> your own function
 }
@@ -873,413 +842,105 @@ try {
 
 
 
-**Promise**
+### Promise
 
-A `Promise` is in one of these states:
-
-- *pending*: initial state, not fulfilled or rejected.
-- *fulfilled*: successful operation
-- *rejected*: failed operation.
-- *settled*: the Promise is either fulfilled or rejected, but not pending.
+- A Promise is in one of these states:
+  - pending: initial state, not fulfilled or rejected
+  - fulfilled: successful operation
+  - rejected: failed operation
+  - settled: the Promise is either fulfilled or rejected, but not pending
 
 <img src="https://mdn.mozillademos.org/files/8633/promises.png">
 
 
 
-### Loops and iteration
-
-**for statement**
-**do...while statement**
+### Loops
 
 ```js
-var i = 0;
-do {
-  i += 1;
-  console.log(i);
-} while (i < 5);
-```
-
-
-
-**while statement**
-
-```js
-var n = 0;
-var x = 0;
-while (n < 3) {
-  n++;
-  x += n;
+function t1() {
+  //do...while statement
+  var i = 0;
+  do {
+    i += 1;
+    console.log(i);
+  } while (i < 5);
+  //1 2 3 4 5
 }
-```
 
-
-
-**labeled statement**
-
-```js
-markLoop:
-while (theMark == true) {
-   doSomething();
-}
-```
-
-
-
-**break statement**
-
-```js
-for (var i = 0; i < a.length; i++) {
-  if (a[i] == theValue) {
-    break;
+function t2() {
+  //while statement
+  var i = 0;
+  while (i < 5) {
+    i++;
+    console.log(i);
   }
+  //1 2 3 4 5
 }
-```
 
-
-
-**continue statement**
-
-```js
-var i = 0;
-var n = 0;
-while (i < 5) {
-  i++;
-  if (i == 3) {
-    continue;
+function t3() {
+  //break statement
+  var i = 0;
+  while (i < 5) {
+    i++;
+    if (i == 3) {
+      break;
+    }
+    console.log(i);
   }
-  n += i;
-  console.log(n);
+  //1 2
 }
-//1,3,7,12
-```
 
-
-
-**for...in statement**
-
-```js
-var arr = [3, 5, 7];
-arr.foo = 'hello';
-
-for (var i in arr) {
-   console.log(i); // logs "0", "1", "2", "foo"
-}
-```
-
-
-
-**for...of statement**
-
-```js
-var arr = [3, 5, 7];
-arr.foo = 'hello';
-
-for (var i of arr) {
-   console.log(i); // logs 3, 5, 7
-}
-```
-
-
-
-### Functions
-
-
-
-**recursion**
-
-A function can refer to and call itself.
-
-```js
-function factorial(n) {
-    console.trace();//查看调用栈
-    if (n === 0) {
-        return 1
+function t4() {
+  //continue statement
+  var i = 0;
+  while (i < 5) {
+    i++;
+    if (i == 3) {
+      continue;
     }
-    return n * factorial(n - 1)
-}
-```
-
-
-
-<img width="65%" src="https://user-gold-cdn.xitu.io/2017/6/20/d28ba98f3835845671655db33dfe14bb?imageView2/0/w/1280/h/960/ignore-error/1" />
-
-
-
-尾递归：是一种递归的写法，避免不断将函数压栈最终导致堆栈溢出。通过设置一个累加参数，并且每一次都将当前的值累加上去，然后递归调用
-
-```js
-function factorial(n, total = 1) {
-    console.trace();//查看调用栈
-    if (n === 0) {
-        return total
-    }
-    return factorial(n - 1, n * total)
-}
-factorial(3);
-```
-
-
-
-函数之间没有依赖关系，调用后可进行垃圾回收
-
-factorial(3, 1)
-factorial(2, 3)
-factorial(1, 6)
-factorial(0, 6)
-
-
-
-补充：
-
-Nodejs需要使用`strict mode`和`--harmony_tailcalls`开启尾递归(proper tail call)
-
-```shell
-node --harmony_tailcalls factorial.js
-```
-
-
-
-**Closures**
-
-Closures are one of the most powerful features of JavaScript. JavaScript
-allows for the nesting of functions and grants the inner function full 
-access to all the variables and functions defined inside the outer 
-function (and all other variables and functions that the outer function 
-has access to). However, the outer function does not have access to the 
-variables and functions defined inside the inner function. This provides
-a sort of encapsulation for the variables of the inner function. Also, 
-since the inner function has access to the scope of the outer function, 
-the variables and functions defined in the outer function will live 
-longer than the duration of the outer function execution, if the inner 
-function manages to survive beyond the life of the outer function. A 
-closure is created when the inner function is somehow made available to 
-any scope outside the outer function.
-
-
-
-闭包：有权访问另一个函数作用域中的变量的函数
-
-通常，函数的作用域及其所有变量都会在函数执行结束后被销毁。但是，在创建了一个闭包以后，这个函数的作用域就会一直保存到闭包不存在为止
-
-应用：设计私有的方法和变量
-
-缺点：减慢处理速度，内存消耗
-
-
-
-**Arguments object**
-
-```js
-function myConcat(separator) {
-   var result = ''; // initialize list
-   var i;
-   // iterate through arguments
-   for (i = 1; i < arguments.length; i++) {
-      result += arguments[i] + separator;
-   }
-   return result;
+    console.log(i);
+  }
+  //1 2 4 5
 }
 
-// returns "red, orange, blue, "
-myConcat(', ', 'red', 'orange', 'blue');
+function t5() {
+  //for...in statement
+  for (var i in [3, 5, 7]) {
+    console.log(i);
+  }
+  //0 1 2
+}
+
+function t6() {
+  //for...of statement
+  for (var i of [3, 5, 7]) {
+    console.log(i);
+  }
+  //3 5 7
+}
+
+t6();
 ```
 
 
 
-### Expressions and operators
+### Closures
 
-**Bitwise operators**
-
-The operands of all bitwise operators are converted to signed 32-bit  integers in two's complement format. Two's complement format means that a number's negative counterpart (e.g. 5 vs. -5) is all the number's bits  inverted (bitwise NOT of the number, a.k.a. ones' complement of the  number) plus one. For example, the following encodes the integer 314:
-
-
-
-```
-00000000000000000000000100111010
-```
-
-The following encodes `~314`, i.e. the ones' complement of `314`:
-
-```
-11111111111111111111111011000101
-```
-
-Finally, the following encodes `-314,` i.e. the two's complement of `314`:
-
-```
-11111111111111111111111011000110
-```
-
-
-
--7>>1 = -4
-
-```
-00000000 00000000 00000000 00000111 //7
-11111111 11111111 11111111 11111001 //-7
-11111111 11111111 11111111 11111100	//-7>>1
-00000000 00000000 00000000 00000100 //4
-10000000 00000000 00000000 00000100 //-4
-```
-
-
-
- -1>>>4 = ox0FFFFFFF
-
-```
-00000000 00000000 00000000 00000001 //1
-11111111 11111111 11111111 11111111 //-1
-00001111 11111111 11111111 11111111 //-1>>>4
-```
-
-
-
-**Unary operators**
-
-delete
-
-```js
-x = 42;
-var y = 43;
-myobj = new Number();
-myobj.h = 4;    // create property h
-delete x;       // returns true (can delete if declared implicitly)
-delete y;       // returns false (cannot delete if declared with var)
-delete Math.PI; // returns false (cannot delete predefined properties)
-delete myobj.h; // returns true (can delete user-defined properties)
-delete myobj;   // returns true (can delete if declared implicitly)
-```
-
-
-
-typeof
-
-```js
-var myFun = new Function('5 + 2');
-var shape = 'round';
-var size = 1;
-var foo = ['Apple', 'Mango', 'Orange'];
-var today = new Date();
-
-typeof myFun;       // returns "function"
-typeof shape;       // returns "string"
-typeof size;        // returns "number"
-typeof foo;         // returns "object"
-typeof today;       // returns "object"
-typeof doesntExist; // returns "undefined"
-```
-
-
-
-**Relational operators**
-
-```js
-// Arrays
-var trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
-0 in trees;        // returns true
-3 in trees;        // returns true
-6 in trees;        // returns false
-'bay' in trees;    // returns false (you must specify the index number,
-                   // not the value at that index)
-'length' in trees; // returns true (length is an Array property)
-
-// built-in objects
-'PI' in Math;          // returns true
-var myString = new String('coral');
-'length' in myString;  // returns true
-
-// Custom objects
-var mycar = { make: 'Honda', model: 'Accord', year: 1998 };
-'make' in mycar;  // returns true
-'model' in mycar; // returns true
-```
-
-
-
-### Numbers and dates
-
-**Numbers**
-
-- Decimal numbers
-
-  ```js
-  1234567890
-  42
-  
-  // Caution when using leading zeros:
-  
-  0888 // 888 parsed as decimal
-  0777 // parsed as octal in non-strict mode (511 in decimal)
-  /*
-  Note that decimal literals can start with a zero (0) followed by another decimal digit, but if every digit after the leading 0 is smaller than 8, the number gets parsed as an octal number.
-  */
-  ```
-
-- Binary numbers
-
-  ```js
-  var FLT_SIGNBIT  = 0b10000000000000000000000000000000; // 2147483648
-  var FLT_EXPONENT = 0b01111111100000000000000000000000; // 2139095040
-  var FLT_MANTISSA = 0B00000000011111111111111111111111; // 8388607
-  ```
-
-
-- Octal numbers
-
-  ```js
-  var n = 0755; // 493
-  var m = 0644; // 420
-  
-  var a = 0o10; // ES2015: 8
-  ```
-
-
-- Hexadecimal numbers
-
-  ```js
-  0xFFFFFFFFFFFFFFFFF // 295147905179352830000
-  0x123456789ABCDEF   // 81985529216486900
-  0XA                 // 10
-  ```
-
-
-- Exponentiation
-
-  ```js
-  1E3   // 1000
-  2e6   // 2000000
-  0.1e2 // 10
-  ```
-
-
-
-JavaScript 内部，所有数字都是以64位浮点数形式储存
-
-根据国际标准 IEEE 754，JavaScript 浮点数的64个二进制位
-
-- 第1位：符号位，`0`表示正数，`1`表示负数
-- 第2位到第12位（共11位）：指数部分，表示数值的大小( 0 ~ 2047 )
-- 第13位到第64位（共52位）：小数部分（即有效数字），表示数值的精度( -2^53 ~ 2^53 )
-
-
-
-```js
-//浮点数不是精确的值
-0.1 + 0.2 === 0.3	//false
-0.3 / 0.1	// 2.9999999999999996
-(0.3 - 0.2) === (0.2 - 0.1)	// false
-```
+- Closures are one of the most powerful features of JavaScript. JavaScript allows for the nesting of functions and grants the inner function full  access to all the variables and functions defined inside the outer  function (and all other variables and functions that the outer function  has access to). However, the outer function does not have access to the  variables and functions defined inside the inner function. This provides a sort of encapsulation for the variables of the inner function. Also,  since the inner function has access to the scope of the outer function,  the variables and functions defined in the outer function will live  longer than the duration of the outer function execution, if the inner  function manages to survive beyond the life of the outer function. A  closure is created when the inner function is somehow made available to  any scope outside the outer function.
 
 
 
 ### Regular expressions
 
+- Return result and info
+
 ```js
 var myRe = /d(b+)d/g;
 var myArray = myRe.exec('cdbbdbsbz');
+//[ 'dbbd', 'bb', index: 1, input: 'cdbbdbsbz' ]
 ```
 
-
+- Replace match item
 
 ```js
 var re = /(\w+)\s(\w+)/;
@@ -1290,7 +951,7 @@ console.log(newstr);
 // "Smith, John"
 ```
 
-
+- Search match item
 
 ```js
 var re = /\w+\s/g;
@@ -1300,17 +961,5 @@ console.log(myArray);
 
 // ["fee ", "fi ", "fo "]
 ```
-
-
-
-### Working with objects
-
-In JavaScript, an object is a standalone entity, with properties and 
-type. Compare it with a cup, for example. A cup is an object, with 
-properties. A cup has a color, a design, weight, a material it is made 
-of, etc. The same way, JavaScript objects can have properties, which 
-define their characteristics.
-
-
 
 

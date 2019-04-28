@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Git · Jamie House</title>
+        <title>Money · Jamie House</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dataStructure.html" />
     
-    
-    <link rel="prev" href="../" />
+    <link rel="prev" href="baking.html" />
     
 
     </head>
@@ -117,7 +115,7 @@
         
         
     
-        <li class="chapter active" data-level="2.1" data-path="git.html">
+        <li class="chapter " data-level="2.1" data-path="git.html">
             
                 <a href="git.html">
             
@@ -327,7 +325,7 @@
             
         </li>
     
-        <li class="chapter " data-level="6.4" data-path="money.html">
+        <li class="chapter active" data-level="6.4" data-path="money.html">
             
                 <a href="money.html">
             
@@ -370,7 +368,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Git</a>
+        <a href=".." >Money</a>
     </h1>
 </div>
 
@@ -385,97 +383,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#using-ssh-key-by-github">Using SSH Key by Github</a><i></i></div></li>
-<li><div><a href="#gitlab-pages-deploy-gitbook">Gitlab Pages Deploy Gitbook</a><i></i></div></li>
-<li><div><a href="#gitlab-sync-to-github">Gitlab sync to Github</a><i></i></div></li>
+                                <p><img src="https://pic2.zhimg.com/80/v2-603a56ed71738c2015227c3a11de38a8_hd.jpg"></p>
+<ul>
+<li>&#x57FA;&#x91D1;<ul>
+<li>&#x8D27;&#x5E01;&#x57FA;&#x91D1;&#xFF1A;&#x57FA;&#x91D1;&#x516C;&#x53F8;&#x4E70;&#x94F6;&#x884C;&#x5B9A;&#x671F;</li>
+<li>&#x80A1;&#x7968;&#x57FA;&#x91D1;&#xFF1A;&#x5927;&#x90E8;&#x5206;&#x94B1;&#x7528;&#x6765;&#x6295;&#x8D44;&#x80A1;&#x7968;<ul>
+<li>&#x6307;&#x6570;&#x57FA;&#x91D1;&#xFF1A;&#x88AB;&#x52A8;&#x6295;&#x8D44;</li>
+<li>&#x4E3B;&#x52A8;&#x80A1;&#x7968;&#x57FA;&#x91D1;&#xFF1A;&#x4E3B;&#x52A8;&#x6295;&#x8D44;</li>
 </ul>
-</div>
-
-<h2 id="commands">Commands</h2>
-<pre><code class="lang-shell">git help
-//clone, default master
-git clone &lt;URL&gt;
-//clone, certain branch
-git clone -b &lt;Branch name&gt; &lt;URL&gt;
-git status
-git fetch
-git pull
-//Stage All Files
-git add .
-//Stage certain File
-git add &lt;File&gt;
-git rm --cached &lt;File&gt;
-git commit -a -m &quot;&lt;Description&gt;&quot; 
-git commit -m &quot;&lt;Description&gt;&quot; &lt;File&gt;
-//Push commit files to remote
-git push
-git push origin master
-//Commit history
-git log
-//New branch &amp; Checkout branch
-git checkout -b &lt;Branch&gt;
-//New branch
-git branch &lt;Branch&gt;
-//Checkout branch
-git checkout &lt;Branch&gt;
-//Merge branch to current
-git merge &lt;Branch&gt;
-//Delete branch
-git branch -d &lt;Branch&gt;
-</code></pre>
-<h2 id="using-ssh-key-by-github">Using SSH Key by Github</h2>
-<pre><code class="lang-shell">#1.Create SSH key
-ssh-keygen -t rsa -C &quot;your@eamil.com&quot;
-#2.Print SSH Key
-cat ~/.ssh/id_rsa.pub
-#3.Add SSH key to git
-#4.Testing
-ssh -T git@github.com
-#5.Global config
-git config --global user.name &quot;yournamee&quot;
-git config --global user.email &quot;your@eamil.com&quot;
-</code></pre>
-<h2 id="gitlab-pages-deploy-gitbook">Gitlab Pages Deploy Gitbook</h2>
-<ol>
-<li><p>New repo</p>
 </li>
-<li><p>Create File <code>.gitlab-ci.yml</code></p>
-<pre><code class="lang-yml"><span class="hljs-attr">image:</span> node:<span class="hljs-number">8.9</span>
-
-<span class="hljs-attr">cache:</span>
-<span class="hljs-attr">  paths:</span>
-<span class="hljs-bullet">    -</span> node_modules/
-
-<span class="hljs-attr">before_script:</span>
-<span class="hljs-bullet">  -</span> npm install gitbook-cli -g
-<span class="hljs-bullet">  -</span> gitbook install
-
-<span class="hljs-attr">pages:</span>
-<span class="hljs-attr">  stage:</span> deploy
-<span class="hljs-attr">  script:</span>
-<span class="hljs-bullet">    -</span> gitbook build . public
-<span class="hljs-attr">  artifacts:</span>
-<span class="hljs-attr">    paths:</span>
-<span class="hljs-bullet">      -</span> public
-<span class="hljs-attr">    expire_in:</span> <span class="hljs-number">1</span> week
-<span class="hljs-attr">  only:</span>
-<span class="hljs-bullet">    -</span> master
-</code></pre>
+<li>&#x503A;&#x5238;&#x57FA;&#x91D1;&#xFF1A;&#x5927;&#x90E8;&#x5206;&#x94B1;&#x7528;&#x6765;&#x6295;&#x8D44;&#x503A;&#x5238;</li>
+</ul>
 </li>
-<li><p>Deploy: CI/CD -&gt; Pipelines -&gt; Run Pipeline</p>
+<li>&#x80A1;&#x7968;</li>
+<li>&#x94F6;&#x884C;</li>
+<li>&#x8BB0;&#x8D26;</li>
+<li>&#x56FD;&#x503A;&#x9006;&#x56DE;&#x8D2D;&#xFF1A;&#x77ED;&#x671F;&#x501F;&#x6B3E;&#xFF0C;&#x4F01;&#x4E1A;&#x62FF;&#x56FD;&#x503A;(&#x62B5;&#x62BC;&#x54C1;)&#x4EA4;&#x6362;&#x4F60;&#x7684;&#x94B1;&#xFF0C;&#x5230;&#x671F;&#x540E;&#x4F01;&#x4E1A;&#x62FF;&#x672C;&#x606F;&#x4EA4;&#x6362;&#x4F60;&#x7684;&#x56FD;&#x503A;</li>
+<li>&#x503A;&#x5238;&#xFF1A;&#x7EA6;&#x5B9A;&#x8FD8;&#x6B3E;&#x65E5;&#x671F;&#xFF0C;&#x5230;&#x671F;&#x652F;&#x4ED8;&#x672C;&#x606F;<ul>
+<li>&#x56FD;&#x503A;</li>
+<li>&#x5730;&#x65B9;&#x653F;&#x5E9C;&#x503A;</li>
+<li>&#x4F01;&#x4E1A;&#x503A;</li>
+</ul>
 </li>
-<li><p>Address&#xFF1A;Settings -&gt; Pages</p>
-</li>
-</ol>
-<p>PS: Fork repo need to remove fork relationship, Step: Settings -&gt; General -&gt; Advance -&gt; remove fork relationship</p>
-<h2 id="gitlab-sync-to-github">Gitlab sync to Github</h2>
-<ol>
-<li>cd to gitlab repo</li>
-<li><code>git remote add origin git@github.com:Jamie956/test-git.git</code></li>
-<li>check out github branch</li>
-<li>gitlab merge to github branch</li>
-</ol>
+<li>P2P&#xFF1A;&#x4E2A;&#x4EBA;&#x501F;&#x94B1;&#x7ED9;&#x4E2A;&#x4EBA;&#xFF0C;&#x6216;&#x8005;&#x4E2A;&#x4EBA;&#x501F;&#x94B1;&#x7ED9;&#x4F01;&#x4E1A;</li>
+<li>&#x539F;&#x6CB9;&#x671F;&#x8D27;&#x8D35;&#x91D1;&#x5C5E;</li>
+<li>&#x5B9E;&#x4E1A;&#x6536;&#x85CF;&#x54C1;</li>
+<li>&#x57FA;&#x91D1;&#x5B9A;&#x6295;&#xFF1A;&#x6295;&#x8D44;&#x8005;&#x59D4;&#x6258;&#x57FA;&#x91D1;&#x9500;&#x552E;&#x673A;&#x6784;&#xFF0C;&#x7531;&#x53D7;&#x6258;&#x673A;&#x6784;&#x5728;&#x6BCF;&#x6708;&#x7EA6;&#x5B9A;&#x65F6;&#x95F4;&#x4ECE;&#x6295;&#x8D44;&#x8005;&#x6307;&#x5B9A;&#x7684;&#x8D44;&#x91D1;&#x8D26;&#x6237;&#x4E0A;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#x7EA6;&#x5B9A;&#x91D1;&#x989D;&#x7684;&#x6263;&#x6B3E;&#xFF0C;&#x81EA;&#x52A8;&#x7533;&#x8D2D;&#x7EA6;&#x5B9A;&#x57FA;&#x91D1;&#x4EA7;&#x54C1;&#x7684;&#x4E00;&#x79CD;&#x957F;&#x671F;&#x6295;&#x8D44;&#x65B9;&#x5F0F;</li>
+</ul>
+<ul>
+<li>&#x8D22;&#x62A5;&#x5206;&#x6790;</li>
+<li>&#x9009;&#x80A1;</li>
+<li>&#x300A;&#x4F1F;&#x5927;&#x7684;&#x535A;&#x5F08;&#x300B;&#x300A;&#x6EDA;&#x96EA;&#x7403;&#x300B;&#x300A;&#x6218;&#x80DC;&#x534E;&#x5C14;&#x8857;&#x300B;</li>
+<li>&#x6253;&#x65B0;&#x80A1;&#xFF1A;&#x65B0;&#x80A1;&#x53D1;&#x884C;&#x4E4B;&#x524D;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x53BB;&#x7533;&#x8D2D;&#x8FD9;&#x652F;&#x80A1;&#x7968;&#xFF0C;&#x4E2D;&#x7B7E;&#x7684;&#x8BDD;&#xFF0C;&#x53D1;&#x884C;&#x4E4B;&#x65E5;&#x5356;&#x6389;</li>
+<li>&#x8D44;&#x4EA7;&#x914D;&#x7F6E;</li>
+<li>&#x6CAA;&#x6DF1;300&#x6307;&#x6570;&#xFF1A;&#x4E2D;&#x56FD;300&#x53EA;&#x5177;&#x884C;&#x4E1A;&#x4EE3;&#x8868;&#x6027;&#x7684;&#x80A1;&#x7968;&#x8D70;&#x52BF;&#xFF0C;&#x8D70;&#x52BF;&#x4E0E;&#x4E0A;&#x8BC1;&#x6307;&#x6570;&#x5341;&#x5206;&#x63A5;&#x8FD1;</li>
+<li>&#x6052;&#x751F;&#x6307;&#x6570;</li>
+<li>&#x7EB3;&#x65AF;&#x8FBE;&#x514B;/&#x6807;&#x666E;500&#x7684;&#x57FA;&#x91D1;</li>
+<li>&#x8D44;&#x4EA7;&#x7EC4;&#x5408;MTP&#x7406;&#x8BBA; -- &#x54C8;&#x91CC;&#xB7;&#x9A6C;&#x79D1;&#x7EF4;&#x8328;</li>
+</ul>
 
                                 
                                 </section>
@@ -503,14 +448,10 @@ git config --global user.email &quot;your@eamil.com&quot;
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Welcome">
+                <a href="baking.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Baking">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="dataStructure.html" class="navigation navigation-next " aria-label="Next page: Data Structure">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -519,7 +460,7 @@ git config --global user.email &quot;your@eamil.com&quot;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Git","level":"2.1","depth":1,"next":{"title":"Data Structure","level":"2.2","depth":1,"path":"post/dataStructure.md","ref":"post/dataStructure.md","articles":[]},"previous":{"title":"Welcome","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/git.md","mtime":"2019-02-25T08:34:23.789Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-28T09:01:32.687Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Money","level":"6.4","depth":1,"previous":{"title":"Baking","level":"6.3","depth":1,"path":"post/baking.md","ref":"post/baking.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/money.md","mtime":"2019-04-28T02:21:18.198Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-28T09:01:32.687Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
