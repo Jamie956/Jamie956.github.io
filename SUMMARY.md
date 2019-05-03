@@ -27,4 +27,5 @@
 * [Baking](post/baking.md)
 * [Money](post/money.md)
 * [Car](post/car.md)
+* [Voice](post/voice.md)
 
