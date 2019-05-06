@@ -1,80 +1,14 @@
-## Debug
-
-**VSCode**
-
-1. Sidebar debug -> Add config -> Edit launch.json
-
-   ```json
-   {
-     "version": "0.2.0",
-     "configurations": [
-       {
-         "type": "node",
-         "request": "launch",
-         "name": "Launch Program",
-         "program": "${workspaceFolder}/debug.js"
-       }
-     ]
-   }
-   ```
-
-2. Press F5, let's Debug
-
-
-
-**Node 内置Debbuger**
-
-运行：
-
-```shell
-node --inspect app.js
-```
-
-打开浏览器：
-
-chrome://inspect
-
-
-
-## NVM
-
-```shell
-wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvm install v8.11.3
-nvm alias default 8.11.3
-```
+1. 
 
 
 
 
-## Intro
+## What
 
-- What: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
-  - Chrome's V8: V8 is Google’s open source high-performance JavaScript and WebAssembly engine, written in C++. It is used in Chrome and in Node.js, among others. It implements ECMAScript and WebAssembly, and runs on Windows 7 or later, macOS 10.12+, and Linux systems that use x64, IA-32, ARM, or MIPS processors. V8 can run standalone, or can be embedded into any C++ application.
-  - event-driven: In an event-driven application, there is generally a main loop that listens for events, and then triggers a callback function when one of those events is detected.
-  - non-blocking I/O model
-  - npm
+- Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+- Event-driven: In an event-driven application, there is generally a main loop that listens for events, and then triggers a callback function when one of those events is detected.
 
 ![Node-architeture](..\img\Node-architeture.png)
-
-
-
-
-
-**单线程**
-
-优点
-
-- 没有死锁
-- 没有线程上下文切换带来的开销
-
-缺点
-
-- 单线程无法利用多核CPU
-- 错误会使应用退出
-- 大量计算占用CPU，导致无法继续调用异步I/O
 
 
 
@@ -101,49 +35,37 @@ npm init -y //生成package.json并设置默认值
 
 npm run <script> //运行package.json里scripts定义好的命令
 
-
 npm install -g npm-check-updates //更新全部依赖包
 ncu -u //检查全部依赖包
 ```
 
 
 
-## Async I/O
+## Thread
 
-|        | 执行任务的方式 | 性能                     | 问题         |
-| ------ | -------------- | ------------------------ | ------------ |
-| 单线程 | 串行依次执行   | 慢的任务会阻塞后面的任务 |              |
-| 多线程 | 并行           | 创建线程和上下文切换     | 锁、状态同步 |
-
-
-
-异步I/O：单线程，远离多线程死锁、状态同步问题
-
-阻塞I/O：调用之后等到系统内核层面完成所有操作后，调用才结束，比如读取磁盘上的一段文件，系统内核进行磁盘寻道、读取数据、复制数据到内存后，调用才结束
+|        | 执行方式     |                                                              |
+| ------ | ------------ | ------------------------------------------------------------ |
+| 单线程 | 串行依次执行 | 1.无法利用多核CPU 2.错误会使应用退出 3.大量计算占用CPU，导致无法继续调用异步I/O |
+| 多线程 | 并行         | 1.创建线程 2.线程上下文切换开销 3.死锁 4.锁、状态同步        |
 
 
 
-阻塞I/O造成CUP等待I/O，CPU的处理能力没用充分利用，为了提高性能，内核提供非阻塞I/O，它调用之后立刻返回
+## IO
+
+- 阻塞I/O：调用之后等到系统内核层面完成所有操作后，调用才结束，比如读取磁盘上的一段文件，系统内核进行磁盘寻道、读取数据、复制数据到内存后，调用才结束
+
+- 轮询：重复调用判断操作是否完成
 
 
 
-轮询：重复调用判断操作是否完成
+## EventEmitter
 
-
-
-## Async
-
-
-
-EventEmitter
-
-EventEmitter is at the core of Node asynchronous event-driven architecture.
+- Node asynchronous event-driven architecture.
 
 ```js
 var EventEmitter = require("events");
 
 class MyEmitter extends EventEmitter {}
-
 const myEmitter = new MyEmitter();
 
 myEmitter.on("event", (a, b) => {
@@ -157,24 +79,22 @@ setTimeout(() => {
 
 
 
-Promise
+## Promise
 
 ```js
 new Promise((resolve, reject) => {
     resolve(42);
     // reject(new Error("Something Wrong"));
-})
-    .then(res => {
+}).then(res => {
     console.log(res);
-})
-    .catch(e => {
+}).catch(e => {
     console.log(e);
 });
 ```
 
 
 
-Async/Await
+## Async/Await
 
 ```js
 function resolveAfter2Seconds() {
@@ -198,11 +118,7 @@ asyncCall();
 
 ## Memory
 
-
-
-### Memory Limit
-
-Node中通过JavaScript使用的内存限制为1.4G（64位系统）
+- Node中通过JavaScript使用的内存限制为1.4G（64位系统）
 
 ```shell
 $ node
@@ -213,13 +129,9 @@ $ node
   external: 16904 }
 ```
 
+- 代码中声明变量并赋值时，所使用对象的内存就分配在堆中，如果已申请的堆空闲内存不够分配新的对象，将继续申请堆内存，直到堆的大小超过V8的限制为止
 
-
-代码中声明变量并赋值时，所使用对象的内存就分配在堆中，如果已申请的堆空闲内存不够分配新的对象，将继续申请堆内存，直到堆的大小超过V8的限制为止
-
-
-
-调整V8的内存限制
+- 设置V8的内存限制
 
 ```
 node --max-old-space-size=1700 test.js // 单位为MB，设置老年代内存空间的最大值
@@ -957,3 +869,29 @@ web 测试， supertest
 makefile
 
 持续集成，travis-ci
+
+
+
+
+
+## Debug
+
+**VSCode**
+
+1. debug -> Add config -> Edit launch.json
+
+   ```json
+   {
+     "version": "0.2.0",
+     "configurations": [
+       {
+         "type": "node",
+         "request": "launch",
+         "name": "Launch Program",
+         "program": "${workspaceFolder}/debug.js"
+       }
+     ]
+   }
+   ```
+
+2. F5
