@@ -11,57 +11,19 @@ A call stack is a mechanism for an interpreter (like  the JavaScript interpreter
 
 
 
-### Event loop
-
-<img width="80%" src="https://user-gold-cdn.xitu.io/2017/11/21/15fdd88994142347?imageView2/0/w/1280/h/960/ignore-error/1" />
-
-
-
- ```js
-let data = [];
-$.ajax({
-    url:www.javascript.com,
-    data:data,
-    success:() => {
-        console.log('Send success!');
-    }
-})
-console.log('End');
- ```
-
-1. 注册回调函数`success`
-2. 执行`console.log('End')`
-3. ajax事件完成，回调函数`success`进入Event Queue
-4. 主线程从Event Queue获取并执行`success`
-
- 
-
 ### Set Timeout
 
-It's important to note that setTimeout(..) doesn't put your callback on the event loop queue. What it does is set up a timer; when the timer expires, the environment places your callback into the event loop, such that some future tick will pick it up and execute it.
+It's important to note that `setTimeout()` doesn't put your callback on the event loop queue. What it does is set up a timer; when the timer expires, the environment places your callback into the event loop, such that some future tick will pick it up and execute it.
 
 
-
- ```js
-setTimeout(fn,3000);
-sleep(10000000);
- ```
-
-1. `fn`进入Event Table，计时开始
-2. `sleep`占据主线程
-3. 3秒时，`fn`进入Event Queue，等待主线程
-4. `sleep`等待1000秒后
-5. Event Queue`fn`进入主线程执行
-
- 
 
 ###  Set Interval
 
-`setInterval(fn,ms)`每`ms`秒，`fn`进入Event Queue
+The `setInterval()` method, offered on the Window and Worker interfaces, repeatedly calls a function or executes a code snippet, with a fixed time delay between each call. It returns an interval ID which uniquely identifies the interval
 
 
 
-### Task
+### Even Loop
 
 > https://juejin.im/post/59e85eebf265da430d571f89
 
@@ -73,174 +35,18 @@ sleep(10000000);
 
 <img width="85%" src="https://user-gold-cdn.xitu.io/2017/11/21/15fdcea13361a1ec?imageView2/0/w/1280/h/960/ignore-error/1" />
 
-
-
-- So the correct sequence of an event loop looks like this:
-
-1. Execute synchronous codes, which belongs to macrotask
-
-2. Once call stack is empty, query if any microtasks need to be executed
-
-3. Execute all the microtasks
-
-4. If necessary, render the UI
-
-5. Then start the next round of the Event loop, and execute the asynchronous operations in the macrotask
-
  
-
-example a：
-
-```js
-setTimeout(function() {
-    console.log('setTimeout');
-})
-
-new Promise(function(resolve) {
-    console.log('promise');
-    resolve();
-}).then(function() {
-    console.log('then');
-})
-
-console.log('console');
-
-//promise
-//console
-//then
-//setTimeout
-```
-
-1st Event Loop
-
-1. 主线程执行 Macrotasks `script`
-2. `setTimeout` function 进入 Macrotasks Event Queue
-3. `new Promise`立即执行，`then` function 进入 Microtasks Event Queue
-4. 立即执行`console.log()`
-5. Macrotasks `script`结束
-6. 检查 Microtasks Event Queue
-7. 执行`then` function
-
-2nd Event Loop
-
-1. 检查 Macrotasks Event Queue，执行`setTimeout` function
-
-
-
-example b：
-
-```js
-console.log('1');
-
-setTimeout(function() {
-    console.log('2');
-    process.nextTick(function() {
-        console.log('3');
-    })
-    new Promise(function(resolve) {
-        console.log('4');
-        resolve();
-    }).then(function() {
-        console.log('5')
-    })
-})
-process.nextTick(function() {
-    console.log('6');
-})
-new Promise(function(resolve) {
-    console.log('7');
-    resolve();
-}).then(function() {
-    console.log('8')
-})
-
-setTimeout(function() {
-    console.log('9');
-    process.nextTick(function() {
-        console.log('10');
-    })
-    new Promise(function(resolve) {
-        console.log('11');
-        resolve();
-    }).then(function() {
-        console.log('12')
-    })
-})
-
-// 1 7 6 8 2 4 3 5 9 11 10 12
-```
-
-第一轮事件循环
-
-1. 宏任务script进入主线程
-
-2. 执行`console.log('1')`
-
-3. `setTimeout `回调函数被分发到宏任务Event Queue中，记为`setTimeout1`
-
-   微任务：
-
-   宏任务：  setTimeout1
-
-4. `process.nextTick() `回调函数分发到微任务Event Queue中，记为`process1`
-
-   微任务：process1
-
-   宏任务：  setTimeout1
-
-5. `new Promise`直接执行，`then`分发到微任务Event Queue中，记为`then1`
-
-   微任务：process1，then1
-
-   宏任务：  setTimeout1
-
-6. `setTimeout `回调函数分发到宏任务Event Queue中，记为`setTimeout2`
-
-   微任务：process1，then1
-
-   宏任务：  setTimeout1，setTimeout2
-
-7. 宏任务script结束
-
-8. 检查微任务，执行`process1`
-
-9. 检查微任务，执行`then1`
-
-第二轮事件循环
-
-1. 执行宏任务`setTimeout1`，原理同上
-
- 第三轮事件循环
-
-1. 执行宏任务`setTimeout2`，原理同上
-
-
-
-疑问：用nodejs执行会有差异，`setTimeout1`和`setTimeout2`同时执行
-
- 
-
-<img src="https://user-gold-cdn.xitu.io/2017/11/21/15fdd96beade6575?imageView2/0/w/1280/h/960/ignore-error/1" />
 
 ### Primitive
 
 > https://developer.mozilla.org/en-US/docs/Glossary/Primitive
 >
-> https://justjavac.com/javascript/2012/12/22/javascript-values-not-everything-is-an-object.html
 
 A **primitive** (primitive value, primitive data type) is data that is not an object  and has no methods In JavaScript, there are 6 primitive data types: string, number, boolean, null, undefined, symbol (new in ECMAScript 2015).
 
 
 
 All primitives are **immutable,** i.e., they cannot be  altered. It is important not to confuse a primitive itself with a  variable assigned a primitive value. The variable may be reassigned a  new value, but the existing value can not be changed in the ways that  objects, arrays, and functions can be altered.
-
-
-
-### Method
-
-方法执行时，建立内存栈，方法内的变量存入这个内存栈
-
-方法结束时，方法内存栈销毁
 
 
 
