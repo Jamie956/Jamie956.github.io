@@ -386,43 +386,6 @@ All primitives are **immutable,** i.e., they cannot be  altered. It is importan
 
 
 
-### This
-
-> https://www.jianshu.com/p/6b4333e78bf5
->
-> https://juejin.im/post/5b9f176b6fb9a05d3827d03f
-
-```js
-//===example1===
-var x = 1;
-function test() {
-    //this -> window
-    console.log(this.x);
-}
-test();  // 1
-
-//===example2===
-var obj = {
-    x: 1,
-    y: function foo() {
-        //this -> obj
-        console.log(this.x);
-    }
-};
-obj.y(); // 1
-
-//====example3===
-var x = 2;
-function test() {
-    this.x = 1;
-}
-//this -> obj
-var obj = new test();
-obj.x // 1
-```
-
-
-
 ### Apply & Call & Bind
 
 - apply 改变函数的指向，参数是一个数组，参数为空时，指向全局对象
