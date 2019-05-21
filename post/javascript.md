@@ -60,10 +60,6 @@ In MVVM, the UI is driven by data. Once the data is changed, the corresponding U
 
  
 
-In MVVM, the core is the two-way binding of data, such as dirty checking by Angular and data hijacking in Vue.
-
-
-
 ### DOM
 
 > https://javascript.ruanyifeng.com/dom/node.html
@@ -92,58 +88,10 @@ In MVVM, the core is the two-way binding of data, such as dirty checking by Angu
 
 
 
-###  New
-
-> http://javascript.ruanyifeng.com/oop/basic.html
-
-- 规则
-
-  ```js
-  var Vehicle = function () {
-      'use strict';//防止this指向全局对象
-      //this 指向对象实例
-      this.price = 1000;
-  };
-  //首字母大写
-  var v = new Vehicle();
-  v.price // 1000
-  ```
-
-- new 原理
-
-  ```js
-  function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
-      // 将 arguments 对象转为数组
-      var args = [].slice.call(arguments);
-      // 取出构造函数
-      var constructor = args.shift();
-      // 创建一个空对象，继承构造函数的 prototype 属性
-      var context = Object.create(constructor.prototype);
-      // 执行构造函数
-      var result = constructor.apply(context, args);
-      // 如果返回结果是对象，就直接返回，否则返回 context 对象
-      return (typeof result === 'object' && result != null) ? result : context;
-  }
-  
-  // 实例
-  var actor = _new(Person, '张三', 28);
-  ```
-
-
-
 ### Prototype
 
 > https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
 >
-> https://github.com/bigdots/blog/issues/1
->
-> https://blog.csdn.net/SpicyBoiledFish/article/details/71123162
->
-> https://blog.csdn.net/cecilia620/article/details/71158048
->
-> https://www.jianshu.com/p/15ac7393bc1f
->
-> https://github.com/stone0090/javascript-lessons/tree/master/2.5-Prototype
 
 
 
@@ -156,93 +104,6 @@ When it comes to inheritance, JavaScript only has one construct:  objects. Each 
 
 
 <img src="https://img-blog.csdn.net/20170503152146141?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU3BpY3lCb2lsZWRGaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" />
-
-
-
-**Prototype chain example**
-
-```js
-let f = function () {
-   this.a = 1;
-   this.b = 2;
-}
-let o = new f(); // {a: 1, b: 2}
-
-f.prototype.b = 3;
-f.prototype.c = 4;
-
-// {a: 1, b: 2} -> {b: 3, c: 4} -> Object.prototype -> null
-console.log(o.a); // 1
-console.log(o.b); // 2
-console.log(o.c); // 4
-console.log(o.d); // undefined
-```
-
-
-
-```js
-var a = {a: 1};
-// a -> Object.prototype -> null
-
-var b = Object.create(a);
-// b -> a -> Object.prototype -> null
-console.log(b.a); // 1 (inherited)
-
-var c = Object.create(b);
-// c -> b -> a -> Object.prototype -> null
-
-var d = Object.create(null);
-// d -> null
-console.log(d.hasOwnProperty);
-// undefined, because d doesn't inherit from Object.prototype  
-```
-
-
-
-重写原型
-
-```js
-function Person(){}
-
-Person.prototype = {
-    constructor : Person,
-    name : "Stone",
-    age : 28,
-    job: "Software Engineer",
-    sayName : function () {
-        console.log(this.name);
-    }
-};
-```
-
-
-
-```js
-function Person(name, age, job){
-    this.name = name;
-    this.age = age;
-    this.job = job;
-    //私有在构造函数内定义
-    this.friends = ["ZhangSan", "LiSi"];
-}
-
-Person.prototype = {
-    constructor : Person,
-    //共享函数用原型定义
-    sayName : function(){
-        console.log(this.name);
-    }
-}
-
-var person1 = new Person("Stone", 28, "Software Engineer");
-var person2 = new Person("Sophie", 29, "English Teacher");
-
-person1.friends.push("WangWu");
-console.log(person1.friends);    // "ZhangSan,LiSi,WangWu"
-console.log(person2.friends);    // "ZhangSan,LiSi"
-console.log(person1.friends === person2.friends);    // false
-console.log(person1.sayName === person2.sayName);    // true
-```
 
 
 
