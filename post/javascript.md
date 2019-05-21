@@ -50,45 +50,6 @@ All primitives are **immutable,** i.e., they cannot be  altered. It is importan
 
 
 
-### Apply & Call & Bind
-
-- apply 改变函数的指向，参数是一个数组，参数为空时，指向全局对象
-
-```js
-var x = 0;
-var obj = {
-    x: 1,
-    y: function foo() {
-        console.log(this.x);
-    }
-};
-
-//this -> window
-obj.y.apply(); // 0
-//this -> obj
-obj.y.apply(obj); //1
-```
-
-
-
-- call 与apply的区别：参数是多个
-- bind 与call相似，返回一个函数
-
-```js
-function greet() {
-    console.log(this.name);
-}
-
-const user = {
-    name: "Tyler"
-};
-
-const newFn = greet.bind(user);
-newFn(); //Tyler
-```
-
-
-
 ### MVVM
 
 In the JQuery period, if you need to refresh the UI, you need to get the corresponding DOM and then update the UI, so the data and business logic are strongly-coupled with the page.
