@@ -350,182 +350,98 @@ When you type a web address into your browser (for our analogy that's like walki
 
 ## Overview of HTTP
 
-### 
+- C/S: Web content lives on web servers. Web servers speak the HTTP protocol, so they are often called HTTP servers. These HTTP servers store the Internet’s data and provide the data when it is requested by HTTP clients. The clients send HTTP requests to servers, and servers return the requested data in HTTP responses
 
-### Web Clients and Servers
+- Resources
+  - Web servers host web resources. A web resource is the source of web content. The simplest kind of web resource is a static file on the web server’s filesystem. These files can contain anything: they might be text files, HTML files, Microsoft Word files, Adobe Acrobat files, JPEG image files, AVI movie files
+  - Resources can also be software programs that generate content on demand. These dynamic content resources can generate content based on your identity, on what information you’ve requested, or on the time of day. They can show you a live image from a camera, or let you trade stocks, search real estate databases, or buy gifts from online stores 
 
-- Web content lives on web servers. Web servers speak the HTTP protocol, so they are
-  often called HTTP servers. These HTTP servers store the Internet’s data and provide
-  the data when it is requested by HTTP clients. The clients send HTTP requests to
-  servers, and servers return the requested data in HTTP responses
+- Media Types
+  - HTTP carefully tags each object being transported through the Web with a data format label called a MIME type.  
+  - MIME (Multipurpose Internet Mail Extensions) was originally designed to solve problems encountered in moving messages between different electronic mail
+    systems.  
+  - A MIME type is a textual label, represented as a primary object type and a specific
+    subtype, separated by a slash. For example:
+    • An HTML-formatted text document would be labeled with type text/html.
+    • A plain ASCII text document would be labeled with type text/plain.
+    • A JPEG version of an image would be image/jpeg.
+    • A GIF-format image would be image/gif.
+    • An Apple QuickTime movie would be video/quicktime.
+    • A Microsoft PowerPoint presentation would be application/vnd.ms-powerpoint
 
+- URIs
+  - URI(uniform resource identifier): The server resource name
+  - URIs: like the postal addresses of the Internet, uniquely identifying and locating information resources around the world
 
+- URLs: The uniform resource locator (URL) is the most common form of resource identifier. URLs describe the specific location of a resource on a particular server. They tell you exactly how to fetch a resource from a precise, fixed location
 
-### Resources
+- URNs: uniform resource name 
 
-- Web servers host web resources. A web resource is the source of web content. The
-  simplest kind of web resource is a static file on the web server’s filesystem. These
-  files can contain anything: they might be text files, HTML files, Microsoft Word
-  files, Adobe Acrobat files, JPEG image files, AVI movie files
-- Resources can also be software programs that generate content on demand. These dynamic content resources can generate content based on your identity, on what information you’ve requested, or on the time of day. They can show you a live image from a camera, or let you trade stocks, search real estate databases, or buy gifts from online stores 
+- Status Codes: Every HTTP response message comes back with a status code. The status code is a three-digit numeric code that tells the client if the request succeeded, or if other actions are required 
 
+- Messages
+  - HTTP messages are simple, line-oriented sequences of characters. Because they are plain text, not binary, they are easy for humans to read and write 
+  - Request messages: Messages sent from web clients to web servers
+  - Response messages: Messages from servers to clients
+  - HTTP messages consist of three parts:
+    - Start line
+      The first line of the message is the start line, indicating what to do for a request or what happened for a response.
+    - Header fields
+      Zero or more header fields follow the start line. Each header field consists of a name and a value, separated by a colon (:) for easy parsing. The headers end with a blank line. Adding a header field is as easy as adding another line.
+    - Body
+      After the blank line is an optional message body containing any kind of data. Request bodies carry data to the web server; response bodies carry data back to the client. Unlike the start lines and headers, which are textual and structured, the body can contain arbitrary binary data (e.g., images, videos, audio tracks, software applications). Of course, the body can also contain text 
 
+- TCP/IP
+  - TCP provides:
+    • Error-free data transportation
+    • In-order delivery (data will always arrive in the order in which it was sent)
+    • Unsegmented data stream (can dribble out data in any size at any time) 
+  - Once a TCP connection is established, messages exchanged between the client and server computers will never be lost, damaged, or received out of order.
+  - In networking terms, the HTTP protocol is layered over TCP. HTTP uses TCP to transport its message data. Likewise, TCP is layered over IP 
+  - Before an HTTP client can send a message to a server, it needs to establish a TCP/IP connection between the client and server using Internet protocol (IP) addresses and port numbers. 
+  - In TCP, you need the IP address of the server computer and the TCP port number associated with the specific software program running on the server. 
 
-**Media Types**
+- Components
+  - Proxies
+    - HTTP intermediaries that sit between clients and servers
+    - a proxy sits between a client and a server, receiving all of the client’s HTTP requests and relaying the requests to the server (perhaps after modifying the requests). These applications act as a proxy for the user, accessing the server on the user’s behalf. 
+    - Proxies are often used for security, acting as trusted intermediaries through which all web traffic flows. Proxies can also filter requests and responses; for example, to detect application viruses in corporate downloads or to filter adult content away from elementary-school students. 
+  - Caches
+    - HTTP storehouses that keep copies of popular web pages close to clients
+    - A web cache or caching proxy is a special type of HTTP proxy server that keeps copies of popular documents that pass through the proxy. The next client requesting the same document can be served from the cache’s personal copy 
+    - A client may be able to download a document much more quickly from a nearby cache than from a distant web server. 
+  - Gateways： Special web servers that connect to other applications
+  - Tunnels： Special proxies that blindly forward HTTP communications
+  - Agents： Semi-intelligent web clients that make automated HTTP requests
 
-- HTTP carefully tags each object being transported through the Web with a data format label called a MIME type.  
-- MIME (Multipurpose Internet Mail Extensions) was originally designed to solve problems encountered in moving messages between different electronic mail
-  systems.  
-- A MIME type is a textual label, represented as a primary object type and a specific
-  subtype, separated by a slash. For example:
-  • An HTML-formatted text document would be labeled with type text/html.
-  • A plain ASCII text document would be labeled with type text/plain.
-  • A JPEG version of an image would be image/jpeg.
-  • A GIF-format image would be image/gif.
-  • An Apple QuickTime movie would be video/quicktime.
-  • A Microsoft PowerPoint presentation would be application/vnd.ms-powerpoint
 
 
+## URLs and Resources
 
-**URIs**
 
-- URI(uniform resource identifier): The server resource name
-- URIs: like the postal addresses of the Internet, uniquely identifying and
-  locating information resources around the world
 
+### URL Syntax
 
+- Most URL schemes base their URL syntax on this nine-part general format: `<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag> `
 
-**URLs**
+- Schemes: What Protocol to Use
 
-- The uniform resource locator (URL) is the most common form of resource identifier.
-  URLs describe the specific location of a resource on a particular server. They tell you
-  exactly how to fetch a resource from a precise, fixed location
+- Hosts and Ports: To find a resource on the Internet, an application needs to know what machine is hosting the resource and where on that machine it can find the server that has access to the desired resource. The host and port components of the URL provide these two pieces of information. 
 
+- Paths: The path often resembles a hierarchical filesystem path 
 
 
-**URNs**
 
-uniform resource name 
+### URL Shortcuts
 
+- Relative URLs are only fragments or pieces of URLs. Applications that process URLs (such as your browser) need to be able to convert between relative and absolute URLs. 
+- 
 
+### Shady Characters
 
-### Transations
+### A Sea of Schemes
 
-**Methods**
-
-- Every HTTP request message has a method
-- The method tells the server what action to perform
-
-
-
-**Status Codes**
-
-- Every HTTP response message comes back with a status code. The status code is a
-  three-digit numeric code that tells the client if the request succeeded, or if other
-  actions are required 
-
-
-
-### Messages
-
-- HTTP messages are simple, line-oriented sequences of characters. Because they are
-  plain text, not binary, they are easy for humans to read and write 
-- Request messages: Messages sent from web clients to web servers
-- Response messages: Messages from servers to clients
-- HTTP messages consist of three parts:
-  - Start line
-    The first line of the message is the start line, indicating what to do for a request
-    or what happened for a response.
-  - Header fields
-    Zero or more header fields follow the start line. Each header field consists of a
-    name and a value, separated by a colon (:) for easy parsing. The headers end
-    with a blank line. Adding a header field is as easy as adding another line.
-  - Body
-    After the blank line is an optional message body containing any kind of data.
-    Request bodies carry data to the web server; response bodies carry data back to
-    the client. Unlike the start lines and headers, which are textual and structured,
-    the body can contain arbitrary binary data (e.g., images, videos, audio tracks,
-    software applications). Of course, the body can also contain text 
-
-
-
-### Connections
-
-
-
-**TCP/IP**
-
-- TCP provides:
-  • Error-free data transportation
-  • In-order delivery (data will always arrive in the order in which it was sent)
-  • Unsegmented data stream (can dribble out data in any size at any time) 
-
-- Once a TCP connection is established, messages exchanged between the client and
-  server computers will never be lost, damaged, or received out of order.
-- In networking terms, the HTTP protocol is layered over TCP. HTTP uses TCP to
-  transport its message data. Likewise, TCP is layered over IP 
-
-
-
-**Connections, IP Addresses, and Port Numbers**
-
-- Before an HTTP client can send a message to a server, it needs to establish a TCP/IP
-  connection between the client and server using Internet protocol (IP) addresses and
-  port numbers. 
-- In TCP, you need the IP address of the server computer and the TCP port number
-  associated with the specific software program running on the server. 
-
-
-
-### Architectural Components of the Web
-
-
-
-**Proxies**
-
-- HTTP intermediaries that sit between clients and servers
-- a proxy sits between a client and a server, receiving all of
-  the client’s HTTP requests and relaying the requests to the server (perhaps after
-  modifying the requests). These applications act as a proxy for the user, accessing the
-  server on the user’s behalf. 
-- Proxies are often used for security, acting as trusted intermediaries through which all
-  web traffic flows. Proxies can also filter requests and responses; for example, to
-  detect application viruses in corporate downloads or to filter adult content away
-  from elementary-school students. 
-
-
-
-**Caches**
-
-HTTP storehouses that keep copies of popular web pages close to clients
-
-**Gateways**
-
-Special web servers that connect to other applications
-
-**Tunnels**
-
-Special proxies that blindly forward HTTP communications
-
-**Agents**
-
-Semi-intelligent web clients that make automated HTTP requests
-
-
-
-### The End of the Beginning
-
-### For More Information
-
-
-
-
-
-
-
-
-
-
+### The Future
 
 
 
