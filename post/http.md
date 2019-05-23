@@ -418,44 +418,80 @@ When you type a web address into your browser (for our analogy that's like walki
 
 ## URLs and Resources
 
+- URL Syntax
+  - Most URL schemes base their URL syntax on this nine-part general format: `<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag> `
 
+  - Schemes: What Protocol to Use
 
-### URL Syntax
+  - Hosts and Ports: To find a resource on the Internet, an application needs to know what machine is hosting the resource and where on that machine it can find the server that has access to the desired resource. The host and port components of the URL provide these two pieces of information. 
 
-- Most URL schemes base their URL syntax on this nine-part general format: `<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag> `
+  - Paths: The path often resembles a hierarchical filesystem path 
 
-- Schemes: What Protocol to Use
-
-- Hosts and Ports: To find a resource on the Internet, an application needs to know what machine is hosting the resource and where on that machine it can find the server that has access to the desired resource. The host and port components of the URL provide these two pieces of information. 
-
-- Paths: The path often resembles a hierarchical filesystem path 
-
-
-
-### URL Shortcuts
-
-- Relative URLs are only fragments or pieces of URLs. Applications that process URLs (such as your browser) need to be able to convert between relative and absolute URLs. 
-- 
-
-### Shady Characters
-
-### A Sea of Schemes
-
-### The Future
+- URL Shortcuts: Relative URLs are only fragments or pieces of URLs. Applications that process URLs (such as your browser) need to be able to convert between relative and absolute URLs. 
 
 
 
+## HTTP Messages
 
 
 
+### The Flow of Messages
 
 
 
+**Messages Commute Inbound to the Origin Server**
+HTTP uses the terms inbound and outbound to describe transactional direction. Messages travel inbound to the origin server, and when their work is done, they travel
+outbound back to the user agent 
+
+**Messages Flow Downstream**
+HTTP messages flow like rivers. All messages flow downstream, regardless of whether
+they are request messages or response messages (see Figure 3-2). The sender of any
+message is upstream of the receiver. 
 
 
 
+### The Parts of a Message
+
+- They consist of three parts: 
+  - a start line describing the message, 
+  - a block of headers containing attributes,
+  - and an optional body containing data. 
 
 
+
+**Message Syntax**
+
+method
+
+request-URL
+
+version
+
+status-code
+
+reason-phrase
+
+headers
+
+entity-body
+
+
+
+**Headers**
+
+
+
+**Entity Bodies**
+
+**Version 0.9 Messages**
+
+
+
+Methods
+
+Status Codes
+
+Headers
 
 
 
