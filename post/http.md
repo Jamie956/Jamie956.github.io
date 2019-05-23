@@ -435,10 +435,6 @@ When you type a web address into your browser (for our analogy that's like walki
 
 
 
-### The Flow of Messages
-
-
-
 **Messages Commute Inbound to the Origin Server**
 HTTP uses the terms inbound and outbound to describe transactional direction. Messages travel inbound to the origin server, and when their work is done, they travel
 outbound back to the user agent 
@@ -450,48 +446,27 @@ message is upstream of the receiver.
 
 
 
-### The Parts of a Message
+- Message
+  - start line: describing the message
+  - header: containing attributes
+  - optional body: containing data
 
-- They consist of three parts: 
-  - a start line describing the message, 
-  - a block of headers containing attributes,
-  - and an optional body containing data. 
+- Message Syntax: method, request-URL, version, status-code, reason-phrase, headers, entity-body
 
+- Headers
+  - General headers: Can appear in both request and response messages
+    - Accept headers: Accept headers give the client a way to tell servers their preferences and capabilities: what they want, what they can use, and, most importantly, what they don’t want. Servers can then use this extra information to make more intelligent decisions about what to send. Accept headers benefit both sides of the connection. Clients get what they want, and servers don’t waste their time and bandwidth sending something the client can’t use. 
+    - Conditional request headers: Sometimes, clients want to put some restrictions on a request. For instance, if the client already has a copy of a document, it might want to ask a server to send the document only if it is different from the copy the client already has. 
+  - Request headers: Provide more information about the request
+  - Response headers: Provide more information about the response
+  - Entity headers: Describe body size and contents, or the resource itself
+  - Extension headers: New headers that are not defined in the specification
 
-
-**Message Syntax**
-
-method
-
-request-URL
-
-version
-
-status-code
-
-reason-phrase
-
-headers
-
-entity-body
-
-
-
-**Headers**
-
-
-
-**Entity Bodies**
-
-**Version 0.9 Messages**
-
-
-
-Methods
-
-Status Codes
-
-Headers
+- Clients and 100 Continue:
+  If a client is sending an entity to a server and is willing to wait for a 100 Continue
+  response before it sends the entity, the client needs to send an Expect request header with the value 100-continue. If the client is not sending an entity, it
+  shouldn’t send a 100-continue Expect header, because this will only confuse the
+  server into thinking that the client might be sending an entity. 
 
 
 
@@ -507,7 +482,7 @@ Headers
 
 
 
-
+Connection Management
 
 
 
