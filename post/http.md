@@ -416,7 +416,7 @@ When you type a web address into your browser (for our analogy that's like walki
 
 
 
-## URLs and Resources
+## URL
 
 - URL Syntax
   - Most URL schemes base their URL syntax on this nine-part general format: `<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag> `
@@ -446,14 +446,17 @@ message is upstream of the receiver.
 
 
 
-- Message
-  - start line: describing the message
-  - header: containing attributes
-  - optional body: containing data
-
+Message
+- start line: describing the message
+- header: containing attributes
+- optional body: containing data
 - Message Syntax: method, request-URL, version, status-code, reason-phrase, headers, entity-body
 
-- Headers
+
+
+
+
+Headers
   - General headers: Can appear in both request and response messages
     - Accept headers: Accept headers give the client a way to tell servers their preferences and capabilities: what they want, what they can use, and, most importantly, what they don’t want. Servers can then use this extra information to make more intelligent decisions about what to send. Accept headers benefit both sides of the connection. Clients get what they want, and servers don’t waste their time and bandwidth sending something the client can’t use. 
     - Conditional request headers: Sometimes, clients want to put some restrictions on a request. For instance, if the client already has a copy of a document, it might want to ask a server to send the document only if it is different from the copy the client already has. 
@@ -462,7 +465,9 @@ message is upstream of the receiver.
   - Entity headers: Describe body size and contents, or the resource itself
   - Extension headers: New headers that are not defined in the specification
 
-- Clients and 100 Continue:
+
+
+Clients and 100 Continue:
   If a client is sending an entity to a server and is willing to wait for a 100 Continue
   response before it sends the entity, the client needs to send an Expect request header with the value 100-continue. If the client is not sending an entity, it
   shouldn’t send a 100-continue Expect header, because this will only confuse the
@@ -470,19 +475,46 @@ message is upstream of the receiver.
 
 
 
+## Connection Management
+
+### TCP Connections 
+
+- a popular layered set of packet-switched network protocols 
+- A client application can open a TCP/IP connection to a
+  server application, running just about anywhere in the world. Once the connection is
+  established, messages exchanged between the client’s and server’s computers will
+  never be lost, damaged, or received out of order 
+- TCP sends its data in little chunks called IP packets (or IP datagrams).  
+- Each of these IP packets contains:
+  - An IP packet header (usually 20 bytes)
+    - the source
+    - destination IP addresses
+    - the size
+    - other flags
+  - A TCP segment header (usually 20 bytes)
+    - TCP port numbers
+    - TCP control flags
+    - numeric values used for data ordering
+    - integrity checking
+  - A chunk of TCP data (0 or more bytes) 
 
 
 
 
 
+TCP Performance Considerations 
+
+HTTP Connection Handling 
+
+Parallel Connections 
+
+Persistent Connections 
+
+Pipelined Connections 
+
+The Mysteries of Connection Close 
 
 
-
-
-
-
-
-Connection Management
 
 
 
