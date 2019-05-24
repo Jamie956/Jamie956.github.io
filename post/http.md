@@ -497,14 +497,34 @@ Clients and 100 Continue:
     - numeric values used for data ordering
     - integrity checking
   - A chunk of TCP data (0 or more bytes) 
+- The sockets API lets you create TCP endpoint data structures, connect these endpoints to remote server TCP endpoints, and read and write data streams. The TCP
+  API hides all the details of the underlying network protocol handshaking and the segmentation and reassembly of the TCP data stream to and from IP packets. 
 
 
 
+### TCP Performance Considerations 
+
+Here are the steps in the TCP connection handshake:
+1. To request a new TCP connection, the client sends a small TCP packet (usually
+  40–60 bytes) to the server. The packet has a special “SYN” flag set, which means
+  it’s a connection request. This is shown in Figure 4-8a.
+2. If the server accepts the connection, it computes some connection parameters
+  and sends a TCP packet back to the client, with both the “SYN” and “ACK”
+  flags set, indicating that the connection request is accepted (see Figure 4-8b).
+3. Finally, the client sends an acknowledgment back to the server, letting it know
+  that the connection was established successfully (see Figure 4-8c). Modern TCP
+  stacks let the client send data in this acknowledgment packet. 
 
 
-TCP Performance Considerations 
 
-HTTP Connection Handling 
+Nagle’s algorithm (named for its creator, John Nagle) attempts to bundle up a large
+amount of TCP data before sending a packet, aiding network efficiency. 
+
+
+
+### HTTP Connection Handling 
+
+
 
 Parallel Connections 
 
