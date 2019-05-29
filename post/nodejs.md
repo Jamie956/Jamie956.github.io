@@ -8,33 +8,6 @@
 
 
 
-## NPM Commands
-
-```shell
-npm -v //version
-npm config list //node config
-npm root //node_modules root path
-npm root -g
-
-npm i <module> //安装最新模块
-npm i //安装package.json里的模块
-npm i -g <module> //全局安装模块
-npm i -S <module> //安装模块到dependencies
-npm i -D <lib> //安装模块到dev-dependencies
-npm remove <module> //移除模块
-npm update <module> //更新模块
-npm view <module> //查看模块信息
-npm view <module> versions //历史版本
-
-npm init //生成package.json
-npm init -y //生成package.json并设置默认值
-
-npm run <script> //运行package.json里scripts定义好的命令
-
-npm install -g npm-check-updates //更新全部依赖包
-ncu -u //检查全部依赖包
-```
-
 
 
 ## Thread
@@ -51,64 +24,6 @@ ncu -u //检查全部依赖包
 - 阻塞I/O：调用之后等到系统内核层面完成所有操作后，调用才结束，比如读取磁盘上的一段文件，系统内核进行磁盘寻道、读取数据、复制数据到内存后，调用才结束
 
 - 轮询：重复调用判断操作是否完成
-
-
-
-## EventEmitter
-
-- Node asynchronous event-driven architecture.
-
-```js
-var EventEmitter = require("events");
-
-class MyEmitter extends EventEmitter {}
-const myEmitter = new MyEmitter();
-
-myEmitter.on("event", (a, b) => {
-  console.log(a, b);
-});
-
-setTimeout(() => {
-  myEmitter.emit("event", "1", "2");
-}, 3000);
-```
-
-
-
-## Promise
-
-```js
-new Promise((resolve, reject) => {
-    resolve(42);
-    // reject(new Error("Something Wrong"));
-}).then(res => {
-    console.log(res);
-}).catch(e => {
-    console.log(e);
-});
-```
-
-
-
-## Async/Await
-
-```js
-function resolveAfter2Seconds() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve('resolved');
-    }, 2000);
-  });
-}
-
-async function asyncCall() {
-  console.log('calling');
-  var result = await resolveAfter2Seconds();
-  console.log(result);
-}
-
-asyncCall();
-```
 
 
 
@@ -172,36 +87,6 @@ node --max-new-space-size=1024 test.js // 单位为kB，设置新生代内存空
 
 ## 多进程架构
 
-Master-Worker模式（主从模式）
-
-主进程：不负责具体业务处理，而是负责调度或管理工作进程，它是趋向于稳定的
-
-工作进程：负责具体业务处理
-
-```js
-//worker.js
-var http = require("http");
-
-var port = Math.round((1 + Math.random()) * 1000);
-http
-    .createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Hello World");
-})
-    .listen(port, console.log("Listening on port " + port));
-
-//master.js
-var fork = require("child_process").fork;
-
-var cpus = require("os").cpus();
-
-for (let i = 0; i < cpus.length; i++) {
-    fork("./worker.js");
-}
-```
-
-通过fork()复制的进程都是一个独立的进程，这个进程是新的V8实例
-
 
 
 **创建子进程**
@@ -225,26 +110,7 @@ cp.fork('./worker.js');
 
 
 
-**进程间通信**
 
-```js
-//parent.js
-var cp = require('child_process');
-var n = cp.fork('./sub.js');
-
-n.on('message', function(m){
-    console.log('PARENT got message: ', m);
-});
-
-n.send({hello: 'world'});
-
-//sub.js
-process.on('message', function(m){
-    console.log('CHILD got message: ', m);
-});
-
-process.send({foo: 'bar'});
-```
 
 
 
