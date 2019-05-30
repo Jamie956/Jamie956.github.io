@@ -27,31 +27,6 @@
 
 
 
-## Memory
-
-- Node中通过JavaScript使用的内存限制为1.4G（64位系统）
-
-```shell
-$ node
-> process.memoryUsage();
-{ rss: 22925312,
-  heapTotal: 9682944, # V8申请到的堆内存
-  heapUsed: 5281200, # 当前使用的量
-  external: 16904 }
-```
-
-- 代码中声明变量并赋值时，所使用对象的内存就分配在堆中，如果已申请的堆空闲内存不够分配新的对象，将继续申请堆内存，直到堆的大小超过V8的限制为止
-
-- 设置V8的内存限制
-
-```
-node --max-old-space-size=1700 test.js // 单位为MB，设置老年代内存空间的最大值
-//或者
-node --max-new-space-size=1024 test.js // 单位为kB，设置新生代内存空间的大小
-```
-
-
-
 ## GC
 
 - 堆内存
