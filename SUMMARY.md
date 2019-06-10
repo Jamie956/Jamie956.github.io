@@ -4,7 +4,6 @@
 
 -----
 * [Git](post/git.md)
-* [Data Structure](post/dataStructure.md)
 * [Http](post/http.md)
 * [Linux](post/linux.md)
 
