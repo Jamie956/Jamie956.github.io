@@ -68,7 +68,7 @@
     <link rel="next" href="linux.html" />
     
     
-    <link rel="prev" href="dataStructure.html" />
+    <link rel="prev" href="git.html" />
     
 
     </head>
@@ -130,20 +130,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="dataStructure.html">
-            
-                <a href="dataStructure.html">
-            
-                    
-                    Data Structure
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="2.3" data-path="http.html">
+        <li class="chapter active" data-level="2.2" data-path="http.html">
             
                 <a href="http.html">
             
@@ -156,7 +143,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="linux.html">
+        <li class="chapter " data-level="2.3" data-path="linux.html">
             
                 <a href="linux.html">
             
@@ -421,6 +408,15 @@
 <li><div><a href="#web-attack">Web Attack</a><i></i></div></li>
 <li><div><a href="#network">Network</a><i></i></div></li>
 <li><div><a href="#brower--server">Brower &amp; Server</a><i></i></div></li>
+<li><div><a href="#overview-of-http">Overview of HTTP</a><i></i></div></li>
+<li><div><a href="#url">URL</a><i></i></div></li>
+<li><div><a href="#http-messages">HTTP Messages</a><i></i></div></li>
+<li><div><a href="#connection-management">Connection Management</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#tcp-connections">TCP Connections </a><i></i></div></li>
+<li><div><a href="#tcp-performance-considerations">TCP Performance Considerations </a><i></i></div></li>
+<li><div><a href="#http-connection-handling">HTTP Connection Handling </a><i></i></div></li>
+</ul></li>
 </ul>
 </div>
 
@@ -1078,6 +1074,190 @@
 <li><em>Client-side JavaScript</em> extends the core language by  supplying objects to control a browser and its Document Object Model  (DOM). For example, client-side extensions allow an application to place  elements on an HTML form and respond to user events such as mouse  clicks, form input, and page navigation.</li>
 <li><em>Server-side JavaScript</em> extends the core language by  supplying objects relevant to running JavaScript on a server. For  example, server-side extensions allow an application to communicate with  a database, provide continuity of information from one invocation to  another of the application, or perform file manipulations on a server.</li>
 </ul>
+<h2 id="overview-of-http">Overview of HTTP</h2>
+<ul>
+<li><p>C/S: Web content lives on web servers. Web servers speak the HTTP protocol, so they are often called HTTP servers. These HTTP servers store the Internet&#x2019;s data and provide the data when it is requested by HTTP clients. The clients send HTTP requests to servers, and servers return the requested data in HTTP responses</p>
+</li>
+<li><p>Resources</p>
+<ul>
+<li>Web servers host web resources. A web resource is the source of web content. The simplest kind of web resource is a static file on the web server&#x2019;s filesystem. These files can contain anything: they might be text files, HTML files, Microsoft Word files, Adobe Acrobat files, JPEG image files, AVI movie files</li>
+<li>Resources can also be software programs that generate content on demand. These dynamic content resources can generate content based on your identity, on what information you&#x2019;ve requested, or on the time of day. They can show you a live image from a camera, or let you trade stocks, search real estate databases, or buy gifts from online stores </li>
+</ul>
+</li>
+<li><p>Media Types</p>
+<ul>
+<li>HTTP carefully tags each object being transported through the Web with a data format label called a MIME type.  </li>
+<li>MIME (Multipurpose Internet Mail Extensions) was originally designed to solve problems encountered in moving messages between different electronic mail
+systems.  </li>
+<li>A MIME type is a textual label, represented as a primary object type and a specific
+subtype, separated by a slash. For example:
+&#x2022; An HTML-formatted text document would be labeled with type text/html.
+&#x2022; A plain ASCII text document would be labeled with type text/plain.
+&#x2022; A JPEG version of an image would be image/jpeg.
+&#x2022; A GIF-format image would be image/gif.
+&#x2022; An Apple QuickTime movie would be video/quicktime.
+&#x2022; A Microsoft PowerPoint presentation would be application/vnd.ms-powerpoint</li>
+</ul>
+</li>
+<li><p>URIs</p>
+<ul>
+<li>URI(uniform resource identifier): The server resource name</li>
+<li>URIs: like the postal addresses of the Internet, uniquely identifying and locating information resources around the world</li>
+</ul>
+</li>
+<li><p>URLs: The uniform resource locator (URL) is the most common form of resource identifier. URLs describe the specific location of a resource on a particular server. They tell you exactly how to fetch a resource from a precise, fixed location</p>
+</li>
+<li><p>URNs: uniform resource name </p>
+</li>
+<li><p>Status Codes: Every HTTP response message comes back with a status code. The status code is a three-digit numeric code that tells the client if the request succeeded, or if other actions are required </p>
+</li>
+<li><p>Messages</p>
+<ul>
+<li>HTTP messages are simple, line-oriented sequences of characters. Because they are plain text, not binary, they are easy for humans to read and write </li>
+<li>Request messages: Messages sent from web clients to web servers</li>
+<li>Response messages: Messages from servers to clients</li>
+<li>HTTP messages consist of three parts:<ul>
+<li>Start line
+The first line of the message is the start line, indicating what to do for a request or what happened for a response.</li>
+<li>Header fields
+Zero or more header fields follow the start line. Each header field consists of a name and a value, separated by a colon (:) for easy parsing. The headers end with a blank line. Adding a header field is as easy as adding another line.</li>
+<li>Body
+After the blank line is an optional message body containing any kind of data. Request bodies carry data to the web server; response bodies carry data back to the client. Unlike the start lines and headers, which are textual and structured, the body can contain arbitrary binary data (e.g., images, videos, audio tracks, software applications). Of course, the body can also contain text </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TCP/IP</p>
+<ul>
+<li>TCP provides:
+&#x2022; Error-free data transportation
+&#x2022; In-order delivery (data will always arrive in the order in which it was sent)
+&#x2022; Unsegmented data stream (can dribble out data in any size at any time) </li>
+<li>Once a TCP connection is established, messages exchanged between the client and server computers will never be lost, damaged, or received out of order.</li>
+<li>In networking terms, the HTTP protocol is layered over TCP. HTTP uses TCP to transport its message data. Likewise, TCP is layered over IP </li>
+<li>Before an HTTP client can send a message to a server, it needs to establish a TCP/IP connection between the client and server using Internet protocol (IP) addresses and port numbers. </li>
+<li>In TCP, you need the IP address of the server computer and the TCP port number associated with the specific software program running on the server. </li>
+</ul>
+</li>
+<li><p>Components</p>
+<ul>
+<li>Proxies<ul>
+<li>HTTP intermediaries that sit between clients and servers</li>
+<li>a proxy sits between a client and a server, receiving all of the client&#x2019;s HTTP requests and relaying the requests to the server (perhaps after modifying the requests). These applications act as a proxy for the user, accessing the server on the user&#x2019;s behalf. </li>
+<li>Proxies are often used for security, acting as trusted intermediaries through which all web traffic flows. Proxies can also filter requests and responses; for example, to detect application viruses in corporate downloads or to filter adult content away from elementary-school students. </li>
+</ul>
+</li>
+<li>Caches<ul>
+<li>HTTP storehouses that keep copies of popular web pages close to clients</li>
+<li>A web cache or caching proxy is a special type of HTTP proxy server that keeps copies of popular documents that pass through the proxy. The next client requesting the same document can be served from the cache&#x2019;s personal copy </li>
+<li>A client may be able to download a document much more quickly from a nearby cache than from a distant web server. </li>
+</ul>
+</li>
+<li>Gateways&#xFF1A; Special web servers that connect to other applications</li>
+<li>Tunnels&#xFF1A; Special proxies that blindly forward HTTP communications</li>
+<li>Agents&#xFF1A; Semi-intelligent web clients that make automated HTTP requests</li>
+</ul>
+</li>
+</ul>
+<h2 id="url">URL</h2>
+<ul>
+<li><p>URL Syntax</p>
+<ul>
+<li><p>Most URL schemes base their URL syntax on this nine-part general format: <code>&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;</code></p>
+</li>
+<li><p>Schemes: What Protocol to Use</p>
+</li>
+<li><p>Hosts and Ports: To find a resource on the Internet, an application needs to know what machine is hosting the resource and where on that machine it can find the server that has access to the desired resource. The host and port components of the URL provide these two pieces of information. </p>
+</li>
+<li><p>Paths: The path often resembles a hierarchical filesystem path </p>
+</li>
+</ul>
+</li>
+<li><p>URL Shortcuts: Relative URLs are only fragments or pieces of URLs. Applications that process URLs (such as your browser) need to be able to convert between relative and absolute URLs. </p>
+</li>
+</ul>
+<h2 id="http-messages">HTTP Messages</h2>
+<p><strong>Messages Commute Inbound to the Origin Server</strong>
+HTTP uses the terms inbound and outbound to describe transactional direction. Messages travel inbound to the origin server, and when their work is done, they travel
+outbound back to the user agent </p>
+<p><strong>Messages Flow Downstream</strong>
+HTTP messages flow like rivers. All messages flow downstream, regardless of whether
+they are request messages or response messages (see Figure 3-2). The sender of any
+message is upstream of the receiver. </p>
+<p>Message</p>
+<ul>
+<li>start line: describing the message</li>
+<li>header: containing attributes</li>
+<li>optional body: containing data</li>
+<li>Message Syntax: method, request-URL, version, status-code, reason-phrase, headers, entity-body</li>
+</ul>
+<p>Headers</p>
+<ul>
+<li>General headers: Can appear in both request and response messages<ul>
+<li>Accept headers: Accept headers give the client a way to tell servers their preferences and capabilities: what they want, what they can use, and, most importantly, what they don&#x2019;t want. Servers can then use this extra information to make more intelligent decisions about what to send. Accept headers benefit both sides of the connection. Clients get what they want, and servers don&#x2019;t waste their time and bandwidth sending something the client can&#x2019;t use. </li>
+<li>Conditional request headers: Sometimes, clients want to put some restrictions on a request. For instance, if the client already has a copy of a document, it might want to ask a server to send the document only if it is different from the copy the client already has. </li>
+</ul>
+</li>
+<li>Request headers: Provide more information about the request</li>
+<li>Response headers: Provide more information about the response</li>
+<li>Entity headers: Describe body size and contents, or the resource itself</li>
+<li>Extension headers: New headers that are not defined in the specification</li>
+</ul>
+<p>Clients and 100 Continue:
+  If a client is sending an entity to a server and is willing to wait for a 100 Continue
+  response before it sends the entity, the client needs to send an Expect request header with the value 100-continue. If the client is not sending an entity, it
+  shouldn&#x2019;t send a 100-continue Expect header, because this will only confuse the
+  server into thinking that the client might be sending an entity. </p>
+<h2 id="connection-management">Connection Management</h2>
+<h3 id="tcp-connections">TCP Connections</h3>
+<ul>
+<li>a popular layered set of packet-switched network protocols </li>
+<li>A client application can open a TCP/IP connection to a
+server application, running just about anywhere in the world. Once the connection is
+established, messages exchanged between the client&#x2019;s and server&#x2019;s computers will
+never be lost, damaged, or received out of order </li>
+<li>TCP sends its data in little chunks called IP packets (or IP datagrams).  </li>
+<li>Each of these IP packets contains:<ul>
+<li>An IP packet header (usually 20 bytes)<ul>
+<li>the source</li>
+<li>destination IP addresses</li>
+<li>the size</li>
+<li>other flags</li>
+</ul>
+</li>
+<li>A TCP segment header (usually 20 bytes)<ul>
+<li>TCP port numbers</li>
+<li>TCP control flags</li>
+<li>numeric values used for data ordering</li>
+<li>integrity checking</li>
+</ul>
+</li>
+<li>A chunk of TCP data (0 or more bytes) </li>
+</ul>
+</li>
+<li>The sockets API lets you create TCP endpoint data structures, connect these endpoints to remote server TCP endpoints, and read and write data streams. The TCP
+API hides all the details of the underlying network protocol handshaking and the segmentation and reassembly of the TCP data stream to and from IP packets. </li>
+</ul>
+<h3 id="tcp-performance-considerations">TCP Performance Considerations</h3>
+<p>Here are the steps in the TCP connection handshake:</p>
+<ol>
+<li>To request a new TCP connection, the client sends a small TCP packet (usually
+40&#x2013;60 bytes) to the server. The packet has a special &#x201C;SYN&#x201D; flag set, which means
+it&#x2019;s a connection request. This is shown in Figure 4-8a.</li>
+<li>If the server accepts the connection, it computes some connection parameters
+and sends a TCP packet back to the client, with both the &#x201C;SYN&#x201D; and &#x201C;ACK&#x201D;
+flags set, indicating that the connection request is accepted (see Figure 4-8b).</li>
+<li>Finally, the client sends an acknowledgment back to the server, letting it know
+that the connection was established successfully (see Figure 4-8c). Modern TCP
+stacks let the client send data in this acknowledgment packet. </li>
+</ol>
+<p>Nagle&#x2019;s algorithm (named for its creator, John Nagle) attempts to bundle up a large
+amount of TCP data before sending a packet, aiding network efficiency. </p>
+<h3 id="http-connection-handling">HTTP Connection Handling</h3>
+<p>Parallel Connections </p>
+<p>Persistent Connections </p>
+<p>Pipelined Connections </p>
+<p>The Mysteries of Connection Close </p>
 
                                 
                                 </section>
@@ -1105,7 +1285,7 @@
 
             
                 
-                <a href="dataStructure.html" class="navigation navigation-prev " aria-label="Previous page: Data Structure">
+                <a href="git.html" class="navigation navigation-prev " aria-label="Previous page: Git">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1121,7 +1301,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Http","level":"2.3","depth":1,"next":{"title":"Linux","level":"2.4","depth":1,"path":"post/linux.md","ref":"post/linux.md","articles":[]},"previous":{"title":"Data Structure","level":"2.2","depth":1,"path":"post/dataStructure.md","ref":"post/dataStructure.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/http.md","mtime":"2019-04-03T06:22:31.113Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-06T06:37:08.549Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Http","level":"2.2","depth":1,"next":{"title":"Linux","level":"2.3","depth":1,"path":"post/linux.md","ref":"post/linux.md","articles":[]},"previous":{"title":"Git","level":"2.1","depth":1,"path":"post/git.md","ref":"post/git.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/http.md","mtime":"2019-05-24T08:06:39.102Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-10T09:26:27.370Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

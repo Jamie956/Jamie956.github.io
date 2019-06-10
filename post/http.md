@@ -342,3 +342,203 @@ When you type a web address into your browser (for our analogy that's like walki
 - *Client-side JavaScript* extends the core language by  supplying objects to control a browser and its Document Object Model  (DOM). For example, client-side extensions allow an application to place  elements on an HTML form and respond to user events such as mouse  clicks, form input, and page navigation.
 - *Server-side JavaScript* extends the core language by  supplying objects relevant to running JavaScript on a server. For  example, server-side extensions allow an application to communicate with  a database, provide continuity of information from one invocation to  another of the application, or perform file manipulations on a server.
 
+
+
+
+
+
+
+## Overview of HTTP
+
+- C/S: Web content lives on web servers. Web servers speak the HTTP protocol, so they are often called HTTP servers. These HTTP servers store the Internet’s data and provide the data when it is requested by HTTP clients. The clients send HTTP requests to servers, and servers return the requested data in HTTP responses
+
+- Resources
+  - Web servers host web resources. A web resource is the source of web content. The simplest kind of web resource is a static file on the web server’s filesystem. These files can contain anything: they might be text files, HTML files, Microsoft Word files, Adobe Acrobat files, JPEG image files, AVI movie files
+  - Resources can also be software programs that generate content on demand. These dynamic content resources can generate content based on your identity, on what information you’ve requested, or on the time of day. They can show you a live image from a camera, or let you trade stocks, search real estate databases, or buy gifts from online stores 
+
+- Media Types
+  - HTTP carefully tags each object being transported through the Web with a data format label called a MIME type.  
+  - MIME (Multipurpose Internet Mail Extensions) was originally designed to solve problems encountered in moving messages between different electronic mail
+    systems.  
+  - A MIME type is a textual label, represented as a primary object type and a specific
+    subtype, separated by a slash. For example:
+    • An HTML-formatted text document would be labeled with type text/html.
+    • A plain ASCII text document would be labeled with type text/plain.
+    • A JPEG version of an image would be image/jpeg.
+    • A GIF-format image would be image/gif.
+    • An Apple QuickTime movie would be video/quicktime.
+    • A Microsoft PowerPoint presentation would be application/vnd.ms-powerpoint
+
+- URIs
+  - URI(uniform resource identifier): The server resource name
+  - URIs: like the postal addresses of the Internet, uniquely identifying and locating information resources around the world
+
+- URLs: The uniform resource locator (URL) is the most common form of resource identifier. URLs describe the specific location of a resource on a particular server. They tell you exactly how to fetch a resource from a precise, fixed location
+
+- URNs: uniform resource name 
+
+- Status Codes: Every HTTP response message comes back with a status code. The status code is a three-digit numeric code that tells the client if the request succeeded, or if other actions are required 
+
+- Messages
+  - HTTP messages are simple, line-oriented sequences of characters. Because they are plain text, not binary, they are easy for humans to read and write 
+  - Request messages: Messages sent from web clients to web servers
+  - Response messages: Messages from servers to clients
+  - HTTP messages consist of three parts:
+    - Start line
+      The first line of the message is the start line, indicating what to do for a request or what happened for a response.
+    - Header fields
+      Zero or more header fields follow the start line. Each header field consists of a name and a value, separated by a colon (:) for easy parsing. The headers end with a blank line. Adding a header field is as easy as adding another line.
+    - Body
+      After the blank line is an optional message body containing any kind of data. Request bodies carry data to the web server; response bodies carry data back to the client. Unlike the start lines and headers, which are textual and structured, the body can contain arbitrary binary data (e.g., images, videos, audio tracks, software applications). Of course, the body can also contain text 
+
+- TCP/IP
+  - TCP provides:
+    • Error-free data transportation
+    • In-order delivery (data will always arrive in the order in which it was sent)
+    • Unsegmented data stream (can dribble out data in any size at any time) 
+  - Once a TCP connection is established, messages exchanged between the client and server computers will never be lost, damaged, or received out of order.
+  - In networking terms, the HTTP protocol is layered over TCP. HTTP uses TCP to transport its message data. Likewise, TCP is layered over IP 
+  - Before an HTTP client can send a message to a server, it needs to establish a TCP/IP connection between the client and server using Internet protocol (IP) addresses and port numbers. 
+  - In TCP, you need the IP address of the server computer and the TCP port number associated with the specific software program running on the server. 
+
+- Components
+  - Proxies
+    - HTTP intermediaries that sit between clients and servers
+    - a proxy sits between a client and a server, receiving all of the client’s HTTP requests and relaying the requests to the server (perhaps after modifying the requests). These applications act as a proxy for the user, accessing the server on the user’s behalf. 
+    - Proxies are often used for security, acting as trusted intermediaries through which all web traffic flows. Proxies can also filter requests and responses; for example, to detect application viruses in corporate downloads or to filter adult content away from elementary-school students. 
+  - Caches
+    - HTTP storehouses that keep copies of popular web pages close to clients
+    - A web cache or caching proxy is a special type of HTTP proxy server that keeps copies of popular documents that pass through the proxy. The next client requesting the same document can be served from the cache’s personal copy 
+    - A client may be able to download a document much more quickly from a nearby cache than from a distant web server. 
+  - Gateways： Special web servers that connect to other applications
+  - Tunnels： Special proxies that blindly forward HTTP communications
+  - Agents： Semi-intelligent web clients that make automated HTTP requests
+
+
+
+## URL
+
+- URL Syntax
+  - Most URL schemes base their URL syntax on this nine-part general format: `<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag> `
+
+  - Schemes: What Protocol to Use
+
+  - Hosts and Ports: To find a resource on the Internet, an application needs to know what machine is hosting the resource and where on that machine it can find the server that has access to the desired resource. The host and port components of the URL provide these two pieces of information. 
+
+  - Paths: The path often resembles a hierarchical filesystem path 
+
+- URL Shortcuts: Relative URLs are only fragments or pieces of URLs. Applications that process URLs (such as your browser) need to be able to convert between relative and absolute URLs. 
+
+
+
+## HTTP Messages
+
+
+
+**Messages Commute Inbound to the Origin Server**
+HTTP uses the terms inbound and outbound to describe transactional direction. Messages travel inbound to the origin server, and when their work is done, they travel
+outbound back to the user agent 
+
+**Messages Flow Downstream**
+HTTP messages flow like rivers. All messages flow downstream, regardless of whether
+they are request messages or response messages (see Figure 3-2). The sender of any
+message is upstream of the receiver. 
+
+
+
+Message
+- start line: describing the message
+- header: containing attributes
+- optional body: containing data
+- Message Syntax: method, request-URL, version, status-code, reason-phrase, headers, entity-body
+
+
+
+
+
+Headers
+  - General headers: Can appear in both request and response messages
+    - Accept headers: Accept headers give the client a way to tell servers their preferences and capabilities: what they want, what they can use, and, most importantly, what they don’t want. Servers can then use this extra information to make more intelligent decisions about what to send. Accept headers benefit both sides of the connection. Clients get what they want, and servers don’t waste their time and bandwidth sending something the client can’t use. 
+    - Conditional request headers: Sometimes, clients want to put some restrictions on a request. For instance, if the client already has a copy of a document, it might want to ask a server to send the document only if it is different from the copy the client already has. 
+  - Request headers: Provide more information about the request
+  - Response headers: Provide more information about the response
+  - Entity headers: Describe body size and contents, or the resource itself
+  - Extension headers: New headers that are not defined in the specification
+
+
+
+Clients and 100 Continue:
+  If a client is sending an entity to a server and is willing to wait for a 100 Continue
+  response before it sends the entity, the client needs to send an Expect request header with the value 100-continue. If the client is not sending an entity, it
+  shouldn’t send a 100-continue Expect header, because this will only confuse the
+  server into thinking that the client might be sending an entity. 
+
+
+
+## Connection Management
+
+### TCP Connections 
+
+- a popular layered set of packet-switched network protocols 
+- A client application can open a TCP/IP connection to a
+  server application, running just about anywhere in the world. Once the connection is
+  established, messages exchanged between the client’s and server’s computers will
+  never be lost, damaged, or received out of order 
+- TCP sends its data in little chunks called IP packets (or IP datagrams).  
+- Each of these IP packets contains:
+  - An IP packet header (usually 20 bytes)
+    - the source
+    - destination IP addresses
+    - the size
+    - other flags
+  - A TCP segment header (usually 20 bytes)
+    - TCP port numbers
+    - TCP control flags
+    - numeric values used for data ordering
+    - integrity checking
+  - A chunk of TCP data (0 or more bytes) 
+- The sockets API lets you create TCP endpoint data structures, connect these endpoints to remote server TCP endpoints, and read and write data streams. The TCP
+  API hides all the details of the underlying network protocol handshaking and the segmentation and reassembly of the TCP data stream to and from IP packets. 
+
+
+
+### TCP Performance Considerations 
+
+Here are the steps in the TCP connection handshake:
+1. To request a new TCP connection, the client sends a small TCP packet (usually
+  40–60 bytes) to the server. The packet has a special “SYN” flag set, which means
+  it’s a connection request. This is shown in Figure 4-8a.
+2. If the server accepts the connection, it computes some connection parameters
+  and sends a TCP packet back to the client, with both the “SYN” and “ACK”
+  flags set, indicating that the connection request is accepted (see Figure 4-8b).
+3. Finally, the client sends an acknowledgment back to the server, letting it know
+  that the connection was established successfully (see Figure 4-8c). Modern TCP
+  stacks let the client send data in this acknowledgment packet. 
+
+
+
+Nagle’s algorithm (named for its creator, John Nagle) attempts to bundle up a large
+amount of TCP data before sending a packet, aiding network efficiency. 
+
+
+
+### HTTP Connection Handling 
+
+
+
+Parallel Connections 
+
+Persistent Connections 
+
+Pipelined Connections 
+
+The Mysteries of Connection Close 
+
+
+
+
+
+
+
+
+

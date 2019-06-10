@@ -1225,3 +1225,36 @@ If you don’t set a field explicitly in a constructor, it is automatically set 
 
 - shutdown()：不会立即终止线程池，等缓存队列中的任务执行完才终止，且不接受新任务
 - shutdownNow()：立即终止线程池，尝试打断正在执行的任务，清空任务缓存队列，返回尚未执行的任务
+
+
+
+
+
+### De
+
+
+
+===builder===
+
+<img src="https://www.dofactory.com/images/diagrams/net/builder.gif">
+
+
+
+
+
+**Participants**
+
+The classes and objects participating in this pattern are:             
+
+- **Builder (VehicleBuilder)**
+  - specifies an abstract interface for creating parts of a Product object
+- **ConcreteBuilder (MotorCycleBuilder, CarBuilder, ScooterBuilder)**
+  - constructs and assembles parts of the product by implementing the Builder interface
+  - defines and keeps track of the representation it creates
+  - provides an interface for retrieving the product
+- **Director (Shop)**
+  - constructs an object using the Builder interface
+- **Product (Vehicle)**
+  - represents the complex object under construction. ConcreteBuilder builds the product's internal representation and defines the process by which it's assembled
+  - includes classes that define the constituent parts, including interfaces for assembling the parts into the final result
+
