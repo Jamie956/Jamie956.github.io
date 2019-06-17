@@ -1,9 +1,3 @@
-### Angular
-
-An Angular application is a tree of components, and there is always a root application component.
-
-
-
 ### Platform
 
 - Angular comes with a leaner core library and makes additional features available as separate packages that can be used as needed. It also has many tools that push it beyond a simple framework, including the following:
