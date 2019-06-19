@@ -60,6 +60,21 @@
 
 
 
+## Share
 
+Node specifically uses V8, the virtual machine that powers Google Chrome, for
+server-side programming. V8 gives a huge boost in performance because it cuts out the middleman, prefering straight compilation into native machine code over
+executing bytecode or using an interpreter. Because Node uses JavaScript on the
+server there are other benefits: 
 
-
+- Developers can write web applications in one language, which helps by:
+  reducing the "context" switch between client and server development, and
+  allowing for code sharing between client and server 
+- JSON is a very popular data interchange format today and it is native
+  JavaScript 
+- JavaScript is the language used in various NoSQL databases  
+- JavaScript is a compilation target and there are a number of languages
+  that compile to it already 
+- Node uses one virtual machine (V8) that keeps up with the ECMAScript
+  10 standard. In other words, you don’t have to wait for all the browsers to
+  catch up to use new JavaScript language features in Node 
