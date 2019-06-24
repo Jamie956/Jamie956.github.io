@@ -78,3 +78,15 @@ server there are other benefits:
 - Node uses one virtual machine (V8) that keeps up with the ECMAScript
   10 standard. In other words, you don’t have to wait for all the browsers to
   catch up to use new JavaScript language features in Node 
+
+
+
+
+
+<img src="../img/non-blocking IO.png">
+
+
+
+
+
+x
