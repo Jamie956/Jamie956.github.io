@@ -83,10 +83,33 @@ server there are other benefits:
 
 
 
-<img src="../img/non-blocking IO.png">
+<img src="../img/non-blocking IO in browser.png">
 
 
 
 
 
-x
+<img src="../img/non-blocking IO in Node.jpg">
+
+
+
+Node also includes a "core" set of modules for many types of network and file
+I/O. These include modules for: HTTP, TLS, HTTPS, File System (POSIX),
+Datagram (UDP), and NET (TCP). 
+
+
+
+A very common use case for Node is building servers. Node makes it very simple
+to create different types of servers. 
+
+```js
+var http = require('http');
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World\n');
+}).listen(3000);
+console.log('Server running at http://localhost:3000/');
+```
+
+
+
