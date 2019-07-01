@@ -113,3 +113,16 @@ console.log('Server running at http://localhost:3000/');
 
 
 
+Socket.io, out of the box, provides virtual "channels" so instead of broadcasting
+every message to every connected user you can broadcast only to those who are
+"subscribed" to a specific channel. 
+
+
+
+
+
+Event emitters
+An event emitter is associated with a conceptual resource of some kind
+and can send and receive messages to and from the resource. Some
+examples of what the "resource" could be include a connection to a
+remote server or something more abstract, like a game character.
