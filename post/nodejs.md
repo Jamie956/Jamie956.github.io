@@ -62,6 +62,8 @@
 
 ## Share
 
+### 1
+
 Node specifically uses V8, the virtual machine that powers Google Chrome, for
 server-side programming. V8 gives a huge boost in performance because it cuts out the middleman, prefering straight compilation into native machine code over
 executing bytecode or using an interpreter. Because Node uses JavaScript on the
@@ -119,10 +121,71 @@ every message to every connected user you can broadcast only to those who are
 
 
 
-
-
 Event emitters
 An event emitter is associated with a conceptual resource of some kind
 and can send and receive messages to and from the resource. Some
 examples of what the "resource" could be include a connection to a
 remote server or something more abstract, like a game character.
+
+
+
+Reusing modules using the "node_modules" folder
+
+Requiring modules that exist relative, in the filesystem, to an application is useful
+for organizing application-specific code, but isn't as useful for code you'd like to
+reuse between applications or share with others. For code reuse Node includes a
+unique mechanism that allows modules to be required without knowing their
+location in the filesystem. This mechanism is the use of "node_modules"
+directories.
+In the earlier module example, we required "./currency". If you omit the "./" and
+simply require "currency" Node will follow a number of rules, as specified in
+figure 1.5, with which it will search for this module.
+
+
+
+event loop
+
+```js
+function asyncFunction(callback) {
+    setTimeout(function() {
+        callback()
+    }, 200);
+}
+var color = 'blue';
+asyncFunction(function() {
+    console.log('The color is ' + color);
+});
+color = 'green';
+
+```
+
+
+
+closure
+
+```js
+function asyncFunction(callback) {
+    setTimeout(function() {
+        callback()
+    }, 200);
+}
+var color = 'blue';
+(function(color) {
+    asyncFunction(function() {
+        console.log('The color is ' + color);
+    })
+})(color);
+color = 'green';
+```
+
+
+
+
+
+Node's HTTP server is implemented using event emitters to handle requests with
+an event listener handling response logic 
+
+
+
+
+
