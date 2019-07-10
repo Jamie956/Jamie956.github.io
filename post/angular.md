@@ -1,25 +1,3 @@
-### Platform
-
-- Angular comes with a leaner core library and makes additional features available as separate packages that can be used as needed. It also has many tools that push it beyond a simple framework, including the following:
-  - Dedicated CLI for application development, testing, and deployment
-  - Ofﬂine rendering capabilities on many back-end server platforms
-  - Desktop-, mobile-, and browser-based application execution environments
-  - Comprehensive UI component libraries, such as Material Design
-- Angular is a platform, with many key elements such as tooling, UI libraries, and testing built in or easily incorporated into your application projects.
-
-
-
-### Angular CLI
-
-- Generates new project scaffolding
-- Generates new application pieces—It can generate components, services, routes, and pipes, and it also will automatically ensure they are fully wired up in the build process.
-- Manages the entire build toolchain—The CLI will process your source files and build them into an optimized version for development or production.
-- Serves a localhost development server
-- Incorporates code linting and formatting code
-- Supports running unit and e2e tests
-
-
-
 ### Server rendering
 
 - Server rendering for faster loading—resolve data bindings and render components on the server so the initial payload sent to the user is pre-initialized. It can also optimize and send the necessary bytes for a quick initial load time and lazy load the other assets as needed.
@@ -93,28 +71,74 @@
 
 - The CSS selector is the only way to limit which elements receive that particular styling. 
 
-- Shadow DOM enables the best form of encapsulation available in the browser for styles and templates. 
 
 
 
 ### Lifecycle
 
-- The App module is the packaging that helps tell Angular what’s available to render. 
-- The NgModule decorator takes an object with a few different properties. 
-- The declarations property is to provide a list of any components and directives to make available to the entire application. 
-- The imports property is an array of other modules upon which this module depends 
-- The providers property, which is empty by default. Any services that are created are to be listed here 
-- The bootstrap property defines which components to bootstrap at runtime.
+```js
+//===app.module.ts===
+//The App module is the packaging that helps tell Angular what’s available to render. 
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-- The constructor method runs as soon as the component is created.
+import { AppComponent } from './main/app.component';
 
-- Don’t load data from the service in the constructor
+//The NgModule decorator takes an object with a few different properties. 
+@NgModule({
+    //The declarations property is to provide a list of any components and directives to make available to the entire application. 
+    declarations: [
+        AppComponent
+    ],
+    //The imports property is an array of other modules upon which this module depends 
+    imports: [
+        BrowserModule
+    ],
+    //The providers property, which is empty by default. Any services that are created are to be listed here 
+    providers: [],
+    //The bootstrap property defines which components to bootstrap at runtime.
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-- Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur.
 
-- Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.
 
-- <img src="../img/How Angular renders the base app into the browser.png" />
+```js
+//===heros.component.ts===
+@Component({
+    selector: "",
+    template: ``
+})
+export class MyComponent {
+    //The constructor method runs as soon as the component is created.
+    constructor() {
+        //Don’t load data from the service in the constructor
+    }
+    //Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur.
+    ngOnInit() { }
+}
+```
+
+
+
+```js
+//===app.component.ts===
+//Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+}
+```
+
+
+
+<img src="../img/How Angular renders the base app into the browser.png" />
 
 - Immediately upon loading the page, the bootstrapper is called to begin Angular execution.
 
