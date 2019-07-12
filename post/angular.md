@@ -314,9 +314,9 @@ export class AppComponent {
 
 
 
-### DI
+### Dependency injection
 
-- Dependency injection (DI) is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. 
+- DI is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. 
 - Injector: This is the service that Angular provides for requesting and registering dependencies 
 - Providers are responsible for creating the instanceof the object requested.
 - Dependency injection is fundamental for Angular to track all the objects in the application and make them available when they’re requested.
