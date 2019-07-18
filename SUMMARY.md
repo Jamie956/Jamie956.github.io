@@ -18,13 +18,6 @@
 * [Docker](post/docker.md)
 
 -----
-* [Music](post/music.md)
-
------
 * [Undefined](post/undefined.md)
 * [Guide](post/guide.md)
-* [Baking](post/baking.md)
-* [Money](post/money.md)
-* [Car](post/car.md)
-* [Voice](post/voice.md)
 
