@@ -87,7 +87,7 @@ non-blocking when handling I/O (i.e. use asynchronous I/O )
 ```js
 // I/O does not block execution
 $.post('/resource.json', function (data) {
-console.log(data);
+    console.log(data);
 });
 // script execution continues
 ```
