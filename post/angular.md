@@ -25,7 +25,7 @@
 - Here’s a list of the primary things that compose a component:
   - Component Metadata Decorator —All components must be annotated with the @Component() decorator to properly register the component with Angular. The metadata contains numerous properties to help modify the way the component behaves or is rendered.
   - Controller—The controller is the class that is decorated with @Component(), and it contains all the properties and methods for the component. Most of the logic exists in the controller.
-  - Template—A component isn’t a component without a template. The markup for a component defines the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any 
+  - Template—A component isn’t a component without a template. The markup for a component defines the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any
 - Here are the four roles of components
   - App component—This is the root app component, and you only get one of these per application.
   - Display component—This is a stateless component that reﬂects the values passed into it, making it highly reusable.
