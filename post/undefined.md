@@ -632,3 +632,15 @@ let s6 = 'a1b23~!@'.match(/[^a-z]/g);//1,2,3,~,!,@
 let s7 = 'a1b23~!@'.match(/b/);//b
 let s8 = 'a1b23~!@'.match(/[^a-z0-9]/g);//~,!,@
 ```
+
+
+
+### WPS
+
+**Word**
+标题导航: View-Navigation Pane
+多窗口: View-Split Window
+
+**Excel**
+Unhide columns: home->Rows and Columns->Hide and unhide->Unhide columns
+下拉item: data

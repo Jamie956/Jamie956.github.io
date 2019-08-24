@@ -255,27 +255,7 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="music.html">
-            
-                <a href="music.html">
-            
-                    
-                    Music
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-        
-        <li class="divider"></li>
-        
-        
-    
-        <li class="chapter " data-level="6.1" data-path="undefined.html">
+        <li class="chapter " data-level="5.1" data-path="undefined.html">
             
                 <a href="undefined.html">
             
@@ -288,64 +268,12 @@
             
         </li>
     
-        <li class="chapter " data-level="6.2" data-path="guide.html">
+        <li class="chapter " data-level="5.2" data-path="guide.html">
             
                 <a href="guide.html">
             
                     
                     Guide
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="6.3" data-path="baking.html">
-            
-                <a href="baking.html">
-            
-                    
-                    Baking
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="6.4" data-path="money.html">
-            
-                <a href="money.html">
-            
-                    
-                    Money
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="6.5" data-path="car.html">
-            
-                <a href="car.html">
-            
-                    
-                    Car
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="6.6" data-path="voice.html">
-            
-                <a href="voice.html">
-            
-                    
-                    Voice
             
                 </a>
             
@@ -399,20 +327,17 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#angular-cli">Angular CLI</a><i></i></div></li>
-<li><div><a href="#server-rendering">Server rendering</a><i></i></div></li>
 <li><div><a href="#component">Component</a><i></i></div></li>
 <li><div><a href="#shadow-dom">Shadow DOM</a><i></i></div></li>
 <li><div><a href="#lifecycle">Lifecycle</a><i></i></div></li>
 <li><div><a href="#services">Services</a><i></i></div></li>
 <li><div><a href="#routing">Routing</a><i></i></div></li>
 <li><div><a href="#templates">Templates</a><i></i></div></li>
-<li><div><a href="#entities">Entities</a><i></i></div></li>
 <li><div><a href="#modules">Modules</a><i></i></div></li>
 <li><div><a href="#directives">Directives</a><i></i></div></li>
 <li><div><a href="#pipes">Pipes</a><i></i></div></li>
 <li><div><a href="#compilers">Compilers</a><i></i></div></li>
-<li><div><a href="#di">DI</a><i></i></div></li>
+<li><div><a href="#dependency-injection">Dependency injection</a><i></i></div></li>
 <li><div><a href="#change-detection">Change detection</a><i></i></div></li>
 <li><div><a href="#lifecycle-hooks">Lifecycle hooks</a><i></i></div></li>
 <li><div><a href="#communicating">Communicating</a><i></i></div></li>
@@ -421,26 +346,6 @@
 </ul>
 </div>
 
-<h3 id="platform">Platform</h3>
-<ul>
-<li>Angular comes with a leaner core library and makes additional features available as separate packages that can be used as needed. It also has many tools that push it beyond a simple framework, including the following:<ul>
-<li>Dedicated CLI for application development, testing, and deployment</li>
-<li>Of&#xFB02;ine rendering capabilities on many back-end server platforms</li>
-<li>Desktop-, mobile-, and browser-based application execution environments</li>
-<li>Comprehensive UI component libraries, such as Material Design</li>
-</ul>
-</li>
-<li>Angular is a platform, with many key elements such as tooling, UI libraries, and testing built in or easily incorporated into your application projects.</li>
-</ul>
-<h3 id="angular-cli">Angular CLI</h3>
-<ul>
-<li>Generates new project scaffolding</li>
-<li>Generates new application pieces&#x2014;It can generate components, services, routes, and pipes, and it also will automatically ensure they are fully wired up in the build process.</li>
-<li>Manages the entire build toolchain&#x2014;The CLI will process your source files and build them into an optimized version for development or production.</li>
-<li>Serves a localhost development server</li>
-<li>Incorporates code linting and formatting code</li>
-<li>Supports running unit and e2e tests</li>
-</ul>
 <h3 id="server-rendering">Server rendering</h3>
 <ul>
 <li>Server rendering for faster loading&#x2014;resolve data bindings and render components on the server so the initial payload sent to the user is pre-initialized. It can also optimize and send the necessary bytes for a quick initial load time and lazy load the other assets as needed.</li>
@@ -449,7 +354,10 @@
 </ul>
 <h3 id="component">Component</h3>
 <ul>
-<li>A component is a way to create custom HTML elements in your application.</li>
+<li><p>Components&#x2014;New elements that will compose the majority of your application&#x2019;s structure and logic</p>
+</li>
+<li><p>A component is a way to create custom HTML elements in your application.</p>
+</li>
 <li><p>Applications are essentially combinations of components. These components build upon the core principles of encapsulation, isolation, and reusability, which should have events, be customizable, and be declarative.</p>
 </li>
 <li><p>A component is an encapsulated element that maintains its own internal logic for how it desires to render some output</p>
@@ -467,7 +375,7 @@
 <li>Here&#x2019;s a list of the primary things that compose a component:<ul>
 <li>Component Metadata Decorator &#x2014;All components must be annotated with the @Component() decorator to properly register the component with Angular. The metadata contains numerous properties to help modify the way the component behaves or is rendered.</li>
 <li>Controller&#x2014;The controller is the class that is decorated with @Component(), and it contains all the properties and methods for the component. Most of the logic exists in the controller.</li>
-<li>Template&#x2014;A component isn&#x2019;t a component without a template. The markup for a component defines the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any </li>
+<li>Template&#x2014;A component isn&#x2019;t a component without a template. The markup for a component defines the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any</li>
 </ul>
 </li>
 <li>Here are the four roles of components<ul>
@@ -515,28 +423,60 @@
 </li>
 <li><p>The CSS selector is the only way to limit which elements receive that particular styling. </p>
 </li>
-<li><p>Shadow DOM enables the best form of encapsulation available in the browser for styles and templates. </p>
-</li>
 </ul>
 <h3 id="lifecycle">Lifecycle</h3>
+<pre><code class="lang-js"><span class="hljs-comment">//===app.module.ts===</span>
+<span class="hljs-comment">//The App module is the packaging that helps tell Angular what&#x2019;s available to render.</span>
+<span class="hljs-keyword">import</span> { NgModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { BrowserModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@angular/platform-browser&apos;</span>;
+
+<span class="hljs-keyword">import</span> { AppComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./main/app.component&apos;</span>;
+
+<span class="hljs-comment">//The NgModule decorator takes an object with a few different properties. </span>
+@NgModule({
+    <span class="hljs-comment">//The declarations property is to provide a list of any components and directives to make available to the entire application.</span>
+    declarations: [
+        AppComponent
+    ],
+    <span class="hljs-comment">//The imports property is an array of other modules upon which this module depends</span>
+    imports: [
+        BrowserModule
+    ],
+    <span class="hljs-comment">//The providers property, which is empty by default. Any services that are created are to be listed here </span>
+    providers: [],
+    <span class="hljs-comment">//The bootstrap property defines which components to bootstrap at runtime.</span>
+    bootstrap: [AppComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppModule</span> </span>{ }
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">//===heros.component.ts===</span>
+@Component({
+    selector: <span class="hljs-string">&quot;&quot;</span>,
+    template: <span class="hljs-string">``</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> </span>{
+    <span class="hljs-comment">//The constructor method runs as soon as the component is created.</span>
+    <span class="hljs-keyword">constructor</span>() {
+        <span class="hljs-comment">//Don&#x2019;t load data from the service in the constructor</span>
+    }
+    <span class="hljs-comment">//Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur.</span>
+    ngOnInit() { }
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">//===app.component.ts===</span>
+<span class="hljs-comment">//Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.</span>
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@angular/core&apos;</span>;
+
+@Component({
+    selector: <span class="hljs-string">&apos;app-root&apos;</span>,
+    templateUrl: <span class="hljs-string">&apos;./app.component.html&apos;</span>,
+    styleUrls: [<span class="hljs-string">&apos;./app.component.css&apos;</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppComponent</span> </span>{
+}
+</code></pre>
+<p><img src="../img/How Angular renders the base app into the browser.png"></p>
 <ul>
-<li>The App module is the packaging that helps tell Angular what&#x2019;s available to render. </li>
-<li>The NgModule decorator takes an object with a few different properties. </li>
-<li>The declarations property is to provide a list of any components and directives to make available to the entire application. </li>
-<li>The imports property is an array of other modules upon which this module depends </li>
-<li>The providers property, which is empty by default. Any services that are created are to be listed here </li>
-<li><p>The bootstrap property defines which components to bootstrap at runtime.</p>
-</li>
-<li><p>The constructor method runs as soon as the component is created.</p>
-</li>
-<li><p>Don&#x2019;t load data from the service in the constructor</p>
-</li>
-<li><p>Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur.</p>
-</li>
-<li><p>Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.</p>
-</li>
-<li><p><img src="../img/How Angular renders the base app into the browser.png"></p>
-</li>
 <li><p>Immediately upon loading the page, the bootstrapper is called to begin Angular execution.</p>
 </li>
 <li><p>It loads your App module and reads through any additional dependencies that need to be loaded and bootstrapped.</p>
@@ -553,22 +493,19 @@
 </ul>
 <h3 id="services">Services</h3>
 <ul>
-<li>Creating services and using HttpClient&#x2014;For code reuse, we&#x2019;ll encapsulate some logic that helps manage the list of stocks into a service and also uses the HttpClient service from Angular to load stock quote data.</li>
-<li>Services are objects that abstract some common logic that you plan to reuse in multiple places.  </li>
+<li><p>Services&#x2014;Reusable objects that fill niche roles such as data access or helper utilities</p>
+</li>
+<li><p>Services are objects that abstract some common logic that you plan to reuse in multiple places.  </p>
+</li>
 <li>Another way to think of services is as sharable objects that any part of your app can import as needed. </li>
 <li>The intention of a service is to enable reuse of code. A service might be a set of common methods that need to be shared. You could have various &#x201C;helper methods&#x201D; that you don&#x2019;t want to write over and over, such as utilities to parse data formats or authentication logic that needs to be run in multiple places.</li>
-<li>Reuse functional pieces of JavaScript logic across your application.</li>
 <li>Shared code across your application is almost always best placed inside of a service. In Angular, most of the time a service also is something that you can inject into your
 controllers using dependency injection, though there is no exact defnition of what makes an object a service. </li>
-<li><p>Service roles</p>
-<ul>
 <li>Injectable services are the typical Angular services that provide a feature for the
 application and work with Angular&#x2019;s DI system to be injected into components. An example would be a service that handles how to load data from an API.</li>
 <li>Non-injectable services are JavaScript objects that aren&#x2019;t tied into Angular&#x2019;s DI system and are just imported into the file. This can be useful to make a service available outside of Angular&#x2019;s DI, such as in the application&#x2019;s main file.</li>
 <li>Helper services are services that make it easier to use a component or feature. An example would be a service to help manage the currently active alert on the page.</li>
 <li>Data services are for sharing data across the application. An example is an object holding data for the logged-in user. </li>
-</ul>
-</li>
 <li><p>As you build your application, you may see some code start to reappear in various places. That&#x2019;s what all services help to reduce, but sometimes you&#x2019;ll find that some
 code feels out of place and needs to be extracted into a service. When you do that, you&#x2019;re creating a service that exposes helper functions to simplify your components.</p>
 </li>
@@ -628,8 +565,7 @@ providers </li>
 }
 </code></pre>
 </li>
-<li><p>Lazy loading: Feature modules can be lazy loaded into the application, giving you the ability to
-reduce the file size of the code that&#x2019;s initially downloaded to users. It only loads
+<li><p>Lazy loading: Feature modules can be lazy loaded into the application, giving you the ability to reduce the file size of the code that&#x2019;s initially downloaded to users. It only loads
 the module when the user navigates to a route that&#x2019;s part of the feature module. </p>
 </li>
 </ul>
@@ -648,16 +584,10 @@ the module when the user navigates to a route that&#x2019;s part of the feature 
 <li>Template expressions are used in three places: for interpolation, property bindings, and event bindings. </li>
 <li>Bindings are the conduit for data or methods to be used from a controller in the template; they allow data in the controller to &#xFB02;ow into the template, or events to call from the template back into the controller. </li>
 </ul>
-<h3 id="entities">Entities</h3>
-<ul>
-<li>Modules&#x2014;Objects that help you to organize dependencies into discrete units</li>
-<li>Components&#x2014;New elements that will compose the majority of your application&#x2019;s structure and logic</li>
-<li>Directives&#x2014;Objects that modify elements to give them new capabilities or change behaviors</li>
-<li>Pipes&#x2014;Functions that format data before it&#x2019;s rendered</li>
-<li>Services&#x2014;Reusable objects that fill niche roles such as data access or helper utilities</li>
-</ul>
 <h3 id="modules">Modules</h3>
 <ul>
+<li><p>Modules&#x2014;Objects that help you to organize dependencies into discrete units</p>
+</li>
 <li><p>The declarations array contains a list of all components and directives that the application&#x2019;s main module wants to make available to the entire application. </p>
 </li>
 <li><p>The providers array contains a list of all of the services that you want to make available to the whole application. </p>
@@ -678,10 +608,6 @@ the module when the user navigates to a route that&#x2019;s part of the feature 
 </li>
 <li><p>NgIf gives an element the ability to conditionally render or be removed </p>
 </li>
-<li><p>Attribute directives (NgClass) modify the appearance or behavior of an element. </p>
-</li>
-<li><p>Structural directives (NgIf , NgFor) modify the DOM tree based on some conditions.  </p>
-</li>
 <li><p>The primary default directives provided by Angular consist of the following:</p>
 <ul>
 <li>NgClass&#x2014;Conditionally apply a class to an element</li>
@@ -693,10 +619,6 @@ the module when the user navigates to a route that&#x2019;s part of the feature 
 </li>
 </ul>
 <p><img src="D:/project/justnote/img/structural%20or%20attribute%20directive.png" alt="structural or attribute directive"></p>
-<ul>
-<li>Structural directive: Designed to modify the DOM tree of an element</li>
-<li>Attribute directive: Designed to only modify the properties or DOM of a single element. </li>
-</ul>
 <h3 id="pipes">Pipes</h3>
 <ul>
 <li>Using pipes, we can transform the data in the view during rendering without changing the underlying data value. </li>
@@ -721,9 +643,9 @@ every change detection check and are to be avoided if possible.</li>
 <li><p>Ahead-of-Time (AoT): Render the content before sending it to the browser.  </p>
 </li>
 </ul>
-<h3 id="di">DI</h3>
+<h3 id="dependency-injection">Dependency injection</h3>
 <ul>
-<li>Dependency injection (DI) is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. </li>
+<li>DI is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. </li>
 <li>Injector: This is the service that Angular provides for requesting and registering dependencies </li>
 <li>Providers are responsible for creating the instanceof the object requested.</li>
 <li>Dependency injection is fundamental for Angular to track all the objects in the application and make them available when they&#x2019;re requested.</li>
@@ -888,7 +810,7 @@ especially as the form gets more complex.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Angular","level":"3.4","depth":1,"next":{"title":"Java","level":"4.1","depth":1,"path":"post/java.md","ref":"post/java.md","articles":[]},"previous":{"title":"JavaScript","level":"3.3","depth":1,"path":"post/javascript.md","ref":"post/javascript.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/angular.md","mtime":"2019-06-17T09:49:56.718Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-09T10:02:57.361Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Angular","level":"3.4","depth":1,"next":{"title":"Java","level":"4.1","depth":1,"path":"post/java.md","ref":"post/java.md","articles":[]},"previous":{"title":"JavaScript","level":"3.3","depth":1,"path":"post/javascript.md","ref":"post/javascript.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","splitter"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Jamie","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Jamie House","gitbook":"*","description":"V5"},"file":{"path":"post/angular.md","mtime":"2019-08-24T03:47:53.831Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-24T03:52:13.323Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

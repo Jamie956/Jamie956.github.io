@@ -1,25 +1,3 @@
-### Platform
-
-- Angular comes with a leaner core library and makes additional features available as separate packages that can be used as needed. It also has many tools that push it beyond a simple framework, including the following:
-  - Dedicated CLI for application development, testing, and deployment
-  - Ofﬂine rendering capabilities on many back-end server platforms
-  - Desktop-, mobile-, and browser-based application execution environments
-  - Comprehensive UI component libraries, such as Material Design
-- Angular is a platform, with many key elements such as tooling, UI libraries, and testing built in or easily incorporated into your application projects.
-
-
-
-### Angular CLI
-
-- Generates new project scaffolding
-- Generates new application pieces—It can generate components, services, routes, and pipes, and it also will automatically ensure they are fully wired up in the build process.
-- Manages the entire build toolchain—The CLI will process your source files and build them into an optimized version for development or production.
-- Serves a localhost development server
-- Incorporates code linting and formatting code
-- Supports running unit and e2e tests
-
-
-
 ### Server rendering
 
 - Server rendering for faster loading—resolve data bindings and render components on the server so the initial payload sent to the user is pre-initialized. It can also optimize and send the necessary bytes for a quick initial load time and lazy load the other assets as needed.
@@ -29,6 +7,8 @@
 
 
 ### Component
+
+- Components—New elements that will compose the majority of your application’s structure and logic
 
 - A component is a way to create custom HTML elements in your application.
 - Applications are essentially combinations of components. These components build upon the core principles of encapsulation, isolation, and reusability, which should have events, be customizable, and be declarative.
@@ -45,7 +25,7 @@
 - Here’s a list of the primary things that compose a component:
   - Component Metadata Decorator —All components must be annotated with the @Component() decorator to properly register the component with Angular. The metadata contains numerous properties to help modify the way the component behaves or is rendered.
   - Controller—The controller is the class that is decorated with @Component(), and it contains all the properties and methods for the component. Most of the logic exists in the controller.
-  - Template—A component isn’t a component without a template. The markup for a component defines the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any 
+  - Template—A component isn’t a component without a template. The markup for a component defines the layout and content of the UI that a user can see, and the rendered version of the template will look at the values from the controller to bind any
 - Here are the four roles of components
   - App component—This is the root app component, and you only get one of these per application.
   - Display component—This is a stateless component that reﬂects the values passed into it, making it highly reusable.
@@ -93,28 +73,74 @@
 
 - The CSS selector is the only way to limit which elements receive that particular styling. 
 
-- Shadow DOM enables the best form of encapsulation available in the browser for styles and templates. 
 
 
 
 ### Lifecycle
 
-- The App module is the packaging that helps tell Angular what’s available to render. 
-- The NgModule decorator takes an object with a few different properties. 
-- The declarations property is to provide a list of any components and directives to make available to the entire application. 
-- The imports property is an array of other modules upon which this module depends 
-- The providers property, which is empty by default. Any services that are created are to be listed here 
-- The bootstrap property defines which components to bootstrap at runtime.
+```js
+//===app.module.ts===
+//The App module is the packaging that helps tell Angular what’s available to render.
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-- The constructor method runs as soon as the component is created.
+import { AppComponent } from './main/app.component';
 
-- Don’t load data from the service in the constructor
+//The NgModule decorator takes an object with a few different properties. 
+@NgModule({
+    //The declarations property is to provide a list of any components and directives to make available to the entire application.
+    declarations: [
+        AppComponent
+    ],
+    //The imports property is an array of other modules upon which this module depends
+    imports: [
+        BrowserModule
+    ],
+    //The providers property, which is empty by default. Any services that are created are to be listed here 
+    providers: [],
+    //The bootstrap property defines which components to bootstrap at runtime.
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-- Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur.
 
-- Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.
 
-- <img src="../img/How Angular renders the base app into the browser.png" />
+```js
+//===heros.component.ts===
+@Component({
+    selector: "",
+    template: ``
+})
+export class MyComponent {
+    //The constructor method runs as soon as the component is created.
+    constructor() {
+        //Don’t load data from the service in the constructor
+    }
+    //Components expose a number of lifecycle hooks that allow you to execute commands at various stages of rendering, giving you greater control over when things occur.
+    ngOnInit() { }
+}
+```
+
+
+
+```js
+//===app.component.ts===
+//Angular apps are components that contain a tree of components. The root app is bootstrapped on page load to initialize the application.
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+}
+```
+
+
+
+<img src="../img/How Angular renders the base app into the browser.png" />
 
 - Immediately upon loading the page, the bootstrapper is called to begin Angular execution.
 
@@ -134,20 +160,18 @@
 
 ### Services
 
-- Creating services and using HttpClient—For code reuse, we’ll encapsulate some logic that helps manage the list of stocks into a service and also uses the HttpClient service from Angular to load stock quote data.
+- Services—Reusable objects that fill niche roles such as data access or helper utilities
+
 - Services are objects that abstract some common logic that you plan to reuse in multiple places.  
 - Another way to think of services is as sharable objects that any part of your app can import as needed. 
 - The intention of a service is to enable reuse of code. A service might be a set of common methods that need to be shared. You could have various “helper methods” that you don’t want to write over and over, such as utilities to parse data formats or authentication logic that needs to be run in multiple places.
-- Reuse functional pieces of JavaScript logic across your application.
 - Shared code across your application is almost always best placed inside of a service. In Angular, most of the time a service also is something that you can inject into your
   controllers using dependency injection, though there is no exact defnition of what makes an object a service. 
-- Service roles
-  - Injectable services are the typical Angular services that provide a feature for the
-    application and work with Angular’s DI system to be injected into components. An example would be a service that handles how to load data from an API.
-  - Non-injectable services are JavaScript objects that aren’t tied into Angular’s DI system and are just imported into the file. This can be useful to make a service available outside of Angular’s DI, such as in the application’s main file.
-  - Helper services are services that make it easier to use a component or feature. An example would be a service to help manage the currently active alert on the page.
-  - Data services are for sharing data across the application. An example is an object holding data for the logged-in user. 
-
+- Injectable services are the typical Angular services that provide a feature for the
+  application and work with Angular’s DI system to be injected into components. An example would be a service that handles how to load data from an API.
+- Non-injectable services are JavaScript objects that aren’t tied into Angular’s DI system and are just imported into the file. This can be useful to make a service available outside of Angular’s DI, such as in the application’s main file.
+- Helper services are services that make it easier to use a component or feature. An example would be a service to help manage the currently active alert on the page.
+- Data services are for sharing data across the application. An example is an object holding data for the logged-in user. 
 - As you build your application, you may see some code start to reappear in various places. That’s what all services help to reduce, but sometimes you’ll find that some
   code feels out of place and needs to be extracted into a service. When you do that, you’re creating a service that exposes helper functions to simplify your components.
 
@@ -208,8 +232,7 @@
   }
   ```
 
-- Lazy loading: Feature modules can be lazy loaded into the application, giving you the ability to
-  reduce the file size of the code that’s initially downloaded to users. It only loads
+- Lazy loading: Feature modules can be lazy loaded into the application, giving you the ability to reduce the file size of the code that’s initially downloaded to users. It only loads
   the module when the user navigates to a route that’s part of the feature module. 
 
 
@@ -229,17 +252,9 @@
 
 
 
-### Entities
+### Modules
 
 - Modules—Objects that help you to organize dependencies into discrete units
-- Components—New elements that will compose the majority of your application’s structure and logic
-- Directives—Objects that modify elements to give them new capabilities or change behaviors
-- Pipes—Functions that format data before it’s rendered
-- Services—Reusable objects that fill niche roles such as data access or helper utilities
-
-
-
-### Modules
 
 - The declarations array contains a list of all components and directives that the application’s main module wants to make available to the entire application. 
 
@@ -262,10 +277,6 @@
 
 - NgIf gives an element the ability to conditionally render or be removed 
 
-- Attribute directives (NgClass) modify the appearance or behavior of an element. 
-
-- Structural directives (NgIf , NgFor) modify the DOM tree based on some conditions.  
-
 - The primary default directives provided by Angular consist of the following:
   - NgClass—Conditionally apply a class to an element
   - NgStyle—Conditionally apply a set of styles to an element
@@ -274,9 +285,6 @@
   - NgSwitch—Conditionally display an item from a set of options 
 
 ![structural or attribute directive](D:/project/justnote/img/structural%20or%20attribute%20directive.png)
-
-- Structural directive: Designed to modify the DOM tree of an element
-- Attribute directive: Designed to only modify the properties or DOM of a single element. 
 
 
 
@@ -306,9 +314,9 @@
 
 
 
-### DI
+### Dependency injection
 
-- Dependency injection (DI) is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. 
+- DI is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it. 
 - Injector: This is the service that Angular provides for requesting and registering dependencies 
 - Providers are responsible for creating the instanceof the object requested.
 - Dependency injection is fundamental for Angular to track all the objects in the application and make them available when they’re requested.

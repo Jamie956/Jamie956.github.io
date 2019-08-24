@@ -59,3 +59,98 @@
   - 作用域未释放
 
 
+
+
+
+# 1
+
+
+
+Node as "a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices." 
+
+Node specifically uses V8, the virtual machine that powers Google Chrome, for
+server-side programming. V8 gives a huge boost in performance because it cuts out the middleman, prefering straight compilation into native machine code over
+executing bytecode or using an interpreter. 
+
+
+
+
+
+## Asynchronous and Evented
+
+event-driven (i.e. use an event loop )
+
+
+
+non-blocking when handling I/O (i.e. use asynchronous I/O )
+
+```js
+// I/O does not block execution
+$.post('/resource.json', function (data) {
+    console.log(data);
+});
+// script execution continues
+```
+
+```js
+// I/O blocks execution until finished
+var data = $.post('/resource.json');
+console.log(data);
+//the response for resource.json would be stored in the variable data when it is ready and that the console.log function will not execute until then.
+```
+
+
+
+![non-blocking IO in browser](..\img\non-blocking IO in browser.png)
+
+The I/O is happening asynchronously and not "blocking" the script execution
+allowing the event loop to respond to whatever other interactions or requests that
+are being performed on the page. This enables the browser to be responsive to the
+client and handle a lot of interactivity on the page. 
+
+
+
+
+
+
+
+Streaming Data
+
+Serving HTTP
+
+WebSocket
+
+static file server
+
+Socket.io
+
+modules
+
+data storage
+
+Testing
+
+middleware
+
+templating
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

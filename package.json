@@ -1,5 +1,5 @@
 {
-  "name": "justnote",
+  "name": "teknote",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "gh-pages": "^2.0.1",
-    "gitbook-plugin-page-treeview": "^3.0.0",
+    "gitbook-plugin-page-treeview": "^3.0.1",
     "gitbook-plugin-splitter": "0.0.8"
   }
 }
